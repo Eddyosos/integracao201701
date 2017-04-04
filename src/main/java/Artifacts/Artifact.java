@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package integration;
+package Artifacts;
 
 /**
  *
  * @author aluno
  */
-public class Integrator {
+public interface Artifact {
 
-
-    
+    public void validator();
+    public void translator();
 }
