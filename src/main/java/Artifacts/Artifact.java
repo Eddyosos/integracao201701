@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Artefects;
+package Artifacts;
 
 /**
  *
  * @author aluno
  */
-public interface Artefect {
+public interface Artifact {
 
     public void validator();
     public void translator();
