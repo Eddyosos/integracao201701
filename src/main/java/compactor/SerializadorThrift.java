@@ -10,25 +10,24 @@ import org.apache.thrift.transport.TIOStreamTransport;
 
 public class SerializadorThrift {
 
-	/**
-	 * Realiza a serialização do thrift.
-	 *
-	 * @param thrift - o thrift preenchido com as informações do atendimento.
-	 * @return um array com os bytes serializados.
-	 */
-	public static byte[] serializar(TBase<?, ? extends TFieldIdEnum> thrift) {
-		try {
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			TIOStreamTransport transport = new TIOStreamTransport(baos);
-			TBinaryProtocol protocol = new TBinaryProtocol(transport);
-			thrift.write(protocol);
+    /**
+     * Realiza a serialização do thrift.
+     *
+     * @param thrift - o thrift preenchido com as informações do atendimento.
+     * @return um array com os bytes serializados.
+     */
+    public static byte[] serializar(TBase<?, ? extends TFieldIdEnum> thrift) {
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            TIOStreamTransport transport = new TIOStreamTransport(baos);
+            TBinaryProtocol protocol = new TBinaryProtocol(transport);
+            thrift.write(protocol);
 
-			return baos.toByteArray();
-		} catch (TException exception) {
-			exception.printStackTrace();
-		}
+            return baos.toByteArray();
+        } catch (TException exception) {
+            exception.printStackTrace();
+        }
 
-		return null;
-	}
-
+            return null;
+    }
 }
