@@ -7,6 +7,10 @@ import org.apache.thrift.TException;
 
 public class EmSituacaoDeRua {
     private EmSituacaoDeRuaThrift emSituacaoDeRuaTrift = new EmSituacaoDeRuaThrift();
+    
+    protected EmSituacaoDeRua(EmSituacaoDeRuaThrift emSituacaoDeRua){
+        this.emSituacaoDeRuaTrift = emSituacaoDeRua;
+    }
 
     public String getGrauParentescoFamiliarFrequentado() {
         return emSituacaoDeRuaTrift.getGrauParentescoFamiliarFrequentado();
