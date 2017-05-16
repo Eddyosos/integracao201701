@@ -9,6 +9,10 @@ public class CondicoesDeSaude {
     
     private CondicoesDeSaudeThrift condicoesDeSaudeTrift = new CondicoesDeSaudeThrift();
     
+    protected CondicoesDeSaude( CondicoesDeSaudeThrift condicoesDeSaudeTrift){
+        this.condicoesDeSaudeTrift = condicoesDeSaudeTrift;
+    }
+    
     public String getDescricaoCausaInternacaoEm12Meses() {
         return condicoesDeSaudeTrift.getDescricaoCausaInternacaoEm12Meses();
     }
