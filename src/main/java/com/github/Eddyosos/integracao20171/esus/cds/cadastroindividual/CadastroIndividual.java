@@ -1,22 +1,18 @@
 package com.github.Eddyosos.integracao20171.esus.cds.cadastroindividual;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.CadastroIndividualThrift;
-import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.CondicoesDeSaudeThrift;
-import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.EmSituacaoDeRuaThrift;
-import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.IdentificacaoUsuarioCidadaoThrift;
-import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.InformacoesSocioDemograficasThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.common.HeaderCdsCadastroThrift;
 import org.apache.thrift.TException;
 
 public class CadastroIndividual {
     private CadastroIndividualThrift cadastroIndividualTrift = new CadastroIndividualThrift();
 
-    public CondicoesDeSaudeThrift getCondicoesDeSaude() {
-        return cadastroIndividualTrift.getCondicoesDeSaude();
+    public CondicoesDeSaude getCondicoesDeSaude() {
+        return new CondicoesDeSaude(cadastroIndividualTrift.getCondicoesDeSaude());
     }
 
-    public void setCondicoesDeSaude(CondicoesDeSaudeThrift condicoesDeSaude) {
-        cadastroIndividualTrift.setCondicoesDeSaude(condicoesDeSaude);
+    public void setCondicoesDeSaude(CondicoesDeSaude condicoesDeSaude) {
+        cadastroIndividualTrift.setCondicoesDeSaude(condicoesDeSaude.getInstance());
     }
 
     public void unsetCondicoesDeSaude() {
@@ -51,12 +47,12 @@ public class CadastroIndividual {
         cadastroIndividualTrift.setDadosGeraisIsSet(value);
     }
 
-    public EmSituacaoDeRuaThrift getEmSituacaoDeRua() {
-        return cadastroIndividualTrift.getEmSituacaoDeRua();
+    public EmSituacaoDeRua getEmSituacaoDeRua() {
+        return new EmSituacaoDeRua(cadastroIndividualTrift.getEmSituacaoDeRua());
     }
 
-    public void setEmSituacaoDeRua(EmSituacaoDeRuaThrift emSituacaoDeRua) {
-        cadastroIndividualTrift.setEmSituacaoDeRua(emSituacaoDeRua);
+    public void setEmSituacaoDeRua(EmSituacaoDeRua emSituacaoDeRua) {
+        cadastroIndividualTrift.setEmSituacaoDeRua(emSituacaoDeRua.getInstance());
     }
 
     public void unsetEmSituacaoDeRua() {
@@ -91,12 +87,12 @@ public class CadastroIndividual {
         cadastroIndividualTrift.setFichaAtualizadaIsSet(value);
     }
 
-    public IdentificacaoUsuarioCidadaoThrift getIdentificacaoUsuarioCidadao() {
-        return cadastroIndividualTrift.getIdentificacaoUsuarioCidadao();
+    public IdentificacaoUsuarioCidadao getIdentificacaoUsuarioCidadao() {
+        return new IdentificacaoUsuarioCidadao(cadastroIndividualTrift.getIdentificacaoUsuarioCidadao());
     }
 
-    public void setIdentificacaoUsuarioCidadao(IdentificacaoUsuarioCidadaoThrift identificacaoUsuarioCidadao) {
-        cadastroIndividualTrift.setIdentificacaoUsuarioCidadao(identificacaoUsuarioCidadao);
+    public void setIdentificacaoUsuarioCidadao(IdentificacaoUsuarioCidadao identificacaoUsuarioCidadao) {
+        cadastroIndividualTrift.setIdentificacaoUsuarioCidadao(identificacaoUsuarioCidadao.getInstance());
     }
 
     public void unsetIdentificacaoUsuarioCidadao() {
@@ -111,12 +107,12 @@ public class CadastroIndividual {
         cadastroIndividualTrift.setIdentificacaoUsuarioCidadaoIsSet(value);
     }
 
-    public InformacoesSocioDemograficasThrift getInformacoesSocioDemograficas() {
-        return cadastroIndividualTrift.getInformacoesSocioDemograficas();
+    public InformacoesSocioDemograficas getInformacoesSocioDemograficas() {
+        return new InformacoesSocioDemograficas(cadastroIndividualTrift.getInformacoesSocioDemograficas());
     }
 
-    public void setInformacoesSocioDemograficas(InformacoesSocioDemograficasThrift informacoesSocioDemograficas) {
-        cadastroIndividualTrift.setInformacoesSocioDemograficas(informacoesSocioDemograficas);
+    public void setInformacoesSocioDemograficas(InformacoesSocioDemograficas informacoesSocioDemograficas) {
+        cadastroIndividualTrift.setInformacoesSocioDemograficas(informacoesSocioDemograficas.getIntence());
     }
 
     public void unsetInformacoesSocioDemograficas() {
