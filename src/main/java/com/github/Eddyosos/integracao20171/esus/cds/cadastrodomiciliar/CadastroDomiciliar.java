@@ -1,11 +1,11 @@
 package com.github.Eddyosos.integracao20171.esus.cds.cadastrodomiciliar;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastrodomiciliar.CadastroDomiciliarThrift;
-import br.gov.saude.esus.cds.transport.generated.thrift.cadastrodomiciliar.CondicaoMoradiaThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastrodomiciliar.FamiliaRowThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.common.EnderecoLocalPermanenciaThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.common.HeaderCdsCadastroThrift;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import org.apache.thrift.TException;
 
@@ -44,8 +44,8 @@ public class CadastroDomiciliar {
         cadastroDomiciliarThrift.setAnimaisNoDomicilioIsSet(value);
     }
 
-    public CondicaoMoradiaThrift getCondicaoMoradia() {
-        return cadastroDomiciliarThrift.getCondicaoMoradia();
+    public CondicaoMoradia getCondicaoMoradia() {
+        return new CondicaoMoradia(cadastroDomiciliarThrift.getCondicaoMoradia());
     }
 
     public void setCondicaoMoradia(CondicaoMoradia condicaoMoradia) {
@@ -108,20 +108,32 @@ public class CadastroDomiciliar {
         return cadastroDomiciliarThrift.getFamiliasSize();
     }
 
-    public Iterator<FamiliaRowThrift> getFamiliasIterator() {
-        return cadastroDomiciliarThrift.getFamiliasIterator();
+    public Iterator<FamiliaRow> getFamiliasIterator() {
+        List<FamiliaRow> list = new LinkedList<>();
+        cadastroDomiciliarThrift.getFamiliasIterator().forEachRemaining((t) -> {
+            list.add(new FamiliaRow(t));
+        });
+        return list.iterator();
     }
 
-    public void addToFamilias(FamiliaRowThrift elem) {
-        cadastroDomiciliarThrift.addToFamilias(elem);
+    public void addToFamilias(FamiliaRow elem) {
+        cadastroDomiciliarThrift.addToFamilias(elem.getInstance());
     }
 
-    public List<FamiliaRowThrift> getFamilias() {
-        return cadastroDomiciliarThrift.getFamilias();
+    public List<FamiliaRow> getFamilias() {
+        List<FamiliaRow> lista = new LinkedList<>();
+        cadastroDomiciliarThrift.getFamilias().forEach((t) -> {
+            lista.add(new FamiliaRow(t));
+        });
+        return lista;
     }
 
-    public void setFamilias(List<FamiliaRowThrift> familias) {
-        cadastroDomiciliarThrift.setFamilias(familias);
+    public void setFamilias(List<FamiliaRow> familias) {
+        List<FamiliaRowThrift> listaFamilias = new LinkedList<>();
+        familias.forEach((t) -> {
+            listaFamilias.add(t.getInstance());
+        });
+        cadastroDomiciliarThrift.setFamilias(listaFamilias);
     }
 
     public void unsetFamilias() {
