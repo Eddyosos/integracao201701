@@ -5,6 +5,10 @@ import org.apache.thrift.TException;
 
 public class ParticipanteRowItem {
     ParticipanteRowItemThrift participanteRowItemThrift = new ParticipanteRowItemThrift();
+    
+    protected ParticipanteRowItem(ParticipanteRowItemThrift participanteRowItemThrift){
+        this.participanteRowItemThrift = participanteRowItemThrift;
+    }
 
     public ParticipanteRowItemThrift deepCopy() {
         return participanteRowItemThrift.deepCopy();
