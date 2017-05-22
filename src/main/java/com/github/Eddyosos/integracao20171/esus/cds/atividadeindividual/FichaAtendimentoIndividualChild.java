@@ -2,7 +2,6 @@ package com.github.Eddyosos.integracao20171.esus.cds.atividadeindividual;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadeindividual.FichaAtendimentoIndividualChildThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadeindividual.OutrosSiaThrift;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,6 +13,10 @@ public class FichaAtendimentoIndividualChild {
 
     public FichaAtendimentoIndividualChild() {
         instance = new FichaAtendimentoIndividualChildThrift();
+    }
+
+    FichaAtendimentoIndividualChild(FichaAtendimentoIndividualChildThrift thrift) {
+        instance = thrift;
     }
 
     public String getNumeroProntuario() {
@@ -366,21 +369,31 @@ public class FichaAtendimentoIndividualChild {
 
     public Iterator<OutrosSia> getOutrosSiaIterator() {
         List<OutrosSia> list = new LinkedList<>();
-        instance.getOutrosSiaIterator().forEachRemaining(action);
+        instance.getOutrosSiaIterator().forEachRemaining((item) -> {
+            list.add(new OutrosSia(item));
+        });
         
         return list.iterator();
     }
 
-    public void addToOutrosSia(OutrosSiaThrift elem) {
-        instance.addToOutrosSia(elem);
+    public void addToOutrosSia(OutrosSia elem) {
+        instance.addToOutrosSia(elem.getInstance());
     }
 
-    public List<OutrosSiaThrift> getOutrosSia() {
-        return instance.getOutrosSia();
+    public List<OutrosSia> getOutrosSia() {
+        List<OutrosSia> list = new LinkedList<>();
+        instance.getOutrosSia().iterator().forEachRemaining((item) -> {
+            list.add(new OutrosSia(item));
+        });
+        return list;
     }
 
-    public void setOutrosSia(List<OutrosSiaThrift> outrosSia) {
-        instance.setOutrosSia(outrosSia);
+    public void setOutrosSia(List<OutrosSia> outrosSia) {
+        List<OutrosSiaThrift> list = new LinkedList<>();
+        outrosSia.iterator().forEachRemaining((t) -> {
+            list.add(t.getInstance());
+        });
+        instance.setOutrosSia(list);
     }
 
     public void unsetOutrosSia() {
@@ -579,36 +592,20 @@ public class FichaAtendimentoIndividualChild {
         instance.setNuPartosIsSet(value);
     }
 
-    public void setFieldValue(FichaAtendimentoIndividualChildThrift._Fields field, Object value) {
-        instance.setFieldValue(field, value);
-    }
-
-    public Object getFieldValue(FichaAtendimentoIndividualChildThrift._Fields field) {
-        return instance.getFieldValue(field);
-    }
-
-    public boolean isSet(FichaAtendimentoIndividualChildThrift._Fields field) {
-        return instance.isSet(field);
-    }
-
     public boolean equals(Object that) {
         return instance.equals(that);
     }
 
-    public boolean equals(FichaAtendimentoIndividualChildThrift that) {
-        return instance.equals(that);
+    public boolean equals(FichaAtendimentoIndividualChild that) {
+        return instance.equals(that.instance);
     }
 
     public int hashCode() {
         return instance.hashCode();
     }
 
-    public int compareTo(FichaAtendimentoIndividualChildThrift other) {
-        return instance.compareTo(other);
-    }
-
-    public FichaAtendimentoIndividualChildThrift._Fields fieldForId(int fieldId) {
-        return instance.fieldForId(fieldId);
+    public int compareTo(FichaAtendimentoIndividualChild other) {
+        return instance.compareTo(other.instance);
     }
 
     public void read(TProtocol iprot) throws TException {
@@ -625,6 +622,10 @@ public class FichaAtendimentoIndividualChild {
 
     public void validate() throws TException {
         instance.validate();
+    }
+
+    FichaAtendimentoIndividualChildThrift getInstance() {
+        return instance;
     }
 }
 
