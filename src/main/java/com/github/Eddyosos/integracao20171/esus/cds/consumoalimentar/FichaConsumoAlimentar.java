@@ -1,31 +1,51 @@
 package com.github.Eddyosos.integracao20171.esus.cds.consumoalimentar;
 
-//import br.gov.saude.esus.cds.transport.generated.thrift.common.UnicaLotacaoHeaderThrift;
+import br.gov.saude.esus.cds.transport.generated.thrift.common.UnicaLotacaoHeaderThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.FichaConsumoAlimentarThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.PerguntaQuestionarioCriancasComMaisDoisAnosThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.PerguntaQuestionarioCriancasDeSeisVinteTresMesesThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.PerguntaQuestionarioCriancasMenoresSeisMesesThrift;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class FichaConsumoAlimentar {
-    private FichaConsumoAlimentarThrift instance;
-
+    private FichaConsumoAlimentarThrift instance = new FichaConsumoAlimentarThrift();
     
+    protected FichaConsumoAlimentar(FichaConsumoAlimentarThrift instance){
+        this.instance = instance;
+    }
+
+    public FichaConsumoAlimentar deepCopy() {
+            return new FichaConsumoAlimentar(instance.deepCopy());
+    }
+
+    public UnicaLotacaoHeaderThrift getHeaderTransport() {
+        return instance.getHeaderTransport();
+    }
+
     public void unsetHeaderTransport() {
         instance.unsetHeaderTransport();
+    }
+
+    public boolean isSetHeaderTransport() {
+        return instance.isSetHeaderTransport();
+    }
+
+    public void setHeaderTransportIsSet(boolean value) {
+        instance.setHeaderTransportIsSet(value);
     }
 
     public String getNumeroCartaoSus() {
         return instance.getNumeroCartaoSus();
     }
 
-    public void unsetNumeroCartaoSus() {
-        instance.unsetNumeroCartaoSus();
+    public void setNumeroCartaoSus(String numeroCartaoSus) {
+        instance.setNumeroCartaoSus(numeroCartaoSus);
     }
 
-    public boolean isSetNumeroCartaoSus() {
-        return instance.isSetNumeroCartaoSus();
+    public void unsetNumeroCartaoSus() {
+        instance.unsetNumeroCartaoSus();
     }
 
     public void setNumeroCartaoSusIsSet(boolean value) {
@@ -116,20 +136,27 @@ public class FichaConsumoAlimentar {
         return instance.getPerguntasQuestionarioCriancasMenoresSeisMesesSize();
     }
 
-    public Iterator<PerguntaQuestionarioCriancasMenoresSeisMesesThrift> getPerguntasQuestionarioCriancasMenoresSeisMesesIterator() {
-        return instance.getPerguntasQuestionarioCriancasMenoresSeisMesesIterator();
+    public void addToPerguntasQuestionarioCriancasMenoresSeisMeses(PerguntaQuestionarioCriancasMenoresSeisMeses elem) {
+        instance.addToPerguntasQuestionarioCriancasMenoresSeisMeses(elem.getInstance());
     }
 
-    public void addToPerguntasQuestionarioCriancasMenoresSeisMeses(PerguntaQuestionarioCriancasMenoresSeisMesesThrift elem) {
-        instance.addToPerguntasQuestionarioCriancasMenoresSeisMeses(elem);
+    public List<PerguntaQuestionarioCriancasMenoresSeisMeses> getPerguntasQuestionarioCriancasMenoresSeisMeses() {
+        List <PerguntaQuestionarioCriancasMenoresSeisMeses> listaPerguntaQuestionario = new LinkedList<>();
+        
+        instance.getPerguntasQuestionarioCriancasMenoresSeisMeses().forEach((t)->{
+            listaPerguntaQuestionario.add(new PerguntaQuestionarioCriancasMenoresSeisMeses (t));
+        });
+        
+        return listaPerguntaQuestionario;
     }
 
-    public List<PerguntaQuestionarioCriancasMenoresSeisMesesThrift> getPerguntasQuestionarioCriancasMenoresSeisMeses() {
-        return instance.getPerguntasQuestionarioCriancasMenoresSeisMeses();
-    }
-
-    public void setPerguntasQuestionarioCriancasMenoresSeisMeses(List<PerguntaQuestionarioCriancasMenoresSeisMesesThrift> perguntasQuestionarioCriancasMenoresSeisMeses) {
-        instance.setPerguntasQuestionarioCriancasMenoresSeisMeses(perguntasQuestionarioCriancasMenoresSeisMeses);
+    public void setPerguntasQuestionarioCriancasMenoresSeisMeses(List<PerguntaQuestionarioCriancasMenoresSeisMeses> perguntasQuestionarioCriancasMenoresSeisMeses) {
+        List<PerguntaQuestionarioCriancasMenoresSeisMesesThrift> listaQuestionario = new LinkedList<>();
+        
+        perguntasQuestionarioCriancasMenoresSeisMeses.forEach((elem) -> {
+            listaQuestionario.add(elem.getInstance());
+        });
+        instance.setPerguntasQuestionarioCriancasMenoresSeisMeses(listaQuestionario);
     }
 
     public void unsetPerguntasQuestionarioCriancasMenoresSeisMeses() {
@@ -152,8 +179,8 @@ public class FichaConsumoAlimentar {
         return instance.getPerguntasQuestionarioCriancasDeSeisVinteTresMesesIterator();
     }
 
-    public void addToPerguntasQuestionarioCriancasDeSeisVinteTresMeses(PerguntaQuestionarioCriancasDeSeisVinteTresMesesThrift elem) {
-        instance.addToPerguntasQuestionarioCriancasDeSeisVinteTresMeses(elem);
+    public void addToPerguntasQuestionarioCriancasDeSeisVinteTresMeses(PerguntaQuestionarioCriancasDeSeisVinteTresMeses elem) {
+        instance.addToPerguntasQuestionarioCriancasDeSeisVinteTresMeses(elem.getInstance());
     }
 
     public List<PerguntaQuestionarioCriancasDeSeisVinteTresMesesThrift> getPerguntasQuestionarioCriancasDeSeisVinteTresMeses() {
@@ -248,6 +275,10 @@ public class FichaConsumoAlimentar {
         instance.setTpCdsOrigemIsSet(value);
     }
 
+    public Object getFieldValue(FichaConsumoAlimentarThrift._Fields field) {
+        return instance.getFieldValue(field);
+    }
+
     public boolean equals(FichaConsumoAlimentarThrift that) {
         return instance.equals(that);
     }
@@ -255,6 +286,9 @@ public class FichaConsumoAlimentar {
     public int compareTo(FichaConsumoAlimentarThrift other) {
         return instance.compareTo(other);
     }
+
+    
+    
     
     
 }
