@@ -10,6 +10,14 @@ public class CondicaoMoradia {
         this.condicaoMoradiaThrift = condicaoMoradiaThrift;
     }
 
+    public CondicaoMoradia deepCopy() {
+        return new CondicaoMoradia(condicaoMoradiaThrift.deepCopy());
+    }
+
+    public void clear() {
+        condicaoMoradiaThrift.clear();
+    }
+
     public long getAbastecimentoAgua() {
         return condicaoMoradiaThrift.getAbastecimentoAgua();
     }
@@ -270,8 +278,27 @@ public class CondicaoMoradia {
         condicaoMoradiaThrift.setTratamentoAguaDomicilioIsSet(value);
     }
 
-    public int compareTo(CondicaoMoradiaThrift other) {
-        return condicaoMoradiaThrift.compareTo(other);
+    @Override
+    public boolean equals(Object that) {
+        return condicaoMoradiaThrift.equals(that);
+    }
+
+    public boolean equals(CondicaoMoradia that) {
+        return condicaoMoradiaThrift.equals(that.getInstence());
+    }
+
+    @Override
+    public int hashCode() {
+        return condicaoMoradiaThrift.hashCode();
+    }
+
+    public int compareTo(CondicaoMoradia other) {
+        return condicaoMoradiaThrift.compareTo(other.getInstence());
+    }
+
+    @Override
+    public String toString() {
+        return condicaoMoradiaThrift.toString();
     }
 
     public void validate() throws TException {
