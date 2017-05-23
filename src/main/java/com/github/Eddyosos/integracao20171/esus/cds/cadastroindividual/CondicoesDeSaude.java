@@ -4,646 +4,692 @@ import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.Condi
 import java.util.Iterator;
 import java.util.List;
 import org.apache.thrift.TException;
+import org.apache.thrift.protocol.TProtocol;
 
 public class CondicoesDeSaude {
     
-    private CondicoesDeSaudeThrift condicoesDeSaudeTrift = new CondicoesDeSaudeThrift();
+    private CondicoesDeSaudeThrift condicoesDeSaudeThrift = new CondicoesDeSaudeThrift();
     
     protected CondicoesDeSaude( CondicoesDeSaudeThrift condicoesDeSaudeTrift){
-        this.condicoesDeSaudeTrift = condicoesDeSaudeTrift;
+        this.condicoesDeSaudeThrift = condicoesDeSaudeTrift;
     }
-    
+
+    public CondicoesDeSaude deepCopy() {
+        return new CondicoesDeSaude(condicoesDeSaudeThrift.deepCopy());
+    }
+
+    public void clear() {
+        condicoesDeSaudeThrift.clear();
+    }
+
     public String getDescricaoCausaInternacaoEm12Meses() {
-        return condicoesDeSaudeTrift.getDescricaoCausaInternacaoEm12Meses();
+        return condicoesDeSaudeThrift.getDescricaoCausaInternacaoEm12Meses();
     }
 
     public void setDescricaoCausaInternacaoEm12Meses(String descricaoCausaInternacaoEm12Meses) {
-        condicoesDeSaudeTrift.setDescricaoCausaInternacaoEm12Meses(descricaoCausaInternacaoEm12Meses);
+        condicoesDeSaudeThrift.setDescricaoCausaInternacaoEm12Meses(descricaoCausaInternacaoEm12Meses);
     }
 
     public void unsetDescricaoCausaInternacaoEm12Meses() {
-        condicoesDeSaudeTrift.unsetDescricaoCausaInternacaoEm12Meses();
+        condicoesDeSaudeThrift.unsetDescricaoCausaInternacaoEm12Meses();
     }
 
     public boolean isSetDescricaoCausaInternacaoEm12Meses() {
-        return condicoesDeSaudeTrift.isSetDescricaoCausaInternacaoEm12Meses();
+        return condicoesDeSaudeThrift.isSetDescricaoCausaInternacaoEm12Meses();
     }
 
     public void setDescricaoCausaInternacaoEm12MesesIsSet(boolean value) {
-        condicoesDeSaudeTrift.setDescricaoCausaInternacaoEm12MesesIsSet(value);
+        condicoesDeSaudeThrift.setDescricaoCausaInternacaoEm12MesesIsSet(value);
     }
 
     public String getDescricaoOutraCondicao1() {
-        return condicoesDeSaudeTrift.getDescricaoOutraCondicao1();
+        return condicoesDeSaudeThrift.getDescricaoOutraCondicao1();
     }
 
     public void setDescricaoOutraCondicao1(String descricaoOutraCondicao1) {
-        condicoesDeSaudeTrift.setDescricaoOutraCondicao1(descricaoOutraCondicao1);
+        condicoesDeSaudeThrift.setDescricaoOutraCondicao1(descricaoOutraCondicao1);
     }
 
     public void unsetDescricaoOutraCondicao1() {
-        condicoesDeSaudeTrift.unsetDescricaoOutraCondicao1();
+        condicoesDeSaudeThrift.unsetDescricaoOutraCondicao1();
     }
 
     public boolean isSetDescricaoOutraCondicao1() {
-        return condicoesDeSaudeTrift.isSetDescricaoOutraCondicao1();
+        return condicoesDeSaudeThrift.isSetDescricaoOutraCondicao1();
     }
 
     public void setDescricaoOutraCondicao1IsSet(boolean value) {
-        condicoesDeSaudeTrift.setDescricaoOutraCondicao1IsSet(value);
+        condicoesDeSaudeThrift.setDescricaoOutraCondicao1IsSet(value);
     }
 
     public String getDescricaoOutraCondicao2() {
-        return condicoesDeSaudeTrift.getDescricaoOutraCondicao2();
+        return condicoesDeSaudeThrift.getDescricaoOutraCondicao2();
     }
 
     public void setDescricaoOutraCondicao2(String descricaoOutraCondicao2) {
-        condicoesDeSaudeTrift.setDescricaoOutraCondicao2(descricaoOutraCondicao2);
+        condicoesDeSaudeThrift.setDescricaoOutraCondicao2(descricaoOutraCondicao2);
     }
 
     public void unsetDescricaoOutraCondicao2() {
-        condicoesDeSaudeTrift.unsetDescricaoOutraCondicao2();
+        condicoesDeSaudeThrift.unsetDescricaoOutraCondicao2();
     }
 
     public boolean isSetDescricaoOutraCondicao2() {
-        return condicoesDeSaudeTrift.isSetDescricaoOutraCondicao2();
+        return condicoesDeSaudeThrift.isSetDescricaoOutraCondicao2();
     }
 
     public void setDescricaoOutraCondicao2IsSet(boolean value) {
-        condicoesDeSaudeTrift.setDescricaoOutraCondicao2IsSet(value);
+        condicoesDeSaudeThrift.setDescricaoOutraCondicao2IsSet(value);
     }
 
     public String getDescricaoOutraCondicao3() {
-        return condicoesDeSaudeTrift.getDescricaoOutraCondicao3();
+        return condicoesDeSaudeThrift.getDescricaoOutraCondicao3();
     }
 
     public void setDescricaoOutraCondicao3(String descricaoOutraCondicao3) {
-        condicoesDeSaudeTrift.setDescricaoOutraCondicao3(descricaoOutraCondicao3);
+        condicoesDeSaudeThrift.setDescricaoOutraCondicao3(descricaoOutraCondicao3);
     }
 
     public void unsetDescricaoOutraCondicao3() {
-        condicoesDeSaudeTrift.unsetDescricaoOutraCondicao3();
+        condicoesDeSaudeThrift.unsetDescricaoOutraCondicao3();
     }
 
     public boolean isSetDescricaoOutraCondicao3() {
-        return condicoesDeSaudeTrift.isSetDescricaoOutraCondicao3();
+        return condicoesDeSaudeThrift.isSetDescricaoOutraCondicao3();
     }
 
     public void setDescricaoOutraCondicao3IsSet(boolean value) {
-        condicoesDeSaudeTrift.setDescricaoOutraCondicao3IsSet(value);
+        condicoesDeSaudeThrift.setDescricaoOutraCondicao3IsSet(value);
     }
 
     public String getDescricaoPlantasMedicinaisUsadas() {
-        return condicoesDeSaudeTrift.getDescricaoPlantasMedicinaisUsadas();
+        return condicoesDeSaudeThrift.getDescricaoPlantasMedicinaisUsadas();
     }
 
     public void setDescricaoPlantasMedicinaisUsadas(String descricaoPlantasMedicinaisUsadas) {
-        condicoesDeSaudeTrift.setDescricaoPlantasMedicinaisUsadas(descricaoPlantasMedicinaisUsadas);
+        condicoesDeSaudeThrift.setDescricaoPlantasMedicinaisUsadas(descricaoPlantasMedicinaisUsadas);
     }
 
     public void unsetDescricaoPlantasMedicinaisUsadas() {
-        condicoesDeSaudeTrift.unsetDescricaoPlantasMedicinaisUsadas();
+        condicoesDeSaudeThrift.unsetDescricaoPlantasMedicinaisUsadas();
     }
 
     public boolean isSetDescricaoPlantasMedicinaisUsadas() {
-        return condicoesDeSaudeTrift.isSetDescricaoPlantasMedicinaisUsadas();
+        return condicoesDeSaudeThrift.isSetDescricaoPlantasMedicinaisUsadas();
     }
 
     public void setDescricaoPlantasMedicinaisUsadasIsSet(boolean value) {
-        condicoesDeSaudeTrift.setDescricaoPlantasMedicinaisUsadasIsSet(value);
+        condicoesDeSaudeThrift.setDescricaoPlantasMedicinaisUsadasIsSet(value);
     }
 
     public int getDoencaCardiacaSize() {
-        return condicoesDeSaudeTrift.getDoencaCardiacaSize();
+        return condicoesDeSaudeThrift.getDoencaCardiacaSize();
     }
 
     public Iterator<Long> getDoencaCardiacaIterator() {
-        return condicoesDeSaudeTrift.getDoencaCardiacaIterator();
+        return condicoesDeSaudeThrift.getDoencaCardiacaIterator();
+    }
+
+    public void addToDoencaCardiaca(long elem) {
+        condicoesDeSaudeThrift.addToDoencaCardiaca(elem);
     }
 
     public List<Long> getDoencaCardiaca() {
-        return condicoesDeSaudeTrift.getDoencaCardiaca();
+        return condicoesDeSaudeThrift.getDoencaCardiaca();
     }
 
     public void setDoencaCardiaca(List<Long> doencaCardiaca) {
-        condicoesDeSaudeTrift.setDoencaCardiaca(doencaCardiaca);
+        condicoesDeSaudeThrift.setDoencaCardiaca(doencaCardiaca);
     }
 
     public void unsetDoencaCardiaca() {
-        condicoesDeSaudeTrift.unsetDoencaCardiaca();
+        condicoesDeSaudeThrift.unsetDoencaCardiaca();
     }
 
     public boolean isSetDoencaCardiaca() {
-        return condicoesDeSaudeTrift.isSetDoencaCardiaca();
+        return condicoesDeSaudeThrift.isSetDoencaCardiaca();
     }
 
     public void setDoencaCardiacaIsSet(boolean value) {
-        condicoesDeSaudeTrift.setDoencaCardiacaIsSet(value);
+        condicoesDeSaudeThrift.setDoencaCardiacaIsSet(value);
     }
 
     public int getDoencaRespiratoriaSize() {
-        return condicoesDeSaudeTrift.getDoencaRespiratoriaSize();
+        return condicoesDeSaudeThrift.getDoencaRespiratoriaSize();
     }
 
     public Iterator<Long> getDoencaRespiratoriaIterator() {
-        return condicoesDeSaudeTrift.getDoencaRespiratoriaIterator();
+        return condicoesDeSaudeThrift.getDoencaRespiratoriaIterator();
+    }
+
+    public void addToDoencaRespiratoria(long elem) {
+        condicoesDeSaudeThrift.addToDoencaRespiratoria(elem);
     }
 
     public List<Long> getDoencaRespiratoria() {
-        return condicoesDeSaudeTrift.getDoencaRespiratoria();
+        return condicoesDeSaudeThrift.getDoencaRespiratoria();
     }
 
     public void setDoencaRespiratoria(List<Long> doencaRespiratoria) {
-        condicoesDeSaudeTrift.setDoencaRespiratoria(doencaRespiratoria);
+        condicoesDeSaudeThrift.setDoencaRespiratoria(doencaRespiratoria);
     }
 
     public void unsetDoencaRespiratoria() {
-        condicoesDeSaudeTrift.unsetDoencaRespiratoria();
+        condicoesDeSaudeThrift.unsetDoencaRespiratoria();
     }
 
     public boolean isSetDoencaRespiratoria() {
-        return condicoesDeSaudeTrift.isSetDoencaRespiratoria();
+        return condicoesDeSaudeThrift.isSetDoencaRespiratoria();
     }
 
     public void setDoencaRespiratoriaIsSet(boolean value) {
-        condicoesDeSaudeTrift.setDoencaRespiratoriaIsSet(value);
+        condicoesDeSaudeThrift.setDoencaRespiratoriaIsSet(value);
     }
 
     public int getDoencaRinsSize() {
-        return condicoesDeSaudeTrift.getDoencaRinsSize();
+        return condicoesDeSaudeThrift.getDoencaRinsSize();
     }
 
     public Iterator<Long> getDoencaRinsIterator() {
-        return condicoesDeSaudeTrift.getDoencaRinsIterator();
+        return condicoesDeSaudeThrift.getDoencaRinsIterator();
+    }
+
+    public void addToDoencaRins(long elem) {
+        condicoesDeSaudeThrift.addToDoencaRins(elem);
     }
 
     public List<Long> getDoencaRins() {
-        return condicoesDeSaudeTrift.getDoencaRins();
+        return condicoesDeSaudeThrift.getDoencaRins();
     }
 
     public void setDoencaRins(List<Long> doencaRins) {
-        condicoesDeSaudeTrift.setDoencaRins(doencaRins);
+        condicoesDeSaudeThrift.setDoencaRins(doencaRins);
     }
 
     public void unsetDoencaRins() {
-        condicoesDeSaudeTrift.unsetDoencaRins();
+        condicoesDeSaudeThrift.unsetDoencaRins();
     }
 
     public boolean isSetDoencaRins() {
-        return condicoesDeSaudeTrift.isSetDoencaRins();
+        return condicoesDeSaudeThrift.isSetDoencaRins();
     }
 
     public void setDoencaRinsIsSet(boolean value) {
-        condicoesDeSaudeTrift.setDoencaRinsIsSet(value);
+        condicoesDeSaudeThrift.setDoencaRinsIsSet(value);
     }
 
     public String getMaternidadeDeReferencia() {
-        return condicoesDeSaudeTrift.getMaternidadeDeReferencia();
+        return condicoesDeSaudeThrift.getMaternidadeDeReferencia();
     }
 
     public void setMaternidadeDeReferencia(String maternidadeDeReferencia) {
-        condicoesDeSaudeTrift.setMaternidadeDeReferencia(maternidadeDeReferencia);
+        condicoesDeSaudeThrift.setMaternidadeDeReferencia(maternidadeDeReferencia);
     }
 
     public void unsetMaternidadeDeReferencia() {
-        condicoesDeSaudeTrift.unsetMaternidadeDeReferencia();
+        condicoesDeSaudeThrift.unsetMaternidadeDeReferencia();
     }
 
     public boolean isSetMaternidadeDeReferencia() {
-        return condicoesDeSaudeTrift.isSetMaternidadeDeReferencia();
+        return condicoesDeSaudeThrift.isSetMaternidadeDeReferencia();
     }
 
     public void setMaternidadeDeReferenciaIsSet(boolean value) {
-        condicoesDeSaudeTrift.setMaternidadeDeReferenciaIsSet(value);
+        condicoesDeSaudeThrift.setMaternidadeDeReferenciaIsSet(value);
     }
 
     public long getSituacaoPeso() {
-        return condicoesDeSaudeTrift.getSituacaoPeso();
+        return condicoesDeSaudeThrift.getSituacaoPeso();
     }
 
     public void setSituacaoPeso(long situacaoPeso) {
-        condicoesDeSaudeTrift.setSituacaoPeso(situacaoPeso);
+        condicoesDeSaudeThrift.setSituacaoPeso(situacaoPeso);
     }
 
     public void unsetSituacaoPeso() {
-        condicoesDeSaudeTrift.unsetSituacaoPeso();
+        condicoesDeSaudeThrift.unsetSituacaoPeso();
     }
 
     public boolean isSetSituacaoPeso() {
-        return condicoesDeSaudeTrift.isSetSituacaoPeso();
+        return condicoesDeSaudeThrift.isSetSituacaoPeso();
     }
 
     public void setSituacaoPesoIsSet(boolean value) {
-        condicoesDeSaudeTrift.setSituacaoPesoIsSet(value);
+        condicoesDeSaudeThrift.setSituacaoPesoIsSet(value);
     }
 
     public boolean isStatusEhDependenteAlcool() {
-        return condicoesDeSaudeTrift.isStatusEhDependenteAlcool();
+        return condicoesDeSaudeThrift.isStatusEhDependenteAlcool();
     }
 
     public void setStatusEhDependenteAlcool(boolean statusEhDependenteAlcool) {
-        condicoesDeSaudeTrift.setStatusEhDependenteAlcool(statusEhDependenteAlcool);
+        condicoesDeSaudeThrift.setStatusEhDependenteAlcool(statusEhDependenteAlcool);
     }
 
     public void unsetStatusEhDependenteAlcool() {
-        condicoesDeSaudeTrift.unsetStatusEhDependenteAlcool();
+        condicoesDeSaudeThrift.unsetStatusEhDependenteAlcool();
     }
 
     public boolean isSetStatusEhDependenteAlcool() {
-        return condicoesDeSaudeTrift.isSetStatusEhDependenteAlcool();
+        return condicoesDeSaudeThrift.isSetStatusEhDependenteAlcool();
     }
 
     public void setStatusEhDependenteAlcoolIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusEhDependenteAlcoolIsSet(value);
+        condicoesDeSaudeThrift.setStatusEhDependenteAlcoolIsSet(value);
     }
 
     public boolean isStatusEhDependenteOutrasDrogas() {
-        return condicoesDeSaudeTrift.isStatusEhDependenteOutrasDrogas();
+        return condicoesDeSaudeThrift.isStatusEhDependenteOutrasDrogas();
     }
 
     public void setStatusEhDependenteOutrasDrogas(boolean statusEhDependenteOutrasDrogas) {
-        condicoesDeSaudeTrift.setStatusEhDependenteOutrasDrogas(statusEhDependenteOutrasDrogas);
+        condicoesDeSaudeThrift.setStatusEhDependenteOutrasDrogas(statusEhDependenteOutrasDrogas);
     }
 
     public void unsetStatusEhDependenteOutrasDrogas() {
-        condicoesDeSaudeTrift.unsetStatusEhDependenteOutrasDrogas();
+        condicoesDeSaudeThrift.unsetStatusEhDependenteOutrasDrogas();
     }
 
     public boolean isSetStatusEhDependenteOutrasDrogas() {
-        return condicoesDeSaudeTrift.isSetStatusEhDependenteOutrasDrogas();
+        return condicoesDeSaudeThrift.isSetStatusEhDependenteOutrasDrogas();
     }
 
     public void setStatusEhDependenteOutrasDrogasIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusEhDependenteOutrasDrogasIsSet(value);
+        condicoesDeSaudeThrift.setStatusEhDependenteOutrasDrogasIsSet(value);
     }
 
     public boolean isStatusEhFumante() {
-        return condicoesDeSaudeTrift.isStatusEhFumante();
+        return condicoesDeSaudeThrift.isStatusEhFumante();
     }
 
     public void setStatusEhFumante(boolean statusEhFumante) {
-        condicoesDeSaudeTrift.setStatusEhFumante(statusEhFumante);
+        condicoesDeSaudeThrift.setStatusEhFumante(statusEhFumante);
     }
 
     public void unsetStatusEhFumante() {
-        condicoesDeSaudeTrift.unsetStatusEhFumante();
+        condicoesDeSaudeThrift.unsetStatusEhFumante();
     }
 
     public boolean isSetStatusEhFumante() {
-        return condicoesDeSaudeTrift.isSetStatusEhFumante();
+        return condicoesDeSaudeThrift.isSetStatusEhFumante();
     }
 
     public void setStatusEhFumanteIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusEhFumanteIsSet(value);
+        condicoesDeSaudeThrift.setStatusEhFumanteIsSet(value);
     }
 
     public boolean isStatusEhGestante() {
-        return condicoesDeSaudeTrift.isStatusEhGestante();
+        return condicoesDeSaudeThrift.isStatusEhGestante();
     }
 
     public void setStatusEhGestante(boolean statusEhGestante) {
-        condicoesDeSaudeTrift.setStatusEhGestante(statusEhGestante);
+        condicoesDeSaudeThrift.setStatusEhGestante(statusEhGestante);
     }
 
     public void unsetStatusEhGestante() {
-        condicoesDeSaudeTrift.unsetStatusEhGestante();
+        condicoesDeSaudeThrift.unsetStatusEhGestante();
     }
 
     public boolean isSetStatusEhGestante() {
-        return condicoesDeSaudeTrift.isSetStatusEhGestante();
+        return condicoesDeSaudeThrift.isSetStatusEhGestante();
     }
 
     public void setStatusEhGestanteIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusEhGestanteIsSet(value);
+        condicoesDeSaudeThrift.setStatusEhGestanteIsSet(value);
     }
 
     public boolean isStatusEstaAcamado() {
-        return condicoesDeSaudeTrift.isStatusEstaAcamado();
+        return condicoesDeSaudeThrift.isStatusEstaAcamado();
     }
 
     public void setStatusEstaAcamado(boolean statusEstaAcamado) {
-        condicoesDeSaudeTrift.setStatusEstaAcamado(statusEstaAcamado);
+        condicoesDeSaudeThrift.setStatusEstaAcamado(statusEstaAcamado);
     }
 
     public void unsetStatusEstaAcamado() {
-        condicoesDeSaudeTrift.unsetStatusEstaAcamado();
+        condicoesDeSaudeThrift.unsetStatusEstaAcamado();
     }
 
     public boolean isSetStatusEstaAcamado() {
-        return condicoesDeSaudeTrift.isSetStatusEstaAcamado();
+        return condicoesDeSaudeThrift.isSetStatusEstaAcamado();
     }
 
     public void setStatusEstaAcamadoIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusEstaAcamadoIsSet(value);
+        condicoesDeSaudeThrift.setStatusEstaAcamadoIsSet(value);
     }
 
     public boolean isStatusEstaDomiciliado() {
-        return condicoesDeSaudeTrift.isStatusEstaDomiciliado();
+        return condicoesDeSaudeThrift.isStatusEstaDomiciliado();
     }
 
     public void setStatusEstaDomiciliado(boolean statusEstaDomiciliado) {
-        condicoesDeSaudeTrift.setStatusEstaDomiciliado(statusEstaDomiciliado);
+        condicoesDeSaudeThrift.setStatusEstaDomiciliado(statusEstaDomiciliado);
     }
 
     public void unsetStatusEstaDomiciliado() {
-        condicoesDeSaudeTrift.unsetStatusEstaDomiciliado();
+        condicoesDeSaudeThrift.unsetStatusEstaDomiciliado();
     }
 
     public boolean isSetStatusEstaDomiciliado() {
-        return condicoesDeSaudeTrift.isSetStatusEstaDomiciliado();
+        return condicoesDeSaudeThrift.isSetStatusEstaDomiciliado();
     }
 
     public void setStatusEstaDomiciliadoIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusEstaDomiciliadoIsSet(value);
+        condicoesDeSaudeThrift.setStatusEstaDomiciliadoIsSet(value);
     }
 
     public boolean isStatusTemDiabetes() {
-        return condicoesDeSaudeTrift.isStatusTemDiabetes();
+        return condicoesDeSaudeThrift.isStatusTemDiabetes();
     }
 
     public void setStatusTemDiabetes(boolean statusTemDiabetes) {
-        condicoesDeSaudeTrift.setStatusTemDiabetes(statusTemDiabetes);
+        condicoesDeSaudeThrift.setStatusTemDiabetes(statusTemDiabetes);
     }
 
     public void unsetStatusTemDiabetes() {
-        condicoesDeSaudeTrift.unsetStatusTemDiabetes();
+        condicoesDeSaudeThrift.unsetStatusTemDiabetes();
     }
 
     public boolean isSetStatusTemDiabetes() {
-        return condicoesDeSaudeTrift.isSetStatusTemDiabetes();
+        return condicoesDeSaudeThrift.isSetStatusTemDiabetes();
     }
 
     public void setStatusTemDiabetesIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusTemDiabetesIsSet(value);
+        condicoesDeSaudeThrift.setStatusTemDiabetesIsSet(value);
     }
 
     public boolean isStatusTemDoencaRespiratoria() {
-        return condicoesDeSaudeTrift.isStatusTemDoencaRespiratoria();
+        return condicoesDeSaudeThrift.isStatusTemDoencaRespiratoria();
     }
 
     public void setStatusTemDoencaRespiratoria(boolean statusTemDoencaRespiratoria) {
-        condicoesDeSaudeTrift.setStatusTemDoencaRespiratoria(statusTemDoencaRespiratoria);
+        condicoesDeSaudeThrift.setStatusTemDoencaRespiratoria(statusTemDoencaRespiratoria);
     }
 
     public void unsetStatusTemDoencaRespiratoria() {
-        condicoesDeSaudeTrift.unsetStatusTemDoencaRespiratoria();
+        condicoesDeSaudeThrift.unsetStatusTemDoencaRespiratoria();
     }
 
     public boolean isSetStatusTemDoencaRespiratoria() {
-        return condicoesDeSaudeTrift.isSetStatusTemDoencaRespiratoria();
+        return condicoesDeSaudeThrift.isSetStatusTemDoencaRespiratoria();
     }
 
     public void setStatusTemDoencaRespiratoriaIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusTemDoencaRespiratoriaIsSet(value);
+        condicoesDeSaudeThrift.setStatusTemDoencaRespiratoriaIsSet(value);
     }
 
     public boolean isStatusTemHanseniase() {
-        return condicoesDeSaudeTrift.isStatusTemHanseniase();
+        return condicoesDeSaudeThrift.isStatusTemHanseniase();
     }
 
     public void setStatusTemHanseniase(boolean statusTemHanseniase) {
-        condicoesDeSaudeTrift.setStatusTemHanseniase(statusTemHanseniase);
+        condicoesDeSaudeThrift.setStatusTemHanseniase(statusTemHanseniase);
     }
 
     public void unsetStatusTemHanseniase() {
-        condicoesDeSaudeTrift.unsetStatusTemHanseniase();
+        condicoesDeSaudeThrift.unsetStatusTemHanseniase();
     }
 
     public boolean isSetStatusTemHanseniase() {
-        return condicoesDeSaudeTrift.isSetStatusTemHanseniase();
+        return condicoesDeSaudeThrift.isSetStatusTemHanseniase();
     }
 
     public void setStatusTemHanseniaseIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusTemHanseniaseIsSet(value);
+        condicoesDeSaudeThrift.setStatusTemHanseniaseIsSet(value);
     }
 
     public boolean isStatusTemHipertensaoArterial() {
-        return condicoesDeSaudeTrift.isStatusTemHipertensaoArterial();
+        return condicoesDeSaudeThrift.isStatusTemHipertensaoArterial();
     }
 
     public void setStatusTemHipertensaoArterial(boolean statusTemHipertensaoArterial) {
-        condicoesDeSaudeTrift.setStatusTemHipertensaoArterial(statusTemHipertensaoArterial);
+        condicoesDeSaudeThrift.setStatusTemHipertensaoArterial(statusTemHipertensaoArterial);
     }
 
     public void unsetStatusTemHipertensaoArterial() {
-        condicoesDeSaudeTrift.unsetStatusTemHipertensaoArterial();
+        condicoesDeSaudeThrift.unsetStatusTemHipertensaoArterial();
     }
 
     public boolean isSetStatusTemHipertensaoArterial() {
-        return condicoesDeSaudeTrift.isSetStatusTemHipertensaoArterial();
+        return condicoesDeSaudeThrift.isSetStatusTemHipertensaoArterial();
     }
 
     public void setStatusTemHipertensaoArterialIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusTemHipertensaoArterialIsSet(value);
+        condicoesDeSaudeThrift.setStatusTemHipertensaoArterialIsSet(value);
     }
 
     public boolean isStatusTemTeveCancer() {
-        return condicoesDeSaudeTrift.isStatusTemTeveCancer();
+        return condicoesDeSaudeThrift.isStatusTemTeveCancer();
     }
 
     public void setStatusTemTeveCancer(boolean statusTemTeveCancer) {
-        condicoesDeSaudeTrift.setStatusTemTeveCancer(statusTemTeveCancer);
+        condicoesDeSaudeThrift.setStatusTemTeveCancer(statusTemTeveCancer);
     }
 
     public void unsetStatusTemTeveCancer() {
-        condicoesDeSaudeTrift.unsetStatusTemTeveCancer();
+        condicoesDeSaudeThrift.unsetStatusTemTeveCancer();
     }
 
     public boolean isSetStatusTemTeveCancer() {
-        return condicoesDeSaudeTrift.isSetStatusTemTeveCancer();
+        return condicoesDeSaudeThrift.isSetStatusTemTeveCancer();
     }
 
     public void setStatusTemTeveCancerIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusTemTeveCancerIsSet(value);
+        condicoesDeSaudeThrift.setStatusTemTeveCancerIsSet(value);
     }
 
     public boolean isStatusTemTeveDoencasRins() {
-        return condicoesDeSaudeTrift.isStatusTemTeveDoencasRins();
+        return condicoesDeSaudeThrift.isStatusTemTeveDoencasRins();
     }
 
     public void setStatusTemTeveDoencasRins(boolean statusTemTeveDoencasRins) {
-        condicoesDeSaudeTrift.setStatusTemTeveDoencasRins(statusTemTeveDoencasRins);
+        condicoesDeSaudeThrift.setStatusTemTeveDoencasRins(statusTemTeveDoencasRins);
     }
 
     public void unsetStatusTemTeveDoencasRins() {
-        condicoesDeSaudeTrift.unsetStatusTemTeveDoencasRins();
+        condicoesDeSaudeThrift.unsetStatusTemTeveDoencasRins();
     }
 
     public boolean isSetStatusTemTeveDoencasRins() {
-        return condicoesDeSaudeTrift.isSetStatusTemTeveDoencasRins();
+        return condicoesDeSaudeThrift.isSetStatusTemTeveDoencasRins();
     }
 
     public void setStatusTemTeveDoencasRinsIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusTemTeveDoencasRinsIsSet(value);
+        condicoesDeSaudeThrift.setStatusTemTeveDoencasRinsIsSet(value);
     }
 
     public boolean isStatusTemTuberculose() {
-        return condicoesDeSaudeTrift.isStatusTemTuberculose();
+        return condicoesDeSaudeThrift.isStatusTemTuberculose();
     }
 
     public void setStatusTemTuberculose(boolean statusTemTuberculose) {
-        condicoesDeSaudeTrift.setStatusTemTuberculose(statusTemTuberculose);
+        condicoesDeSaudeThrift.setStatusTemTuberculose(statusTemTuberculose);
     }
 
     public void unsetStatusTemTuberculose() {
-        condicoesDeSaudeTrift.unsetStatusTemTuberculose();
+        condicoesDeSaudeThrift.unsetStatusTemTuberculose();
     }
 
     public boolean isSetStatusTemTuberculose() {
-        return condicoesDeSaudeTrift.isSetStatusTemTuberculose();
+        return condicoesDeSaudeThrift.isSetStatusTemTuberculose();
     }
 
     public void setStatusTemTuberculoseIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusTemTuberculoseIsSet(value);
+        condicoesDeSaudeThrift.setStatusTemTuberculoseIsSet(value);
     }
 
     public boolean isStatusTeveAvcDerrame() {
-        return condicoesDeSaudeTrift.isStatusTeveAvcDerrame();
+        return condicoesDeSaudeThrift.isStatusTeveAvcDerrame();
     }
 
     public void setStatusTeveAvcDerrame(boolean statusTeveAvcDerrame) {
-        condicoesDeSaudeTrift.setStatusTeveAvcDerrame(statusTeveAvcDerrame);
+        condicoesDeSaudeThrift.setStatusTeveAvcDerrame(statusTeveAvcDerrame);
     }
 
     public void unsetStatusTeveAvcDerrame() {
-        condicoesDeSaudeTrift.unsetStatusTeveAvcDerrame();
+        condicoesDeSaudeThrift.unsetStatusTeveAvcDerrame();
     }
 
     public boolean isSetStatusTeveAvcDerrame() {
-        return condicoesDeSaudeTrift.isSetStatusTeveAvcDerrame();
+        return condicoesDeSaudeThrift.isSetStatusTeveAvcDerrame();
     }
 
     public void setStatusTeveAvcDerrameIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusTeveAvcDerrameIsSet(value);
+        condicoesDeSaudeThrift.setStatusTeveAvcDerrameIsSet(value);
     }
 
     public boolean isStatusTeveDoencaCardiaca() {
-        return condicoesDeSaudeTrift.isStatusTeveDoencaCardiaca();
+        return condicoesDeSaudeThrift.isStatusTeveDoencaCardiaca();
     }
 
     public void setStatusTeveDoencaCardiaca(boolean statusTeveDoencaCardiaca) {
-        condicoesDeSaudeTrift.setStatusTeveDoencaCardiaca(statusTeveDoencaCardiaca);
+        condicoesDeSaudeThrift.setStatusTeveDoencaCardiaca(statusTeveDoencaCardiaca);
     }
 
     public void unsetStatusTeveDoencaCardiaca() {
-        condicoesDeSaudeTrift.unsetStatusTeveDoencaCardiaca();
+        condicoesDeSaudeThrift.unsetStatusTeveDoencaCardiaca();
     }
 
     public boolean isSetStatusTeveDoencaCardiaca() {
-        return condicoesDeSaudeTrift.isSetStatusTeveDoencaCardiaca();
+        return condicoesDeSaudeThrift.isSetStatusTeveDoencaCardiaca();
     }
 
     public void setStatusTeveDoencaCardiacaIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusTeveDoencaCardiacaIsSet(value);
+        condicoesDeSaudeThrift.setStatusTeveDoencaCardiacaIsSet(value);
     }
 
     public boolean isStatusTeveInfarto() {
-        return condicoesDeSaudeTrift.isStatusTeveInfarto();
+        return condicoesDeSaudeThrift.isStatusTeveInfarto();
     }
 
     public void setStatusTeveInfarto(boolean statusTeveInfarto) {
-        condicoesDeSaudeTrift.setStatusTeveInfarto(statusTeveInfarto);
+        condicoesDeSaudeThrift.setStatusTeveInfarto(statusTeveInfarto);
     }
 
     public void unsetStatusTeveInfarto() {
-        condicoesDeSaudeTrift.unsetStatusTeveInfarto();
+        condicoesDeSaudeThrift.unsetStatusTeveInfarto();
     }
 
     public boolean isSetStatusTeveInfarto() {
-        return condicoesDeSaudeTrift.isSetStatusTeveInfarto();
+        return condicoesDeSaudeThrift.isSetStatusTeveInfarto();
     }
 
     public void setStatusTeveInfartoIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusTeveInfartoIsSet(value);
+        condicoesDeSaudeThrift.setStatusTeveInfartoIsSet(value);
     }
 
     public boolean isStatusTeveInternadoEm12Meses() {
-        return condicoesDeSaudeTrift.isStatusTeveInternadoEm12Meses();
+        return condicoesDeSaudeThrift.isStatusTeveInternadoEm12Meses();
     }
 
     public void setStatusTeveInternadoEm12Meses(boolean statusTeveInternadoEm12Meses) {
-        condicoesDeSaudeTrift.setStatusTeveInternadoEm12Meses(statusTeveInternadoEm12Meses);
+        condicoesDeSaudeThrift.setStatusTeveInternadoEm12Meses(statusTeveInternadoEm12Meses);
     }
 
     public void unsetStatusTeveInternadoEm12Meses() {
-        condicoesDeSaudeTrift.unsetStatusTeveInternadoEm12Meses();
+        condicoesDeSaudeThrift.unsetStatusTeveInternadoEm12Meses();
     }
 
     public boolean isSetStatusTeveInternadoEm12Meses() {
-        return condicoesDeSaudeTrift.isSetStatusTeveInternadoEm12Meses();
+        return condicoesDeSaudeThrift.isSetStatusTeveInternadoEm12Meses();
     }
 
     public void setStatusTeveInternadoEm12MesesIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusTeveInternadoEm12MesesIsSet(value);
+        condicoesDeSaudeThrift.setStatusTeveInternadoEm12MesesIsSet(value);
     }
 
     public boolean isStatusTratamentoPsiquicoOuProblemaMental() {
-        return condicoesDeSaudeTrift.isStatusTratamentoPsiquicoOuProblemaMental();
+        return condicoesDeSaudeThrift.isStatusTratamentoPsiquicoOuProblemaMental();
     }
 
     public void setStatusTratamentoPsiquicoOuProblemaMental(boolean statusTratamentoPsiquicoOuProblemaMental) {
-        condicoesDeSaudeTrift.setStatusTratamentoPsiquicoOuProblemaMental(statusTratamentoPsiquicoOuProblemaMental);
+        condicoesDeSaudeThrift.setStatusTratamentoPsiquicoOuProblemaMental(statusTratamentoPsiquicoOuProblemaMental);
     }
 
     public void unsetStatusTratamentoPsiquicoOuProblemaMental() {
-        condicoesDeSaudeTrift.unsetStatusTratamentoPsiquicoOuProblemaMental();
+        condicoesDeSaudeThrift.unsetStatusTratamentoPsiquicoOuProblemaMental();
     }
 
     public boolean isSetStatusTratamentoPsiquicoOuProblemaMental() {
-        return condicoesDeSaudeTrift.isSetStatusTratamentoPsiquicoOuProblemaMental();
+        return condicoesDeSaudeThrift.isSetStatusTratamentoPsiquicoOuProblemaMental();
     }
 
     public void setStatusTratamentoPsiquicoOuProblemaMentalIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusTratamentoPsiquicoOuProblemaMentalIsSet(value);
+        condicoesDeSaudeThrift.setStatusTratamentoPsiquicoOuProblemaMentalIsSet(value);
     }
 
     public boolean isStatusUsaOutrasPraticasIntegrativasOuComplementares() {
-        return condicoesDeSaudeTrift.isStatusUsaOutrasPraticasIntegrativasOuComplementares();
+        return condicoesDeSaudeThrift.isStatusUsaOutrasPraticasIntegrativasOuComplementares();
     }
 
     public void setStatusUsaOutrasPraticasIntegrativasOuComplementares(boolean statusUsaOutrasPraticasIntegrativasOuComplementares) {
-        condicoesDeSaudeTrift.setStatusUsaOutrasPraticasIntegrativasOuComplementares(statusUsaOutrasPraticasIntegrativasOuComplementares);
+        condicoesDeSaudeThrift.setStatusUsaOutrasPraticasIntegrativasOuComplementares(statusUsaOutrasPraticasIntegrativasOuComplementares);
     }
 
     public void unsetStatusUsaOutrasPraticasIntegrativasOuComplementares() {
-        condicoesDeSaudeTrift.unsetStatusUsaOutrasPraticasIntegrativasOuComplementares();
+        condicoesDeSaudeThrift.unsetStatusUsaOutrasPraticasIntegrativasOuComplementares();
     }
 
     public boolean isSetStatusUsaOutrasPraticasIntegrativasOuComplementares() {
-        return condicoesDeSaudeTrift.isSetStatusUsaOutrasPraticasIntegrativasOuComplementares();
+        return condicoesDeSaudeThrift.isSetStatusUsaOutrasPraticasIntegrativasOuComplementares();
     }
 
     public void setStatusUsaOutrasPraticasIntegrativasOuComplementaresIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusUsaOutrasPraticasIntegrativasOuComplementaresIsSet(value);
+        condicoesDeSaudeThrift.setStatusUsaOutrasPraticasIntegrativasOuComplementaresIsSet(value);
     }
 
     public boolean isStatusUsaPlantaMedicinais() {
-        return condicoesDeSaudeTrift.isStatusUsaPlantaMedicinais();
+        return condicoesDeSaudeThrift.isStatusUsaPlantaMedicinais();
     }
 
     public void setStatusUsaPlantaMedicinais(boolean statusUsaPlantaMedicinais) {
-        condicoesDeSaudeTrift.setStatusUsaPlantaMedicinais(statusUsaPlantaMedicinais);
+        condicoesDeSaudeThrift.setStatusUsaPlantaMedicinais(statusUsaPlantaMedicinais);
     }
 
     public void unsetStatusUsaPlantaMedicinais() {
-        condicoesDeSaudeTrift.unsetStatusUsaPlantaMedicinais();
+        condicoesDeSaudeThrift.unsetStatusUsaPlantaMedicinais();
     }
 
     public boolean isSetStatusUsaPlantaMedicinais() {
-        return condicoesDeSaudeTrift.isSetStatusUsaPlantaMedicinais();
+        return condicoesDeSaudeThrift.isSetStatusUsaPlantaMedicinais();
     }
 
     public void setStatusUsaPlantaMedicinaisIsSet(boolean value) {
-        condicoesDeSaudeTrift.setStatusUsaPlantaMedicinaisIsSet(value);
+        condicoesDeSaudeThrift.setStatusUsaPlantaMedicinaisIsSet(value);
+    }
+
+
+    @Override
+    public boolean equals(Object that) {
+        return condicoesDeSaudeThrift.equals(that);
+    }
+
+    public boolean equals(CondicoesDeSaude that) {
+        return condicoesDeSaudeThrift.equals(that.getInstance());
+    }
+
+    @Override
+    public int hashCode() {
+        return condicoesDeSaudeThrift.hashCode();
+    }
+
+    public int compareTo(CondicoesDeSaude other) {
+        return condicoesDeSaudeThrift.compareTo(other.getInstance());
+    }
+
+    @Override
+    public String toString() {
+        return condicoesDeSaudeThrift.toString();
     }
 
     public void validate() throws TException {
-        condicoesDeSaudeTrift.validate();
+        condicoesDeSaudeThrift.validate();
     }
     
     protected CondicoesDeSaudeThrift getInstance(){
-        return condicoesDeSaudeTrift;
+        return condicoesDeSaudeThrift;
     }
+    
     
 }
 
