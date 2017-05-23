@@ -201,7 +201,6 @@ public class FichaConsumoAlimentar {
     public void setPerguntasQuestionarioCriancasDeSeisVinteTresMeses(List<PerguntaQuestionarioCriancasDeSeisVinteTresMeses> perguntasQuestionarioCriancasDeSeisVinteTresMeses) {
        List<PerguntaQuestionarioCriancasDeSeisVinteTresMesesThrift>listaQuestionario = new LinkedList<>();
        
-       
        perguntasQuestionarioCriancasDeSeisVinteTresMeses.forEach((elem)->{
             listaQuestionario.add(elem.getInstance());
        });
@@ -236,12 +235,22 @@ public class FichaConsumoAlimentar {
         instance.addToPerguntasQuestionarioCriancasComMaisDoisAnos(elem.getInstance());
     }
 
-    public List<PerguntaQuestionarioCriancasComMaisDoisAnosThrift> getPerguntasQuestionarioCriancasComMaisDoisAnos() {
-        return instance.getPerguntasQuestionarioCriancasComMaisDoisAnos();
+    public List<PerguntaQuestionarioCriancasComMaisDoisAnos> getPerguntasQuestionarioCriancasComMaisDoisAnos() {
+        List<PerguntaQuestionarioCriancasComMaisDoisAnos> listaPerguntaQuestionario = new LinkedList<>();
+        instance.getPerguntasQuestionarioCriancasComMaisDoisAnos().forEach((t)->{
+            listaPerguntaQuestionario.add(new PerguntaQuestionarioCriancasComMaisDoisAnos(t));
+        });
+        return listaPerguntaQuestionario;
     }
 
-    public void setPerguntasQuestionarioCriancasComMaisDoisAnos(List<PerguntaQuestionarioCriancasComMaisDoisAnosThrift> perguntasQuestionarioCriancasComMaisDoisAnos) {
-        instance.setPerguntasQuestionarioCriancasComMaisDoisAnos(perguntasQuestionarioCriancasComMaisDoisAnos);
+    public void setPerguntasQuestionarioCriancasComMaisDoisAnos(List<PerguntaQuestionarioCriancasComMaisDoisAnos> perguntasQuestionarioCriancasComMaisDoisAnos) {
+        List<PerguntaQuestionarioCriancasComMaisDoisAnosThrift> listaPerguntaQuestionario = new LinkedList<>();
+        
+        perguntasQuestionarioCriancasComMaisDoisAnos.forEach((elem)->{
+            listaPerguntaQuestionario.add(elem.getInstance());  
+        });
+        
+        instance.setPerguntasQuestionarioCriancasComMaisDoisAnos(listaPerguntaQuestionario);
     }
 
     public void unsetPerguntasQuestionarioCriancasComMaisDoisAnos() {
