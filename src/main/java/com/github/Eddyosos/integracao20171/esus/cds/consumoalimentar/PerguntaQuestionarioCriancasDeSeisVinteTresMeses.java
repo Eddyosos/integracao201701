@@ -10,5 +10,8 @@ public class PerguntaQuestionarioCriancasDeSeisVinteTresMeses {
          return instance;
     }
 
+    protected PerguntaQuestionarioCriancasDeSeisVinteTresMeses(PerguntaQuestionarioCriancasDeSeisVinteTresMesesThrift t){
+        this.instance = t;
+    }
 }
 
