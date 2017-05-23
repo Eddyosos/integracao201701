@@ -7,539 +7,546 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import org.apache.thrift.TException;
+import org.apache.thrift.protocol.TProtocol;
 
 public class FichaAtividadeColetiva {
-    FichaAtividadeColetivaThrift fichaAtividadeColetivaThrift = new FichaAtividadeColetivaThrift();
+    FichaAtividadeColetivaThrift fichaAtividadeColetiva = new FichaAtividadeColetivaThrift();
 
-    public FichaAtividadeColetivaThrift deepCopy() {
-        return fichaAtividadeColetivaThrift.deepCopy();
+    protected FichaAtividadeColetiva(FichaAtividadeColetivaThrift fichaAtividadeColetiva) {
+        this.fichaAtividadeColetiva = fichaAtividadeColetiva;
+    }
+
+    public FichaAtividadeColetiva deepCopy() {
+        return new FichaAtividadeColetiva(fichaAtividadeColetiva.deepCopy());
+    }
+
+    public void clear() {
+        fichaAtividadeColetiva.clear();
     }
 
     public String getUuidFicha() {
-        return fichaAtividadeColetivaThrift.getUuidFicha();
+        return fichaAtividadeColetiva.getUuidFicha();
     }
 
     public void setUuidFicha(String uuidFicha) {
-        fichaAtividadeColetivaThrift.setUuidFicha(uuidFicha);
+        fichaAtividadeColetiva.setUuidFicha(uuidFicha);
     }
 
     public void unsetUuidFicha() {
-        fichaAtividadeColetivaThrift.unsetUuidFicha();
+        fichaAtividadeColetiva.unsetUuidFicha();
     }
 
     public boolean isSetUuidFicha() {
-        return fichaAtividadeColetivaThrift.isSetUuidFicha();
+        return fichaAtividadeColetiva.isSetUuidFicha();
     }
 
     public void setUuidFichaIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setUuidFichaIsSet(value);
+        fichaAtividadeColetiva.setUuidFichaIsSet(value);
     }
 
     public long getDtAtividadeColetiva() {
-        return fichaAtividadeColetivaThrift.getDtAtividadeColetiva();
+        return fichaAtividadeColetiva.getDtAtividadeColetiva();
     }
 
     public void setDtAtividadeColetiva(long dtAtividadeColetiva) {
-        fichaAtividadeColetivaThrift.setDtAtividadeColetiva(dtAtividadeColetiva);
+        fichaAtividadeColetiva.setDtAtividadeColetiva(dtAtividadeColetiva);
     }
 
     public void unsetDtAtividadeColetiva() {
-        fichaAtividadeColetivaThrift.unsetDtAtividadeColetiva();
+        fichaAtividadeColetiva.unsetDtAtividadeColetiva();
     }
 
     public boolean isSetDtAtividadeColetiva() {
-        return fichaAtividadeColetivaThrift.isSetDtAtividadeColetiva();
+        return fichaAtividadeColetiva.isSetDtAtividadeColetiva();
     }
 
     public void setDtAtividadeColetivaIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setDtAtividadeColetivaIsSet(value);
+        fichaAtividadeColetiva.setDtAtividadeColetivaIsSet(value);
     }
 
     public int getNumParticipantesProgramados() {
-        return fichaAtividadeColetivaThrift.getNumParticipantesProgramados();
+        return fichaAtividadeColetiva.getNumParticipantesProgramados();
     }
 
     public void setNumParticipantesProgramados(int numParticipantesProgramados) {
-        fichaAtividadeColetivaThrift.setNumParticipantesProgramados(numParticipantesProgramados);
+        fichaAtividadeColetiva.setNumParticipantesProgramados(numParticipantesProgramados);
     }
 
     public void unsetNumParticipantesProgramados() {
-        fichaAtividadeColetivaThrift.unsetNumParticipantesProgramados();
+        fichaAtividadeColetiva.unsetNumParticipantesProgramados();
     }
 
     public boolean isSetNumParticipantesProgramados() {
-        return fichaAtividadeColetivaThrift.isSetNumParticipantesProgramados();
+        return fichaAtividadeColetiva.isSetNumParticipantesProgramados();
     }
 
     public void setNumParticipantesProgramadosIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setNumParticipantesProgramadosIsSet(value);
+        fichaAtividadeColetiva.setNumParticipantesProgramadosIsSet(value);
     }
 
     public String getLocalAtividade() {
-        return fichaAtividadeColetivaThrift.getLocalAtividade();
+        return fichaAtividadeColetiva.getLocalAtividade();
     }
 
     public void setLocalAtividade(String localAtividade) {
-        fichaAtividadeColetivaThrift.setLocalAtividade(localAtividade);
+        fichaAtividadeColetiva.setLocalAtividade(localAtividade);
     }
 
     public void unsetLocalAtividade() {
-        fichaAtividadeColetivaThrift.unsetLocalAtividade();
+        fichaAtividadeColetiva.unsetLocalAtividade();
     }
 
     public boolean isSetLocalAtividade() {
-        return fichaAtividadeColetivaThrift.isSetLocalAtividade();
+        return fichaAtividadeColetiva.isSetLocalAtividade();
     }
 
     public void setLocalAtividadeIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setLocalAtividadeIsSet(value);
+        fichaAtividadeColetiva.setLocalAtividadeIsSet(value);
     }
 
     public long getHoraInicio() {
-        return fichaAtividadeColetivaThrift.getHoraInicio();
+        return fichaAtividadeColetiva.getHoraInicio();
     }
 
     public void setHoraInicio(long horaInicio) {
-        fichaAtividadeColetivaThrift.setHoraInicio(horaInicio);
+        fichaAtividadeColetiva.setHoraInicio(horaInicio);
     }
 
     public void unsetHoraInicio() {
-        fichaAtividadeColetivaThrift.unsetHoraInicio();
+        fichaAtividadeColetiva.unsetHoraInicio();
     }
 
     public boolean isSetHoraInicio() {
-        return fichaAtividadeColetivaThrift.isSetHoraInicio();
+        return fichaAtividadeColetiva.isSetHoraInicio();
     }
 
     public void setHoraInicioIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setHoraInicioIsSet(value);
+        fichaAtividadeColetiva.setHoraInicioIsSet(value);
     }
 
     public long getHoraFim() {
-        return fichaAtividadeColetivaThrift.getHoraFim();
+        return fichaAtividadeColetiva.getHoraFim();
     }
 
     public void setHoraFim(long horaFim) {
-        fichaAtividadeColetivaThrift.setHoraFim(horaFim);
+        fichaAtividadeColetiva.setHoraFim(horaFim);
     }
 
     public void unsetHoraFim() {
-        fichaAtividadeColetivaThrift.unsetHoraFim();
+        fichaAtividadeColetiva.unsetHoraFim();
     }
 
     public boolean isSetHoraFim() {
-        return fichaAtividadeColetivaThrift.isSetHoraFim();
+        return fichaAtividadeColetiva.isSetHoraFim();
     }
 
     public void setHoraFimIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setHoraFimIsSet(value);
+        fichaAtividadeColetiva.setHoraFimIsSet(value);
     }
 
     public long getInep() {
-        return fichaAtividadeColetivaThrift.getInep();
+        return fichaAtividadeColetiva.getInep();
     }
 
     public void setInep(long inep) {
-        fichaAtividadeColetivaThrift.setInep(inep);
+        fichaAtividadeColetiva.setInep(inep);
     }
 
     public void unsetInep() {
-        fichaAtividadeColetivaThrift.unsetInep();
+        fichaAtividadeColetiva.unsetInep();
     }
 
     public boolean isSetInep() {
-        return fichaAtividadeColetivaThrift.isSetInep();
+        return fichaAtividadeColetiva.isSetInep();
     }
 
     public void setInepIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setInepIsSet(value);
+        fichaAtividadeColetiva.setInepIsSet(value);
     }
 
     public String getResponsavelCns() {
-        return fichaAtividadeColetivaThrift.getResponsavelCns();
+        return fichaAtividadeColetiva.getResponsavelCns();
     }
 
     public void setResponsavelCns(String responsavelCns) {
-        fichaAtividadeColetivaThrift.setResponsavelCns(responsavelCns);
+        fichaAtividadeColetiva.setResponsavelCns(responsavelCns);
     }
 
     public void unsetResponsavelCns() {
-        fichaAtividadeColetivaThrift.unsetResponsavelCns();
+        fichaAtividadeColetiva.unsetResponsavelCns();
     }
 
     public boolean isSetResponsavelCns() {
-        return fichaAtividadeColetivaThrift.isSetResponsavelCns();
+        return fichaAtividadeColetiva.isSetResponsavelCns();
     }
 
     public void setResponsavelCnsIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setResponsavelCnsIsSet(value);
+        fichaAtividadeColetiva.setResponsavelCnsIsSet(value);
     }
 
     public String getResponsavelCnesUnidade() {
-        return fichaAtividadeColetivaThrift.getResponsavelCnesUnidade();
+        return fichaAtividadeColetiva.getResponsavelCnesUnidade();
     }
 
     public void setResponsavelCnesUnidade(String responsavelCnesUnidade) {
-        fichaAtividadeColetivaThrift.setResponsavelCnesUnidade(responsavelCnesUnidade);
+        fichaAtividadeColetiva.setResponsavelCnesUnidade(responsavelCnesUnidade);
     }
 
     public void unsetResponsavelCnesUnidade() {
-        fichaAtividadeColetivaThrift.unsetResponsavelCnesUnidade();
+        fichaAtividadeColetiva.unsetResponsavelCnesUnidade();
     }
 
     public boolean isSetResponsavelCnesUnidade() {
-        return fichaAtividadeColetivaThrift.isSetResponsavelCnesUnidade();
+        return fichaAtividadeColetiva.isSetResponsavelCnesUnidade();
     }
 
     public void setResponsavelCnesUnidadeIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setResponsavelCnesUnidadeIsSet(value);
+        fichaAtividadeColetiva.setResponsavelCnesUnidadeIsSet(value);
     }
 
     public String getResponsavelNumIne() {
-        return fichaAtividadeColetivaThrift.getResponsavelNumIne();
+        return fichaAtividadeColetiva.getResponsavelNumIne();
     }
 
     public void setResponsavelNumIne(String responsavelNumIne) {
-        fichaAtividadeColetivaThrift.setResponsavelNumIne(responsavelNumIne);
+        fichaAtividadeColetiva.setResponsavelNumIne(responsavelNumIne);
     }
 
     public void unsetResponsavelNumIne() {
-        fichaAtividadeColetivaThrift.unsetResponsavelNumIne();
+        fichaAtividadeColetiva.unsetResponsavelNumIne();
     }
 
     public boolean isSetResponsavelNumIne() {
-        return fichaAtividadeColetivaThrift.isSetResponsavelNumIne();
+        return fichaAtividadeColetiva.isSetResponsavelNumIne();
     }
 
     public void setResponsavelNumIneIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setResponsavelNumIneIsSet(value);
+        fichaAtividadeColetiva.setResponsavelNumIneIsSet(value);
     }
 
     public int getNumParticipantes() {
-        return fichaAtividadeColetivaThrift.getNumParticipantes();
+        return fichaAtividadeColetiva.getNumParticipantes();
     }
 
     public void setNumParticipantes(int numParticipantes) {
-        fichaAtividadeColetivaThrift.setNumParticipantes(numParticipantes);
+        fichaAtividadeColetiva.setNumParticipantes(numParticipantes);
     }
 
     public void unsetNumParticipantes() {
-        fichaAtividadeColetivaThrift.unsetNumParticipantes();
+        fichaAtividadeColetiva.unsetNumParticipantes();
     }
 
     public boolean isSetNumParticipantes() {
-        return fichaAtividadeColetivaThrift.isSetNumParticipantes();
+        return fichaAtividadeColetiva.isSetNumParticipantes();
     }
 
     public void setNumParticipantesIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setNumParticipantesIsSet(value);
+        fichaAtividadeColetiva.setNumParticipantesIsSet(value);
     }
 
     public int getNumAvaliacoesAlteradas() {
-        return fichaAtividadeColetivaThrift.getNumAvaliacoesAlteradas();
+        return fichaAtividadeColetiva.getNumAvaliacoesAlteradas();
     }
 
     public void setNumAvaliacoesAlteradas(int numAvaliacoesAlteradas) {
-        fichaAtividadeColetivaThrift.setNumAvaliacoesAlteradas(numAvaliacoesAlteradas);
+        fichaAtividadeColetiva.setNumAvaliacoesAlteradas(numAvaliacoesAlteradas);
     }
 
     public void unsetNumAvaliacoesAlteradas() {
-        fichaAtividadeColetivaThrift.unsetNumAvaliacoesAlteradas();
+        fichaAtividadeColetiva.unsetNumAvaliacoesAlteradas();
     }
 
     public boolean isSetNumAvaliacoesAlteradas() {
-        return fichaAtividadeColetivaThrift.isSetNumAvaliacoesAlteradas();
+        return fichaAtividadeColetiva.isSetNumAvaliacoesAlteradas();
     }
 
     public void setNumAvaliacoesAlteradasIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setNumAvaliacoesAlteradasIsSet(value);
+        fichaAtividadeColetiva.setNumAvaliacoesAlteradasIsSet(value);
     }
 
     public int getProfissionaisSize() {
-        return fichaAtividadeColetivaThrift.getProfissionaisSize();
+        return fichaAtividadeColetiva.getProfissionaisSize();
     }
 
     public Iterator<ProfissionalCboRowItem> getProfissionaisIterator() {
-        
         List<ProfissionalCboRowItem> listaProfissionalCboRowItem = new LinkedList<>();
-        fichaAtividadeColetivaThrift.getProfissionaisIterator().forEachRemaining((t) -> {
-            listaProfissionalCboRowItem.add(new ProfissionalCboRowItem(t));
+        
+        fichaAtividadeColetiva.getProfissionaisIterator().forEachRemaining((elemento) -> {
+            listaProfissionalCboRowItem.add(new ProfissionalCboRowItem(elemento));
         });
+        
         return listaProfissionalCboRowItem.iterator();
     }
 
-    public void addToProfissionais(ProfissionalCboRowItemThrift elem) {
-        fichaAtividadeColetivaThrift.addToProfissionais(elem);
+    public void addToProfissionais(ProfissionalCboRowItem elem) {
+        fichaAtividadeColetiva.addToProfissionais(elem.getInstance());
     }
 
     public List<ProfissionalCboRowItem> getProfissionais() {
-        
         List<ProfissionalCboRowItem> listaProfissionalCboRowItem = new LinkedList<>();
-        fichaAtividadeColetivaThrift.getProfissionais().forEach((t) -> {
-            listaProfissionalCboRowItem.add(new ProfissionalCboRowItem(t));
+        
+        fichaAtividadeColetiva.getProfissionais().forEach((elemento) -> {
+            listaProfissionalCboRowItem.add(new ProfissionalCboRowItem(elemento));
         });
+        
+        
         return listaProfissionalCboRowItem;
     }
 
     public void setProfissionais(List<ProfissionalCboRowItem> profissionais) {
+        List<ProfissionalCboRowItemThrift> listaProfissionalCboRowItemThrift = new LinkedList<>();
         
-        List<ProfissionalCboRowItemThrift> listaProfissionalCboRowItem = new LinkedList<>();
-        profissionais.forEach((t) -> {
-            listaProfissionalCboRowItem.add(t.getInstance());
+        profissionais.forEach((elemento) -> {
+            listaProfissionalCboRowItemThrift.add(elemento.getInstance());
         });
-        
-        fichaAtividadeColetivaThrift.setProfissionais(listaProfissionalCboRowItem);
+         
+        fichaAtividadeColetiva.setProfissionais(listaProfissionalCboRowItemThrift);
     }
 
     public void unsetProfissionais() {
-        fichaAtividadeColetivaThrift.unsetProfissionais();
+        fichaAtividadeColetiva.unsetProfissionais();
     }
 
     public boolean isSetProfissionais() {
-        return fichaAtividadeColetivaThrift.isSetProfissionais();
+        return fichaAtividadeColetiva.isSetProfissionais();
     }
 
     public void setProfissionaisIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setProfissionaisIsSet(value);
+        fichaAtividadeColetiva.setProfissionaisIsSet(value);
     }
 
     public long getAtividadeTipo() {
-        return fichaAtividadeColetivaThrift.getAtividadeTipo();
+        return fichaAtividadeColetiva.getAtividadeTipo();
     }
 
     public void setAtividadeTipo(long atividadeTipo) {
-        fichaAtividadeColetivaThrift.setAtividadeTipo(atividadeTipo);
+        fichaAtividadeColetiva.setAtividadeTipo(atividadeTipo);
     }
 
     public void unsetAtividadeTipo() {
-        fichaAtividadeColetivaThrift.unsetAtividadeTipo();
+        fichaAtividadeColetiva.unsetAtividadeTipo();
     }
 
     public boolean isSetAtividadeTipo() {
-        return fichaAtividadeColetivaThrift.isSetAtividadeTipo();
+        return fichaAtividadeColetiva.isSetAtividadeTipo();
     }
 
     public void setAtividadeTipoIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setAtividadeTipoIsSet(value);
+        fichaAtividadeColetiva.setAtividadeTipoIsSet(value);
     }
 
     public int getTemasParaReuniaoSize() {
-        return fichaAtividadeColetivaThrift.getTemasParaReuniaoSize();
+        return fichaAtividadeColetiva.getTemasParaReuniaoSize();
     }
 
     public Iterator<Long> getTemasParaReuniaoIterator() {
-        return fichaAtividadeColetivaThrift.getTemasParaReuniaoIterator();
+        return fichaAtividadeColetiva.getTemasParaReuniaoIterator();
     }
 
     public void addToTemasParaReuniao(long elem) {
-        fichaAtividadeColetivaThrift.addToTemasParaReuniao(elem);
+        fichaAtividadeColetiva.addToTemasParaReuniao(elem);
     }
 
     public List<Long> getTemasParaReuniao() {
-        return fichaAtividadeColetivaThrift.getTemasParaReuniao();
+        return fichaAtividadeColetiva.getTemasParaReuniao();
     }
 
     public void setTemasParaReuniao(List<Long> temasParaReuniao) {
-        fichaAtividadeColetivaThrift.setTemasParaReuniao(temasParaReuniao);
+        fichaAtividadeColetiva.setTemasParaReuniao(temasParaReuniao);
     }
 
     public void unsetTemasParaReuniao() {
-        fichaAtividadeColetivaThrift.unsetTemasParaReuniao();
+        fichaAtividadeColetiva.unsetTemasParaReuniao();
     }
 
     public boolean isSetTemasParaReuniao() {
-        return fichaAtividadeColetivaThrift.isSetTemasParaReuniao();
+        return fichaAtividadeColetiva.isSetTemasParaReuniao();
     }
 
     public void setTemasParaReuniaoIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setTemasParaReuniaoIsSet(value);
+        fichaAtividadeColetiva.setTemasParaReuniaoIsSet(value);
     }
 
     public int getPublicoAlvoSize() {
-        return fichaAtividadeColetivaThrift.getPublicoAlvoSize();
+        return fichaAtividadeColetiva.getPublicoAlvoSize();
     }
 
     public Iterator<Long> getPublicoAlvoIterator() {
-        return fichaAtividadeColetivaThrift.getPublicoAlvoIterator();
+        return fichaAtividadeColetiva.getPublicoAlvoIterator();
     }
 
     public void addToPublicoAlvo(long elem) {
-        fichaAtividadeColetivaThrift.addToPublicoAlvo(elem);
+        fichaAtividadeColetiva.addToPublicoAlvo(elem);
     }
 
     public List<Long> getPublicoAlvo() {
-        return fichaAtividadeColetivaThrift.getPublicoAlvo();
+        return fichaAtividadeColetiva.getPublicoAlvo();
     }
 
     public void setPublicoAlvo(List<Long> publicoAlvo) {
-        fichaAtividadeColetivaThrift.setPublicoAlvo(publicoAlvo);
+        fichaAtividadeColetiva.setPublicoAlvo(publicoAlvo);
     }
 
     public void unsetPublicoAlvo() {
-        fichaAtividadeColetivaThrift.unsetPublicoAlvo();
+        fichaAtividadeColetiva.unsetPublicoAlvo();
     }
 
     public boolean isSetPublicoAlvo() {
-        return fichaAtividadeColetivaThrift.isSetPublicoAlvo();
+        return fichaAtividadeColetiva.isSetPublicoAlvo();
     }
 
     public void setPublicoAlvoIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setPublicoAlvoIsSet(value);
+        fichaAtividadeColetiva.setPublicoAlvoIsSet(value);
     }
 
     public int getPraticasTemasParaSaudeSize() {
-        return fichaAtividadeColetivaThrift.getPraticasTemasParaSaudeSize();
+        return fichaAtividadeColetiva.getPraticasTemasParaSaudeSize();
     }
 
     public Iterator<Long> getPraticasTemasParaSaudeIterator() {
-        return fichaAtividadeColetivaThrift.getPraticasTemasParaSaudeIterator();
+        return fichaAtividadeColetiva.getPraticasTemasParaSaudeIterator();
     }
 
     public void addToPraticasTemasParaSaude(long elem) {
-        fichaAtividadeColetivaThrift.addToPraticasTemasParaSaude(elem);
+        fichaAtividadeColetiva.addToPraticasTemasParaSaude(elem);
     }
 
     public List<Long> getPraticasTemasParaSaude() {
-        return fichaAtividadeColetivaThrift.getPraticasTemasParaSaude();
+        return fichaAtividadeColetiva.getPraticasTemasParaSaude();
     }
 
     public void setPraticasTemasParaSaude(List<Long> praticasTemasParaSaude) {
-        fichaAtividadeColetivaThrift.setPraticasTemasParaSaude(praticasTemasParaSaude);
+        fichaAtividadeColetiva.setPraticasTemasParaSaude(praticasTemasParaSaude);
     }
 
     public void unsetPraticasTemasParaSaude() {
-        fichaAtividadeColetivaThrift.unsetPraticasTemasParaSaude();
+        fichaAtividadeColetiva.unsetPraticasTemasParaSaude();
     }
 
     public boolean isSetPraticasTemasParaSaude() {
-        return fichaAtividadeColetivaThrift.isSetPraticasTemasParaSaude();
+        return fichaAtividadeColetiva.isSetPraticasTemasParaSaude();
     }
 
     public void setPraticasTemasParaSaudeIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setPraticasTemasParaSaudeIsSet(value);
+        fichaAtividadeColetiva.setPraticasTemasParaSaudeIsSet(value);
     }
 
     public int getParticipantesSize() {
-        return fichaAtividadeColetivaThrift.getParticipantesSize();
+        return fichaAtividadeColetiva.getParticipantesSize();
     }
 
     public Iterator<ParticipanteRowItem> getParticipantesIterator() {
+        List<ParticipanteRowItem> listaParticipanteRowItem = new LinkedList<>();
         
-        List<ParticipanteRowItem> listaParticipantes = new LinkedList<>();
-        
-        fichaAtividadeColetivaThrift.getParticipantesIterator().forEachRemaining((t) -> {
-            listaParticipantes.add(new ParticipanteRowItem(t));
+        fichaAtividadeColetiva.getParticipantesIterator().forEachRemaining((elemento) -> {
+            listaParticipanteRowItem.add(new ParticipanteRowItem(elemento));
         });
-        return listaParticipantes.iterator();
+        
+        return listaParticipanteRowItem.iterator();
     }
 
     public void addToParticipantes(ParticipanteRowItem elem) {
-        fichaAtividadeColetivaThrift.addToParticipantes(elem.getInstance());
+        fichaAtividadeColetiva.addToParticipantes(elem.getInstance());
     }
 
     public List<ParticipanteRowItem> getParticipantes() {
-         List<ParticipanteRowItem> listaParticipantes = new LinkedList<>();
+        List<ParticipanteRowItem> listaParticipanteRowItem = new LinkedList<>();
         
-        fichaAtividadeColetivaThrift.getParticipantes().forEach((t) -> {
-            listaParticipantes.add(new ParticipanteRowItem(t));
+        fichaAtividadeColetiva.getParticipantes().forEach((elemento) -> {
+            listaParticipanteRowItem.add(new ParticipanteRowItem(elemento));
         });
         
-        return listaParticipantes;
+        return listaParticipanteRowItem;
     }
 
     public void setParticipantes(List<ParticipanteRowItem> participantes) {
-        
-        List<ParticipanteRowItemThrift> listaParticipantes = new LinkedList<>();
-        
-        participantes.forEach((t) -> {
-            listaParticipantes.add(t.getInstance());
+        List<ParticipanteRowItemThrift> listaParticipanteRowItemThrift = new LinkedList<>();
+        participantes.forEach((elemento) -> {
+            listaParticipanteRowItemThrift.add(elemento.getInstance());
         });
-        
-        
-        fichaAtividadeColetivaThrift.setParticipantes(listaParticipantes);
+        fichaAtividadeColetiva.setParticipantes(listaParticipanteRowItemThrift);
     }
 
     public void unsetParticipantes() {
-        fichaAtividadeColetivaThrift.unsetParticipantes();
+        fichaAtividadeColetiva.unsetParticipantes();
     }
 
     public boolean isSetParticipantes() {
-        return fichaAtividadeColetivaThrift.isSetParticipantes();
+        return fichaAtividadeColetiva.isSetParticipantes();
     }
 
     public void setParticipantesIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setParticipantesIsSet(value);
+        fichaAtividadeColetiva.setParticipantesIsSet(value);
     }
 
     public int getTbCdsOrigem() {
-        return fichaAtividadeColetivaThrift.getTbCdsOrigem();
+        return fichaAtividadeColetiva.getTbCdsOrigem();
     }
 
     public void setTbCdsOrigem(int tbCdsOrigem) {
-        fichaAtividadeColetivaThrift.setTbCdsOrigem(tbCdsOrigem);
+        fichaAtividadeColetiva.setTbCdsOrigem(tbCdsOrigem);
     }
 
     public void unsetTbCdsOrigem() {
-        fichaAtividadeColetivaThrift.unsetTbCdsOrigem();
+        fichaAtividadeColetiva.unsetTbCdsOrigem();
     }
 
     public boolean isSetTbCdsOrigem() {
-        return fichaAtividadeColetivaThrift.isSetTbCdsOrigem();
+        return fichaAtividadeColetiva.isSetTbCdsOrigem();
     }
 
     public void setTbCdsOrigemIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setTbCdsOrigemIsSet(value);
+        fichaAtividadeColetiva.setTbCdsOrigemIsSet(value);
     }
 
     public String getCodigoIbgeMunicipio() {
-        return fichaAtividadeColetivaThrift.getCodigoIbgeMunicipio();
+        return fichaAtividadeColetiva.getCodigoIbgeMunicipio();
     }
 
     public void setCodigoIbgeMunicipio(String codigoIbgeMunicipio) {
-        fichaAtividadeColetivaThrift.setCodigoIbgeMunicipio(codigoIbgeMunicipio);
+        fichaAtividadeColetiva.setCodigoIbgeMunicipio(codigoIbgeMunicipio);
     }
 
     public void unsetCodigoIbgeMunicipio() {
-        fichaAtividadeColetivaThrift.unsetCodigoIbgeMunicipio();
+        fichaAtividadeColetiva.unsetCodigoIbgeMunicipio();
     }
 
     public boolean isSetCodigoIbgeMunicipio() {
-        return fichaAtividadeColetivaThrift.isSetCodigoIbgeMunicipio();
+        return fichaAtividadeColetiva.isSetCodigoIbgeMunicipio();
     }
 
     public void setCodigoIbgeMunicipioIsSet(boolean value) {
-        fichaAtividadeColetivaThrift.setCodigoIbgeMunicipioIsSet(value);
+        fichaAtividadeColetiva.setCodigoIbgeMunicipioIsSet(value);
     }
 
     @Override
     public boolean equals(Object that) {
-        return fichaAtividadeColetivaThrift.equals(that);
+        return fichaAtividadeColetiva.equals(that);
     }
 
     public boolean equals(FichaAtividadeColetiva that) {
-        return fichaAtividadeColetivaThrift.equals(that.getInstance());
+        return fichaAtividadeColetiva.equals(that.getInstance());
     }
 
-    @Override
     public int hashCode() {
-        return fichaAtividadeColetivaThrift.hashCode();
+        return fichaAtividadeColetiva.hashCode();
     }
-
+    
     public int compareTo(FichaAtividadeColetiva other) {
-        return fichaAtividadeColetivaThrift.compareTo(other.getInstance());
+        return fichaAtividadeColetiva.compareTo(other.getInstance());
     }
 
     @Override
     public String toString() {
-        return fichaAtividadeColetivaThrift.toString();
+        return fichaAtividadeColetiva.toString();
     }
 
     public void validate() throws TException {
-        fichaAtividadeColetivaThrift.validate();
+        fichaAtividadeColetiva.validate();
     }
-    
+
     protected FichaAtividadeColetivaThrift getInstance(){
-        return fichaAtividadeColetivaThrift;
+        return fichaAtividadeColetiva;
     }
     
     
