@@ -3,551 +3,582 @@ package com.github.Eddyosos.integracao20171.esus.cds.avaliacaoelegibilidade;
 import br.gov.saude.esus.cds.transport.generated.thrift.avaliacaoelegibilidade.FichaAvaliacaoElegibilidadeThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.common.EnderecoLocalPermanenciaThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.common.UnicaLotacaoHeaderThrift;
+import com.github.Eddyosos.integracao20171.esus.cds.common.EnderecoLocalPermanencia;
+import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
 import java.util.Iterator;
 import java.util.List;
 import org.apache.thrift.TException;
+import org.apache.thrift.protocol.TProtocol;
 
 public class FichaAvaliacaoElegibilidade{
-    private FichaAvaliacaoElegibilidadeThrift fichaAvaliacaoElegibilidade = new FichaAvaliacaoElegibilidadeThrift();
+    private FichaAvaliacaoElegibilidadeThrift fichaAvaliacaoElegibilidadeThrift = new FichaAvaliacaoElegibilidadeThrift();
+    
+    protected FichaAvaliacaoElegibilidade(FichaAvaliacaoElegibilidadeThrift fichaAvaliacaoElegibilidade){
+        this.fichaAvaliacaoElegibilidadeThrift = fichaAvaliacaoElegibilidade;
+    }
+
+    public FichaAvaliacaoElegibilidade deepCopy() {
+        return new FichaAvaliacaoElegibilidade(fichaAvaliacaoElegibilidadeThrift.deepCopy());
+    }
+
+    public void clear() {
+        fichaAvaliacaoElegibilidadeThrift.clear();
+    }
 
     public String getUuidFicha() {
-        return fichaAvaliacaoElegibilidade.getUuidFicha();
+        return fichaAvaliacaoElegibilidadeThrift.getUuidFicha();
     }
 
     public void setUuidFicha(String uuidFicha) {
-        fichaAvaliacaoElegibilidade.setUuidFicha(uuidFicha);
+        fichaAvaliacaoElegibilidadeThrift.setUuidFicha(uuidFicha);
     }
 
     public void unsetUuidFicha() {
-        fichaAvaliacaoElegibilidade.unsetUuidFicha();
+        fichaAvaliacaoElegibilidadeThrift.unsetUuidFicha();
     }
 
     public boolean isSetUuidFicha() {
-        return fichaAvaliacaoElegibilidade.isSetUuidFicha();
+        return fichaAvaliacaoElegibilidadeThrift.isSetUuidFicha();
     }
 
     public void setUuidFichaIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setUuidFichaIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setUuidFichaIsSet(value);
     }
 
     public int getTpCdsOrigem() {
-        return fichaAvaliacaoElegibilidade.getTpCdsOrigem();
+        return fichaAvaliacaoElegibilidadeThrift.getTpCdsOrigem();
     }
 
     public void setTpCdsOrigem(int tpCdsOrigem) {
-        fichaAvaliacaoElegibilidade.setTpCdsOrigem(tpCdsOrigem);
+        fichaAvaliacaoElegibilidadeThrift.setTpCdsOrigem(tpCdsOrigem);
     }
 
     public void unsetTpCdsOrigem() {
-        fichaAvaliacaoElegibilidade.unsetTpCdsOrigem();
+        fichaAvaliacaoElegibilidadeThrift.unsetTpCdsOrigem();
     }
 
     public boolean isSetTpCdsOrigem() {
-        return fichaAvaliacaoElegibilidade.isSetTpCdsOrigem();
+        return fichaAvaliacaoElegibilidadeThrift.isSetTpCdsOrigem();
     }
 
     public void setTpCdsOrigemIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setTpCdsOrigemIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setTpCdsOrigemIsSet(value);
     }
 
-    public UnicaLotacaoHeaderThrift getHeaderTransport() {
-        return fichaAvaliacaoElegibilidade.getHeaderTransport();
+    public UnicaLotacaoHeader getHeaderTransport() {
+        return new UnicaLotacaoHeader(fichaAvaliacaoElegibilidadeThrift.getHeaderTransport());
     }
 
-    public void setHeaderTransport(UnicaLotacaoHeaderThrift headerTransport) {
-        fichaAvaliacaoElegibilidade.setHeaderTransport(headerTransport);
+    public void setHeaderTransport(UnicaLotacaoHeader headerTransport) {
+        fichaAvaliacaoElegibilidadeThrift.setHeaderTransport(headerTransport.getInstance());
     }
 
     public void unsetHeaderTransport() {
-        fichaAvaliacaoElegibilidade.unsetHeaderTransport();
+        fichaAvaliacaoElegibilidadeThrift.unsetHeaderTransport();
     }
 
     public boolean isSetHeaderTransport() {
-        return fichaAvaliacaoElegibilidade.isSetHeaderTransport();
+        return fichaAvaliacaoElegibilidadeThrift.isSetHeaderTransport();
     }
 
     public void setHeaderTransportIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setHeaderTransportIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setHeaderTransportIsSet(value);
     }
 
     public String getNumeroCartaoSus() {
-        return fichaAvaliacaoElegibilidade.getNumeroCartaoSus();
+        return fichaAvaliacaoElegibilidadeThrift.getNumeroCartaoSus();
     }
 
     public void setNumeroCartaoSus(String numeroCartaoSus) {
-        fichaAvaliacaoElegibilidade.setNumeroCartaoSus(numeroCartaoSus);
+        fichaAvaliacaoElegibilidadeThrift.setNumeroCartaoSus(numeroCartaoSus);
     }
 
     public void unsetNumeroCartaoSus() {
-        fichaAvaliacaoElegibilidade.unsetNumeroCartaoSus();
+        fichaAvaliacaoElegibilidadeThrift.unsetNumeroCartaoSus();
     }
 
     public boolean isSetNumeroCartaoSus() {
-        return fichaAvaliacaoElegibilidade.isSetNumeroCartaoSus();
+        return fichaAvaliacaoElegibilidadeThrift.isSetNumeroCartaoSus();
     }
 
     public void setNumeroCartaoSusIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setNumeroCartaoSusIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setNumeroCartaoSusIsSet(value);
     }
 
     public String getNomeCidadao() {
-        return fichaAvaliacaoElegibilidade.getNomeCidadao();
+        return fichaAvaliacaoElegibilidadeThrift.getNomeCidadao();
     }
 
     public void setNomeCidadao(String nomeCidadao) {
-        fichaAvaliacaoElegibilidade.setNomeCidadao(nomeCidadao);
+        fichaAvaliacaoElegibilidadeThrift.setNomeCidadao(nomeCidadao);
     }
 
     public void unsetNomeCidadao() {
-        fichaAvaliacaoElegibilidade.unsetNomeCidadao();
+        fichaAvaliacaoElegibilidadeThrift.unsetNomeCidadao();
     }
 
     public boolean isSetNomeCidadao() {
-        return fichaAvaliacaoElegibilidade.isSetNomeCidadao();
+        return fichaAvaliacaoElegibilidadeThrift.isSetNomeCidadao();
     }
 
     public void setNomeCidadaoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setNomeCidadaoIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setNomeCidadaoIsSet(value);
     }
 
     public String getNomeSocialCidadao() {
-        return fichaAvaliacaoElegibilidade.getNomeSocialCidadao();
+        return fichaAvaliacaoElegibilidadeThrift.getNomeSocialCidadao();
     }
 
     public void setNomeSocialCidadao(String nomeSocialCidadao) {
-        fichaAvaliacaoElegibilidade.setNomeSocialCidadao(nomeSocialCidadao);
+        fichaAvaliacaoElegibilidadeThrift.setNomeSocialCidadao(nomeSocialCidadao);
     }
 
     public void unsetNomeSocialCidadao() {
-        fichaAvaliacaoElegibilidade.unsetNomeSocialCidadao();
+        fichaAvaliacaoElegibilidadeThrift.unsetNomeSocialCidadao();
     }
 
     public boolean isSetNomeSocialCidadao() {
-        return fichaAvaliacaoElegibilidade.isSetNomeSocialCidadao();
+        return fichaAvaliacaoElegibilidadeThrift.isSetNomeSocialCidadao();
     }
 
     public void setNomeSocialCidadaoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setNomeSocialCidadaoIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setNomeSocialCidadaoIsSet(value);
     }
 
     public long getDataNascimentoCidadao() {
-        return fichaAvaliacaoElegibilidade.getDataNascimentoCidadao();
+        return fichaAvaliacaoElegibilidadeThrift.getDataNascimentoCidadao();
     }
 
     public void setDataNascimentoCidadao(long dataNascimentoCidadao) {
-        fichaAvaliacaoElegibilidade.setDataNascimentoCidadao(dataNascimentoCidadao);
+        fichaAvaliacaoElegibilidadeThrift.setDataNascimentoCidadao(dataNascimentoCidadao);
     }
 
     public void unsetDataNascimentoCidadao() {
-        fichaAvaliacaoElegibilidade.unsetDataNascimentoCidadao();
+        fichaAvaliacaoElegibilidadeThrift.unsetDataNascimentoCidadao();
     }
 
     public boolean isSetDataNascimentoCidadao() {
-        return fichaAvaliacaoElegibilidade.isSetDataNascimentoCidadao();
+        return fichaAvaliacaoElegibilidadeThrift.isSetDataNascimentoCidadao();
     }
 
     public void setDataNascimentoCidadaoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setDataNascimentoCidadaoIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setDataNascimentoCidadaoIsSet(value);
     }
 
     public long getSexoCidadao() {
-        return fichaAvaliacaoElegibilidade.getSexoCidadao();
+        return fichaAvaliacaoElegibilidadeThrift.getSexoCidadao();
     }
 
     public void setSexoCidadao(long sexoCidadao) {
-        fichaAvaliacaoElegibilidade.setSexoCidadao(sexoCidadao);
+        fichaAvaliacaoElegibilidadeThrift.setSexoCidadao(sexoCidadao);
     }
 
     public void unsetSexoCidadao() {
-        fichaAvaliacaoElegibilidade.unsetSexoCidadao();
+        fichaAvaliacaoElegibilidadeThrift.unsetSexoCidadao();
     }
 
     public boolean isSetSexoCidadao() {
-        return fichaAvaliacaoElegibilidade.isSetSexoCidadao();
+        return fichaAvaliacaoElegibilidadeThrift.isSetSexoCidadao();
     }
 
     public void setSexoCidadaoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setSexoCidadaoIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setSexoCidadaoIsSet(value);
     }
 
     public long getRacaCorCidadao() {
-        return fichaAvaliacaoElegibilidade.getRacaCorCidadao();
+        return fichaAvaliacaoElegibilidadeThrift.getRacaCorCidadao();
     }
 
     public void setRacaCorCidadao(long racaCorCidadao) {
-        fichaAvaliacaoElegibilidade.setRacaCorCidadao(racaCorCidadao);
+        fichaAvaliacaoElegibilidadeThrift.setRacaCorCidadao(racaCorCidadao);
     }
 
     public void unsetRacaCorCidadao() {
-        fichaAvaliacaoElegibilidade.unsetRacaCorCidadao();
+        fichaAvaliacaoElegibilidadeThrift.unsetRacaCorCidadao();
     }
 
     public boolean isSetRacaCorCidadao() {
-        return fichaAvaliacaoElegibilidade.isSetRacaCorCidadao();
+        return fichaAvaliacaoElegibilidadeThrift.isSetRacaCorCidadao();
     }
 
     public void setRacaCorCidadaoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setRacaCorCidadaoIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setRacaCorCidadaoIsSet(value);
     }
 
     public String getNomeMaeCidadao() {
-        return fichaAvaliacaoElegibilidade.getNomeMaeCidadao();
+        return fichaAvaliacaoElegibilidadeThrift.getNomeMaeCidadao();
     }
 
     public void setNomeMaeCidadao(String nomeMaeCidadao) {
-        fichaAvaliacaoElegibilidade.setNomeMaeCidadao(nomeMaeCidadao);
+        fichaAvaliacaoElegibilidadeThrift.setNomeMaeCidadao(nomeMaeCidadao);
     }
 
     public void unsetNomeMaeCidadao() {
-        fichaAvaliacaoElegibilidade.unsetNomeMaeCidadao();
+        fichaAvaliacaoElegibilidadeThrift.unsetNomeMaeCidadao();
     }
 
     public boolean isSetNomeMaeCidadao() {
-        return fichaAvaliacaoElegibilidade.isSetNomeMaeCidadao();
+        return fichaAvaliacaoElegibilidadeThrift.isSetNomeMaeCidadao();
     }
 
     public void setNomeMaeCidadaoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setNomeMaeCidadaoIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setNomeMaeCidadaoIsSet(value);
     }
 
     public boolean isDesconheceNomeMae() {
-        return fichaAvaliacaoElegibilidade.isDesconheceNomeMae();
+        return fichaAvaliacaoElegibilidadeThrift.isDesconheceNomeMae();
     }
 
     public void setDesconheceNomeMae(boolean desconheceNomeMae) {
-        fichaAvaliacaoElegibilidade.setDesconheceNomeMae(desconheceNomeMae);
+        fichaAvaliacaoElegibilidadeThrift.setDesconheceNomeMae(desconheceNomeMae);
     }
 
     public void unsetDesconheceNomeMae() {
-        fichaAvaliacaoElegibilidade.unsetDesconheceNomeMae();
+        fichaAvaliacaoElegibilidadeThrift.unsetDesconheceNomeMae();
     }
 
     public boolean isSetDesconheceNomeMae() {
-        return fichaAvaliacaoElegibilidade.isSetDesconheceNomeMae();
+        return fichaAvaliacaoElegibilidadeThrift.isSetDesconheceNomeMae();
     }
 
     public void setDesconheceNomeMaeIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setDesconheceNomeMaeIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setDesconheceNomeMaeIsSet(value);
     }
 
     public String getCodigoIbgeMunicipioNascimento() {
-        return fichaAvaliacaoElegibilidade.getCodigoIbgeMunicipioNascimento();
+        return fichaAvaliacaoElegibilidadeThrift.getCodigoIbgeMunicipioNascimento();
     }
 
     public void setCodigoIbgeMunicipioNascimento(String codigoIbgeMunicipioNascimento) {
-        fichaAvaliacaoElegibilidade.setCodigoIbgeMunicipioNascimento(codigoIbgeMunicipioNascimento);
+        fichaAvaliacaoElegibilidadeThrift.setCodigoIbgeMunicipioNascimento(codigoIbgeMunicipioNascimento);
     }
 
     public void unsetCodigoIbgeMunicipioNascimento() {
-        fichaAvaliacaoElegibilidade.unsetCodigoIbgeMunicipioNascimento();
+        fichaAvaliacaoElegibilidadeThrift.unsetCodigoIbgeMunicipioNascimento();
     }
 
     public boolean isSetCodigoIbgeMunicipioNascimento() {
-        return fichaAvaliacaoElegibilidade.isSetCodigoIbgeMunicipioNascimento();
+        return fichaAvaliacaoElegibilidadeThrift.isSetCodigoIbgeMunicipioNascimento();
     }
 
     public void setCodigoIbgeMunicipioNascimentoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setCodigoIbgeMunicipioNascimentoIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setCodigoIbgeMunicipioNascimentoIsSet(value);
     }
 
     public long getCodigoNacionalidade() {
-        return fichaAvaliacaoElegibilidade.getCodigoNacionalidade();
+        return fichaAvaliacaoElegibilidadeThrift.getCodigoNacionalidade();
     }
 
     public void setCodigoNacionalidade(long codigoNacionalidade) {
-        fichaAvaliacaoElegibilidade.setCodigoNacionalidade(codigoNacionalidade);
+        fichaAvaliacaoElegibilidadeThrift.setCodigoNacionalidade(codigoNacionalidade);
     }
 
     public void unsetCodigoNacionalidade() {
-        fichaAvaliacaoElegibilidade.unsetCodigoNacionalidade();
+        fichaAvaliacaoElegibilidadeThrift.unsetCodigoNacionalidade();
     }
 
     public boolean isSetCodigoNacionalidade() {
-        return fichaAvaliacaoElegibilidade.isSetCodigoNacionalidade();
+        return fichaAvaliacaoElegibilidadeThrift.isSetCodigoNacionalidade();
     }
 
     public void setCodigoNacionalidadeIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setCodigoNacionalidadeIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setCodigoNacionalidadeIsSet(value);
     }
 
     public String getEmailCidadao() {
-        return fichaAvaliacaoElegibilidade.getEmailCidadao();
+        return fichaAvaliacaoElegibilidadeThrift.getEmailCidadao();
     }
 
     public void setEmailCidadao(String emailCidadao) {
-        fichaAvaliacaoElegibilidade.setEmailCidadao(emailCidadao);
+        fichaAvaliacaoElegibilidadeThrift.setEmailCidadao(emailCidadao);
     }
 
     public void unsetEmailCidadao() {
-        fichaAvaliacaoElegibilidade.unsetEmailCidadao();
+        fichaAvaliacaoElegibilidadeThrift.unsetEmailCidadao();
     }
 
     public boolean isSetEmailCidadao() {
-        return fichaAvaliacaoElegibilidade.isSetEmailCidadao();
+        return fichaAvaliacaoElegibilidadeThrift.isSetEmailCidadao();
     }
 
     public void setEmailCidadaoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setEmailCidadaoIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setEmailCidadaoIsSet(value);
     }
 
     public String getNumeroNisPisPasep() {
-        return fichaAvaliacaoElegibilidade.getNumeroNisPisPasep();
+        return fichaAvaliacaoElegibilidadeThrift.getNumeroNisPisPasep();
     }
 
     public void setNumeroNisPisPasep(String numeroNisPisPasep) {
-        fichaAvaliacaoElegibilidade.setNumeroNisPisPasep(numeroNisPisPasep);
+        fichaAvaliacaoElegibilidadeThrift.setNumeroNisPisPasep(numeroNisPisPasep);
     }
 
     public void unsetNumeroNisPisPasep() {
-        fichaAvaliacaoElegibilidade.unsetNumeroNisPisPasep();
+        fichaAvaliacaoElegibilidadeThrift.unsetNumeroNisPisPasep();
     }
 
     public boolean isSetNumeroNisPisPasep() {
-        return fichaAvaliacaoElegibilidade.isSetNumeroNisPisPasep();
+        return fichaAvaliacaoElegibilidadeThrift.isSetNumeroNisPisPasep();
     }
 
     public void setNumeroNisPisPasepIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setNumeroNisPisPasepIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setNumeroNisPisPasepIsSet(value);
     }
 
-    public EnderecoLocalPermanenciaThrift getEndereco() {
-        return fichaAvaliacaoElegibilidade.getEndereco();
+    public EnderecoLocalPermanencia getEndereco() {
+        return new EnderecoLocalPermanencia(fichaAvaliacaoElegibilidadeThrift.getEndereco());
     }
 
-    public void setEndereco(EnderecoLocalPermanenciaThrift endereco) {
-        fichaAvaliacaoElegibilidade.setEndereco(endereco);
+    public void setEndereco(EnderecoLocalPermanencia endereco) {
+        fichaAvaliacaoElegibilidadeThrift.setEndereco(endereco.getInstance());
     }
 
     public void unsetEndereco() {
-        fichaAvaliacaoElegibilidade.unsetEndereco();
+        fichaAvaliacaoElegibilidadeThrift.unsetEndereco();
     }
 
     public boolean isSetEndereco() {
-        return fichaAvaliacaoElegibilidade.isSetEndereco();
+        return fichaAvaliacaoElegibilidadeThrift.isSetEndereco();
     }
 
     public void setEnderecoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setEnderecoIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setEnderecoIsSet(value);
     }
 
     public long getAtencaoDomiciliarOrigem() {
-        return fichaAvaliacaoElegibilidade.getAtencaoDomiciliarOrigem();
+        return fichaAvaliacaoElegibilidadeThrift.getAtencaoDomiciliarOrigem();
     }
 
     public void setAtencaoDomiciliarOrigem(long atencaoDomiciliarOrigem) {
-        fichaAvaliacaoElegibilidade.setAtencaoDomiciliarOrigem(atencaoDomiciliarOrigem);
+        fichaAvaliacaoElegibilidadeThrift.setAtencaoDomiciliarOrigem(atencaoDomiciliarOrigem);
     }
 
     public void unsetAtencaoDomiciliarOrigem() {
-        fichaAvaliacaoElegibilidade.unsetAtencaoDomiciliarOrigem();
+        fichaAvaliacaoElegibilidadeThrift.unsetAtencaoDomiciliarOrigem();
     }
 
     public boolean isSetAtencaoDomiciliarOrigem() {
-        return fichaAvaliacaoElegibilidade.isSetAtencaoDomiciliarOrigem();
+        return fichaAvaliacaoElegibilidadeThrift.isSetAtencaoDomiciliarOrigem();
     }
 
     public void setAtencaoDomiciliarOrigemIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setAtencaoDomiciliarOrigemIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setAtencaoDomiciliarOrigemIsSet(value);
     }
 
     public long getAtencaoDomiciliarModalidade() {
-        return fichaAvaliacaoElegibilidade.getAtencaoDomiciliarModalidade();
+        return fichaAvaliacaoElegibilidadeThrift.getAtencaoDomiciliarModalidade();
     }
 
     public void setAtencaoDomiciliarModalidade(long atencaoDomiciliarModalidade) {
-        fichaAvaliacaoElegibilidade.setAtencaoDomiciliarModalidade(atencaoDomiciliarModalidade);
+        fichaAvaliacaoElegibilidadeThrift.setAtencaoDomiciliarModalidade(atencaoDomiciliarModalidade);
     }
 
     public void unsetAtencaoDomiciliarModalidade() {
-        fichaAvaliacaoElegibilidade.unsetAtencaoDomiciliarModalidade();
+        fichaAvaliacaoElegibilidadeThrift.unsetAtencaoDomiciliarModalidade();
     }
 
     public boolean isSetAtencaoDomiciliarModalidade() {
-        return fichaAvaliacaoElegibilidade.isSetAtencaoDomiciliarModalidade();
+        return fichaAvaliacaoElegibilidadeThrift.isSetAtencaoDomiciliarModalidade();
     }
 
     public void setAtencaoDomiciliarModalidadeIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setAtencaoDomiciliarModalidadeIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setAtencaoDomiciliarModalidadeIsSet(value);
     }
 
     public int getSituacoesPresentesSize() {
-        return fichaAvaliacaoElegibilidade.getSituacoesPresentesSize();
+        return fichaAvaliacaoElegibilidadeThrift.getSituacoesPresentesSize();
     }
 
     public Iterator<Long> getSituacoesPresentesIterator() {
-        return fichaAvaliacaoElegibilidade.getSituacoesPresentesIterator();
+        return fichaAvaliacaoElegibilidadeThrift.getSituacoesPresentesIterator();
     }
 
     public void addToSituacoesPresentes(long elem) {
-        fichaAvaliacaoElegibilidade.addToSituacoesPresentes(elem);
+        fichaAvaliacaoElegibilidadeThrift.addToSituacoesPresentes(elem);
     }
 
     public List<Long> getSituacoesPresentes() {
-        return fichaAvaliacaoElegibilidade.getSituacoesPresentes();
+        return fichaAvaliacaoElegibilidadeThrift.getSituacoesPresentes();
     }
 
     public void setSituacoesPresentes(List<Long> situacoesPresentes) {
-        fichaAvaliacaoElegibilidade.setSituacoesPresentes(situacoesPresentes);
+        fichaAvaliacaoElegibilidadeThrift.setSituacoesPresentes(situacoesPresentes);
     }
 
     public void unsetSituacoesPresentes() {
-        fichaAvaliacaoElegibilidade.unsetSituacoesPresentes();
+        fichaAvaliacaoElegibilidadeThrift.unsetSituacoesPresentes();
     }
 
     public boolean isSetSituacoesPresentes() {
-        return fichaAvaliacaoElegibilidade.isSetSituacoesPresentes();
+        return fichaAvaliacaoElegibilidadeThrift.isSetSituacoesPresentes();
     }
 
     public void setSituacoesPresentesIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setSituacoesPresentesIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setSituacoesPresentesIsSet(value);
     }
 
     public String getCid10Principal() {
-        return fichaAvaliacaoElegibilidade.getCid10Principal();
+        return fichaAvaliacaoElegibilidadeThrift.getCid10Principal();
     }
 
     public void setCid10Principal(String cid10Principal) {
-        fichaAvaliacaoElegibilidade.setCid10Principal(cid10Principal);
+        fichaAvaliacaoElegibilidadeThrift.setCid10Principal(cid10Principal);
     }
 
     public void unsetCid10Principal() {
-        fichaAvaliacaoElegibilidade.unsetCid10Principal();
+        fichaAvaliacaoElegibilidadeThrift.unsetCid10Principal();
     }
 
     public boolean isSetCid10Principal() {
-        return fichaAvaliacaoElegibilidade.isSetCid10Principal();
+        return fichaAvaliacaoElegibilidadeThrift.isSetCid10Principal();
     }
 
     public void setCid10PrincipalIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setCid10PrincipalIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setCid10PrincipalIsSet(value);
     }
 
     public String getCid10Segundo() {
-        return fichaAvaliacaoElegibilidade.getCid10Segundo();
+        return fichaAvaliacaoElegibilidadeThrift.getCid10Segundo();
     }
 
     public void setCid10Segundo(String cid10Segundo) {
-        fichaAvaliacaoElegibilidade.setCid10Segundo(cid10Segundo);
+        fichaAvaliacaoElegibilidadeThrift.setCid10Segundo(cid10Segundo);
     }
 
     public void unsetCid10Segundo() {
-        fichaAvaliacaoElegibilidade.unsetCid10Segundo();
+        fichaAvaliacaoElegibilidadeThrift.unsetCid10Segundo();
     }
 
     public boolean isSetCid10Segundo() {
-        return fichaAvaliacaoElegibilidade.isSetCid10Segundo();
+        return fichaAvaliacaoElegibilidadeThrift.isSetCid10Segundo();
     }
 
     public void setCid10SegundoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setCid10SegundoIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setCid10SegundoIsSet(value);
     }
 
     public String getCid10Terceiro() {
-        return fichaAvaliacaoElegibilidade.getCid10Terceiro();
+        return fichaAvaliacaoElegibilidadeThrift.getCid10Terceiro();
     }
 
     public void setCid10Terceiro(String cid10Terceiro) {
-        fichaAvaliacaoElegibilidade.setCid10Terceiro(cid10Terceiro);
+        fichaAvaliacaoElegibilidadeThrift.setCid10Terceiro(cid10Terceiro);
     }
 
     public void unsetCid10Terceiro() {
-        fichaAvaliacaoElegibilidade.unsetCid10Terceiro();
+        fichaAvaliacaoElegibilidadeThrift.unsetCid10Terceiro();
     }
 
     public boolean isSetCid10Terceiro() {
-        return fichaAvaliacaoElegibilidade.isSetCid10Terceiro();
+        return fichaAvaliacaoElegibilidadeThrift.isSetCid10Terceiro();
     }
 
     public void setCid10TerceiroIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setCid10TerceiroIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setCid10TerceiroIsSet(value);
     }
 
     public long getConclusaoDestinoElegivel() {
-        return fichaAvaliacaoElegibilidade.getConclusaoDestinoElegivel();
+        return fichaAvaliacaoElegibilidadeThrift.getConclusaoDestinoElegivel();
     }
 
     public void setConclusaoDestinoElegivel(long conclusaoDestinoElegivel) {
-        fichaAvaliacaoElegibilidade.setConclusaoDestinoElegivel(conclusaoDestinoElegivel);
+        fichaAvaliacaoElegibilidadeThrift.setConclusaoDestinoElegivel(conclusaoDestinoElegivel);
     }
 
     public void unsetConclusaoDestinoElegivel() {
-        fichaAvaliacaoElegibilidade.unsetConclusaoDestinoElegivel();
+        fichaAvaliacaoElegibilidadeThrift.unsetConclusaoDestinoElegivel();
     }
 
     public boolean isSetConclusaoDestinoElegivel() {
-        return fichaAvaliacaoElegibilidade.isSetConclusaoDestinoElegivel();
+        return fichaAvaliacaoElegibilidadeThrift.isSetConclusaoDestinoElegivel();
     }
 
     public void setConclusaoDestinoElegivelIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setConclusaoDestinoElegivelIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setConclusaoDestinoElegivelIsSet(value);
     }
 
     public int getConclusaoDestinoInelegivelSize() {
-        return fichaAvaliacaoElegibilidade.getConclusaoDestinoInelegivelSize();
+        return fichaAvaliacaoElegibilidadeThrift.getConclusaoDestinoInelegivelSize();
     }
 
     public Iterator<Long> getConclusaoDestinoInelegivelIterator() {
-        return fichaAvaliacaoElegibilidade.getConclusaoDestinoInelegivelIterator();
+        return fichaAvaliacaoElegibilidadeThrift.getConclusaoDestinoInelegivelIterator();
     }
 
     public void addToConclusaoDestinoInelegivel(long elem) {
-        fichaAvaliacaoElegibilidade.addToConclusaoDestinoInelegivel(elem);
+        fichaAvaliacaoElegibilidadeThrift.addToConclusaoDestinoInelegivel(elem);
     }
 
     public List<Long> getConclusaoDestinoInelegivel() {
-        return fichaAvaliacaoElegibilidade.getConclusaoDestinoInelegivel();
+        return fichaAvaliacaoElegibilidadeThrift.getConclusaoDestinoInelegivel();
     }
 
     public void setConclusaoDestinoInelegivel(List<Long> conclusaoDestinoInelegivel) {
-        fichaAvaliacaoElegibilidade.setConclusaoDestinoInelegivel(conclusaoDestinoInelegivel);
+        fichaAvaliacaoElegibilidadeThrift.setConclusaoDestinoInelegivel(conclusaoDestinoInelegivel);
     }
 
     public void unsetConclusaoDestinoInelegivel() {
-        fichaAvaliacaoElegibilidade.unsetConclusaoDestinoInelegivel();
+        fichaAvaliacaoElegibilidadeThrift.unsetConclusaoDestinoInelegivel();
     }
 
     public boolean isSetConclusaoDestinoInelegivel() {
-        return fichaAvaliacaoElegibilidade.isSetConclusaoDestinoInelegivel();
+        return fichaAvaliacaoElegibilidadeThrift.isSetConclusaoDestinoInelegivel();
     }
 
     public void setConclusaoDestinoInelegivelIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setConclusaoDestinoInelegivelIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setConclusaoDestinoInelegivelIsSet(value);
     }
 
     public long getCuidadorCidadao() {
-        return fichaAvaliacaoElegibilidade.getCuidadorCidadao();
+        return fichaAvaliacaoElegibilidadeThrift.getCuidadorCidadao();
     }
 
     public void setCuidadorCidadao(long cuidadorCidadao) {
-        fichaAvaliacaoElegibilidade.setCuidadorCidadao(cuidadorCidadao);
+        fichaAvaliacaoElegibilidadeThrift.setCuidadorCidadao(cuidadorCidadao);
     }
 
     public void unsetCuidadorCidadao() {
-        fichaAvaliacaoElegibilidade.unsetCuidadorCidadao();
+        fichaAvaliacaoElegibilidadeThrift.unsetCuidadorCidadao();
     }
 
     public boolean isSetCuidadorCidadao() {
-        return fichaAvaliacaoElegibilidade.isSetCuidadorCidadao();
+        return fichaAvaliacaoElegibilidadeThrift.isSetCuidadorCidadao();
     }
 
     public void setCuidadorCidadaoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidade.setCuidadorCidadaoIsSet(value);
+        fichaAvaliacaoElegibilidadeThrift.setCuidadorCidadaoIsSet(value);
+    }
+
+    @Override
+    public boolean equals(Object that) {
+        return fichaAvaliacaoElegibilidadeThrift.equals(that);
     }
 
     public boolean equals(FichaAvaliacaoElegibilidade that) {
-        return fichaAvaliacaoElegibilidade.equals(that.getInstance());
+        return fichaAvaliacaoElegibilidadeThrift.equals(that.getInstance());
+    }
+
+    @Override
+    public int hashCode() {
+        return fichaAvaliacaoElegibilidadeThrift.hashCode();
     }
 
     public int compareTo(FichaAvaliacaoElegibilidade other) {
-        return fichaAvaliacaoElegibilidade.compareTo(other.getInstance());
+        return fichaAvaliacaoElegibilidadeThrift.compareTo(other.getInstance());
+    }
+
+    @Override
+    public String toString() {
+        return fichaAvaliacaoElegibilidadeThrift.toString();
     }
 
     public void validate() throws TException {
-        fichaAvaliacaoElegibilidade.validate();
+        fichaAvaliacaoElegibilidadeThrift.validate();
     }
-    
+
+
     protected FichaAvaliacaoElegibilidadeThrift getInstance(){
-        return fichaAvaliacaoElegibilidade;
+        return fichaAvaliacaoElegibilidadeThrift;
     }
 
     
