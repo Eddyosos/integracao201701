@@ -1,238 +1,230 @@
 package com.github.Eddyosos.integracao20171.esus.cds.cadastroindividual;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.CadastroIndividualThrift;
-import br.gov.saude.esus.cds.transport.generated.thrift.common.HeaderCdsCadastroThrift;
+import com.github.Eddyosos.integracao20171.esus.cds.common.HeaderCdsCadastro;
 import org.apache.thrift.TException;
 
 public class CadastroIndividual {
-    private CadastroIndividualThrift cadastroIndividualTrift = new CadastroIndividualThrift();
+    private CadastroIndividualThrift cadastroIndividualThrift = new CadastroIndividualThrift();
 
     public CondicoesDeSaude getCondicoesDeSaude() {
-        return new CondicoesDeSaude(cadastroIndividualTrift.getCondicoesDeSaude());
+        return new CondicoesDeSaude(cadastroIndividualThrift.getCondicoesDeSaude());
     }
 
     public void setCondicoesDeSaude(CondicoesDeSaude condicoesDeSaude) {
-        cadastroIndividualTrift.setCondicoesDeSaude(condicoesDeSaude.getInstance());
+        cadastroIndividualThrift.setCondicoesDeSaude(condicoesDeSaude.getInstance());
     }
 
     public void unsetCondicoesDeSaude() {
-        cadastroIndividualTrift.unsetCondicoesDeSaude();
+        cadastroIndividualThrift.unsetCondicoesDeSaude();
     }
 
     public boolean isSetCondicoesDeSaude() {
-        return cadastroIndividualTrift.isSetCondicoesDeSaude();
+        return cadastroIndividualThrift.isSetCondicoesDeSaude();
     }
 
     public void setCondicoesDeSaudeIsSet(boolean value) {
-        cadastroIndividualTrift.setCondicoesDeSaudeIsSet(value);
+        cadastroIndividualThrift.setCondicoesDeSaudeIsSet(value);
     }
 
-    public HeaderCdsCadastroThrift getDadosGerais() {
-        return cadastroIndividualTrift.getDadosGerais();
+    public HeaderCdsCadastro getDadosGerais() {
+        return new HeaderCdsCadastro(cadastroIndividualThrift.getDadosGerais());
     }
 
-    public void setDadosGerais(HeaderCdsCadastroThrift dadosGerais) {
-        cadastroIndividualTrift.setDadosGerais(dadosGerais);
+    public void setDadosGerais(HeaderCdsCadastro dadosGerais) {
+        cadastroIndividualThrift.setDadosGerais(dadosGerais.getInstance());
     }
 
     public void unsetDadosGerais() {
-        cadastroIndividualTrift.unsetDadosGerais();
+        cadastroIndividualThrift.unsetDadosGerais();
     }
 
     public boolean isSetDadosGerais() {
-        return cadastroIndividualTrift.isSetDadosGerais();
+        return cadastroIndividualThrift.isSetDadosGerais();
     }
 
     public void setDadosGeraisIsSet(boolean value) {
-        cadastroIndividualTrift.setDadosGeraisIsSet(value);
+        cadastroIndividualThrift.setDadosGeraisIsSet(value);
     }
 
     public EmSituacaoDeRua getEmSituacaoDeRua() {
-        return new EmSituacaoDeRua(cadastroIndividualTrift.getEmSituacaoDeRua());
+        return new EmSituacaoDeRua(cadastroIndividualThrift.getEmSituacaoDeRua());
     }
 
     public void setEmSituacaoDeRua(EmSituacaoDeRua emSituacaoDeRua) {
-        cadastroIndividualTrift.setEmSituacaoDeRua(emSituacaoDeRua.getInstance());
+        cadastroIndividualThrift.setEmSituacaoDeRua(emSituacaoDeRua.getInstance());
     }
 
     public void unsetEmSituacaoDeRua() {
-        cadastroIndividualTrift.unsetEmSituacaoDeRua();
+        cadastroIndividualThrift.unsetEmSituacaoDeRua();
     }
 
     public boolean isSetEmSituacaoDeRua() {
-        return cadastroIndividualTrift.isSetEmSituacaoDeRua();
+        return cadastroIndividualThrift.isSetEmSituacaoDeRua();
     }
 
     public void setEmSituacaoDeRuaIsSet(boolean value) {
-        cadastroIndividualTrift.setEmSituacaoDeRuaIsSet(value);
+        cadastroIndividualThrift.setEmSituacaoDeRuaIsSet(value);
     }
 
     public boolean isFichaAtualizada() {
-        return cadastroIndividualTrift.isFichaAtualizada();
+        return cadastroIndividualThrift.isFichaAtualizada();
     }
 
     public void setFichaAtualizada(boolean fichaAtualizada) {
-        cadastroIndividualTrift.setFichaAtualizada(fichaAtualizada);
+        cadastroIndividualThrift.setFichaAtualizada(fichaAtualizada);
     }
 
     public void unsetFichaAtualizada() {
-        cadastroIndividualTrift.unsetFichaAtualizada();
+        cadastroIndividualThrift.unsetFichaAtualizada();
     }
 
     public boolean isSetFichaAtualizada() {
-        return cadastroIndividualTrift.isSetFichaAtualizada();
+        return cadastroIndividualThrift.isSetFichaAtualizada();
     }
 
     public void setFichaAtualizadaIsSet(boolean value) {
-        cadastroIndividualTrift.setFichaAtualizadaIsSet(value);
+        cadastroIndividualThrift.setFichaAtualizadaIsSet(value);
     }
 
     public IdentificacaoUsuarioCidadao getIdentificacaoUsuarioCidadao() {
-        return new IdentificacaoUsuarioCidadao(cadastroIndividualTrift.getIdentificacaoUsuarioCidadao());
+        return new IdentificacaoUsuarioCidadao(cadastroIndividualThrift.getIdentificacaoUsuarioCidadao());
     }
 
     public void setIdentificacaoUsuarioCidadao(IdentificacaoUsuarioCidadao identificacaoUsuarioCidadao) {
-        cadastroIndividualTrift.setIdentificacaoUsuarioCidadao(identificacaoUsuarioCidadao.getInstance());
+        cadastroIndividualThrift.setIdentificacaoUsuarioCidadao(identificacaoUsuarioCidadao.getInstance());
     }
 
     public void unsetIdentificacaoUsuarioCidadao() {
-        cadastroIndividualTrift.unsetIdentificacaoUsuarioCidadao();
+        cadastroIndividualThrift.unsetIdentificacaoUsuarioCidadao();
     }
 
     public boolean isSetIdentificacaoUsuarioCidadao() {
-        return cadastroIndividualTrift.isSetIdentificacaoUsuarioCidadao();
+        return cadastroIndividualThrift.isSetIdentificacaoUsuarioCidadao();
     }
 
     public void setIdentificacaoUsuarioCidadaoIsSet(boolean value) {
-        cadastroIndividualTrift.setIdentificacaoUsuarioCidadaoIsSet(value);
+        cadastroIndividualThrift.setIdentificacaoUsuarioCidadaoIsSet(value);
     }
 
     public InformacoesSocioDemograficas getInformacoesSocioDemograficas() {
-        return new InformacoesSocioDemograficas(cadastroIndividualTrift.getInformacoesSocioDemograficas());
+        return new InformacoesSocioDemograficas(cadastroIndividualThrift.getInformacoesSocioDemograficas());
     }
 
     public void setInformacoesSocioDemograficas(InformacoesSocioDemograficas informacoesSocioDemograficas) {
-        cadastroIndividualTrift.setInformacoesSocioDemograficas(informacoesSocioDemograficas.getIntence());
+        cadastroIndividualThrift.setInformacoesSocioDemograficas(informacoesSocioDemograficas.getIntence());
     }
 
     public void unsetInformacoesSocioDemograficas() {
-        cadastroIndividualTrift.unsetInformacoesSocioDemograficas();
+        cadastroIndividualThrift.unsetInformacoesSocioDemograficas();
     }
 
     public boolean isSetInformacoesSocioDemograficas() {
-        return cadastroIndividualTrift.isSetInformacoesSocioDemograficas();
+        return cadastroIndividualThrift.isSetInformacoesSocioDemograficas();
     }
 
     public void setInformacoesSocioDemograficasIsSet(boolean value) {
-        cadastroIndividualTrift.setInformacoesSocioDemograficasIsSet(value);
+        cadastroIndividualThrift.setInformacoesSocioDemograficasIsSet(value);
     }
 
     public boolean isStatusTermoRecusaCadastroIndividualAtencaoBasica() {
-        return cadastroIndividualTrift.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
+        return cadastroIndividualThrift.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
     }
 
     public void setStatusTermoRecusaCadastroIndividualAtencaoBasica(boolean statusTermoRecusaCadastroIndividualAtencaoBasica) {
-        cadastroIndividualTrift.setStatusTermoRecusaCadastroIndividualAtencaoBasica(statusTermoRecusaCadastroIndividualAtencaoBasica);
+        cadastroIndividualThrift.setStatusTermoRecusaCadastroIndividualAtencaoBasica(statusTermoRecusaCadastroIndividualAtencaoBasica);
     }
 
     public void unsetStatusTermoRecusaCadastroIndividualAtencaoBasica() {
-        cadastroIndividualTrift.unsetStatusTermoRecusaCadastroIndividualAtencaoBasica();
+        cadastroIndividualThrift.unsetStatusTermoRecusaCadastroIndividualAtencaoBasica();
     }
 
     public boolean isSetStatusTermoRecusaCadastroIndividualAtencaoBasica() {
-        return cadastroIndividualTrift.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica();
+        return cadastroIndividualThrift.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica();
     }
 
     public void setStatusTermoRecusaCadastroIndividualAtencaoBasicaIsSet(boolean value) {
-        cadastroIndividualTrift.setStatusTermoRecusaCadastroIndividualAtencaoBasicaIsSet(value);
+        cadastroIndividualThrift.setStatusTermoRecusaCadastroIndividualAtencaoBasicaIsSet(value);
     }
 
     public void setTpCdsOrigem(int tpCdsOrigem) {
-        cadastroIndividualTrift.setTpCdsOrigem(tpCdsOrigem);
+        cadastroIndividualThrift.setTpCdsOrigem(tpCdsOrigem);
     }
 
     public void unsetTpCdsOrigem() {
-        cadastroIndividualTrift.unsetTpCdsOrigem();
+        cadastroIndividualThrift.unsetTpCdsOrigem();
     }
 
     public boolean isSetTpCdsOrigem() {
-        return cadastroIndividualTrift.isSetTpCdsOrigem();
+        return cadastroIndividualThrift.isSetTpCdsOrigem();
     }
 
     public void setTpCdsOrigemIsSet(boolean value) {
-        cadastroIndividualTrift.setTpCdsOrigemIsSet(value);
+        cadastroIndividualThrift.setTpCdsOrigemIsSet(value);
     }
 
     public String getUuid() {
-        return cadastroIndividualTrift.getUuid();
+        return cadastroIndividualThrift.getUuid();
     }
 
     public void setUuid(String uuid) {
-        cadastroIndividualTrift.setUuid(uuid);
+        cadastroIndividualThrift.setUuid(uuid);
     }
 
     public void unsetUuid() {
-        cadastroIndividualTrift.unsetUuid();
+        cadastroIndividualThrift.unsetUuid();
     }
 
     public boolean isSetUuid() {
-        return cadastroIndividualTrift.isSetUuid();
+        return cadastroIndividualThrift.isSetUuid();
     }
 
     public void setUuidIsSet(boolean value) {
-        cadastroIndividualTrift.setUuidIsSet(value);
+        cadastroIndividualThrift.setUuidIsSet(value);
     }
 
     public String getUuidFichaOriginadora() {
-        return cadastroIndividualTrift.getUuidFichaOriginadora();
+        return cadastroIndividualThrift.getUuidFichaOriginadora();
     }
 
     public void setUuidFichaOriginadora(String uuidFichaOriginadora) {
-        cadastroIndividualTrift.setUuidFichaOriginadora(uuidFichaOriginadora);
+        cadastroIndividualThrift.setUuidFichaOriginadora(uuidFichaOriginadora);
     }
 
     public void unsetUuidFichaOriginadora() {
-        cadastroIndividualTrift.unsetUuidFichaOriginadora();
+        cadastroIndividualThrift.unsetUuidFichaOriginadora();
     }
 
     public boolean isSetUuidFichaOriginadora() {
-        return cadastroIndividualTrift.isSetUuidFichaOriginadora();
+        return cadastroIndividualThrift.isSetUuidFichaOriginadora();
     }
 
     public void setUuidFichaOriginadoraIsSet(boolean value) {
-        cadastroIndividualTrift.setUuidFichaOriginadoraIsSet(value);
+        cadastroIndividualThrift.setUuidFichaOriginadoraIsSet(value);
     }
 
     public String getUuidCidadao() {
-        return cadastroIndividualTrift.getUuidCidadao();
+        return cadastroIndividualThrift.getUuidCidadao();
     }
 
     public void setUuidCidadao(String uuidCidadao) {
-        cadastroIndividualTrift.setUuidCidadao(uuidCidadao);
+        cadastroIndividualThrift.setUuidCidadao(uuidCidadao);
     }
 
     public void unsetUuidCidadao() {
-        cadastroIndividualTrift.unsetUuidCidadao();
+        cadastroIndividualThrift.unsetUuidCidadao();
     }
 
     public boolean isSetUuidCidadao() {
-        return cadastroIndividualTrift.isSetUuidCidadao();
+        return cadastroIndividualThrift.isSetUuidCidadao();
     }
 
     public void setUuidCidadaoIsSet(boolean value) {
-        cadastroIndividualTrift.setUuidCidadaoIsSet(value);
-    }
-
-    public void setFieldValue(CadastroIndividualThrift._Fields field, Object value) {
-        cadastroIndividualTrift.setFieldValue(field, value);
-    }
-
-    public boolean isSet(CadastroIndividualThrift._Fields field) {
-        return cadastroIndividualTrift.isSet(field);
+        cadastroIndividualThrift.setUuidCidadaoIsSet(value);
     }
 
     public void validate() throws TException {
-        cadastroIndividualTrift.validate();
+        cadastroIndividualThrift.validate();
     }
 }
 
