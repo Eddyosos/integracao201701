@@ -6,462 +6,460 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import org.apache.thrift.TException;
+import org.apache.thrift.protocol.TProtocol;
 
 
 public class FichaAtendimentoOdontologicoChild {
-    FichaAtendimentoOdontologicoChildThrift test = new FichaAtendimentoOdontologicoChildThrift();
+    FichaAtendimentoOdontologicoChildThrift fichaAtendimentoOdontologicoChildThrift = new FichaAtendimentoOdontologicoChildThrift();
     
     protected FichaAtendimentoOdontologicoChild(FichaAtendimentoOdontologicoChildThrift fichaAtendimentoOdontologicoChildThrift){
-        this.test = fichaAtendimentoOdontologicoChildThrift;
+        this.fichaAtendimentoOdontologicoChildThrift = fichaAtendimentoOdontologicoChildThrift;
     }
 
     public FichaAtendimentoOdontologicoChild deepCopy() {
-        return new FichaAtendimentoOdontologicoChild(test.deepCopy());
+        return new FichaAtendimentoOdontologicoChild(fichaAtendimentoOdontologicoChildThrift.deepCopy());
+    }
+
+    public void clear() {
+        fichaAtendimentoOdontologicoChildThrift.clear();
     }
 
     public long getDtNascimento() {
-        return test.getDtNascimento();
+        return fichaAtendimentoOdontologicoChildThrift.getDtNascimento();
     }
 
     public void setDtNascimento(long dtNascimento) {
-        test.setDtNascimento(dtNascimento);
+        fichaAtendimentoOdontologicoChildThrift.setDtNascimento(dtNascimento);
     }
 
     public void unsetDtNascimento() {
-        test.unsetDtNascimento();
+        fichaAtendimentoOdontologicoChildThrift.unsetDtNascimento();
     }
 
     public boolean isSetDtNascimento() {
-        return test.isSetDtNascimento();
+        return fichaAtendimentoOdontologicoChildThrift.isSetDtNascimento();
     }
 
     public void setDtNascimentoIsSet(boolean value) {
-        test.setDtNascimentoIsSet(value);
+        fichaAtendimentoOdontologicoChildThrift.setDtNascimentoIsSet(value);
     }
 
     public String getNumCartaoSus() {
-        return test.getNumCartaoSus();
+        return fichaAtendimentoOdontologicoChildThrift.getNumCartaoSus();
     }
 
     public void setNumCartaoSus(String numCartaoSus) {
-        test.setNumCartaoSus(numCartaoSus);
+        fichaAtendimentoOdontologicoChildThrift.setNumCartaoSus(numCartaoSus);
     }
 
     public void unsetNumCartaoSus() {
-        test.unsetNumCartaoSus();
+        fichaAtendimentoOdontologicoChildThrift.unsetNumCartaoSus();
     }
 
     public boolean isSetNumCartaoSus() {
-        return test.isSetNumCartaoSus();
+        return fichaAtendimentoOdontologicoChildThrift.isSetNumCartaoSus();
     }
 
     public void setNumCartaoSusIsSet(boolean value) {
-        test.setNumCartaoSusIsSet(value);
+        fichaAtendimentoOdontologicoChildThrift.setNumCartaoSusIsSet(value);
     }
 
     public String getNumProntuario() {
-        return test.getNumProntuario();
+        return fichaAtendimentoOdontologicoChildThrift.getNumProntuario();
     }
 
     public void setNumProntuario(String numProntuario) {
-        test.setNumProntuario(numProntuario);
+        fichaAtendimentoOdontologicoChildThrift.setNumProntuario(numProntuario);
     }
 
     public void unsetNumProntuario() {
-        test.unsetNumProntuario();
+        fichaAtendimentoOdontologicoChildThrift.unsetNumProntuario();
     }
 
     public boolean isSetNumProntuario() {
-        return test.isSetNumProntuario();
+        return fichaAtendimentoOdontologicoChildThrift.isSetNumProntuario();
     }
 
     public void setNumProntuarioIsSet(boolean value) {
-        test.setNumProntuarioIsSet(value);
+        fichaAtendimentoOdontologicoChildThrift.setNumProntuarioIsSet(value);
     }
 
     public boolean isGestante() {
-        return test.isGestante();
+        return fichaAtendimentoOdontologicoChildThrift.isGestante();
     }
 
     public void setGestante(boolean gestante) {
-        test.setGestante(gestante);
+        fichaAtendimentoOdontologicoChildThrift.setGestante(gestante);
     }
 
     public void unsetGestante() {
-        test.unsetGestante();
+        fichaAtendimentoOdontologicoChildThrift.unsetGestante();
     }
 
     public boolean isSetGestante() {
-        return test.isSetGestante();
+        return fichaAtendimentoOdontologicoChildThrift.isSetGestante();
     }
 
     public void setGestanteIsSet(boolean value) {
-        test.setGestanteIsSet(value);
+        fichaAtendimentoOdontologicoChildThrift.setGestanteIsSet(value);
     }
 
     public boolean isNecessidadesEspeciais() {
-        return test.isNecessidadesEspeciais();
+        return fichaAtendimentoOdontologicoChildThrift.isNecessidadesEspeciais();
     }
 
     public void setNecessidadesEspeciais(boolean necessidadesEspeciais) {
-        test.setNecessidadesEspeciais(necessidadesEspeciais);
+        fichaAtendimentoOdontologicoChildThrift.setNecessidadesEspeciais(necessidadesEspeciais);
     }
 
     public void unsetNecessidadesEspeciais() {
-        test.unsetNecessidadesEspeciais();
+        fichaAtendimentoOdontologicoChildThrift.unsetNecessidadesEspeciais();
     }
 
     public boolean isSetNecessidadesEspeciais() {
-        return test.isSetNecessidadesEspeciais();
+        return fichaAtendimentoOdontologicoChildThrift.isSetNecessidadesEspeciais();
     }
 
     public void setNecessidadesEspeciaisIsSet(boolean value) {
-        test.setNecessidadesEspeciaisIsSet(value);
+        fichaAtendimentoOdontologicoChildThrift.setNecessidadesEspeciaisIsSet(value);
     }
 
     public long getLocalAtendimento() {
-        return test.getLocalAtendimento();
+        return fichaAtendimentoOdontologicoChildThrift.getLocalAtendimento();
     }
 
     public void setLocalAtendimento(long localAtendimento) {
-        test.setLocalAtendimento(localAtendimento);
+        fichaAtendimentoOdontologicoChildThrift.setLocalAtendimento(localAtendimento);
     }
 
     public void unsetLocalAtendimento() {
-        test.unsetLocalAtendimento();
+        fichaAtendimentoOdontologicoChildThrift.unsetLocalAtendimento();
     }
 
     public boolean isSetLocalAtendimento() {
-        return test.isSetLocalAtendimento();
+        return fichaAtendimentoOdontologicoChildThrift.isSetLocalAtendimento();
     }
 
     public void setLocalAtendimentoIsSet(boolean value) {
-        test.setLocalAtendimentoIsSet(value);
+        fichaAtendimentoOdontologicoChildThrift.setLocalAtendimentoIsSet(value);
     }
 
     public long getTipoAtendimento() {
-        return test.getTipoAtendimento();
+        return fichaAtendimentoOdontologicoChildThrift.getTipoAtendimento();
     }
 
     public void setTipoAtendimento(long tipoAtendimento) {
-        test.setTipoAtendimento(tipoAtendimento);
+        fichaAtendimentoOdontologicoChildThrift.setTipoAtendimento(tipoAtendimento);
     }
 
     public void unsetTipoAtendimento() {
-        test.unsetTipoAtendimento();
+        fichaAtendimentoOdontologicoChildThrift.unsetTipoAtendimento();
     }
 
     public boolean isSetTipoAtendimento() {
-        return test.isSetTipoAtendimento();
+        return fichaAtendimentoOdontologicoChildThrift.isSetTipoAtendimento();
     }
 
     public void setTipoAtendimentoIsSet(boolean value) {
-        test.setTipoAtendimentoIsSet(value);
+        fichaAtendimentoOdontologicoChildThrift.setTipoAtendimentoIsSet(value);
     }
 
     public int getTiposEncamOdontoSize() {
-        return test.getTiposEncamOdontoSize();
+        return fichaAtendimentoOdontologicoChildThrift.getTiposEncamOdontoSize();
     }
 
     public Iterator<Long> getTiposEncamOdontoIterator() {
-        return test.getTiposEncamOdontoIterator();
+        return fichaAtendimentoOdontologicoChildThrift.getTiposEncamOdontoIterator();
     }
 
     public void addToTiposEncamOdonto(long elem) {
-        test.addToTiposEncamOdonto(elem);
+        fichaAtendimentoOdontologicoChildThrift.addToTiposEncamOdonto(elem);
     }
 
     public List<Long> getTiposEncamOdonto() {
-        return test.getTiposEncamOdonto();
+        return fichaAtendimentoOdontologicoChildThrift.getTiposEncamOdonto();
     }
 
     public void setTiposEncamOdonto(List<Long> tiposEncamOdonto) {
-        test.setTiposEncamOdonto(tiposEncamOdonto);
+        fichaAtendimentoOdontologicoChildThrift.setTiposEncamOdonto(tiposEncamOdonto);
     }
 
     public void unsetTiposEncamOdonto() {
-        test.unsetTiposEncamOdonto();
+        fichaAtendimentoOdontologicoChildThrift.unsetTiposEncamOdonto();
     }
 
     public boolean isSetTiposEncamOdonto() {
-        return test.isSetTiposEncamOdonto();
+        return fichaAtendimentoOdontologicoChildThrift.isSetTiposEncamOdonto();
     }
 
     public void setTiposEncamOdontoIsSet(boolean value) {
-        test.setTiposEncamOdontoIsSet(value);
+        fichaAtendimentoOdontologicoChildThrift.setTiposEncamOdontoIsSet(value);
     }
 
     public int getTiposFornecimOdontoSize() {
-        return test.getTiposFornecimOdontoSize();
+        return fichaAtendimentoOdontologicoChildThrift.getTiposFornecimOdontoSize();
     }
 
     public Iterator<Long> getTiposFornecimOdontoIterator() {
-        return test.getTiposFornecimOdontoIterator();
+        return fichaAtendimentoOdontologicoChildThrift.getTiposFornecimOdontoIterator();
     }
 
     public void addToTiposFornecimOdonto(long elem) {
-        test.addToTiposFornecimOdonto(elem);
+        fichaAtendimentoOdontologicoChildThrift.addToTiposFornecimOdonto(elem);
     }
 
     public List<Long> getTiposFornecimOdonto() {
-        return test.getTiposFornecimOdonto();
+        return fichaAtendimentoOdontologicoChildThrift.getTiposFornecimOdonto();
     }
 
     public void setTiposFornecimOdonto(List<Long> tiposFornecimOdonto) {
-        test.setTiposFornecimOdonto(tiposFornecimOdonto);
+        fichaAtendimentoOdontologicoChildThrift.setTiposFornecimOdonto(tiposFornecimOdonto);
     }
 
     public void unsetTiposFornecimOdonto() {
-        test.unsetTiposFornecimOdonto();
+        fichaAtendimentoOdontologicoChildThrift.unsetTiposFornecimOdonto();
     }
 
     public boolean isSetTiposFornecimOdonto() {
-        return test.isSetTiposFornecimOdonto();
+        return fichaAtendimentoOdontologicoChildThrift.isSetTiposFornecimOdonto();
     }
 
     public void setTiposFornecimOdontoIsSet(boolean value) {
-        test.setTiposFornecimOdontoIsSet(value);
+        fichaAtendimentoOdontologicoChildThrift.setTiposFornecimOdontoIsSet(value);
     }
 
     public int getTiposVigilanciaSaudeBucalSize() {
-        return test.getTiposVigilanciaSaudeBucalSize();
+        return fichaAtendimentoOdontologicoChildThrift.getTiposVigilanciaSaudeBucalSize();
     }
 
     public Iterator<Long> getTiposVigilanciaSaudeBucalIterator() {
-        return test.getTiposVigilanciaSaudeBucalIterator();
+        return fichaAtendimentoOdontologicoChildThrift.getTiposVigilanciaSaudeBucalIterator();
     }
 
     public void addToTiposVigilanciaSaudeBucal(long elem) {
-        test.addToTiposVigilanciaSaudeBucal(elem);
+        fichaAtendimentoOdontologicoChildThrift.addToTiposVigilanciaSaudeBucal(elem);
     }
 
     public List<Long> getTiposVigilanciaSaudeBucal() {
-        return test.getTiposVigilanciaSaudeBucal();
+        return fichaAtendimentoOdontologicoChildThrift.getTiposVigilanciaSaudeBucal();
     }
 
     public void setTiposVigilanciaSaudeBucal(List<Long> tiposVigilanciaSaudeBucal) {
-        test.setTiposVigilanciaSaudeBucal(tiposVigilanciaSaudeBucal);
+        fichaAtendimentoOdontologicoChildThrift.setTiposVigilanciaSaudeBucal(tiposVigilanciaSaudeBucal);
     }
 
     public void unsetTiposVigilanciaSaudeBucal() {
-        test.unsetTiposVigilanciaSaudeBucal();
+        fichaAtendimentoOdontologicoChildThrift.unsetTiposVigilanciaSaudeBucal();
     }
 
     public boolean isSetTiposVigilanciaSaudeBucal() {
-        return test.isSetTiposVigilanciaSaudeBucal();
+        return fichaAtendimentoOdontologicoChildThrift.isSetTiposVigilanciaSaudeBucal();
     }
 
     public void setTiposVigilanciaSaudeBucalIsSet(boolean value) {
-        test.setTiposVigilanciaSaudeBucalIsSet(value);
+        fichaAtendimentoOdontologicoChildThrift.setTiposVigilanciaSaudeBucalIsSet(value);
     }
 
     public int getTiposConsultaOdontoSize() {
-        return test.getTiposConsultaOdontoSize();
+        return fichaAtendimentoOdontologicoChildThrift.getTiposConsultaOdontoSize();
     }
 
     public Iterator<Long> getTiposConsultaOdontoIterator() {
-        return test.getTiposConsultaOdontoIterator();
+        return fichaAtendimentoOdontologicoChildThrift.getTiposConsultaOdontoIterator();
     }
 
     public void addToTiposConsultaOdonto(long elem) {
-        test.addToTiposConsultaOdonto(elem);
+        fichaAtendimentoOdontologicoChildThrift.addToTiposConsultaOdonto(elem);
     }
 
     public List<Long> getTiposConsultaOdonto() {
-        return test.getTiposConsultaOdonto();
+        return fichaAtendimentoOdontologicoChildThrift.getTiposConsultaOdonto();
     }
 
     public void setTiposConsultaOdonto(List<Long> tiposConsultaOdonto) {
-        test.setTiposConsultaOdonto(tiposConsultaOdonto);
+        fichaAtendimentoOdontologicoChildThrift.setTiposConsultaOdonto(tiposConsultaOdonto);
     }
 
     public void unsetTiposConsultaOdonto() {
-        test.unsetTiposConsultaOdonto();
+        fichaAtendimentoOdontologicoChildThrift.unsetTiposConsultaOdonto();
     }
 
     public boolean isSetTiposConsultaOdonto() {
-        return test.isSetTiposConsultaOdonto();
+        return fichaAtendimentoOdontologicoChildThrift.isSetTiposConsultaOdonto();
     }
 
     public void setTiposConsultaOdontoIsSet(boolean value) {
-        test.setTiposConsultaOdontoIsSet(value);
+        fichaAtendimentoOdontologicoChildThrift.setTiposConsultaOdontoIsSet(value);
     }
 
     public int getProcedimentosRealizadosSize() {
-        return test.getProcedimentosRealizadosSize();
+        return fichaAtendimentoOdontologicoChildThrift.getProcedimentosRealizadosSize();
     }
 
     public Iterator<ProcedimentoQuantidade> getProcedimentosRealizadosIterator() {
-        
         List<ProcedimentoQuantidade> listaProcedimentoQuantidade = new LinkedList<>();
         
-        test.getProcedimentosRealizadosIterator().forEachRemaining((t) -> {
-            listaProcedimentoQuantidade.add(new ProcedimentoQuantidade(t));
+        fichaAtendimentoOdontologicoChildThrift.getProcedimentosRealizadosIterator().forEachRemaining((elemento) -> {
+            listaProcedimentoQuantidade.add(new ProcedimentoQuantidade(elemento));
         });
         
         return listaProcedimentoQuantidade.iterator();
     }
 
     public void addToProcedimentosRealizados(ProcedimentoQuantidade elem) {
-        test.addToProcedimentosRealizados(elem.getInstance());
+        fichaAtendimentoOdontologicoChildThrift.addToProcedimentosRealizados(elem.getInstance());
     }
 
     public List<ProcedimentoQuantidade> getProcedimentosRealizados() {
-        
         List<ProcedimentoQuantidade> listaProcedimentoQuantidade = new LinkedList<>();
         
-        test.getProcedimentosRealizados().forEach((t) -> {
-            listaProcedimentoQuantidade.add(new ProcedimentoQuantidade(t));
+        fichaAtendimentoOdontologicoChildThrift.getProcedimentosRealizados().forEach((elemento) -> {
+            listaProcedimentoQuantidade.add(new ProcedimentoQuantidade(elemento));
         });
-        
         
         return listaProcedimentoQuantidade;
     }
 
     public void setProcedimentosRealizados(List<ProcedimentoQuantidade> procedimentosRealizados) {
+        List<ProcedimentoQuantidadeThrift> listaProcedimentoQuantidadeThrift = new LinkedList<>();
         
-        List<ProcedimentoQuantidadeThrift> listaProcedimentoQuantidade = new LinkedList<>();
-        
-        procedimentosRealizados.forEach((t) -> {
-            listaProcedimentoQuantidade.add(t.getInstance());
+        procedimentosRealizados.forEach((elemento) -> {
+            listaProcedimentoQuantidadeThrift.add(elemento.getInstance());
         });
         
-        test.setProcedimentosRealizados(listaProcedimentoQuantidade);
+        fichaAtendimentoOdontologicoChildThrift.setProcedimentosRealizados(listaProcedimentoQuantidadeThrift);
     }
 
     public void unsetProcedimentosRealizados() {
-        test.unsetProcedimentosRealizados();
+        fichaAtendimentoOdontologicoChildThrift.unsetProcedimentosRealizados();
     }
 
     public boolean isSetProcedimentosRealizados() {
-        return test.isSetProcedimentosRealizados();
+        return fichaAtendimentoOdontologicoChildThrift.isSetProcedimentosRealizados();
     }
 
     public void setProcedimentosRealizadosIsSet(boolean value) {
-        test.setProcedimentosRealizadosIsSet(value);
+        fichaAtendimentoOdontologicoChildThrift.setProcedimentosRealizadosIsSet(value);
     }
 
     public int getOutrosSiaProcedimentosSize() {
-        return test.getOutrosSiaProcedimentosSize();
+        return fichaAtendimentoOdontologicoChildThrift.getOutrosSiaProcedimentosSize();
     }
 
     public Iterator<ProcedimentoQuantidade> getOutrosSiaProcedimentosIterator() {
-        
         List<ProcedimentoQuantidade> listaProcedimentoQuantidade = new LinkedList<>();
         
-        test.getOutrosSiaProcedimentosIterator().forEachRemaining((t) -> {
-            listaProcedimentoQuantidade.add(new ProcedimentoQuantidade(t));
+        fichaAtendimentoOdontologicoChildThrift.getOutrosSiaProcedimentosIterator().forEachRemaining((elemento) -> {
+            listaProcedimentoQuantidade.add(new ProcedimentoQuantidade(elemento));
         });
         
         return listaProcedimentoQuantidade.iterator();
     }
 
     public void addToOutrosSiaProcedimentos(ProcedimentoQuantidade elem) {
-        test.addToOutrosSiaProcedimentos(elem.getInstance());
+        fichaAtendimentoOdontologicoChildThrift.addToOutrosSiaProcedimentos(elem.getInstance());
     }
 
     public List<ProcedimentoQuantidade> getOutrosSiaProcedimentos() {
+         List<ProcedimentoQuantidade> listaProcedimentoQuantidade = new LinkedList<>();
         
-        List<ProcedimentoQuantidade> listaProcedimentoQuantidade = new LinkedList<>();
-        
-        test.getOutrosSiaProcedimentos().forEach((t) -> {
-            listaProcedimentoQuantidade.add(new ProcedimentoQuantidade(t));
+        fichaAtendimentoOdontologicoChildThrift.getOutrosSiaProcedimentos().forEach((elemento) -> {
+            listaProcedimentoQuantidade.add(new ProcedimentoQuantidade(elemento));
         });
         
         return listaProcedimentoQuantidade;
     }
 
     public void setOutrosSiaProcedimentos(List<ProcedimentoQuantidade> outrosSiaProcedimentos) {
+        List<ProcedimentoQuantidadeThrift> listaProcedimentoQuantidadeThrift = new LinkedList<>();
         
-        List<ProcedimentoQuantidadeThrift> listaProcedimentoQuantidade = new LinkedList<>();
-        
-        outrosSiaProcedimentos.forEach((t) -> {
-            listaProcedimentoQuantidade.add(t.getInstance());
+        outrosSiaProcedimentos.forEach((elemento) -> {
+            listaProcedimentoQuantidadeThrift.add(elemento.getInstance());
         });
-        
-        test.setOutrosSiaProcedimentos(listaProcedimentoQuantidade);
+                
+        fichaAtendimentoOdontologicoChildThrift.setOutrosSiaProcedimentos(listaProcedimentoQuantidadeThrift);
     }
 
     public void unsetOutrosSiaProcedimentos() {
-        test.unsetOutrosSiaProcedimentos();
+        fichaAtendimentoOdontologicoChildThrift.unsetOutrosSiaProcedimentos();
     }
 
     public boolean isSetOutrosSiaProcedimentos() {
-        return test.isSetOutrosSiaProcedimentos();
+        return fichaAtendimentoOdontologicoChildThrift.isSetOutrosSiaProcedimentos();
     }
 
     public void setOutrosSiaProcedimentosIsSet(boolean value) {
-        test.setOutrosSiaProcedimentosIsSet(value);
+        fichaAtendimentoOdontologicoChildThrift.setOutrosSiaProcedimentosIsSet(value);
     }
 
     public long getSexo() {
-        return test.getSexo();
+        return fichaAtendimentoOdontologicoChildThrift.getSexo();
     }
 
     public void setSexo(long sexo) {
-        test.setSexo(sexo);
+        fichaAtendimentoOdontologicoChildThrift.setSexo(sexo);
     }
 
     public void unsetSexo() {
-        test.unsetSexo();
+        fichaAtendimentoOdontologicoChildThrift.unsetSexo();
     }
 
     public boolean isSetSexo() {
-        return test.isSetSexo();
+        return fichaAtendimentoOdontologicoChildThrift.isSetSexo();
     }
 
     public void setSexoIsSet(boolean value) {
-        test.setSexoIsSet(value);
+        fichaAtendimentoOdontologicoChildThrift.setSexoIsSet(value);
     }
 
     public long getTurno() {
-        return test.getTurno();
+        return fichaAtendimentoOdontologicoChildThrift.getTurno();
     }
 
     public void setTurno(long turno) {
-        test.setTurno(turno);
+        fichaAtendimentoOdontologicoChildThrift.setTurno(turno);
     }
 
     public void unsetTurno() {
-        test.unsetTurno();
+        fichaAtendimentoOdontologicoChildThrift.unsetTurno();
     }
 
     public boolean isSetTurno() {
-        return test.isSetTurno();
+        return fichaAtendimentoOdontologicoChildThrift.isSetTurno();
     }
 
     public void setTurnoIsSet(boolean value) {
-        test.setTurnoIsSet(value);
+        fichaAtendimentoOdontologicoChildThrift.setTurnoIsSet(value);
     }
 
     @Override
     public boolean equals(Object that) {
-        return test.equals(that);
+        return fichaAtendimentoOdontologicoChildThrift.equals(that);
     }
 
     public boolean equals(FichaAtendimentoOdontologicoChild that) {
-        return test.equals(that.getInstance());
+        return fichaAtendimentoOdontologicoChildThrift.equals(that.getInstance());
     }
 
-    @Override
     public int hashCode() {
-        return test.hashCode();
+        return fichaAtendimentoOdontologicoChildThrift.hashCode();
     }
 
     public int compareTo(FichaAtendimentoOdontologicoChild other) {
-        return test.compareTo(other.getInstance());
+        return fichaAtendimentoOdontologicoChildThrift.compareTo(other.getInstance());
     }
 
+    @Override
     public String toString() {
-        return test.toString();
+        return fichaAtendimentoOdontologicoChildThrift.toString();
     }
 
     public void validate() throws TException {
-        test.validate();
+        fichaAtendimentoOdontologicoChildThrift.validate();
     }
-    
+
     protected FichaAtendimentoOdontologicoChildThrift getInstance(){
-        return test;
+        return fichaAtendimentoOdontologicoChildThrift;
     }
     
 }
