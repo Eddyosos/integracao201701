@@ -2,166 +2,193 @@ package com.github.Eddyosos.integracao20171.esus.cds.cadastrodomiciliar;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastrodomiciliar.FamiliaRowThrift;
 import org.apache.thrift.TException;
+import org.apache.thrift.protocol.TProtocol;
 
 public class FamiliaRow {
-    private FamiliaRowThrift familiaRowThrift = new FamiliaRowThrift();
+    private FamiliaRowThrift familiaRow = new FamiliaRowThrift();
     
     protected FamiliaRow(FamiliaRowThrift familiaRowThrift){
-        this.familiaRowThrift = familiaRowThrift;
+        this.familiaRow = familiaRowThrift;
+    }
+
+    public FamiliaRow deepCopy() {
+        return new FamiliaRow(familiaRow.deepCopy());
+    }
+
+    public void clear() {
+        familiaRow.clear();
     }
 
     public long getDataNascimentoResponsavel() {
-        return familiaRowThrift.getDataNascimentoResponsavel();
+        return familiaRow.getDataNascimentoResponsavel();
     }
 
     public void setDataNascimentoResponsavel(long dataNascimentoResponsavel) {
-        familiaRowThrift.setDataNascimentoResponsavel(dataNascimentoResponsavel);
+        familiaRow.setDataNascimentoResponsavel(dataNascimentoResponsavel);
     }
 
     public void unsetDataNascimentoResponsavel() {
-        familiaRowThrift.unsetDataNascimentoResponsavel();
+        familiaRow.unsetDataNascimentoResponsavel();
     }
 
     public boolean isSetDataNascimentoResponsavel() {
-        return familiaRowThrift.isSetDataNascimentoResponsavel();
+        return familiaRow.isSetDataNascimentoResponsavel();
     }
 
     public void setDataNascimentoResponsavelIsSet(boolean value) {
-        familiaRowThrift.setDataNascimentoResponsavelIsSet(value);
+        familiaRow.setDataNascimentoResponsavelIsSet(value);
     }
 
     public String getNumeroCnsResponsavel() {
-        return familiaRowThrift.getNumeroCnsResponsavel();
+        return familiaRow.getNumeroCnsResponsavel();
     }
 
     public void setNumeroCnsResponsavel(String numeroCnsResponsavel) {
-        familiaRowThrift.setNumeroCnsResponsavel(numeroCnsResponsavel);
+        familiaRow.setNumeroCnsResponsavel(numeroCnsResponsavel);
     }
 
     public void unsetNumeroCnsResponsavel() {
-        familiaRowThrift.unsetNumeroCnsResponsavel();
+        familiaRow.unsetNumeroCnsResponsavel();
     }
 
     public boolean isSetNumeroCnsResponsavel() {
-        return familiaRowThrift.isSetNumeroCnsResponsavel();
+        return familiaRow.isSetNumeroCnsResponsavel();
     }
 
     public void setNumeroCnsResponsavelIsSet(boolean value) {
-        familiaRowThrift.setNumeroCnsResponsavelIsSet(value);
+        familiaRow.setNumeroCnsResponsavelIsSet(value);
     }
 
     public int getNumeroMembrosFamilia() {
-        return familiaRowThrift.getNumeroMembrosFamilia();
+        return familiaRow.getNumeroMembrosFamilia();
     }
 
     public void setNumeroMembrosFamilia(int numeroMembrosFamilia) {
-        familiaRowThrift.setNumeroMembrosFamilia(numeroMembrosFamilia);
+        familiaRow.setNumeroMembrosFamilia(numeroMembrosFamilia);
     }
 
     public void unsetNumeroMembrosFamilia() {
-        familiaRowThrift.unsetNumeroMembrosFamilia();
+        familiaRow.unsetNumeroMembrosFamilia();
     }
 
     public boolean isSetNumeroMembrosFamilia() {
-        return familiaRowThrift.isSetNumeroMembrosFamilia();
+        return familiaRow.isSetNumeroMembrosFamilia();
     }
 
     public void setNumeroMembrosFamiliaIsSet(boolean value) {
-        familiaRowThrift.setNumeroMembrosFamiliaIsSet(value);
+        familiaRow.setNumeroMembrosFamiliaIsSet(value);
     }
 
     public String getNumeroProntuario() {
-        return familiaRowThrift.getNumeroProntuario();
+        return familiaRow.getNumeroProntuario();
     }
 
     public void setNumeroProntuario(String numeroProntuario) {
-        familiaRowThrift.setNumeroProntuario(numeroProntuario);
+        familiaRow.setNumeroProntuario(numeroProntuario);
     }
 
     public void unsetNumeroProntuario() {
-        familiaRowThrift.unsetNumeroProntuario();
+        familiaRow.unsetNumeroProntuario();
     }
 
     public boolean isSetNumeroProntuario() {
-        return familiaRowThrift.isSetNumeroProntuario();
+        return familiaRow.isSetNumeroProntuario();
     }
 
     public void setNumeroProntuarioIsSet(boolean value) {
-        familiaRowThrift.setNumeroProntuarioIsSet(value);
+        familiaRow.setNumeroProntuarioIsSet(value);
     }
 
     public long getRendaFamiliar() {
-        return familiaRowThrift.getRendaFamiliar();
+        return familiaRow.getRendaFamiliar();
     }
 
     public void setRendaFamiliar(long rendaFamiliar) {
-        familiaRowThrift.setRendaFamiliar(rendaFamiliar);
+        familiaRow.setRendaFamiliar(rendaFamiliar);
     }
 
     public void unsetRendaFamiliar() {
-        familiaRowThrift.unsetRendaFamiliar();
+        familiaRow.unsetRendaFamiliar();
     }
 
     public boolean isSetRendaFamiliar() {
-        return familiaRowThrift.isSetRendaFamiliar();
+        return familiaRow.isSetRendaFamiliar();
     }
 
     public void setRendaFamiliarIsSet(boolean value) {
-        familiaRowThrift.setRendaFamiliarIsSet(value);
+        familiaRow.setRendaFamiliarIsSet(value);
     }
 
     public long getResideDesde() {
-        return familiaRowThrift.getResideDesde();
+        return familiaRow.getResideDesde();
     }
 
     public void setResideDesde(long resideDesde) {
-        familiaRowThrift.setResideDesde(resideDesde);
+        familiaRow.setResideDesde(resideDesde);
     }
 
     public void unsetResideDesde() {
-        familiaRowThrift.unsetResideDesde();
+        familiaRow.unsetResideDesde();
     }
 
     public boolean isSetResideDesde() {
-        return familiaRowThrift.isSetResideDesde();
+        return familiaRow.isSetResideDesde();
     }
 
     public void setResideDesdeIsSet(boolean value) {
-        familiaRowThrift.setResideDesdeIsSet(value);
+        familiaRow.setResideDesdeIsSet(value);
     }
 
     public boolean isStMudanca() {
-        return familiaRowThrift.isStMudanca();
+        return familiaRow.isStMudanca();
     }
 
     public void setStMudanca(boolean stMudanca) {
-        familiaRowThrift.setStMudanca(stMudanca);
+        familiaRow.setStMudanca(stMudanca);
     }
 
     public void unsetStMudanca() {
-        familiaRowThrift.unsetStMudanca();
+        familiaRow.unsetStMudanca();
     }
 
     public boolean isSetStMudanca() {
-        return familiaRowThrift.isSetStMudanca();
+        return familiaRow.isSetStMudanca();
     }
 
     public void setStMudancaIsSet(boolean value) {
-        familiaRowThrift.setStMudancaIsSet(value);
+        familiaRow.setStMudancaIsSet(value);
     }
 
-    public int compareTo(FamiliaRowThrift other) {
-        return familiaRowThrift.compareTo(other);
+    @Override
+    public boolean equals(Object that) {
+        return familiaRow.equals(that);
+    }
+
+    public boolean equals(FamiliaRow that) {
+        return familiaRow.equals(that.getInstance());
+    }
+
+    @Override
+    public int hashCode() {
+        return familiaRow.hashCode();
+    }
+
+    public int compareTo(FamiliaRow other) {
+        return familiaRow.compareTo(other.getInstance());
+    }
+
+    @Override
+    public String toString() {
+        return familiaRow.toString();
     }
 
     public void validate() throws TException {
-        familiaRowThrift.validate();
+        familiaRow.validate();
     }
     
     protected FamiliaRowThrift getInstance(){
-        return familiaRowThrift;
+        return familiaRow;
     }
-    
-    
+
 }
 
