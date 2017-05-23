@@ -12,6 +12,14 @@ public class InformacoesSocioDemograficas {
         this.informacoesSocioDemograficasThrift = informacoesSocioDemograficasThrift;
     }
 
+    public InformacoesSocioDemograficas deepCopy() {
+        return new InformacoesSocioDemograficas(informacoesSocioDemograficasThrift.deepCopy());
+    }
+
+    public void clear() {
+        informacoesSocioDemograficasThrift.clear();
+    }
+
     public int getDeficienciasCidadaoSize() {
         return informacoesSocioDemograficasThrift.getDeficienciasCidadaoSize();
     }
@@ -344,14 +352,33 @@ public class InformacoesSocioDemograficas {
         informacoesSocioDemograficasThrift.setStatusTemAlgumaDeficienciaIsSet(value);
     }
 
+    @Override
+    public boolean equals(Object that) {
+        return informacoesSocioDemograficasThrift.equals(that);
+    }
+
+    public boolean equals(InformacoesSocioDemograficas that) {
+        return informacoesSocioDemograficasThrift.equals(that.getIntence());
+    }
+
+    @Override
+    public int hashCode() {
+        return informacoesSocioDemograficasThrift.hashCode();
+    }
+
     public int compareTo(InformacoesSocioDemograficas other) {
         return informacoesSocioDemograficasThrift.compareTo(other.getIntence());
+    }
+
+    @Override
+    public String toString() {
+        return informacoesSocioDemograficasThrift.toString();
     }
 
     public void validate() throws TException {
         informacoesSocioDemograficasThrift.validate();
     }
-    
+
     protected InformacoesSocioDemograficasThrift getIntence(){
         return informacoesSocioDemograficasThrift;
     }
