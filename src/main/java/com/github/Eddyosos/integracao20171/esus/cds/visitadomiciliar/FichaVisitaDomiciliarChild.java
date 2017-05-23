@@ -8,226 +8,226 @@ import org.apache.thrift.protocol.TProtocol;
 
 public class FichaVisitaDomiciliarChild {
 
-    FichaVisitaDomiciliarChildThrift thrift = new FichaVisitaDomiciliarChildThrift();
+    FichaVisitaDomiciliarChildThrift instance = new FichaVisitaDomiciliarChildThrift();
 
     protected FichaVisitaDomiciliarChild(FichaVisitaDomiciliarChildThrift thrift) {
-        this.thrift = thrift;
+        this.instance = thrift;
     }
 
     public FichaVisitaDomiciliarChild deepCopy() {
-        return new FichaVisitaDomiciliarChild(thrift.deepCopy());
+        return new FichaVisitaDomiciliarChild(instance.deepCopy());
     }
 
     public void clear() {
-        thrift.clear();
+        instance.clear();
     }
 
     public long getTurno() {
-        return thrift.getTurno();
+        return instance.getTurno();
     }
 
     public void setTurno(long turno) {
-        thrift.setTurno(turno);
+        instance.setTurno(turno);
     }
 
     public void unsetTurno() {
-        thrift.unsetTurno();
+        instance.unsetTurno();
     }
 
     public boolean isSetTurno() {
-        return thrift.isSetTurno();
+        return instance.isSetTurno();
     }
 
     public void setTurnoIsSet(boolean value) {
-        thrift.setTurnoIsSet(value);
+        instance.setTurnoIsSet(value);
     }
 
     public String getNumProntuario() {
-        return thrift.getNumProntuario();
+        return instance.getNumProntuario();
     }
 
     public void setNumProntuario(String numProntuario) {
-        thrift.setNumProntuario(numProntuario);
+        instance.setNumProntuario(numProntuario);
     }
 
     public void unsetNumProntuario() {
-        thrift.unsetNumProntuario();
+        instance.unsetNumProntuario();
     }
 
     public boolean isSetNumProntuario() {
-        return thrift.isSetNumProntuario();
+        return instance.isSetNumProntuario();
     }
 
     public void setNumProntuarioIsSet(boolean value) {
-        thrift.setNumProntuarioIsSet(value);
+        instance.setNumProntuarioIsSet(value);
     }
 
     public String getNumCartaoSus() {
-        return thrift.getNumCartaoSus();
+        return instance.getNumCartaoSus();
     }
 
     public void setNumCartaoSus(String numCartaoSus) {
-        thrift.setNumCartaoSus(numCartaoSus);
+        instance.setNumCartaoSus(numCartaoSus);
     }
 
     public void unsetNumCartaoSus() {
-        thrift.unsetNumCartaoSus();
+        instance.unsetNumCartaoSus();
     }
 
     public boolean isSetNumCartaoSus() {
-        return thrift.isSetNumCartaoSus();
+        return instance.isSetNumCartaoSus();
     }
 
     public void setNumCartaoSusIsSet(boolean value) {
-        thrift.setNumCartaoSusIsSet(value);
+        instance.setNumCartaoSusIsSet(value);
     }
 
     public long getDtNascimento() {
-        return thrift.getDtNascimento();
+        return instance.getDtNascimento();
     }
 
     public void setDtNascimento(long dtNascimento) {
-        thrift.setDtNascimento(dtNascimento);
+        instance.setDtNascimento(dtNascimento);
     }
 
     public void unsetDtNascimento() {
-        thrift.unsetDtNascimento();
+        instance.unsetDtNascimento();
     }
 
     public boolean isSetDtNascimento() {
-        return thrift.isSetDtNascimento();
+        return instance.isSetDtNascimento();
     }
 
     public void setDtNascimentoIsSet(boolean value) {
-        thrift.setDtNascimentoIsSet(value);
+        instance.setDtNascimentoIsSet(value);
     }
 
     public long getSexo() {
-        return thrift.getSexo();
+        return instance.getSexo();
     }
 
     public void setSexo(long sexo) {
-        thrift.setSexo(sexo);
+        instance.setSexo(sexo);
     }
 
     public void unsetSexo() {
-        thrift.unsetSexo();
+        instance.unsetSexo();
     }
 
     public boolean isSetSexo() {
-        return thrift.isSetSexo();
+        return instance.isSetSexo();
     }
 
     public void setSexoIsSet(boolean value) {
-        thrift.setSexoIsSet(value);
+        instance.setSexoIsSet(value);
     }
 
     public boolean isStatusVisitaCompartilhadaOutroProfissional() {
-        return thrift.isStatusVisitaCompartilhadaOutroProfissional();
+        return instance.isStatusVisitaCompartilhadaOutroProfissional();
     }
 
     public void setStatusVisitaCompartilhadaOutroProfissional(boolean statusVisitaCompartilhadaOutroProfissional) {
-        thrift.setStatusVisitaCompartilhadaOutroProfissional(statusVisitaCompartilhadaOutroProfissional);
+        instance.setStatusVisitaCompartilhadaOutroProfissional(statusVisitaCompartilhadaOutroProfissional);
     }
 
     public void unsetStatusVisitaCompartilhadaOutroProfissional() {
-        thrift.unsetStatusVisitaCompartilhadaOutroProfissional();
+        instance.unsetStatusVisitaCompartilhadaOutroProfissional();
     }
 
     public boolean isSetStatusVisitaCompartilhadaOutroProfissional() {
-        return thrift.isSetStatusVisitaCompartilhadaOutroProfissional();
+        return instance.isSetStatusVisitaCompartilhadaOutroProfissional();
     }
 
     public void setStatusVisitaCompartilhadaOutroProfissionalIsSet(boolean value) {
-        thrift.setStatusVisitaCompartilhadaOutroProfissionalIsSet(value);
+        instance.setStatusVisitaCompartilhadaOutroProfissionalIsSet(value);
     }
 
     public int getMotivosVisitaSize() {
-        return thrift.getMotivosVisitaSize();
+        return instance.getMotivosVisitaSize();
     }
 
     public Iterator<Long> getMotivosVisitaIterator() {
-        return thrift.getMotivosVisitaIterator();
+        return instance.getMotivosVisitaIterator();
     }
 
     public void addToMotivosVisita(long elem) {
-        thrift.addToMotivosVisita(elem);
+        instance.addToMotivosVisita(elem);
     }
 
     public List<Long> getMotivosVisita() {
-        return thrift.getMotivosVisita();
+        return instance.getMotivosVisita();
     }
 
     public void setMotivosVisita(List<Long> motivosVisita) {
-        thrift.setMotivosVisita(motivosVisita);
+        instance.setMotivosVisita(motivosVisita);
     }
 
     public void unsetMotivosVisita() {
-        thrift.unsetMotivosVisita();
+        instance.unsetMotivosVisita();
     }
 
     public boolean isSetMotivosVisita() {
-        return thrift.isSetMotivosVisita();
+        return instance.isSetMotivosVisita();
     }
 
     public void setMotivosVisitaIsSet(boolean value) {
-        thrift.setMotivosVisitaIsSet(value);
+        instance.setMotivosVisitaIsSet(value);
     }
 
     public long getDesfecho() {
-        return thrift.getDesfecho();
+        return instance.getDesfecho();
     }
 
     public void setDesfecho(long desfecho) {
-        thrift.setDesfecho(desfecho);
+        instance.setDesfecho(desfecho);
     }
 
     public void unsetDesfecho() {
-        thrift.unsetDesfecho();
+        instance.unsetDesfecho();
     }
 
     public boolean isSetDesfecho() {
-        return thrift.isSetDesfecho();
+        return instance.isSetDesfecho();
     }
 
     public void setDesfechoIsSet(boolean value) {
-        thrift.setDesfechoIsSet(value);
+        instance.setDesfechoIsSet(value);
     }
 
     public boolean equals(Object that) {
-        return thrift.equals(that);
+        return instance.equals(that);
     }
 
-    public boolean equals(FichaVisitaDomiciliarChildThrift that) {
-        return thrift.equals(that);
+    public boolean equals(FichaVisitaDomiciliarChild that) {
+        return instance.equals(that.getInstance());
     }
 
     public int hashCode() {
-        return thrift.hashCode();
+        return instance.hashCode();
     }
 
-    public int compareTo(FichaVisitaDomiciliarChildThrift other) {
-        return thrift.compareTo(other);
+    public int compareTo(FichaVisitaDomiciliarChild other) {
+        return instance.compareTo(other.getInstance());
     }
 
     public void read(TProtocol iprot) throws TException {
-        thrift.read(iprot);
+        instance.read(iprot);
     }
 
     public void write(TProtocol oprot) throws TException {
-        thrift.write(oprot);
+        instance.write(oprot);
     }
 
     public String toString() {
-        return thrift.toString();
+        return instance.toString();
     }
 
     public void validate() throws TException {
-        thrift.validate();
+        instance.validate();
     }
 
     protected FichaVisitaDomiciliarChildThrift getInstance() {
-        return thrift;
+        return instance;
     }
 
 }

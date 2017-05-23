@@ -12,88 +12,88 @@ import org.apache.thrift.protocol.TProtocol;
 
 public class FichaVisitaDomiciliarMaster {
 
-    FichaVisitaDomiciliarMasterThrift thrift = new FichaVisitaDomiciliarMasterThrift();
+    FichaVisitaDomiciliarMasterThrift instance = new FichaVisitaDomiciliarMasterThrift();
 
     public FichaVisitaDomiciliarMaster(FichaVisitaDomiciliarMasterThrift thrift) {
-        this.thrift = thrift;
+        this.instance = thrift;
     }
 
     public FichaVisitaDomiciliarMaster deepCopy() {
-        return new FichaVisitaDomiciliarMaster(thrift.deepCopy());
+        return new FichaVisitaDomiciliarMaster(instance.deepCopy());
     }
 
     public void clear() {
-        thrift.clear();
+        instance.clear();
     }
 
     public String getUuidFicha() {
-        return thrift.getUuidFicha();
+        return instance.getUuidFicha();
     }
 
     public void setUuidFicha(String uuidFicha) {
-        thrift.setUuidFicha(uuidFicha);
+        instance.setUuidFicha(uuidFicha);
     }
 
     public void unsetUuidFicha() {
-        thrift.unsetUuidFicha();
+        instance.unsetUuidFicha();
     }
 
     public boolean isSetUuidFicha() {
-        return thrift.isSetUuidFicha();
+        return instance.isSetUuidFicha();
     }
 
     public void setUuidFichaIsSet(boolean value) {
-        thrift.setUuidFichaIsSet(value);
+        instance.setUuidFichaIsSet(value);
     }
 
     public int getTpCdsOrigem() {
-        return thrift.getTpCdsOrigem();
+        return instance.getTpCdsOrigem();
     }
 
     public void setTpCdsOrigem(int tpCdsOrigem) {
-        thrift.setTpCdsOrigem(tpCdsOrigem);
+        instance.setTpCdsOrigem(tpCdsOrigem);
     }
 
     public void unsetTpCdsOrigem() {
-        thrift.unsetTpCdsOrigem();
+        instance.unsetTpCdsOrigem();
     }
 
     public boolean isSetTpCdsOrigem() {
-        return thrift.isSetTpCdsOrigem();
+        return instance.isSetTpCdsOrigem();
     }
 
     public void setTpCdsOrigemIsSet(boolean value) {
-        thrift.setTpCdsOrigemIsSet(value);
+        instance.setTpCdsOrigemIsSet(value);
     }
 
     public UnicaLotacaoHeader getHeaderTransport() {
-        return new UnicaLotacaoHeader(thrift.getHeaderTransport());
+        return new UnicaLotacaoHeader(instance.getHeaderTransport());
     }
 
-    public void setHeaderTransport(UnicaLotacaoHeaderThrift headerTransport) {
-        thrift.setHeaderTransport(headerTransport);
+    public void setHeaderTransport(UnicaLotacaoHeader headerTransport) {
+        instance.setHeaderTransport(headerTransport.getInstance());
     }
 
     public void unsetHeaderTransport() {
-        thrift.unsetHeaderTransport();
+        instance.unsetHeaderTransport();
     }
 
     public boolean isSetHeaderTransport() {
-        return thrift.isSetHeaderTransport();
+        return instance.isSetHeaderTransport();
     }
 
     public void setHeaderTransportIsSet(boolean value) {
-        thrift.setHeaderTransportIsSet(value);
+        instance.setHeaderTransportIsSet(value);
     }
 
     public int getVisitasDomiciliaresSize() {
-        return thrift.getVisitasDomiciliaresSize();
+        return instance.getVisitasDomiciliaresSize();
     }
 
     public Iterator<FichaVisitaDomiciliarChild> getVisitasDomiciliaresIterator() {
         List<FichaVisitaDomiciliarChild> ficha = new LinkedList();
 
-        thrift.getVisitasDomiciliaresIterator().forEachRemaining((t) -> {
+        instance.getVisitasDomiciliaresIterator().forEachRemaining((t) -> {
             ficha.add(new FichaVisitaDomiciliarChild(t));
 
         });
@@ -101,71 +101,77 @@ public class FichaVisitaDomiciliarMaster {
         return ficha.iterator();
     }
 
-    public void addToVisitasDomiciliares(FichaVisitaDomiciliarChildThrift elem) {
-        thrift.addToVisitasDomiciliares(elem);
+    public void addToVisitasDomiciliares(FichaVisitaDomiciliarChild elem) {
+        instance.addToVisitasDomiciliares(elem.getInstance());
     }
 
     public List<FichaVisitaDomiciliarChild> getVisitasDomiciliares() {
         List<FichaVisitaDomiciliarChild> ficha = new LinkedList();
 
 
-        thrift.getVisitasDomiciliares().forEach((t) -> {
+        instance.getVisitasDomiciliares().forEach((t) -> {
             ficha.add(new FichaVisitaDomiciliarChild(t));
         });
         
         return ficha;
     }
 
-    public void setVisitasDomiciliares(List<FichaVisitaDomiciliarChildThrift> visitasDomiciliares) {
-        thrift.setVisitasDomiciliares(visitasDomiciliares);
+    public void setVisitasDomiciliares(List<FichaVisitaDomiciliarChild> visitasDomiciliares) {
+        List<FichaVisitaDomiciliarChildThrift> ficha = new LinkedList();
+        
+        visitasDomiciliares.forEach((t) -> {
+            ficha.add(t.getInstance());
+        });
+        
+        instance.setVisitasDomiciliares(ficha);
     }
 
     public void unsetVisitasDomiciliares() {
-        thrift.unsetVisitasDomiciliares();
+        instance.unsetVisitasDomiciliares();
     }
 
     public boolean isSetVisitasDomiciliares() {
-        return thrift.isSetVisitasDomiciliares();
+        return instance.isSetVisitasDomiciliares();
     }
 
     public void setVisitasDomiciliaresIsSet(boolean value) {
-        thrift.setVisitasDomiciliaresIsSet(value);
+        instance.setVisitasDomiciliaresIsSet(value);
     }
 
     public boolean equals(Object that) {
-        return thrift.equals(that);
+        return instance.equals(that);
     }
 
-    public boolean equals(FichaVisitaDomiciliarMasterThrift that) {
-        return thrift.equals(that);
+    public boolean equals(FichaVisitaDomiciliarMaster that) {
+        return instance.equals(that.getInstance());
     }
 
     public int hashCode() {
-        return thrift.hashCode();
+        return instance.hashCode();
     }
 
-    public int compareTo(FichaVisitaDomiciliarMasterThrift other) {
-        return thrift.compareTo(other);
+    public int compareTo(FichaVisitaDomiciliarMaster other) {
+        return instance.compareTo(other.getInstance());
     }
 
     public void read(TProtocol iprot) throws TException {
-        thrift.read(iprot);
+        instance.read(iprot);
     }
 
     public void write(TProtocol oprot) throws TException {
-        thrift.write(oprot);
+        instance.write(oprot);
     }
 
     public String toString() {
-        return thrift.toString();
+        return instance.toString();
     }
 
     public void validate() throws TException {
-        thrift.validate();
+        instance.validate();
     }
     
     protected FichaVisitaDomiciliarMasterThrift getInstance(){
-        return thrift;
+        return instance;
     }
 
 }
