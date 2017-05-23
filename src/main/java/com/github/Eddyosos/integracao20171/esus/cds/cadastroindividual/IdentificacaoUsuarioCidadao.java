@@ -2,7 +2,6 @@ package com.github.Eddyosos.integracao20171.esus.cds.cadastroindividual;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.IdentificacaoUsuarioCidadaoThrift;
 import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
 
 public class IdentificacaoUsuarioCidadao {
     private IdentificacaoUsuarioCidadaoThrift identificacaoUsuarioCidadaoThrift = new IdentificacaoUsuarioCidadaoThrift();
