@@ -2,6 +2,7 @@ package com.github.Eddyosos.integracao20171.esus.cds.atividadecoletiva;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadecoletiva.ParticipanteRowItemThrift;
 import org.apache.thrift.TException;
+import org.apache.thrift.protocol.TProtocol;
 
 public class ParticipanteRowItem {
     ParticipanteRowItemThrift participanteRowItemThrift = new ParticipanteRowItemThrift();
@@ -10,8 +11,12 @@ public class ParticipanteRowItem {
         this.participanteRowItemThrift = participanteRowItemThrift;
     }
 
-    public ParticipanteRowItemThrift deepCopy() {
-        return participanteRowItemThrift.deepCopy();
+    public ParticipanteRowItem deepCopy() {
+        return new ParticipanteRowItem(participanteRowItemThrift.deepCopy());
+    }
+
+    public void clear() {
+        participanteRowItemThrift.clear();
     }
 
     public String getCns() {
@@ -180,6 +185,7 @@ public class ParticipanteRowItem {
     public void validate() throws TException {
         participanteRowItemThrift.validate();
     }
+    
     
     ParticipanteRowItemThrift getInstance(){
         return participanteRowItemThrift;
