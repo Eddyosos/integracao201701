@@ -4,288 +4,317 @@ import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.EmSit
 import java.util.Iterator;
 import java.util.List;
 import org.apache.thrift.TException;
+import org.apache.thrift.protocol.TProtocol;
 
 public class EmSituacaoDeRua {
-    private EmSituacaoDeRuaThrift emSituacaoDeRuaTrift = new EmSituacaoDeRuaThrift();
+    private EmSituacaoDeRuaThrift emSituacaoDeRuaThrift = new EmSituacaoDeRuaThrift();
     
     protected EmSituacaoDeRua(EmSituacaoDeRuaThrift emSituacaoDeRua){
-        this.emSituacaoDeRuaTrift = emSituacaoDeRua;
+        this.emSituacaoDeRuaThrift = emSituacaoDeRua;
+    }
+
+    public EmSituacaoDeRua deepCopy() {
+        return new EmSituacaoDeRua(emSituacaoDeRuaThrift.deepCopy());
+    }
+
+    public void clear() {
+        emSituacaoDeRuaThrift.clear();
     }
 
     public String getGrauParentescoFamiliarFrequentado() {
-        return emSituacaoDeRuaTrift.getGrauParentescoFamiliarFrequentado();
+        return emSituacaoDeRuaThrift.getGrauParentescoFamiliarFrequentado();
     }
 
     public void setGrauParentescoFamiliarFrequentado(String grauParentescoFamiliarFrequentado) {
-        emSituacaoDeRuaTrift.setGrauParentescoFamiliarFrequentado(grauParentescoFamiliarFrequentado);
+        emSituacaoDeRuaThrift.setGrauParentescoFamiliarFrequentado(grauParentescoFamiliarFrequentado);
     }
 
     public void unsetGrauParentescoFamiliarFrequentado() {
-        emSituacaoDeRuaTrift.unsetGrauParentescoFamiliarFrequentado();
+        emSituacaoDeRuaThrift.unsetGrauParentescoFamiliarFrequentado();
     }
 
     public boolean isSetGrauParentescoFamiliarFrequentado() {
-        return emSituacaoDeRuaTrift.isSetGrauParentescoFamiliarFrequentado();
+        return emSituacaoDeRuaThrift.isSetGrauParentescoFamiliarFrequentado();
     }
 
     public void setGrauParentescoFamiliarFrequentadoIsSet(boolean value) {
-        emSituacaoDeRuaTrift.setGrauParentescoFamiliarFrequentadoIsSet(value);
+        emSituacaoDeRuaThrift.setGrauParentescoFamiliarFrequentadoIsSet(value);
     }
 
     public int getHigienePessoalSituacaoRuaSize() {
-        return emSituacaoDeRuaTrift.getHigienePessoalSituacaoRuaSize();
+        return emSituacaoDeRuaThrift.getHigienePessoalSituacaoRuaSize();
     }
 
     public Iterator<Long> getHigienePessoalSituacaoRuaIterator() {
-        return emSituacaoDeRuaTrift.getHigienePessoalSituacaoRuaIterator();
+        return emSituacaoDeRuaThrift.getHigienePessoalSituacaoRuaIterator();
     }
 
     public void addToHigienePessoalSituacaoRua(long elem) {
-        emSituacaoDeRuaTrift.addToHigienePessoalSituacaoRua(elem);
+        emSituacaoDeRuaThrift.addToHigienePessoalSituacaoRua(elem);
     }
 
     public List<Long> getHigienePessoalSituacaoRua() {
-        return emSituacaoDeRuaTrift.getHigienePessoalSituacaoRua();
+        return emSituacaoDeRuaThrift.getHigienePessoalSituacaoRua();
     }
 
     public void setHigienePessoalSituacaoRua(List<Long> higienePessoalSituacaoRua) {
-        emSituacaoDeRuaTrift.setHigienePessoalSituacaoRua(higienePessoalSituacaoRua);
+        emSituacaoDeRuaThrift.setHigienePessoalSituacaoRua(higienePessoalSituacaoRua);
     }
 
     public void unsetHigienePessoalSituacaoRua() {
-        emSituacaoDeRuaTrift.unsetHigienePessoalSituacaoRua();
+        emSituacaoDeRuaThrift.unsetHigienePessoalSituacaoRua();
     }
 
     public boolean isSetHigienePessoalSituacaoRua() {
-        return emSituacaoDeRuaTrift.isSetHigienePessoalSituacaoRua();
+        return emSituacaoDeRuaThrift.isSetHigienePessoalSituacaoRua();
     }
 
     public void setHigienePessoalSituacaoRuaIsSet(boolean value) {
-        emSituacaoDeRuaTrift.setHigienePessoalSituacaoRuaIsSet(value);
+        emSituacaoDeRuaThrift.setHigienePessoalSituacaoRuaIsSet(value);
     }
 
     public int getOrigemAlimentoSituacaoRuaSize() {
-        return emSituacaoDeRuaTrift.getOrigemAlimentoSituacaoRuaSize();
+        return emSituacaoDeRuaThrift.getOrigemAlimentoSituacaoRuaSize();
     }
 
     public Iterator<Long> getOrigemAlimentoSituacaoRuaIterator() {
-        return emSituacaoDeRuaTrift.getOrigemAlimentoSituacaoRuaIterator();
+        return emSituacaoDeRuaThrift.getOrigemAlimentoSituacaoRuaIterator();
     }
 
     public void addToOrigemAlimentoSituacaoRua(long elem) {
-        emSituacaoDeRuaTrift.addToOrigemAlimentoSituacaoRua(elem);
+        emSituacaoDeRuaThrift.addToOrigemAlimentoSituacaoRua(elem);
     }
 
     public List<Long> getOrigemAlimentoSituacaoRua() {
-        return emSituacaoDeRuaTrift.getOrigemAlimentoSituacaoRua();
+        return emSituacaoDeRuaThrift.getOrigemAlimentoSituacaoRua();
     }
 
     public void setOrigemAlimentoSituacaoRua(List<Long> origemAlimentoSituacaoRua) {
-        emSituacaoDeRuaTrift.setOrigemAlimentoSituacaoRua(origemAlimentoSituacaoRua);
+        emSituacaoDeRuaThrift.setOrigemAlimentoSituacaoRua(origemAlimentoSituacaoRua);
     }
 
     public void unsetOrigemAlimentoSituacaoRua() {
-        emSituacaoDeRuaTrift.unsetOrigemAlimentoSituacaoRua();
+        emSituacaoDeRuaThrift.unsetOrigemAlimentoSituacaoRua();
     }
 
     public boolean isSetOrigemAlimentoSituacaoRua() {
-        return emSituacaoDeRuaTrift.isSetOrigemAlimentoSituacaoRua();
+        return emSituacaoDeRuaThrift.isSetOrigemAlimentoSituacaoRua();
     }
 
     public void setOrigemAlimentoSituacaoRuaIsSet(boolean value) {
-        emSituacaoDeRuaTrift.setOrigemAlimentoSituacaoRuaIsSet(value);
+        emSituacaoDeRuaThrift.setOrigemAlimentoSituacaoRuaIsSet(value);
     }
 
     public String getOutraInstituicaoQueAcompanha() {
-        return emSituacaoDeRuaTrift.getOutraInstituicaoQueAcompanha();
+        return emSituacaoDeRuaThrift.getOutraInstituicaoQueAcompanha();
     }
 
     public void setOutraInstituicaoQueAcompanha(String outraInstituicaoQueAcompanha) {
-        emSituacaoDeRuaTrift.setOutraInstituicaoQueAcompanha(outraInstituicaoQueAcompanha);
+        emSituacaoDeRuaThrift.setOutraInstituicaoQueAcompanha(outraInstituicaoQueAcompanha);
     }
 
     public void unsetOutraInstituicaoQueAcompanha() {
-        emSituacaoDeRuaTrift.unsetOutraInstituicaoQueAcompanha();
+        emSituacaoDeRuaThrift.unsetOutraInstituicaoQueAcompanha();
     }
 
     public boolean isSetOutraInstituicaoQueAcompanha() {
-        return emSituacaoDeRuaTrift.isSetOutraInstituicaoQueAcompanha();
+        return emSituacaoDeRuaThrift.isSetOutraInstituicaoQueAcompanha();
     }
 
     public void setOutraInstituicaoQueAcompanhaIsSet(boolean value) {
-        emSituacaoDeRuaTrift.setOutraInstituicaoQueAcompanhaIsSet(value);
+        emSituacaoDeRuaThrift.setOutraInstituicaoQueAcompanhaIsSet(value);
     }
 
     public long getQuantidadeAlimentacoesAoDiaSituacaoRua() {
-        return emSituacaoDeRuaTrift.getQuantidadeAlimentacoesAoDiaSituacaoRua();
+        return emSituacaoDeRuaThrift.getQuantidadeAlimentacoesAoDiaSituacaoRua();
     }
 
     public void setQuantidadeAlimentacoesAoDiaSituacaoRua(long quantidadeAlimentacoesAoDiaSituacaoRua) {
-        emSituacaoDeRuaTrift.setQuantidadeAlimentacoesAoDiaSituacaoRua(quantidadeAlimentacoesAoDiaSituacaoRua);
+        emSituacaoDeRuaThrift.setQuantidadeAlimentacoesAoDiaSituacaoRua(quantidadeAlimentacoesAoDiaSituacaoRua);
     }
 
     public void unsetQuantidadeAlimentacoesAoDiaSituacaoRua() {
-        emSituacaoDeRuaTrift.unsetQuantidadeAlimentacoesAoDiaSituacaoRua();
+        emSituacaoDeRuaThrift.unsetQuantidadeAlimentacoesAoDiaSituacaoRua();
     }
 
     public boolean isSetQuantidadeAlimentacoesAoDiaSituacaoRua() {
-        return emSituacaoDeRuaTrift.isSetQuantidadeAlimentacoesAoDiaSituacaoRua();
+        return emSituacaoDeRuaThrift.isSetQuantidadeAlimentacoesAoDiaSituacaoRua();
     }
 
     public void setQuantidadeAlimentacoesAoDiaSituacaoRuaIsSet(boolean value) {
-        emSituacaoDeRuaTrift.setQuantidadeAlimentacoesAoDiaSituacaoRuaIsSet(value);
+        emSituacaoDeRuaThrift.setQuantidadeAlimentacoesAoDiaSituacaoRuaIsSet(value);
     }
 
     public boolean isStatusAcompanhadoPorOutraInstituicao() {
-        return emSituacaoDeRuaTrift.isStatusAcompanhadoPorOutraInstituicao();
+        return emSituacaoDeRuaThrift.isStatusAcompanhadoPorOutraInstituicao();
     }
 
     public void setStatusAcompanhadoPorOutraInstituicao(boolean statusAcompanhadoPorOutraInstituicao) {
-        emSituacaoDeRuaTrift.setStatusAcompanhadoPorOutraInstituicao(statusAcompanhadoPorOutraInstituicao);
+        emSituacaoDeRuaThrift.setStatusAcompanhadoPorOutraInstituicao(statusAcompanhadoPorOutraInstituicao);
     }
 
     public void unsetStatusAcompanhadoPorOutraInstituicao() {
-        emSituacaoDeRuaTrift.unsetStatusAcompanhadoPorOutraInstituicao();
+        emSituacaoDeRuaThrift.unsetStatusAcompanhadoPorOutraInstituicao();
     }
 
     public boolean isSetStatusAcompanhadoPorOutraInstituicao() {
-        return emSituacaoDeRuaTrift.isSetStatusAcompanhadoPorOutraInstituicao();
+        return emSituacaoDeRuaThrift.isSetStatusAcompanhadoPorOutraInstituicao();
     }
 
     public void setStatusAcompanhadoPorOutraInstituicaoIsSet(boolean value) {
-        emSituacaoDeRuaTrift.setStatusAcompanhadoPorOutraInstituicaoIsSet(value);
+        emSituacaoDeRuaThrift.setStatusAcompanhadoPorOutraInstituicaoIsSet(value);
     }
 
     public boolean isStatusPossuiReferenciaFamiliar() {
-        return emSituacaoDeRuaTrift.isStatusPossuiReferenciaFamiliar();
+        return emSituacaoDeRuaThrift.isStatusPossuiReferenciaFamiliar();
     }
 
     public void setStatusPossuiReferenciaFamiliar(boolean statusPossuiReferenciaFamiliar) {
-        emSituacaoDeRuaTrift.setStatusPossuiReferenciaFamiliar(statusPossuiReferenciaFamiliar);
+        emSituacaoDeRuaThrift.setStatusPossuiReferenciaFamiliar(statusPossuiReferenciaFamiliar);
     }
 
     public void unsetStatusPossuiReferenciaFamiliar() {
-        emSituacaoDeRuaTrift.unsetStatusPossuiReferenciaFamiliar();
+        emSituacaoDeRuaThrift.unsetStatusPossuiReferenciaFamiliar();
     }
 
     public boolean isSetStatusPossuiReferenciaFamiliar() {
-        return emSituacaoDeRuaTrift.isSetStatusPossuiReferenciaFamiliar();
+        return emSituacaoDeRuaThrift.isSetStatusPossuiReferenciaFamiliar();
     }
 
     public void setStatusPossuiReferenciaFamiliarIsSet(boolean value) {
-        emSituacaoDeRuaTrift.setStatusPossuiReferenciaFamiliarIsSet(value);
+        emSituacaoDeRuaThrift.setStatusPossuiReferenciaFamiliarIsSet(value);
     }
 
     public boolean isStatusRecebeBeneficio() {
-        return emSituacaoDeRuaTrift.isStatusRecebeBeneficio();
+        return emSituacaoDeRuaThrift.isStatusRecebeBeneficio();
     }
 
     public void setStatusRecebeBeneficio(boolean statusRecebeBeneficio) {
-        emSituacaoDeRuaTrift.setStatusRecebeBeneficio(statusRecebeBeneficio);
+        emSituacaoDeRuaThrift.setStatusRecebeBeneficio(statusRecebeBeneficio);
     }
 
     public void unsetStatusRecebeBeneficio() {
-        emSituacaoDeRuaTrift.unsetStatusRecebeBeneficio();
+        emSituacaoDeRuaThrift.unsetStatusRecebeBeneficio();
     }
 
     public boolean isSetStatusRecebeBeneficio() {
-        return emSituacaoDeRuaTrift.isSetStatusRecebeBeneficio();
+        return emSituacaoDeRuaThrift.isSetStatusRecebeBeneficio();
     }
 
     public void setStatusRecebeBeneficioIsSet(boolean value) {
-        emSituacaoDeRuaTrift.setStatusRecebeBeneficioIsSet(value);
+        emSituacaoDeRuaThrift.setStatusRecebeBeneficioIsSet(value);
     }
 
     public boolean isStatusSituacaoRua() {
-        return emSituacaoDeRuaTrift.isStatusSituacaoRua();
+        return emSituacaoDeRuaThrift.isStatusSituacaoRua();
     }
 
     public void setStatusSituacaoRua(boolean statusSituacaoRua) {
-        emSituacaoDeRuaTrift.setStatusSituacaoRua(statusSituacaoRua);
+        emSituacaoDeRuaThrift.setStatusSituacaoRua(statusSituacaoRua);
     }
 
     public void unsetStatusSituacaoRua() {
-        emSituacaoDeRuaTrift.unsetStatusSituacaoRua();
+        emSituacaoDeRuaThrift.unsetStatusSituacaoRua();
     }
 
     public boolean isSetStatusSituacaoRua() {
-        return emSituacaoDeRuaTrift.isSetStatusSituacaoRua();
+        return emSituacaoDeRuaThrift.isSetStatusSituacaoRua();
     }
 
     public void setStatusSituacaoRuaIsSet(boolean value) {
-        emSituacaoDeRuaTrift.setStatusSituacaoRuaIsSet(value);
+        emSituacaoDeRuaThrift.setStatusSituacaoRuaIsSet(value);
     }
 
     public boolean isStatusTemAcessoHigienePessoalSituacaoRua() {
-        return emSituacaoDeRuaTrift.isStatusTemAcessoHigienePessoalSituacaoRua();
+        return emSituacaoDeRuaThrift.isStatusTemAcessoHigienePessoalSituacaoRua();
     }
 
     public void setStatusTemAcessoHigienePessoalSituacaoRua(boolean statusTemAcessoHigienePessoalSituacaoRua) {
-        emSituacaoDeRuaTrift.setStatusTemAcessoHigienePessoalSituacaoRua(statusTemAcessoHigienePessoalSituacaoRua);
+        emSituacaoDeRuaThrift.setStatusTemAcessoHigienePessoalSituacaoRua(statusTemAcessoHigienePessoalSituacaoRua);
     }
 
     public void unsetStatusTemAcessoHigienePessoalSituacaoRua() {
-        emSituacaoDeRuaTrift.unsetStatusTemAcessoHigienePessoalSituacaoRua();
+        emSituacaoDeRuaThrift.unsetStatusTemAcessoHigienePessoalSituacaoRua();
     }
 
     public boolean isSetStatusTemAcessoHigienePessoalSituacaoRua() {
-        return emSituacaoDeRuaTrift.isSetStatusTemAcessoHigienePessoalSituacaoRua();
+        return emSituacaoDeRuaThrift.isSetStatusTemAcessoHigienePessoalSituacaoRua();
     }
 
     public void setStatusTemAcessoHigienePessoalSituacaoRuaIsSet(boolean value) {
-        emSituacaoDeRuaTrift.setStatusTemAcessoHigienePessoalSituacaoRuaIsSet(value);
+        emSituacaoDeRuaThrift.setStatusTemAcessoHigienePessoalSituacaoRuaIsSet(value);
     }
 
     public boolean isStatusVisitaFamiliarFrequentemente() {
-        return emSituacaoDeRuaTrift.isStatusVisitaFamiliarFrequentemente();
+        return emSituacaoDeRuaThrift.isStatusVisitaFamiliarFrequentemente();
     }
 
     public void setStatusVisitaFamiliarFrequentemente(boolean statusVisitaFamiliarFrequentemente) {
-        emSituacaoDeRuaTrift.setStatusVisitaFamiliarFrequentemente(statusVisitaFamiliarFrequentemente);
+        emSituacaoDeRuaThrift.setStatusVisitaFamiliarFrequentemente(statusVisitaFamiliarFrequentemente);
     }
 
     public void unsetStatusVisitaFamiliarFrequentemente() {
-        emSituacaoDeRuaTrift.unsetStatusVisitaFamiliarFrequentemente();
+        emSituacaoDeRuaThrift.unsetStatusVisitaFamiliarFrequentemente();
     }
 
     public boolean isSetStatusVisitaFamiliarFrequentemente() {
-        return emSituacaoDeRuaTrift.isSetStatusVisitaFamiliarFrequentemente();
+        return emSituacaoDeRuaThrift.isSetStatusVisitaFamiliarFrequentemente();
     }
 
     public void setStatusVisitaFamiliarFrequentementeIsSet(boolean value) {
-        emSituacaoDeRuaTrift.setStatusVisitaFamiliarFrequentementeIsSet(value);
+        emSituacaoDeRuaThrift.setStatusVisitaFamiliarFrequentementeIsSet(value);
     }
 
     public long getTempoSituacaoRua() {
-        return emSituacaoDeRuaTrift.getTempoSituacaoRua();
+        return emSituacaoDeRuaThrift.getTempoSituacaoRua();
     }
 
     public void setTempoSituacaoRua(long tempoSituacaoRua) {
-        emSituacaoDeRuaTrift.setTempoSituacaoRua(tempoSituacaoRua);
+        emSituacaoDeRuaThrift.setTempoSituacaoRua(tempoSituacaoRua);
     }
 
     public void unsetTempoSituacaoRua() {
-        emSituacaoDeRuaTrift.unsetTempoSituacaoRua();
+        emSituacaoDeRuaThrift.unsetTempoSituacaoRua();
     }
 
     public boolean isSetTempoSituacaoRua() {
-        return emSituacaoDeRuaTrift.isSetTempoSituacaoRua();
+        return emSituacaoDeRuaThrift.isSetTempoSituacaoRua();
     }
 
     public void setTempoSituacaoRuaIsSet(boolean value) {
-        emSituacaoDeRuaTrift.setTempoSituacaoRuaIsSet(value);
+        emSituacaoDeRuaThrift.setTempoSituacaoRuaIsSet(value);
+    }
+
+    @Override
+    public boolean equals(Object that) {
+        return emSituacaoDeRuaThrift.equals(that);
+    }
+
+    public boolean equals(EmSituacaoDeRua that) {
+        return emSituacaoDeRuaThrift.equals(that.getInstance());
+    }
+
+    @Override
+    public int hashCode() {
+        return emSituacaoDeRuaThrift.hashCode();
     }
 
     public int compareTo(EmSituacaoDeRua other) {
-        return emSituacaoDeRuaTrift.compareTo(other.getInstance());
+        return emSituacaoDeRuaThrift.compareTo(other.getInstance());
+    }
+
+    @Override
+    public String toString() {
+        return emSituacaoDeRuaThrift.toString();
     }
 
     public void validate() throws TException {
-        emSituacaoDeRuaTrift.validate();
+        emSituacaoDeRuaThrift.validate();
     }
-    
+
+
     protected EmSituacaoDeRuaThrift getInstance(){
-        return emSituacaoDeRuaTrift;
+        return emSituacaoDeRuaThrift;
     }
 }
 
