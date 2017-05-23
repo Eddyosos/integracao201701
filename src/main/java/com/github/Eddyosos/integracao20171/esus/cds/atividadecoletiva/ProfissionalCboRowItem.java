@@ -2,6 +2,7 @@ package com.github.Eddyosos.integracao20171.esus.cds.atividadecoletiva;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadecoletiva.ProfissionalCboRowItemThrift;
 import org.apache.thrift.TException;
+import org.apache.thrift.protocol.TProtocol;
 
 public class ProfissionalCboRowItem {
     ProfissionalCboRowItemThrift profissionalCboRowItemThrift = new ProfissionalCboRowItemThrift();
@@ -10,8 +11,8 @@ public class ProfissionalCboRowItem {
         this.profissionalCboRowItemThrift = profissionalCboRowItemThrift;
     }
 
-    public ProfissionalCboRowItemThrift deepCopy() {
-        return profissionalCboRowItemThrift.deepCopy();
+    public ProfissionalCboRowItem deepCopy() {
+        return new ProfissionalCboRowItem(profissionalCboRowItemThrift.deepCopy());
     }
 
     public void clear() {
@@ -58,6 +59,7 @@ public class ProfissionalCboRowItem {
         profissionalCboRowItemThrift.setCodigoCbo2002IsSet(value);
     }
 
+    @Override
     public boolean equals(Object that) {
         return profissionalCboRowItemThrift.equals(that);
     }
@@ -66,6 +68,7 @@ public class ProfissionalCboRowItem {
         return profissionalCboRowItemThrift.equals(that.getInstance());
     }
 
+    @Override
     public int hashCode() {
         return profissionalCboRowItemThrift.hashCode();
     }
@@ -74,6 +77,7 @@ public class ProfissionalCboRowItem {
         return profissionalCboRowItemThrift.compareTo(other.getInstance());
     }
 
+    @Override
     public String toString() {
         return profissionalCboRowItemThrift.toString();
     }
@@ -81,7 +85,7 @@ public class ProfissionalCboRowItem {
     public void validate() throws TException {
         profissionalCboRowItemThrift.validate();
     }
-    
+
     protected ProfissionalCboRowItemThrift getInstance(){
         return profissionalCboRowItemThrift;
     }
