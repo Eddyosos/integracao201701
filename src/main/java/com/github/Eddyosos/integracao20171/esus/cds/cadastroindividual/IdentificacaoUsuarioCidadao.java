@@ -2,12 +2,21 @@ package com.github.Eddyosos.integracao20171.esus.cds.cadastroindividual;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.IdentificacaoUsuarioCidadaoThrift;
 import org.apache.thrift.TException;
+import org.apache.thrift.protocol.TProtocol;
 
 public class IdentificacaoUsuarioCidadao {
     private IdentificacaoUsuarioCidadaoThrift identificacaoUsuarioCidadaoThrift = new IdentificacaoUsuarioCidadaoThrift();
     
     protected IdentificacaoUsuarioCidadao(IdentificacaoUsuarioCidadaoThrift identificacaoUsuarioCidadao){
         this.identificacaoUsuarioCidadaoThrift = identificacaoUsuarioCidadao;
+    }
+
+    public IdentificacaoUsuarioCidadao deepCopy() {
+        return new IdentificacaoUsuarioCidadao(identificacaoUsuarioCidadaoThrift.deepCopy());
+    }
+
+    public void clear() {
+        identificacaoUsuarioCidadaoThrift.clear();
     }
 
     public String getNomeSocialCidadao() {
@@ -52,6 +61,10 @@ public class IdentificacaoUsuarioCidadao {
 
     public long getDataNascimentoCidadao() {
         return identificacaoUsuarioCidadaoThrift.getDataNascimentoCidadao();
+    }
+
+    public void setDataNascimentoCidadao(long dataNascimentoCidadao) {
+        identificacaoUsuarioCidadaoThrift.setDataNascimentoCidadao(dataNascimentoCidadao);
     }
 
     public void unsetDataNascimentoCidadao() {
@@ -140,6 +153,10 @@ public class IdentificacaoUsuarioCidadao {
 
     public boolean isSetNacionalidadeCidadao() {
         return identificacaoUsuarioCidadaoThrift.isSetNacionalidadeCidadao();
+    }
+
+    public void setNacionalidadeCidadaoIsSet(boolean value) {
+        identificacaoUsuarioCidadaoThrift.setNacionalidadeCidadaoIsSet(value);
     }
 
     public String getNomeCidadao() {
@@ -342,12 +359,27 @@ public class IdentificacaoUsuarioCidadao {
         identificacaoUsuarioCidadaoThrift.setStatusEhResponsavelIsSet(value);
     }
 
-    public Object getFieldValue(IdentificacaoUsuarioCidadaoThrift._Fields field) {
-        return identificacaoUsuarioCidadaoThrift.getFieldValue(field);
+    @Override
+    public boolean equals(Object that) {
+        return identificacaoUsuarioCidadaoThrift.equals(that);
     }
 
-    public int compareTo(IdentificacaoUsuarioCidadaoThrift other) {
-        return identificacaoUsuarioCidadaoThrift.compareTo(other);
+    public boolean equals(IdentificacaoUsuarioCidadao that) {
+        return identificacaoUsuarioCidadaoThrift.equals(that.getInstance());
+    }
+
+    @Override
+    public int hashCode() {
+        return identificacaoUsuarioCidadaoThrift.hashCode();
+    }
+
+    public int compareTo(IdentificacaoUsuarioCidadao other) {
+        return identificacaoUsuarioCidadaoThrift.compareTo(other.getInstance());
+    }
+
+    @Override
+    public String toString() {
+        return identificacaoUsuarioCidadaoThrift.toString();
     }
 
     public void validate() throws TException {
@@ -356,8 +388,7 @@ public class IdentificacaoUsuarioCidadao {
     
     protected IdentificacaoUsuarioCidadaoThrift getInstance(){
         return this.identificacaoUsuarioCidadaoThrift;
-    }
-    
+    }  
     
 }
 
