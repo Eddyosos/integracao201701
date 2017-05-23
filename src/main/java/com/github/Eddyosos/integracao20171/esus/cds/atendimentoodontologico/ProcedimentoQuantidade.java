@@ -10,8 +10,12 @@ public class ProcedimentoQuantidade {
         this.procedimentoQuantidadeThrift = t;
     }
 
-    public ProcedimentoQuantidadeThrift deepCopy() {
-        return procedimentoQuantidadeThrift.deepCopy();
+    public ProcedimentoQuantidade deepCopy() {
+        return new ProcedimentoQuantidade(procedimentoQuantidadeThrift.deepCopy());
+    }
+
+    public void clear() {
+        procedimentoQuantidadeThrift.clear();
     }
 
     public String getCoMsProcedimento() {
@@ -54,6 +58,7 @@ public class ProcedimentoQuantidade {
         procedimentoQuantidadeThrift.setQuantidadeIsSet(value);
     }
 
+    @Override
     public boolean equals(Object that) {
         return procedimentoQuantidadeThrift.equals(that);
     }
@@ -62,6 +67,7 @@ public class ProcedimentoQuantidade {
         return procedimentoQuantidadeThrift.equals(that.getInstance());
     }
 
+    @Override
     public int hashCode() {
         return procedimentoQuantidadeThrift.hashCode();
     }
@@ -70,6 +76,7 @@ public class ProcedimentoQuantidade {
         return procedimentoQuantidadeThrift.compareTo(other.getInstance());
     }
 
+    @Override
     public String toString() {
         return procedimentoQuantidadeThrift.toString();
     }
@@ -77,7 +84,7 @@ public class ProcedimentoQuantidade {
     public void validate() throws TException {
         procedimentoQuantidadeThrift.validate();
     }
-    
+
     protected ProcedimentoQuantidadeThrift getInstance(){
         return procedimentoQuantidadeThrift;
     }
