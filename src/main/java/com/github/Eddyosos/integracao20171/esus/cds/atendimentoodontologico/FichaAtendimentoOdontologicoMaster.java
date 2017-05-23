@@ -3,6 +3,7 @@ package com.github.Eddyosos.integracao20171.esus.cds.atendimentoodontologico;
 import br.gov.saude.esus.cds.transport.generated.thrift.atendimentoodontologico.FichaAtendimentoOdontologicoChildThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.atendimentoodontologico.FichaAtendimentoOdontologicoMasterThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.common.VariasLotacoesHeaderThrift;
+import com.github.Eddyosos.integracao20171.esus.cds.common.VariasLotacoesHeader;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,6 +19,10 @@ public class FichaAtendimentoOdontologicoMaster {
 
     public FichaAtendimentoOdontologicoMaster deepCopy() {
         return new FichaAtendimentoOdontologicoMaster(fichaAtendimentoOdontologicoMasterThrift.deepCopy());
+    }
+
+    public void clear() {
+        fichaAtendimentoOdontologicoMasterThrift.clear();
     }
 
     public String getUuidFicha() {
@@ -40,12 +45,12 @@ public class FichaAtendimentoOdontologicoMaster {
         fichaAtendimentoOdontologicoMasterThrift.setUuidFichaIsSet(value);
     }
 
-    public VariasLotacoesHeaderThrift getHeaderTransport() {
-        return fichaAtendimentoOdontologicoMasterThrift.getHeaderTransport();
+    public VariasLotacoesHeader getHeaderTransport() {
+        return new VariasLotacoesHeader(fichaAtendimentoOdontologicoMasterThrift.getHeaderTransport());
     }
 
-    public void setHeaderTransport(VariasLotacoesHeaderThrift headerTransport) {
-        fichaAtendimentoOdontologicoMasterThrift.setHeaderTransport(headerTransport);
+    public void setHeaderTransport(VariasLotacoesHeader headerTransport) {
+        fichaAtendimentoOdontologicoMasterThrift.setHeaderTransport(headerTransport.getInstance());
     }
 
     public void unsetHeaderTransport() {
@@ -65,13 +70,11 @@ public class FichaAtendimentoOdontologicoMaster {
     }
 
     public Iterator<FichaAtendimentoOdontologicoChild> getAtendimentosOdontologicosIterator() {
-        
         List<FichaAtendimentoOdontologicoChild> listaFichaAtendimentoOdontologicoChild = new LinkedList<>();
         
-         fichaAtendimentoOdontologicoMasterThrift.getAtendimentosOdontologicosIterator().forEachRemaining((t) -> {
-             listaFichaAtendimentoOdontologicoChild.add(new FichaAtendimentoOdontologicoChild(t));
-         });
-        
+        fichaAtendimentoOdontologicoMasterThrift.getAtendimentosOdontologicosIterator().forEachRemaining((elemento) -> {
+            listaFichaAtendimentoOdontologicoChild.add(new FichaAtendimentoOdontologicoChild(elemento));
+        });
         
         return listaFichaAtendimentoOdontologicoChild.iterator();
     }
@@ -83,24 +86,21 @@ public class FichaAtendimentoOdontologicoMaster {
     public List<FichaAtendimentoOdontologicoChild> getAtendimentosOdontologicos() {
         List<FichaAtendimentoOdontologicoChild> listaFichaAtendimentoOdontologicoChild = new LinkedList<>();
         
-         fichaAtendimentoOdontologicoMasterThrift.getAtendimentosOdontologicos().forEach((t) -> {
-             listaFichaAtendimentoOdontologicoChild.add(new FichaAtendimentoOdontologicoChild(t));
-         });
-        
+        fichaAtendimentoOdontologicoMasterThrift.getAtendimentosOdontologicos().forEach((elemento) -> {
+            listaFichaAtendimentoOdontologicoChild.add(new FichaAtendimentoOdontologicoChild(elemento));
+        });
         
         return listaFichaAtendimentoOdontologicoChild;
     }
 
     public void setAtendimentosOdontologicos(List<FichaAtendimentoOdontologicoChild> atendimentosOdontologicos) {
+        List<FichaAtendimentoOdontologicoChildThrift> listaFichaAtendimentoOdontologicoChildThrift = new LinkedList<>();
         
-        List<FichaAtendimentoOdontologicoChildThrift> listaFichaAtendimentoOdontologicoChild = new LinkedList<>();
+        atendimentosOdontologicos.forEach((elemento) -> {
+            listaFichaAtendimentoOdontologicoChildThrift.add(elemento.getInstance());
+        });
         
-         atendimentosOdontologicos.forEach((t) -> {
-             listaFichaAtendimentoOdontologicoChild.add(t.getInstance());
-         });
-        
-        
-        fichaAtendimentoOdontologicoMasterThrift.setAtendimentosOdontologicos(listaFichaAtendimentoOdontologicoChild);
+        fichaAtendimentoOdontologicoMasterThrift.setAtendimentosOdontologicos(listaFichaAtendimentoOdontologicoChildThrift);
     }
 
     public void unsetAtendimentosOdontologicos() {
@@ -144,6 +144,7 @@ public class FichaAtendimentoOdontologicoMaster {
         return fichaAtendimentoOdontologicoMasterThrift.equals(that.getInstance());
     }
 
+    @Override
     public int hashCode() {
         return fichaAtendimentoOdontologicoMasterThrift.hashCode();
     }
@@ -152,10 +153,7 @@ public class FichaAtendimentoOdontologicoMaster {
         return fichaAtendimentoOdontologicoMasterThrift.compareTo(other.getInstance());
     }
 
-    public void read(TProtocol iprot) throws TException {
-        fichaAtendimentoOdontologicoMasterThrift.read(iprot);
-    }
-
+    @Override
     public String toString() {
         return fichaAtendimentoOdontologicoMasterThrift.toString();
     }
@@ -163,7 +161,7 @@ public class FichaAtendimentoOdontologicoMaster {
     public void validate() throws TException {
         fichaAtendimentoOdontologicoMasterThrift.validate();
     }
-    
+
     protected FichaAtendimentoOdontologicoMasterThrift getInstance(){
         return fichaAtendimentoOdontologicoMasterThrift;
     }
