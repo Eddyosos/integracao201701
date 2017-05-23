@@ -2,8 +2,8 @@ package com.github.Eddyosos.integracao20171.esus.cds.cadastrodomiciliar;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastrodomiciliar.CadastroDomiciliarThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastrodomiciliar.FamiliaRowThrift;
-import br.gov.saude.esus.cds.transport.generated.thrift.common.EnderecoLocalPermanenciaThrift;
-import br.gov.saude.esus.cds.transport.generated.thrift.common.HeaderCdsCadastroThrift;
+import com.github.Eddyosos.integracao20171.esus.cds.common.EnderecoLocalPermanencia;
+import com.github.Eddyosos.integracao20171.esus.cds.common.HeaderCdsCadastro;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,6 +11,18 @@ import org.apache.thrift.TException;
 
 public class CadastroDomiciliar {
     private CadastroDomiciliarThrift cadastroDomiciliarThrift = new CadastroDomiciliarThrift();
+
+    protected CadastroDomiciliar(CadastroDomiciliarThrift cadastroDomiciliar) {
+        this.cadastroDomiciliarThrift = cadastroDomiciliar;
+    }
+
+    public CadastroDomiciliar deepCopy() {
+        return new CadastroDomiciliar(cadastroDomiciliarThrift.deepCopy());
+    }
+
+    public void clear() {
+        cadastroDomiciliarThrift.clear();
+    }
 
     public int getAnimaisNoDomicilioSize() {
         return cadastroDomiciliarThrift.getAnimaisNoDomicilioSize();
@@ -64,12 +76,12 @@ public class CadastroDomiciliar {
         cadastroDomiciliarThrift.setCondicaoMoradiaIsSet(value);
     }
 
-    public HeaderCdsCadastroThrift getDadosGerais() {
-        return cadastroDomiciliarThrift.getDadosGerais();
+    public HeaderCdsCadastro getDadosGerais() {
+        return new HeaderCdsCadastro(cadastroDomiciliarThrift.getDadosGerais());
     }
 
-    public void setDadosGerais(HeaderCdsCadastroThrift dadosGerais) {
-        cadastroDomiciliarThrift.setDadosGerais(dadosGerais);
+    public void setDadosGerais(HeaderCdsCadastro dadosGerais) {
+        cadastroDomiciliarThrift.setDadosGerais(dadosGerais.getInstance());
     }
 
     public void unsetDadosGerais() {
@@ -84,12 +96,12 @@ public class CadastroDomiciliar {
         cadastroDomiciliarThrift.setDadosGeraisIsSet(value);
     }
 
-    public EnderecoLocalPermanenciaThrift getEnderecoLocalPermanencia() {
-        return cadastroDomiciliarThrift.getEnderecoLocalPermanencia();
+    public EnderecoLocalPermanencia getEnderecoLocalPermanencia() {
+        return new EnderecoLocalPermanencia(cadastroDomiciliarThrift.getEnderecoLocalPermanencia());
     }
 
-    public void setEnderecoLocalPermanencia(EnderecoLocalPermanenciaThrift enderecoLocalPermanencia) {
-        cadastroDomiciliarThrift.setEnderecoLocalPermanencia(enderecoLocalPermanencia);
+    public void setEnderecoLocalPermanencia(EnderecoLocalPermanencia enderecoLocalPermanencia) {
+        cadastroDomiciliarThrift.setEnderecoLocalPermanencia(enderecoLocalPermanencia.getInstance());
     }
 
     public void unsetEnderecoLocalPermanencia() {
@@ -109,11 +121,13 @@ public class CadastroDomiciliar {
     }
 
     public Iterator<FamiliaRow> getFamiliasIterator() {
-        List<FamiliaRow> list = new LinkedList<>();
-        cadastroDomiciliarThrift.getFamiliasIterator().forEachRemaining((t) -> {
-            list.add(new FamiliaRow(t));
+        List<FamiliaRow> listaFamiliaRow = new LinkedList<>();
+        
+        cadastroDomiciliarThrift.getFamiliasIterator().forEachRemaining((elemento) -> {
+            listaFamiliaRow.add(new FamiliaRow(elemento));
         });
-        return list.iterator();
+        
+        return listaFamiliaRow.iterator();
     }
 
     public void addToFamilias(FamiliaRow elem) {
@@ -121,19 +135,23 @@ public class CadastroDomiciliar {
     }
 
     public List<FamiliaRow> getFamilias() {
-        List<FamiliaRow> lista = new LinkedList<>();
-        cadastroDomiciliarThrift.getFamilias().forEach((t) -> {
-            lista.add(new FamiliaRow(t));
+        List<FamiliaRow> listaFamiliaRow = new LinkedList<>();
+        
+        cadastroDomiciliarThrift.getFamilias().forEach((elemento) -> {
+            listaFamiliaRow.add(new FamiliaRow(elemento));
         });
-        return lista;
+        
+        return listaFamiliaRow;
     }
 
     public void setFamilias(List<FamiliaRow> familias) {
-        List<FamiliaRowThrift> listaFamilias = new LinkedList<>();
-        familias.forEach((t) -> {
-            listaFamilias.add(t.getInstance());
+        List<FamiliaRowThrift> listaFamiliaRowThrift = new LinkedList<>();
+        
+        familias.forEach((elemento) -> {
+            listaFamiliaRowThrift.add(elemento.getInstance());
         });
-        cadastroDomiciliarThrift.setFamilias(listaFamilias);
+        
+        cadastroDomiciliarThrift.setFamilias(listaFamiliaRowThrift);
     }
 
     public void unsetFamilias() {
@@ -288,22 +306,36 @@ public class CadastroDomiciliar {
         cadastroDomiciliarThrift.setUuidFichaOriginadoraIsSet(value);
     }
 
-    public void setFieldValue(CadastroDomiciliarThrift._Fields field, Object value) {
-        cadastroDomiciliarThrift.setFieldValue(field, value);
+    @Override
+    public boolean equals(Object that) {
+        return cadastroDomiciliarThrift.equals(that);
     }
 
-    public boolean isSet(CadastroDomiciliarThrift._Fields field) {
-        return cadastroDomiciliarThrift.isSet(field);
+    public boolean equals(CadastroDomiciliar that) {
+        return cadastroDomiciliarThrift.equals(that.getInstance());
     }
 
-    public int compareTo(CadastroDomiciliarThrift other) {
-        return cadastroDomiciliarThrift.compareTo(other);
+    public int hashCode() {
+        return cadastroDomiciliarThrift.hashCode();
+    }
+
+    public int compareTo(CadastroDomiciliar other) {
+        return cadastroDomiciliarThrift.compareTo(other.getInstance());
+    }
+
+    @Override
+    public String toString() {
+        return cadastroDomiciliarThrift.toString();
     }
 
     public void validate() throws TException {
         cadastroDomiciliarThrift.validate();
     }
+
+    protected CadastroDomiciliarThrift getInstance(){
+        return this.cadastroDomiciliarThrift;
+    }
     
-    
+
 }
 
