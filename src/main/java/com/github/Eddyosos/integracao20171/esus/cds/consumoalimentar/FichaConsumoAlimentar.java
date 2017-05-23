@@ -5,6 +5,7 @@ import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.FichaCo
 import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.PerguntaQuestionarioCriancasComMaisDoisAnosThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.PerguntaQuestionarioCriancasDeSeisVinteTresMesesThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.PerguntaQuestionarioCriancasMenoresSeisMesesThrift;
+import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,8 +21,8 @@ public class FichaConsumoAlimentar {
             return new FichaConsumoAlimentar(instance.deepCopy());
     }
 
-    public UnicaLotacaoHeaderThrift getHeaderTransport() {
-        return instance.getHeaderTransport();
+    public UnicaLotacaoHeader getHeaderTransport() {
+        return new UnicaLotacaoHeader(instance.getHeaderTransport());
     }
 
     public void unsetHeaderTransport() {
@@ -175,20 +176,36 @@ public class FichaConsumoAlimentar {
         return instance.getPerguntasQuestionarioCriancasDeSeisVinteTresMesesSize();
     }
 
-    public Iterator<PerguntaQuestionarioCriancasDeSeisVinteTresMesesThrift> getPerguntasQuestionarioCriancasDeSeisVinteTresMesesIterator() {
-        return instance.getPerguntasQuestionarioCriancasDeSeisVinteTresMesesIterator();
+    public Iterator<PerguntaQuestionarioCriancasDeSeisVinteTresMeses> getPerguntasQuestionarioCriancasDeSeisVinteTresMesesIterator() {
+        
+        List<PerguntaQuestionarioCriancasDeSeisVinteTresMeses> listaPerguntaQuestionario = new LinkedList<>();
+        instance.getPerguntasQuestionarioCriancasDeSeisVinteTresMesesIterator().forEachRemaining((t)->{
+            listaPerguntaQuestionario.add(new PerguntaQuestionarioCriancasDeSeisVinteTresMeses (t));
+        });
+        
+        return listaPerguntaQuestionario.iterator();
     }
 
     public void addToPerguntasQuestionarioCriancasDeSeisVinteTresMeses(PerguntaQuestionarioCriancasDeSeisVinteTresMeses elem) {
         instance.addToPerguntasQuestionarioCriancasDeSeisVinteTresMeses(elem.getInstance());
     }
 
-    public List<PerguntaQuestionarioCriancasDeSeisVinteTresMesesThrift> getPerguntasQuestionarioCriancasDeSeisVinteTresMeses() {
-        return instance.getPerguntasQuestionarioCriancasDeSeisVinteTresMeses();
+    public List<PerguntaQuestionarioCriancasDeSeisVinteTresMeses> getPerguntasQuestionarioCriancasDeSeisVinteTresMeses() {
+        List<PerguntaQuestionarioCriancasDeSeisVinteTresMeses> listaPerguntaQuestionario = new LinkedList<>(); 
+        instance.getPerguntasQuestionarioCriancasDeSeisVinteTresMeses().forEach((t)->{
+            listaPerguntaQuestionario.add(new PerguntaQuestionarioCriancasDeSeisVinteTresMeses(t));
+        });
+        return listaPerguntaQuestionario;
     }
 
-    public void setPerguntasQuestionarioCriancasDeSeisVinteTresMeses(List<PerguntaQuestionarioCriancasDeSeisVinteTresMesesThrift> perguntasQuestionarioCriancasDeSeisVinteTresMeses) {
-        instance.setPerguntasQuestionarioCriancasDeSeisVinteTresMeses(perguntasQuestionarioCriancasDeSeisVinteTresMeses);
+    public void setPerguntasQuestionarioCriancasDeSeisVinteTresMeses(List<PerguntaQuestionarioCriancasDeSeisVinteTresMeses> perguntasQuestionarioCriancasDeSeisVinteTresMeses) {
+       List<PerguntaQuestionarioCriancasDeSeisVinteTresMesesThrift>listaQuestionario = new LinkedList<>();
+       
+       
+       perguntasQuestionarioCriancasDeSeisVinteTresMeses.forEach((elem)->{
+            listaQuestionario.add(elem.getInstance());
+       });
+       instance.setPerguntasQuestionarioCriancasDeSeisVinteTresMeses(listaQuestionario);
     }
 
     public void unsetPerguntasQuestionarioCriancasDeSeisVinteTresMeses() {
@@ -207,12 +224,16 @@ public class FichaConsumoAlimentar {
         return instance.getPerguntasQuestionarioCriancasComMaisDoisAnosSize();
     }
 
-    public Iterator<PerguntaQuestionarioCriancasComMaisDoisAnosThrift> getPerguntasQuestionarioCriancasComMaisDoisAnosIterator() {
-        return instance.getPerguntasQuestionarioCriancasComMaisDoisAnosIterator();
+    public Iterator<PerguntaQuestionarioCriancasComMaisDoisAnos> getPerguntasQuestionarioCriancasComMaisDoisAnosIterator() {
+        List<PerguntaQuestionarioCriancasComMaisDoisAnos> listaPerguntaQuestionario = new LinkedList<>();
+        instance.getPerguntasQuestionarioCriancasComMaisDoisAnosIterator().forEachRemaining((t)->{
+            listaPerguntaQuestionario.add(new PerguntaQuestionarioCriancasComMaisDoisAnos(t));
+        });
+        return listaPerguntaQuestionario.iterator();
     }
 
-    public void addToPerguntasQuestionarioCriancasComMaisDoisAnos(PerguntaQuestionarioCriancasComMaisDoisAnosThrift elem) {
-        instance.addToPerguntasQuestionarioCriancasComMaisDoisAnos(elem);
+    public void addToPerguntasQuestionarioCriancasComMaisDoisAnos(PerguntaQuestionarioCriancasComMaisDoisAnos elem) {
+        instance.addToPerguntasQuestionarioCriancasComMaisDoisAnos(elem.getInstance());
     }
 
     public List<PerguntaQuestionarioCriancasComMaisDoisAnosThrift> getPerguntasQuestionarioCriancasComMaisDoisAnos() {
@@ -275,16 +296,12 @@ public class FichaConsumoAlimentar {
         instance.setTpCdsOrigemIsSet(value);
     }
 
-    public Object getFieldValue(FichaConsumoAlimentarThrift._Fields field) {
-        return instance.getFieldValue(field);
+    public boolean equals(FichaConsumoAlimentar that) {
+        return instance.equals(that.instance);
     }
 
-    public boolean equals(FichaConsumoAlimentarThrift that) {
-        return instance.equals(that);
-    }
-
-    public int compareTo(FichaConsumoAlimentarThrift other) {
-        return instance.compareTo(other);
+    public int compareTo(FichaConsumoAlimentar other) {
+        return instance.compareTo(other.instance);
     }
 
     
