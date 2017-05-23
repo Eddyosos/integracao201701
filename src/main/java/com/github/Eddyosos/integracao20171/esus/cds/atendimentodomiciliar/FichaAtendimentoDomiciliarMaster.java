@@ -2,7 +2,7 @@ package com.github.Eddyosos.integracao20171.esus.cds.atendimentodomiciliar;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.atendimentodomiciliar.FichaAtendimentoDomiciliarChildThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.atendimentodomiciliar.FichaAtendimentoDomiciliarMasterThrift;
-import br.gov.saude.esus.cds.transport.generated.thrift.common.UnicaLotacaoHeaderThrift;
+import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -59,12 +59,12 @@ public class FichaAtendimentoDomiciliarMaster {
         fichaAtendimentoDomiciliarMasterThrift.setTpCdsOrigemIsSet(value);
     }
 
-    public UnicaLotacaoHeaderThrift getHeaderTransport() {
-        return fichaAtendimentoDomiciliarMasterThrift.getHeaderTransport();
+    public UnicaLotacaoHeader getHeaderTransport() {
+        return new UnicaLotacaoHeader(fichaAtendimentoDomiciliarMasterThrift.getHeaderTransport());
     }
 
-    public void setHeaderTransport(UnicaLotacaoHeaderThrift headerTransport) {
-        fichaAtendimentoDomiciliarMasterThrift.setHeaderTransport(headerTransport);
+    public void setHeaderTransport(UnicaLotacaoHeader headerTransport) {
+        fichaAtendimentoDomiciliarMasterThrift.setHeaderTransport(headerTransport.getInstance());
     }
 
     public void unsetHeaderTransport() {
@@ -130,10 +130,6 @@ public class FichaAtendimentoDomiciliarMaster {
 
     public void setAtendimentosDomiciliaresIsSet(boolean value) {
         fichaAtendimentoDomiciliarMasterThrift.setAtendimentosDomiciliaresIsSet(value);
-    }
-
-    public boolean isSet(FichaAtendimentoDomiciliarMasterThrift._Fields field) {
-        return fichaAtendimentoDomiciliarMasterThrift.isSet(field);
     }
 
     @Override
