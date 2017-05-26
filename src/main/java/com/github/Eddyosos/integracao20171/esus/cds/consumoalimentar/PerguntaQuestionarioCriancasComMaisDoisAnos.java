@@ -8,7 +8,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-
 public class PerguntaQuestionarioCriancasComMaisDoisAnos {
     private PerguntaQuestionarioCriancasComMaisDoisAnosThrift instance = new PerguntaQuestionarioCriancasComMaisDoisAnosThrift();
     //private PerguntaQuestionarioCriancasComMaisDoisAnosThrift instance; 
@@ -56,8 +55,10 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
     public Iterator<RespostaMultiplaEscolhaEnum> getRespostaMultiplaEscolhaIterator() {
         List<RespostaMultiplaEscolhaEnum> listaRespostaMultipla = new LinkedList<>();
         instance.getRespostaMultiplaEscolhaIterator().forEachRemaining((t)->{
+            
             //Não há solução para Enum? não tem como instanciar 
             //listaRespostaMultipla.add(new RespostaMultiplaEscolhaEnum(t));
+            
         });
         return listaRespostaMultipla.iterator();
     }

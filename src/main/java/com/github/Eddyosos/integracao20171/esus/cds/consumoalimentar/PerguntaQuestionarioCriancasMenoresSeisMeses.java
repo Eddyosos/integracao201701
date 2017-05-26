@@ -5,6 +5,7 @@ import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.Pergunt
 import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.RespostaUnicaEscolhaEnumThrift;
 
 public class PerguntaQuestionarioCriancasMenoresSeisMeses {
+    
     PerguntaQuestionarioCriancasMenoresSeisMesesThrift instance = new PerguntaQuestionarioCriancasMenoresSeisMesesThrift();
 
     protected PerguntaQuestionarioCriancasMenoresSeisMeses(PerguntaQuestionarioCriancasMenoresSeisMesesThrift t) {
@@ -15,6 +16,7 @@ public class PerguntaQuestionarioCriancasMenoresSeisMeses {
         return instance;
     }
 
+    
     public PerguntaQuestionarioCriancasMenoresSeisMeses deepCopy() {
         return new PerguntaQuestionarioCriancasMenoresSeisMeses(instance.deepCopy());
     }
