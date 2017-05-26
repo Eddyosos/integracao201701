@@ -1,8 +1,6 @@
 package com.github.Eddyosos.integracao20171.esus.cds.consumoalimentar;
 
-import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.PerguntaCriancasDeSeisVinteTresMesesEnumThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.PerguntaQuestionarioCriancasDeSeisVinteTresMesesThrift;
-import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.RespostaUnicaEscolhaEnumThrift;
 
 public class PerguntaQuestionarioCriancasDeSeisVinteTresMeses {
     

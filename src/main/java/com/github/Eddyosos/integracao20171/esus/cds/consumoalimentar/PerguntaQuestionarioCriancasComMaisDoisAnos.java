@@ -1,9 +1,6 @@
 package com.github.Eddyosos.integracao20171.esus.cds.consumoalimentar;
 
-import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.PerguntaCriancasComMaisDoisAnosEnumThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.PerguntaQuestionarioCriancasComMaisDoisAnosThrift;
-import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.RespostaMultiplaEscolhaEnumThrift;
-import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.RespostaUnicaEscolhaEnumThrift;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
