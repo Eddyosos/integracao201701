@@ -2,7 +2,6 @@ package com.github.Eddyosos.integracao20171.esus.cds.atividadecoletiva;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadecoletiva.ParticipanteRowItemThrift;
 import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
 
 public class ParticipanteRowItem {
     ParticipanteRowItemThrift participanteRowItemThrift = new ParticipanteRowItemThrift();
