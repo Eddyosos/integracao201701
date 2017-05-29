@@ -6,8 +6,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
-
 
 public class FichaAtendimentoOdontologicoChild {
     FichaAtendimentoOdontologicoChildThrift fichaAtendimentoOdontologicoChildThrift = new FichaAtendimentoOdontologicoChildThrift();
