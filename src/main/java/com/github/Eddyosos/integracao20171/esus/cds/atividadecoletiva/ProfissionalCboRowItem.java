@@ -2,7 +2,6 @@ package com.github.Eddyosos.integracao20171.esus.cds.atividadecoletiva;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadecoletiva.ProfissionalCboRowItemThrift;
 import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
 
 public class ProfissionalCboRowItem {
     ProfissionalCboRowItemThrift profissionalCboRowItemThrift = new ProfissionalCboRowItemThrift();
