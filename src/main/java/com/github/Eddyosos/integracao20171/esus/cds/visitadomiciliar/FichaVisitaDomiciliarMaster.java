@@ -1,6 +1,5 @@
 package com.github.Eddyosos.integracao20171.esus.cds.visitadomiciliar;
 
-import br.gov.saude.esus.cds.transport.generated.thrift.common.UnicaLotacaoHeaderThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.visitadomiciliar.FichaVisitaDomiciliarChildThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.visitadomiciliar.FichaVisitaDomiciliarMasterThrift;
 import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
@@ -8,7 +7,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
 
 public class FichaVisitaDomiciliarMaster {
 
@@ -138,6 +136,7 @@ public class FichaVisitaDomiciliarMaster {
         instance.setVisitasDomiciliaresIsSet(value);
     }
 
+    @Override
     public boolean equals(Object that) {
         return instance.equals(that);
     }
@@ -146,6 +145,7 @@ public class FichaVisitaDomiciliarMaster {
         return instance.equals(that.getInstance());
     }
 
+    @Override
     public int hashCode() {
         return instance.hashCode();
     }
@@ -153,15 +153,7 @@ public class FichaVisitaDomiciliarMaster {
     public int compareTo(FichaVisitaDomiciliarMaster other) {
         return instance.compareTo(other.getInstance());
     }
-
-    public void read(TProtocol iprot) throws TException {
-        instance.read(iprot);
-    }
-
-    public void write(TProtocol oprot) throws TException {
-        instance.write(oprot);
-    }
-
+    @Override
     public String toString() {
         return instance.toString();
     }

@@ -4,7 +4,6 @@ import br.gov.saude.esus.cds.transport.generated.thrift.visitadomiciliar.FichaVi
 import java.util.Iterator;
 import java.util.List;
 import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
 
 public class FichaVisitaDomiciliarChild {
 
@@ -194,6 +193,7 @@ public class FichaVisitaDomiciliarChild {
         instance.setDesfechoIsSet(value);
     }
 
+    @Override
     public boolean equals(Object that) {
         return instance.equals(that);
     }
@@ -202,6 +202,7 @@ public class FichaVisitaDomiciliarChild {
         return instance.equals(that.getInstance());
     }
 
+    @Override
     public int hashCode() {
         return instance.hashCode();
     }
@@ -209,15 +210,8 @@ public class FichaVisitaDomiciliarChild {
     public int compareTo(FichaVisitaDomiciliarChild other) {
         return instance.compareTo(other.getInstance());
     }
-
-    public void read(TProtocol iprot) throws TException {
-        instance.read(iprot);
-    }
-
-    public void write(TProtocol oprot) throws TException {
-        instance.write(oprot);
-    }
-
+    
+    @Override
     public String toString() {
         return instance.toString();
     }
