@@ -319,14 +319,7 @@ public class EnderecoTransport {
         return instancia.compareTo(other.getInstance());
     }
 
-    public void read(TProtocol iprot) throws TException {
-        instancia.read(iprot);
-    }
-
-    public void write(TProtocol oprot) throws TException {
-        instancia.write(oprot);
-    }
-
+    @Override
     public String toString() {
         return instancia.toString();
     }

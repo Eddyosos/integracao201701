@@ -581,6 +581,7 @@ public class CidadaoTransport {
         instancia.setCboNumeroIsSet(value);
     }
 
+    @Override
     public boolean equals(Object that) {
         return instancia.equals(that);
     }
@@ -589,6 +590,7 @@ public class CidadaoTransport {
         return instancia.equals(that.getIstance());
     }
 
+    @Override
     public int hashCode() {
         return instancia.hashCode();
     }
@@ -597,6 +599,7 @@ public class CidadaoTransport {
         return instancia.compareTo(other.getIstance());
     }
 
+    @Override
     public String toString() {
         return instancia.toString();
     }
