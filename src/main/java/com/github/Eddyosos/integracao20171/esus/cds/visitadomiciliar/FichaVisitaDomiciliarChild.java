@@ -3,6 +3,8 @@ package com.github.Eddyosos.integracao20171.esus.cds.visitadomiciliar;
 import br.gov.saude.esus.cds.transport.generated.thrift.visitadomiciliar.FichaVisitaDomiciliarChildThrift;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.apache.thrift.TException;
 
 public class FichaVisitaDomiciliarChild {
@@ -210,7 +212,7 @@ public class FichaVisitaDomiciliarChild {
     public int compareTo(FichaVisitaDomiciliarChild other) {
         return instance.compareTo(other.getInstance());
     }
-    
+
     @Override
     public String toString() {
         return instance.toString();
@@ -222,6 +224,139 @@ public class FichaVisitaDomiciliarChild {
 
     protected FichaVisitaDomiciliarChildThrift getInstance() {
         return instance;
+
     }
 
+    /*
+    Valida o Field NUM_PRONTUARIO.
+    @return True - Caso não tenha nada setado dentro do field NUM_PRONTUARIO.
+    @return True - Caso tenha setado um valor em NUM_PRONTUARIO e este valor de String seja menor ou igual a 30 caracteres e contenha apenas letras e numeros
+    @return False - Caso tenha um setado valor me NUM_PRONTUARIO e este valor de String seja maior que 30 caracteres ou contenha caracteres especiais
+     */
+    private boolean validaNumProntuario() {
+        Pattern PATTERN = Pattern.compile("([a-z A-Z 0-9])+");
+        Matcher matcher = PATTERN.matcher(FichaVisitaDomiciliarChildThrift._Fields.NUM_PRONTUARIO.getFieldName());
+
+        if (instance.isSet(FichaVisitaDomiciliarChildThrift._Fields.NUM_PRONTUARIO)) {
+            if (FichaVisitaDomiciliarChildThrift._Fields.NUM_PRONTUARIO.getFieldName().length() <= 30) {
+                return matcher.find();
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
+    }
+    /*
+    Verifica se o número do cartão Sus é válido
+    @return true - Caso o Field não esteja setado
+    @return true- caso o numero inicial seja 1 ou 2 ou 7 ou 8 ou 9 e atenda aos padrões do cartao SUS
+    @return false - caso o número esteja setado e nao atenda aos padrões do cartão SUS.
+    */
+    private boolean validaNumCartaoSus() {
+        
+        String cns = FichaVisitaDomiciliarChildThrift._Fields.NUM_CARTAO_SUS.getFieldName();
+        if (instance.isSet(FichaVisitaDomiciliarChildThrift._Fields.NUM_CARTAO_SUS)) {
+            if (cns.charAt(0) == '1' || cns.charAt(0) == '2') {
+
+                if (cns.trim().length() != 15) {
+                    return (false);
+                }
+
+                float soma;
+                float resto, dv;
+                String pis = "";
+                String resultado = "";
+                pis = cns.substring(0, 11);
+
+                soma = ((Integer.parseInt(pis.substring(0, 1))) * 15)
+                        + ((Integer.valueOf(pis.substring(1, 2)).intValue()) * 14)
+                        + ((Integer.valueOf(pis.substring(2, 3)).intValue()) * 13)
+                        + ((Integer.valueOf(pis.substring(3, 4)).intValue()) * 12)
+                        + ((Integer.valueOf(pis.substring(4, 5)).intValue()) * 11)
+                        + ((Integer.valueOf(pis.substring(5, 6)).intValue()) * 10)
+                        + ((Integer.valueOf(pis.substring(6, 7)).intValue()) * 9)
+                        + ((Integer.valueOf(pis.substring(7, 8)).intValue()) * 8)
+                        + ((Integer.valueOf(pis.substring(8, 9)).intValue()) * 7)
+                        + ((Integer.valueOf(pis.substring(9, 10)).intValue()) * 6)
+                        + ((Integer.valueOf(pis.substring(10, 11)).intValue()) * 5);
+
+                resto = soma % 11;
+                dv = 11 - resto;
+
+                if (dv == 11) {
+                    dv = 0;
+                }
+
+                if (dv == 10) {
+                    soma = ((Integer.valueOf(pis.substring(0, 1)).intValue()) * 15)
+                            + ((Integer.valueOf(pis.substring(1, 2)).intValue()) * 14)
+                            + ((Integer.valueOf(pis.substring(2, 3)).intValue()) * 13)
+                            + ((Integer.valueOf(pis.substring(3, 4)).intValue()) * 12)
+                            + ((Integer.valueOf(pis.substring(4, 5)).intValue()) * 11)
+                            + ((Integer.valueOf(pis.substring(5, 6)).intValue()) * 10)
+                            + ((Integer.valueOf(pis.substring(6, 7)).intValue()) * 9)
+                            + ((Integer.valueOf(pis.substring(7, 8)).intValue()) * 8)
+                            + ((Integer.valueOf(pis.substring(8, 9)).intValue()) * 7)
+                            + ((Integer.valueOf(pis.substring(9, 10)).intValue()) * 6)
+                            + ((Integer.valueOf(pis.substring(10, 11)).intValue()) * 5) + 2;
+
+                    resto = soma % 11;
+                    dv = 11 - resto;
+                    resultado = pis + "001" + String.valueOf((int) dv);
+                } else {
+                    resultado = pis + "000" + String.valueOf((int) dv);
+                }
+
+                if (!cns.equals(resultado)) {
+                    return (false);
+                } else {
+                    return (true);
+                }
+            }
+            else if (cns.charAt(0) == '7' || cns.charAt(0) == '8' || cns.charAt(0) == '9') {
+                if (cns.trim().length() != 15) {
+                    return (false);
+                }
+
+                float dv;
+                float resto, soma;
+
+                soma = ((Integer.valueOf(cns.substring(0, 1)).intValue()) * 15)
+                        + ((Integer.valueOf(cns.substring(1, 2)).intValue()) * 14)
+                        + ((Integer.valueOf(cns.substring(2, 3)).intValue()) * 13)
+                        + ((Integer.valueOf(cns.substring(3, 4)).intValue()) * 12)
+                        + ((Integer.valueOf(cns.substring(4, 5)).intValue()) * 11)
+                        + ((Integer.valueOf(cns.substring(5, 6)).intValue()) * 10)
+                        + ((Integer.valueOf(cns.substring(6, 7)).intValue()) * 9)
+                        + ((Integer.valueOf(cns.substring(7, 8)).intValue()) * 8)
+                        + ((Integer.valueOf(cns.substring(8, 9)).intValue()) * 7)
+                        + ((Integer.valueOf(cns.substring(9, 10)).intValue()) * 6)
+                        + ((Integer.valueOf(cns.substring(10, 11)).intValue()) * 5)
+                        + ((Integer.valueOf(cns.substring(11, 12)).intValue()) * 4)
+                        + ((Integer.valueOf(cns.substring(12, 13)).intValue()) * 3)
+                        + ((Integer.valueOf(cns.substring(13, 14)).intValue()) * 2)
+                        + ((Integer.valueOf(cns.substring(14, 15)).intValue()) * 1);
+
+                resto = soma % 11;
+
+                if (resto != 0) {
+                    return (false);
+                } else {
+                    return (true);
+                }
+            }
+            else return false;
+
+        }
+        
+        return true;
+
+    }
+
+
+    
+
 }
+
+
