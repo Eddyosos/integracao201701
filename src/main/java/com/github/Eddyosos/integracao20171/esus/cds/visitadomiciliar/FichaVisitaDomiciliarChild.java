@@ -1,5 +1,6 @@
 package com.github.Eddyosos.integracao20171.esus.cds.visitadomiciliar;
 
+import br.gov.saude.esus.cds.transport.generated.thrift.common.UnicaLotacaoHeaderThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.visitadomiciliar.FichaVisitaDomiciliarChildThrift;
 import java.util.Iterator;
 import java.util.List;
@@ -226,6 +227,19 @@ public class FichaVisitaDomiciliarChild {
         return instance;
 
     }
+    /*
+    Valida o field TURNO
+    @return true caso nenhuma valor esteja setado, pois nao é um campo obrigatorio
+    @return true caso o valor de turno esteja setado e seja igual a 1, 2 ou 3
+    @return false caso o valor de turno esteja setado e seja diferente de 1,2 ou 3.
+    */
+    private boolean validaTurno(){
+        if(getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.TURNO)){
+            return FichaVisitaDomiciliarChildThrift._Fields.TURNO.equals(1) | FichaVisitaDomiciliarChildThrift._Fields.TURNO.equals(2)  | FichaVisitaDomiciliarChildThrift._Fields.TURNO.equals(3);
+        }else{
+            return true;
+        }
+    }
 
     /*
     Valida o Field NUM_PRONTUARIO.
@@ -235,10 +249,10 @@ public class FichaVisitaDomiciliarChild {
      */
     private boolean validaNumProntuario() {
         Pattern PATTERN = Pattern.compile("([a-z A-Z 0-9])+");
-        Matcher matcher = PATTERN.matcher(FichaVisitaDomiciliarChildThrift._Fields.NUM_PRONTUARIO.getFieldName());
+        Matcher matcher = PATTERN.matcher(FichaVisitaDomiciliarChildThrift._Fields.NUM_PRONTUARIO.toString());
 
-        if (instance.isSet(FichaVisitaDomiciliarChildThrift._Fields.NUM_PRONTUARIO)) {
-            if (FichaVisitaDomiciliarChildThrift._Fields.NUM_PRONTUARIO.getFieldName().length() <= 30) {
+        if (getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.NUM_PRONTUARIO)) {
+            if (FichaVisitaDomiciliarChildThrift._Fields.NUM_PRONTUARIO.toString().length() <= 30) {
                 return matcher.find();
             } else {
                 return false;
@@ -255,8 +269,8 @@ public class FichaVisitaDomiciliarChild {
     */
     private boolean validaNumCartaoSus() {
         
-        String cns = FichaVisitaDomiciliarChildThrift._Fields.NUM_CARTAO_SUS.getFieldName();
-        if (instance.isSet(FichaVisitaDomiciliarChildThrift._Fields.NUM_CARTAO_SUS)) {
+        String cns = FichaVisitaDomiciliarChildThrift._Fields.NUM_CARTAO_SUS.toString();
+        if (getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.NUM_CARTAO_SUS)) {
             if (cns.charAt(0) == '1' || cns.charAt(0) == '2') {
 
                 if (cns.trim().length() != 15) {
@@ -347,11 +361,40 @@ public class FichaVisitaDomiciliarChild {
                 }
             }
             else return false;
-
+        } else {
         }
         
         return true;
 
+    }
+    private boolean validaDtNascimento(){
+        if(getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.DT_NASCIMENTO)){
+            long dtAtendimento =  Long.parseLong(UnicaLotacaoHeaderThrift._Fields.DATA_ATENDIMENTO.toString());
+            
+       }
+        else return false;
+    }
+    /*
+    Valida o field SEXO
+    @return true caso o valor esteja setado e seja igual a 0 ou 1
+    @return false caso nenhum valor esteja setado
+    @return false caso o valor esteja setado e seja diferente de 0 ou 1
+    */
+    private boolean validaSexo(){
+        if(getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.SEXO)){
+            return FichaVisitaDomiciliarChildThrift._Fields.SEXO.equals(0) | FichaVisitaDomiciliarChildThrift._Fields.SEXO.equals(1);
+        }
+        else return false;
+    }
+    /*
+    
+    */
+    private boolean validaStatusVisitaCompartilhada(){
+        if(getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.STATUS_VISITA_COMPARTILHADA_OUTRO_PROFISSIONAL)){
+            return FichaVisitaDomiciliarChildThrift._Fields.STATUS_VISITA_COMPARTILHADA_OUTRO_PROFISSIONAL.equals(true) | FichaVisitaDomiciliarChildThrift._Fields.STATUS_VISITA_COMPARTILHADA_OUTRO_PROFISSIONAL.equals(false);
+        }
+        else return true;
+        
     }
 
 
