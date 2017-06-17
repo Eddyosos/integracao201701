@@ -80,5 +80,14 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
         return instance.compareTo(other.instance);
     }
 
+     /**
+     * Metodo validade cria os metodos que fazem as validações
+     * Chama todos os metodos que fazem falidações
+     * @return Todos os metodos de validação
+     */
+    public boolean validades(){
+        return false;  
+    }
+
 }
 
