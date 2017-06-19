@@ -235,7 +235,7 @@ public class CadastroIndividual {
     public boolean validateCondicoesDeSaude() {
     	if (instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica() && instance.isSetCondicoesDeSaude())
     		return false;
-    	return true;
+    	return true; //TODO
     }
     
     /**
@@ -246,7 +246,7 @@ public class CadastroIndividual {
     public boolean validateEmSituacaoDeRua() {
     	if (instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica() && instance.isSetEmSituacaoDeRua())
     		return false;
-    	return true;
+    	return true; //TODO
     }
     
     /**
@@ -266,7 +266,7 @@ public class CadastroIndividual {
     public boolean validateIndetificacaoUsuarioCidadao() {
     	if (!instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica() && instance.isSetIdentificacaoUsuarioCidadao())
     		return false;
-    	return true;
+    	return true; //TODO
     }
     
     /**
@@ -277,7 +277,7 @@ public class CadastroIndividual {
     public boolean validateInformacoesSocioDemografica() {
     	if (instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica() && instance.isSetInformacoesSocioDemograficas())
     		return false;
-    	return true;
+    	return true; //TODO
     }
     
     /**
@@ -317,12 +317,12 @@ public class CadastroIndividual {
     }
     
     /**
-     * Valida o header
+     * Valida o saidaCidadaoCadastro
      * @return true se for válido
      * @return false se for inválido
      */
-    public boolean validateHeaderTransport() {
-    	return false;
+    public boolean validateSaidaCidadaoCadastro() {
+    	return true; //TODO Nao encontrei a SaidaCidadaoCadastro
     }
     
     /**
@@ -331,7 +331,7 @@ public class CadastroIndividual {
      * @return false se for inválido
      */
     public boolean validateHeaderTransport() {
-    	return false;
+    	return true; //TODO Não encontrei nem a headerTransport nem a UnicaLotacaoHeader
     }
 }
 
