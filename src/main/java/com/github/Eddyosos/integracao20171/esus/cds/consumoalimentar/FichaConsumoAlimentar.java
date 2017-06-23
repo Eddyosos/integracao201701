@@ -361,6 +361,10 @@ public class FichaConsumoAlimentar {
         instance.unsetTpCdsOrigem();
     }
 
+    /**
+     * Tipo de origem dos dados do registro.
+     * @return Tipo de origem dos dados do registro.
+     */
     public boolean isSetTpCdsOrigem() {
         return instance.isSetTpCdsOrigem();
     }
@@ -379,7 +383,7 @@ public class FichaConsumoAlimentar {
 
     /**
      * Metodo validade cria os metodos que fazem as validações
-     * Chama todos os metodos que fazem falidações
+     * Chama todos os metodos que fazem validações
      * @return Todos os metodos de validação
      */
     public boolean validades(){
@@ -459,7 +463,6 @@ public class FichaConsumoAlimentar {
      * Valida Código se for 0 ou 1 e não pode ser  nulo
      */
     public boolean validaSexo(){
-        
         return instance.isSetSexo() &&
                instance.getSexo() >=0 &&
                instance.getSexo() <=1;
@@ -477,6 +480,7 @@ public class FichaConsumoAlimentar {
      * Valida Questionário de cidadãos menores de seis meses de idade
      * @return Marcadores referentes aos cidadãos menores de seis meses de idade
      * E validação de data de atendimento
+     * Se dataNascimento < 6 meses a partir da dataAtendimento.
      */
     public boolean validaPerguntasQuestionarioCriancasMenoresSeisMeses(){
         return instance.isSetPerguntasQuestionarioCriancasMenoresSeisMeses() &&
@@ -486,6 +490,7 @@ public class FichaConsumoAlimentar {
     /**
      * Valida cidadãos que tem entre seis e vinte e três meses de idade.
      * @return Marcadores referentes aos cidadãos que tem entre seis e vinte e três meses de idade.
+     * Se dataNascimento >= 6 meses e <= 23 meses a partir da dataAtendimento.
      */
     public boolean validaPerguntasQuestionarioCriancasDeSeisVinteTresMeses(){
         return instance.isSetPerguntasQuestionarioCriancasDeSeisVinteTresMeses() &&
@@ -495,6 +500,7 @@ public class FichaConsumoAlimentar {
     /**
      * Valida cidadãos que tem vinte e quatro meses ou mais.
      * @return Marcadores referentes aos cidadãos que tem vinte e quatro meses ou mais.
+     * E se dataNascimento >= 24 meses a partir da dataAtendimento.
      */
     public boolean validaPerguntasQuestionarioCriancasComMaisDoisAnos(){
         return instance.isSetPerguntasQuestionarioCriancasComMaisDoisAnos() &&
@@ -518,7 +524,9 @@ public class FichaConsumoAlimentar {
      * @return Tipo de origem dos dados do registro.
      */
     public boolean validaTpCDsOrigem(){
-        return instance.isSetTpCdsOrigem();
+        int tpCdsOrigem = instance.getTpCdsOrigem();
+        return instance.isSetTpCdsOrigem() &&
+                (tpCdsOrigem ==1);
     }
     
 }
