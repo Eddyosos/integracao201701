@@ -851,12 +851,107 @@ public class FichaAtendimentoDomiciliarChild {
     }
     
     public boolean validateDataNascimento(){
-        return instancia.isSetDataNascimento() && 
+        return false; //-********************************************************************************* 
     }
-    
+    /**
+     * Valida o sexo.
+     * @return True caso o sexo esteja de acordo com as regras.
+     */
     public boolean validateSexo(){
         return instancia.isSetSexo();
     }
+    
+    /**
+     * Valida o Local de atendimento.
+     * @return True caso esteja de acordo com as regras.
+     */
+    public boolean validateLocalDeAtendimento(){
+        return instancia.isSetLocalAtendimento();
+    }
+    
+    /**
+     * Valida a modalidade AD do cidadão.
+     * 
+     * Regras: Apenas as opções 1, 2 e 3 são aceitas.
+     * 
+     * @return True caso esteja de acordo com as regras.
+     */
+    public boolean validateAtencaoDomiciliarModalidade(){
+        return instancia.isSetAtencaoDomiciliarModalidade() && 
+                instancia.getAtencaoDomiciliarModalidade() > 0 &&
+                instancia.getAtencaoDomiciliarModalidade() < 4;
+    }
+    
+    /**
+     * Valida o tipo de atendimento.
+     * 
+     * Regras: Apenas as opções 7 e 8 são aceitas.
+     * 
+     * @return True caso esteja de acordo com as regras.
+     */
+    public boolean validateTipoAtendimento(){
+        return instancia.isSetTipoAtendimento() &&
+                instancia.getTipoAtendimento() > 6 &&
+                instancia.getTipoAtendimento() < 9;
+    }
+    
+    /**
+     * Valida os marcadores de situações presentes.
+     * 
+     * Regra: Máximo 24 elementos.
+     * 
+     * @return True caso esteja de acordo com as regras.
+     */
+    public boolean validateSituacoesPresentes(){
+        return ! instancia.isSetSituacoesPresentes() ||
+                instancia.getSituacoesPresentesSize() < 25;
+    }
+    
+    /**
+     * Valida os procedimentos.
+     * 
+     * Regra: Máximo 21 elementos.
+     * 
+     * @return True caso esteja de acordo com as regras.
+     */
+    public boolean validateProcedimentos(){
+        return ! instancia.isSetProcedimentos() ||
+                instancia.getProcedimentosSize() < 22;
+    }
+    
+    /**
+     * Valida os outros procedimentos.
+     * 
+     * Regra: Máximo 4 elementos.
+     * Regra: Não podem conter procedimentos repetidos.
+     * Regra: Não podem ser iguais aos procedimentos.
+     * 
+     * @return True caso esteja de acordo com as regras.
+     */
+    public boolean validateOutrosProcedimentos(){
+        if( instancia.isSetOutrosProcedimentos()){
+            if(instancia.getOutrosProcedimentosSize() < 5){
+               // instancia.getOutrosProcedimentosIterator().forEachRemaining();//******************************
+            }
+        }
+        
+        return true;
+    }
+    
+    /**
+     * Valida o desfecho do atendimento do cidadão.
+     * 
+     * Regras: Não podem conter as opções 7 ou 8.
+     * 
+     * @return True caso esteja de acordo com as regras.
+     */
+    public boolean validateCondutaDesfecho(){
+        return ! instancia.isSetCondutaDesfecho() || 
+                (instancia.getCondutaDesfecho() > 6 &&
+                instancia.getCondutaDesfecho() < 9);
+    }
+    
+    
 
 }
 

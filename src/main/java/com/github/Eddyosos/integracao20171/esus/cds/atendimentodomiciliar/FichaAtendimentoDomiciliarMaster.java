@@ -6,8 +6,6 @@ import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.thrift.TException;
 
 public class FichaAtendimentoDomiciliarMaster {
@@ -251,6 +249,10 @@ public class FichaAtendimentoDomiciliarMaster {
         return instancia.toString();
     }
 
+    /**
+     * Verifica se o conteudo da instancia está consistente.
+     * @return True caso esteja valido.
+     */
     public boolean validate() {
         try {
             instancia.validate();
