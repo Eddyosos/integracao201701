@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class FichaConsumoAlimentar {
+    
     private FichaConsumoAlimentarThrift instance = new FichaConsumoAlimentarThrift();
     
     protected FichaConsumoAlimentar(FichaConsumoAlimentarThrift instance){
@@ -441,6 +442,7 @@ public class FichaConsumoAlimentar {
      * Valida: Não pode ser posterior a dataAtendimento e anterior a 130 anos a partir da dataAtendimento.
      */
     public boolean validaDataNascimento(){
+        
         if(!instance.isSetDataNascimento()) return false;
         long dataNascimento = instance.getDataNascimento();
         long dataAtendimento = instance.getHeaderTransport().getDataAtendimento();

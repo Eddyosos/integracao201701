@@ -5,7 +5,9 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+
 public class PerguntaQuestionarioCriancasComMaisDoisAnos {
+    
     private PerguntaQuestionarioCriancasComMaisDoisAnosThrift instance = new PerguntaQuestionarioCriancasComMaisDoisAnosThrift();
     //private PerguntaQuestionarioCriancasComMaisDoisAnosThrift instance; 
 
@@ -25,6 +27,11 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
         instance.unsetPergunta();
     }
 
+    /**
+     * Pergunta do questionário de cidadãos que tem vinte e quatro meses ou mais.
+     * @return questionário de cidadãos que tem vinte e quatro meses ou mais.
+     * Obrigatório caso a dataNascimento seja mais que 24 meses anterior à DataAtendimento
+     */
     public boolean isSetPergunta() {
         return instance.isSetPergunta();
     }
@@ -37,6 +44,11 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
         instance.unsetRespostaUnicaEscolha();
     }
 
+    /**
+     * Resposta referente a pergunta do registro.
+     * @return Resposta referente a pergunta do registro.
+     * Obrigatório caso a dataNascimento seja mais que 24 meses anterior à DataAtendimento.
+     */
     public boolean isSetRespostaUnicaEscolha() {
         return instance.isSetRespostaUnicaEscolha();
     }
@@ -64,6 +76,12 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
         instance.unsetRespostaMultiplaEscolha();
     }
 
+    /**
+     * Resposta referente à pergunta do registro acima.
+     * @return Resposta referente à pergunta do registro acima.
+     * Deve respeitar as regras das respostas referentes à pergunta
+     * Pode ser preenchido somente se a pergunta for 12L.
+     */
     public boolean isSetRespostaMultiplaEscolha() {
         return instance.isSetRespostaMultiplaEscolha();
     }
@@ -82,12 +100,45 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
 
      /**
      * Metodo validade cria os metodos que fazem as validações
-     * Chama todos os metodos que fazem falidações
+     * Chama todos os metodos que fazem validações 
      * @return Todos os metodos de validação
+     * Valida validaPergunta(), validaRespostaUnicaEscolha() e validaRespostaMultiplaEscolha()
      */
     public boolean validades(){
-        return false;  
+        return validaPergunta()&&
+                validaRespostaUnicaEscolha()&&
+                validaRespostaMultiplaEscolha();  
     }
 
+    /**
+     * Valida Pergunta do questionário de cidadãos que tem vinte e quatro meses ou mais.
+     * @return questionário de cidadãos que tem vinte e quatro meses ou mais
+     * É condicional
+     * Obrigatório caso a dataNascimento seja mais que 24 meses anterior à DataAtendimento
+     */
+    public boolean validaPergunta(){
+        return instance.isSetPergunta();  
+    }
+    
+    /**
+     * Valida Resposta referente a pergunta do Registro
+     * @return Resposta referente a pergunta do registro
+     * É Condiconal
+     * Obrigatório caso a dataNascimento seja mais que 24 meses anterior à DataAtendimento.
+     */
+    public boolean validaRespostaUnicaEscolha(){
+        return instance.isSetRespostaUnicaEscolha();
+    }
+    
+    /**
+     * Valida Resposta referente à pergunta do registro acima
+     * @return Resposta referente à pergunta do registro acima
+     * É Condicional
+     * Deve respeitar as regras das respostas referentes à pergunta .
+     * Pode ser preenchido somente se a pergunta for 12L.
+     */
+    public boolean validaRespostaMultiplaEscolha(){
+        return instance.isSetRespostaMultiplaEscolha();
+    }
+    
 }
-
