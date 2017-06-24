@@ -10,16 +10,27 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class FichaConsumoAlimentar {
+    
+    /**
+     * Instancia para encapsulamento do Thrift
+     */
     private FichaConsumoAlimentarThrift instance = new FichaConsumoAlimentarThrift();
     
     protected FichaConsumoAlimentar(FichaConsumoAlimentarThrift instance){
         this.instance = instance;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public FichaConsumoAlimentar deepCopy() {
             return new FichaConsumoAlimentar(instance.deepCopy());
     }
-
+    /**
+     * Profissional que realizou a visita.
+     * @return o profissional
+     */
     public UnicaLotacaoHeader getHeaderTransport() {
         return new UnicaLotacaoHeader(instance.getHeaderTransport());
     }
@@ -28,18 +39,35 @@ public class FichaConsumoAlimentar {
         instance.unsetHeaderTransport();
     }
 
+     /**
+     * Profissional que realizou a visita.
+     * @return o profissional
+     */
     public boolean isSetHeaderTransport() {
         return instance.isSetHeaderTransport();
     }
 
+    /**
+     * Profissional que realizou a visita.
+     * UnicaLotacaoHeader
+     * @param value 
+     */
     public void setHeaderTransportIsSet(boolean value) {
         instance.setHeaderTransportIsSet(value);
     }
-
+    /**
+     * CNS do cidadão.
+     * @return CNS
+     */
     public String getNumeroCartaoSus() {
         return instance.getNumeroCartaoSus();
     }
 
+    /**
+     * CNS do cidadão. 
+     * @param numeroCartaoSus 
+     * CNS válido de acordo com o algoritmo.
+     */
     public void setNumeroCartaoSus(String numeroCartaoSus) {
         instance.setNumeroCartaoSus(numeroCartaoSus);
     }
@@ -51,11 +79,19 @@ public class FichaConsumoAlimentar {
     public void setNumeroCartaoSusIsSet(boolean value) {
         instance.setNumeroCartaoSusIsSet(value);
     }
-
+    
+    /**
+     * Nome do cidadão
+     * @return Nome do cidadão
+     */
     public String getIdentificacaoUsuario() {
         return instance.getIdentificacaoUsuario();
     }
 
+    /**
+     * Nome do cidadão
+     * @param identificacaoUsuario 
+     */
     public void setIdentificacaoUsuario(String identificacaoUsuario) {
         instance.setIdentificacaoUsuario(identificacaoUsuario);
     }
@@ -64,6 +100,10 @@ public class FichaConsumoAlimentar {
         instance.unsetIdentificacaoUsuario();
     }
 
+    /**
+     * Nome do cidadão
+     * @return Nome do cidadão
+     */
     public boolean isSetIdentificacaoUsuario() {
         return instance.isSetIdentificacaoUsuario();
     }
@@ -71,11 +111,19 @@ public class FichaConsumoAlimentar {
     public void setIdentificacaoUsuarioIsSet(boolean value) {
         instance.setIdentificacaoUsuarioIsSet(value);
     }
-
+    
+    /**
+     * Data de nascimento do cidadão no formato epoch time.
+     * @return Data de nascimento do cidadão
+     */
     public long getDataNascimento() {
         return instance.getDataNascimento();
     }
 
+    /**
+     * Data de nascimento do cidadão no formato epoch time
+     * @param dataNascimento 
+     */
     public void setDataNascimento(long dataNascimento) {
         instance.setDataNascimento(dataNascimento);
     }
@@ -83,19 +131,36 @@ public class FichaConsumoAlimentar {
     public void unsetDataNascimento() {
         instance.unsetDataNascimento();
     }
-
+    
+    /**
+     * Data de nascimento do cidadão no formato epoch time.
+     * @return Data de nascimento do cidadão
+     */
     public boolean isSetDataNascimento() {
         return instance.isSetDataNascimento();
     }
 
+    /**
+     * Data de nascimento do cidadão no formato epoch time.
+     * @param value 
+     */
     public void setDataNascimentoIsSet(boolean value) {
         instance.setDataNascimentoIsSet(value);
     }
-
+    /**
+     * Código do sexo do cidadão.
+     * @return Código do sexo do cidadão.
+     */
     public long getSexo() {
         return instance.getSexo();
     }
 
+    /**
+     * Código do sexo do cidadão 
+     * @param sexo 
+     * 0 Masculino	
+     * 1 Feminino	
+     */
     public void setSexo(long sexo) {
         instance.setSexo(sexo);
     }
@@ -104,6 +169,10 @@ public class FichaConsumoAlimentar {
         instance.unsetSexo();
     }
 
+    /**
+     * Código do sexo do cidadão 
+     * @return Sexo
+     */
     public boolean isSetSexo() {
         return instance.isSetSexo();
     }
@@ -112,10 +181,18 @@ public class FichaConsumoAlimentar {
         instance.setSexoIsSet(value);
     }
 
+    /**
+     * Código do local onde o atendimento foi realizado.
+     * @return Código do local de atendimento
+     */
     public long getLocalAtendimento() {
         return instance.getLocalAtendimento();
     }
 
+    /**
+     * Código do local onde o atendimento foi realizado
+     * @param localAtendimento 
+     */
     public void setLocalAtendimento(long localAtendimento) {
         instance.setLocalAtendimento(localAtendimento);
     }
@@ -132,6 +209,10 @@ public class FichaConsumoAlimentar {
         instance.setLocalAtendimentoIsSet(value);
     }
 
+    /**
+     * Marcadores referentes aos cidadãos menores de seis meses de idade
+     * @return PerguntasQuestionarioCriancasMenoresSeisMesesSize
+     */
     public int getPerguntasQuestionarioCriancasMenoresSeisMesesSize() {
         return instance.getPerguntasQuestionarioCriancasMenoresSeisMesesSize();
     }
@@ -150,6 +231,10 @@ public class FichaConsumoAlimentar {
         return listaPerguntaQuestionario;
     }
 
+    /**
+     * Marcadores referentes aos cidadãos menores de seis meses de idade
+     * @param perguntasQuestionarioCriancasMenoresSeisMeses 
+     */
     public void setPerguntasQuestionarioCriancasMenoresSeisMeses(List<PerguntaQuestionarioCriancasMenoresSeisMeses> perguntasQuestionarioCriancasMenoresSeisMeses) {
         List<PerguntaQuestionarioCriancasMenoresSeisMesesThrift> listaQuestionario = new LinkedList<>();
         
@@ -163,18 +248,34 @@ public class FichaConsumoAlimentar {
         instance.unsetPerguntasQuestionarioCriancasMenoresSeisMeses();
     }
 
+    /**
+     * Marcadores referentes aos cidadãos menores de seis meses de idade
+     * @return Marcadores referentes aos cidadãos menores de seis meses de idade
+     */
     public boolean isSetPerguntasQuestionarioCriancasMenoresSeisMeses() {
         return instance.isSetPerguntasQuestionarioCriancasMenoresSeisMeses();
     }
 
+    /**
+     * Marcadores referentes aos cidadãos menores de seis meses de idade
+     * @param value 
+     */
     public void setPerguntasQuestionarioCriancasMenoresSeisMesesIsSet(boolean value) {
         instance.setPerguntasQuestionarioCriancasMenoresSeisMesesIsSet(value);
     }
 
+     /**
+     * Marcadores referentes aos cidadãos menores de seis meses de idade
+     * @param value 
+     */
     public int getPerguntasQuestionarioCriancasDeSeisVinteTresMesesSize() {
         return instance.getPerguntasQuestionarioCriancasDeSeisVinteTresMesesSize();
     }
 
+    /**
+     * Marcadores referentes aos cidadãos que tem entre seis e vinte e três meses de idade.
+     * @return Marcadores referentes aos cidadãos que tem entre seis e vinte e três meses de idade.
+     */
     public Iterator<PerguntaQuestionarioCriancasDeSeisVinteTresMeses> getPerguntasQuestionarioCriancasDeSeisVinteTresMesesIterator() {
         
         List<PerguntaQuestionarioCriancasDeSeisVinteTresMeses> listaPerguntaQuestionario = new LinkedList<>();
@@ -197,6 +298,10 @@ public class FichaConsumoAlimentar {
         return listaPerguntaQuestionario;
     }
 
+    /**
+     * Marcadores referentes aos cidadãos que tem entre seis e vinte e três meses de idade.
+     * @param perguntasQuestionarioCriancasDeSeisVinteTresMeses 
+     */
     public void setPerguntasQuestionarioCriancasDeSeisVinteTresMeses(List<PerguntaQuestionarioCriancasDeSeisVinteTresMeses> perguntasQuestionarioCriancasDeSeisVinteTresMeses) {
        List<PerguntaQuestionarioCriancasDeSeisVinteTresMesesThrift>listaQuestionario = new LinkedList<>();
        
@@ -218,10 +323,15 @@ public class FichaConsumoAlimentar {
         instance.setPerguntasQuestionarioCriancasDeSeisVinteTresMesesIsSet(value);
     }
 
+    
     public int getPerguntasQuestionarioCriancasComMaisDoisAnosSize() {
         return instance.getPerguntasQuestionarioCriancasComMaisDoisAnosSize();
     }
 
+    /**
+     * Marcadores referentes aos cidadãos que tem vinte e quatro meses ou mais.
+     * @return Marcadores referentes aos cidadãos que tem vinte e quatro meses ou mais.
+     */
     public Iterator<PerguntaQuestionarioCriancasComMaisDoisAnos> getPerguntasQuestionarioCriancasComMaisDoisAnosIterator() {
         List<PerguntaQuestionarioCriancasComMaisDoisAnos> listaPerguntaQuestionario = new LinkedList<>();
         instance.getPerguntasQuestionarioCriancasComMaisDoisAnosIterator().forEachRemaining((t)->{
@@ -234,6 +344,10 @@ public class FichaConsumoAlimentar {
         instance.addToPerguntasQuestionarioCriancasComMaisDoisAnos(elem.getInstance());
     }
 
+    /**
+     * Marcadores referentes aos cidadãos que tem vinte e quatro meses ou mais.
+     * @return List
+     */
     public List<PerguntaQuestionarioCriancasComMaisDoisAnos> getPerguntasQuestionarioCriancasComMaisDoisAnos() {
         List<PerguntaQuestionarioCriancasComMaisDoisAnos> listaPerguntaQuestionario = new LinkedList<>();
         instance.getPerguntasQuestionarioCriancasComMaisDoisAnos().forEach((t)->{
@@ -242,6 +356,10 @@ public class FichaConsumoAlimentar {
         return listaPerguntaQuestionario;
     }
 
+    /**
+     * Marcadores referentes aos cidadãos que tem vinte e quatro meses ou mais.
+     * @param perguntasQuestionarioCriancasComMaisDoisAnos 
+     */
     public void setPerguntasQuestionarioCriancasComMaisDoisAnos(List<PerguntaQuestionarioCriancasComMaisDoisAnos> perguntasQuestionarioCriancasComMaisDoisAnos) {
         List<PerguntaQuestionarioCriancasComMaisDoisAnosThrift> listaPerguntaQuestionario = new LinkedList<>();
         
@@ -256,6 +374,10 @@ public class FichaConsumoAlimentar {
         instance.unsetPerguntasQuestionarioCriancasComMaisDoisAnos();
     }
 
+    /**
+     * Marcadores referentes aos cidadãos que tem vinte e quatro meses ou mais.
+     * @return Marcadores referentes aos cidadãos que tem vinte e quatro meses ou mais.
+     */
     public boolean isSetPerguntasQuestionarioCriancasComMaisDoisAnos() {
         return instance.isSetPerguntasQuestionarioCriancasComMaisDoisAnos();
     }
@@ -264,10 +386,18 @@ public class FichaConsumoAlimentar {
         instance.setPerguntasQuestionarioCriancasComMaisDoisAnosIsSet(value);
     }
 
+    /**
+     * Código UUID para identificar a ficha na base de dados nacional.
+     * @return Código UUID para identificar a ficha na base de dados nacional.
+     */
     public String getUuidFicha() {
         return instance.getUuidFicha();
     }
 
+    /**
+     * 
+     * @param uuidFicha 
+     */
     public void setUuidFicha(String uuidFicha) {
         instance.setUuidFicha(uuidFicha);
     }
@@ -276,6 +406,10 @@ public class FichaConsumoAlimentar {
         instance.unsetUuidFicha();
     }
 
+    /**
+     * Código UUID para identificar a ficha na base de dados nacional.
+     * @return 
+     */
     public boolean isSetUuidFicha() {
         return instance.isSetUuidFicha();
     }
@@ -284,6 +418,10 @@ public class FichaConsumoAlimentar {
         instance.setUuidFichaIsSet(value);
     }
 
+    /**
+     * Tipo de origem dos dados do registro.
+     * @return Tipo de origem dos dados do registro.
+     */
     public int getTpCdsOrigem() {
         return instance.getTpCdsOrigem();
     }
@@ -296,6 +434,10 @@ public class FichaConsumoAlimentar {
         instance.unsetTpCdsOrigem();
     }
 
+    /**
+     * Tipo de origem dos dados do registro.
+     * @return Tipo de origem dos dados do registro.
+     */
     public boolean isSetTpCdsOrigem() {
         return instance.isSetTpCdsOrigem();
     }
@@ -312,5 +454,174 @@ public class FichaConsumoAlimentar {
         return instance.compareTo(other.instance);
     }   
 
+    /**
+     * Metodo validade cria os metodos que fazem as validações
+     * Chama todos os metodos que fazem validações
+     * @return Todos os metodos de validação
+     */
+    public boolean validades(){
+        return validaHeaderTransport() &&
+                validaNumeroCartaoSus() &&
+                validaNumeroCartaoSus() &&
+                validaIdentificacaoUsuario() &&
+                validaDataNascimento() && 
+                validaSexo() &&
+                validaLocalAtendimento() &&
+                validaPerguntasQuestionarioCriancasMenoresSeisMeses()&&
+                validaPerguntasQuestionarioCriancasDeSeisVinteTresMeses() &&
+                validaPerguntasQuestionarioCriancasComMaisDoisAnos() && 
+                validaUuidFicha() &&
+                validaTpCDsOrigem();
+    }
     
+    /**
+     * Valida profisional que realizou a visita
+     * @return profisional
+     * Não pode ser nulo
+     */
+    public boolean validaHeaderTransport(){
+        return instance.getHeaderTransport() != null;            
+    }
+    
+    /**
+     * Valida numero CNS do cidadão
+     * @return CNS
+     * Deve ter apenas 15 caracteres 
+     * CNS válido de acordo com o algoritmo.
+     */
+    public boolean validaNumeroCartaoSus(){
+        String numeroCartaoSus = instance.getNumeroCartaoSus();
+        return numeroCartaoSus != null && 
+               numeroCartaoSus.length() ==15;
+    }
+    
+    /**
+     * Valida Nome do cidadão
+     * @return Nome do cidadão 
+     * Deve ter pelo menos 5 caracteres e no maximo 100
+     */
+    public boolean validaIdentificacaoUsuario(){
+        String nomeCidadao = instance.getIdentificacaoUsuario();
+        return instance.isSetIdentificacaoUsuario() &&
+               nomeCidadao != null &&
+               (nomeCidadao.length() >= 5 &&
+               nomeCidadao.length() <=100);
+    }
+    
+    /**
+     * Valida Data de nascimento do cidadão no formato epoch time.
+     * @return Data de nascimento do cidadão no formato epoch time.
+     * Valida se o campo é null
+     * Valida: Não pode ser posterior a dataAtendimento e anterior a 130 anos a partir da dataAtendimento.
+     * Não pode ser posterior a dataAtendimento e anterior a 130 anos a partir da dataAtendimento.
+     */
+    public boolean validaDataNascimento(){
+        
+        if(!instance.isSetDataNascimento()) return false;
+        long dataNascimento = instance.getDataNascimento();
+        long dataAtendimento = instance.getHeaderTransport().getDataAtendimento();
+        if(dataNascimento > dataAtendimento) return false;
+        long idadeAoAtender = dataNascimento - dataAtendimento;
+        /**
+         * Transformando 1 ano em segundo
+         */
+        long anoEpoch = 60*60*24*365;
+        /**
+         * Descobrindo se a idade do cidadão no atendimento é maior que 130 anos
+         */
+        if(idadeAoAtender > anoEpoch*130) return false;
+        return true;   
+    }
+    
+    /**
+     * Valida Código do sexo do cidadão.
+     * @return sexo
+     * Valida Código se for 0 ou 1 e não pode ser  nulo
+     */
+    public boolean validaSexo(){
+        return instance.isSetSexo() &&
+               instance.getSexo() >=0 &&
+               instance.getSexo() <=1;
+    }
+    
+    /**
+     * Valida Código do local onde o atendimento foi realizado.
+     * @return não pode ser nulo
+     */
+    public boolean validaLocalAtendimento(){
+        return instance.isSetLocalAtendimento();
+    }
+    
+    /**
+     * Valida Questionário de cidadãos menores de seis meses de idade
+     * @return Marcadores referentes aos cidadãos menores de seis meses de idade
+     * E validação de data de atendimento
+     * Se dataNascimento < 6 meses a partir da dataAtendimento.
+     */
+    public boolean validaPerguntasQuestionarioCriancasMenoresSeisMeses(){
+        
+        long dataNascimento = instance.getDataNascimento();
+        long dataAtendimento = instance.getHeaderTransport().getDataAtendimento();
+        long anoEpoch = 60*60*24*183;
+        
+        if((dataNascimento - dataAtendimento)<anoEpoch) return true &&                                                       instance.isSetPerguntasQuestionarioCriancasMenoresSeisMeses();
+        else return false;
+    }
+    
+    /**
+     * Valida cidadãos que tem entre seis e vinte e três meses de idade.
+     * @return Marcadores referentes aos cidadãos que tem entre seis e vinte e três meses de idade.
+     * Se dataNascimento >= 6 meses e <= 23 meses a partir da dataAtendimento.
+     */
+    public boolean validaPerguntasQuestionarioCriancasDeSeisVinteTresMeses(){
+        
+        long dataNascimento = instance.getDataNascimento();
+        long dataAtendimento = instance.getHeaderTransport().getDataAtendimento();
+        long anoEpoch = 60*60*24*183;
+        long anoEpoch2 = 60*60*24*700;
+        
+        if(((dataNascimento - dataAtendimento)>= anoEpoch)&&((dataNascimento - dataAtendimento)<=anoEpoch2)) return true && 
+                instance.isSetPerguntasQuestionarioCriancasDeSeisVinteTresMeses();
+        else 
+            return false;  
+    }
+    
+    /**
+     * Valida cidadãos que tem vinte e quatro meses ou mais.
+     * @return Marcadores referentes aos cidadãos que tem vinte e quatro meses ou mais.
+     * E se dataNascimento >= 24 meses a partir da dataAtendimento.
+     */
+    public boolean validaPerguntasQuestionarioCriancasComMaisDoisAnos(){
+        
+        long dataNascimento = instance.getDataNascimento();
+        long dataAtendimento = instance.getHeaderTransport().getDataAtendimento();
+        long anoEpoch = 60*60*24*730;
+        
+        if(((dataNascimento - dataAtendimento)>= anoEpoch)) return true && 
+                instance.isSetPerguntasQuestionarioCriancasComMaisDoisAnos();
+        else 
+            return false;
+    }
+    
+    /**
+     * Valida Código UUID para identificar a ficha na base de dados nacional.
+     * @return verificação de nulo 
+     * E capo com minimo de 36 e maximo de 46 caracteres
+     */
+    public boolean validaUuidFicha(){
+        String UUID = instance.getUuidFicha();
+        return instance.isSetUuidFicha() &&
+               (UUID.length() >= 36 ||
+               UUID.length() <=44);
+    }
+    
+    /**
+     * Valida Tipo de origem dos dados do registro.
+     * @return Tipo de origem dos dados do registro.
+     */
+    public boolean validaTpCDsOrigem(){
+        int tpCdsOrigem = instance.getTpCdsOrigem();
+        return instance.isSetTpCdsOrigem() &&
+                (tpCdsOrigem ==1);
+    }   
 }
