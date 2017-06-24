@@ -4,12 +4,27 @@ import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.Pergunt
 
 public class PerguntaQuestionarioCriancasMenoresSeisMeses {
     
+    /**
+     * Instance para encapsulamento do Thrifit
+     */
     PerguntaQuestionarioCriancasMenoresSeisMesesThrift instance = new PerguntaQuestionarioCriancasMenoresSeisMesesThrift();
 
+    /**
+     * Instance para encapsulamento do Thrifit
+     * @param t 
+     */
     protected PerguntaQuestionarioCriancasMenoresSeisMeses(PerguntaQuestionarioCriancasMenoresSeisMesesThrift t) {
         this.instance = t;
     }
-    
+    /**
+     * Instance para encapsulamento do Thrifit
+     * @return instance
+     */ 
+          
+    /**
+     * Identificador da pergunta referente ao questionário para cidadãos menores de seis meses
+     * @return instance
+     */
     protected PerguntaQuestionarioCriancasMenoresSeisMesesThrift getInstance(){
         return instance;
     }
@@ -57,6 +72,10 @@ public class PerguntaQuestionarioCriancasMenoresSeisMeses {
         return instance.isSetRespostaUnicaEscolha();
     }
 
+    /**
+     * Resposta referente à pergunta
+     * @param value 
+     */
     public void setRespostaUnicaEscolhaIsSet(boolean value) {
         instance.setRespostaUnicaEscolhaIsSet(value);
     }
@@ -98,4 +117,3 @@ public class PerguntaQuestionarioCriancasMenoresSeisMeses {
         return instance.isSetRespostaUnicaEscolha();
     }    
 }
-

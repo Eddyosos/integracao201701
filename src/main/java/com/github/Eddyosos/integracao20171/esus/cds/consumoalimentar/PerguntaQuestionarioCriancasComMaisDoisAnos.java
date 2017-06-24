@@ -8,6 +8,9 @@ import java.util.List;
 
 public class PerguntaQuestionarioCriancasComMaisDoisAnos {
     
+    /**
+     * Instancia para encapsulamento do Thrift
+     */
     private PerguntaQuestionarioCriancasComMaisDoisAnosThrift instance = new PerguntaQuestionarioCriancasComMaisDoisAnosThrift();
     //private PerguntaQuestionarioCriancasComMaisDoisAnosThrift instance; 
 
@@ -36,6 +39,10 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
         return instance.isSetPergunta();
     }
 
+    /**
+     * Pergunta do questionário de cidadãos que tem vinte e quatro meses ou mais.
+     * @param value 
+     */
     public void setPerguntaIsSet(boolean value) {
         instance.setPerguntaIsSet(value);
     }
@@ -53,14 +60,27 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
         return instance.isSetRespostaUnicaEscolha();
     }
 
+    /**
+     * Resposta referente a pergunta do registro.
+     * @param value 
+     * Obrigatório caso a dataNascimento seja mais que 24 meses anterior à DataAtendimento.
+     */
     public void setRespostaUnicaEscolhaIsSet(boolean value) {
         instance.setRespostaUnicaEscolhaIsSet(value);
     }
 
+    /**
+     * Resposta referente à pergunta do registro acima.
+     * @return getRespostaMultiplaEscolhaSize
+     */
     public int getRespostaMultiplaEscolhaSize() {
         return instance.getRespostaMultiplaEscolhaSize();
     }
 
+    /**
+     * Resposta referente à pergunta do registro.
+     * @return List
+     */
     public Iterator<RespostaMultiplaEscolhaEnum> getRespostaMultiplaEscolhaIterator() {
         List<RespostaMultiplaEscolhaEnum> listaRespostaMultipla = new LinkedList<>();
         instance.getRespostaMultiplaEscolhaIterator().forEachRemaining((t)->{
@@ -77,7 +97,7 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
     }
 
     /**
-     * Resposta referente à pergunta do registro acima.
+     * Resposta referente à pergunta do registro acima(RespostaUnicaEscolha).
      * @return Resposta referente à pergunta do registro acima.
      * Deve respeitar as regras das respostas referentes à pergunta
      * Pode ser preenchido somente se a pergunta for 12L.
@@ -86,6 +106,10 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
         return instance.isSetRespostaMultiplaEscolha();
     }
 
+    /**
+     * Resposta referente à pergunta do registro acima(RespostaUnicaEscolha).
+     * @param value 
+     */
     public void setRespostaMultiplaEscolhaIsSet(boolean value) {
         instance.setRespostaMultiplaEscolhaIsSet(value);
     }

@@ -4,6 +4,9 @@ import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.Pergunt
 
 public class PerguntaQuestionarioCriancasDeSeisVinteTresMeses {
     
+    /**
+     * Instancia para Encapsulamento do Thrifit
+     */
     PerguntaQuestionarioCriancasDeSeisVinteTresMesesThrift instance = new PerguntaQuestionarioCriancasDeSeisVinteTresMesesThrift();
     
     protected PerguntaQuestionarioCriancasDeSeisVinteTresMesesThrift getInstance(){
@@ -31,6 +34,11 @@ public class PerguntaQuestionarioCriancasDeSeisVinteTresMeses {
         return instance.isSetPergunta();
     }
 
+    /**
+     * Identificador da pergunta referente ao questionário para cidadãos menores de seis meses.
+     * @param value 
+     * Obrigatório caso a dataNascimento seja menos que 23 meses e mais que 6 meses anterior à DataAtendimento
+     */
     public void setPerguntaIsSet(boolean value) {
         instance.setPerguntaIsSet(value);
     }
@@ -48,6 +56,11 @@ public class PerguntaQuestionarioCriancasDeSeisVinteTresMeses {
         return instance.isSetRespostaUnicaEscolha();
     }
 
+    /**
+     * Resposta referente à pergunta
+     * @param value 
+     * Obrigatório caso a dataNascimento seja menos que 24 meses e mais que 6 meses anterior à DataAtendimento
+     */
     public void setRespostaUnicaEscolhaIsSet(boolean value) {
         instance.setRespostaUnicaEscolhaIsSet(value);
     }

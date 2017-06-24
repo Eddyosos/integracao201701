@@ -11,12 +11,19 @@ import java.util.List;
 
 public class FichaConsumoAlimentar {
     
+    /**
+     * Instancia para encapsulamento do Thrift
+     */
     private FichaConsumoAlimentarThrift instance = new FichaConsumoAlimentarThrift();
     
     protected FichaConsumoAlimentar(FichaConsumoAlimentarThrift instance){
         this.instance = instance;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public FichaConsumoAlimentar deepCopy() {
             return new FichaConsumoAlimentar(instance.deepCopy());
     }
@@ -32,10 +39,19 @@ public class FichaConsumoAlimentar {
         instance.unsetHeaderTransport();
     }
 
+     /**
+     * Profissional que realizou a visita.
+     * @return o profissional
+     */
     public boolean isSetHeaderTransport() {
         return instance.isSetHeaderTransport();
     }
 
+    /**
+     * Profissional que realizou a visita.
+     * UnicaLotacaoHeader
+     * @param value 
+     */
     public void setHeaderTransportIsSet(boolean value) {
         instance.setHeaderTransportIsSet(value);
     }
@@ -47,6 +63,11 @@ public class FichaConsumoAlimentar {
         return instance.getNumeroCartaoSus();
     }
 
+    /**
+     * CNS do cidadão. 
+     * @param numeroCartaoSus 
+     * CNS válido de acordo com o algoritmo.
+     */
     public void setNumeroCartaoSus(String numeroCartaoSus) {
         instance.setNumeroCartaoSus(numeroCartaoSus);
     }
@@ -67,6 +88,10 @@ public class FichaConsumoAlimentar {
         return instance.getIdentificacaoUsuario();
     }
 
+    /**
+     * Nome do cidadão
+     * @param identificacaoUsuario 
+     */
     public void setIdentificacaoUsuario(String identificacaoUsuario) {
         instance.setIdentificacaoUsuario(identificacaoUsuario);
     }
@@ -75,6 +100,10 @@ public class FichaConsumoAlimentar {
         instance.unsetIdentificacaoUsuario();
     }
 
+    /**
+     * Nome do cidadão
+     * @return Nome do cidadão
+     */
     public boolean isSetIdentificacaoUsuario() {
         return instance.isSetIdentificacaoUsuario();
     }
@@ -91,6 +120,10 @@ public class FichaConsumoAlimentar {
         return instance.getDataNascimento();
     }
 
+    /**
+     * Data de nascimento do cidadão no formato epoch time
+     * @param dataNascimento 
+     */
     public void setDataNascimento(long dataNascimento) {
         instance.setDataNascimento(dataNascimento);
     }
@@ -107,6 +140,10 @@ public class FichaConsumoAlimentar {
         return instance.isSetDataNascimento();
     }
 
+    /**
+     * Data de nascimento do cidadão no formato epoch time.
+     * @param value 
+     */
     public void setDataNascimentoIsSet(boolean value) {
         instance.setDataNascimentoIsSet(value);
     }
@@ -118,6 +155,12 @@ public class FichaConsumoAlimentar {
         return instance.getSexo();
     }
 
+    /**
+     * Código do sexo do cidadão 
+     * @param sexo 
+     * 0 Masculino	
+     * 1 Feminino	
+     */
     public void setSexo(long sexo) {
         instance.setSexo(sexo);
     }
@@ -126,6 +169,10 @@ public class FichaConsumoAlimentar {
         instance.unsetSexo();
     }
 
+    /**
+     * Código do sexo do cidadão 
+     * @return Sexo
+     */
     public boolean isSetSexo() {
         return instance.isSetSexo();
     }
@@ -142,6 +189,10 @@ public class FichaConsumoAlimentar {
         return instance.getLocalAtendimento();
     }
 
+    /**
+     * Código do local onde o atendimento foi realizado
+     * @param localAtendimento 
+     */
     public void setLocalAtendimento(long localAtendimento) {
         instance.setLocalAtendimento(localAtendimento);
     }
@@ -158,6 +209,10 @@ public class FichaConsumoAlimentar {
         instance.setLocalAtendimentoIsSet(value);
     }
 
+    /**
+     * Marcadores referentes aos cidadãos menores de seis meses de idade
+     * @return PerguntasQuestionarioCriancasMenoresSeisMesesSize
+     */
     public int getPerguntasQuestionarioCriancasMenoresSeisMesesSize() {
         return instance.getPerguntasQuestionarioCriancasMenoresSeisMesesSize();
     }
@@ -209,6 +264,10 @@ public class FichaConsumoAlimentar {
         instance.setPerguntasQuestionarioCriancasMenoresSeisMesesIsSet(value);
     }
 
+     /**
+     * Marcadores referentes aos cidadãos menores de seis meses de idade
+     * @param value 
+     */
     public int getPerguntasQuestionarioCriancasDeSeisVinteTresMesesSize() {
         return instance.getPerguntasQuestionarioCriancasDeSeisVinteTresMesesSize();
     }
@@ -239,6 +298,10 @@ public class FichaConsumoAlimentar {
         return listaPerguntaQuestionario;
     }
 
+    /**
+     * Marcadores referentes aos cidadãos que tem entre seis e vinte e três meses de idade.
+     * @param perguntasQuestionarioCriancasDeSeisVinteTresMeses 
+     */
     public void setPerguntasQuestionarioCriancasDeSeisVinteTresMeses(List<PerguntaQuestionarioCriancasDeSeisVinteTresMeses> perguntasQuestionarioCriancasDeSeisVinteTresMeses) {
        List<PerguntaQuestionarioCriancasDeSeisVinteTresMesesThrift>listaQuestionario = new LinkedList<>();
        
@@ -260,6 +323,7 @@ public class FichaConsumoAlimentar {
         instance.setPerguntasQuestionarioCriancasDeSeisVinteTresMesesIsSet(value);
     }
 
+    
     public int getPerguntasQuestionarioCriancasComMaisDoisAnosSize() {
         return instance.getPerguntasQuestionarioCriancasComMaisDoisAnosSize();
     }
@@ -280,6 +344,10 @@ public class FichaConsumoAlimentar {
         instance.addToPerguntasQuestionarioCriancasComMaisDoisAnos(elem.getInstance());
     }
 
+    /**
+     * Marcadores referentes aos cidadãos que tem vinte e quatro meses ou mais.
+     * @return List
+     */
     public List<PerguntaQuestionarioCriancasComMaisDoisAnos> getPerguntasQuestionarioCriancasComMaisDoisAnos() {
         List<PerguntaQuestionarioCriancasComMaisDoisAnos> listaPerguntaQuestionario = new LinkedList<>();
         instance.getPerguntasQuestionarioCriancasComMaisDoisAnos().forEach((t)->{
@@ -288,6 +356,10 @@ public class FichaConsumoAlimentar {
         return listaPerguntaQuestionario;
     }
 
+    /**
+     * Marcadores referentes aos cidadãos que tem vinte e quatro meses ou mais.
+     * @param perguntasQuestionarioCriancasComMaisDoisAnos 
+     */
     public void setPerguntasQuestionarioCriancasComMaisDoisAnos(List<PerguntaQuestionarioCriancasComMaisDoisAnos> perguntasQuestionarioCriancasComMaisDoisAnos) {
         List<PerguntaQuestionarioCriancasComMaisDoisAnosThrift> listaPerguntaQuestionario = new LinkedList<>();
         
@@ -415,6 +487,7 @@ public class FichaConsumoAlimentar {
      * Valida numero CNS do cidadão
      * @return CNS
      * Deve ter apenas 15 caracteres 
+     * CNS válido de acordo com o algoritmo.
      */
     public boolean validaNumeroCartaoSus(){
         String numeroCartaoSus = instance.getNumeroCartaoSus();
@@ -431,7 +504,7 @@ public class FichaConsumoAlimentar {
         String nomeCidadao = instance.getIdentificacaoUsuario();
         return instance.isSetIdentificacaoUsuario() &&
                nomeCidadao != null &&
-               (nomeCidadao.length() == 5 ||
+               (nomeCidadao.length() >= 5 &&
                nomeCidadao.length() <=100);
     }
     
@@ -440,6 +513,7 @@ public class FichaConsumoAlimentar {
      * @return Data de nascimento do cidadão no formato epoch time.
      * Valida se o campo é null
      * Valida: Não pode ser posterior a dataAtendimento e anterior a 130 anos a partir da dataAtendimento.
+     * Não pode ser posterior a dataAtendimento e anterior a 130 anos a partir da dataAtendimento.
      */
     public boolean validaDataNascimento(){
         
@@ -485,8 +559,13 @@ public class FichaConsumoAlimentar {
      * Se dataNascimento < 6 meses a partir da dataAtendimento.
      */
     public boolean validaPerguntasQuestionarioCriancasMenoresSeisMeses(){
-        return instance.isSetPerguntasQuestionarioCriancasMenoresSeisMeses() &&
-               validaDataNascimento();
+        
+        long dataNascimento = instance.getDataNascimento();
+        long dataAtendimento = instance.getHeaderTransport().getDataAtendimento();
+        long anoEpoch = 60*60*24*183;
+        
+        if((dataNascimento - dataAtendimento)<anoEpoch) return true &&                                                       instance.isSetPerguntasQuestionarioCriancasMenoresSeisMeses();
+        else return false;
     }
     
     /**
@@ -495,8 +574,16 @@ public class FichaConsumoAlimentar {
      * Se dataNascimento >= 6 meses e <= 23 meses a partir da dataAtendimento.
      */
     public boolean validaPerguntasQuestionarioCriancasDeSeisVinteTresMeses(){
-        return instance.isSetPerguntasQuestionarioCriancasDeSeisVinteTresMeses() &&
-               validaDataNascimento();
+        
+        long dataNascimento = instance.getDataNascimento();
+        long dataAtendimento = instance.getHeaderTransport().getDataAtendimento();
+        long anoEpoch = 60*60*24*183;
+        long anoEpoch2 = 60*60*24*700;
+        
+        if(((dataNascimento - dataAtendimento)>= anoEpoch)&&((dataNascimento - dataAtendimento)<=anoEpoch2)) return true && 
+                instance.isSetPerguntasQuestionarioCriancasDeSeisVinteTresMeses();
+        else 
+            return false;  
     }
     
     /**
@@ -505,8 +592,15 @@ public class FichaConsumoAlimentar {
      * E se dataNascimento >= 24 meses a partir da dataAtendimento.
      */
     public boolean validaPerguntasQuestionarioCriancasComMaisDoisAnos(){
-        return instance.isSetPerguntasQuestionarioCriancasComMaisDoisAnos() &&
-               validaDataNascimento(); 
+        
+        long dataNascimento = instance.getDataNascimento();
+        long dataAtendimento = instance.getHeaderTransport().getDataAtendimento();
+        long anoEpoch = 60*60*24*730;
+        
+        if(((dataNascimento - dataAtendimento)>= anoEpoch)) return true && 
+                instance.isSetPerguntasQuestionarioCriancasComMaisDoisAnos();
+        else 
+            return false;
     }
     
     /**
@@ -529,6 +623,5 @@ public class FichaConsumoAlimentar {
         int tpCdsOrigem = instance.getTpCdsOrigem();
         return instance.isSetTpCdsOrigem() &&
                 (tpCdsOrigem ==1);
-    }
-    
+    }   
 }
