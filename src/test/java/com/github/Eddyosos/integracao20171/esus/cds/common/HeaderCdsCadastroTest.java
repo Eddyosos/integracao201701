@@ -99,7 +99,7 @@ public class HeaderCdsCadastroTest {
     @Test
     public void testInvalidDataAtendimento(){
         HeaderCdsCadastro obj = new HeaderCdsCadastro();
-        assertFalse(obj.validateCodigoIbgeMunicipio());
+        assertFalse(obj.validateDataAtendimento());
     }
     
     /**
