@@ -225,17 +225,6 @@ public class FichaProcedimentoChild {
         fichaProcedimentoChildThrift.setOutrosSiaProcedimentosIsSet(value);
     }
 
-    public void setFieldValue(FichaProcedimentoChildThrift._Fields field, Object value) {
-        fichaProcedimentoChildThrift.setFieldValue(field, value);
-    }
-
-    public Object getFieldValue(FichaProcedimentoChildThrift._Fields field) {
-        return fichaProcedimentoChildThrift.getFieldValue(field);
-    }
-
-    public boolean isSet(FichaProcedimentoChildThrift._Fields field) {
-        return fichaProcedimentoChildThrift.isSet(field);
-    }
 
     public boolean equals(Object that) {
         return fichaProcedimentoChildThrift.equals(that);
@@ -251,10 +240,6 @@ public class FichaProcedimentoChild {
 
     public int compareTo(FichaProcedimentoChild other) {
         return fichaProcedimentoChildThrift.compareTo(other.getInstance());
-    }
-
-    public FichaProcedimentoChildThrift._Fields fieldForId(int fieldId) {
-        return fichaProcedimentoChildThrift.fieldForId(fieldId);
     }
 
     public void read(TProtocol iprot) throws TException {
