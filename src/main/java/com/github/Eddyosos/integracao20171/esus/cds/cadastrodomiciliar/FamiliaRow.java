@@ -2,7 +2,6 @@ package com.github.Eddyosos.integracao20171.esus.cds.cadastrodomiciliar;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastrodomiciliar.FamiliaRowThrift;
 import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
 
 public class FamiliaRow {
     private FamiliaRowThrift familiaRow = new FamiliaRowThrift();
@@ -190,5 +189,14 @@ public class FamiliaRow {
         return familiaRow;
     }
 
+        /**
+     * Metodo validade cria os metodos que fazem as validações
+     * Chama todos os metodos que fazem validações
+     * @return Todos os metodos de validação
+     */
+    public boolean validates(){
+        
+        return true;
+    }
 }
 

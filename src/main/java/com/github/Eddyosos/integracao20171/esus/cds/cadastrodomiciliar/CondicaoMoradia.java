@@ -4,309 +4,320 @@ import br.gov.saude.esus.cds.transport.generated.thrift.cadastrodomiciliar.Condi
 import org.apache.thrift.TException;
 
 public class CondicaoMoradia {
-    private CondicaoMoradiaThrift condicaoMoradiaThrift = new CondicaoMoradiaThrift();
+    private CondicaoMoradiaThrift condicaoMoradia = new CondicaoMoradiaThrift();
     
     protected CondicaoMoradia(CondicaoMoradiaThrift condicaoMoradiaThrift){
-        this.condicaoMoradiaThrift = condicaoMoradiaThrift;
+        this.condicaoMoradia = condicaoMoradiaThrift;
     }
 
     public CondicaoMoradia deepCopy() {
-        return new CondicaoMoradia(condicaoMoradiaThrift.deepCopy());
+        return new CondicaoMoradia(condicaoMoradia.deepCopy());
     }
 
     public void clear() {
-        condicaoMoradiaThrift.clear();
+        condicaoMoradia.clear();
     }
 
     public long getAbastecimentoAgua() {
-        return condicaoMoradiaThrift.getAbastecimentoAgua();
+        return condicaoMoradia.getAbastecimentoAgua();
     }
 
     public void setAbastecimentoAgua(long abastecimentoAgua) {
-        condicaoMoradiaThrift.setAbastecimentoAgua(abastecimentoAgua);
+        condicaoMoradia.setAbastecimentoAgua(abastecimentoAgua);
     }
 
     public void unsetAbastecimentoAgua() {
-        condicaoMoradiaThrift.unsetAbastecimentoAgua();
+        condicaoMoradia.unsetAbastecimentoAgua();
     }
 
     public boolean isSetAbastecimentoAgua() {
-        return condicaoMoradiaThrift.isSetAbastecimentoAgua();
+        return condicaoMoradia.isSetAbastecimentoAgua();
     }
 
     public void setAbastecimentoAguaIsSet(boolean value) {
-        condicaoMoradiaThrift.setAbastecimentoAguaIsSet(value);
+        condicaoMoradia.setAbastecimentoAguaIsSet(value);
     }
 
     public long getAreaProducaoRural() {
-        return condicaoMoradiaThrift.getAreaProducaoRural();
+        return condicaoMoradia.getAreaProducaoRural();
     }
 
     public void setAreaProducaoRural(long areaProducaoRural) {
-        condicaoMoradiaThrift.setAreaProducaoRural(areaProducaoRural);
+        condicaoMoradia.setAreaProducaoRural(areaProducaoRural);
     }
 
     public void unsetAreaProducaoRural() {
-        condicaoMoradiaThrift.unsetAreaProducaoRural();
+        condicaoMoradia.unsetAreaProducaoRural();
     }
 
     public boolean isSetAreaProducaoRural() {
-        return condicaoMoradiaThrift.isSetAreaProducaoRural();
+        return condicaoMoradia.isSetAreaProducaoRural();
     }
 
     public void setAreaProducaoRuralIsSet(boolean value) {
-        condicaoMoradiaThrift.setAreaProducaoRuralIsSet(value);
+        condicaoMoradia.setAreaProducaoRuralIsSet(value);
     }
 
     public long getDestinoLixo() {
-        return condicaoMoradiaThrift.getDestinoLixo();
+        return condicaoMoradia.getDestinoLixo();
     }
 
     public void setDestinoLixo(long destinoLixo) {
-        condicaoMoradiaThrift.setDestinoLixo(destinoLixo);
+        condicaoMoradia.setDestinoLixo(destinoLixo);
     }
 
     public void unsetDestinoLixo() {
-        condicaoMoradiaThrift.unsetDestinoLixo();
+        condicaoMoradia.unsetDestinoLixo();
     }
 
     public boolean isSetDestinoLixo() {
-        return condicaoMoradiaThrift.isSetDestinoLixo();
+        return condicaoMoradia.isSetDestinoLixo();
     }
 
     public void setDestinoLixoIsSet(boolean value) {
-        condicaoMoradiaThrift.setDestinoLixoIsSet(value);
+        condicaoMoradia.setDestinoLixoIsSet(value);
     }
 
     public long getFormaEscoamentoBanheiro() {
-        return condicaoMoradiaThrift.getFormaEscoamentoBanheiro();
+        return condicaoMoradia.getFormaEscoamentoBanheiro();
     }
 
     public void setFormaEscoamentoBanheiro(long formaEscoamentoBanheiro) {
-        condicaoMoradiaThrift.setFormaEscoamentoBanheiro(formaEscoamentoBanheiro);
+        condicaoMoradia.setFormaEscoamentoBanheiro(formaEscoamentoBanheiro);
     }
 
     public void unsetFormaEscoamentoBanheiro() {
-        condicaoMoradiaThrift.unsetFormaEscoamentoBanheiro();
+        condicaoMoradia.unsetFormaEscoamentoBanheiro();
     }
 
     public boolean isSetFormaEscoamentoBanheiro() {
-        return condicaoMoradiaThrift.isSetFormaEscoamentoBanheiro();
+        return condicaoMoradia.isSetFormaEscoamentoBanheiro();
     }
 
     public void setFormaEscoamentoBanheiroIsSet(boolean value) {
-        condicaoMoradiaThrift.setFormaEscoamentoBanheiroIsSet(value);
+        condicaoMoradia.setFormaEscoamentoBanheiroIsSet(value);
     }
 
     public long getLocalizacao() {
-        return condicaoMoradiaThrift.getLocalizacao();
+        return condicaoMoradia.getLocalizacao();
     }
 
     public void setLocalizacao(long localizacao) {
-        condicaoMoradiaThrift.setLocalizacao(localizacao);
+        condicaoMoradia.setLocalizacao(localizacao);
     }
 
     public void unsetLocalizacao() {
-        condicaoMoradiaThrift.unsetLocalizacao();
+        condicaoMoradia.unsetLocalizacao();
     }
 
     public boolean isSetLocalizacao() {
-        return condicaoMoradiaThrift.isSetLocalizacao();
+        return condicaoMoradia.isSetLocalizacao();
     }
 
     public void setLocalizacaoIsSet(boolean value) {
-        condicaoMoradiaThrift.setLocalizacaoIsSet(value);
+        condicaoMoradia.setLocalizacaoIsSet(value);
     }
 
     public long getMaterialPredominanteParedesExtDomicilio() {
-        return condicaoMoradiaThrift.getMaterialPredominanteParedesExtDomicilio();
+        return condicaoMoradia.getMaterialPredominanteParedesExtDomicilio();
     }
 
     public void setMaterialPredominanteParedesExtDomicilio(long materialPredominanteParedesExtDomicilio) {
-        condicaoMoradiaThrift.setMaterialPredominanteParedesExtDomicilio(materialPredominanteParedesExtDomicilio);
+        condicaoMoradia.setMaterialPredominanteParedesExtDomicilio(materialPredominanteParedesExtDomicilio);
     }
 
     public void unsetMaterialPredominanteParedesExtDomicilio() {
-        condicaoMoradiaThrift.unsetMaterialPredominanteParedesExtDomicilio();
+        condicaoMoradia.unsetMaterialPredominanteParedesExtDomicilio();
     }
 
     public boolean isSetMaterialPredominanteParedesExtDomicilio() {
-        return condicaoMoradiaThrift.isSetMaterialPredominanteParedesExtDomicilio();
+        return condicaoMoradia.isSetMaterialPredominanteParedesExtDomicilio();
     }
 
     public void setMaterialPredominanteParedesExtDomicilioIsSet(boolean value) {
-        condicaoMoradiaThrift.setMaterialPredominanteParedesExtDomicilioIsSet(value);
+        condicaoMoradia.setMaterialPredominanteParedesExtDomicilioIsSet(value);
     }
 
     public String getNuComodos() {
-        return condicaoMoradiaThrift.getNuComodos();
+        return condicaoMoradia.getNuComodos();
     }
 
     public void setNuComodos(String nuComodos) {
-        condicaoMoradiaThrift.setNuComodos(nuComodos);
+        condicaoMoradia.setNuComodos(nuComodos);
     }
 
     public void unsetNuComodos() {
-        condicaoMoradiaThrift.unsetNuComodos();
+        condicaoMoradia.unsetNuComodos();
     }
 
     public boolean isSetNuComodos() {
-        return condicaoMoradiaThrift.isSetNuComodos();
+        return condicaoMoradia.isSetNuComodos();
     }
 
     public void setNuComodosIsSet(boolean value) {
-        condicaoMoradiaThrift.setNuComodosIsSet(value);
+        condicaoMoradia.setNuComodosIsSet(value);
     }
 
     public String getNuMoradores() {
-        return condicaoMoradiaThrift.getNuMoradores();
+        return condicaoMoradia.getNuMoradores();
     }
 
     public void setNuMoradores(String nuMoradores) {
-        condicaoMoradiaThrift.setNuMoradores(nuMoradores);
+        condicaoMoradia.setNuMoradores(nuMoradores);
     }
 
     public void unsetNuMoradores() {
-        condicaoMoradiaThrift.unsetNuMoradores();
+        condicaoMoradia.unsetNuMoradores();
     }
 
     public boolean isSetNuMoradores() {
-        return condicaoMoradiaThrift.isSetNuMoradores();
+        return condicaoMoradia.isSetNuMoradores();
     }
 
     public void setNuMoradoresIsSet(boolean value) {
-        condicaoMoradiaThrift.setNuMoradoresIsSet(value);
+        condicaoMoradia.setNuMoradoresIsSet(value);
     }
 
     public long getSituacaoMoradiaPosseTerra() {
-        return condicaoMoradiaThrift.getSituacaoMoradiaPosseTerra();
+        return condicaoMoradia.getSituacaoMoradiaPosseTerra();
     }
 
     public void setSituacaoMoradiaPosseTerra(long situacaoMoradiaPosseTerra) {
-        condicaoMoradiaThrift.setSituacaoMoradiaPosseTerra(situacaoMoradiaPosseTerra);
+        condicaoMoradia.setSituacaoMoradiaPosseTerra(situacaoMoradiaPosseTerra);
     }
 
     public void unsetSituacaoMoradiaPosseTerra() {
-        condicaoMoradiaThrift.unsetSituacaoMoradiaPosseTerra();
+        condicaoMoradia.unsetSituacaoMoradiaPosseTerra();
     }
 
     public boolean isSetSituacaoMoradiaPosseTerra() {
-        return condicaoMoradiaThrift.isSetSituacaoMoradiaPosseTerra();
+        return condicaoMoradia.isSetSituacaoMoradiaPosseTerra();
     }
 
     public void setSituacaoMoradiaPosseTerraIsSet(boolean value) {
-        condicaoMoradiaThrift.setSituacaoMoradiaPosseTerraIsSet(value);
+        condicaoMoradia.setSituacaoMoradiaPosseTerraIsSet(value);
     }
 
     public boolean isStDiponibilidadeEnergiaeletrica() {
-        return condicaoMoradiaThrift.isStDiponibilidadeEnergiaeletrica();
+        return condicaoMoradia.isStDiponibilidadeEnergiaeletrica();
     }
 
     public void setStDiponibilidadeEnergiaeletrica(boolean stDiponibilidadeEnergiaeletrica) {
-        condicaoMoradiaThrift.setStDiponibilidadeEnergiaeletrica(stDiponibilidadeEnergiaeletrica);
+        condicaoMoradia.setStDiponibilidadeEnergiaeletrica(stDiponibilidadeEnergiaeletrica);
     }
 
     public void unsetStDiponibilidadeEnergiaeletrica() {
-        condicaoMoradiaThrift.unsetStDiponibilidadeEnergiaeletrica();
+        condicaoMoradia.unsetStDiponibilidadeEnergiaeletrica();
     }
 
     public boolean isSetStDiponibilidadeEnergiaeletrica() {
-        return condicaoMoradiaThrift.isSetStDiponibilidadeEnergiaeletrica();
+        return condicaoMoradia.isSetStDiponibilidadeEnergiaeletrica();
     }
 
     public void setStDiponibilidadeEnergiaeletricaIsSet(boolean value) {
-        condicaoMoradiaThrift.setStDiponibilidadeEnergiaeletricaIsSet(value);
+        condicaoMoradia.setStDiponibilidadeEnergiaeletricaIsSet(value);
     }
 
     public long getTipoAcessoDomicilio() {
-        return condicaoMoradiaThrift.getTipoAcessoDomicilio();
+        return condicaoMoradia.getTipoAcessoDomicilio();
     }
 
     public void setTipoAcessoDomicilio(long tipoAcessoDomicilio) {
-        condicaoMoradiaThrift.setTipoAcessoDomicilio(tipoAcessoDomicilio);
+        condicaoMoradia.setTipoAcessoDomicilio(tipoAcessoDomicilio);
     }
 
     public void unsetTipoAcessoDomicilio() {
-        condicaoMoradiaThrift.unsetTipoAcessoDomicilio();
+        condicaoMoradia.unsetTipoAcessoDomicilio();
     }
 
     public boolean isSetTipoAcessoDomicilio() {
-        return condicaoMoradiaThrift.isSetTipoAcessoDomicilio();
+        return condicaoMoradia.isSetTipoAcessoDomicilio();
     }
 
     public void setTipoAcessoDomicilioIsSet(boolean value) {
-        condicaoMoradiaThrift.setTipoAcessoDomicilioIsSet(value);
+        condicaoMoradia.setTipoAcessoDomicilioIsSet(value);
     }
 
     public long getTipoDomicilio() {
-        return condicaoMoradiaThrift.getTipoDomicilio();
+        return condicaoMoradia.getTipoDomicilio();
     }
 
     public void setTipoDomicilio(long tipoDomicilio) {
-        condicaoMoradiaThrift.setTipoDomicilio(tipoDomicilio);
+        condicaoMoradia.setTipoDomicilio(tipoDomicilio);
     }
 
     public void unsetTipoDomicilio() {
-        condicaoMoradiaThrift.unsetTipoDomicilio();
+        condicaoMoradia.unsetTipoDomicilio();
     }
 
     public boolean isSetTipoDomicilio() {
-        return condicaoMoradiaThrift.isSetTipoDomicilio();
+        return condicaoMoradia.isSetTipoDomicilio();
     }
 
     public void setTipoDomicilioIsSet(boolean value) {
-        condicaoMoradiaThrift.setTipoDomicilioIsSet(value);
+        condicaoMoradia.setTipoDomicilioIsSet(value);
     }
 
     public long getTratamentoAguaDomicilio() {
-        return condicaoMoradiaThrift.getTratamentoAguaDomicilio();
+        return condicaoMoradia.getTratamentoAguaDomicilio();
     }
 
     public void setTratamentoAguaDomicilio(long tratamentoAguaDomicilio) {
-        condicaoMoradiaThrift.setTratamentoAguaDomicilio(tratamentoAguaDomicilio);
+        condicaoMoradia.setTratamentoAguaDomicilio(tratamentoAguaDomicilio);
     }
 
     public void unsetTratamentoAguaDomicilio() {
-        condicaoMoradiaThrift.unsetTratamentoAguaDomicilio();
+        condicaoMoradia.unsetTratamentoAguaDomicilio();
     }
 
     public boolean isSetTratamentoAguaDomicilio() {
-        return condicaoMoradiaThrift.isSetTratamentoAguaDomicilio();
+        return condicaoMoradia.isSetTratamentoAguaDomicilio();
     }
 
     public void setTratamentoAguaDomicilioIsSet(boolean value) {
-        condicaoMoradiaThrift.setTratamentoAguaDomicilioIsSet(value);
+        condicaoMoradia.setTratamentoAguaDomicilioIsSet(value);
     }
 
     @Override
     public boolean equals(Object that) {
-        return condicaoMoradiaThrift.equals(that);
+        return condicaoMoradia.equals(that);
     }
 
     public boolean equals(CondicaoMoradia that) {
-        return condicaoMoradiaThrift.equals(that.getInstence());
+        return condicaoMoradia.equals(that.getInstence());
     }
 
     @Override
     public int hashCode() {
-        return condicaoMoradiaThrift.hashCode();
+        return condicaoMoradia.hashCode();
     }
 
     public int compareTo(CondicaoMoradia other) {
-        return condicaoMoradiaThrift.compareTo(other.getInstence());
+        return condicaoMoradia.compareTo(other.getInstence());
     }
 
     @Override
     public String toString() {
-        return condicaoMoradiaThrift.toString();
+        return condicaoMoradia.toString();
     }
 
     public void validate() throws TException {
-        condicaoMoradiaThrift.validate();
+        condicaoMoradia.validate();
     }
     
     protected CondicaoMoradiaThrift getInstence(){
-        return condicaoMoradiaThrift;
+        return condicaoMoradia;
     }
+    
+        /**
+     * Metodo validade cria os metodos que fazem as validações
+     * Chama todos os metodos que fazem validações
+     * @return Todos os metodos de validação
+     */
+    public boolean validates(){
+        
+        return false;
+    }
+    
 }
 
