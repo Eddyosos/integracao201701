@@ -298,8 +298,15 @@ public class FichaAtendimentoOdontologicoMaster {
         return instancia.toString();
     }
 
-    public void validate() throws TException {
-        instancia.validate();
+    public boolean validate() {
+        try {
+            instancia.validate();
+        } catch (TException ex) {
+            return false;
+        }
+        
+        return validateUuidFicha() && validateHeaderTransport() && 
+                validateAtendimentosOdontologicos() && validatetTpCdsOrigem();
     }
 
     /**
@@ -311,6 +318,67 @@ public class FichaAtendimentoOdontologicoMaster {
         return instancia;
     }
     
+    /**
+     * Código UUID para identificar a ficha na base de dados nacional.
+     * Obrigatório!
+     * Regras: É recomendado concatenar o CNES na frente do UUID, de modo que os
+     * 7 digitos (CNES) + 1 de hífen somados aos 36 (32 caracteres + 4 hífen) do
+     * UUID são a limitação de 44 bytes do campo.
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateUuidFicha(){
+        return  instancia.getUuidFicha() != null &&
+                instancia.getUuidFicha().length() >= 36 && 
+                instancia.getUuidFicha().length() <= 44;
+    }
+     
+    /**
+     * Profissional que realizou a visita.
+     * 
+     * @return True caso o header transport seja valido
+     */
+    public boolean validateHeaderTransport(){
+        return instancia.getHeaderTransport() != null && 
+                instancia.isSetHeaderTransport() &&
+                new VariasLotacoesHeader(instancia.getHeaderTransport()).validates();
+
+    }
+    
+    /**
+     * Valida os registros de atendimento.
+     * 
+     * Presença obrigatória.
+     * Mínimo:1
+     * Máximo:13
+     * 
+     * @return True caso sejam validos, False caso contrario.
+     */
+    public boolean validateAtendimentosOdontologicos(){
+        
+        if(instancia.isSetAtendimentosOdontologicos()){
+            if( instancia.getAtendimentosOdontologicosSize() >= 1 && 
+                    instancia.getAtendimentosOdontologicosSize() <= 13){
+                for(FichaAtendimentoOdontologicoChild ficha : getAtendimentosOdontologicos()){
+                    if( ! ficha.validates()){
+                        return false;
+                    }
+                }
+                
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Valida se o tipo de origem foi declarado.
+     * 
+     * @return True caso o tipo de origem dos dados tenha sido declarado.
+     */
+    public boolean validatetTpCdsOrigem(){
+        return instancia.isSetTpCdsOrigem();
+    }
     
 }
 
