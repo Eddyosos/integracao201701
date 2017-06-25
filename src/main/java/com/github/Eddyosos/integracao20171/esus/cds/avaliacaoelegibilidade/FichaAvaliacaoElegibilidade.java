@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 public class FichaAvaliacaoElegibilidade{
     private FichaAvaliacaoElegibilidadeThrift instancia = new FichaAvaliacaoElegibilidadeThrift();
     
@@ -1281,6 +1282,7 @@ public class FichaAvaliacaoElegibilidade{
         return instancia.getHeaderTransport() != null && 
                 instancia.isSetHeaderTransport() &&
                 new UnicaLotacaoHeader(instancia.getHeaderTransport()).validates();
+
     }
     
     /**
@@ -1629,6 +1631,7 @@ public class FichaAvaliacaoElegibilidade{
         
         return instancia.isSetConclusaoDestinoElegivel();
     }
+    
     
 }
 
