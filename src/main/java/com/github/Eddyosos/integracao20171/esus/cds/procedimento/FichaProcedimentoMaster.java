@@ -345,38 +345,44 @@ public class FichaProcedimentoMaster  {
     OBS: Esse metodo e apenas um exemplo de como deve ser feito, nao esta
     completo
     */
-    private boolean validates(){      
-        if(!this.numTotalMedicaoPesoValidates()){
-            return false;
-        }
-        if(!this.numTotalMedicaoAlturaValidates()){
-            return false;
-        }
+    private boolean validates(){
         
         return true;
     }
-    
-    /*
-    Validacoes de todos os campos do dado em questao. OBS: As validacoes abaixo
-    sao apenas um exemplo de como as validacoes deverao ser feitas, 1 metodo por
-    campo, verificando todas as regras necessarias para aquele campo neste 
-    metodo
-    Deverao ser validados todos os campos dos objetos: fichaProcedimento,
-    originadora e remetente
-    */
-    private boolean numTotalMedicaoAlturaValidates(){
-    if(this.fichaProcedimento.getNumTotalMedicaoAltura() <= 0){
+
+    private boolean uuidFichaValidates(){
+        if(this.getUuidFicha().isEmpty() || this.getUuidFicha() == null){
+            return false;
+        }
+        
+        if(this.getUuidFicha().length() < 36 || this.getUuidFicha().length() > 44){
             return false;
         }
     
         return true;
     }
     
-    private boolean numTotalMedicaoPesoValidates(){
-        if(this.fichaProcedimento.getNumTotalMedicaoPeso() <= 0){
+    private boolean tpCdsOrigemValidates(){        
+        if(this.getTpCdsOrigem() != 3){
             return false;
         }
-        
+    
+        return true;
+    }
+    
+    private boolean headerTransporValidates(){        
+        if(this.getHeaderTransport() == null){
+            return false;
+        }
+    
+        return true;
+    }
+    
+    private boolean atendProcedimentosValidates(){        
+        if(this.getHeaderTransport() == null){
+            return false;
+        }
+    
         return true;
     }
 }
