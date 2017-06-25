@@ -165,5 +165,40 @@ public class FichaVisitaDomiciliarMaster {
     protected FichaVisitaDomiciliarMasterThrift getInstance(){
         return instance;
     }
-
+    /**
+     * Valida o field uuidFicha
+     * @return true caso o valor esteja setado e o seu tamanho seja maior que 36 e menor que 44
+     * @return false caso o valor esteja setado e seu tamanho for menor que 36 e maior que 44
+     * @return false caso nenhum valor esteja setado
+     */
+    private boolean validaUuidFicha(){
+        if(getInstance().isSetUuidFicha()){
+            return getInstance().getUuidFicha().length()>=36 && getInstance().getUuidFicha().length()<=44;
+        }
+        else return false;
+    }
+    
+    //private boolean tpCdsOrigem FAZER AQUIIIIIIIII
+    
+    /**
+     * Valida se o HeaderTransport está setado
+     * @return true caso o valor esteja setado
+     * @return false caso o valor nao esteja setado
+     */
+    private boolean validaHeaderTransport(){
+        return getInstance().isSetHeaderTransport();
+    }
+    /**
+     * valida o field Visitas_Domiciliares
+     * @return true caso o valor esteja setado e seja igual ou maior que 1 e menor que 23
+     * @return false caso o valor esteja setado e seja menor que um ou maior que 23
+     * @return false case o valor não esteja setado
+     */
+    private boolean validaVisitasDomiciliares(){
+        if(getInstance().isSetVisitasDomiciliares()){
+            return getInstance().getVisitasDomiciliares().size()>=1 && getInstance().getVisitasDomiciliares().size()<=23;
+        }
+        return false;
+    }
+    
 }

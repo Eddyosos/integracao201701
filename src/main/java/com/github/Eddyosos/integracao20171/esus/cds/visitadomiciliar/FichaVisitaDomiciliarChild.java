@@ -2,6 +2,7 @@ package com.github.Eddyosos.integracao20171.esus.cds.visitadomiciliar;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.common.UnicaLotacaoHeaderThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.visitadomiciliar.FichaVisitaDomiciliarChildThrift;
+import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -227,16 +228,17 @@ public class FichaVisitaDomiciliarChild {
         return instance;
 
     }
+
     /*
     Valida o field TURNO
     @return true caso nenhuma valor esteja setado, pois nao é um campo obrigatorio
     @return true caso o valor de turno esteja setado e seja igual a 1, 2 ou 3
     @return false caso o valor de turno esteja setado e seja diferente de 1,2 ou 3.
-    */
-    private boolean validaTurno(){
-        if(getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.TURNO)){
-            return FichaVisitaDomiciliarChildThrift._Fields.TURNO.equals(1) | FichaVisitaDomiciliarChildThrift._Fields.TURNO.equals(2)  | FichaVisitaDomiciliarChildThrift._Fields.TURNO.equals(3);
-        }else{
+     */
+    private boolean validaTurno() {
+        if (getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.TURNO)) {
+            return Integer.parseInt(FichaVisitaDomiciliarChildThrift._Fields.TURNO.toString()) == 1 | Integer.parseInt(FichaVisitaDomiciliarChildThrift._Fields.TURNO.toString()) == 2 | Integer.parseInt(FichaVisitaDomiciliarChildThrift._Fields.TURNO.toString()) == 3;
+        } else {
             return true;
         }
     }
@@ -261,14 +263,15 @@ public class FichaVisitaDomiciliarChild {
             return true;
         }
     }
+
     /*
     Verifica se o número do cartão Sus é válido
     @return true - Caso o Field não esteja setado
     @return true- caso o numero inicial seja 1 ou 2 ou 7 ou 8 ou 9 e atenda aos padrões do cartao SUS
     @return false - caso o número esteja setado e nao atenda aos padrões do cartão SUS.
-    */
+     */
     private boolean validaNumCartaoSus() {
-        
+
         String cns = FichaVisitaDomiciliarChildThrift._Fields.NUM_CARTAO_SUS.toString();
         if (getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.NUM_CARTAO_SUS)) {
             if (cns.charAt(0) == '1' || cns.charAt(0) == '2') {
@@ -327,8 +330,7 @@ public class FichaVisitaDomiciliarChild {
                 } else {
                     return (true);
                 }
-            }
-            else if (cns.charAt(0) == '7' || cns.charAt(0) == '8' || cns.charAt(0) == '9') {
+            } else if (cns.charAt(0) == '7' || cns.charAt(0) == '8' || cns.charAt(0) == '9') {
                 if (cns.trim().length() != 15) {
                     return (false);
                 }
@@ -359,47 +361,110 @@ public class FichaVisitaDomiciliarChild {
                 } else {
                     return (true);
                 }
+            } else {
+                return false;
             }
-            else return false;
         } else {
         }
-        
+
         return true;
 
     }
-    private boolean validaDtNascimento(){
-        if(getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.DT_NASCIMENTO)){
-            long dtAtendimento =  Long.parseLong(UnicaLotacaoHeaderThrift._Fields.DATA_ATENDIMENTO.toString());
-            
-       }
-        else return false;
+
+    /**
+     * Valida Data de nascimento do cidadão no formato epoch time.
+     *
+     * @return Data de nascimento do cidadão no formato epoch time. Valida se o
+     * campo é null Valida: Não pode ser posterior a dataAtendimento e anterior
+     * a 130 anos a partir da dataAtendimento. Não pode ser posterior a
+     * dataAtendimento e anterior a 130 anos a partir da dataAtendimento.
+     */
+    public boolean validaDataNascimento() {
+
+        if (getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.DT_NASCIMENTO)) {
+            return false;
+        }
+        long dataNascimento = instance.getDtNascimento();
+        long dataAtendimento = getInstance().getHea.getDataAtendimento();
+        if (dataNascimento > dataAtendimento) {
+            return false;
+        }
+        long idadeAoAtender = dataNascimento - dataAtendimento;
+        /**
+         * Transformando 1 ano em segundo
+         */
+        long anoEpoch = 60 * 60 * 24 * 365;
+        /**
+         * Descobrindo se a idade do cidadão no atendimento é maior que 130 anos
+         */
+        if (idadeAoAtender > anoEpoch * 130) {
+            return false;
+        }
+        return true;
     }
+
     /*
     Valida o field SEXO
     @return true caso o valor esteja setado e seja igual a 0 ou 1
     @return false caso nenhum valor esteja setado
     @return false caso o valor esteja setado e seja diferente de 0 ou 1
-    */
-    private boolean validaSexo(){
-        if(getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.SEXO)){
-            return FichaVisitaDomiciliarChildThrift._Fields.SEXO.equals(0) | FichaVisitaDomiciliarChildThrift._Fields.SEXO.equals(1);
+     */
+    private boolean validaSexo() {
+        if (getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.SEXO)) {
+            return Integer.parseInt(FichaVisitaDomiciliarChildThrift._Fields.SEXO.toString()) == 0 | Integer.parseInt(FichaVisitaDomiciliarChildThrift._Fields.SEXO.toString()) == 1;
+        } else {
+            return false;
         }
-        else return false;
     }
-    /*
+
+    /* valida o field STATUS_VISITA_COMPARTILHADA_OUTRO_PROFISSIONAL
+    @return true caso os valores estejam setados e sejam iguais a true ou false
+    @return true caso nenhum valor esteja setado
+    @return false caso os valores estejam setados e não sejam iguais a true ou false
     
-    */
-    private boolean validaStatusVisitaCompartilhada(){
-        if(getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.STATUS_VISITA_COMPARTILHADA_OUTRO_PROFISSIONAL)){
+     */
+    private boolean validaStatusVisitaCompartilhada() {
+        if (getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.STATUS_VISITA_COMPARTILHADA_OUTRO_PROFISSIONAL)) {
             return FichaVisitaDomiciliarChildThrift._Fields.STATUS_VISITA_COMPARTILHADA_OUTRO_PROFISSIONAL.equals(true) | FichaVisitaDomiciliarChildThrift._Fields.STATUS_VISITA_COMPARTILHADA_OUTRO_PROFISSIONAL.equals(false);
+        } else {
+            return true;
         }
-        else return true;
-        
+
     }
 
+    /*
+    Valida o field MOTIVOS_VISITA
+    @return true caso o field DESFECHO seja igual a 1 e MOTIVOS_VISITA tenha o valor de 1 - 33.
+    @return true caso o field DESFECHO seja igual a 1 e MOTIVOS_VISITA nao tenha valor setado
+    @return true caso o field DESFECHO seja diferente de 1 e MOTIVOS_VISITA nao tenha sido setado
+    @return false caso o field DESFECHO seja igual a 1 e MOTIVOS_VISITA tenha valor diferente da faixa de 1 - 33
+    @return false caso o field DESFECHO seja diferente de 1 e MOTIVOS_VISISTA tenha sido setado
+     */
 
-    
+    private boolean validaMotivosVisita() {
+        if (Integer.parseInt(FichaVisitaDomiciliarChildThrift._Fields.DESFECHO.toString()) == 1) {
+            if (getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.MOTIVOS_VISITA)) {
+                return Integer.parseInt(FichaVisitaDomiciliarChildThrift._Fields.MOTIVOS_VISITA.toString()) >= 1 && Integer.parseInt(FichaVisitaDomiciliarChildThrift._Fields.MOTIVOS_VISITA.toString()) <= 33;
+            } else {
+                return true;
+            }
+        } else {
+            return !getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.MOTIVOS_VISITA);
+        }
+    }
+
+    /*
+    Valida o field DESFECHO
+    @return true caso o valor de DESFECHO esteja setado e esteja entre os valores de 1 a 3
+    @return false caso o valor de DESFECHO esteja setado e diferente dos valores de 1 a 3
+    @return false caso o valor de DESFECHO não esteja setado
+     */
+    private boolean validaDesfecho() {
+        if (getInstance().isSetDesfecho()) {
+            return getInstance().getDesfecho() >= 1 && Integer.parseInt(FichaVisitaDomiciliarChildThrift._Fields.DESFECHO.toString()) <= 3;
+        } else {
+            return false;
+        }
+    }
 
 }
-
-
