@@ -236,8 +236,8 @@ public class FichaVisitaDomiciliarChild {
     @return false caso o valor de turno esteja setado e seja diferente de 1,2 ou 3.
      */
     private boolean validaTurno() {
-        if (getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.TURNO)) {
-            return Integer.parseInt(FichaVisitaDomiciliarChildThrift._Fields.TURNO.toString()) == 1 | Integer.parseInt(FichaVisitaDomiciliarChildThrift._Fields.TURNO.toString()) == 2 | Integer.parseInt(FichaVisitaDomiciliarChildThrift._Fields.TURNO.toString()) == 3;
+        if (getInstance().isSetTurno()) {
+            return getInstance().getTurno() == 1 | getInstance().getTurno() == 2 | getInstance().getTurno() == 3;
         } else {
             return true;
         }
@@ -251,10 +251,10 @@ public class FichaVisitaDomiciliarChild {
      */
     private boolean validaNumProntuario() {
         Pattern PATTERN = Pattern.compile("([a-z A-Z 0-9])+");
-        Matcher matcher = PATTERN.matcher(FichaVisitaDomiciliarChildThrift._Fields.NUM_PRONTUARIO.toString());
+        Matcher matcher = PATTERN.matcher(getInstance().getNumProntuario());
 
-        if (getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.NUM_PRONTUARIO)) {
-            if (FichaVisitaDomiciliarChildThrift._Fields.NUM_PRONTUARIO.toString().length() <= 30) {
+        if (getInstance().isSetNumProntuario()) {
+            if (getInstance().getNumProntuario().length() <= 30) {
                 return matcher.find();
             } else {
                 return false;
@@ -272,8 +272,8 @@ public class FichaVisitaDomiciliarChild {
      */
     private boolean validaNumCartaoSus() {
 
-        String cns = FichaVisitaDomiciliarChildThrift._Fields.NUM_CARTAO_SUS.toString();
-        if (getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.NUM_CARTAO_SUS)) {
+        String cns = getInstance().getNumCartaoSus();
+        if (getInstance().isSetNumCartaoSus()) {
             if (cns.charAt(0) == '1' || cns.charAt(0) == '2') {
 
                 if (cns.trim().length() != 15) {
@@ -381,11 +381,11 @@ public class FichaVisitaDomiciliarChild {
      */
     public boolean validaDataNascimento() {
 
-        if (getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.DT_NASCIMENTO)) {
+        if (!getInstance().isSetDtNascimento()) {
             return false;
         }
         long dataNascimento = instance.getDtNascimento();
-        long dataAtendimento = getInstance().getHea.getDataAtendimento();
+        long dataAtendimento = getInstance().getDataAtendimento();
         if (dataNascimento > dataAtendimento) {
             return false;
         }
@@ -424,8 +424,8 @@ public class FichaVisitaDomiciliarChild {
     
      */
     private boolean validaStatusVisitaCompartilhada() {
-        if (getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.STATUS_VISITA_COMPARTILHADA_OUTRO_PROFISSIONAL)) {
-            return FichaVisitaDomiciliarChildThrift._Fields.STATUS_VISITA_COMPARTILHADA_OUTRO_PROFISSIONAL.equals(true) | FichaVisitaDomiciliarChildThrift._Fields.STATUS_VISITA_COMPARTILHADA_OUTRO_PROFISSIONAL.equals(false);
+        if (getInstance().isSetStatusVisitaCompartilhadaOutroProfissional()) {
+            return getInstance().isStatusVisitaCompartilhadaOutroProfissional()== true | getInstance().isStatusVisitaCompartilhadaOutroProfissional()== false;
         } else {
             return true;
         }
@@ -442,9 +442,14 @@ public class FichaVisitaDomiciliarChild {
      */
 
     private boolean validaMotivosVisita() {
-        if (Integer.parseInt(FichaVisitaDomiciliarChildThrift._Fields.DESFECHO.toString()) == 1) {
-            if (getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.MOTIVOS_VISITA)) {
-                return Integer.parseInt(FichaVisitaDomiciliarChildThrift._Fields.MOTIVOS_VISITA.toString()) >= 1 && Integer.parseInt(FichaVisitaDomiciliarChildThrift._Fields.MOTIVOS_VISITA.toString()) <= 33;
+        if (getInstance().getDesfecho()== 1) {
+            if (getInstance().isSetMotivosVisita()) {
+               for(int i =0;i<getInstance().getMotivosVisitaSize();i++){
+                   if(getInstance().getMotivosVisita().get(i)< 1 || getInstance().getMotivosVisita().get(i)>33){
+                       return false;
+                   }
+               }
+               return true;
             } else {
                 return true;
             }
@@ -461,7 +466,7 @@ public class FichaVisitaDomiciliarChild {
      */
     private boolean validaDesfecho() {
         if (getInstance().isSetDesfecho()) {
-            return getInstance().getDesfecho() >= 1 && Integer.parseInt(FichaVisitaDomiciliarChildThrift._Fields.DESFECHO.toString()) <= 3;
+            return getInstance().getDesfecho() >= 1 && getInstance().getDesfecho() <= 3;
         } else {
             return false;
         }
