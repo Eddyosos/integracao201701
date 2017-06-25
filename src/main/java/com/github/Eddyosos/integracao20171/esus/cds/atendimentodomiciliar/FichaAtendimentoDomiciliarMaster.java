@@ -289,24 +289,26 @@ public class FichaAtendimentoDomiciliarMaster {
      * @return True caso o header transport seja valido
      */
     public boolean validateHeaderTransport(){
-        return instancia.getHeaderTransport() != null && new UnicaLotacaoHeader(instancia.getHeaderTransport()).validate();
+        return instancia.getHeaderTransport() != null && new UnicaLotacaoHeader(instancia.getHeaderTransport()).validates();
     }
     
+    /**
+     * Valida todos os atendimentos docmiciliares.
+     * 
+     * Tamanho mínimo: 1
+     * Tamanho máximo: 12
+     * 
+     * @return True caso os casos sejam válidos, False caso contrario.
+     */
     public boolean atendimentosDomiciliares(){
         
         if(instancia.getAtendimentosDomiciliares() == null || 
-        instancia.getAtendimentosDomiciliares().size() < 1 || 
-        instancia.getAtendimentosDomiciliares().size() > 13){
+        instancia.getAtendimentosDomiciliares().size() <= 1 || 
+        instancia.getAtendimentosDomiciliares().size() >= 13){
             return false;
         }
         
-        for(FichaAtendimentoDomiciliarChild ficha : this.getAtendimentosDomiciliares()){
-            if( ! ficha.validate()){
-                return false;
-            }
-        }
-        
-        return true;
+        return this.getAtendimentosDomiciliares().stream().noneMatch((ficha) -> ( ! ficha.validates()));
     }
 }
 
