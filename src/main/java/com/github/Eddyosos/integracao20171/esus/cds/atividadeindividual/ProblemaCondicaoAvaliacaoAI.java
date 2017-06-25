@@ -1,10 +1,8 @@
 package com.github.Eddyosos.integracao20171.esus.cds.atividadeindividual;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadeindividual.ProblemaCondicaoAvaliacaoAIThrift;
-import java.util.Iterator;
+import java.util.HashSet;
 import java.util.List;
-import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
 
 public class ProblemaCondicaoAvaliacaoAI {
     private ProblemaCondicaoAvaliacaoAIThrift instance;
@@ -13,140 +11,155 @@ public class ProblemaCondicaoAvaliacaoAI {
         instance = new ProblemaCondicaoAvaliacaoAIThrift();
     }
 
-    ProblemaCondicaoAvaliacaoAI(ProblemaCondicaoAvaliacaoAIThrift instance) {
+    public ProblemaCondicaoAvaliacaoAI(ProblemaCondicaoAvaliacaoAIThrift instance) {
         this.instance = instance;
     }
     
-    ProblemaCondicaoAvaliacaoAIThrift getInstance(){
+    public ProblemaCondicaoAvaliacaoAIThrift getInstance(){
         return instance;
     }
 
-    public void clear() {
-        instance.clear();
+    /**
+     * Valida a instancia
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validates(){
+        return validateCiaps() &&
+                validateOutroCiap1() &&
+                validateOutroCiap2() &&
+                validateCid10();
     }
-
-    public int getCiapsSize() {
-        return instance.getCiapsSize();
+    
+    /**
+     * Valida Ciaps.
+     * Para ser válido deve:
+     * 1- Não deve conter dois "Problemas / Condições" iguais.
+     * 2- É Requerido o preenchimento de pelo menos um dos itens de #1 a #4
+     * 3- Ter entre 0 e 22 itens
+     * @return
+     */
+    public boolean validateCiaps(){
+        if(instance.isSetCiaps()) {
+            final int var = instance.getCiapsSize();
+            return var < 23 &&
+                (new HashSet<>(instance.getCiaps())).size() == var;
+        }
+        return valida1a4();
     }
-
-    public Iterator<String> getCiapsIterator() {
-        return instance.getCiapsIterator();
+    
+    /**
+     * Atalho para item 2 do validateCiaps que é repetido varias vezes
+     * @return 
+     */
+    private boolean valida1a4(){
+        return instance.isSetCiaps() ||
+                instance.isSetOutroCiap1() ||
+                instance.isSetOutroCiap2() ||
+                instance.isSetCid10();
     }
-
-    public void addToCiaps(String elem) {
-        instance.addToCiaps(elem);
-    }
-
+    
+    /**
+     * Código dos CIAPs apresentados na lista.
+     * @return 
+     */
     public List<String> getCiaps() {
         return instance.getCiaps();
     }
 
+    /**
+     * Código dos CIAPs apresentados na lista.
+     * @param ciaps 
+     */
     public void setCiaps(List<String> ciaps) {
         instance.setCiaps(ciaps);
     }
 
-    public void unsetCiaps() {
-        instance.unsetCiaps();
+    /**
+     * Valida OutroCiap1.
+     * Para ser válido, deve:
+     * 1- Não pode ser igual a outroCiap2.
+     * 2- É Requerido o preenchimento de pelo menos um dos itens de #1 a #4.
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateOutroCiap1(){
+        if(instance.isSetOutroCiap1()) 
+            return !instance.getOutroCiap1().equals(instance.getOutroCiap2());
+        return valida1a4();
     }
-
-    public boolean isSetCiaps() {
-        return instance.isSetCiaps();
-    }
-
-    public void setCiapsIsSet(boolean value) {
-        instance.setCiapsIsSet(value);
-    }
-
+    
+    /**
+     * Código do CIAP1 registrado no antedimento.
+     * @return 
+     */
     public String getOutroCiap1() {
         return instance.getOutroCiap1();
     }
 
+    /**
+     * Código do CIAP1 registrado no antedimento.
+     * @param outroCiap1 
+     */
     public void setOutroCiap1(String outroCiap1) {
         instance.setOutroCiap1(outroCiap1);
     }
 
-    public void unsetOutroCiap1() {
-        instance.unsetOutroCiap1();
+    /**
+     * Valida OutroCiap2.
+     * Para ser válido, deve:
+     * 1- Não pode ser igual a outroCiap1.
+     * 2- É Requerido o preenchimento de pelo menos um dos itens de #1 a #4.
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateOutroCiap2(){
+        if(instance.isSetOutroCiap2()) 
+            return !instance.getOutroCiap2().equals(instance.getOutroCiap1());
+        return valida1a4();
     }
-
-    public boolean isSetOutroCiap1() {
-        return instance.isSetOutroCiap1();
-    }
-
-    public void setOutroCiap1IsSet(boolean value) {
-        instance.setOutroCiap1IsSet(value);
-    }
-
+    
+    /**
+     * Código do CIAP2 registrado no antedimento.
+     * @return 
+     */
     public String getOutroCiap2() {
         return instance.getOutroCiap2();
     }
 
+    /**
+     * Código do CIAP2 registrado no antedimento.
+     * @param outroCiap2 
+     */
     public void setOutroCiap2(String outroCiap2) {
         instance.setOutroCiap2(outroCiap2);
     }
 
-    public void unsetOutroCiap2() {
-        instance.unsetOutroCiap2();
+    /**
+     * Valida Cid10.
+     * Para ser válido deve:
+     * 1- É Requerido o preenchimento de pelo menos um dos itens de #1 a #4.
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateCid10(){
+        return valida1a4();
     }
-
-    public boolean isSetOutroCiap2() {
-        return instance.isSetOutroCiap2();
-    }
-
-    public void setOutroCiap2IsSet(boolean value) {
-        instance.setOutroCiap2IsSet(value);
-    }
-
+    
+    /**
+     * Código do CID10 registrado no atendimento.
+     * @return 
+     */
     public String getCid10() {
         return instance.getCid10();
     }
 
+    /**
+     * Código do CID10 registrado no atendimento.
+     * @param cid10 
+     */
     public void setCid10(String cid10) {
         instance.setCid10(cid10);
-    }
-
-    public void unsetCid10() {
-        instance.unsetCid10();
-    }
-
-    public boolean isSetCid10() {
-        return instance.isSetCid10();
-    }
-
-    public void setCid10IsSet(boolean value) {
-        instance.setCid10IsSet(value);
-    }
-
-    public boolean equals(Object that) {
-        return instance.equals(that);
-    }
-
-    public boolean equals(ProblemaCondicaoAvaliacaoAI that) {
-        return instance.equals(that.instance);
-    }
-
-    public int hashCode() {
-        return instance.hashCode();
-    }
-
-    public int compareTo(ProblemaCondicaoAvaliacaoAI other) {
-        return instance.compareTo(other.instance);
-    }
-
-    public void read(TProtocol iprot) throws TException {
-        instance.read(iprot);
-    }
-
-    public void write(TProtocol oprot) throws TException {
-        instance.write(oprot);
-    }
-
-    public String toString() {
-        return instance.toString();
-    }
-
-    public void validate() throws TException {
-        instance.validate();
     }
 }
 
