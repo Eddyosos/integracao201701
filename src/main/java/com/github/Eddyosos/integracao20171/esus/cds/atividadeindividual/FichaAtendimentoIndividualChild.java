@@ -2,11 +2,11 @@ package com.github.Eddyosos.integracao20171.esus.cds.atividadeindividual;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadeindividual.FichaAtendimentoIndividualChildThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadeindividual.OutrosSiaThrift;
-import java.util.Iterator;
+import com.github.Eddyosos.integracao20171.utils.IDS.CNS;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
+import java.util.Set;
 
 public class FichaAtendimentoIndividualChild {
     private final FichaAtendimentoIndividualChildThrift instance;
@@ -15,371 +15,535 @@ public class FichaAtendimentoIndividualChild {
         instance = new FichaAtendimentoIndividualChildThrift();
     }
 
-    FichaAtendimentoIndividualChild(FichaAtendimentoIndividualChildThrift thrift) {
+    public FichaAtendimentoIndividualChild(FichaAtendimentoIndividualChildThrift thrift) {
         instance = thrift;
     }
 
+    public FichaAtendimentoIndividualChildThrift getInstance(){
+        return instance;
+    }
+    
+    /**
+     * Valida essa instancia
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validates(){
+        return validateNumeroProntuario() &&
+                validateCns() &&
+                validateDataNascimento() &&
+                validateLocalDeAtendimento() &&
+                validateSexo() && 
+                validateTurno() &&
+                validateTipoAtendimento() &&
+                validatePesoAcompanhamentoNutricional() &&
+                validateAlturaAcompanhamentoNutricional() &&
+                validateAleitamentoMaterno() &&
+                validateDumDaGestante() &&
+                validateIdadeGestacional() &&
+                validateAtencaoDomiciliarModalidade() &&
+                validateProblemaCondicaoAvaliada() &&
+                validateExamesSolicitados() &&
+                validateExamesAvaliados() &&
+                validateOutrosSia() &&
+                validatePic() &&
+                validateNasfs() &&
+                validateCondutas() &&
+                validateStGravidezPlanejada() &&
+                validateNuGestasPrevias();
+    }
+    
+    /**
+     * Valida NumeroProntuario
+     * Para ser válida, caso tenha sido inserida, deve ser ter entre 0 e 30 
+     * (inclusivo) caracteres alfanuméricos
+     * @return 
+     */
+    public boolean validateNumeroProntuario(){
+        String var = instance.getNumeroProntuario();
+        return var == null || var.matches("\\A\\w{0,30}\\z");
+    }
+    
+    /**
+     * Número do prontuário
+     * @return 
+     */
     public String getNumeroProntuario() {
         return instance.getNumeroProntuario();
     }
 
+    /**
+     * Número do prontuário
+     * @param numeroProntuario 
+     */
     public void setNumeroProntuario(String numeroProntuario) {
         instance.setNumeroProntuario(numeroProntuario);
     }
 
-    public void unsetNumeroProntuario() {
-        instance.unsetNumeroProntuario();
+    /**
+     * Valida CNS
+     * De acordo com com.github.Eddyosos.intregracao20171.utils.IDS.CNS
+     * @return 
+     */
+    public boolean validateCns(){
+        return CNS.validateCNS(instance.getCns());
     }
-
-    public boolean isSetNumeroProntuario() {
-        return instance.isSetNumeroProntuario();
-    }
-
-    public void setNumeroProntuarioIsSet(boolean value) {
-        instance.setNumeroProntuarioIsSet(value);
-    }
-
+    
+    /**
+     * CNS do cidadão.
+     * @return 
+     */
     public String getCns() {
         return instance.getCns();
     }
 
+    /**
+     * CNS do cidadão.
+     * @param cns 
+     */
     public void setCns(String cns) {
         instance.setCns(cns);
     }
 
-    public void unsetCns() {
-        instance.unsetCns();
+    /**
+     * Valida DataNascimento.
+     * Para ser válido deve:
+     * 1- Ter sido préviamente inserido
+     * 2- Ter menos de 130 anos ao ser atendido(dataAtendimento) (Não implementado)
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateDataNascimento() {
+        return instance.isSetDataNascimento();
     }
-
-    public boolean isSetCns() {
-        return instance.isSetCns();
-    }
-
-    public void setCnsIsSet(boolean value) {
-        instance.setCnsIsSet(value);
-    }
-
+    
+    /**
+     * Data de nascimento do cidadão.
+     * @return 
+     */
     public long getDataNascimento() {
         return instance.getDataNascimento();
     }
-
+    
+    /**
+     * Data de nascimento do cidadão.
+     * @param dataNascimento 
+     */
     public void setDataNascimento(long dataNascimento) {
         instance.setDataNascimento(dataNascimento);
     }
 
-    public void unsetDataNascimento() {
-        instance.unsetDataNascimento();
+    /**
+     * Valida LocalDeAtendimento.
+     * Para ser válido deve:
+     * 1- Préviamente inserido
+     * 2- Valor entre 1 e 10 (inclusivo)
+     * @return 
+     */
+    public boolean validateLocalDeAtendimento(){
+        return instance.isSetLocalDeAtendimento() &&
+               instance.getLocalDeAtendimento() >= 1 &&
+               instance.getLocalDeAtendimento() <= 10;
     }
-
-    public boolean isSetDataNascimento() {
-        return instance.isSetDataNascimento();
-    }
-
-    public void setDataNascimentoIsSet(boolean value) {
-        instance.setDataNascimentoIsSet(value);
-    }
-
+    
+    /**
+     * Código do local onde o atendimento foi realizado.
+     * @return 
+     */
     public long getLocalDeAtendimento() {
         return instance.getLocalDeAtendimento();
     }
 
+    /**
+     * Código do local onde o atendimento foi realizado.
+     * @param localDeAtendimento 
+     */
     public void setLocalDeAtendimento(long localDeAtendimento) {
         instance.setLocalDeAtendimento(localDeAtendimento);
     }
 
-    public void unsetLocalDeAtendimento() {
-        instance.unsetLocalDeAtendimento();
+    /**
+     * Valida Sexo
+     * Para ser válido deve:
+     * 1- Ter sido préviamente inserido
+     * 2- Ter valor 0 ou 1
+     * @return 
+     */
+    public boolean validateSexo(){
+        long var = instance.getSexo();
+        return instance.isSetSexo() &&
+                (var == 0 || var == 1);
     }
-
-    public boolean isSetLocalDeAtendimento() {
-        return instance.isSetLocalDeAtendimento();
-    }
-
-    public void setLocalDeAtendimentoIsSet(boolean value) {
-        instance.setLocalDeAtendimentoIsSet(value);
-    }
-
+    
+    /**
+     * Código do sexo do cidadão.
+     * @return 
+     */
     public long getSexo() {
         return instance.getSexo();
     }
 
+    /**
+     * Código do sexo do cidadão.
+     * @param sexo 
+     */
     public void setSexo(long sexo) {
         instance.setSexo(sexo);
     }
 
-    public void unsetSexo() {
-        instance.unsetSexo();
+    /**
+     * Valida Turno
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateTurno(){
+        long var = instance.getTurno();
+        return !instance.isSetTurno() || 
+                var == 1 ||
+                var == 2 ||
+                var == 3;
+                
     }
-
-    public boolean isSetSexo() {
-        return instance.isSetSexo();
-    }
-
-    public void setSexoIsSet(boolean value) {
-        instance.setSexoIsSet(value);
-    }
-
+    
+    /**
+     * Código do turno em que o atendimento foi realizado.
+     * @return 
+     */
     public long getTurno() {
         return instance.getTurno();
     }
 
+    /**
+     * Código do turno em que o atendimento foi realizado.
+     * @param turno 
+     */
     public void setTurno(long turno) {
         instance.setTurno(turno);
     }
 
-    public void unsetTurno() {
-        instance.unsetTurno();
+    /**
+     * Valida Tipo de atendimento.
+     * Para ser válido deve:
+     * 1- Ter sido préviamente inserido
+     * 2- Ter valor entre 1 e 6 (inclusivo)
+     * @return 
+     */
+    public boolean validateTipoAtendimento(){
+        long var = instance.getTipoAtendimento();
+        return instance.isSetTipoAtendimento() &&
+                var >= 1 && var <= 6;
     }
-
-    public boolean isSetTurno() {
-        return instance.isSetTurno();
-    }
-
-    public void setTurnoIsSet(boolean value) {
-        instance.setTurnoIsSet(value);
-    }
-
+    
+    /**
+     * Código do tipo de atendimento realizado.
+     * @return 
+     */
     public long getTipoAtendimento() {
         return instance.getTipoAtendimento();
     }
 
+    /**
+     * Código do tipo de atendimento realizado.
+     * @param tipoAtendimento 
+     */
     public void setTipoAtendimento(long tipoAtendimento) {
         instance.setTipoAtendimento(tipoAtendimento);
     }
-
-    public void unsetTipoAtendimento() {
-        instance.unsetTipoAtendimento();
+    
+    /**
+     * Valida PesoAcompanhamentoNutricional.
+     * Para ser valido, caso tenha sido inserido, deve:
+     * 1- Máximo de 2 números após a vírgula.
+     * 2- Se tiver vírgula, tamanho máximo = 7.
+     * 3- Valor mínimo 0,5 e máximo 500.
+     * @return true se válido
+     *         false se inválido
+     */
+    public boolean validatePesoAcompanhamentoNutricional(){
+        double var = instance.getPesoAcompanhamentoNutricional();
+        return !instance.isSetPesoAcompanhamentoNutricional() || 
+                (var * 100 == (int) (var * 100) && 
+                 var < 10000 &&
+                 var >= 0.5 &&
+                 var <= 500);
     }
 
-    public boolean isSetTipoAtendimento() {
-        return instance.isSetTipoAtendimento();
-    }
-
-    public void setTipoAtendimentoIsSet(boolean value) {
-        instance.setTipoAtendimentoIsSet(value);
-    }
-
+    /**
+     * Peso do cidadão em Kilogramas.
+     * @return 
+     */
     public double getPesoAcompanhamentoNutricional() {
         return instance.getPesoAcompanhamentoNutricional();
     }
 
+    /**
+     * Peso do cidadão em Kilogramas.
+     * @param pesoAcompanhamentoNutricional 
+     */
     public void setPesoAcompanhamentoNutricional(double pesoAcompanhamentoNutricional) {
         instance.setPesoAcompanhamentoNutricional(pesoAcompanhamentoNutricional);
     }
 
-    public void unsetPesoAcompanhamentoNutricional() {
-        instance.unsetPesoAcompanhamentoNutricional();
+    /**
+     * Valida AlturaAcompanhamentoNutricional.
+     * Para ser válido deve:
+     * 1- Máximo de 2 números após a vírgula.
+     * 2- Se tiver vírgula, tamanho máximo = 5.
+     * 3- Valor mínimo 20 e máximo 250.
+     * @return true se válido
+     *         false se inválido
+     */
+    public boolean validateAlturaAcompanhamentoNutricional(){
+        double var = instance.getAlturaAcompanhamentoNutricional();
+        return !instance.isSetAlturaAcompanhamentoNutricional()|| 
+                (var * 100 == (int) (var * 100) && 
+                 var < 1000 &&
+                 var >= 20 &&
+                 var <= 250);
     }
-
-    public boolean isSetPesoAcompanhamentoNutricional() {
-        return instance.isSetPesoAcompanhamentoNutricional();
-    }
-
-    public void setPesoAcompanhamentoNutricionalIsSet(boolean value) {
-        instance.setPesoAcompanhamentoNutricionalIsSet(value);
-    }
-
+    
+    /**
+     * Altura do cidadão em centímetros.
+     * @return 
+     */
     public double getAlturaAcompanhamentoNutricional() {
         return instance.getAlturaAcompanhamentoNutricional();
     }
 
+    /**
+     * Altura do cidadão em centímetros.
+     * @param alturaAcompanhamentoNutricional 
+     */
     public void setAlturaAcompanhamentoNutricional(double alturaAcompanhamentoNutricional) {
         instance.setAlturaAcompanhamentoNutricional(alturaAcompanhamentoNutricional);
     }
 
-    public void unsetAlturaAcompanhamentoNutricional() {
-        instance.unsetAlturaAcompanhamentoNutricional();
+    /**
+     * Valida AleitamentoMaterno
+     * Para ser válido, caso tenha sido inserido deve:
+     * Ter valor entre 1 e 4 (inclusivo)
+     * @return 
+     */
+    public boolean validateAleitamentoMaterno(){
+        long var = instance.getAleitamentoMaterno();
+        return !instance.isSetAleitamentoMaterno() || 
+                (var >= 1 && var <= 4);
     }
-
-    public boolean isSetAlturaAcompanhamentoNutricional() {
-        return instance.isSetAlturaAcompanhamentoNutricional();
-    }
-
-    public void setAlturaAcompanhamentoNutricionalIsSet(boolean value) {
-        instance.setAlturaAcompanhamentoNutricionalIsSet(value);
-    }
-
+    
+    /**
+     * Código do marcador referente ao aleitamento materno.
+     * @return 
+     */
     public long getAleitamentoMaterno() {
         return instance.getAleitamentoMaterno();
     }
 
+    /**
+     * Código do marcador referente ao aleitamento materno.
+     * @param aleitamentoMaterno 
+     */
     public void setAleitamentoMaterno(long aleitamentoMaterno) {
         instance.setAleitamentoMaterno(aleitamentoMaterno);
     }
 
-    public void unsetAleitamentoMaterno() {
-        instance.unsetAleitamentoMaterno();
+    /**
+     * Valida DumDaGestante.
+     * Para ser válido, caso tenha sido inserido, deve:
+     * 1- Não pode ser superior a dataAtendimento (não implementado), 
+     * nem inferior a data de nascimento.
+     * 2- Não pode ser preenchido quando Sexo = 0 (masculino).
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateDumDaGestante(){
+        return !instance.isSetDumDaGestante() || 
+                (instance.getSexo() != 0 && 
+                 instance.getDataNascimento() < instance.getDumDaGestante());
     }
-
-    public boolean isSetAleitamentoMaterno() {
-        return instance.isSetAleitamentoMaterno();
-    }
-
-    public void setAleitamentoMaternoIsSet(boolean value) {
-        instance.setAleitamentoMaternoIsSet(value);
-    }
-
+    
+    /**
+     * Data da última menstruação da gestante.
+     * @return 
+     */
     public long getDumDaGestante() {
         return instance.getDumDaGestante();
     }
 
+    /**
+     * Data da última menstruação da gestante.
+     * @param dumDaGestante 
+     */
     public void setDumDaGestante(long dumDaGestante) {
         instance.setDumDaGestante(dumDaGestante);
     }
 
-    public void unsetDumDaGestante() {
-        instance.unsetDumDaGestante();
+    /**
+     * Valida IdadeGestacional.
+     * Para ser válido, caso tenha sido inserido, deve:
+     * 1- Valor mínimo 1 e máximo 42.
+     * 2- Não pode ser preenchido quando Sexo = 0 (masculino).
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateIdadeGestacional(){
+        int var = instance.getIdadeGestacional();
+        return !instance.isSetIdadeGestacional() ||
+                (var >= 1 && var <= 42 &&
+                 instance.getSexo() != 0);
     }
-
-    public boolean isSetDumDaGestante() {
-        return instance.isSetDumDaGestante();
-    }
-
-    public void setDumDaGestanteIsSet(boolean value) {
-        instance.setDumDaGestanteIsSet(value);
-    }
-
+    
+    /**
+     * Idade gestacional em semanas.
+     * @return 
+     */
     public int getIdadeGestacional() {
         return instance.getIdadeGestacional();
     }
 
+    /**
+     * Idade gestacional em semanas.
+     * @param idadeGestacional 
+     */
     public void setIdadeGestacional(int idadeGestacional) {
         instance.setIdadeGestacional(idadeGestacional);
     }
 
-    public void unsetIdadeGestacional() {
-        instance.unsetIdadeGestacional();
+    /**
+     * Valida AtencaoDomiciliarModalidade
+     * Para ser válido, caso tenha sido inserido, deve:
+     * 1- Ter valor 1 a 3
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateAtencaoDomiciliarModalidade(){
+        long var = instance.getAtencaoDomiciliarModalidade();
+        return !instance.isSetAtencaoDomiciliarModalidade() || 
+                (var >= 1 && var <= 3);
     }
-
-    public boolean isSetIdadeGestacional() {
-        return instance.isSetIdadeGestacional();
-    }
-
-    public void setIdadeGestacionalIsSet(boolean value) {
-        instance.setIdadeGestacionalIsSet(value);
-    }
-
+    
+    /**
+     * Código do modalidade AD do cidadão atendido.
+     * @return 
+     */
     public long getAtencaoDomiciliarModalidade() {
         return instance.getAtencaoDomiciliarModalidade();
     }
 
+    /**
+     * Código do modalidade AD do cidadão atendido.
+     * @param atencaoDomiciliarModalidade 
+     */
     public void setAtencaoDomiciliarModalidade(long atencaoDomiciliarModalidade) {
         instance.setAtencaoDomiciliarModalidade(atencaoDomiciliarModalidade);
     }
 
-    public void unsetAtencaoDomiciliarModalidade() {
-        instance.unsetAtencaoDomiciliarModalidade();
+    /**
+     * Valida ProblemaCondicaoAvaliada
+     * Para ser valido deve ter sido préviamente inserido
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateProblemaCondicaoAvaliada(){
+        return instance.isSetProblemaCondicaoAvaliada();
     }
-
-    public boolean isSetAtencaoDomiciliarModalidade() {
-        return instance.isSetAtencaoDomiciliarModalidade();
-    }
-
-    public void setAtencaoDomiciliarModalidadeIsSet(boolean value) {
-        instance.setAtencaoDomiciliarModalidadeIsSet(value);
-    }
-
+    
+    /**
+     * Situações de saúde avaliadas no atendimento.
+     * @return 
+     */
     public ProblemaCondicaoAvaliacaoAI getProblemaCondicaoAvaliada() {
         return new ProblemaCondicaoAvaliacaoAI(instance.getProblemaCondicaoAvaliada());
     }
 
+    /**
+     * Situações de saúde avaliadas no atendimento.
+     * @param problemaCondicaoAvaliada 
+     */
     public void setProblemaCondicaoAvaliada(ProblemaCondicaoAvaliacaoAI problemaCondicaoAvaliada) {
         instance.setProblemaCondicaoAvaliada(problemaCondicaoAvaliada.getInstance());
     }
 
-    public void unsetProblemaCondicaoAvaliada() {
-        instance.unsetProblemaCondicaoAvaliada();
+    /**
+     * Valida ExamesSolicitados.
+     * Para ser válido, caso inserido, deve:
+     * 1- Não pode ter exames iguais
+     * 2- Não pode ter mais do que 23 exames
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateExamesSolicitados(){
+        if(instance.isSetExamesSolicitados()) {
+            int size = instance.getExamesSolicitadosSize();
+            if(size > 23) return false;
+            Set exames = new HashSet(instance.getExamesSolicitados());
+            if(exames.size() != size) return false;
+        }
+        return true;
     }
-
-    public boolean isSetProblemaCondicaoAvaliada() {
-        return instance.isSetProblemaCondicaoAvaliada();
-    }
-
-    public void setProblemaCondicaoAvaliadaIsSet(boolean value) {
-        instance.setProblemaCondicaoAvaliadaIsSet(value);
-    }
-
-    public int getExamesSolicitadosSize() {
-        return instance.getExamesSolicitadosSize();
-    }
-
-    public Iterator<String> getExamesSolicitadosIterator() {
-        return instance.getExamesSolicitadosIterator();
-    }
-
-    public void addToExamesSolicitados(String elem) {
-        instance.addToExamesSolicitados(elem);
-    }
-
+    
+    /**
+     * Lista de exames solicitados que são apresentados na ficha.
+     * @return 
+     */
     public List<String> getExamesSolicitados() {
         return instance.getExamesSolicitados();
     }
 
+    /**
+     * Lista de exames solicitados que são apresentados na ficha.
+     * @param examesSolicitados 
+     */
     public void setExamesSolicitados(List<String> examesSolicitados) {
         instance.setExamesSolicitados(examesSolicitados);
     }
-
-    public void unsetExamesSolicitados() {
-        instance.unsetExamesSolicitados();
+    
+    /**
+     * Valida ExamesAvaliados.
+     * Para ser válido, caso inserido, deve:
+     * 1- Não pode ter exames iguais
+     * 2- Não pode ter mais do que 23 exames
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateExamesAvaliados(){
+        if(instance.isSetExamesAvaliados()) {
+            int size = instance.getExamesAvaliadosSize();
+            if(size > 23) return false;
+            Set exames = new HashSet(instance.getExamesAvaliados());
+            if(exames.size() != size) return false;
+        }
+        return true;
     }
-
-    public boolean isSetExamesSolicitados() {
-        return instance.isSetExamesSolicitados();
-    }
-
-    public void setExamesSolicitadosIsSet(boolean value) {
-        instance.setExamesSolicitadosIsSet(value);
-    }
-
-    public int getExamesAvaliadosSize() {
-        return instance.getExamesAvaliadosSize();
-    }
-
-    public Iterator<String> getExamesAvaliadosIterator() {
-        return instance.getExamesAvaliadosIterator();
-    }
-
-    public void addToExamesAvaliados(String elem) {
-        instance.addToExamesAvaliados(elem);
-    }
-
+    
+    /**
+     * Lista de exames avaliados que são apresentados na ficha.
+     * @return 
+     */
     public List<String> getExamesAvaliados() {
         return instance.getExamesAvaliados();
     }
 
+    /**
+     * Lista de exames avaliados que são apresentados na ficha.
+     * @param examesAvaliados 
+     */
     public void setExamesAvaliados(List<String> examesAvaliados) {
         instance.setExamesAvaliados(examesAvaliados);
     }
 
-    public void unsetExamesAvaliados() {
-        instance.unsetExamesAvaliados();
+    /**
+     * Valida OutrosSia
+     * Para ser válido, caso inserido, deve ter no máximo 3 itens
+     * @return 
+     */
+    public boolean validateOutrosSia(){
+        return !instance.isSetOutrosSia() || instance.getOutrosSiaSize() < 3;
     }
-
-    public boolean isSetExamesAvaliados() {
-        return instance.isSetExamesAvaliados();
-    }
-
-    public void setExamesAvaliadosIsSet(boolean value) {
-        instance.setExamesAvaliadosIsSet(value);
-    }
-
-    public int getOutrosSiaSize() {
-        return instance.getOutrosSiaSize();
-    }
-
-    public Iterator<OutrosSia> getOutrosSiaIterator() {
-        List<OutrosSia> list = new LinkedList<>();
-        instance.getOutrosSiaIterator().forEachRemaining((item) -> {
-            list.add(new OutrosSia(item));
-        });
-        
-        return list.iterator();
-    }
-
-    public void addToOutrosSia(OutrosSia elem) {
-        instance.addToOutrosSia(elem.getInstance());
-    }
-
+    
+    /**
+     * Lista de outros exames.
+     * @return 
+     */
     public List<OutrosSia> getOutrosSia() {
         List<OutrosSia> list = new LinkedList<>();
         instance.getOutrosSia().iterator().forEachRemaining((item) -> {
@@ -388,6 +552,10 @@ public class FichaAtendimentoIndividualChild {
         return list;
     }
 
+    /**
+     * Lista de outros exames.
+     * @param outrosSia 
+     */
     public void setOutrosSia(List<OutrosSia> outrosSia) {
         List<OutrosSiaThrift> list = new LinkedList<>();
         outrosSia.iterator().forEachRemaining((t) -> {
@@ -396,236 +564,227 @@ public class FichaAtendimentoIndividualChild {
         instance.setOutrosSia(list);
     }
 
-    public void unsetOutrosSia() {
-        instance.unsetOutrosSia();
-    }
-
-    public boolean isSetOutrosSia() {
-        return instance.isSetOutrosSia();
-    }
-
-    public void setOutrosSiaIsSet(boolean value) {
-        instance.setOutrosSiaIsSet(value);
-    }
-
+    // Não existem validações para VacinaEmDia
+    
+    /**
+     * Marcador referente a vacinação em dia do cidadão.
+     * @return 
+     */
     public boolean isVacinaEmDia() {
         return instance.isVacinaEmDia();
     }
 
+    /**
+     * Marcador referente a vacinação em dia do cidadão.
+     * @param vacinaEmDia 
+     */
     public void setVacinaEmDia(boolean vacinaEmDia) {
         instance.setVacinaEmDia(vacinaEmDia);
     }
 
-    public void unsetVacinaEmDia() {
-        instance.unsetVacinaEmDia();
-    }
-
-    public boolean isSetVacinaEmDia() {
-        return instance.isSetVacinaEmDia();
-    }
-
-    public void setVacinaEmDiaIsSet(boolean value) {
-        instance.setVacinaEmDiaIsSet(value);
-    }
-
+    /**
+     * Valida Pic
+     * Para ser válido, caso inserido, deve ter valor de 1 a 8
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validatePic(){
+        long var = instance.getPic();
+        return !instance.isSetPic() || 
+                (var >= 1 && var <= 8);
+    } 
+    
+    /**
+     * Código das Práticas Integrativas e Complementares.
+     * @return 
+     */
     public long getPic() {
         return instance.getPic();
     }
 
+    /**
+     * Código das Práticas Integrativas e Complementares.
+     * @param pic 
+     */
     public void setPic(long pic) {
         instance.setPic(pic);
     }
 
-    public void unsetPic() {
-        instance.unsetPic();
-    }
-
-    public boolean isSetPic() {
-        return instance.isSetPic();
-    }
-
-    public void setPicIsSet(boolean value) {
-        instance.setPicIsSet(value);
-    }
-
+    // Não á validações para FicouEmObservação
+    
+    /**
+     * Marcador referente se o cidadão ficou em observação no atendimento.
+     * @return 
+     */
     public boolean isFicouEmObservacao() {
         return instance.isFicouEmObservacao();
     }
 
+    /**
+     * Marcador referente se o cidadão ficou em observação no atendimento.
+     * @param ficouEmObservacao 
+     */
     public void setFicouEmObservacao(boolean ficouEmObservacao) {
         instance.setFicouEmObservacao(ficouEmObservacao);
     }
 
-    public void unsetFicouEmObservacao() {
-        instance.unsetFicouEmObservacao();
+    /**
+     * Valida Nasfs
+     * Para ser válido, caso inserido, deve ter no máximo 3 itens
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateNasfs(){
+        return !instance.isSetNasfs() ||
+                instance.getNasfsSize() <= 3;
     }
-
-    public boolean isSetFicouEmObservacao() {
-        return instance.isSetFicouEmObservacao();
-    }
-
-    public void setFicouEmObservacaoIsSet(boolean value) {
-        instance.setFicouEmObservacaoIsSet(value);
-    }
-
-    public int getNasfsSize() {
-        return instance.getNasfsSize();
-    }
-
-    public Iterator<Long> getNasfsIterator() {
-        return instance.getNasfsIterator();
-    }
-
-    public void addToNasfs(long elem) {
-        instance.addToNasfs(elem);
-    }
-
+    
+    /**
+     * Código das ações realizadas pelo Núcleo de Atenção a Saúde da Família
+     * @return 
+     */
     public List<Long> getNasfs() {
         return instance.getNasfs();
     }
 
+    /**
+     * Código das ações realizadas pelo Núcleo de Atenção a Saúde da Família
+     * @param nasfs 
+     */
     public void setNasfs(List<Long> nasfs) {
         instance.setNasfs(nasfs);
     }
 
-    public void unsetNasfs() {
-        instance.unsetNasfs();
+    /**
+     * Valida Condutas
+     * Para ser válido, deve:
+     * 1- Ter sido setado préviamente
+     * 2- Ter entre 1 e 12 itens
+     * 3- Cada valor deve ser entre 1 e 12
+     * @return 
+     */
+    public boolean validateCondutas(){
+        if(!instance.isSetCondutas()) return false;
+        
+        int size = instance.getCondutasSize();
+        if(size < 1 || size > 12) return false;
+        
+        boolean[] condutasUsadas = new boolean[13];
+        for(int i = 0; i < condutasUsadas.length; i++) 
+            condutasUsadas[i] = false;
+        
+        for(long conduta:instance.getCondutas())
+            if(conduta > 12 || conduta < 1 || condutasUsadas[(int)conduta]) 
+                return false;            
+        
+        return true;
     }
-
-    public boolean isSetNasfs() {
-        return instance.isSetNasfs();
-    }
-
-    public void setNasfsIsSet(boolean value) {
-        instance.setNasfsIsSet(value);
-    }
-
-    public int getCondutasSize() {
-        return instance.getCondutasSize();
-    }
-
-    public Iterator<Long> getCondutasIterator() {
-        return instance.getCondutasIterator();
-    }
-
-    public void addToCondutas(long elem) {
-        instance.addToCondutas(elem);
-    }
-
+    
+    /**
+     * Código das condutas adotadas no atendimento.
+     * @return 
+     */
     public List<Long> getCondutas() {
         return instance.getCondutas();
     }
 
+    /**
+     * Código das condutas adotadas no atendimento.
+     * @param condutas 
+     */
     public void setCondutas(List<Long> condutas) {
         instance.setCondutas(condutas);
     }
 
-    public void unsetCondutas() {
-        instance.unsetCondutas();
+    /**
+     * Valida StGravidezPlanejada
+     * Para ser válido, não pode ser preenchido quando Sexo = 0 (masculino)
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateStGravidezPlanejada(){
+        return !instance.isSetStGravidezPlanejada() || 
+                instance.getSexo() != 0;
     }
-
-    public boolean isSetCondutas() {
-        return instance.isSetCondutas();
-    }
-
-    public void setCondutasIsSet(boolean value) {
-        instance.setCondutasIsSet(value);
-    }
-
+    
+    /**
+     * Marcador que indica se a gravidez é planejada.
+     * @return 
+     */
     public boolean isStGravidezPlanejada() {
         return instance.isStGravidezPlanejada();
     }
 
+    /**
+     * Marcador que indica se a gravidez é planejada.
+     * @param stGravidezPlanejada 
+     */
     public void setStGravidezPlanejada(boolean stGravidezPlanejada) {
         instance.setStGravidezPlanejada(stGravidezPlanejada);
     }
 
-    public void unsetStGravidezPlanejada() {
-        instance.unsetStGravidezPlanejada();
+    /**
+     * Valida NuGestasPrevias
+     * Para ser válido, caso inserido, deve:
+     * 1- Não ter sexo = 0 (masculino)
+     * 2- Valor entre 0 e 2
+     * @return true se válido
+     *          False se inválido
+     */
+    public boolean validateNuGestasPrevias(){
+        final int var = instance.getNuGestasPrevias();
+        
+        return !instance.isSetNuGestasPrevias() || (
+                instance.getSexo() != 0 &&
+                var >= 0 && var <= 2);
     }
-
-    public boolean isSetStGravidezPlanejada() {
-        return instance.isSetStGravidezPlanejada();
-    }
-
-    public void setStGravidezPlanejadaIsSet(boolean value) {
-        instance.setStGravidezPlanejadaIsSet(value);
-    }
-
+    
+    /**
+     * Número de gestações prévias.
+     * @return 
+     */
     public int getNuGestasPrevias() {
         return instance.getNuGestasPrevias();
     }
 
+    /**
+     * Número de gestações prévias.
+     * @param nuGestasPrevias 
+     */
     public void setNuGestasPrevias(int nuGestasPrevias) {
         instance.setNuGestasPrevias(nuGestasPrevias);
     }
-
-    public void unsetNuGestasPrevias() {
-        instance.unsetNuGestasPrevias();
+    
+    /**
+     * Valida NuPartos
+     * Para ser válido, caso inserido, deve:
+     * 1- Não ter sexo = 0 (masculino)
+     * 2- Valor entre 0 e 2
+     * @return true se válido
+     *          False se inválido
+     */
+    public boolean validateNuPartos(){
+        final int var = instance.getNuPartos();
+        
+        return !instance.isSetNuPartos() || (
+                instance.getSexo() != 0 &&
+                var >= 0 && var <= 2);
     }
 
-    public boolean isSetNuGestasPrevias() {
-        return instance.isSetNuGestasPrevias();
-    }
-
-    public void setNuGestasPreviasIsSet(boolean value) {
-        instance.setNuGestasPreviasIsSet(value);
-    }
-
+    /**
+     * Número de partos que a mulher já teve.
+     * @return 
+     */
     public int getNuPartos() {
         return instance.getNuPartos();
     }
 
+    /**
+     * Número de partos que a mulher já teve.
+     * @param nuPartos 
+     */
     public void setNuPartos(int nuPartos) {
         instance.setNuPartos(nuPartos);
-    }
-
-    public void unsetNuPartos() {
-        instance.unsetNuPartos();
-    }
-
-    public boolean isSetNuPartos() {
-        return instance.isSetNuPartos();
-    }
-
-    public void setNuPartosIsSet(boolean value) {
-        instance.setNuPartosIsSet(value);
-    }
-
-    public boolean equals(Object that) {
-        return instance.equals(that);
-    }
-
-    public boolean equals(FichaAtendimentoIndividualChild that) {
-        return instance.equals(that.instance);
-    }
-
-    public int hashCode() {
-        return instance.hashCode();
-    }
-
-    public int compareTo(FichaAtendimentoIndividualChild other) {
-        return instance.compareTo(other.instance);
-    }
-
-    public void read(TProtocol iprot) throws TException {
-        instance.read(iprot);
-    }
-
-    public void write(TProtocol oprot) throws TException {
-        instance.write(oprot);
-    }
-
-    public String toString() {
-        return instance.toString();
-    }
-
-    public void validate() throws TException {
-        instance.validate();
-    }
-
-    FichaAtendimentoIndividualChildThrift getInstance() {
-        return instance;
     }
 }
 

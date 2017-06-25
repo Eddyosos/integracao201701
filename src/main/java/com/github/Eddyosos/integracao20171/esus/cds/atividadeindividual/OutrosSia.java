@@ -1,10 +1,7 @@
 package com.github.Eddyosos.integracao20171.esus.cds.atividadeindividual;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadeindividual.OutrosSiaThrift;
-import java.util.Iterator;
 import java.util.List;
-import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
 
 public class OutrosSia {
 
@@ -14,107 +11,76 @@ public class OutrosSia {
         instance = new OutrosSiaThrift();
     }
     
-    OutrosSia(OutrosSiaThrift thrift) {
+    public OutrosSia(OutrosSiaThrift thrift) {
         instance = thrift;
     }
 
-    OutrosSiaThrift getInstance() {
+    public OutrosSiaThrift getInstance() {
         return instance;
     }
-
-    public OutrosSiaThrift deepCopy() {
-        return instance.deepCopy();
+    
+    /**
+     * Valida a instancia
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validates(){
+        return validateCodigoExame() &&
+                validateSolicitadoAvaliado();
     }
 
-    public void clear() {
-        instance.clear();
+    /**
+     * Valida CodigoExame.
+     * Para ser válido deve:
+     * 1- Ter sido inserido préviamente
+     * 2- Atender ao regex: \A\d{10}\z
+     * @return 
+     */
+    public boolean validateCodigoExame(){
+        return instance.isSetCodigoExame() &&
+                instance.getCodigoExame().matches("\\A\\d{10}\\z");
     }
-
+    
+    /**
+     * Código do exame solicitado ou avaliado.
+     * @return 
+     */
     public String getCodigoExame() {
         return instance.getCodigoExame();
     }
 
+    /**
+     * Código do exame solicitado ou avaliado.
+     * @param codigoExame 
+     */
     public void setCodigoExame(String codigoExame) {
         instance.setCodigoExame(codigoExame);
     }
 
-    public void unsetCodigoExame() {
-        instance.unsetCodigoExame();
+    /**
+     * Valida SolicitadoAvaliado.
+     * Para ser válido deve ter sido inserido préviamente.
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateSolicitadoAvaliado(){
+        return instance.isSetSolicitadoAvaliado();
     }
-
-    public boolean isSetCodigoExame() {
-        return instance.isSetCodigoExame();
-    }
-
-    public void setCodigoExameIsSet(boolean value) {
-        instance.setCodigoExameIsSet(value);
-    }
-
-    public int getSolicitadoAvaliadoSize() {
-        return instance.getSolicitadoAvaliadoSize();
-    }
-
-    public Iterator<String> getSolicitadoAvaliadoIterator() {
-        return instance.getSolicitadoAvaliadoIterator();
-    }
-
-    public void addToSolicitadoAvaliado(String elem) {
-        instance.addToSolicitadoAvaliado(elem);
-    }
-
+    
+    /**
+     * Código do indicador se o exame foi Solicitado e / ou Avaliado.
+     * @return
+     */
     public List<String> getSolicitadoAvaliado() {
         return instance.getSolicitadoAvaliado();
     }
 
+    /**
+     * Código do indicador se o exame foi Solicitado e / ou Avaliado.
+     * @param solicitadoAvaliado 
+     */
     public void setSolicitadoAvaliado(List<String> solicitadoAvaliado) {
         instance.setSolicitadoAvaliado(solicitadoAvaliado);
     }
-
-    public void unsetSolicitadoAvaliado() {
-        instance.unsetSolicitadoAvaliado();
-    }
-
-    public boolean isSetSolicitadoAvaliado() {
-        return instance.isSetSolicitadoAvaliado();
-    }
-
-    public void setSolicitadoAvaliadoIsSet(boolean value) {
-        instance.setSolicitadoAvaliadoIsSet(value);
-    }
-
-    public boolean equals(Object that) {
-        return instance.equals(that);
-    }
-
-    public boolean equals(OutrosSia that) {
-        return instance.equals(that.instance);
-    }
-
-    public int hashCode() {
-        return instance.hashCode();
-    }
-
-    public int compareTo(OutrosSia other) {
-        return instance.compareTo(other.instance);
-    }
-
-    public void read(TProtocol iprot) throws TException {
-        instance.read(iprot);
-    }
-
-    public void write(TProtocol oprot) throws TException {
-        instance.write(oprot);
-    }
-
-    public String toString() {
-        return instance.toString();
-    }
-
-    public void validate() throws TException {
-        instance.validate();
-    }
-    
-    
-
 }
 
