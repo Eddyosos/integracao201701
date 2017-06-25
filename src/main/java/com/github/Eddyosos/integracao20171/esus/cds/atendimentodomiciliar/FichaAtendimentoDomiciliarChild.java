@@ -1,6 +1,7 @@
 package com.github.Eddyosos.integracao20171.esus.cds.atendimentodomiciliar;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.atendimentodomiciliar.FichaAtendimentoDomiciliarChildThrift;
+import com.github.Eddyosos.integracao20171.utils.IDS.CNS;
 import java.util.Iterator;
 import java.util.List;
 import org.apache.thrift.TException;
@@ -692,13 +693,20 @@ public class FichaAtendimentoDomiciliarChild {
         return instancia.toString();
     }
 
-    public boolean validate()  {
+    public boolean validates()  {
         try {
             instancia.validate();
         } catch (TException ex) {
-            
+            return false;
         }
-        return false;
+        
+        return validateTurno() && validateCns() && validaDataNascimento() &&
+                validateSexo() && validateLocalDeAtendimento() && 
+                validateAtencaoDomiciliarModalidade() && validateTipoAtendimento() &&
+                validateAtencaoDomiciliarModalidade() && validateTipoAtendimento() &&
+                validateSituacoesPresentes() && validateProcedimentos() && 
+                validateOutrosProcedimentos() && validateCondutaDesfecho();
+        
     }
     
     /**
@@ -723,135 +731,36 @@ public class FichaAtendimentoDomiciliarChild {
      */
     public boolean validateCns(){
         if(this.isSetCns()){
-            if(this.getCns().length() > 15 || this.getCns().length() < 15){
-                
-                return false;
-            }
-            if(instancia.getCns().charAt(0) == '1' || instancia.getCns().charAt(0) == '2'){
-                return validaCnsIniUmDois(instancia.getCns());
-            }else if(instancia.getCns().charAt(0) == '7' || instancia.getCns().charAt(0) == '8' || instancia.getCns().charAt(0) == '9'){
-                return validaCnsIniSeteOitoNove(instancia.getCns());
-            }else{
-                return false;
-            }
+            return CNS.validateCNS(instancia.getCns());
                 
         }
         
         return true;
     }
-        /**
-     * Codigo fornecido pelo governo
-     * Rotina de validação de Números do cns que iniciam com “1” ou “2” 
-     * Observações:
-     * 
-     * 1) Não existe máscara para o CNS nem para o Número Provisório. O número que aparece no cartão de forma separada (898  0000  0004  3208) deverá ser digitado sem as separações.
-     * 2) O 16º número que aparece no Cartão é o número da via do cartão, não é deverá ser digitado.
-     * @param cns
-     * @return True caso o cns seja valido
-     */
-    public boolean validaCnsIniUmDois(String cns){
-        if (cns.trim().length() != 15){
-            return(false);
-        }
-
-        float soma;
-        float resto, dv;
-        String pis = new String("");
-        String resultado = new String("");
-        pis = cns.substring(0,11);
-
-        soma = ((Integer.valueOf(pis.substring(0,1)).intValue()) * 15) +
-               ((Integer.valueOf(pis.substring(1,2)).intValue()) * 14) +
-               ((Integer.valueOf(pis.substring(2,3)).intValue()) * 13) +
-               ((Integer.valueOf(pis.substring(3,4)).intValue()) * 12) +
-               ((Integer.valueOf(pis.substring(4,5)).intValue()) * 11) +
-               ((Integer.valueOf(pis.substring(5,6)).intValue()) * 10) +
-               ((Integer.valueOf(pis.substring(6,7)).intValue()) * 9) +
-               ((Integer.valueOf(pis.substring(7,8)).intValue()) * 8) +
-               ((Integer.valueOf(pis.substring(8,9)).intValue()) * 7) +
-               ((Integer.valueOf(pis.substring(9,10)).intValue()) * 6) +
-               ((Integer.valueOf(pis.substring(10,11)).intValue()) * 5);
-
-        resto = soma % 11;
-        dv = 11 - resto;
-
-        if (dv == 11){
-            dv = 0;
-        }
-
-        if (dv == 10){
-            soma = ((Integer.valueOf(pis.substring(0,1)).intValue()) * 15) +
-                   ((Integer.valueOf(pis.substring(1,2)).intValue()) * 14) +
-                   ((Integer.valueOf(pis.substring(2,3)).intValue()) * 13) +
-                   ((Integer.valueOf(pis.substring(3,4)).intValue()) * 12) +
-                   ((Integer.valueOf(pis.substring(4,5)).intValue()) * 11) +
-                   ((Integer.valueOf(pis.substring(5,6)).intValue()) * 10) +
-                   ((Integer.valueOf(pis.substring(6,7)).intValue()) * 9) +
-                   ((Integer.valueOf(pis.substring(7,8)).intValue()) * 8) +
-                   ((Integer.valueOf(pis.substring(8,9)).intValue()) * 7) +
-                   ((Integer.valueOf(pis.substring(9,10)).intValue()) * 6) +
-                   ((Integer.valueOf(pis.substring(10,11)).intValue()) * 5) + 2;
-
-            resto = soma % 11;
-            dv = 11 - resto;
-            resultado = pis + "001" + String.valueOf((int)dv);
-        }else {
-            resultado = pis + "000" + String.valueOf((int)dv);
-        }
-
-        if (! cns.equals(resultado)){
-            return(false);
-        }else {
-        
-            return(true);
-        }
-    }
-    /**
-     * Codigo fornecido pelo governo
-     * Rotina de validação de Números que iniciam com “7”, “8” ou “9”
-     * Observações:
-     * 
-     * 1) Não existe máscara para o CNS nem para o Número Provisório. O número que aparece no cartão de forma separada (898  0000  0004  3208) deverá ser digitado sem as separações.
-     * 2) O 16º número que aparece no Cartão é o número da via do cartão, não é deverá ser digitado.
-     * @param cns
-     * @return True caso o cns seja valido
-     */
-    public boolean validaCnsIniSeteOitoNove(String cns){
-        if (cns.trim().length() != 15){
-            return(false);
-        }
-
-        float dv;
-        float resto,soma;
-
-        soma = ((Integer.valueOf(cns.substring(0,1)).intValue()) * 15) +
-               ((Integer.valueOf(cns.substring(1,2)).intValue()) * 14) +
-               ((Integer.valueOf(cns.substring(2,3)).intValue()) * 13) +
-               ((Integer.valueOf(cns.substring(3,4)).intValue()) * 12) +
-               ((Integer.valueOf(cns.substring(4,5)).intValue()) * 11) +
-               ((Integer.valueOf(cns.substring(5,6)).intValue()) * 10) +
-               ((Integer.valueOf(cns.substring(6,7)).intValue()) * 9) +
-               ((Integer.valueOf(cns.substring(7,8)).intValue()) * 8) +
-               ((Integer.valueOf(cns.substring(8,9)).intValue()) * 7) +
-               ((Integer.valueOf(cns.substring(9,10)).intValue()) * 6) +
-               ((Integer.valueOf(cns.substring(10,11)).intValue()) * 5) +
-               ((Integer.valueOf(cns.substring(11,12)).intValue()) * 4) +
-               ((Integer.valueOf(cns.substring(12,13)).intValue()) * 3) +
-               ((Integer.valueOf(cns.substring(13,14)).intValue()) * 2) +
-               ((Integer.valueOf(cns.substring(14,15)).intValue()) * 1);
-
-        resto = soma % 11;
-
-        if (resto != 0){
-            return(false);
-        }else {
-        
-            return(true);
-        }
-    }
     
-    public boolean validateDataNascimento(){
-        return false; //-********************************************************************************* 
+    /**
+     * Valida Data de nascimento do cidadão no formato epoch time.
+     * @return Data de nascimento do cidadão no formato epoch time.
+     * Valida se o campo é null
+     * Valida: Não pode ser posterior a dataAtendimento e anterior a 130 anos a partir da dataAtendimento.
+     * Não pode ser posterior a dataAtendimento e anterior a 130 anos a partir da dataAtendimento.
+     */
+    public boolean validaDataNascimento(){
+        
+        /*        if(!instancia.isSetDataNascimento()) return false;
+        long dataNascimento = instancia.getDataNascimento();
+        long dataAtendimento = instancia.getHeaderTransport().getDataAtendimento();
+        if(dataNascimento > dataAtendimento) return false;
+        long idadeAoAtender = dataNascimento - dataAtendimento;
+        /**
+        * Transformando 1 ano em segundo
+        */
+        //long anoEpoch = 60*60*24*365;
+        /**
+         * Descobrindo se a idade do cidadão no atendimento é maior que 130 anos
+         */
+        //if(idadeAoAtender > anoEpoch*130) return false;*/
+        return true;   
     }
     /**
      * Valida o sexo.
@@ -931,8 +840,15 @@ public class FichaAtendimentoDomiciliarChild {
     public boolean validateOutrosProcedimentos(){
         if( instancia.isSetOutrosProcedimentos()){
             if(instancia.getOutrosProcedimentosSize() < 5){
-               // instancia.getOutrosProcedimentosIterator().forEachRemaining();//******************************
+               for(String proc : instancia.getOutrosProcedimentos()){
+                   if(instancia.getProcedimentos().contains(proc)){
+                       return false;
+                   }
+               }
+            }else{
+                return false;
             }
+            
         }
         
         return true;
