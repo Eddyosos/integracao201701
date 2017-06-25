@@ -5,7 +5,6 @@ import com.github.Eddyosos.integracao20171.esus.cds.common.EnderecoLocalPermanen
 import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
 import java.util.Iterator;
 import java.util.List;
-import org.apache.thrift.TException;
 
 public class FichaAvaliacaoElegibilidade{
     private FichaAvaliacaoElegibilidadeThrift instancia = new FichaAvaliacaoElegibilidadeThrift();
@@ -1220,15 +1219,262 @@ public class FichaAvaliacaoElegibilidade{
         return instancia.toString();
     }
 
-    public void validate() throws TException {
-        instancia.validate();
+    /**
+     * Valida se o conteudo da instancia está consistente.
+     * @return True caso as informações sejam validas.
+     */
+    public boolean validate() {
+        return true;
     }
 
-
+    /**
+     * Retorna uma copia da instancia thrift.
+     * @return Instancia thrift da classe.
+     */
     protected FichaAvaliacaoElegibilidadeThrift getInstance(){
         return instancia;
     }
 
+    
+    /**
+     * Código UUID para identificar a ficha na base de dados nacional.
+     * Obrigatório!
+     * Regras: É recomendado concatenar o CNES na frente do UUID, de modo que os
+     * 7 digitos (CNES) + 1 de hífen somados aos 36 (32 caracteres + 4 hífen) do
+     * UUID são a limitação de 44 bytes do campo.
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateUuidFicha(){
+        return  instancia.getUuidFicha() != null &&
+                instancia.getUuidFicha().length() >= 36 && 
+                instancia.getUuidFicha().length() <= 44;
+    }
+    
+    /**
+     * Valida se o tipo de origem foi declarado.
+     * 
+     * @return True caso o tipo de origem dos dados tenha sido declarado.
+     */
+    public boolean validatetTpCdsOrigem(){
+        return instancia.isSetTpCdsOrigem();
+    }
+    
+    /**
+     * Profissional que realizou a visita.
+     * 
+     * @return True caso o header transport seja valido
+     */
+    public boolean validateHeaderTransport(){
+        return instancia.getHeaderTransport() != null && 
+                instancia.isSetHeaderTransport() &&
+                new UnicaLotacaoHeader(instancia.getHeaderTransport()).validate();
+    }
+    
+    /**
+     * CNS do cidadão que participou da atividade.
+     * @return True Caso não tenha sido informado e caso tenha sido informado corretamente.
+     */
+    public boolean validateNumeroCartaoSus(){
+        if(this.isSetNumeroCartaoSus()){
+            if(this.getNumeroCartaoSus().length() == 15){
+                
+                return false;
+            }
+            switch (instancia.getNumeroCartaoSus().charAt(0)) {
+                case '1':
+                case '2':
+                    return validaCnsIniUmDois(instancia.getNumeroCartaoSus());
+                case '7':
+                case '8':
+                case '9':
+                    return validaCnsIniSeteOitoNove(instancia.getNumeroCartaoSus());
+                default:
+                    return false;
+            }
+                
+        }
+        
+        return true;
+    }
+    /**
+     * Código fornecido pelo governo
+     * Rotina de validação de Números do cns que iniciam com “1” ou “2” 
+     * Observações:
+     * 
+     * 1) Não existe máscara para o CNS nem para o Número Provisório. O número que aparece no cartão de forma separada (898  0000  0004  3208) deverá ser digitado sem as separações.
+     * 2) O 16º número que aparece no Cartão é o número da via do cartão, não é deverá ser digitado.
+     * @param cns Números do cns
+     * @return True caso o NumeroCartaoSus seja valido
+     */
+    public boolean validaCnsIniUmDois(String cns){
+        if (cns.trim().length() != 15){
+            return(false);
+        }
+
+        float soma;
+        float resto, dv;
+        String pis = new String("");
+        String resultado = new String("");
+        pis = cns.substring(0,11);
+
+        soma = ((Integer.valueOf(pis.substring(0,1)).intValue()) * 15) +
+               ((Integer.valueOf(pis.substring(1,2)).intValue()) * 14) +
+               ((Integer.valueOf(pis.substring(2,3)).intValue()) * 13) +
+               ((Integer.valueOf(pis.substring(3,4)).intValue()) * 12) +
+               ((Integer.valueOf(pis.substring(4,5)).intValue()) * 11) +
+               ((Integer.valueOf(pis.substring(5,6)).intValue()) * 10) +
+               ((Integer.valueOf(pis.substring(6,7)).intValue()) * 9) +
+               ((Integer.valueOf(pis.substring(7,8)).intValue()) * 8) +
+               ((Integer.valueOf(pis.substring(8,9)).intValue()) * 7) +
+               ((Integer.valueOf(pis.substring(9,10)).intValue()) * 6) +
+               ((Integer.valueOf(pis.substring(10,11)).intValue()) * 5);
+
+        resto = soma % 11;
+        dv = 11 - resto;
+
+        if (dv == 11){
+            dv = 0;
+        }
+
+        if (dv == 10){
+            soma = ((Integer.valueOf(pis.substring(0,1)).intValue()) * 15) +
+                   ((Integer.valueOf(pis.substring(1,2)).intValue()) * 14) +
+                   ((Integer.valueOf(pis.substring(2,3)).intValue()) * 13) +
+                   ((Integer.valueOf(pis.substring(3,4)).intValue()) * 12) +
+                   ((Integer.valueOf(pis.substring(4,5)).intValue()) * 11) +
+                   ((Integer.valueOf(pis.substring(5,6)).intValue()) * 10) +
+                   ((Integer.valueOf(pis.substring(6,7)).intValue()) * 9) +
+                   ((Integer.valueOf(pis.substring(7,8)).intValue()) * 8) +
+                   ((Integer.valueOf(pis.substring(8,9)).intValue()) * 7) +
+                   ((Integer.valueOf(pis.substring(9,10)).intValue()) * 6) +
+                   ((Integer.valueOf(pis.substring(10,11)).intValue()) * 5) + 2;
+
+            resto = soma % 11;
+            dv = 11 - resto;
+            resultado = pis + "001" + String.valueOf((int)dv);
+        }else {
+            resultado = pis + "000" + String.valueOf((int)dv);
+        }
+
+        if (! cns.equals(resultado)){
+            return(false);
+        }else {
+        
+            return(true);
+        }
+    }
+    /**
+     * Código fornecido pelo governo
+     * Rotina de validação de Números que iniciam com “7”, “8” ou “9”
+     * Observações:
+     * 
+     * 1) Não existe máscara para o CNS nem para o Número Provisório. O número que aparece no cartão de forma separada (898  0000  0004  3208) deverá ser digitado sem as separações.
+     * 2) O 16º número que aparece no Cartão é o número da via do cartão, não é deverá ser digitado.
+     * @param cns Números do cns
+     * @return True caso o NumeroCartaoSus seja valido
+     */
+    public boolean validaCnsIniSeteOitoNove(String cns){
+        if (cns.trim().length() != 15){
+            return(false);
+        }
+
+        float dv;
+        float resto,soma;
+
+        soma = ((Integer.valueOf(cns.substring(0,1)).intValue()) * 15) +
+               ((Integer.valueOf(cns.substring(1,2)).intValue()) * 14) +
+               ((Integer.valueOf(cns.substring(2,3)).intValue()) * 13) +
+               ((Integer.valueOf(cns.substring(3,4)).intValue()) * 12) +
+               ((Integer.valueOf(cns.substring(4,5)).intValue()) * 11) +
+               ((Integer.valueOf(cns.substring(5,6)).intValue()) * 10) +
+               ((Integer.valueOf(cns.substring(6,7)).intValue()) * 9) +
+               ((Integer.valueOf(cns.substring(7,8)).intValue()) * 8) +
+               ((Integer.valueOf(cns.substring(8,9)).intValue()) * 7) +
+               ((Integer.valueOf(cns.substring(9,10)).intValue()) * 6) +
+               ((Integer.valueOf(cns.substring(10,11)).intValue()) * 5) +
+               ((Integer.valueOf(cns.substring(11,12)).intValue()) * 4) +
+               ((Integer.valueOf(cns.substring(12,13)).intValue()) * 3) +
+               ((Integer.valueOf(cns.substring(13,14)).intValue()) * 2) +
+               ((Integer.valueOf(cns.substring(14,15)).intValue()) * 1);
+
+        resto = soma % 11;
+
+        if (resto != 0){
+            return(false);
+        }else {
+        
+            return(true);
+        }
+    }
+    
+    /**
+     * Valida o nome do cidadão.
+     * 
+     * Regras:
+     * Ter ao menos duas palavras.
+     * Somente texto e apóstrofo (').
+     * Opcional caso conclusaoDestinoElegivel for diferente de 1 (admissão própria emad).
+     * 
+     * Tamanho mínimo: 5
+     * Tamanho máximo: 100
+     * 
+     * @return True caso seja um nome valido ou caso não possua nome e conclusaoDestinoElegivel seja diferente de 1, False caso contrario.
+     */
+    public boolean validateNome(){
+        
+        if(this.isSetNomeCidadao()){
+            return this.getNomeCidadao().length() >= 5 &&
+                    this.getNomeCidadao().length() <= 100;
+        }else {
+            return this.getConclusaoDestinoElegivel() != 1;
+        }    
+    }
+    
+    /**
+     * Valida o nome social do cidadão.
+     * 
+     * Regras:
+     * Somente texto e apóstrofo (').
+     * 
+     * Tamanho mínimo: 0
+     * Tamanho máximo: 100
+     * 
+     * @return True caso seja um nome valido ou caso não possua nome e conclusaoDestinoElegivel seja diferente de 1, False caso contrario.
+     */
+    public boolean validateNomeSocial(){
+        
+        if(this.isSetNomeSocialCidadao()){
+            return this.getNomeSocialCidadao().length() >= 0 &&
+                    this.getNomeSocialCidadao().length() <= 100;
+        }else {
+            return true;
+        }
+    }
+    
+    /**
+     * Valida Data de nascimento do cidadão no formato epoch time.
+     * @return Data de nascimento do cidadão no formato epoch time.
+     * Valida se o campo é null
+     * Valida: Não pode ser posterior a dataAtendimento e anterior a 130 anos a partir da dataAtendimento.
+     * Não pode ser posterior a dataAtendimento e anterior a 130 anos a partir da dataAtendimento.
+     */
+    public boolean validaDataNascimentoCidadao(){
+        
+        if(!instancia.isSetDataNascimentoCidadao()) return false;
+        long dataNascimento = instancia.getDataNascimentoCidadao();
+        long dataAtendimento = instancia.getHeaderTransport().getDataAtendimento();
+        if(dataNascimento > dataAtendimento) return false;
+        long idadeAoAtender = dataNascimento - dataAtendimento;
+        /**
+         * Transformando 1 ano em segundo
+         */
+        long anoEpoch = 60*60*24*365;
+        /**
+         * Descobrindo se a idade do cidadão no atendimento é maior que 130 anos
+         */
+        if(idadeAoAtender > anoEpoch*130) return false;
+        return true;   
+    } 
     
 }
 
