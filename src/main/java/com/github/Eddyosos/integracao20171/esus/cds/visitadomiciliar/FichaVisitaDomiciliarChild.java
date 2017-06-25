@@ -1,8 +1,6 @@
 package com.github.Eddyosos.integracao20171.esus.cds.visitadomiciliar;
 
-import br.gov.saude.esus.cds.transport.generated.thrift.common.UnicaLotacaoHeaderThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.visitadomiciliar.FichaVisitaDomiciliarChildThrift;
-import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -15,14 +13,6 @@ public class FichaVisitaDomiciliarChild {
 
     protected FichaVisitaDomiciliarChild(FichaVisitaDomiciliarChildThrift thrift) {
         this.instance = thrift;
-    }
-
-    public FichaVisitaDomiciliarChild deepCopy() {
-        return new FichaVisitaDomiciliarChild(instance.deepCopy());
-    }
-
-    public void clear() {
-        instance.clear();
     }
 
     public long getTurno() {
@@ -229,13 +219,13 @@ public class FichaVisitaDomiciliarChild {
 
     }
 
-    /*
-    Valida o field TURNO
-    @return true caso nenhuma valor esteja setado, pois nao é um campo obrigatorio
-    @return true caso o valor de turno esteja setado e seja igual a 1, 2 ou 3
-    @return false caso o valor de turno esteja setado e seja diferente de 1,2 ou 3.
+    /**
+     * Valida o field TURNO
+     * @return true caso nenhuma valor esteja setado, pois nao é um campo obrigatorio
+     * true caso o valor de turno esteja setado e seja igual a 1, 2 ou 3
+     * false caso o valor de turno esteja setado e seja diferente de 1,2 ou 3.
      */
-    private boolean validaTurno() {
+    public boolean validaTurno() {
         if (getInstance().isSetTurno()) {
             return getInstance().getTurno() == 1 | getInstance().getTurno() == 2 | getInstance().getTurno() == 3;
         } else {
@@ -243,19 +233,19 @@ public class FichaVisitaDomiciliarChild {
         }
     }
 
-    /*
-    Valida o Field NUM_PRONTUARIO.
-    @return True - Caso não tenha nada setado dentro do field NUM_PRONTUARIO.
-    @return True - Caso tenha setado um valor em NUM_PRONTUARIO e este valor de String seja menor ou igual a 30 caracteres e contenha apenas letras e numeros
-    @return False - Caso tenha um setado valor me NUM_PRONTUARIO e este valor de String seja maior que 30 caracteres ou contenha caracteres especiais
+    /**
+     * Valida o Field NUM_PRONTUARIO.
+     * @return True - Caso não tenha nada setado dentro do field NUM_PRONTUARIO.
+     * True - Caso tenha setado um valor em NUM_PRONTUARIO e este valor de String seja menor ou igual a 30 caracteres e contenha apenas letras e numeros
+     * False - Caso tenha um setado valor me NUM_PRONTUARIO e este valor de String seja maior que 30 caracteres ou contenha caracteres especiais
      */
-    private boolean validaNumProntuario() {
+    public boolean validaNumProntuario() {
         Pattern PATTERN = Pattern.compile("([a-z A-Z 0-9])+");
         Matcher matcher = PATTERN.matcher(getInstance().getNumProntuario());
 
         if (getInstance().isSetNumProntuario()) {
             if (getInstance().getNumProntuario().length() <= 30) {
-                return matcher.find();
+                return matcher.matches();
             } else {
                 return false;
             }
@@ -264,13 +254,13 @@ public class FichaVisitaDomiciliarChild {
         }
     }
 
-    /*
-    Verifica se o número do cartão Sus é válido
-    @return true - Caso o Field não esteja setado
-    @return true- caso o numero inicial seja 1 ou 2 ou 7 ou 8 ou 9 e atenda aos padrões do cartao SUS
-    @return false - caso o número esteja setado e nao atenda aos padrões do cartão SUS.
+    /**
+     * Verifica se o número do cartão Sus é válido
+     * @return true - Caso o Field não esteja setado
+     * true- caso o numero inicial seja 1 ou 2 ou 7 ou 8 ou 9 e atenda aos padrões do cartao SUS
+     * false - caso o número esteja setado e nao atenda aos padrões do cartão SUS.
      */
-    private boolean validaNumCartaoSus() {
+    public boolean validaNumCartaoSus() {
 
         String cns = getInstance().getNumCartaoSus();
         if (getInstance().isSetNumCartaoSus()) {
@@ -370,60 +360,28 @@ public class FichaVisitaDomiciliarChild {
         return true;
 
     }
-
     /**
-     * Valida Data de nascimento do cidadão no formato epoch time.
-     *
-     * @return Data de nascimento do cidadão no formato epoch time. Valida se o
-     * campo é null Valida: Não pode ser posterior a dataAtendimento e anterior
-     * a 130 anos a partir da dataAtendimento. Não pode ser posterior a
-     * dataAtendimento e anterior a 130 anos a partir da dataAtendimento.
+    * Valida o field SEXO
+    * @return true caso o valor esteja setado e seja igual a 0 ou 1
+    * false caso nenhum valor esteja setado
+    * false caso o valor esteja setado e seja diferente de 0 ou 1
      */
-    public boolean validaDataNascimento() {
-
-        if (!getInstance().isSetDtNascimento()) {
-            return false;
-        }
-        long dataNascimento = instance.getDtNascimento();
-        long dataAtendimento = getInstance().getDataAtendimento();
-        if (dataNascimento > dataAtendimento) {
-            return false;
-        }
-        long idadeAoAtender = dataNascimento - dataAtendimento;
-        /**
-         * Transformando 1 ano em segundo
-         */
-        long anoEpoch = 60 * 60 * 24 * 365;
-        /**
-         * Descobrindo se a idade do cidadão no atendimento é maior que 130 anos
-         */
-        if (idadeAoAtender > anoEpoch * 130) {
-            return false;
-        }
-        return true;
-    }
-
-    /*
-    Valida o field SEXO
-    @return true caso o valor esteja setado e seja igual a 0 ou 1
-    @return false caso nenhum valor esteja setado
-    @return false caso o valor esteja setado e seja diferente de 0 ou 1
-     */
-    private boolean validaSexo() {
-        if (getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.SEXO)) {
-            return Integer.parseInt(FichaVisitaDomiciliarChildThrift._Fields.SEXO.toString()) == 0 | Integer.parseInt(FichaVisitaDomiciliarChildThrift._Fields.SEXO.toString()) == 1;
+    public boolean validaSexo() {
+        if (getInstance().isSetSexo()) {
+            return getInstance().getSexo() == 0 | getInstance().getSexo() == 1;
         } else {
             return false;
         }
     }
 
-    /* valida o field STATUS_VISITA_COMPARTILHADA_OUTRO_PROFISSIONAL
-    @return true caso os valores estejam setados e sejam iguais a true ou false
-    @return true caso nenhum valor esteja setado
-    @return false caso os valores estejam setados e não sejam iguais a true ou false
+    /**
+     * valida o field STATUS_VISITA_COMPARTILHADA_OUTRO_PROFISSIONAL
+     * @return true caso os valores estejam setados e sejam iguais a true ou false
+     * true caso nenhum valor esteja setado
+     * false caso os valores estejam setados e não sejam iguais a true ou false
     
      */
-    private boolean validaStatusVisitaCompartilhada() {
+    public boolean validaStatusVisitaCompartilhada() {
         if (getInstance().isSetStatusVisitaCompartilhadaOutroProfissional()) {
             return getInstance().isStatusVisitaCompartilhadaOutroProfissional()== true | getInstance().isStatusVisitaCompartilhadaOutroProfissional()== false;
         } else {
@@ -432,16 +390,16 @@ public class FichaVisitaDomiciliarChild {
 
     }
 
-    /*
-    Valida o field MOTIVOS_VISITA
-    @return true caso o field DESFECHO seja igual a 1 e MOTIVOS_VISITA tenha o valor de 1 - 33.
-    @return true caso o field DESFECHO seja igual a 1 e MOTIVOS_VISITA nao tenha valor setado
-    @return true caso o field DESFECHO seja diferente de 1 e MOTIVOS_VISITA nao tenha sido setado
-    @return false caso o field DESFECHO seja igual a 1 e MOTIVOS_VISITA tenha valor diferente da faixa de 1 - 33
-    @return false caso o field DESFECHO seja diferente de 1 e MOTIVOS_VISISTA tenha sido setado
+    /**
+     * Valida o field MOTIVOS_VISITA
+     * @return true caso o field DESFECHO seja igual a 1 e MOTIVOS_VISITA tenha o valor de 1 - 33.
+     * true caso o field DESFECHO seja igual a 1 e MOTIVOS_VISITA nao tenha valor setado
+     * true caso o field DESFECHO seja diferente de 1 e MOTIVOS_VISITA nao tenha sido setado
+     * false caso o field DESFECHO seja igual a 1 e MOTIVOS_VISITA tenha valor diferente da faixa de 1 - 33
+     * false caso o field DESFECHO seja diferente de 1 e MOTIVOS_VISISTA tenha sido setado
      */
 
-    private boolean validaMotivosVisita() {
+    public boolean validaMotivosVisita() {
         if (getInstance().getDesfecho()== 1) {
             if (getInstance().isSetMotivosVisita()) {
                for(int i =0;i<getInstance().getMotivosVisitaSize();i++){
@@ -454,22 +412,32 @@ public class FichaVisitaDomiciliarChild {
                 return true;
             }
         } else {
-            return !getInstance().isSet(FichaVisitaDomiciliarChildThrift._Fields.MOTIVOS_VISITA);
+            return !getInstance().isSetMotivosVisita();
         }
     }
 
-    /*
-    Valida o field DESFECHO
-    @return true caso o valor de DESFECHO esteja setado e esteja entre os valores de 1 a 3
-    @return false caso o valor de DESFECHO esteja setado e diferente dos valores de 1 a 3
-    @return false caso o valor de DESFECHO não esteja setado
+    /**
+     * Valida o field DESFECHO
+     * @return true caso o valor de DESFECHO esteja setado e esteja entre os valores de 1 a 3
+     * false caso o valor de DESFECHO esteja setado e diferente dos valores de 1 a 3
+     * false caso o valor de DESFECHO não esteja setado
      */
-    private boolean validaDesfecho() {
+    public boolean validaDesfecho() {
         if (getInstance().isSetDesfecho()) {
             return getInstance().getDesfecho() >= 1 && getInstance().getDesfecho() <= 3;
         } else {
             return false;
         }
+    }
+    
+     /**
+     * Valida todos os Fields
+     * @return true caso todos os fieds estejam nos padrões aceitos
+     * false, caso um atributo nao esteja nos padrões aceitos
+     */
+    
+    public boolean validates(){
+        return validaDesfecho() && validaMotivosVisita() && validaStatusVisitaCompartilhada() && validaSexo() &&validaNumCartaoSus() && validaNumProntuario() && validaTurno();
     }
 
 }
