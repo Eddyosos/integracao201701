@@ -309,6 +309,7 @@ public class FichaAtendimentoDomiciliarMaster {
         }
         
         return this.getAtendimentosDomiciliares().stream().noneMatch((ficha) -> ( ! ficha.validates()));
+
     }
 }
 

@@ -706,7 +706,6 @@ public class FichaAtendimentoDomiciliarChild {
                 validateAtencaoDomiciliarModalidade() && validateTipoAtendimento() &&
                 validateSituacoesPresentes() && validateProcedimentos() && 
                 validateOutrosProcedimentos() && validateCondutaDesfecho();
-        
     }
     
     /**
@@ -731,6 +730,7 @@ public class FichaAtendimentoDomiciliarChild {
      */
     public boolean validateCns(){
         if(this.isSetCns()){
+
             return CNS.validateCNS(instancia.getCns());
                 
         }
@@ -848,7 +848,7 @@ public class FichaAtendimentoDomiciliarChild {
             }else{
                 return false;
             }
-            
+
         }
         
         return true;
