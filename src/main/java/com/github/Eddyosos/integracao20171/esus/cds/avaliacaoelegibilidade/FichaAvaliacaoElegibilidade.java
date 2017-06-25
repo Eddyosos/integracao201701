@@ -6,6 +6,8 @@ import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
 import com.github.Eddyosos.integracao20171.utils.IDS.CNS;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class FichaAvaliacaoElegibilidade{
     private FichaAvaliacaoElegibilidadeThrift instancia = new FichaAvaliacaoElegibilidadeThrift();
@@ -1225,7 +1227,17 @@ public class FichaAvaliacaoElegibilidade{
      * @return True caso as informações sejam validas.
      */
     public boolean validate() {
-        return true;
+        return validateUuidFicha() && validatetTpCdsOrigem() && 
+                validateHeaderTransport() && validateNumeroCartaoSus() && 
+                validateNome() && validateNomeSocial() && 
+                validaDataNascimentoCidadao() && validateRacaCorCidadao() && 
+                validateNomeMae() && validateNacionalidade() && validateEmail() &&
+                validateNumeroNisPisPasep() && validateEndereco() && 
+                validateAtencaoDomiciliarOrigem() && 
+                validateAtencaoDomiciliarModalidade() && 
+                validateSituacoesPresentes() && validateCid10Principal() &&
+                validateCid10Segundo() && validateCid10Terceiro() && 
+                validateConclusaoDestinoElegivel() && validateConclusaoDestinoInelegivel();
     }
 
     /**
@@ -1268,7 +1280,7 @@ public class FichaAvaliacaoElegibilidade{
     public boolean validateHeaderTransport(){
         return instancia.getHeaderTransport() != null && 
                 instancia.isSetHeaderTransport() &&
-                new UnicaLotacaoHeader(instancia.getHeaderTransport()).validate();
+                new UnicaLotacaoHeader(instancia.getHeaderTransport()).validates();
     }
     
     /**
@@ -1338,6 +1350,7 @@ public class FichaAvaliacaoElegibilidade{
     public boolean validaDataNascimentoCidadao(){
         
         if(!instancia.isSetDataNascimentoCidadao()) return false;
+        
         long dataNascimento = instancia.getDataNascimentoCidadao();
         long dataAtendimento = instancia.getHeaderTransport().getDataAtendimento();
         if(dataNascimento > dataAtendimento) return false;
@@ -1352,6 +1365,270 @@ public class FichaAvaliacaoElegibilidade{
         if(idadeAoAtender > anoEpoch*130) return false;
         return true;   
     } 
+    
+    /**
+     * Valida a raça/cor do cidadão.
+     * 
+     * regra: Opcional caso conclusaoDestinoElegivel for diferente de 1 (admissão própria emad)
+     * 
+     * @return True caso esteje presente ou caso conclusaoDestinoElegivel for diferente de 1, False caso contrario.
+     */
+    public boolean validateRacaCorCidadao(){
+        if(instancia.isSetRacaCorCidadao()){
+            return true;
+        }else{
+            return instancia.getConclusaoDestinoElegivel() != 1;
+        }
+    }
+    
+        /**
+     * Valida o nome da mãe do cidadão.
+     * 
+     * Regras:
+     * Ter ao menos duas palavras.
+     * Somente texto e apóstrofo (').
+     * Não pode ser preenchido se o campo desconheceNomeMae = true.
+     * 
+     * Tamanho mínimo: 5
+     * Tamanho máximo: 100
+     * 
+     * @return True caso seja um nome valido ou caso não possua nome e conclusaoDestinoElegivel seja diferente de 1, False caso contrario.
+     */
+    public boolean validateNomeMae(){
+        
+        if(this.isSetNomeMaeCidadao() && ! instancia.isDesconheceNomeMae()){
+            
+                return this.getNomeCidadao().length() >= 5 &&
+                    this.getNomeCidadao().length() <= 100;
+            
+        }else{
+            return instancia.isDesconheceNomeMae();
+        } 
+
+    }
+    
+    /**
+     * Valida a nacionalidade do cidadão.
+     * 
+     * Regra: Opcional caso conclusaoDestinoElegivel for diferente de 1 (admissão própria emad)
+     * 
+     * @return True caso esteja presente ou caso conclusaoDestinoElegivel for diferente de 1, False caso contrario.
+     */
+    public boolean validateNacionalidade(){
+        
+        if(instancia.isSetCodigoNacionalidade()){
+            return true;
+        }else{
+            return instancia.getConclusaoDestinoElegivel() != 1;
+        }
+    }
+    
+    /**
+     * Valida o email do cidadão.
+     * 
+     * regra: Requerido seguir o padrão endereco@domínio.extensão.
+     * 
+     * Tamanho mínimo:6
+     * Tamanho máximo:255
+     * 
+     * @return True caso esteja de acordo com a regra ou caso não tenha sido declarado, False caso contrario.
+     */
+    public boolean validateEmail(){
+
+        
+        if(instancia.isSetEmailCidadao()){
+            if(instancia.getEmailCidadao().length() >=6 && 
+                    instancia.getEmailCidadao().length() <= 255){
+                
+                Pattern VALID_EMAIL_ADDRESS_REGEX = 
+                Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+                
+                Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(instancia.getEmailCidadao());
+                return matcher.find();
+            }else{
+                return false;
+            }
+        }
+        
+        return true; 
+    }
+    
+    /**
+     * Valida o número do PIS/PASEP do cidadão.
+     * 
+     * Regras: Apenas números.
+     * 
+     * Tamanho: 11
+     * 
+     * @return True caso seja valido ou caso não seja declarado, False caso contrario.
+     */
+    public boolean validateNumeroNisPisPasep(){
+        
+        if(instancia.isSetNumeroNisPisPasep()){
+            if(instancia.getNumeroNisPisPasep().matches("[0-9]+") && 
+                    instancia.getNumeroNisPisPasep().length() == 11){
+                
+                return true;
+                
+            }else{
+                
+                return false;
+                
+            }
+        }
+        
+        return true;
+    }
+    
+    /**
+     * Valida as informações sobre o endereço do domicílio.
+     * 
+     * Regra: Opcional caso conclusaoDestinoElegivel for diferente de 1 (admissão própria emad)
+     * 
+     * @return True caso seja valido ou caso conclusaoDestinoElegivel for diferente de 1, False caso contrario.
+     */
+    public boolean validateEndereco(){
+        
+        if(instancia.isSetEndereco()){
+            
+            return new EnderecoLocalPermanencia(instancia.getEndereco()).validates();
+
+        }else{
+            return instancia.getConclusaoDestinoElegivel() != 1;
+        }
+        
+    }
+    
+    /**
+     * Valida o local de atendimento de origem do cidadão.
+     * 
+     * @return True caso esteja presente, falso caso contrario.
+     */
+    public boolean validateAtencaoDomiciliarOrigem(){
+        
+        return instancia.isSetAtencaoDomiciliarOrigem();
+    }
+    
+    /**
+     * Valida as opções de modalidade, indica se o cidadão é elegível ou inelegível.
+     * 
+     * @return True caso esteja presente, falso caso contrario.
+     */
+    public boolean validateAtencaoDomiciliarModalidade(){
+        
+        return instancia.isSetAtencaoDomiciliarModalidade();
+    }
+    
+    /**
+     * Valida os marcadores de situações presentes.
+     * 
+     * Mínimo: 1
+     * Máximo: 24
+     * 
+     * @return True caso atendam as regras ou caso não seja declarado, False caso contrario.
+     */
+    public boolean validateSituacoesPresentes(){
+        
+        if(instancia.isSetSituacoesPresentes()){
+            
+            return instancia.getSituacoesPresentesSize() >= 1 &&
+                    instancia.getSituacoesPresentesSize() <= 24;
+        }
+        
+        return true;   
+    }
+    
+    /**
+     * Valida o código do CID10 principal registrado na avaliação.
+     * 
+     * Regra: Não pode ser igual ao CID10Segundo nem CID10Terceiro.
+     * 
+     * @return True caso esteja de acordo com as regras, False caso contrario.
+     */
+    public boolean validateCid10Principal(){
+        
+        if(instancia.isSetCid10Principal()){
+            return ( ! instancia.getCid10Principal().equalsIgnoreCase(instancia.getCid10Segundo()) &&
+                    ! instancia.getCid10Principal().equalsIgnoreCase(instancia.getCid10Terceiro()));
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Valida o código do CID10 registrado na avaliação.
+     * 
+     * Regras: Não pode ser igual ao CID10Principal nem CID10Terceiro.
+     * 
+     * @return True caso esteja de acordo com a regra ou não seja declarado, False caso contrario.
+     */
+    public boolean validateCid10Segundo(){
+        
+        if(instancia.isSetCid10Segundo()){
+            return ( ! instancia.getCid10Segundo().equalsIgnoreCase(instancia.getCid10Principal()) &&
+                    ! instancia.getCid10Segundo().equalsIgnoreCase(instancia.getCid10Terceiro()));
+        }
+        
+        return true;
+    }
+    
+        /**
+     * Valida o código do CID10 registrado na avaliação.
+     * 
+     * Regras: Não pode ser igual ao CID10Principal nem CID10Segundo.
+     * 
+     * @return True caso esteja de acordo com a regra ou não seja declarado, False caso contrario.
+     */
+    public boolean validateCid10Terceiro(){
+        
+        if(instancia.isSetCid10Segundo()){
+            return ( ! instancia.getCid10Terceiro().equalsIgnoreCase(instancia.getCid10Principal()) &&
+                    ! instancia.getCid10Terceiro().equalsIgnoreCase(instancia.getCid10Segundo()));
+        }
+        
+        return true;
+    }
+    
+    /**
+     * Valida conduta adotada caso cidadão seja Elegível.
+     * 
+     * Regra: Só pode ser preenchido se atencaoDomiciliarModalidade for diferente de 4 (inelegível).
+     * Regra: só pode ser existir se conclusaoDestinoInelegivel não existir.
+     * 
+     * @return True caso atenda as regras, False caso contrario.
+     */
+    public boolean validateConclusaoDestinoElegivel(){
+        
+        if(instancia.isSetConclusaoDestinoElegivel()){
+            return !(instancia.getAtencaoDomiciliarModalidade() == 4 && instancia.isSetConclusaoDestinoInelegivel());
+        }
+        
+        return instancia.isSetConclusaoDestinoInelegivel();
+    }
+    
+    /**
+     * Valida conduta adotada caso cidadão seja Inelegível.
+     * 
+     * Regra: Só pode ser preenchido se atencaoDomiciliarModalidade for igual a de 4 (inelegível).
+     * Regra: só pode ser existir se conclusaoDestinoElegivel não existir.
+     * 
+     * Máximo: 5
+     * 
+     * @return True caso atenda as regras, False caso contrario.
+     */
+    public boolean validateConclusaoDestinoInelegivel(){
+        
+        if(instancia.isSetConclusaoDestinoInelegivel()){
+            if( ! instancia.isSetConclusaoDestinoElegivel() && instancia.getConclusaoDestinoInelegivelSize() < 5){
+                   
+                return instancia.getAtencaoDomiciliarModalidade() == 4 ;
+                           
+             }
+                    
+        }
+        
+        return instancia.isSetConclusaoDestinoElegivel();
+    }
     
 }
 
