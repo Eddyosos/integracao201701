@@ -19,6 +19,10 @@ public class FichaAtendimentoIndividualChild {
         instance = thrift;
     }
 
+    public FichaAtendimentoIndividualChildThrift getInstance(){
+        return instance;
+    }
+    
     /**
      * Valida essa instancia
      * @return true se válido
