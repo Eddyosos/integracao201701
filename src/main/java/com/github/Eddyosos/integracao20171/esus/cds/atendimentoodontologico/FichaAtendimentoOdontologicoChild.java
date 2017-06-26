@@ -3,6 +3,8 @@ package com.github.Eddyosos.integracao20171.esus.cds.atendimentoodontologico;
 import br.gov.saude.esus.cds.transport.generated.thrift.atendimentoodontologico.FichaAtendimentoOdontologicoChildThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.atendimentoodontologico.ProcedimentoQuantidadeThrift;
 import com.github.Eddyosos.integracao20171.utils.IDS.CNS;
+import com.github.eddyosos.e_sus_ab_factory.cds.atendimentoodontologico.IFichaAtendimentoOdontologicoChild;
+import com.github.eddyosos.e_sus_ab_factory.cds.atendimentoodontologico.IProcedimentoQuantidade;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -10,24 +12,17 @@ import java.util.List;
 import java.util.Set;
 import org.apache.thrift.TException;
 
-public class FichaAtendimentoOdontologicoChild {
-    FichaAtendimentoOdontologicoChildThrift instancia = new FichaAtendimentoOdontologicoChildThrift();
+public class FichaAtendimentoOdontologicoChild implements IFichaAtendimentoOdontologicoChild {
+    private FichaAtendimentoOdontologicoChildThrift instancia = new FichaAtendimentoOdontologicoChildThrift();
     
-    protected FichaAtendimentoOdontologicoChild(FichaAtendimentoOdontologicoChildThrift fichaAtendimentoOdontologicoChildThrift){
+    public FichaAtendimentoOdontologicoChild(FichaAtendimentoOdontologicoChildThrift fichaAtendimentoOdontologicoChildThrift){
         this.instancia = fichaAtendimentoOdontologicoChildThrift;
-    }
-
-    /**
-     * Realiza uma copia da ficha.
-     * @return copia da ficha.
-     */
-    public FichaAtendimentoOdontologicoChild deepCopy() {
-        return new FichaAtendimentoOdontologicoChild(instancia.deepCopy());
     }
 
     /**
      * Remove todos os dados da ficha.
      */
+    @Override
     public void clear() {
         instancia.clear();
     }
@@ -37,6 +32,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Data de nascimento do cidadão no formato epoch time.
      */
+    @Override
     public long getDtNascimento() {
         return instancia.getDtNascimento();
     }
@@ -49,6 +45,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param dtNascimento Data de nascimento do cidadão
      */
+    @Override
     public void setDtNascimento(long dtNascimento) {
         instancia.setDtNascimento(dtNascimento);
     }
@@ -56,6 +53,7 @@ public class FichaAtendimentoOdontologicoChild {
     /**
      * Remove a data de nascimento do cidadão,
      */
+    @Override
     public void unsetDtNascimento() {
         instancia.unsetDtNascimento();
     }
@@ -64,6 +62,7 @@ public class FichaAtendimentoOdontologicoChild {
      * Verifica se a data de nascimento do cidadão foi declarada.
      * @return True caso a data de nascimento do cidadão tenha sido inserida.
      */
+    @Override
     public boolean isSetDtNascimento() {
         return instancia.isSetDtNascimento();
     }
@@ -72,6 +71,7 @@ public class FichaAtendimentoOdontologicoChild {
      * Define se a data de nascimento do cidadão foi inserida.
      * @param value True caso a data de nascimento do cidadão tenha sido inserida
      */
+    @Override
     public void setDtNascimentoIsSet(boolean value) {
         instancia.setDtNascimentoIsSet(value);
     }
@@ -80,6 +80,7 @@ public class FichaAtendimentoOdontologicoChild {
      * CNS do cidadão.
      * @return CNS do cidadão.
      */
+    @Override
     public String getNumCartaoSus() {
         return instancia.getNumCartaoSus();
     }
@@ -92,6 +93,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param numCartaoSus CNS do cidadão.
      */
+    @Override
     public void setNumCartaoSus(String numCartaoSus) {
         instancia.setNumCartaoSus(numCartaoSus);
     }
@@ -99,6 +101,7 @@ public class FichaAtendimentoOdontologicoChild {
     /**
      * Remove o CNS do cidadão.
      */
+    @Override
     public void unsetNumCartaoSus() {
         instancia.unsetNumCartaoSus();
     }
@@ -107,6 +110,7 @@ public class FichaAtendimentoOdontologicoChild {
      * Verifica se o CNS do cidadão foi declarado.
      * @return True caso o CNS do cidadão tenhe sido inserido.
      */
+    @Override
     public boolean isSetNumCartaoSus() {
         return instancia.isSetNumCartaoSus();
     }
@@ -116,6 +120,7 @@ public class FichaAtendimentoOdontologicoChild {
      * @param value True caso o CNS do cidadão tenha sido inserido.
      */
 
+    @Override
     public void setNumCartaoSusIsSet(boolean value) {
         instancia.setNumCartaoSusIsSet(value);
     }
@@ -125,6 +130,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Número do prontuário do cidadão.
      */
+    @Override
     public String getNumProntuario() {
         return instancia.getNumProntuario();
     }
@@ -139,6 +145,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param numProntuario Número do prontuário do cidadão.
      */
+    @Override
     public void setNumProntuario(String numProntuario) {
         instancia.setNumProntuario(numProntuario);
     }
@@ -146,6 +153,7 @@ public class FichaAtendimentoOdontologicoChild {
     /**
      * Remove o número do prontuário do cidadão.
      */
+    @Override
     public void unsetNumProntuario() {
         instancia.unsetNumProntuario();
     }
@@ -154,6 +162,7 @@ public class FichaAtendimentoOdontologicoChild {
      * Verifica se o número do prontuário do cidadão foi declarado.
      * @return True caso o número do prontuário do cidadão tenha sido declarado, False caso contrario.
      */
+    @Override
     public boolean isSetNumProntuario() {
         return instancia.isSetNumProntuario();
     }
@@ -163,6 +172,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param value True para informar que o número do prontuário do cidadão foi inserido.
      */
+    @Override
     public void setNumProntuarioIsSet(boolean value) {
         instancia.setNumProntuarioIsSet(value);
     }
@@ -171,6 +181,7 @@ public class FichaAtendimentoOdontologicoChild {
      * Indica se o cidadão está gestante.
      * @return True caso o cidadão está gestante.
      */
+    @Override
     public boolean isGestante() {
         return instancia.isGestante();
     }
@@ -182,6 +193,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param gestante True para informar que o cidadão está gestante.
      */
+    @Override
     public void setGestante(boolean gestante) {
         instancia.setGestante(gestante);
     }
@@ -189,6 +201,7 @@ public class FichaAtendimentoOdontologicoChild {
     /**
      * Remove o marcador que indica se o cidadão está gestante.
      */
+    @Override
     public void unsetGestante() {
         instancia.unsetGestante();
     }
@@ -198,6 +211,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return True caso tenha sido declarado, False caso contrario.
      */
+    @Override
     public boolean isSetGestante() {
         return instancia.isSetGestante();
     }
@@ -207,6 +221,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param value True caso o marcador que indica se o cidadão está gestante tiver sido inserido.
      */
+    @Override
     public void setGestanteIsSet(boolean value) {
         instancia.setGestanteIsSet(value);
     }
@@ -216,6 +231,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return True se o cidadão é portador de necessidades especiais, False caso contraio.
      */
+    @Override
     public boolean isNecessidadesEspeciais() {
         return instancia.isNecessidadesEspeciais();
     }
@@ -225,6 +241,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param necessidadesEspeciais True para indicar que  o cidadão é portador de necessidades especiais, False caso contrario.
      */
+    @Override
     public void setNecessidadesEspeciais(boolean necessidadesEspeciais) {
         instancia.setNecessidadesEspeciais(necessidadesEspeciais);
     }
@@ -232,6 +249,7 @@ public class FichaAtendimentoOdontologicoChild {
     /**
      * Remove o marcador que indica se o cidadão é portador de necessidades especiais.
      */
+    @Override
     public void unsetNecessidadesEspeciais() {
         instancia.unsetNecessidadesEspeciais();
     }
@@ -241,6 +259,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return True caso o marcador indica se o cidadão é portador de necessidades especiais tenha sido declarado, False caso contrario.
      */
+    @Override
     public boolean isSetNecessidadesEspeciais() {
         return instancia.isSetNecessidadesEspeciais();
     }
@@ -250,6 +269,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param value True para declarar que foi inserido, false caso contrario.
      */
+    @Override
     public void setNecessidadesEspeciaisIsSet(boolean value) {
         instancia.setNecessidadesEspeciaisIsSet(value);
     }
@@ -259,6 +279,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Código do local onde o atendimento foi realizado
      */
+    @Override
     public long getLocalAtendimento() {
         return instancia.getLocalAtendimento();
     }
@@ -270,6 +291,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param localAtendimento Código do local onde o atendimento foi realizado.
      */
+    @Override
     public void setLocalAtendimento(long localAtendimento) {
         instancia.setLocalAtendimento(localAtendimento);
     }
@@ -277,6 +299,7 @@ public class FichaAtendimentoOdontologicoChild {
     /**
      * Remove o local onde o atendimento foi realizado
      */
+    @Override
     public void unsetLocalAtendimento() {
         instancia.unsetLocalAtendimento();
     }
@@ -286,6 +309,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return True caso o local onde o atendimento foi realizado tenha sido declarado, False caso contrario.
      */
+    @Override
     public boolean isSetLocalAtendimento() {
         return instancia.isSetLocalAtendimento();
     }
@@ -295,6 +319,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param value True para informar que o local onde o atendimento foi realizado foi inserido, False caso contrario.
      */
+    @Override
     public void setLocalAtendimentoIsSet(boolean value) {
         instancia.setLocalAtendimentoIsSet(value);
     }
@@ -304,6 +329,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Código do tipo de atendimento realizado.
      */
+    @Override
     public long getTipoAtendimento() {
         return instancia.getTipoAtendimento();
     }
@@ -315,6 +341,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param tipoAtendimento Código do tipo de atendimento realizado.
      */
+    @Override
     public void setTipoAtendimento(long tipoAtendimento) {
         instancia.setTipoAtendimento(tipoAtendimento);
     }
@@ -322,6 +349,7 @@ public class FichaAtendimentoOdontologicoChild {
     /**
      * Remove o tipo de atendimento realizado.
      */
+    @Override
     public void unsetTipoAtendimento() {
         instancia.unsetTipoAtendimento();
     }
@@ -331,6 +359,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return True caso o tipo de atendimento realizado tiver sido declarado, False caso contrario.
      */
+    @Override
     public boolean isSetTipoAtendimento() {
         return instancia.isSetTipoAtendimento();
     }
@@ -340,6 +369,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param value True caso o tipo de atendimento realizado tiver sido inserido, False caso contrario.
      */
+    @Override
     public void setTipoAtendimentoIsSet(boolean value) {
         instancia.setTipoAtendimentoIsSet(value);
     }
@@ -349,6 +379,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Código das condutas adotadas e possíveis encaminhamentos.
      */
+    @Override
     public int getTiposEncamOdontoSize() {
         return instancia.getTiposEncamOdontoSize();
     }
@@ -358,6 +389,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Código das condutas adotadas e possíveis encaminhamentos.
      */
+    @Override
     public Iterator<Long> getTiposEncamOdontoIterator() {
         return instancia.getTiposEncamOdontoIterator();
     }
@@ -369,6 +401,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param elem Código das conduta adotada ou encaminhamento.
      */
+    @Override
     public void addToTiposEncamOdonto(long elem) {
         instancia.addToTiposEncamOdonto(elem);
     }
@@ -378,6 +411,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Lista com código das condutas adotadas e possíveis encaminhamentos.
      */
+    @Override
     public List<Long> getTiposEncamOdonto() {
         return instancia.getTiposEncamOdonto();
     }
@@ -386,6 +420,7 @@ public class FichaAtendimentoOdontologicoChild {
      * Define as condutas adotadas e possíveis encaminhamentos.
      * @param tiposEncamOdonto Lista com  códigos das condutas adotadas e possíveis encaminhamentos.
      */
+    @Override
     public void setTiposEncamOdonto(List<Long> tiposEncamOdonto) {
         instancia.setTiposEncamOdonto(tiposEncamOdonto);
     }
@@ -393,6 +428,7 @@ public class FichaAtendimentoOdontologicoChild {
     /**
      * Remove as condutas adotadas e possíveis encaminhamentos.
      */
+    @Override
     public void unsetTiposEncamOdonto() {
         instancia.unsetTiposEncamOdonto();
     }
@@ -401,6 +437,7 @@ public class FichaAtendimentoOdontologicoChild {
      * Verifica se as condutas adotadas e possíveis encaminhamentos foram declarados.
      * @return True caso as condutas adotadas e possíveis encaminhamentos tiverem sido declarados, false caso contrario.
      */
+    @Override
     public boolean isSetTiposEncamOdonto() {
         return instancia.isSetTiposEncamOdonto();
     }
@@ -410,6 +447,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param value True para declarar que foram inseridos, false caso contrario.
      */
+    @Override
     public void setTiposEncamOdontoIsSet(boolean value) {
         instancia.setTiposEncamOdontoIsSet(value);
     }
@@ -419,6 +457,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return quantidade de materiais fornecidos durante o atendimento.
      */
+    @Override
     public int getTiposFornecimOdontoSize() {
         return instancia.getTiposFornecimOdontoSize();
     }
@@ -428,6 +467,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Códigos dos materiais fornecidos durante o atendimento.
      */
+    @Override
     public Iterator<Long> getTiposFornecimOdontoIterator() {
         return instancia.getTiposFornecimOdontoIterator();
     }
@@ -439,6 +479,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param elem Código dos materiais fornecidos durante o atendimento.
      */
+    @Override
     public void addToTiposFornecimOdonto(long elem) {
         instancia.addToTiposFornecimOdonto(elem);
     }
@@ -448,6 +489,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Códigos dos materiais fornecidos durante o atendimento.
      */
+    @Override
     public List<Long> getTiposFornecimOdonto() {
         return instancia.getTiposFornecimOdonto();
     }
@@ -459,6 +501,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param tiposFornecimOdonto Lista com os códigos dos materiais fornecidos durante o atendimento.
      */
+    @Override
     public void setTiposFornecimOdonto(List<Long> tiposFornecimOdonto) {
         instancia.setTiposFornecimOdonto(tiposFornecimOdonto);
     }
@@ -466,6 +509,7 @@ public class FichaAtendimentoOdontologicoChild {
     /**
      * Remove os materiais fornecidos durante o atendimento.
      */
+    @Override
     public void unsetTiposFornecimOdonto() {
         instancia.unsetTiposFornecimOdonto();
     }
@@ -475,6 +519,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return True caso tenah sido declarado algum material, False caso contrario.
      */
+    @Override
     public boolean isSetTiposFornecimOdonto() {
         return instancia.isSetTiposFornecimOdonto();
     }
@@ -484,6 +529,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param value True para declarar que foram fornecidos materiais, False caso contrario.
      */
+    @Override
     public void setTiposFornecimOdontoIsSet(boolean value) {
         instancia.setTiposFornecimOdontoIsSet(value);
     }
@@ -493,6 +539,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Quantidade de marcadores referentes a situação de vigilância em saúde bucal.
      */
+    @Override
     public int getTiposVigilanciaSaudeBucalSize() {
         return instancia.getTiposVigilanciaSaudeBucalSize();
     }
@@ -502,6 +549,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Código dos marcadores referentes a situação de vigilância em saúde bucal.
      */
+    @Override
     public Iterator<Long> getTiposVigilanciaSaudeBucalIterator() {
         return instancia.getTiposVigilanciaSaudeBucalIterator();
     }
@@ -515,6 +563,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param elem Código dos marcadores referentes a situação de vigilância em saúde bucal.
      */
+    @Override
     public void addToTiposVigilanciaSaudeBucal(long elem) {
         instancia.addToTiposVigilanciaSaudeBucal(elem);
     }
@@ -524,6 +573,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Código dos marcadores referentes a situação de vigilância em saúde bucal.
      */
+    @Override
     public List<Long> getTiposVigilanciaSaudeBucal() {
         return instancia.getTiposVigilanciaSaudeBucal();
     }
@@ -537,6 +587,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param tiposVigilanciaSaudeBucal Códigos dos marcadores referentes a situação de vigilância em saúde bucal.
      */
+    @Override
     public void setTiposVigilanciaSaudeBucal(List<Long> tiposVigilanciaSaudeBucal) {
         instancia.setTiposVigilanciaSaudeBucal(tiposVigilanciaSaudeBucal);
     }
@@ -544,6 +595,7 @@ public class FichaAtendimentoOdontologicoChild {
     /**
      * Remove os marcadores referentes a situação de vigilância em saúde bucal.
      */
+    @Override
     public void unsetTiposVigilanciaSaudeBucal() {
         instancia.unsetTiposVigilanciaSaudeBucal();
     }
@@ -553,6 +605,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return True caso os marcadores tiverem sido declarados, False caso contrario.
      */
+    @Override
     public boolean isSetTiposVigilanciaSaudeBucal() {
         return instancia.isSetTiposVigilanciaSaudeBucal();
     }
@@ -562,6 +615,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param value True para declarar os marcadores, False caso contrario.
      */
+    @Override
     public void setTiposVigilanciaSaudeBucalIsSet(boolean value) {
         instancia.setTiposVigilanciaSaudeBucalIsSet(value);
     }
@@ -571,6 +625,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Quantidade de tipos de consulta odontológica realizadas.
      */
+    @Override
     public int getTiposConsultaOdontoSize() {
         return instancia.getTiposConsultaOdontoSize();
     }
@@ -580,6 +635,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Códigos dos tipos de consulta odontológica realizadas.
      */
+    @Override
     public Iterator<Long> getTiposConsultaOdontoIterator() {
         return instancia.getTiposConsultaOdontoIterator();
     }
@@ -595,6 +651,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param elem Código do tipo de consulta odontológica realizada.
      */
+    @Override
     public void addToTiposConsultaOdonto(long elem) {
         instancia.addToTiposConsultaOdonto(elem);
     }
@@ -604,6 +661,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Códigos dos tipos de consulta odontológica realizadas.
      */
+    @Override
     public List<Long> getTiposConsultaOdonto() {
         return instancia.getTiposConsultaOdonto();
     }
@@ -619,6 +677,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param tiposConsultaOdonto Código do tipo de consulta odontológica realizada.
      */
+    @Override
     public void setTiposConsultaOdonto(List<Long> tiposConsultaOdonto) {
         instancia.setTiposConsultaOdonto(tiposConsultaOdonto);
     }
@@ -626,6 +685,7 @@ public class FichaAtendimentoOdontologicoChild {
     /**
      * Remove o tipo de consulta odontológica realizada.
      */
+    @Override
     public void unsetTiposConsultaOdonto() {
         instancia.unsetTiposConsultaOdonto();
     }
@@ -635,6 +695,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return True caso o tipo de consulta odontológica realizada tenha sido declarado, False caso contrario.
      */
+    @Override
     public boolean isSetTiposConsultaOdonto() {
         return instancia.isSetTiposConsultaOdonto();
     }
@@ -644,6 +705,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param value True para declarar que foi inserido, False caso contrario.
      */
+    @Override
     public void setTiposConsultaOdontoIsSet(boolean value) {
         instancia.setTiposConsultaOdontoIsSet(value);
     }
@@ -653,6 +715,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Quantidade de procedimentos que são apresentados na ficha.
      */
+    @Override
     public int getProcedimentosRealizadosSize() {
         return instancia.getProcedimentosRealizadosSize();
     }
@@ -662,8 +725,9 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Código dos procedimentos que são apresentados na ficha.
      */
-    public Iterator<ProcedimentoQuantidade> getProcedimentosRealizadosIterator() {
-        List<ProcedimentoQuantidade> listaProcedimentoQuantidade = new LinkedList<>();
+    @Override
+    public Iterator<IProcedimentoQuantidade> getProcedimentosRealizadosIterator() {
+        List<IProcedimentoQuantidade> listaProcedimentoQuantidade = new LinkedList<>();
         
         instancia.getProcedimentosRealizadosIterator().forEachRemaining((elemento) -> {
             listaProcedimentoQuantidade.add(new ProcedimentoQuantidade(elemento));
@@ -680,7 +744,8 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param elem Código dos procedimentos que são apresentados na ficha.
      */
-    public void addToProcedimentosRealizados(ProcedimentoQuantidade elem) {
+    @Override
+    public void addToProcedimentosRealizados(IProcedimentoQuantidade elem) {
         instancia.addToProcedimentosRealizados(elem.getInstance());
     }
 
@@ -689,8 +754,9 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Código dos procedimentos que são apresentados na ficha.
      */
-    public List<ProcedimentoQuantidade> getProcedimentosRealizados() {
-        List<ProcedimentoQuantidade> listaProcedimentoQuantidade = new LinkedList<>();
+    @Override
+    public List<IProcedimentoQuantidade> getProcedimentosRealizados() {
+        List<IProcedimentoQuantidade> listaProcedimentoQuantidade = new LinkedList<>();
         
         instancia.getProcedimentosRealizados().forEach((elemento) -> {
             listaProcedimentoQuantidade.add(new ProcedimentoQuantidade(elemento));
@@ -709,7 +775,8 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param procedimentosRealizados Código dos procedimentos que são apresentados na ficha.
      */
-    public void setProcedimentosRealizados(List<ProcedimentoQuantidade> procedimentosRealizados) {
+    @Override
+    public void setProcedimentosRealizados(List<IProcedimentoQuantidade> procedimentosRealizados) {
         List<ProcedimentoQuantidadeThrift> listaProcedimentoQuantidadeThrift = new LinkedList<>();
         
         procedimentosRealizados.forEach((elemento) -> {
@@ -722,6 +789,7 @@ public class FichaAtendimentoOdontologicoChild {
     /**
      * Remove os procedimentos que são apresentados na ficha.
      */
+    @Override
     public void unsetProcedimentosRealizados() {
         instancia.unsetProcedimentosRealizados();
     }
@@ -731,6 +799,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return True caso tenham sido declarados, False caso contraio.
      */
+    @Override
     public boolean isSetProcedimentosRealizados() {
         return instancia.isSetProcedimentosRealizados();
     }
@@ -740,6 +809,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param value True para declarar que foram inseridos, False caso contrario.
      */
+    @Override
     public void setProcedimentosRealizadosIsSet(boolean value) {
         instancia.setProcedimentosRealizadosIsSet(value);
     }
@@ -749,6 +819,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Quantidade de outros códigos de procedimentos.
      */
+    @Override
     public int getOutrosSiaProcedimentosSize() {
         return instancia.getOutrosSiaProcedimentosSize();
     }
@@ -758,8 +829,9 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Iterator de outros códigos de procedimentos.
      */
-    public Iterator<ProcedimentoQuantidade> getOutrosSiaProcedimentosIterator() {
-        List<ProcedimentoQuantidade> listaProcedimentoQuantidade = new LinkedList<>();
+    @Override
+    public Iterator<IProcedimentoQuantidade> getOutrosSiaProcedimentosIterator() {
+        List<IProcedimentoQuantidade> listaProcedimentoQuantidade = new LinkedList<>();
         
         instancia.getOutrosSiaProcedimentosIterator().forEachRemaining((elemento) -> {
             listaProcedimentoQuantidade.add(new ProcedimentoQuantidade(elemento));
@@ -779,7 +851,8 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param elem código do procedimento
      */
-    public void addToOutrosSiaProcedimentos(ProcedimentoQuantidade elem) {
+    @Override
+    public void addToOutrosSiaProcedimentos(IProcedimentoQuantidade elem) {
         instancia.addToOutrosSiaProcedimentos(elem.getInstance());
     }
 
@@ -788,8 +861,9 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return Lista de outros códigos de procedimentos.
      */
-    public List<ProcedimentoQuantidade> getOutrosSiaProcedimentos() {
-         List<ProcedimentoQuantidade> listaProcedimentoQuantidade = new LinkedList<>();
+    @Override
+    public List<IProcedimentoQuantidade> getOutrosSiaProcedimentos() {
+         List<IProcedimentoQuantidade> listaProcedimentoQuantidade = new LinkedList<>();
         
         instancia.getOutrosSiaProcedimentos().forEach((elemento) -> {
             listaProcedimentoQuantidade.add(new ProcedimentoQuantidade(elemento));
@@ -809,7 +883,8 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param outrosSiaProcedimentos Lista de códigos dos procedimentos
      */
-    public void setOutrosSiaProcedimentos(List<ProcedimentoQuantidade> outrosSiaProcedimentos) {
+    @Override
+    public void setOutrosSiaProcedimentos(List<IProcedimentoQuantidade> outrosSiaProcedimentos) {
         List<ProcedimentoQuantidadeThrift> listaProcedimentoQuantidadeThrift = new LinkedList<>();
         
         outrosSiaProcedimentos.forEach((elemento) -> {
@@ -822,6 +897,7 @@ public class FichaAtendimentoOdontologicoChild {
     /**
      * Remove a lista de outros procedimentos.
      */
+    @Override
     public void unsetOutrosSiaProcedimentos() {
         instancia.unsetOutrosSiaProcedimentos();
     }
@@ -831,6 +907,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return True caso tenha sido declarada, False case contrario.
      */
+    @Override
     public boolean isSetOutrosSiaProcedimentos() {
         return instancia.isSetOutrosSiaProcedimentos();
     }
@@ -840,6 +917,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param value True para declarar que foi inserido, False caso contrario.
      */
+    @Override
     public void setOutrosSiaProcedimentosIsSet(boolean value) {
         instancia.setOutrosSiaProcedimentosIsSet(value);
     }
@@ -848,6 +926,7 @@ public class FichaAtendimentoOdontologicoChild {
      * Retorna o sexo do cidadão.
      * @return Código do sexo do cidadão.
      */
+    @Override
     public long getSexo() {
         return instancia.getSexo();
     }
@@ -859,6 +938,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @param sexo Código do sexo do cidadão.
      */
+    @Override
     public void setSexo(long sexo) {
         instancia.setSexo(sexo);
     }
@@ -866,6 +946,7 @@ public class FichaAtendimentoOdontologicoChild {
     /**
      * Remove o sexo do cidadão.
      */
+    @Override
     public void unsetSexo() {
         instancia.unsetSexo();
     }
@@ -874,6 +955,7 @@ public class FichaAtendimentoOdontologicoChild {
      * Verifica se o sexo foi definido.
      * @return True caso o sexo tenha sido definido.
      */
+    @Override
     public boolean isSetSexo() {
         return instancia.isSetSexo();
     }
@@ -882,6 +964,7 @@ public class FichaAtendimentoOdontologicoChild {
      * Retorna se o sexo do cidadão foi definido.
      * @param value True caso o sexo tenha sido definido.
      */
+    @Override
     public void setSexoIsSet(boolean value) {
         instancia.setSexoIsSet(value);
     }
@@ -890,6 +973,7 @@ public class FichaAtendimentoOdontologicoChild {
      * Código do turno onde aconteceu o atendimento.
      * @return O código do turno onde aconteceu o atendimento.
      */
+    @Override
     public long getTurno() {
         return instancia.getTurno();
     }
@@ -899,6 +983,7 @@ public class FichaAtendimentoOdontologicoChild {
      * Presença obrigatória.
      * @param turno Código do turno onde aconteceu o atendimento.
      */
+    @Override
     public void setTurno(long turno) {
         instancia.setTurno(turno);
     }
@@ -906,6 +991,7 @@ public class FichaAtendimentoOdontologicoChild {
     /**
      * Remove o código do turno.
      */
+    @Override
     public void unsetTurno() {
         instancia.unsetTurno();
     }
@@ -914,6 +1000,7 @@ public class FichaAtendimentoOdontologicoChild {
      * Verifica se foi notificada a inserção do código do turno do atendimento
      * @return True caso tenha sido notificada a inserção do turno.
      */
+    @Override
     public boolean isSetTurno() {
         return instancia.isSetTurno();
     }
@@ -921,53 +1008,18 @@ public class FichaAtendimentoOdontologicoChild {
      * Notifica a inserção do turno do atendimento.
      * @param value True caso deseje informar a inserção do turno.
      */
+    @Override
     public void setTurnoIsSet(boolean value) {
         instancia.setTurnoIsSet(value);
     }
-
-    /**
-     * Compara com outro objeto
-     * @param that objeto a se comparar
-     * @return True se fomre iguais, False caso contrario.
-     */
-    @Override
-    public boolean equals(Object that) {
-        return instancia.equals(that);
-    }
-
-    /**
-     * Compara com outra FichaAtendimentoOdontologicoChild
-     * @param that Ficha a se comparar
-     * @return True se forem iguais, False caso contrario.
-     */
-    public boolean equals(FichaAtendimentoOdontologicoChild that) {
-        return instancia.equals(that.getInstance());
-    }
-
-    /**
-     * HashCode da classe
-     * @return HashCode
-     */
-    public int hashCode() {
-        return instancia.hashCode();
-    }
-
-    public int compareTo(FichaAtendimentoOdontologicoChild other) {
-        return instancia.compareTo(other.getInstance());
-    }
-
-    @Override
-    public String toString() {
-        return instancia.toString();
-    }
-
 
     /**
      * Instancia thrift da classe
      * 
      * @return thrift da classe
      */
-    protected FichaAtendimentoOdontologicoChildThrift getInstance(){
+    @Override
+    public FichaAtendimentoOdontologicoChildThrift getInstance(){
         return instancia;
     }
     
@@ -976,6 +1028,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return True se a classe for valida, False caso contrario.
      */
+    @Override
     public boolean validates() {
         try {
             instancia.validate();
@@ -1006,6 +1059,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return True se estiver presente, False caso contrario.
      */
+    @Override
     public boolean validatedtNascimento(){
         return instancia.isSetDtNascimento();
     }
@@ -1014,6 +1068,7 @@ public class FichaAtendimentoOdontologicoChild {
      * Valida o numero do cartão sus
      * @return True se não estiver presente ou se estiver presente e for válido, False caso contrario.
      */
+    @Override
     public boolean validateNumCartaoSus(){
         if(instancia.isSetNumCartaoSus()){
             return CNS.validateCNS(instancia.getNumCartaoSus());
@@ -1027,6 +1082,7 @@ public class FichaAtendimentoOdontologicoChild {
      * (inclusivo) caracteres alfanuméricos
      * @return True caso não esteja presente ou caso esteja presente e seja valido, False caso contrario
      */
+    @Override
     public boolean validateNumeroProntuario(){
         if(instancia.isSetNumProntuario()){
             String var = instancia.getNumProntuario();
@@ -1042,6 +1098,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 
      * @return True Caso não esteja presente ou caso esteja presente e o sexo seja igual a 1, False caso contrario.
      */
+    @Override
     public boolean validadeGestante(){
         if(instancia.isSetGestante()){
             return instancia.getSexo() == 1;
@@ -1057,6 +1114,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 2- Valor entre 1 e 10 (inclusivo)
      * @return 
      */
+    @Override
     public boolean validateLocalDeAtendimento(){
         return instancia.isSetLocalAtendimento()&&
                instancia.getLocalAtendimento() >= 1 &&
@@ -1070,6 +1128,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 2- Ter valor entre 2 e 6 (inclusivo)
      * @return 
      */
+    @Override
     public boolean validateTipoAtendimento(){
         long var = instancia.getTipoAtendimento();
         return instancia.isSetTipoAtendimento() &&
@@ -1084,6 +1143,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 3- Ter entre 1 e 16 elementos
      * @return True se estiver de acordo com as regras, False caso contrario.
      */
+    @Override
     public boolean validateTiposEncamOdonto(){
 
         if(instancia.isSetTiposEncamOdonto()){
@@ -1109,6 +1169,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 3- Ter entre 0 e 3 elementos
      * @return True se estiver de acordo com as regras, False caso contrario.
      */
+    @Override
     public boolean validateTiposFornecimOdonto(){
 
         if(instancia.isSetTiposFornecimOdonto()){
@@ -1134,6 +1195,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 3- Ter entre 1 e 7 elementos
      * @return True se estiver de acordo com as regras, False caso contrario.
      */
+    @Override
     public boolean validateTiposVigilanciaSaudeBucal(){
 
         if(instancia.isSetTiposVigilanciaSaudeBucal()){
@@ -1161,6 +1223,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 5- Aceita apenas um registro.
      * @return True se estiver de acordo com as regras, False caso contrario.
      */
+    @Override
     public boolean validateTiposConsultaOdonto(){
 
         if(instancia.isSetTiposConsultaOdonto()){
@@ -1191,23 +1254,18 @@ public class FichaAtendimentoOdontologicoChild {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateProcedimentosRealizados(){
         if(instancia.isSetProcedimentosRealizados()) {
             int size = instancia.getProcedimentosRealizadosSize();
             if(size > 27) return false;
             Set exames = new HashSet(instancia.getProcedimentosRealizados());
             if(exames.size() != size) return false;
-            
-            for(ProcedimentoQuantidade procedimento : this.getProcedimentosRealizados()){
-                if( ! procedimento.validates()){
-                    return false;
-                }
-            }
         }
         return true;
     }
     
-     /**
+    /**
      * Valida outrosSiaProcedimentos.
      * Para ser válido, caso inserido, deve:
      * 1- Não pode ter procedimentos iguais
@@ -1216,23 +1274,13 @@ public class FichaAtendimentoOdontologicoChild {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateOutrosSiaProcedimentos(){
         if(instancia.isSetOutrosSiaProcedimentos()) {
             int size = instancia.getOutrosSiaProcedimentosSize();
             if(size > 24) return false;
             Set exames = new HashSet(instancia.getOutrosSiaProcedimentos());
             if(exames.size() != size) return false;
-            
-            for(ProcedimentoQuantidade procedimento : this.getOutrosSiaProcedimentos()){
-                if( ! procedimento.validates()){
-                    return false;
-                }
-                for(ProcedimentoQuantidade procedimentoPrincipal : this.getProcedimentosRealizados()){
-                    if( procedimento.equals(procedimentoPrincipal)){
-                        return false;
-                    }
-                }
-            }
         }
         return true;
     }
@@ -1244,6 +1292,7 @@ public class FichaAtendimentoOdontologicoChild {
      * 2- Ter valor 0 ou 1
      * @return 
      */
+    @Override
     public boolean validateSexo(){
         long var = instancia.getSexo();
         return instancia.isSetSexo() &&
@@ -1255,6 +1304,7 @@ public class FichaAtendimentoOdontologicoChild {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateTurno(){
         long var = instancia.getTurno();
         return !instancia.isSetTurno() || 
@@ -1263,7 +1313,6 @@ public class FichaAtendimentoOdontologicoChild {
                 var == 3;
                 
     }
-    
-    
+
 }
 

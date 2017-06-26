@@ -1,30 +1,16 @@
 package com.github.Eddyosos.integracao20171.esus.cds.atendimentoodontologico;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.atendimentoodontologico.ProcedimentoQuantidadeThrift;
+import com.github.eddyosos.e_sus_ab_factory.cds.atendimentoodontologico.IProcedimentoQuantidade;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.thrift.TException;
 
-public class ProcedimentoQuantidade {
-    ProcedimentoQuantidadeThrift instancia = new ProcedimentoQuantidadeThrift();
+public class ProcedimentoQuantidade implements IProcedimentoQuantidade {
+    private ProcedimentoQuantidadeThrift instancia = new ProcedimentoQuantidadeThrift();
     
-    protected ProcedimentoQuantidade(ProcedimentoQuantidadeThrift t){
+    public ProcedimentoQuantidade(ProcedimentoQuantidadeThrift t){
         this.instancia = t;
-    }
-
-    /**
-     * Realiza uma copia da ficha.
-     * @return copia da ficha.
-     */
-    public ProcedimentoQuantidade deepCopy() {
-        return new ProcedimentoQuantidade(instancia.deepCopy());
-    }
-
-    /**
-     * Remove todos os dados da ficha.
-     */
-    public void clear() {
-        instancia.clear();
     }
 
     /**
@@ -32,6 +18,7 @@ public class ProcedimentoQuantidade {
      * 
      * @return Código do procedimento no MS.
      */
+    @Override
     public String getCoMsProcedimento() {
         return instancia.getCoMsProcedimento();
     }
@@ -43,40 +30,18 @@ public class ProcedimentoQuantidade {
      * 
      * @param coMsProcedimento Código do procedimento no MS.
      */
+    @Override
     public void setCoMsProcedimento(String coMsProcedimento) {
         instancia.setCoMsProcedimento(coMsProcedimento);
     }
 
-    /**
-     * Remove o código do procedimento no MS.
-     */
-    public void unsetCoMsProcedimento() {
-        instancia.unsetCoMsProcedimento();
-    }
-
-    /**
-     * Verifica se o código do procedimento no MS foi declarado.
-     * 
-     * @return True se tiver sido declarado, False caso não.
-     */
-    public boolean isSetCoMsProcedimento() {
-        return instancia.isSetCoMsProcedimento();
-    }
-
-    /**
-     * Declara que o código do procedimento no MS foi inserido.
-     * 
-     * @param value True para declarar que foi inserido, Falso para declarar que não foi.
-     */
-    public void setCoMsProcedimentoIsSet(boolean value) {
-        instancia.setCoMsProcedimentoIsSet(value);
-    }
 
     /**
      * Quantidade de procedimentos realizados
      * 
      * @return Quantidade de procedimentos realizados
      */
+    @Override
     public int getQuantidade() {
         return instancia.getQuantidade();
     }
@@ -88,56 +53,9 @@ public class ProcedimentoQuantidade {
      * 
      * @param quantidade Quantidade de procedimentos realizados.
      */
+    @Override
     public void setQuantidade(int quantidade) {
         instancia.setQuantidade(quantidade);
-    }
-
-    /**
-     * Remove a quantidade de procedimentos realizados.
-     */
-    public void unsetQuantidade() {
-        instancia.unsetQuantidade();
-    }
-
-    /**
-     * Verifica se a quantidade de procedimentos realizados foi declarada.
-     * 
-     * @return True se tiver sido declarada, caso contrario False.
-     */
-    public boolean isSetQuantidade() {
-        return instancia.isSetQuantidade();
-    }
-
-    /**
-     * Declara que a quantidade de procedimentos realizados foi inserida.
-     * 
-     * @param value True para declarar que foi inserido, caso contrario False.
-     */
-    public void setQuantidadeIsSet(boolean value) {
-        instancia.setQuantidadeIsSet(value);
-    }
-
-    @Override
-    public boolean equals(Object that) {
-        return instancia.equals(that);
-    }
-
-    public boolean equals(ProcedimentoQuantidade that) {
-        return instancia.equals(that.getInstance());
-    }
-
-    @Override
-    public int hashCode() {
-        return instancia.hashCode();
-    }
-
-    public int compareTo(ProcedimentoQuantidade other) {
-        return instancia.compareTo(other.getInstance());
-    }
-
-    @Override
-    public String toString() {
-        return instancia.toString();
     }
 
     /**
@@ -160,7 +78,8 @@ public class ProcedimentoQuantidade {
      * 
      * @return Instância thrift
      */
-    protected ProcedimentoQuantidadeThrift getInstance(){
+    @Override
+    public ProcedimentoQuantidadeThrift getInstance(){
         return instancia;
     }
     

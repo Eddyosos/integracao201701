@@ -3,29 +3,25 @@ package com.github.Eddyosos.integracao20171.esus.cds.atendimentoodontologico;
 import br.gov.saude.esus.cds.transport.generated.thrift.atendimentoodontologico.FichaAtendimentoOdontologicoChildThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.atendimentoodontologico.FichaAtendimentoOdontologicoMasterThrift;
 import com.github.Eddyosos.integracao20171.esus.cds.common.VariasLotacoesHeader;
+import com.github.eddyosos.e_sus_ab_factory.cds.atendimentoodontologico.IFichaAtendimentoOdontologicoChild;
+import com.github.eddyosos.e_sus_ab_factory.cds.atendimentoodontologico.IFichaAtendimentoOdontologicoMaster;
+import com.github.eddyosos.e_sus_ab_factory.cds.common.IVariasLotacoesHeader;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import org.apache.thrift.TException;
 
-public class FichaAtendimentoOdontologicoMaster {
-    FichaAtendimentoOdontologicoMasterThrift instancia = new FichaAtendimentoOdontologicoMasterThrift();
+public class FichaAtendimentoOdontologicoMaster implements IFichaAtendimentoOdontologicoMaster {
+    private FichaAtendimentoOdontologicoMasterThrift instancia = new FichaAtendimentoOdontologicoMasterThrift();
     
-    protected FichaAtendimentoOdontologicoMaster(FichaAtendimentoOdontologicoMasterThrift fichaAtendimentoOdontologicoMasterThrift){
+    public FichaAtendimentoOdontologicoMaster(FichaAtendimentoOdontologicoMasterThrift fichaAtendimentoOdontologicoMasterThrift){
         this.instancia = fichaAtendimentoOdontologicoMasterThrift;
-    }
-
-    /**
-     * Realiza uma copia da ficha.
-     * @return copia da ficha.
-     */
-    public FichaAtendimentoOdontologicoMaster deepCopy() {
-        return new FichaAtendimentoOdontologicoMaster(instancia.deepCopy());
     }
 
     /**
      * Remove todos os dados da ficha.
      */
+    @Override
     public void clear() {
         instancia.clear();
     }
@@ -35,6 +31,7 @@ public class FichaAtendimentoOdontologicoMaster {
      * 
      * @return Código uuid.
      */
+    @Override
     public String getUuidFicha() {
         return instancia.getUuidFicha();
     }
@@ -51,6 +48,7 @@ public class FichaAtendimentoOdontologicoMaster {
      * 
      * @param uuidFicha Código uuid da ficha.
      */
+    @Override
     public void setUuidFicha(String uuidFicha) {
         instancia.setUuidFicha(uuidFicha);
     }
@@ -58,6 +56,7 @@ public class FichaAtendimentoOdontologicoMaster {
     /**
      * Remove o código uuid da ficha.
      */
+    @Override
     public void unsetUuidFicha() {
         instancia.unsetUuidFicha();
     }
@@ -66,6 +65,7 @@ public class FichaAtendimentoOdontologicoMaster {
      * Verifica se o código uuid da ficha foi declarado.
      * @return True caso o código uuid da ficha tenha sido declarado.
      */
+    @Override
     public boolean isSetUuidFicha() {
         return instancia.isSetUuidFicha();
     }
@@ -74,6 +74,7 @@ public class FichaAtendimentoOdontologicoMaster {
      * Declara o estado do código uuid da ficha.
      * @param value True caso o código uuid da ficha tenha sido inserido.
      */
+    @Override
     public void setUuidFichaIsSet(boolean value) {
         instancia.setUuidFichaIsSet(value);
     }
@@ -82,7 +83,8 @@ public class FichaAtendimentoOdontologicoMaster {
      * Profissional que realizou a visita.
      * @return Profissional que realizou a visita.
      */
-    public VariasLotacoesHeader getHeaderTransport() {
+    @Override
+    public IVariasLotacoesHeader getHeaderTransport() {
         return new VariasLotacoesHeader(instancia.getHeaderTransport());
     }
 
@@ -93,13 +95,15 @@ public class FichaAtendimentoOdontologicoMaster {
      * 
      * @param headerTransport Profissional que realizou a visita.
      */
-    public void setHeaderTransport(VariasLotacoesHeader headerTransport) {
+    @Override
+    public void setHeaderTransport(IVariasLotacoesHeader headerTransport) {
         instancia.setHeaderTransport(headerTransport.getInstance());
     }
 
     /**
      * Remove o profissional que realizou a visita.
      */
+    @Override
     public void unsetHeaderTransport() {
         instancia.unsetHeaderTransport();
     }
@@ -108,6 +112,7 @@ public class FichaAtendimentoOdontologicoMaster {
      * Verifica se o profissional que realizou a visita foi declarado.
      * @return True caso o profissional que realizou a visita tenha sido inserido.
      */
+    @Override
     public boolean isSetHeaderTransport() {
         return instancia.isSetHeaderTransport();
     }
@@ -116,6 +121,7 @@ public class FichaAtendimentoOdontologicoMaster {
      * Define se o profissional que realizou a visita doi inserido.
      * @param value True caso profissional que realizou a visita tenha sido inserido.
      */
+    @Override
     public void setHeaderTransportIsSet(boolean value) {
         instancia.setHeaderTransportIsSet(value);
     }
@@ -125,6 +131,7 @@ public class FichaAtendimentoOdontologicoMaster {
      * 
      * @return Quantidade de registros de atendimento.
      */
+    @Override
     public int getAtendimentosOdontologicosSize() {
         return instancia.getAtendimentosOdontologicosSize();
     }
@@ -134,8 +141,9 @@ public class FichaAtendimentoOdontologicoMaster {
      * 
      * @return Registro dos atendimentos.
      */
-    public Iterator<FichaAtendimentoOdontologicoChild> getAtendimentosOdontologicosIterator() {
-        List<FichaAtendimentoOdontologicoChild> listaFichaAtendimentoOdontologicoChild = new LinkedList<>();
+    @Override
+    public Iterator<IFichaAtendimentoOdontologicoChild> getAtendimentosOdontologicosIterator() {
+        List<IFichaAtendimentoOdontologicoChild> listaFichaAtendimentoOdontologicoChild = new LinkedList<>();
         
         instancia.getAtendimentosOdontologicosIterator().forEachRemaining((elemento) -> {
             listaFichaAtendimentoOdontologicoChild.add(new FichaAtendimentoOdontologicoChild(elemento));
@@ -154,7 +162,8 @@ public class FichaAtendimentoOdontologicoMaster {
      * 
      * @param elem Registro do atendimento.
      */
-    public void addToAtendimentosOdontologicos(FichaAtendimentoOdontologicoChild elem) {
+    @Override
+    public void addToAtendimentosOdontologicos(IFichaAtendimentoOdontologicoChild elem) {
         instancia.addToAtendimentosOdontologicos(elem.getInstance());
     }
 
@@ -163,8 +172,9 @@ public class FichaAtendimentoOdontologicoMaster {
      * 
      * @return Registro dos atendimentos.
      */
-    public List<FichaAtendimentoOdontologicoChild> getAtendimentosOdontologicos() {
-        List<FichaAtendimentoOdontologicoChild> listaFichaAtendimentoOdontologicoChild = new LinkedList<>();
+    @Override
+    public List<IFichaAtendimentoOdontologicoChild> getAtendimentosOdontologicos() {
+        List<IFichaAtendimentoOdontologicoChild> listaFichaAtendimentoOdontologicoChild = new LinkedList<>();
         
         instancia.getAtendimentosOdontologicos().forEach((elemento) -> {
             listaFichaAtendimentoOdontologicoChild.add(new FichaAtendimentoOdontologicoChild(elemento));
@@ -183,7 +193,8 @@ public class FichaAtendimentoOdontologicoMaster {
      * 
      * @param atendimentosOdontologicos Lista de registros de atendimentos.
      */
-    public void setAtendimentosOdontologicos(List<FichaAtendimentoOdontologicoChild> atendimentosOdontologicos) {
+    @Override
+    public void setAtendimentosOdontologicos(List<IFichaAtendimentoOdontologicoChild> atendimentosOdontologicos) {
         List<FichaAtendimentoOdontologicoChildThrift> listaFichaAtendimentoOdontologicoChildThrift = new LinkedList<>();
         
         atendimentosOdontologicos.forEach((elemento) -> {
@@ -196,6 +207,7 @@ public class FichaAtendimentoOdontologicoMaster {
     /**
      * Remove os atendimentos.
      */
+    @Override
     public void unsetAtendimentosOdontologicos() {
         instancia.unsetAtendimentosOdontologicos();
     }
@@ -204,6 +216,7 @@ public class FichaAtendimentoOdontologicoMaster {
      * Verifica se os atendimentos foram declarados.
      * @return True caso tenham sido declarados.
      */
+    @Override
     public boolean isSetAtendimentosOdontologicos() {
         return instancia.isSetAtendimentosOdontologicos();
     }
@@ -213,6 +226,7 @@ public class FichaAtendimentoOdontologicoMaster {
      * 
      * @param value True para informar que os atendimentos foram inseridos.
      */
+    @Override
     public void setAtendimentosOdontologicosIsSet(boolean value) {
         instancia.setAtendimentosOdontologicosIsSet(value);
     }
@@ -221,6 +235,7 @@ public class FichaAtendimentoOdontologicoMaster {
      * Tipo de origem dos dados do registro.
      * @return Tipo de origem dos dados do registro.
      */
+    @Override
     public int getTpCdsOrigem() {
         return instancia.getTpCdsOrigem();
     }
@@ -233,6 +248,7 @@ public class FichaAtendimentoOdontologicoMaster {
      * 
      * @param tpCdsOrigem Tipo de origem dos dados do registro.
      */
+    @Override
     public void setTpCdsOrigem(int tpCdsOrigem) {
         instancia.setTpCdsOrigem(tpCdsOrigem);
     }
@@ -240,6 +256,7 @@ public class FichaAtendimentoOdontologicoMaster {
     /**
      * Remove o tipo de origem dos dados do registro.
      */
+    @Override
     public void unsetTpCdsOrigem() {
         instancia.unsetTpCdsOrigem();
     }
@@ -248,6 +265,7 @@ public class FichaAtendimentoOdontologicoMaster {
      * Verifica se o tipo de origem dos dados do registro foi declarado.
      * @return True caso o tipo de origem dos dados do registro tenha sido inserido.
      */
+    @Override
     public boolean isSetTpCdsOrigem() {
         return instancia.isSetTpCdsOrigem();
     }
@@ -256,48 +274,12 @@ public class FichaAtendimentoOdontologicoMaster {
      * Declara se o tipo de origem dos dados do registro foi inserido.
      * @param value True caso o tipo de origem dos dados do registro tenha sido inserido.
      */
+    @Override
     public void setTpCdsOrigemIsSet(boolean value) {
         instancia.setTpCdsOrigemIsSet(value);
     }
 
-    /**
-     * Compara dois objetos
-     * @param that Objeto a comparar
-     * @return True caso sejam iguais, False caso contrario.
-     */
     @Override
-    public boolean equals(Object that) {
-        return instancia.equals(that);
-    }
-
-    /**
-     * Compara com outra ficha de atendimento odontológico.
-     * @param that Ficha a se comparar
-     * @return True caso sejam iguais.
-     */
-    public boolean equals(FichaAtendimentoOdontologicoMaster that) {
-        return instancia.equals(that.getInstance());
-    }
-
-    /**
-     * HashCode
-     * 
-     * @return HashCode
-     */
-    @Override
-    public int hashCode() {
-        return instancia.hashCode();
-    }
-
-    public int compareTo(FichaAtendimentoOdontologicoMaster other) {
-        return instancia.compareTo(other.getInstance());
-    }
-
-    @Override
-    public String toString() {
-        return instancia.toString();
-    }
-
     public boolean validate() {
         try {
             instancia.validate();
@@ -314,7 +296,8 @@ public class FichaAtendimentoOdontologicoMaster {
      * 
      * @return Intancia thrift da classe.
      */
-    protected FichaAtendimentoOdontologicoMasterThrift getInstance(){
+    @Override
+    public FichaAtendimentoOdontologicoMasterThrift getInstance(){
         return instancia;
     }
     
@@ -326,6 +309,7 @@ public class FichaAtendimentoOdontologicoMaster {
      * UUID são a limitação de 44 bytes do campo.
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateUuidFicha(){
         return  instancia.getUuidFicha() != null &&
                 instancia.getUuidFicha().length() >= 36 && 
@@ -337,6 +321,7 @@ public class FichaAtendimentoOdontologicoMaster {
      * 
      * @return True caso o header transport seja valido
      */
+    @Override
     public boolean validateHeaderTransport(){
         return instancia.getHeaderTransport() != null && 
                 instancia.isSetHeaderTransport() &&
@@ -353,17 +338,12 @@ public class FichaAtendimentoOdontologicoMaster {
      * 
      * @return True caso sejam validos, False caso contrario.
      */
+    @Override
     public boolean validateAtendimentosOdontologicos(){
         
         if(instancia.isSetAtendimentosOdontologicos()){
             if( instancia.getAtendimentosOdontologicosSize() >= 1 && 
                     instancia.getAtendimentosOdontologicosSize() <= 13){
-                for(FichaAtendimentoOdontologicoChild ficha : getAtendimentosOdontologicos()){
-                    if( ! ficha.validates()){
-                        return false;
-                    }
-                }
-                
                 return true;
             }
         }
@@ -376,6 +356,7 @@ public class FichaAtendimentoOdontologicoMaster {
      * 
      * @return True caso o tipo de origem dos dados tenha sido declarado.
      */
+    @Override
     public boolean validatetTpCdsOrigem(){
         return instancia.isSetTpCdsOrigem();
     }
