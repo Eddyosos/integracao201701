@@ -2,26 +2,36 @@ package com.github.Eddyosos.integracao20171.esus.cds.cadastrodomiciliar;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastrodomiciliar.CadastroDomiciliarThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastrodomiciliar.FamiliaRowThrift;
+import com.github.Eddyosos.integracao20171.compactor.SerializadorThrift;
 import com.github.Eddyosos.integracao20171.esus.cds.common.EnderecoLocalPermanencia;
 import com.github.Eddyosos.integracao20171.esus.cds.common.HeaderCdsCadastro;
+import com.github.Eddyosos.integracao20171.esus.transport.DadoTransporte;
 import com.github.eddyosos.e_sus_ab_factory.cds.common.IEnderecoLocalPermanencia;
 import com.github.eddyosos.e_sus_ab_factory.cds.common.IHeaderCdsCadastro;
 import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.cadastrodomiciliar.ICadastroDomiciliar;
 import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.cadastrodomiciliar.ICondicaoMoradia;
 import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.cadastrodomiciliar.IFamiliaRow;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 import org.apache.thrift.TException;
 
 public class CadastroDomiciliar implements ICadastroDomiciliar {
     /**
      * Instancia para encapsulamento do Thrift
      */
-    private CadastroDomiciliarThrift cadastroDomiciliar;
+    private CadastroDomiciliarThrift instancia;
+    private long TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO = 3;
+    private final static String EXTENSAO_EXPORT = ".esus13";
+    private DadoTransporte dadoTransporteThrift;
     
     public CadastroDomiciliar() {
-        cadastroDomiciliar = new CadastroDomiciliarThrift();
+        instancia = new CadastroDomiciliarThrift();
     }
 
     /**
@@ -29,7 +39,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      * @param cadastroDomiciliar 
      */
     public CadastroDomiciliar(CadastroDomiciliarThrift cadastroDomiciliar) {
-        this.cadastroDomiciliar = cadastroDomiciliar;
+        this.instancia = cadastroDomiciliar;
     }
 
     /**
@@ -38,7 +48,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public int getAnimaisNoDomicilioSize() {
-        return cadastroDomiciliar.getAnimaisNoDomicilioSize();
+        return instancia.getAnimaisNoDomicilioSize();
     }
 
     /**
@@ -47,7 +57,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public Iterator<Long> getAnimaisNoDomicilioIterator() {
-        return cadastroDomiciliar.getAnimaisNoDomicilioIterator();
+        return instancia.getAnimaisNoDomicilioIterator();
     }
 
     /**
@@ -57,7 +67,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void addToAnimaisNoDomicilio(long elem) {
-        cadastroDomiciliar.addToAnimaisNoDomicilio(elem);
+        instancia.addToAnimaisNoDomicilio(elem);
     }
 
     /**
@@ -66,7 +76,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public List<Long> getAnimaisNoDomicilio() {
-        return cadastroDomiciliar.getAnimaisNoDomicilio();
+        return instancia.getAnimaisNoDomicilio();
     }
 
     /**
@@ -75,12 +85,12 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setAnimaisNoDomicilio(List<Long> animaisNoDomicilio) {
-        cadastroDomiciliar.setAnimaisNoDomicilio(animaisNoDomicilio);
+        instancia.setAnimaisNoDomicilio(animaisNoDomicilio);
     }
 
     @Override
     public void unsetAnimaisNoDomicilio() {
-        cadastroDomiciliar.unsetAnimaisNoDomicilio();
+        instancia.unsetAnimaisNoDomicilio();
     }
 
     /**
@@ -89,7 +99,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public boolean isSetAnimaisNoDomicilio() {
-        return cadastroDomiciliar.isSetAnimaisNoDomicilio();
+        return instancia.isSetAnimaisNoDomicilio();
     }
 
     /**
@@ -98,7 +108,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setAnimaisNoDomicilioIsSet(boolean value) {
-        cadastroDomiciliar.setAnimaisNoDomicilioIsSet(value);
+        instancia.setAnimaisNoDomicilioIsSet(value);
     }
 
     /**
@@ -108,7 +118,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public ICondicaoMoradia getCondicaoMoradia() {
-        return new CondicaoMoradia(cadastroDomiciliar.getCondicaoMoradia());
+        return new CondicaoMoradia(instancia.getCondicaoMoradia());
     }
 
     /**
@@ -118,12 +128,12 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setCondicaoMoradia(ICondicaoMoradia condicaoMoradia) {
-        cadastroDomiciliar.setCondicaoMoradia(condicaoMoradia.getInstence());
+        instancia.setCondicaoMoradia(condicaoMoradia.getInstence());
     }
 
     @Override
     public void unsetCondicaoMoradia() {
-        cadastroDomiciliar.unsetCondicaoMoradia();
+        instancia.unsetCondicaoMoradia();
     }
 
     /**
@@ -132,7 +142,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public boolean isSetCondicaoMoradia() {
-        return cadastroDomiciliar.isSetCondicaoMoradia();
+        return instancia.isSetCondicaoMoradia();
     }
 
     /**
@@ -141,7 +151,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setCondicaoMoradiaIsSet(boolean value) {
-        cadastroDomiciliar.setCondicaoMoradiaIsSet(value);
+        instancia.setCondicaoMoradiaIsSet(value);
     }
 
     /**
@@ -150,7 +160,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public IHeaderCdsCadastro getDadosGerais() {
-        return new HeaderCdsCadastro(cadastroDomiciliar.getDadosGerais());
+        return new HeaderCdsCadastro(instancia.getDadosGerais());
     }
 
     /**
@@ -159,12 +169,12 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setDadosGerais(IHeaderCdsCadastro dadosGerais) {
-        cadastroDomiciliar.setDadosGerais(dadosGerais.getInstance());
+        instancia.setDadosGerais(dadosGerais.getInstance());
     }
 
     @Override
     public void unsetDadosGerais() {
-        cadastroDomiciliar.unsetDadosGerais();
+        instancia.unsetDadosGerais();
     }
 
     /**
@@ -173,7 +183,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public boolean isSetDadosGerais() {
-        return cadastroDomiciliar.isSetDadosGerais();
+        return instancia.isSetDadosGerais();
     }
 
     /**
@@ -182,7 +192,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setDadosGeraisIsSet(boolean value) {
-        cadastroDomiciliar.setDadosGeraisIsSet(value);
+        instancia.setDadosGeraisIsSet(value);
     }
 
     /**
@@ -192,7 +202,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public IEnderecoLocalPermanencia getEnderecoLocalPermanencia() {
-        return new EnderecoLocalPermanencia(cadastroDomiciliar.getEnderecoLocalPermanencia());
+        return new EnderecoLocalPermanencia(instancia.getEnderecoLocalPermanencia());
     }
 
     /**
@@ -202,12 +212,12 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setEnderecoLocalPermanencia(IEnderecoLocalPermanencia enderecoLocalPermanencia) {
-        cadastroDomiciliar.setEnderecoLocalPermanencia(enderecoLocalPermanencia.getInstance());
+        instancia.setEnderecoLocalPermanencia(enderecoLocalPermanencia.getInstance());
     }
 
     @Override
     public void unsetEnderecoLocalPermanencia() {
-        cadastroDomiciliar.unsetEnderecoLocalPermanencia();
+        instancia.unsetEnderecoLocalPermanencia();
     }
 
     /**
@@ -217,7 +227,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public boolean isSetEnderecoLocalPermanencia() {
-        return cadastroDomiciliar.isSetEnderecoLocalPermanencia();
+        return instancia.isSetEnderecoLocalPermanencia();
     }
 
     /**
@@ -226,7 +236,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setEnderecoLocalPermanenciaIsSet(boolean value) {
-        cadastroDomiciliar.setEnderecoLocalPermanenciaIsSet(value);
+        instancia.setEnderecoLocalPermanenciaIsSet(value);
     }
 
     /**
@@ -236,7 +246,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public int getFamiliasSize() {
-        return cadastroDomiciliar.getFamiliasSize();
+        return instancia.getFamiliasSize();
     }
 
     /**
@@ -247,7 +257,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
     public Iterator<IFamiliaRow> getFamiliasIterator() {
         List<IFamiliaRow> listaFamiliaRow = new LinkedList<>();
         
-        cadastroDomiciliar.getFamiliasIterator().forEachRemaining((elemento) -> {
+        instancia.getFamiliasIterator().forEachRemaining((elemento) -> {
             listaFamiliaRow.add(new FamiliaRow(elemento));
         });
         
@@ -261,7 +271,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void addToFamilias(IFamiliaRow elem) {
-        cadastroDomiciliar.addToFamilias(elem.getInstance());
+        instancia.addToFamilias(elem.getInstance());
     }
 
     /**
@@ -273,7 +283,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
     public List<IFamiliaRow> getFamilias() {
         List<IFamiliaRow> listaFamiliaRow = new LinkedList<>();
         
-        cadastroDomiciliar.getFamilias().forEach((elemento) -> {
+        instancia.getFamilias().forEach((elemento) -> {
             listaFamiliaRow.add(new FamiliaRow(elemento));
         });
         
@@ -294,12 +304,12 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
             listaFamiliaRowThrift.add(elemento.getInstance());
         });
         
-        cadastroDomiciliar.setFamilias(listaFamiliaRowThrift);
+        instancia.setFamilias(listaFamiliaRowThrift);
     }
 
     @Override
     public void unsetFamilias() {
-        cadastroDomiciliar.unsetFamilias();
+        instancia.unsetFamilias();
     }
 
     /**
@@ -309,7 +319,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public boolean isSetFamilias() {
-        return cadastroDomiciliar.isSetFamilias();
+        return instancia.isSetFamilias();
     }
 
     /**
@@ -318,7 +328,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setFamiliasIsSet(boolean value) {
-        cadastroDomiciliar.setFamiliasIsSet(value);
+        instancia.setFamiliasIsSet(value);
     }
 
     /**
@@ -329,7 +339,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public boolean isFichaAtualizada() {
-        return cadastroDomiciliar.isFichaAtualizada();
+        return instancia.isFichaAtualizada();
     }
 
     /**
@@ -338,12 +348,12 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setFichaAtualizada(boolean fichaAtualizada) {
-        cadastroDomiciliar.setFichaAtualizada(fichaAtualizada);
+        instancia.setFichaAtualizada(fichaAtualizada);
     }
 
     @Override
     public void unsetFichaAtualizada() {
-        cadastroDomiciliar.unsetFichaAtualizada();
+        instancia.unsetFichaAtualizada();
     }
 
     /**
@@ -352,12 +362,12 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public boolean isSetFichaAtualizada() {
-        return cadastroDomiciliar.isSetFichaAtualizada();
+        return instancia.isSetFichaAtualizada();
     }
 
     @Override
     public void setFichaAtualizadaIsSet(boolean value) {
-        cadastroDomiciliar.setFichaAtualizadaIsSet(value);
+        instancia.setFichaAtualizadaIsSet(value);
     }
 
     /**
@@ -369,7 +379,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public String getQuantosAnimaisNoDomicilio() {
-        return cadastroDomiciliar.getQuantosAnimaisNoDomicilio();
+        return instancia.getQuantosAnimaisNoDomicilio();
     }
 
     /**
@@ -380,12 +390,12 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setQuantosAnimaisNoDomicilio(String quantosAnimaisNoDomicilio) {
-        cadastroDomiciliar.setQuantosAnimaisNoDomicilio(quantosAnimaisNoDomicilio);
+        instancia.setQuantosAnimaisNoDomicilio(quantosAnimaisNoDomicilio);
     }
 
     @Override
     public void unsetQuantosAnimaisNoDomicilio() {
-        cadastroDomiciliar.unsetQuantosAnimaisNoDomicilio();
+        instancia.unsetQuantosAnimaisNoDomicilio();
     }
 
     /**
@@ -396,7 +406,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public boolean isSetQuantosAnimaisNoDomicilio() {
-        return cadastroDomiciliar.isSetQuantosAnimaisNoDomicilio();
+        return instancia.isSetQuantosAnimaisNoDomicilio();
     }
 
     /**
@@ -405,7 +415,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setQuantosAnimaisNoDomicilioIsSet(boolean value) {
-        cadastroDomiciliar.setQuantosAnimaisNoDomicilioIsSet(value);
+        instancia.setQuantosAnimaisNoDomicilioIsSet(value);
     }
 
     /**
@@ -415,7 +425,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public boolean isStAnimaisNoDomicilio() {
-        return cadastroDomiciliar.isStAnimaisNoDomicilio();
+        return instancia.isStAnimaisNoDomicilio();
     }
 
     /**
@@ -425,12 +435,12 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setStAnimaisNoDomicilio(boolean stAnimaisNoDomicilio) {
-        cadastroDomiciliar.setStAnimaisNoDomicilio(stAnimaisNoDomicilio);
+        instancia.setStAnimaisNoDomicilio(stAnimaisNoDomicilio);
     }
 
     @Override
     public void unsetStAnimaisNoDomicilio() {
-        cadastroDomiciliar.unsetStAnimaisNoDomicilio();
+        instancia.unsetStAnimaisNoDomicilio();
     }
 
     /**
@@ -440,7 +450,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public boolean isSetStAnimaisNoDomicilio() {
-        return cadastroDomiciliar.isSetStAnimaisNoDomicilio();
+        return instancia.isSetStAnimaisNoDomicilio();
     }
 
     /**
@@ -449,7 +459,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setStAnimaisNoDomicilioIsSet(boolean value) {
-        cadastroDomiciliar.setStAnimaisNoDomicilioIsSet(value);
+        instancia.setStAnimaisNoDomicilioIsSet(value);
     }
 
     /**
@@ -458,7 +468,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public boolean isStatusTermoRecusaCadastroDomiciliarAtencaoBasica() {
-        return cadastroDomiciliar.isStatusTermoRecusaCadastroDomiciliarAtencaoBasica();
+        return instancia.isStatusTermoRecusaCadastroDomiciliarAtencaoBasica();
     }
 
     /**
@@ -467,12 +477,12 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setStatusTermoRecusaCadastroDomiciliarAtencaoBasica(boolean statusTermoRecusaCadastroDomiciliarAtencaoBasica) {
-        cadastroDomiciliar.setStatusTermoRecusaCadastroDomiciliarAtencaoBasica(statusTermoRecusaCadastroDomiciliarAtencaoBasica);
+        instancia.setStatusTermoRecusaCadastroDomiciliarAtencaoBasica(statusTermoRecusaCadastroDomiciliarAtencaoBasica);
     }
 
     @Override
     public void unsetStatusTermoRecusaCadastroDomiciliarAtencaoBasica() {
-        cadastroDomiciliar.unsetStatusTermoRecusaCadastroDomiciliarAtencaoBasica();
+        instancia.unsetStatusTermoRecusaCadastroDomiciliarAtencaoBasica();
     }
 
     /**
@@ -481,7 +491,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public boolean isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica() {
-        return cadastroDomiciliar.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica();
+        return instancia.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica();
     }
 
     /**
@@ -490,7 +500,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setStatusTermoRecusaCadastroDomiciliarAtencaoBasicaIsSet(boolean value) {
-        cadastroDomiciliar.setStatusTermoRecusaCadastroDomiciliarAtencaoBasicaIsSet(value);
+        instancia.setStatusTermoRecusaCadastroDomiciliarAtencaoBasicaIsSet(value);
     }
     
     /**
@@ -500,7 +510,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public int getTpCdsOrigem() {
-        return cadastroDomiciliar.getTpCdsOrigem();
+        return instancia.getTpCdsOrigem();
     }
 
     /**
@@ -510,12 +520,12 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setTpCdsOrigem(int tpCdsOrigem) {
-        cadastroDomiciliar.setTpCdsOrigem(tpCdsOrigem);
+        instancia.setTpCdsOrigem(tpCdsOrigem);
     }
 
     @Override
     public void unsetTpCdsOrigem() {
-        cadastroDomiciliar.unsetTpCdsOrigem();
+        instancia.unsetTpCdsOrigem();
     }
 
     /**
@@ -524,7 +534,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public boolean isSetTpCdsOrigem() {
-        return cadastroDomiciliar.isSetTpCdsOrigem();
+        return instancia.isSetTpCdsOrigem();
     }
 
     /**
@@ -533,7 +543,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setTpCdsOrigemIsSet(boolean value) {
-        cadastroDomiciliar.setTpCdsOrigemIsSet(value);
+        instancia.setTpCdsOrigemIsSet(value);
     }
 
     /**
@@ -542,7 +552,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public String getUuid() {
-        return cadastroDomiciliar.getUuid();
+        return instancia.getUuid();
     }
 
     /**
@@ -551,12 +561,12 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setUuid(String uuid) {
-        cadastroDomiciliar.setUuid(uuid);
+        instancia.setUuid(uuid);
     }
 
     @Override
     public void unsetUuid() {
-        cadastroDomiciliar.unsetUuid();
+        instancia.unsetUuid();
     }
 
     /**
@@ -565,7 +575,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public boolean isSetUuid() {
-        return cadastroDomiciliar.isSetUuid();
+        return instancia.isSetUuid();
     }
 
     /**
@@ -574,7 +584,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setUuidIsSet(boolean value) {
-        cadastroDomiciliar.setUuidIsSet(value);
+        instancia.setUuidIsSet(value);
     }
 
     /**
@@ -583,7 +593,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public String getUuidFichaOriginadora() {
-        return cadastroDomiciliar.getUuidFichaOriginadora();
+        return instancia.getUuidFichaOriginadora();
     }
 
     /**
@@ -592,12 +602,12 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setUuidFichaOriginadora(String uuidFichaOriginadora) {
-        cadastroDomiciliar.setUuidFichaOriginadora(uuidFichaOriginadora);
+        instancia.setUuidFichaOriginadora(uuidFichaOriginadora);
     }
 
     @Override
     public void unsetUuidFichaOriginadora() {
-        cadastroDomiciliar.unsetUuidFichaOriginadora();
+        instancia.unsetUuidFichaOriginadora();
     }
 
     /**
@@ -606,7 +616,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public boolean isSetUuidFichaOriginadora() {
-        return cadastroDomiciliar.isSetUuidFichaOriginadora();
+        return instancia.isSetUuidFichaOriginadora();
     }
 
     /**
@@ -615,7 +625,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void setUuidFichaOriginadoraIsSet(boolean value) {
-        cadastroDomiciliar.setUuidFichaOriginadoraIsSet(value);
+        instancia.setUuidFichaOriginadoraIsSet(value);
     }
 
     /**
@@ -624,12 +634,12 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
      */
     @Override
     public void validate() throws TException {
-        cadastroDomiciliar.validate();
+        instancia.validate();
     }
 
     @Override
     public CadastroDomiciliarThrift getInstance(){
-        return this.cadastroDomiciliar;
+        return this.instancia;
     }
     
     /**
@@ -669,11 +679,11 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
          * Ainda é necessário fazer valodação de List<Long> pode ser Condicional
          * Minimo 0 e Máximo  5
          */ 
-        if(cadastroDomiciliar.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica()==true)
+        if(instancia.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica()==true)
             return false;
         else 
             return true &&
-                    cadastroDomiciliar.isSetAnimaisNoDomicilio();
+                    instancia.isSetAnimaisNoDomicilio();
     }
     
    /**
@@ -684,11 +694,11 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
     */ 
     @Override
    public boolean validaCondicaoMoradia(){
-        if(cadastroDomiciliar.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica()==true)
+        if(instancia.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica()==true)
             return false;
         else 
             return true &&
-                    cadastroDomiciliar.isSetCondicaoMoradia();
+                    instancia.isSetCondicaoMoradia();
     }
    
    /**
@@ -698,7 +708,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
     */
     @Override
    public boolean validaDadosGerais(){
-       return cadastroDomiciliar.isSetDadosGerais();
+       return instancia.isSetDadosGerais();
    }
    
    /**
@@ -709,9 +719,9 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
     */
     @Override
    public boolean validaEnderecoLocalPermanencia(){
-       if(cadastroDomiciliar.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica()==false)
+       if(instancia.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica()==false)
             return true &&
-                    cadastroDomiciliar.isSetEnderecoLocalPermanencia();
+                    instancia.isSetEnderecoLocalPermanencia();
         else 
             return false;
    }
@@ -728,11 +738,11 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
       * Ainda é necessário fazer valodação de List<Long> pode ser Condicional
       * Minimo 0 e Máximo  4
       */  
-      if(cadastroDomiciliar.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica()==true)
+      if(instancia.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica()==true)
             return false;
         else 
             return true &&
-                    cadastroDomiciliar.isSetFamilias(); 
+                    instancia.isSetFamilias(); 
    }
    
    /**
@@ -743,7 +753,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
     */
     @Override
    public boolean validaFichaAtualizada(){
-       return cadastroDomiciliar.isSetFichaAtualizada() == true ;
+       return instancia.isSetFichaAtualizada() == true ;
    }
    
    /**
@@ -755,10 +765,10 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
     */
     @Override
    public boolean validaQuantosAnimaisNoDomicilio(){
-       String quantosAnimaisNoDomicilio = cadastroDomiciliar.getQuantosAnimaisNoDomicilio();
+       String quantosAnimaisNoDomicilio = instancia.getQuantosAnimaisNoDomicilio();
        
-       if(cadastroDomiciliar.isSetStAnimaisNoDomicilio()==false &&
-               cadastroDomiciliar.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica()==true)
+       if(instancia.isSetStAnimaisNoDomicilio()==false &&
+               instancia.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica()==true)
            return false;
        else 
            return quantosAnimaisNoDomicilio.length() >=0 && 
@@ -773,11 +783,11 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
     */
     @Override
    public boolean validaStAnimaisNoDomicilio(){
-       if(cadastroDomiciliar.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica()==true)
+       if(instancia.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica()==true)
             return false;
         else 
             return true &&
-                    cadastroDomiciliar.isSetStAnimaisNoDomicilio(); 
+                    instancia.isSetStAnimaisNoDomicilio(); 
    }
    
    /**
@@ -787,7 +797,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
     */
     @Override
    public boolean validaStatusTermoRecusaCadastroDomiciliarAtencaoBasica(){
-        return cadastroDomiciliar.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica() == true ;
+        return instancia.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica() == true ;
    }
    
    /**
@@ -798,7 +808,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
     */
     @Override
    public boolean validaTpCdsOrigem(){
-       return cadastroDomiciliar.isSetTpCdsOrigem();
+       return instancia.isSetTpCdsOrigem();
    }
    
    /**
@@ -810,7 +820,7 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
     */
     @Override
    public boolean validaUuid(){
-       String uuid = cadastroDomiciliar.getUuid();
+       String uuid = instancia.getUuid();
        return uuid != null &&
                uuid.length() >=3 &&
                uuid.length() <=44;
@@ -824,10 +834,40 @@ public class CadastroDomiciliar implements ICadastroDomiciliar {
     */
     @Override
    public boolean validaUuidFichaOriginadora(){
-       String uuidFichaOriginadora = cadastroDomiciliar.getUuidFichaOriginadora();
+       String uuidFichaOriginadora = instancia.getUuidFichaOriginadora();
        return uuidFichaOriginadora != null &&
                uuidFichaOriginadora.length() >=3 &&
                uuidFichaOriginadora.length() <=44;    
    } 
+   
+   public void setDadoTransporte(DadoTransporte originadora){
+        this.dadoTransporteThrift = originadora;
+    }
+    public DadoTransporte getDadoTransporte(){
+        return this.dadoTransporteThrift;
+    }
+
+    public void zipGenerate(){
+        if(!this.validates() && this.dadoTransporteThrift != null){
+            return;
+        }
+
+        byte[] fichaSerializada = SerializadorThrift.serializar(this.instancia);
+        dadoTransporteThrift.setTipoDadoSerializado(TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO);
+        dadoTransporteThrift.setDadoSerializado(fichaSerializada);
+
+        try {
+            File zipFile = new File(System.getProperty("user.home") + "/fichaProcedimento.zip");
+            ZipOutputStream outputStream = new ZipOutputStream(new FileOutputStream(zipFile));
+            String entryName = dadoTransporteThrift.getUuidDadoSerializado() + EXTENSAO_EXPORT;
+            outputStream.putNextEntry(new ZipEntry(entryName));
+            byte[] dadoTransporteSerializado = SerializadorThrift.serializar(dadoTransporteThrift.getInstance());
+            outputStream.write(dadoTransporteSerializado);
+
+            outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
 
 }
