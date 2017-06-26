@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.apache.thrift.TException;
 
 public class FichaVisitaDomiciliarChild {
 
@@ -14,206 +13,368 @@ public class FichaVisitaDomiciliarChild {
     protected FichaVisitaDomiciliarChild(FichaVisitaDomiciliarChildThrift thrift) {
         this.instance = thrift;
     }
+    /**
+     * Devolve um field turno
+     * @return turno
+     */
 
     public long getTurno() {
         return instance.getTurno();
     }
-
+    /**
+     * Altera o valor de turno
+     * @param turno 
+     */
     public void setTurno(long turno) {
         instance.setTurno(turno);
     }
+    /**
+     * Apaga o valor do field turno(null)
+     */
 
     public void unsetTurno() {
         instance.unsetTurno();
     }
+    /**
+     * Verifica se turno esta setado
+     * @return true caso esteja setado
+     * false caso nao esteja
+     */
 
     public boolean isSetTurno() {
         return instance.isSetTurno();
     }
+    /**
+     * Seta o valor booleano de isSetTurno
+     * @param value boolean
+     */
 
     public void setTurnoIsSet(boolean value) {
         instance.setTurnoIsSet(value);
     }
+    /**
+     * Retorna o numero de prontuario
+     * @return numProntuario String
+     */
 
     public String getNumProntuario() {
         return instance.getNumProntuario();
     }
+    /**
+     * Muda o valor do numero de prontuario
+     * @param numProntuario String
+     */
 
     public void setNumProntuario(String numProntuario) {
         instance.setNumProntuario(numProntuario);
     }
-
+    /**
+     * Apaga o valor do field numProntuario
+     */
     public void unsetNumProntuario() {
         instance.unsetNumProntuario();
     }
+    /**
+     * Verifica se o field numProntuario está setado
+     * @return true caso o valor esteja setado
+     * false caso não esteja setado
+     */
 
     public boolean isSetNumProntuario() {
         return instance.isSetNumProntuario();
     }
+    /**
+     * Altera o valor do isSet do field numProntuario
+     * @param value boolean 
+     */
 
     public void setNumProntuarioIsSet(boolean value) {
         instance.setNumProntuarioIsSet(value);
     }
-
+    /**
+     * Retorna o numero de cartão do SuS
+     * @return numCartaoSus String
+     */
+    
     public String getNumCartaoSus() {
         return instance.getNumCartaoSus();
     }
-
+    /**
+     * Muda o valor do numero do cartao Sus
+     * @param numCartaoSus String
+     */
     public void setNumCartaoSus(String numCartaoSus) {
         instance.setNumCartaoSus(numCartaoSus);
     }
+    /**
+     * Apaga o valor do field numCartaoSus
+     */
 
     public void unsetNumCartaoSus() {
         instance.unsetNumCartaoSus();
     }
-
+    /**
+     * Verifica se o field numCartaoSus está setado
+     * @return true caso o valor esteja setado false caso não esteja setado
+     */
     public boolean isSetNumCartaoSus() {
         return instance.isSetNumCartaoSus();
     }
+    /**
+     * Altera o valor do isSet do field numCartaoSus
+     * @param value boolean 
+     */
 
     public void setNumCartaoSusIsSet(boolean value) {
         instance.setNumCartaoSusIsSet(value);
     }
+    /**
+     * Retorna a data de Nascimento
+     * @return dtNascimento Long
+     */
 
     public long getDtNascimento() {
         return instance.getDtNascimento();
     }
+     /**
+     * Muda o valor do numero de dtNascimento
+     * @param dtNascimento String
+     */
 
     public void setDtNascimento(long dtNascimento) {
         instance.setDtNascimento(dtNascimento);
     }
-
+    /**
+     * Apaga o valor do field dtNascimento
+     */
     public void unsetDtNascimento() {
         instance.unsetDtNascimento();
     }
+    /**
+     * Verifica se o field dtNascimento está setado
+     * @return true caso o valor esteja setado
+     * false caso não esteja setado
+     */
 
     public boolean isSetDtNascimento() {
         return instance.isSetDtNascimento();
     }
+    /**
+     * Altera o valor do isSet do field dtNascimento
+     * @param value boolean 
+     */
 
     public void setDtNascimentoIsSet(boolean value) {
         instance.setDtNascimentoIsSet(value);
     }
+    /**
+     * Retorna o valor de sexo
+     * @return sexo long
+     */
 
     public long getSexo() {
         return instance.getSexo();
     }
+    /**
+     * Muda o valor do field sexo
+     * @param sexo String
+     */
 
     public void setSexo(long sexo) {
         instance.setSexo(sexo);
     }
-
+    /**
+     * Apaga o valor do field sexo
+     */
     public void unsetSexo() {
         instance.unsetSexo();
     }
+    /**
+     * Verifica se o field sexo está setado
+     * @return true caso o valor esteja setado
+     * false caso não esteja setado
+     */
 
     public boolean isSetSexo() {
         return instance.isSetSexo();
     }
+    /**
+     * Altera o valor do isSet do field sexo
+     * @param value boolean 
+     */
 
     public void setSexoIsSet(boolean value) {
         instance.setSexoIsSet(value);
     }
+    /**
+     * Retorna se a visita foi compartilhada com outro profissional
+     * @return true caso sim, false caso nao.
+     */
 
     public boolean isStatusVisitaCompartilhadaOutroProfissional() {
         return instance.isStatusVisitaCompartilhadaOutroProfissional();
     }
+    /**
+     * Altera o valor se a visita foi compartilhada ou nao
+     * @param statusVisitaCompartilhadaOutroProfissional boolean
+     */
 
     public void setStatusVisitaCompartilhadaOutroProfissional(boolean statusVisitaCompartilhadaOutroProfissional) {
         instance.setStatusVisitaCompartilhadaOutroProfissional(statusVisitaCompartilhadaOutroProfissional);
     }
+    /**
+     * Apaga o valor do field statusVisitaCompartilhadaOutroProfissional
+     */
 
     public void unsetStatusVisitaCompartilhadaOutroProfissional() {
         instance.unsetStatusVisitaCompartilhadaOutroProfissional();
     }
+    /**
+     * Verifica se o field statusVisitaCompartilhadaOutroProfissional está setado
+     * @return true caso o valor esteja setado
+     * false caso não esteja setado
+     */
 
     public boolean isSetStatusVisitaCompartilhadaOutroProfissional() {
         return instance.isSetStatusVisitaCompartilhadaOutroProfissional();
     }
+    /**
+     * Altera o valor do isSet do field statusVisitaCompartilhadaOutroProfissional
+     * @param value boolean 
+     */
 
     public void setStatusVisitaCompartilhadaOutroProfissionalIsSet(boolean value) {
         instance.setStatusVisitaCompartilhadaOutroProfissionalIsSet(value);
     }
+    /**
+     * Retorna o  tamanho de motivos de visita
+     * @return motivosVisitaSize int
+     */
 
     public int getMotivosVisitaSize() {
         return instance.getMotivosVisitaSize();
     }
+    /**
+     * Retorna o iterator de MotivosVisita
+     * @return motivosVisitaIterator
+     */
 
     public Iterator<Long> getMotivosVisitaIterator() {
         return instance.getMotivosVisitaIterator();
     }
+    /**
+     * Adiciona um novo elemento a lista motivosVisista
+     * @param elem 
+     */
 
     public void addToMotivosVisita(long elem) {
         instance.addToMotivosVisita(elem);
     }
-
+    /**
+     * Retorna a lista motivosVisista
+     * @return MotivosVisita List
+     */
+    
     public List<Long> getMotivosVisita() {
         return instance.getMotivosVisita();
     }
+    /**
+     * Muda o valor do MotivosVisita
+     * @param motivosVisita List
+     */
 
     public void setMotivosVisita(List<Long> motivosVisita) {
         instance.setMotivosVisita(motivosVisita);
     }
+    /**
+     * Apaga o valor do field MotivosVisita
+     */
 
     public void unsetMotivosVisita() {
         instance.unsetMotivosVisita();
     }
+    /**
+     * Verifica se o field MotivosVisita está setado
+     * @return true caso o valor esteja setado
+     * false caso não esteja setado
+     */
 
     public boolean isSetMotivosVisita() {
         return instance.isSetMotivosVisita();
     }
+    /**
+     * Altera o valor do isSet do field MotivosVisita
+     * @param value boolean 
+     */
 
     public void setMotivosVisitaIsSet(boolean value) {
         instance.setMotivosVisitaIsSet(value);
     }
+    /**
+     * Retorna o valor de desfecho
+     * @return desfecho long
+     */
 
     public long getDesfecho() {
         return instance.getDesfecho();
     }
+    /**
+     * Muda o valor de desfecho
+     * @param desfecho String
+     */
 
     public void setDesfecho(long desfecho) {
         instance.setDesfecho(desfecho);
     }
+    /**
+     * Apaga o valor do field desfecho
+     */
 
     public void unsetDesfecho() {
         instance.unsetDesfecho();
     }
+    /**
+     * Verifica se o field desfecho está setado
+     * @return true caso o valor esteja setado
+     * false caso não esteja setado
+     */
 
     public boolean isSetDesfecho() {
         return instance.isSetDesfecho();
     }
+    /**
+     * Altera o valor do isSet do field desfecho
+     * @param value boolean 
+     */
 
     public void setDesfechoIsSet(boolean value) {
         instance.setDesfechoIsSet(value);
     }
+    /**
+     * Verifica se a instancia atual é igual ao objeto passado como parametro
+     * @param that
+     * @return true caso seja iguais
+     * false caso nao
+     */
 
     @Override
     public boolean equals(Object that) {
         return instance.equals(that);
     }
+    /**
+     * Verifica se a instancia atual é igual ao FichaVisitaDomiciliarChild passado como parametro
+     * @param that
+     * @return true caso seja iguais
+     * false caso nao
+     */
 
     public boolean equals(FichaVisitaDomiciliarChild that) {
         return instance.equals(that.getInstance());
     }
-
-    @Override
-    public int hashCode() {
-        return instance.hashCode();
-    }
-
-    public int compareTo(FichaVisitaDomiciliarChild other) {
-        return instance.compareTo(other.getInstance());
-    }
-
-    @Override
-    public String toString() {
-        return instance.toString();
-    }
-
-    public void validate() throws TException {
-        instance.validate();
-    }
-
+    /**
+     * Retorna uma instance de FichaVisitaDomiciliarchild
+     * @return instance FichaVisitaDomiciliarChild
+     */
     protected FichaVisitaDomiciliarChildThrift getInstance() {
         return instance;
 

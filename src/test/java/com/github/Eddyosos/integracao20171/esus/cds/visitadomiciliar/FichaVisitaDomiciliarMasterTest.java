@@ -7,14 +7,8 @@ package com.github.Eddyosos.integracao20171.esus.cds.visitadomiciliar;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.visitadomiciliar.FichaVisitaDomiciliarChildThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.visitadomiciliar.FichaVisitaDomiciliarMasterThrift;
-import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
