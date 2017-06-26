@@ -4,15 +4,22 @@ import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.FichaCo
 import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.PerguntaQuestionarioCriancasComMaisDoisAnosThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.PerguntaQuestionarioCriancasDeSeisVinteTresMesesThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.PerguntaQuestionarioCriancasMenoresSeisMesesThrift;
+import com.github.Eddyosos.integracao20171.compactor.SerializadorThrift;
 import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
+import com.github.Eddyosos.integracao20171.esus.transport.DadoTransporte;
 import com.github.eddyosos.e_sus_ab_factory.cds.common.IUnicaLotacaoHeader;
 import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.consumoalimentar.IFichaConsumoAlimentar;
 import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.consumoalimentar.IPerguntaQuestionarioCriancasComMaisDoisAnos;
 import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.consumoalimentar.IPerguntaQuestionarioCriancasDeSeisVinteTresMeses;
 import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.consumoalimentar.IPerguntaQuestionarioCriancasMenoresSeisMeses;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 public class FichaConsumoAlimentar implements IFichaConsumoAlimentar {
     
@@ -20,6 +27,9 @@ public class FichaConsumoAlimentar implements IFichaConsumoAlimentar {
      * Instancia para encapsulamento do Thrift
      */
     private FichaConsumoAlimentarThrift instance;
+    private long TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO = 12;
+    private final static String EXTENSAO_EXPORT = ".esus13";
+    private DadoTransporte dadoTransporteThrift;
     
     public FichaConsumoAlimentar() {
         instance = new FichaConsumoAlimentarThrift();
@@ -691,6 +701,43 @@ public class FichaConsumoAlimentar implements IFichaConsumoAlimentar {
         int tpCdsOrigem = instance.getTpCdsOrigem();
         return instance.isSetTpCdsOrigem() &&
                 (tpCdsOrigem ==1);
-    }   
+    }
+    
+    /**
+     * necessário para gerar o zip
+     * @param dadoTransporteThrift 
+     */
+    public void setDadoTransporte(DadoTransporte dadoTransporteThrift){
+        this.dadoTransporteThrift = dadoTransporteThrift;
+    }
+    public DadoTransporte getDadoTransporte(){
+        return this.dadoTransporteThrift;
+    }
+
+    /**
+     * Gera o arquivo zip
+     */
+    public void zipGenerate(){
+        if(!this.validades() && this.dadoTransporteThrift != null){
+            return;
+        }
+
+        byte[] fichaSerializada = SerializadorThrift.serializar(this.instance);
+        dadoTransporteThrift.setTipoDadoSerializado(TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO);
+        dadoTransporteThrift.setDadoSerializado(fichaSerializada);
+
+        try {
+            File zipFile = new File(System.getProperty("user.home") + "/fichaConsumoAlimentar.zip");
+            ZipOutputStream outputStream = new ZipOutputStream(new FileOutputStream(zipFile));
+            String entryName = dadoTransporteThrift.getUuidDadoSerializado() + EXTENSAO_EXPORT;
+            outputStream.putNextEntry(new ZipEntry(entryName));
+            byte[] dadoTransporteSerializado = SerializadorThrift.serializar(dadoTransporteThrift.getInstance());
+            outputStream.write(dadoTransporteSerializado);
+
+            outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
 
 }

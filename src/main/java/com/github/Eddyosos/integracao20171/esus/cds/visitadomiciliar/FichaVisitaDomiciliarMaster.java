@@ -2,24 +2,34 @@ package com.github.Eddyosos.integracao20171.esus.cds.visitadomiciliar;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.visitadomiciliar.FichaVisitaDomiciliarChildThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.visitadomiciliar.FichaVisitaDomiciliarMasterThrift;
+import com.github.Eddyosos.integracao20171.compactor.SerializadorThrift;
 import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
+import com.github.Eddyosos.integracao20171.esus.transport.DadoTransporte;
 import com.github.eddyosos.e_sus_ab_factory.cds.common.IUnicaLotacaoHeader;
 import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.visitadomiciliar.IFichaVisitaDomiciliarChild;
 import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.visitadomiciliar.IFichaVisitaDomiciliarMaster;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster {
 
-    private FichaVisitaDomiciliarMasterThrift instance;
+    private FichaVisitaDomiciliarMasterThrift instancia;
+    private long TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO = 8;
+    private final static String EXTENSAO_EXPORT = ".esus13";
+    private DadoTransporte dadoTransporteThrift;  
     
     public FichaVisitaDomiciliarMaster(){
-        instance = new FichaVisitaDomiciliarMasterThrift();
+        instancia = new FichaVisitaDomiciliarMasterThrift();
     }
 
     public FichaVisitaDomiciliarMaster(FichaVisitaDomiciliarMasterThrift thrift) {
-        this.instance = thrift;
+        this.instancia = thrift;
     }
     
     /**
@@ -28,7 +38,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public String getUuidFicha() {
-        return instance.getUuidFicha();
+        return instancia.getUuidFicha();
     }
     
     /**
@@ -37,7 +47,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public void setUuidFicha(String uuidFicha) {
-        instance.setUuidFicha(uuidFicha);
+        instancia.setUuidFicha(uuidFicha);
     }
 
     /**
@@ -45,7 +55,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public void unsetUuidFicha() {
-        instance.unsetUuidFicha();
+        instancia.unsetUuidFicha();
     }
 
     /**
@@ -55,7 +65,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public boolean isSetUuidFicha() {
-        return instance.isSetUuidFicha();
+        return instancia.isSetUuidFicha();
     }
 
     /**
@@ -64,7 +74,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public void setUuidFichaIsSet(boolean value) {
-        instance.setUuidFichaIsSet(value);
+        instancia.setUuidFichaIsSet(value);
     }
 
     /**
@@ -73,7 +83,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public int getTpCdsOrigem() {
-        return instance.getTpCdsOrigem();
+        return instancia.getTpCdsOrigem();
     }
    
     /**
@@ -82,7 +92,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public void setTpCdsOrigem(int tpCdsOrigem) {
-        instance.setTpCdsOrigem(tpCdsOrigem);
+        instancia.setTpCdsOrigem(tpCdsOrigem);
     }
 
     /**
@@ -90,7 +100,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public void unsetTpCdsOrigem() {
-        instance.unsetTpCdsOrigem();
+        instancia.unsetTpCdsOrigem();
     }
     
     /**
@@ -100,7 +110,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public boolean isSetTpCdsOrigem() {
-        return instance.isSetTpCdsOrigem();
+        return instancia.isSetTpCdsOrigem();
     }
 
     /**
@@ -109,7 +119,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public void setTpCdsOrigemIsSet(boolean value) {
-        instance.setTpCdsOrigemIsSet(value);
+        instancia.setTpCdsOrigemIsSet(value);
     }
 
     /**
@@ -118,7 +128,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public IUnicaLotacaoHeader getHeaderTransport() {
-        return new UnicaLotacaoHeader(instance.getHeaderTransport());
+        return new UnicaLotacaoHeader(instancia.getHeaderTransport());
     }
 
     /**
@@ -127,7 +137,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public void setHeaderTransport(IUnicaLotacaoHeader headerTransport) {
-        instance.setHeaderTransport(headerTransport.getInstance());
+        instancia.setHeaderTransport(headerTransport.getInstance());
     }
 
     /**
@@ -135,7 +145,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public void unsetHeaderTransport() {
-        instance.unsetHeaderTransport();
+        instancia.unsetHeaderTransport();
     }
 
     /**
@@ -145,7 +155,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public boolean isSetHeaderTransport() {
-        return instance.isSetHeaderTransport();
+        return instancia.isSetHeaderTransport();
     }
 
     /**
@@ -154,7 +164,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public void setHeaderTransportIsSet(boolean value) {
-        instance.setHeaderTransportIsSet(value);
+        instancia.setHeaderTransportIsSet(value);
     }
 
     /**
@@ -163,7 +173,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public int getVisitasDomiciliaresSize() {
-        return instance.getVisitasDomiciliaresSize();
+        return instancia.getVisitasDomiciliaresSize();
     }
 
     /**
@@ -174,7 +184,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
     public Iterator<IFichaVisitaDomiciliarChild> getVisitasDomiciliaresIterator() {
         List<IFichaVisitaDomiciliarChild> ficha = new LinkedList();
 
-        instance.getVisitasDomiciliaresIterator().forEachRemaining((t) -> {
+        instancia.getVisitasDomiciliaresIterator().forEachRemaining((t) -> {
             ficha.add(new FichaVisitaDomiciliarChild(t));
 
         });
@@ -188,7 +198,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public void addToVisitasDomiciliares(IFichaVisitaDomiciliarChild elem) {
-        instance.addToVisitasDomiciliares(elem.getInstance());
+        instancia.addToVisitasDomiciliares(elem.getInstance());
     }
 
     @Override
@@ -196,7 +206,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
         List<IFichaVisitaDomiciliarChild> ficha = new LinkedList();
 
 
-        instance.getVisitasDomiciliares().forEach((t) -> {
+        instancia.getVisitasDomiciliares().forEach((t) -> {
             ficha.add(new FichaVisitaDomiciliarChild(t));
         });
         
@@ -215,7 +225,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
             ficha.add(t.getInstance());
         });
         
-        instance.setVisitasDomiciliares(ficha);
+        instancia.setVisitasDomiciliares(ficha);
     }
 
     /**
@@ -223,7 +233,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public void unsetVisitasDomiciliares() {
-        instance.unsetVisitasDomiciliares();
+        instancia.unsetVisitasDomiciliares();
     }
 
     /**
@@ -233,7 +243,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public boolean isSetVisitasDomiciliares() {
-        return instance.isSetVisitasDomiciliares();
+        return instancia.isSetVisitasDomiciliares();
     }
 
     /**
@@ -242,12 +252,12 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
      */
     @Override
     public void setVisitasDomiciliaresIsSet(boolean value) {
-        instance.setVisitasDomiciliaresIsSet(value);
+        instancia.setVisitasDomiciliaresIsSet(value);
     }
 
     @Override
     public FichaVisitaDomiciliarMasterThrift getInstance(){
-        return instance;
+        return instancia;
     }
     
     /**
@@ -296,6 +306,43 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
     @Override
     public boolean validates(){
         return validaVisitasDomiciliares() && validaHeaderTransport() && validaUuidFicha();
+    }
+    
+    /**
+     * necessário para gerar o zip
+     * @param dadoTransporteThrift 
+     */
+    public void setDadoTransporte(DadoTransporte dadoTransporteThrift){
+        this.dadoTransporteThrift = dadoTransporteThrift;
+    }
+    public DadoTransporte getDadoTransporte(){
+        return this.dadoTransporteThrift;
+    }
+
+    /**
+     * Gera o arquivo zip
+     */
+    public void zipGenerate(){
+        if(!this.validates() && this.dadoTransporteThrift != null){
+            return;
+        }
+
+        byte[] fichaSerializada = SerializadorThrift.serializar(this.instancia);
+        dadoTransporteThrift.setTipoDadoSerializado(TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO);
+        dadoTransporteThrift.setDadoSerializado(fichaSerializada);
+
+        try {
+            File zipFile = new File(System.getProperty("user.home") + "/fichaVisitaDomiciliar.zip");
+            ZipOutputStream outputStream = new ZipOutputStream(new FileOutputStream(zipFile));
+            String entryName = dadoTransporteThrift.getUuidDadoSerializado() + EXTENSAO_EXPORT;
+            outputStream.putNextEntry(new ZipEntry(entryName));
+            byte[] dadoTransporteSerializado = SerializadorThrift.serializar(dadoTransporteThrift.getInstance());
+            outputStream.write(dadoTransporteSerializado);
+
+            outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
     
     

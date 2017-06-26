@@ -2,25 +2,35 @@ package com.github.Eddyosos.integracao20171.esus.cds.atividadeindividual;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadeindividual.FichaAtendimentoIndividualChildThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadeindividual.FichaAtendimentoIndividualMasterThrift;
+import com.github.Eddyosos.integracao20171.compactor.SerializadorThrift;
 import com.github.Eddyosos.integracao20171.esus.cds.common.VariasLotacoesHeader;
+import com.github.Eddyosos.integracao20171.esus.transport.DadoTransporte;
 import com.github.eddyosos.e_sus_ab_factory.cds.atividadeindividual.IFichaAtendimentoIndividualChild;
 import com.github.eddyosos.e_sus_ab_factory.cds.atividadeindividual.IFichaAtendimentoIndividualMaster;
 import com.github.eddyosos.e_sus_ab_factory.cds.common.IVariasLotacoesHeader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 public class FichaAtendimentoIndividualMaster implements IFichaAtendimentoIndividualMaster {
-    private final FichaAtendimentoIndividualMasterThrift instance;
+    private final FichaAtendimentoIndividualMasterThrift instancia;
+    private long TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO = 4;
+    private final static String EXTENSAO_EXPORT = ".esus13";
+    private DadoTransporte dadoTransporteThrift;
 
     public FichaAtendimentoIndividualMaster() {
-        instance = new FichaAtendimentoIndividualMasterThrift();
+        instancia = new FichaAtendimentoIndividualMasterThrift();
     }
 
     @Override
     public void clear() {
-        instance.clear();
+        instancia.clear();
     }
 
     /**
@@ -45,7 +55,7 @@ public class FichaAtendimentoIndividualMaster implements IFichaAtendimentoIndivi
      */
     @Override
     public boolean validateHeaderTransport(){
-        return instance.isSetHeaderTransport();
+        return instancia.isSetHeaderTransport();
     }
     
     /**
@@ -54,7 +64,7 @@ public class FichaAtendimentoIndividualMaster implements IFichaAtendimentoIndivi
      */
     @Override
     public IVariasLotacoesHeader getHeaderTransport() {
-        return new VariasLotacoesHeader(instance.getHeaderTransport());
+        return new VariasLotacoesHeader(instancia.getHeaderTransport());
     }
 
     /**
@@ -63,7 +73,7 @@ public class FichaAtendimentoIndividualMaster implements IFichaAtendimentoIndivi
      */
     @Override
     public void setHeaderTransport(IVariasLotacoesHeader headerTransport) {
-        instance.setHeaderTransport(headerTransport.getInstance());
+        instancia.setHeaderTransport(headerTransport.getInstance());
     }
 
     /**
@@ -76,8 +86,8 @@ public class FichaAtendimentoIndividualMaster implements IFichaAtendimentoIndivi
      */
     @Override
     public boolean validateAtendimentosIndividuais(){
-        int var = instance.getAtendimentosIndividuaisSize();
-        return instance.isSetAtendimentosIndividuais() &&
+        int var = instancia.getAtendimentosIndividuaisSize();
+        return instancia.isSetAtendimentosIndividuais() &&
                 var >= 1 && var <= 13;
     }
     
@@ -88,7 +98,7 @@ public class FichaAtendimentoIndividualMaster implements IFichaAtendimentoIndivi
     @Override
     public List<IFichaAtendimentoIndividualChild> getAtendimentosIndividuais() {
         List<IFichaAtendimentoIndividualChild> list = new ArrayList<>();
-        instance.getAtendimentosIndividuaisIterator().forEachRemaining((t) -> {
+        instancia.getAtendimentosIndividuaisIterator().forEachRemaining((t) -> {
             list.add(new FichaAtendimentoIndividualChild(t));
         });
         
@@ -105,7 +115,7 @@ public class FichaAtendimentoIndividualMaster implements IFichaAtendimentoIndivi
         atendimentosIndividuais.iterator().forEachRemaining((t) -> {
             list.add(t.getInstance());
         });
-        instance.setAtendimentosIndividuais(list);
+        instancia.setAtendimentosIndividuais(list);
     }
 
     /**
@@ -118,8 +128,8 @@ public class FichaAtendimentoIndividualMaster implements IFichaAtendimentoIndivi
      */
     @Override
     public boolean validateUuidFicha(){
-        final String var = instance.getUuidFicha();
-        if(!instance.isSetUuidFicha() || 
+        final String var = instancia.getUuidFicha();
+        if(!instancia.isSetUuidFicha() || 
                 var.length() < 36 || 
                 var.length() > 44) 
             return false;
@@ -137,7 +147,7 @@ public class FichaAtendimentoIndividualMaster implements IFichaAtendimentoIndivi
      */
     @Override
     public String getUuidFicha() {
-        return instance.getUuidFicha();
+        return instancia.getUuidFicha();
     }
 
     /**
@@ -146,7 +156,7 @@ public class FichaAtendimentoIndividualMaster implements IFichaAtendimentoIndivi
      */
     @Override
     public void setUuidFicha(String uuidFicha) {
-        instance.setUuidFicha(uuidFicha);
+        instancia.setUuidFicha(uuidFicha);
     }
 
     /**
@@ -157,7 +167,7 @@ public class FichaAtendimentoIndividualMaster implements IFichaAtendimentoIndivi
      */
     @Override
     public boolean validateTpCdsOrigem(){
-        return instance.isSetTpCdsOrigem();
+        return instancia.isSetTpCdsOrigem();
     }
     
     /**
@@ -166,7 +176,7 @@ public class FichaAtendimentoIndividualMaster implements IFichaAtendimentoIndivi
      */
     @Override
     public int getTpCdsOrigem() {
-        return instance.getTpCdsOrigem();
+        return instancia.getTpCdsOrigem();
     }
 
     /**
@@ -175,7 +185,44 @@ public class FichaAtendimentoIndividualMaster implements IFichaAtendimentoIndivi
      */
     @Override
     public void setTpCdsOrigem(int tpCdsOrigem) {
-        instance.setTpCdsOrigem(tpCdsOrigem);
+        instancia.setTpCdsOrigem(tpCdsOrigem);
+    }
+    
+    /**
+     * necessário para gerar o zip
+     * @param dadoTransporteThrift 
+     */
+    public void setDadoTransporte(DadoTransporte dadoTransporteThrift){
+        this.dadoTransporteThrift = dadoTransporteThrift;
+    }
+    public DadoTransporte getDadoTransporte(){
+        return this.dadoTransporteThrift;
+    }
+
+    /**
+     * Gera o arquivo zip
+     */
+    public void zipGenerate(){
+        if(!this.validates() && this.dadoTransporteThrift != null){
+            return;
+        }
+
+        byte[] fichaSerializada = SerializadorThrift.serializar(this.instancia);
+        dadoTransporteThrift.setTipoDadoSerializado(TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO);
+        dadoTransporteThrift.setDadoSerializado(fichaSerializada);
+
+        try {
+            File zipFile = new File(System.getProperty("user.home") + "/fichaAtendimentoIndividual.zip");
+            ZipOutputStream outputStream = new ZipOutputStream(new FileOutputStream(zipFile));
+            String entryName = dadoTransporteThrift.getUuidDadoSerializado() + EXTENSAO_EXPORT;
+            outputStream.putNextEntry(new ZipEntry(entryName));
+            byte[] dadoTransporteSerializado = SerializadorThrift.serializar(dadoTransporteThrift.getInstance());
+            outputStream.write(dadoTransporteSerializado);
+
+            outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
 }
 

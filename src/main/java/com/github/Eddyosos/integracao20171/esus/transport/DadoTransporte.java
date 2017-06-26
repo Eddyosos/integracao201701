@@ -538,6 +538,14 @@ public class DadoTransporte implements IDadoTransporte {
     }
     
     /**
+     * Retorna a instância do thrift
+     * @return Instância do thrift
+     */
+    public DadoTransporteThrift getInstance(){
+        return this.instance;
+    }
+    
+    /**
      * Valida UuidFicha.
      * Para ser válido deve:
      * 1- Ter sido préviamente inserido

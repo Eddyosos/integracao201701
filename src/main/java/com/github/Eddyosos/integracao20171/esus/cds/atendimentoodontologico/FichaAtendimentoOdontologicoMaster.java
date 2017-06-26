@@ -2,17 +2,27 @@ package com.github.Eddyosos.integracao20171.esus.cds.atendimentoodontologico;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.atendimentoodontologico.FichaAtendimentoOdontologicoChildThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.atendimentoodontologico.FichaAtendimentoOdontologicoMasterThrift;
+import com.github.Eddyosos.integracao20171.compactor.SerializadorThrift;
 import com.github.Eddyosos.integracao20171.esus.cds.common.VariasLotacoesHeader;
+import com.github.Eddyosos.integracao20171.esus.transport.DadoTransporte;
 import com.github.eddyosos.e_sus_ab_factory.cds.atendimentoodontologico.IFichaAtendimentoOdontologicoChild;
 import com.github.eddyosos.e_sus_ab_factory.cds.atendimentoodontologico.IFichaAtendimentoOdontologicoMaster;
 import com.github.eddyosos.e_sus_ab_factory.cds.common.IVariasLotacoesHeader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 import org.apache.thrift.TException;
 
 public class FichaAtendimentoOdontologicoMaster implements IFichaAtendimentoOdontologicoMaster {
     private FichaAtendimentoOdontologicoMasterThrift instancia = new FichaAtendimentoOdontologicoMasterThrift();
+    private long TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO = 5;
+    private final static String EXTENSAO_EXPORT = ".esus13";
+    private DadoTransporte dadoTransporteThrift;
     
     public FichaAtendimentoOdontologicoMaster(FichaAtendimentoOdontologicoMasterThrift fichaAtendimentoOdontologicoMasterThrift){
         this.instancia = fichaAtendimentoOdontologicoMasterThrift;
@@ -360,6 +370,44 @@ public class FichaAtendimentoOdontologicoMaster implements IFichaAtendimentoOdon
     public boolean validatetTpCdsOrigem(){
         return instancia.isSetTpCdsOrigem();
     }
+    
+    /**
+     * Necessario para gerar o zip
+     * @param dadoTransporteThrift 
+     */
+    public void setDadoTransporte(DadoTransporte dadoTransporteThrift){
+        this.dadoTransporteThrift = dadoTransporteThrift;
+    }
+    public DadoTransporte getDadoTransporte(){
+        return this.dadoTransporteThrift;
+    }
+
+    /**
+     * Gera o arquivo zip
+     */
+    public void zipGenerate(){
+        if(!this.validate() && this.dadoTransporteThrift != null){
+            return;
+        }
+
+        byte[] fichaSerializada = SerializadorThrift.serializar(this.instancia);
+        dadoTransporteThrift.setTipoDadoSerializado(TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO);
+        dadoTransporteThrift.setDadoSerializado(fichaSerializada);
+
+        try {
+            File zipFile = new File(System.getProperty("user.home") + "/fichaAtendimentoOdontologico.zip");
+            ZipOutputStream outputStream = new ZipOutputStream(new FileOutputStream(zipFile));
+            String entryName = dadoTransporteThrift.getUuidDadoSerializado() + EXTENSAO_EXPORT;
+            outputStream.putNextEntry(new ZipEntry(entryName));
+            byte[] dadoTransporteSerializado = SerializadorThrift.serializar(dadoTransporteThrift.getInstance());
+            outputStream.write(dadoTransporteSerializado);
+
+            outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
+ 
     
 }
 
