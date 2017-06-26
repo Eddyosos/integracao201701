@@ -1,6 +1,5 @@
 package com.github.Eddyosos.integracao20171.esus.cds.procedimento;
 
-import br.gov.saude.esus.cds.transport.generated.thrift.common.UnicaLotacaoHeaderThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.procedimento.FichaProcedimentoChildThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.procedimento.FichaProcedimentoMasterThrift;
 import br.gov.saude.esus.transport.common.api.configuracaodestino.VersaoThrift;
@@ -18,294 +17,438 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public class FichaProcedimentoMaster  {
-    private FichaProcedimentoMasterThrift fichaProcedimento = new FichaProcedimentoMasterThrift();
-    DadoInstalacaoThrift originadora = new DadoInstalacaoThrift();
-    DadoInstalacaoThrift remetente = new DadoInstalacaoThrift();
+    private FichaProcedimentoMasterThrift instancia = new FichaProcedimentoMasterThrift();
+    private DadoInstalacaoThrift originadora = new DadoInstalacaoThrift();
+    private DadoInstalacaoThrift remetente = new DadoInstalacaoThrift();
     private long TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO = 7;
     private final String EXTENSAO_EXPORT = ".esus";
 
     public FichaProcedimentoMasterThrift getInstance(){
-        return this.fichaProcedimento;
-    }
-    
-    public void clear() {
-        fichaProcedimento.clear();
+        return this.instancia;
     }
 
+    /**
+     * Retorna o valor do atributo
+     * @return o valor do atributo
+     */
     public String getUuidFicha() {
-        return fichaProcedimento.getUuidFicha();
+        return instancia.getUuidFicha();
     }
 
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public void setUuidFicha(String uuidFicha) {
-        fichaProcedimento.setUuidFicha(uuidFicha);
+        instancia.setUuidFicha(uuidFicha);
     }
 
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public void unsetUuidFicha() {
-        fichaProcedimento.unsetUuidFicha();
+        instancia.unsetUuidFicha();
     }
 
+    /**
+     * Marca que o atributo foi setado
+     * @param se esta setado ou nao
+     */
     public boolean isSetUuidFicha() {
-        return fichaProcedimento.isSetUuidFicha();
+        return instancia.isSetUuidFicha();
     }
 
+    /**
+     * Retorna o valor do atributo
+     * @return o valor do atributo
+     */
     public void setUuidFichaIsSet(boolean value) {
-        fichaProcedimento.setUuidFichaIsSet(value);
+        instancia.setUuidFichaIsSet(value);
     }
 
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public int getTpCdsOrigem() {
-        return fichaProcedimento.getTpCdsOrigem();
+        return instancia.getTpCdsOrigem();
     }
 
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public void setTpCdsOrigem(int tpCdsOrigem) {
-        fichaProcedimento.setTpCdsOrigem(tpCdsOrigem);
+        instancia.setTpCdsOrigem(tpCdsOrigem);
     }
 
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public void unsetTpCdsOrigem() {
-        fichaProcedimento.unsetTpCdsOrigem();
+        instancia.unsetTpCdsOrigem();
     }
 
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public boolean isSetTpCdsOrigem() {
-        return fichaProcedimento.isSetTpCdsOrigem();
+        return instancia.isSetTpCdsOrigem();
     }
 
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public void setTpCdsOrigemIsSet(boolean value) {
-        fichaProcedimento.setTpCdsOrigemIsSet(value);
+        instancia.setTpCdsOrigemIsSet(value);
     }
 
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public UnicaLotacaoHeader getHeaderTransport() {
-        return new UnicaLotacaoHeader(fichaProcedimento.getHeaderTransport());
+        return new UnicaLotacaoHeader(instancia.getHeaderTransport());
     }
 
+    /**
+     * Marca que o atributo foi setado
+     * @param se esta setado ou nao
+     */
     public void setHeaderTransport(UnicaLotacaoHeader headerTransport) {
-        fichaProcedimento.setHeaderTransport(headerTransport.getInstance());
+        instancia.setHeaderTransport(headerTransport.getInstance());
     }
 
+    /**
+     * Retorna o valor do atributo
+     * @return o valor do atributo
+     */
     public void unsetHeaderTransport() {
-        fichaProcedimento.unsetHeaderTransport();
+        instancia.unsetHeaderTransport();
     }
 
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public boolean isSetHeaderTransport() {
-        return fichaProcedimento.isSetHeaderTransport();
+        return instancia.isSetHeaderTransport();
     }
 
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public void setHeaderTransportIsSet(boolean value) {
-        fichaProcedimento.setHeaderTransportIsSet(value);
+        instancia.setHeaderTransportIsSet(value);
     }
 
+    /**
+     * Marca que o atributo foi setado
+     * @param se esta setado ou nao
+     */
     public int getAtendProcedimentosSize() {
-        return fichaProcedimento.getAtendProcedimentosSize();
+        return instancia.getAtendProcedimentosSize();
     }
 
+    /**
+     * Retorna o valor do atributo
+     * @return o valor do atributo
+     */
     public Iterator<FichaProcedimentoChild> getAtendProcedimentosIterator() {
         List<FichaProcedimentoChild> list = new LinkedList<>();
-        fichaProcedimento.getAtendProcedimentosIterator().forEachRemaining((item) -> {
+        instancia.getAtendProcedimentosIterator().forEachRemaining((item) -> {
             list.add(new FichaProcedimentoChild(item));
         });
         
         return list.iterator();
     }
 
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public void addToAtendProcedimentos(FichaProcedimentoChild elem) {
-        fichaProcedimento.addToAtendProcedimentos(elem.getInstance());
+        instancia.addToAtendProcedimentos(elem.getInstance());
     }
 
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public List<FichaProcedimentoChild> getAtendProcedimentos() {
         List<FichaProcedimentoChild> list = new LinkedList<>();
-        for(FichaProcedimentoChildThrift element : fichaProcedimento.getAtendProcedimentos()){
+        for(FichaProcedimentoChildThrift element : instancia.getAtendProcedimentos()){
             list.add(new FichaProcedimentoChild(element));
         }
         
         return list;
     }
 
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public void setAtendProcedimentos(List<FichaProcedimentoChild> atendProcedimentos) {
         List<FichaProcedimentoChildThrift> list = new LinkedList<>();
         atendProcedimentos.forEach((elem) -> {
             list.add(elem.getInstance());
         });
         
-        fichaProcedimento.setAtendProcedimentos(list);
+        instancia.setAtendProcedimentos(list);
     }
 
-    public void unsetAtendProcedimentos() {
-        fichaProcedimento.unsetAtendProcedimentos();
-    }
-
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public boolean isSetAtendProcedimentos() {
-        return fichaProcedimento.isSetAtendProcedimentos();
+        return instancia.isSetAtendProcedimentos();
     }
 
+    /**
+     * Marca que o atributo foi setado
+     * @param se esta setado ou nao
+     */
     public void setAtendProcedimentosIsSet(boolean value) {
-        fichaProcedimento.setAtendProcedimentosIsSet(value);
+        instancia.setAtendProcedimentosIsSet(value);
     }
 
+    /**
+     * Retorna o valor do atributo
+     * @return o valor do atributo
+     */
     public long getNumTotalAfericaoPa() {
-        return fichaProcedimento.getNumTotalAfericaoPa();
+        return instancia.getNumTotalAfericaoPa();
     }
 
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public void setNumTotalAfericaoPa(long numTotalAfericaoPa) {
-        fichaProcedimento.setNumTotalAfericaoPa(numTotalAfericaoPa);
+        instancia.setNumTotalAfericaoPa(numTotalAfericaoPa);
     }
 
-    public void unsetNumTotalAfericaoPa() {
-        fichaProcedimento.unsetNumTotalAfericaoPa();
-    }
-
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public boolean isSetNumTotalAfericaoPa() {
-        return fichaProcedimento.isSetNumTotalAfericaoPa();
+        return instancia.isSetNumTotalAfericaoPa();
     }
 
+    /**
+     * Marca que o atributo foi setado
+     * @param se esta setado ou nao
+     */
     public void setNumTotalAfericaoPaIsSet(boolean value) {
-        fichaProcedimento.setNumTotalAfericaoPaIsSet(value);
+        instancia.setNumTotalAfericaoPaIsSet(value);
     }
 
+    /**
+     * Retorna o valor do atributo
+     * @return o valor do atributo
+     */
     public long getNumTotalGlicemiaCapilar() {
-        return fichaProcedimento.getNumTotalGlicemiaCapilar();
+        return instancia.getNumTotalGlicemiaCapilar();
     }
 
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public void setNumTotalGlicemiaCapilar(long numTotalGlicemiaCapilar) {
-        fichaProcedimento.setNumTotalGlicemiaCapilar(numTotalGlicemiaCapilar);
+        instancia.setNumTotalGlicemiaCapilar(numTotalGlicemiaCapilar);
     }
 
-    public void unsetNumTotalGlicemiaCapilar() {
-        fichaProcedimento.unsetNumTotalGlicemiaCapilar();
-    }
-
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public boolean isSetNumTotalGlicemiaCapilar() {
-        return fichaProcedimento.isSetNumTotalGlicemiaCapilar();
+        return instancia.isSetNumTotalGlicemiaCapilar();
     }
 
+    /**
+     * Marca que o atributo foi setado
+     * @param se esta setado ou nao
+     */
     public void setNumTotalGlicemiaCapilarIsSet(boolean value) {
-        fichaProcedimento.setNumTotalGlicemiaCapilarIsSet(value);
+        instancia.setNumTotalGlicemiaCapilarIsSet(value);
     }
 
+    /**
+     * Retorna o valor do atributo
+     * @return o valor do atributo
+     */
     public long getNumTotalAfericaoTemperatura() {
-        return fichaProcedimento.getNumTotalAfericaoTemperatura();
+        return instancia.getNumTotalAfericaoTemperatura();
     }
 
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public void setNumTotalAfericaoTemperatura(long numTotalAfericaoTemperatura) {
-        fichaProcedimento.setNumTotalAfericaoTemperatura(numTotalAfericaoTemperatura);
+        instancia.setNumTotalAfericaoTemperatura(numTotalAfericaoTemperatura);
     }
 
-    public void unsetNumTotalAfericaoTemperatura() {
-        fichaProcedimento.unsetNumTotalAfericaoTemperatura();
-    }
-
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public boolean isSetNumTotalAfericaoTemperatura() {
-        return fichaProcedimento.isSetNumTotalAfericaoTemperatura();
+        return instancia.isSetNumTotalAfericaoTemperatura();
     }
 
+    /**
+     * Marca que o atributo foi setado
+     * @param se esta setado ou nao
+     */
     public void setNumTotalAfericaoTemperaturaIsSet(boolean value) {
-        fichaProcedimento.setNumTotalAfericaoTemperaturaIsSet(value);
+        instancia.setNumTotalAfericaoTemperaturaIsSet(value);
     }
 
+    /**
+     * Retorna o valor do atributo
+     * @return o valor do atributo
+     */
     public long getNumTotalMedicaoAltura() {
-        return fichaProcedimento.getNumTotalMedicaoAltura();
+        return instancia.getNumTotalMedicaoAltura();
     }
 
+    /**
+     * Retorna o valor do atributo
+     * @return o valor do atributo
+     */
     public void setNumTotalMedicaoAltura(long numTotalMedicaoAltura) {
-        fichaProcedimento.setNumTotalMedicaoAltura(numTotalMedicaoAltura);
+        instancia.setNumTotalMedicaoAltura(numTotalMedicaoAltura);
     }
 
-    public void unsetNumTotalMedicaoAltura() {
-        fichaProcedimento.unsetNumTotalMedicaoAltura();
-    }
-
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public boolean isSetNumTotalMedicaoAltura() {
-        return fichaProcedimento.isSetNumTotalMedicaoAltura();
+        return instancia.isSetNumTotalMedicaoAltura();
     }
 
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public void setNumTotalMedicaoAlturaIsSet(boolean value) {
-        fichaProcedimento.setNumTotalMedicaoAlturaIsSet(value);
+        instancia.setNumTotalMedicaoAlturaIsSet(value);
     }
 
+    /**
+     * Retorna o valor do atributo
+     * @return o valor do atributo
+     */
     public long getNumTotalCurativoSimples() {
-        return fichaProcedimento.getNumTotalCurativoSimples();
+        return instancia.getNumTotalCurativoSimples();
     }
 
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public void setNumTotalCurativoSimples(long numTotalCurativoSimples) {
-        fichaProcedimento.setNumTotalCurativoSimples(numTotalCurativoSimples);
+        instancia.setNumTotalCurativoSimples(numTotalCurativoSimples);
     }
 
-    public void unsetNumTotalCurativoSimples() {
-        fichaProcedimento.unsetNumTotalCurativoSimples();
-    }
-
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public boolean isSetNumTotalCurativoSimples() {
-        return fichaProcedimento.isSetNumTotalCurativoSimples();
+        return instancia.isSetNumTotalCurativoSimples();
     }
 
+    /**
+     * Marca que o atributo foi setado
+     * @param se esta setado ou nao
+     */
     public void setNumTotalCurativoSimplesIsSet(boolean value) {
-        fichaProcedimento.setNumTotalCurativoSimplesIsSet(value);
+        instancia.setNumTotalCurativoSimplesIsSet(value);
     }
 
+    /**
+     * Retorna o valor do atributo
+     * @return o valor do atributo
+     */
     public long getNumTotalMedicaoPeso() {
-        return fichaProcedimento.getNumTotalMedicaoPeso();
+        return instancia.getNumTotalMedicaoPeso();
     }
 
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public void setNumTotalMedicaoPeso(long numTotalMedicaoPeso) {
-        fichaProcedimento.setNumTotalMedicaoPeso(numTotalMedicaoPeso);
+        instancia.setNumTotalMedicaoPeso(numTotalMedicaoPeso);
     }
-
-    public void unsetNumTotalMedicaoPeso() {
-        fichaProcedimento.unsetNumTotalMedicaoPeso();
-    }
-
+    
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public boolean isSetNumTotalMedicaoPeso() {
-        return fichaProcedimento.isSetNumTotalMedicaoPeso();
+        return instancia.isSetNumTotalMedicaoPeso();
     }
 
+    /**
+     * Marca que o atributo foi setado
+     * @param se esta setado ou nao
+     */
     public void setNumTotalMedicaoPesoIsSet(boolean value) {
-        fichaProcedimento.setNumTotalMedicaoPesoIsSet(value);
+        instancia.setNumTotalMedicaoPesoIsSet(value);
     }
 
+    /**
+     * Marca que o atributo foi setado
+     * @param se esta setado ou nao
+     */
     public long getNumTotalColetaMaterialParaExameLaboratorial() {
-        return fichaProcedimento.getNumTotalColetaMaterialParaExameLaboratorial();
+        return instancia.getNumTotalColetaMaterialParaExameLaboratorial();
     }
 
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public void setNumTotalColetaMaterialParaExameLaboratorial(long numTotalColetaMaterialParaExameLaboratorial) {
-        fichaProcedimento.setNumTotalColetaMaterialParaExameLaboratorial(numTotalColetaMaterialParaExameLaboratorial);
+        instancia.setNumTotalColetaMaterialParaExameLaboratorial(numTotalColetaMaterialParaExameLaboratorial);
     }
 
-    public void unsetNumTotalColetaMaterialParaExameLaboratorial() {
-        fichaProcedimento.unsetNumTotalColetaMaterialParaExameLaboratorial();
-    }
-
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public boolean isSetNumTotalColetaMaterialParaExameLaboratorial() {
-        return fichaProcedimento.isSetNumTotalColetaMaterialParaExameLaboratorial();
+        return instancia.isSetNumTotalColetaMaterialParaExameLaboratorial();
     }
 
+    /**
+     * Marca que o atributo foi setado
+     * @param se esta setado ou nao
+     */
     public void setNumTotalColetaMaterialParaExameLaboratorialIsSet(boolean value) {
-        fichaProcedimento.setNumTotalColetaMaterialParaExameLaboratorialIsSet(value);
-    }
-
-    public boolean equals(Object that) {
-        return fichaProcedimento.equals(that);
-    }
-
-    public boolean equals(FichaProcedimentoMaster that) {
-        return fichaProcedimento.equals(that);
-    }
-
-    public int hashCode() {
-        return fichaProcedimento.hashCode();
-    }
-
-    public int compareTo(FichaProcedimentoMaster other) {
-        return fichaProcedimento.compareTo(other.getInstance());
-    }
-
-    public String toString() {
-        return fichaProcedimento.toString();
+        instancia.setNumTotalColetaMaterialParaExameLaboratorialIsSet(value);
     }
     
     public void zipGenerate(){
-        if(!this.validates()){
+        if(!this.validate()){
             return;
         }
         
-        DadoTransporteThrift dadoTransporteThrift = this.getDadoTransporte(this.fichaProcedimento);
-        byte[] fichaSerializada = SerializadorThrift.serializar(this.fichaProcedimento);
+        DadoTransporteThrift dadoTransporteThrift = this.getDadoTransporte(this.instancia);
+        byte[] fichaSerializada = SerializadorThrift.serializar(this.instancia);
         dadoTransporteThrift.setTipoDadoSerializado(TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO);
 	dadoTransporteThrift.setDadoSerializado(fichaSerializada);
         
@@ -340,43 +483,229 @@ public class FichaProcedimentoMaster  {
         return dadoTransporteThrift;
     }
     
-    /*
-    Chama todos os metodos validadores para validar a consistencia do dado.
-    OBS: Esse metodo e apenas um exemplo de como deve ser feito, nao esta
-    completo
-    */
-    private boolean validates(){      
-        if(!this.numTotalMedicaoPesoValidates()){
+    /**
+     * Valida todos os campos.
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validate(){
+        return this.validateGroup()             &&
+               this.validateUuidFicha()         &&
+               this.validateTpCdsOrigem()       &&
+               this.validateHeaderTransport()   &&
+               this.validateGroup();
+    }
+    
+    /**
+     * Código UUID para identificar a ficha na base de dados nacional.
+     * Obrigatório!
+     * Regras: É recomendado concatenar o CNES na frente do UUID, de modo que os
+     * 7 digitos (CNES) + 1 de hífen somados aos 36 (32 caracteres + 4 hífen) do
+     * UUID são a limitação de 44 bytes do campo.
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateUuidFicha(){
+        if(!this.instancia.isSetUuidFicha()){
             return false;
         }
-        if(!this.numTotalMedicaoAlturaValidates()){
+        
+        if(this.instancia.getUuidFicha() == null){
+            return false;
+        }
+        
+        if(this.instancia.getUuidFicha().length() < 36 || this.getUuidFicha().length() > 44){
+            return false;
+        }
+    
+        return true;
+    }
+    
+    /**
+     * Tipo de origem dos dados do registro.
+     * Obrigatório!
+     * Regras: Utilizar valor 3 (sistemas terceiros).
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateTpCdsOrigem(){
+        if(!this.instancia.isSetTpCdsOrigem()){
+            return false;
+        }
+        
+        if(this.instancia.getTpCdsOrigem() != 3){
+            return false;
+        }
+    
+        return true;
+    }
+    
+    /**
+     * Profissional que realizou os procedimentos.
+     * Obrigatório!
+     * Regras: Utilizar valor 3 (sistemas terceiros).
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateHeaderTransport(){
+        if(!instancia.isSetHeaderTransport()){
+            return false;
+        }
+        
+        if(instancia.getHeaderTransport() != null){
+            return false;
+        }
+        
+        if(!new UnicaLotacaoHeader(instancia.getHeaderTransport()).validates()){
             return false;
         }
         
         return true;
     }
     
-    /*
-    Validacoes de todos os campos do dado em questao. OBS: As validacoes abaixo
-    sao apenas um exemplo de como as validacoes deverao ser feitas, 1 metodo por
-    campo, verificando todas as regras necessarias para aquele campo neste 
-    metodo
-    Deverao ser validados todos os campos dos objetos: fichaProcedimento,
-    originadora e remetente
-    */
-    private boolean numTotalMedicaoAlturaValidates(){
-    if(this.fichaProcedimento.getNumTotalMedicaoAltura() <= 0){
+    /**
+     * Registro dos procedimentos realizados.
+     * Regras: Utilizar valor 3 (sistemas terceiros).
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateAtendProcedimentos(){
+        if(!this.instancia.isSetAtendProcedimentos()){
+            return false;
+        }
+        
+        if(this.instancia.getAtendProcedimentos() == null){
+            return false;
+        }
+        
+        if(this.instancia.getAtendProcedimentos().size() < 1 || this.instancia.getAtendProcedimentos().size() > 23){
             return false;
         }
     
         return true;
     }
     
-    private boolean numTotalMedicaoPesoValidates(){
-        if(this.fichaProcedimento.getNumTotalMedicaoPeso() <= 0){
+    /**
+     * Quantidade de aferições de pressão realizadas.
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateNumTotalAfericaoPa(){
+        if(!this.instancia.isSetNumTotalAfericaoPa()){
             return false;
         }
         
+        if(this.instancia.getNumTotalAfericaoPa() < 0 || this.instancia.getNumTotalAfericaoPa() > 3){
+            return false;
+        }
+    
         return true;
+    }
+    
+    /**
+     * Quantidade de aferições de glicemia capilar.
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateNumTotalGlicemiaCapilar(){
+        if(!this.instancia.isSetNumTotalGlicemiaCapilar()){
+            return false;
+        }
+        
+        if(this.instancia.getNumTotalGlicemiaCapilar() < 0 || this.instancia.getNumTotalGlicemiaCapilar() > 3){
+            return false;
+        }
+    
+        return true;
+    }
+    
+    /**
+     * Quantidade de aferições de glicemia capilar.
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateNumTotalAfericaoTemperatura(){
+        if(!this.instancia.isSetNumTotalAfericaoTemperatura()){
+            return false;
+        }
+        
+        if(this.instancia.getNumTotalAfericaoTemperatura() < 0 || this.instancia.getNumTotalAfericaoTemperatura() > 3){
+            return false;
+        }
+    
+        return true;
+    }
+    
+    /**
+     * Quantidade de aferições de altura.
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateNumTotalMedicaoAltura(){
+        if(!this.instancia.isSetNumTotalMedicaoAltura()){
+            return false;
+        }
+        
+        if(this.instancia.getNumTotalMedicaoAltura() < 0 || this.instancia.getNumTotalMedicaoAltura() > 3){
+            return false;
+        }
+    
+        return true;
+    }
+    
+    /**
+     * Quantidade de curativos simples realizados.
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateNumTotalCurativoSimples(){
+        if(!this.instancia.isSetNumTotalCurativoSimples()){
+            return false;
+        }
+        
+        if(this.instancia.getNumTotalCurativoSimples() < 0 || this.instancia.getNumTotalCurativoSimples() > 3){
+            return false;
+        }
+    
+        return true;
+    }
+    
+    /**
+     * Quantidade de aferições de peso.
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateNumTotalMedicaoPeso(){
+        if(!this.instancia.isSetNumTotalMedicaoPeso()){
+            return false;
+        }
+        
+        if(this.instancia.getNumTotalMedicaoPeso() < 0 || this.instancia.getNumTotalMedicaoPeso() > 3){
+            return false;
+        }
+    
+        return true;
+    }
+    
+    /**
+     * Quantidade de aferições de peso.
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateNumTotalColetaMaterialParaExameLaboratorial(){
+        if(!this.instancia.isSetNumTotalColetaMaterialParaExameLaboratorial()){
+            return false;
+        }
+        
+        if(this.instancia.getNumTotalColetaMaterialParaExameLaboratorial() < 0 || this.instancia.getNumTotalColetaMaterialParaExameLaboratorial() > 3){
+            return false;
+        }
+    
+        return true;
+    }
+    
+    /**
+     * Valida os campos com preenchimento condicional.
+     * @return True caso ao menos um dos campos esteja válido, false caso todos estejam inválidos
+     */
+    public boolean validateGroup(){
+        return this.validateAtendProcedimentos()            || 
+               this.validateNumTotalMedicaoPeso()           ||
+               this.validateNumTotalCurativoSimples()       ||
+               this.validateNumTotalMedicaoPeso()           ||
+               this.validateNumTotalCurativoSimples()       ||
+               this.validateNumTotalMedicaoAltura()         ||
+               this.validateNumTotalAfericaoTemperatura()   ||
+               this.validateNumTotalGlicemiaCapilar()       ||
+               this.validateNumTotalAfericaoPa()            ||
+               this.validateAtendProcedimentos();
     }
 }
