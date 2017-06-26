@@ -2,16 +2,28 @@ package com.github.Eddyosos.integracao20171.esus.cds.procedimento;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.procedimento.FichaProcedimentoChildThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.procedimento.FichaProcedimentoMasterThrift;
+import com.github.Eddyosos.integracao20171.compactor.SerializadorThrift;
 import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
+import com.github.Eddyosos.integracao20171.esus.transport.DadoTransporte;
 import com.github.eddyosos.e_sus_ab_factory.cds.common.IUnicaLotacaoHeader;
 import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.procedimento.IFichaProcedimentoChild;
 import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.procedimento.IFichaProcedimentoMaster;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 public class FichaProcedimentoMaster implements IFichaProcedimentoMaster  {
+    
     private FichaProcedimentoMasterThrift instancia;
+    private long TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO = 7;
+    private final static String EXTENSAO_EXPORT = ".esus13";
+    private DadoTransporte dadoTransporteThrift;  
+    
     public FichaProcedimentoMaster(){
         instancia = new FichaProcedimentoMasterThrift();
     }
@@ -723,6 +735,36 @@ public class FichaProcedimentoMaster implements IFichaProcedimentoMaster  {
                this.validateNumTotalGlicemiaCapilar()       ||
                this.validateNumTotalAfericaoPa()            ||
                this.validateAtendProcedimentos();
+    }
+    
+    public void setDadoTransporte(DadoTransporte originadora){
+        this.dadoTransporteThrift = originadora;
+    }
+    public DadoTransporte getDadoTransporte(){
+        return this.dadoTransporteThrift;
+    }
+
+    public void zipGenerate(){
+        if(!this.validate() && this.dadoTransporteThrift != null){
+            return;
+        }
+
+        byte[] fichaSerializada = SerializadorThrift.serializar(this.instancia);
+        dadoTransporteThrift.setTipoDadoSerializado(TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO);
+        dadoTransporteThrift.setDadoSerializado(fichaSerializada);
+
+        try {
+            File zipFile = new File(System.getProperty("user.home") + "/fichaProcedimento.zip");
+            ZipOutputStream outputStream = new ZipOutputStream(new FileOutputStream(zipFile));
+            String entryName = dadoTransporteThrift.getUuidDadoSerializado() + EXTENSAO_EXPORT;
+            outputStream.putNextEntry(new ZipEntry(entryName));
+            byte[] dadoTransporteSerializado = SerializadorThrift.serializar(dadoTransporteThrift.getInstance());
+            outputStream.write(dadoTransporteSerializado);
+
+            outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
 
 }
