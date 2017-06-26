@@ -6,6 +6,7 @@
 package com.github.Eddyosos.integracao20171.esus.cds.atividadeindividual;
 
 import com.github.Eddyosos.integracao20171.esus.cds.common.VariasLotacoesHeader;
+import com.github.eddyosos.e_sus_ab_factory.cds.atividadeindividual.IFichaAtendimentoIndividualChild;
 import java.util.LinkedList;
 import java.util.List;
 import org.junit.Test;
@@ -41,7 +42,7 @@ public class FichaAtendimentoIndividualMasterTest {
     @Test
     public void testAtendimentosIndividuais(){
         assertFalse(obj.validateAtendimentosIndividuais());
-        List<FichaAtendimentoIndividualChild> input = new LinkedList();
+        List<IFichaAtendimentoIndividualChild> input = new LinkedList();
         obj.setAtendimentosIndividuais(input);
         assertFalse(obj.validateAtendimentosIndividuais());
         input.add(new FichaAtendimentoIndividualChild());

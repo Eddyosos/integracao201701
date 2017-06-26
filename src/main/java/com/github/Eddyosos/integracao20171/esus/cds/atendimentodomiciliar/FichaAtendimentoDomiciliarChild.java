@@ -2,15 +2,16 @@ package com.github.Eddyosos.integracao20171.esus.cds.atendimentodomiciliar;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.atendimentodomiciliar.FichaAtendimentoDomiciliarChildThrift;
 import com.github.Eddyosos.integracao20171.utils.IDS.CNS;
+import com.github.eddyosos.e_sus_ab_factory.cds.atendimentodomiciliar.IFichaAtendimentoDomiciliarChild;
 import java.util.Iterator;
 import java.util.List;
 import org.apache.thrift.TException;
 
 
-public class FichaAtendimentoDomiciliarChild {
+public class FichaAtendimentoDomiciliarChild implements IFichaAtendimentoDomiciliarChild{
     FichaAtendimentoDomiciliarChildThrift instancia = new FichaAtendimentoDomiciliarChildThrift();
     
-    protected FichaAtendimentoDomiciliarChild(FichaAtendimentoDomiciliarChildThrift fichaAtendimentoDomiciliarChildThrift){
+    public FichaAtendimentoDomiciliarChild(FichaAtendimentoDomiciliarChildThrift fichaAtendimentoDomiciliarChildThrift){
         this.instancia = fichaAtendimentoDomiciliarChildThrift;
     }
 
@@ -22,6 +23,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Código do turno onde aconteceu o atendimento.
      * @return O código do turno onde aconteceu o atendimento.
      */
+    @Override
     public long getTurno() {
         return instancia.getTurno();
     }
@@ -31,6 +33,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Presença obrigatória.
      * @param turno Código do turno onde aconteceu o atendimento.
      */
+    @Override
     public void setTurno(long turno) {
         instancia.setTurno(turno);
     }
@@ -62,6 +65,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Retorna o CNS do cidadão que participou da atividade.
      * @return CNS do cidadão que participou da atividade.
      */
+    @Override
     public String getCns() {
         return instancia.getCns();
     }
@@ -71,6 +75,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Presença Opcional.
      * @param cns CNS do cidadão que participou da atividade.
      */
+    @Override
     public void setCns(String cns) {
         instancia.setCns(cns);
     }
@@ -102,6 +107,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Data de nascimento do cidadão.
      * @return Data de nascimento do cidadão.
      */
+    @Override
     public long getDataNascimento() {
         return instancia.getDataNascimento();
     }
@@ -114,6 +120,7 @@ public class FichaAtendimentoDomiciliarChild {
      * 
      * @param dataNascimento Data de nascimento do cidadão.
      */
+    @Override
     public void setDataNascimento(long dataNascimento) {
         instancia.setDataNascimento(dataNascimento);
     }
@@ -145,6 +152,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Retorna o sexo do cidadão.
      * @return Código do sexo do cidadão.
      */
+    @Override
     public long getSexo() {
         return instancia.getSexo();
     }
@@ -156,6 +164,7 @@ public class FichaAtendimentoDomiciliarChild {
      * 
      * @param sexo Código do sexo do cidadão.
      */
+    @Override
     public void setSexo(long sexo) {
         instancia.setSexo(sexo);
     }
@@ -187,6 +196,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Retorna o cógido do local onde o atendimento foi realizado.
      * @return Cógido do local onde o atendimento foi realizado.
      */
+    @Override
     public long getLocalAtendimento() {
         return instancia.getLocalAtendimento();
     }
@@ -198,6 +208,7 @@ public class FichaAtendimentoDomiciliarChild {
      * 
      * @param localAtendimento Cógido do local onde o atendimento foi realizado.
      */
+    @Override
     public void setLocalAtendimento(long localAtendimento) {
         instancia.setLocalAtendimento(localAtendimento);
     }
@@ -229,6 +240,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Retorna a modalidade AD do cidadão atendido.
      * @return Código da modalidade AD do cidadão atendido.
      */
+    @Override
     public long getAtencaoDomiciliarModalidade() {
         return instancia.getAtencaoDomiciliarModalidade();
     }
@@ -241,6 +253,7 @@ public class FichaAtendimentoDomiciliarChild {
      * 
      * @param atencaoDomiciliarModalidade Código da modalidade AD do cidadão atendido.
      */
+    @Override
     public void setAtencaoDomiciliarModalidade(long atencaoDomiciliarModalidade) {
         instancia.setAtencaoDomiciliarModalidade(atencaoDomiciliarModalidade);
     }
@@ -272,6 +285,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Retorna o ripo de atendimento.
      * @return Código do tipo de atendimento.
      */
+    @Override
     public long getTipoAtendimento() {
         return instancia.getTipoAtendimento();
     }
@@ -284,6 +298,7 @@ public class FichaAtendimentoDomiciliarChild {
      * 
      * @param tipoAtendimento Código do tipo de atendimento.
      */
+    @Override
     public void setTipoAtendimento(long tipoAtendimento) {
         instancia.setTipoAtendimento(tipoAtendimento);
     }
@@ -339,6 +354,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Lista de marcadores das situações presentes.
      * @return Marcadores das situações presentes.
      */
+    @Override
     public List<Long> getSituacoesPresentes() {
         return instancia.getSituacoesPresentes();
     }
@@ -347,6 +363,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Insere uma lista de marcadores das situações presentes.
      * @param situacoesPresentes Marcadores das situações presentes.
      */
+    @Override
     public void setSituacoesPresentes(List<Long> situacoesPresentes) {
         instancia.setSituacoesPresentes(situacoesPresentes);
     }
@@ -378,6 +395,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Código do CID registrado no atendimento.
      * @return Código do CID registrado no atendimento.
      */
+    @Override
     public String getCid() {
         return instancia.getCid();
     }
@@ -386,6 +404,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Define o código do CID registrado do atendimento.
      * @param cid Código do CID registrado no atendimento.
      */
+    @Override
     public void setCid(String cid) {
         instancia.setCid(cid);
     }
@@ -417,6 +436,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Código do CIAP registrado no atendimento.
      * @return código do CIAP registrado no atendimento.
      */
+    @Override
     public String getCiap() {
         return instancia.getCiap();
     }
@@ -425,6 +445,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Define o código do CIAP registrado no atendimento.
      * @param ciap Código do CIAP registrado no atendimento.
      */
+    @Override
     public void setCiap(String ciap) {
         instancia.setCiap(ciap);
     }
@@ -481,6 +502,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Retorna os procedimentos registrados no atendimento.
      * @return procedimentos registrados no atendimento.
      */
+    @Override
     public List<String> getProcedimentos() {
         return instancia.getProcedimentos();
     }
@@ -490,6 +512,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Máximo: 21
      * @param procedimentos lista de procedimentos.
      */
+    @Override
     public void setProcedimentos(List<String> procedimentos) {
         instancia.setProcedimentos(procedimentos);
     }
@@ -549,6 +572,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Procedimentos SIGTAP registrados no atendimento.
      * @return Lista com os procedimentos SIGTAP do atendimento.
      */
+    @Override
     public List<String> getOutrosProcedimentos() {
         return instancia.getOutrosProcedimentos();
     }
@@ -562,6 +586,7 @@ public class FichaAtendimentoDomiciliarChild {
      * 
      * @param outrosProcedimentos Lista contendo os códigos dos procedimentos SIGTAP do atendimento.
      */
+    @Override
     public void setOutrosProcedimentos(List<String> outrosProcedimentos) {
         instancia.setOutrosProcedimentos(outrosProcedimentos);
     }
@@ -593,6 +618,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Desfecho do atendimento do cidadão.
      * @return Código do desfecho do atendimento do cidadão.
      */
+    @Override
     public long getCondutaDesfecho() {
         return instancia.getCondutaDesfecho();
     }
@@ -604,6 +630,7 @@ public class FichaAtendimentoDomiciliarChild {
      * 
      * @param condutaDesfecho Código do desfecho do atendimento do cidadão.
      */
+    @Override
     public void setCondutaDesfecho(long condutaDesfecho) {
         instancia.setCondutaDesfecho(condutaDesfecho);
     }
@@ -643,6 +670,7 @@ public class FichaAtendimentoDomiciliarChild {
      * Define se a família irá receber acompanhamento pós-óbito.
      * @param statusInicioAcompanhamentoPosObito True caso a familia va receber acompanhamento pós-óbito.
      */
+    @Override
     public void setStatusInicioAcompanhamentoPosObito(boolean statusInicioAcompanhamentoPosObito) {
         instancia.setStatusInicioAcompanhamentoPosObito(statusInicioAcompanhamentoPosObito);
     }
@@ -712,7 +740,8 @@ public class FichaAtendimentoDomiciliarChild {
      * Retorna um instancia thrift do objeto.
      * @return FichaAtendimentoDomiciliarChildThrift
      */
-    protected FichaAtendimentoDomiciliarChildThrift getInstance(){
+    @Override
+    public FichaAtendimentoDomiciliarChildThrift getInstance(){
         return instancia;
     }
     

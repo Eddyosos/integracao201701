@@ -3,18 +3,26 @@ package com.github.Eddyosos.integracao20171.esus.cds.atendimentodomiciliar;
 import br.gov.saude.esus.cds.transport.generated.thrift.atendimentodomiciliar.FichaAtendimentoDomiciliarChildThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.atendimentodomiciliar.FichaAtendimentoDomiciliarMasterThrift;
 import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
+import com.github.eddyosos.e_sus_ab_factory.cds.atendimentodomiciliar.IFichaAtendimentoDOmiciliarMaster;
+import com.github.eddyosos.e_sus_ab_factory.cds.atendimentodomiciliar.IFichaAtendimentoDomiciliarChild;
+import com.github.eddyosos.e_sus_ab_factory.cds.common.IUnicaLotacaoHeader;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import org.apache.thrift.TException;
 
-public class FichaAtendimentoDomiciliarMaster {
-    FichaAtendimentoDomiciliarMasterThrift instancia = new FichaAtendimentoDomiciliarMasterThrift();
-    
-    protected FichaAtendimentoDomiciliarMaster(FichaAtendimentoDomiciliarMasterThrift fichaAtendimentoDomiciliarMasterThrift){
+public class FichaAtendimentoDomiciliarMaster implements IFichaAtendimentoDOmiciliarMaster {
+    private FichaAtendimentoDomiciliarMasterThrift instancia;
+
+    public FichaAtendimentoDomiciliarMaster(FichaAtendimentoDomiciliarMasterThrift fichaAtendimentoDomiciliarMasterThrift){
         this.instancia = fichaAtendimentoDomiciliarMasterThrift;
     }
 
+    @Override
+    public FichaAtendimentoDomiciliarMasterThrift getInstance(){
+        return instancia;
+    }
+    
     public FichaAtendimentoDomiciliarMaster deepCopy() {
         return new FichaAtendimentoDomiciliarMaster(instancia.deepCopy());
     }
@@ -23,6 +31,7 @@ public class FichaAtendimentoDomiciliarMaster {
      * Código UUID para identificar a ficha na base de dados nacional.
      * @return uuidFicha
      */
+    @Override
     public String getUuidFicha() {
         return instancia.getUuidFicha();
     }
@@ -32,6 +41,7 @@ public class FichaAtendimentoDomiciliarMaster {
      * Presença obrigatória
      * @param uuidFicha 
      */
+    @Override
     public void setUuidFicha(String uuidFicha) {
         instancia.setUuidFicha(uuidFicha);
     }
@@ -63,6 +73,7 @@ public class FichaAtendimentoDomiciliarMaster {
      * Tipo de origem dos dados do registro.
      * @return TpCdsOrigem
      */
+    @Override
     public int getTpCdsOrigem() {
         return instancia.getTpCdsOrigem();
     }
@@ -73,6 +84,7 @@ public class FichaAtendimentoDomiciliarMaster {
      * Observações: Utilizar valor 3 (sistemas terceiros).
      * @param tpCdsOrigem Tipo de origem dos dados
      */
+    @Override
     public void setTpCdsOrigem(int tpCdsOrigem) {
         instancia.setTpCdsOrigem(tpCdsOrigem);
     }
@@ -105,6 +117,7 @@ public class FichaAtendimentoDomiciliarMaster {
      * Profissional que realizou a visita.
      * @return Intancia de UnicaLotacaoHeader contendo informações sobre o profissional que realizou a visita.
      */
+    @Override
     public UnicaLotacaoHeader getHeaderTransport() {
         return new UnicaLotacaoHeader(instancia.getHeaderTransport());
     }
@@ -114,7 +127,8 @@ public class FichaAtendimentoDomiciliarMaster {
      * Presença Obrigatora.
      * @param headerTransport Profissional que realizou a visita.
      */
-    public void setHeaderTransport(UnicaLotacaoHeader headerTransport) {
+    @Override
+    public void setHeaderTransport(IUnicaLotacaoHeader headerTransport) {
         instancia.setHeaderTransport(headerTransport.getInstance());
     }
 
@@ -145,6 +159,7 @@ public class FichaAtendimentoDomiciliarMaster {
      * Quantidade dos atendimentos realizados pelo profissional.
      * @return A quantidade de atendimentos realizada pelo profissional.
      */
+    @Override
     public int getAtendimentosDomiciliaresSize() {
         return instancia.getAtendimentosDomiciliaresSize();
     }
@@ -153,9 +168,10 @@ public class FichaAtendimentoDomiciliarMaster {
      * Lista dos atendimentos realizados pelo profissional.
      * @return uma lista contendo os atendimentos realizados pelo profissional
      */
-    public Iterator<FichaAtendimentoDomiciliarChild> getAtendimentosDomiciliaresIterator() {
+    @Override
+    public Iterator<IFichaAtendimentoDomiciliarChild> getAtendimentosDomiciliaresIterator() {
         
-        List<FichaAtendimentoDomiciliarChild> listaFichaAtendimentoDomiciliarChild = new LinkedList<>();
+        List<IFichaAtendimentoDomiciliarChild> listaFichaAtendimentoDomiciliarChild = new LinkedList<>();
         
         instancia.getAtendimentosDomiciliaresIterator().forEachRemaining((t) -> {
             listaFichaAtendimentoDomiciliarChild.add(new FichaAtendimentoDomiciliarChild(t));
@@ -176,9 +192,10 @@ public class FichaAtendimentoDomiciliarMaster {
      * Todos os atendimentos realizados pelo profissional.
      * @return Uma lista contendo todos os atendimentos realizados pelo profissional
      */
-    public List<FichaAtendimentoDomiciliarChild> getAtendimentosDomiciliares() {
+    @Override
+    public List<IFichaAtendimentoDomiciliarChild> getAtendimentosDomiciliares() {
 
-        List<FichaAtendimentoDomiciliarChild> listaFichaAtendimentoDomiciliarChild = new LinkedList<>();
+        List<IFichaAtendimentoDomiciliarChild> listaFichaAtendimentoDomiciliarChild = new LinkedList<>();
         
         instancia.getAtendimentosDomiciliares().forEach((t) -> {
             listaFichaAtendimentoDomiciliarChild.add(new FichaAtendimentoDomiciliarChild(t));
@@ -191,7 +208,8 @@ public class FichaAtendimentoDomiciliarMaster {
      * Adiciona varios atendimentos a lista de atendimentos do profissional.
      * @param atendimentosDomiciliares Lista contendo os atendimentos a serem adicionados ao profissional.
      */
-    public void setAtendimentosDomiciliares(List<FichaAtendimentoDomiciliarChild> atendimentosDomiciliares) {
+    @Override
+    public void setAtendimentosDomiciliares(List<IFichaAtendimentoDomiciliarChild> atendimentosDomiciliares) {
         
         List<FichaAtendimentoDomiciliarChildThrift> listaFichaAtendimentoDomiciliarChild = new LinkedList<>();
         
@@ -263,10 +281,8 @@ public class FichaAtendimentoDomiciliarMaster {
                 validateHeaderTransport() && atendimentosDomiciliares();
     }
 
-    protected FichaAtendimentoDomiciliarMasterThrift getInstance(){
-        return instancia;
-    }
-        /**
+    
+    /**
      * Código UUID para identificar a ficha na base de dados nacional.
      * Obrigatório!
      * Regras: É recomendado concatenar o CNES na frente do UUID, de modo que os
@@ -298,7 +314,8 @@ public class FichaAtendimentoDomiciliarMaster {
      * Tamanho mínimo: 1
      * Tamanho máximo: 12
      * 
-     * @return True caso os casos sejam válidos, False caso contrario.
+     * @return true se válido
+     *          false se inválido
      */
     public boolean atendimentosDomiciliares(){
         
@@ -308,8 +325,7 @@ public class FichaAtendimentoDomiciliarMaster {
             return false;
         }
         
-        return this.getAtendimentosDomiciliares().stream().noneMatch((ficha) -> ( ! ficha.validates()));
-
+        return true;
     }
 }
 

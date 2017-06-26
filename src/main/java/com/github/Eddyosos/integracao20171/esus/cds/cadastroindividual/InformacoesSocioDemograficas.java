@@ -1,9 +1,10 @@
 package com.github.Eddyosos.integracao20171.esus.cds.cadastroindividual;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.InformacoesSocioDemograficasThrift;
+import com.github.eddyosos.e_sus_ab_factory.cds.cadastroindividual.IInformacoesSocioDemograficas;
 import java.util.List;
 
-public class InformacoesSocioDemograficas {
+public class InformacoesSocioDemograficas implements IInformacoesSocioDemograficas {
 
     private InformacoesSocioDemograficasThrift instance;
     
@@ -11,7 +12,7 @@ public class InformacoesSocioDemograficas {
         instance = new InformacoesSocioDemograficasThrift();
     }
     
-    protected InformacoesSocioDemograficas(InformacoesSocioDemograficasThrift informacoesSocioDemograficasThrift){
+    public InformacoesSocioDemograficas(InformacoesSocioDemograficasThrift informacoesSocioDemograficasThrift){
         this.instance = informacoesSocioDemograficasThrift;
     }
 
@@ -20,6 +21,7 @@ public class InformacoesSocioDemograficas {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validates(){
         return validateDeficienciasCidadao() &&
                 validateOcupacaoCodigoCbo2002() &&
@@ -35,6 +37,7 @@ public class InformacoesSocioDemograficas {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateDeficienciasCidadao(){
         if(!instance.isSetStatusTemAlgumaDeficiencia()) return true;
         if(instance.isStatusTemAlgumaDeficiencia())
@@ -48,6 +51,7 @@ public class InformacoesSocioDemograficas {
      * Código das deficiências que o cidadão possui.
      * @return 
      */
+    @Override
     public List<Long> getDeficienciasCidadao() {
         return instance.getDeficienciasCidadao();
     }
@@ -56,6 +60,7 @@ public class InformacoesSocioDemograficas {
      * Código das deficiências que o cidadão possui.
      * @param deficienciasCidadao 
      */
+    @Override
     public void setDeficienciasCidadao(List<Long> deficienciasCidadao) {
         instance.setDeficienciasCidadao(deficienciasCidadao);
     }
@@ -66,6 +71,7 @@ public class InformacoesSocioDemograficas {
      * Código do curso mais elevado que o cidadão frequenta ou frequentou.
      * @return 
      */
+    @Override
     public long getGrauInstrucaoCidadao() {
         return instance.getGrauInstrucaoCidadao();
     }
@@ -74,6 +80,7 @@ public class InformacoesSocioDemograficas {
      * Código do curso mais elevado que o cidadão frequenta ou frequentou.
      * @param grauInstrucaoCidadao 
      */
+    @Override
     public void setGrauInstrucaoCidadao(long grauInstrucaoCidadao) {
         instance.setGrauInstrucaoCidadao(grauInstrucaoCidadao);
     }
@@ -84,6 +91,7 @@ public class InformacoesSocioDemograficas {
      * Código do motivo da saída do cidadão do cadastro.
      * @return 
      */
+    @Override
     public long getMotivoSaidaCidadao() {
         return instance.getMotivoSaidaCidadao();
     }
@@ -92,6 +100,7 @@ public class InformacoesSocioDemograficas {
      * Código do motivo da saída do cidadão do cadastro.
      * @param motivoSaidaCidadao 
      */
+    @Override
     public void setMotivoSaidaCidadao(long motivoSaidaCidadao) {
         instance.setMotivoSaidaCidadao(motivoSaidaCidadao);
     }
@@ -102,6 +111,7 @@ public class InformacoesSocioDemograficas {
      * @return True se válido
      *          False se inválido
      */
+    @Override
     public boolean validateOcupacaoCodigoCbo2002(){
         return !instance.isSetOcupacaoCodigoCbo2002() || 
                 instance.getOcupacaoCodigoCbo2002().matches("\\A\\d{6}\\z");
@@ -111,6 +121,7 @@ public class InformacoesSocioDemograficas {
      * Código do CBO que representa a ocupaçao do cidadão.
      * @return 
      */
+    @Override
     public String getOcupacaoCodigoCbo2002() {
         return instance.getOcupacaoCodigoCbo2002();
     }
@@ -119,6 +130,7 @@ public class InformacoesSocioDemograficas {
      * Código do CBO que representa a ocupaçao do cidadão.
      * @param ocupacaoCodigoCbo2002 
      */
+    @Override
     public void setOcupacaoCodigoCbo2002(String ocupacaoCodigoCbo2002) {
         instance.setOcupacaoCodigoCbo2002(ocupacaoCodigoCbo2002);
     }
@@ -130,6 +142,7 @@ public class InformacoesSocioDemograficas {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validaOrientacaoSexualCidadao(){
         return !instance.isSetOrientacaoSexualCidadao() ||
                 !instance.isSetStatusDesejaInformarOrientacaoSexual() ||
@@ -140,6 +153,7 @@ public class InformacoesSocioDemograficas {
      * Código da orientação sexual informada pelo cidadão.
      * @return 
      */
+    @Override
     public long getOrientacaoSexualCidadao() {
         return instance.getOrientacaoSexualCidadao();
     }
@@ -148,6 +162,7 @@ public class InformacoesSocioDemograficas {
      * Código da orientação sexual informada pelo cidadão.
      * @param orientacaoSexualCidadao 
      */
+    @Override
     public void setOrientacaoSexualCidadao(long orientacaoSexualCidadao) {
         instance.setOrientacaoSexualCidadao(orientacaoSexualCidadao);
     }
@@ -158,6 +173,7 @@ public class InformacoesSocioDemograficas {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validaPovoComunidadeTradicional(){
         return !instance.isSetPovoComunidadeTradicional() ||
                 (instance.isStatusMembroPovoComunidadeTradicional() && 
@@ -168,6 +184,7 @@ public class InformacoesSocioDemograficas {
      * Nome da comunidade tradicional que o cidadão frequenta.
      * @return 
      */
+    @Override
     public String getPovoComunidadeTradicional() {
         return instance.getPovoComunidadeTradicional();
     }
@@ -176,6 +193,7 @@ public class InformacoesSocioDemograficas {
      * Nome da comunidade tradicional que o cidadão frequenta.
      * @param povoComunidadeTradicional 
      */
+    @Override
     public void setPovoComunidadeTradicional(String povoComunidadeTradicional) {
         instance.setPovoComunidadeTradicional(povoComunidadeTradicional);
     }
@@ -186,6 +204,7 @@ public class InformacoesSocioDemograficas {
      * Código da relação de parentesco com o responsável familiar.
      * @return 
      */
+    @Override
     public long getRelacaoParentescoCidadao() {
         return instance.getRelacaoParentescoCidadao();
     }
@@ -194,6 +213,7 @@ public class InformacoesSocioDemograficas {
      * Código da relação de parentesco com o responsável familiar.
      * @param relacaoParentescoCidadao 
      */
+    @Override
     public void setRelacaoParentescoCidadao(long relacaoParentescoCidadao) {
         instance.setRelacaoParentescoCidadao(relacaoParentescoCidadao);
     }
@@ -202,6 +222,7 @@ public class InformacoesSocioDemograficas {
      * Código do responsável por crianças de até 9 anos.
      * @return 
      */
+    @Override
     public long getResponsavelPorCrianca() {
         return instance.getResponsavelPorCrianca();
     }
@@ -210,6 +231,7 @@ public class InformacoesSocioDemograficas {
      * Código do responsável por crianças de até 9 anos.
      * @param responsavelPorCrianca 
      */
+    @Override
     public void setResponsavelPorCrianca(long responsavelPorCrianca) {
         instance.setResponsavelPorCrianca(responsavelPorCrianca);
     }
@@ -218,6 +240,7 @@ public class InformacoesSocioDemograficas {
      * Código da situação do cidadão no mercado de trabalho.
      * @return 
      */
+    @Override
     public long getSituacaoMercadoTrabalhoCidadao() {
         return instance.getSituacaoMercadoTrabalhoCidadao();
     }
@@ -226,6 +249,7 @@ public class InformacoesSocioDemograficas {
      * Código da situação do cidadão no mercado de trabalho.
      * @param situacaoMercadoTrabalhoCidadao 
      */
+    @Override
     public void setSituacaoMercadoTrabalhoCidadao(long situacaoMercadoTrabalhoCidadao) {
         instance.setSituacaoMercadoTrabalhoCidadao(situacaoMercadoTrabalhoCidadao);
     }
@@ -234,6 +258,7 @@ public class InformacoesSocioDemograficas {
      * Marcador que indica se o cidadão deseja informar sua orientação sexual.
      * @return 
      */
+    @Override
     public boolean isStatusDesejaInformarOrientacaoSexual() {
         return instance.isStatusDesejaInformarOrientacaoSexual();
     }
@@ -242,6 +267,7 @@ public class InformacoesSocioDemograficas {
      * Marcador que indica se o cidadão deseja informar sua orientação sexual.
      * @param statusDesejaInformarOrientacaoSexual 
      */
+    @Override
     public void setStatusDesejaInformarOrientacaoSexual(boolean statusDesejaInformarOrientacaoSexual) {
         instance.setStatusDesejaInformarOrientacaoSexual(statusDesejaInformarOrientacaoSexual);
     }
@@ -250,6 +276,7 @@ public class InformacoesSocioDemograficas {
      * Marcador que indica se o cidadão frequenta cuidador tradicional.
      * @return 
      */
+    @Override
     public boolean isStatusFrequentaBenzedeira() {
         return instance.isStatusFrequentaBenzedeira();
     }
@@ -258,6 +285,7 @@ public class InformacoesSocioDemograficas {
      * Marcador que indica se o cidadão frequenta cuidador tradicional.
      * @param statusFrequentaBenzedeira 
      */
+    @Override
     public void setStatusFrequentaBenzedeira(boolean statusFrequentaBenzedeira) {
         instance.setStatusFrequentaBenzedeira(statusFrequentaBenzedeira);
     }
@@ -266,6 +294,7 @@ public class InformacoesSocioDemograficas {
      * Marcador que indica se o cidadão frequenta escola ou creche.
      * @return 
      */
+    @Override
     public boolean isStatusFrequentaEscola() {
         return instance.isStatusFrequentaEscola();
     }
@@ -274,6 +303,7 @@ public class InformacoesSocioDemograficas {
      * Marcador que indica se o cidadão frequenta escola ou creche.
      * @param statusFrequentaEscola 
      */
+    @Override
     public void setStatusFrequentaEscola(boolean statusFrequentaEscola) {
         instance.setStatusFrequentaEscola(statusFrequentaEscola);
     }
@@ -282,6 +312,7 @@ public class InformacoesSocioDemograficas {
      * Marcador que indica se o cidadão é membro de um povo ou comunidade tradicional.
      * @return 
      */
+    @Override
     public boolean isStatusMembroPovoComunidadeTradicional() {
         return instance.isStatusMembroPovoComunidadeTradicional();
     }
@@ -290,6 +321,7 @@ public class InformacoesSocioDemograficas {
      * Marcador que indica se o cidadão é membro de um povo ou comunidade tradicional.
      * @param statusMembroPovoComunidadeTradicional 
      */
+    @Override
     public void setStatusMembroPovoComunidadeTradicional(boolean statusMembroPovoComunidadeTradicional) {
         instance.setStatusMembroPovoComunidadeTradicional(statusMembroPovoComunidadeTradicional);
     }
@@ -298,6 +330,7 @@ public class InformacoesSocioDemograficas {
      * Marcador que indica se o cidadão participa de algum grupo comunitário.
      * @return 
      */
+    @Override
     public boolean isStatusParticipaGrupoComunitario() {
         return instance.isStatusParticipaGrupoComunitario();
     }
@@ -306,6 +339,7 @@ public class InformacoesSocioDemograficas {
      * Marcador que indica se o cidadão participa de algum grupo comunitário.
      * @param statusParticipaGrupoComunitario 
      */
+    @Override
     public void setStatusParticipaGrupoComunitario(boolean statusParticipaGrupoComunitario) {
         instance.setStatusParticipaGrupoComunitario(statusParticipaGrupoComunitario);
     }
@@ -314,6 +348,7 @@ public class InformacoesSocioDemograficas {
      * Marcador que indica se o cidadão possui plano de saúde privado.
      * @return 
      */
+    @Override
     public boolean isStatusPossuiPlanoSaudePrivado() {
         return instance.isStatusPossuiPlanoSaudePrivado();
     }
@@ -322,6 +357,7 @@ public class InformacoesSocioDemograficas {
      * Marcador que indica se o cidadão possui plano de saúde privado.
      * @param statusPossuiPlanoSaudePrivado 
      */
+    @Override
     public void setStatusPossuiPlanoSaudePrivado(boolean statusPossuiPlanoSaudePrivado) {
         instance.setStatusPossuiPlanoSaudePrivado(statusPossuiPlanoSaudePrivado);
     }
@@ -330,6 +366,7 @@ public class InformacoesSocioDemograficas {
      * Marcador que indica se cidadão tem alguma dificiência.
      * @return 
      */
+    @Override
     public boolean isStatusTemAlgumaDeficiencia() {
         return instance.isStatusTemAlgumaDeficiencia();
     }
@@ -338,10 +375,12 @@ public class InformacoesSocioDemograficas {
      * Marcador que indica se cidadão tem alguma dificiência.
      * @param statusTemAlgumaDeficiencia 
      */
+    @Override
     public void setStatusTemAlgumaDeficiencia(boolean statusTemAlgumaDeficiencia) {
         instance.setStatusTemAlgumaDeficiencia(statusTemAlgumaDeficiencia);
     }
 
+    @Override
     public InformacoesSocioDemograficasThrift getIntence(){
         return instance;
     }

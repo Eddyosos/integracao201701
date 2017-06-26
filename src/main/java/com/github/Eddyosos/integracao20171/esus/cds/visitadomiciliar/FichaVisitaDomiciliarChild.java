@@ -1,381 +1,408 @@
 package com.github.Eddyosos.integracao20171.esus.cds.visitadomiciliar;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.visitadomiciliar.FichaVisitaDomiciliarChildThrift;
+import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.visitadomiciliar.IFichaVisitaDomiciliarChild;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class FichaVisitaDomiciliarChild {
+public class FichaVisitaDomiciliarChild implements IFichaVisitaDomiciliarChild {
 
-    FichaVisitaDomiciliarChildThrift instance = new FichaVisitaDomiciliarChildThrift();
+    private FichaVisitaDomiciliarChildThrift instance = new FichaVisitaDomiciliarChildThrift();
 
-    protected FichaVisitaDomiciliarChild(FichaVisitaDomiciliarChildThrift thrift) {
+    public FichaVisitaDomiciliarChild(FichaVisitaDomiciliarChildThrift thrift) {
         this.instance = thrift;
     }
+   
     /**
      * Devolve um field turno
      * @return turno
      */
-
+    @Override
     public long getTurno() {
         return instance.getTurno();
     }
+   
     /**
      * Altera o valor de turno
      * @param turno 
      */
+    @Override
     public void setTurno(long turno) {
         instance.setTurno(turno);
     }
+   
     /**
      * Apaga o valor do field turno(null)
      */
-
+    @Override
     public void unsetTurno() {
         instance.unsetTurno();
     }
+    
     /**
      * Verifica se turno esta setado
      * @return true caso esteja setado
      * false caso nao esteja
      */
-
+    @Override
     public boolean isSetTurno() {
         return instance.isSetTurno();
     }
+    
     /**
      * Seta o valor booleano de isSetTurno
      * @param value boolean
      */
-
+    @Override
     public void setTurnoIsSet(boolean value) {
         instance.setTurnoIsSet(value);
     }
+    
     /**
      * Retorna o numero de prontuario
      * @return numProntuario String
      */
-
+    @Override
     public String getNumProntuario() {
         return instance.getNumProntuario();
     }
+    
     /**
      * Muda o valor do numero de prontuario
      * @param numProntuario String
      */
-
+    @Override
     public void setNumProntuario(String numProntuario) {
         instance.setNumProntuario(numProntuario);
     }
+    
     /**
      * Apaga o valor do field numProntuario
      */
+    @Override
     public void unsetNumProntuario() {
         instance.unsetNumProntuario();
     }
+    
     /**
      * Verifica se o field numProntuario está setado
      * @return true caso o valor esteja setado
      * false caso não esteja setado
      */
-
+    @Override
     public boolean isSetNumProntuario() {
         return instance.isSetNumProntuario();
     }
+
     /**
      * Altera o valor do isSet do field numProntuario
      * @param value boolean 
      */
-
+    @Override
     public void setNumProntuarioIsSet(boolean value) {
         instance.setNumProntuarioIsSet(value);
     }
+
     /**
      * Retorna o numero de cartão do SuS
      * @return numCartaoSus String
      */
-    
+    @Override
     public String getNumCartaoSus() {
         return instance.getNumCartaoSus();
     }
+
     /**
      * Muda o valor do numero do cartao Sus
      * @param numCartaoSus String
      */
+    @Override
     public void setNumCartaoSus(String numCartaoSus) {
         instance.setNumCartaoSus(numCartaoSus);
     }
+
     /**
      * Apaga o valor do field numCartaoSus
      */
-
+    @Override
     public void unsetNumCartaoSus() {
         instance.unsetNumCartaoSus();
     }
+
     /**
      * Verifica se o field numCartaoSus está setado
      * @return true caso o valor esteja setado false caso não esteja setado
      */
+    @Override
     public boolean isSetNumCartaoSus() {
         return instance.isSetNumCartaoSus();
     }
+
     /**
      * Altera o valor do isSet do field numCartaoSus
      * @param value boolean 
      */
-
+    @Override
     public void setNumCartaoSusIsSet(boolean value) {
         instance.setNumCartaoSusIsSet(value);
     }
+
     /**
      * Retorna a data de Nascimento
      * @return dtNascimento Long
      */
-
+    @Override
     public long getDtNascimento() {
         return instance.getDtNascimento();
     }
-     /**
+
+    /**
      * Muda o valor do numero de dtNascimento
      * @param dtNascimento String
      */
-
+    @Override
     public void setDtNascimento(long dtNascimento) {
         instance.setDtNascimento(dtNascimento);
     }
+    
     /**
      * Apaga o valor do field dtNascimento
      */
+    @Override
     public void unsetDtNascimento() {
         instance.unsetDtNascimento();
     }
+    
     /**
      * Verifica se o field dtNascimento está setado
      * @return true caso o valor esteja setado
      * false caso não esteja setado
      */
-
+    @Override
     public boolean isSetDtNascimento() {
         return instance.isSetDtNascimento();
     }
+
     /**
      * Altera o valor do isSet do field dtNascimento
      * @param value boolean 
      */
-
+    @Override
     public void setDtNascimentoIsSet(boolean value) {
         instance.setDtNascimentoIsSet(value);
     }
+
     /**
      * Retorna o valor de sexo
      * @return sexo long
      */
-
+    @Override
     public long getSexo() {
         return instance.getSexo();
     }
+
     /**
      * Muda o valor do field sexo
      * @param sexo String
      */
-
+    @Override
     public void setSexo(long sexo) {
         instance.setSexo(sexo);
     }
+
     /**
      * Apaga o valor do field sexo
      */
+    @Override
     public void unsetSexo() {
         instance.unsetSexo();
     }
+
     /**
      * Verifica se o field sexo está setado
      * @return true caso o valor esteja setado
      * false caso não esteja setado
      */
-
+    @Override
     public boolean isSetSexo() {
         return instance.isSetSexo();
     }
+
     /**
      * Altera o valor do isSet do field sexo
      * @param value boolean 
      */
-
+    @Override
     public void setSexoIsSet(boolean value) {
         instance.setSexoIsSet(value);
     }
+
     /**
      * Retorna se a visita foi compartilhada com outro profissional
      * @return true caso sim, false caso nao.
      */
-
+    @Override
     public boolean isStatusVisitaCompartilhadaOutroProfissional() {
         return instance.isStatusVisitaCompartilhadaOutroProfissional();
     }
+
     /**
      * Altera o valor se a visita foi compartilhada ou nao
      * @param statusVisitaCompartilhadaOutroProfissional boolean
      */
-
+    @Override
     public void setStatusVisitaCompartilhadaOutroProfissional(boolean statusVisitaCompartilhadaOutroProfissional) {
         instance.setStatusVisitaCompartilhadaOutroProfissional(statusVisitaCompartilhadaOutroProfissional);
     }
+
     /**
      * Apaga o valor do field statusVisitaCompartilhadaOutroProfissional
      */
-
+    @Override
     public void unsetStatusVisitaCompartilhadaOutroProfissional() {
         instance.unsetStatusVisitaCompartilhadaOutroProfissional();
     }
+
     /**
      * Verifica se o field statusVisitaCompartilhadaOutroProfissional está setado
      * @return true caso o valor esteja setado
      * false caso não esteja setado
      */
-
+    @Override
     public boolean isSetStatusVisitaCompartilhadaOutroProfissional() {
         return instance.isSetStatusVisitaCompartilhadaOutroProfissional();
     }
+
     /**
      * Altera o valor do isSet do field statusVisitaCompartilhadaOutroProfissional
      * @param value boolean 
      */
-
+    @Override
     public void setStatusVisitaCompartilhadaOutroProfissionalIsSet(boolean value) {
         instance.setStatusVisitaCompartilhadaOutroProfissionalIsSet(value);
     }
+
     /**
      * Retorna o  tamanho de motivos de visita
      * @return motivosVisitaSize int
      */
-
+    @Override
     public int getMotivosVisitaSize() {
         return instance.getMotivosVisitaSize();
     }
+
     /**
      * Retorna o iterator de MotivosVisita
      * @return motivosVisitaIterator
      */
-
+    @Override
     public Iterator<Long> getMotivosVisitaIterator() {
         return instance.getMotivosVisitaIterator();
     }
+
     /**
      * Adiciona um novo elemento a lista motivosVisista
      * @param elem 
      */
-
+    @Override
     public void addToMotivosVisita(long elem) {
         instance.addToMotivosVisita(elem);
     }
+
     /**
      * Retorna a lista motivosVisista
      * @return MotivosVisita List
      */
-    
+    @Override
     public List<Long> getMotivosVisita() {
         return instance.getMotivosVisita();
     }
+
     /**
      * Muda o valor do MotivosVisita
      * @param motivosVisita List
      */
-
+    @Override
     public void setMotivosVisita(List<Long> motivosVisita) {
         instance.setMotivosVisita(motivosVisita);
     }
+
     /**
      * Apaga o valor do field MotivosVisita
      */
-
+    @Override
     public void unsetMotivosVisita() {
         instance.unsetMotivosVisita();
     }
+
     /**
      * Verifica se o field MotivosVisita está setado
      * @return true caso o valor esteja setado
      * false caso não esteja setado
      */
-
+    @Override
     public boolean isSetMotivosVisita() {
         return instance.isSetMotivosVisita();
     }
+
     /**
      * Altera o valor do isSet do field MotivosVisita
      * @param value boolean 
      */
-
+    @Override
     public void setMotivosVisitaIsSet(boolean value) {
         instance.setMotivosVisitaIsSet(value);
     }
+
     /**
      * Retorna o valor de desfecho
      * @return desfecho long
      */
-
+    @Override
     public long getDesfecho() {
         return instance.getDesfecho();
     }
+
     /**
      * Muda o valor de desfecho
      * @param desfecho String
      */
-
+    @Override
     public void setDesfecho(long desfecho) {
         instance.setDesfecho(desfecho);
     }
+
     /**
      * Apaga o valor do field desfecho
      */
-
+    @Override
     public void unsetDesfecho() {
         instance.unsetDesfecho();
     }
+
     /**
      * Verifica se o field desfecho está setado
      * @return true caso o valor esteja setado
      * false caso não esteja setado
      */
-
+    @Override
     public boolean isSetDesfecho() {
         return instance.isSetDesfecho();
     }
+
     /**
      * Altera o valor do isSet do field desfecho
      * @param value boolean 
      */
-
+    @Override
     public void setDesfechoIsSet(boolean value) {
         instance.setDesfechoIsSet(value);
     }
-    /**
-     * Verifica se a instancia atual é igual ao objeto passado como parametro
-     * @param that
-     * @return true caso seja iguais
-     * false caso nao
-     */
 
     @Override
-    public boolean equals(Object that) {
-        return instance.equals(that);
-    }
-    /**
-     * Verifica se a instancia atual é igual ao FichaVisitaDomiciliarChild passado como parametro
-     * @param that
-     * @return true caso seja iguais
-     * false caso nao
-     */
-
-    public boolean equals(FichaVisitaDomiciliarChild that) {
-        return instance.equals(that.getInstance());
-    }
-    /**
-     * Retorna uma instance de FichaVisitaDomiciliarchild
-     * @return instance FichaVisitaDomiciliarChild
-     */
-    protected FichaVisitaDomiciliarChildThrift getInstance() {
+    public FichaVisitaDomiciliarChildThrift getInstance() {
         return instance;
 
     }
@@ -386,6 +413,7 @@ public class FichaVisitaDomiciliarChild {
      * true caso o valor de turno esteja setado e seja igual a 1, 2 ou 3
      * false caso o valor de turno esteja setado e seja diferente de 1,2 ou 3.
      */
+    @Override
     public boolean validaTurno() {
         if (getInstance().isSetTurno()) {
             return getInstance().getTurno() == 1 | getInstance().getTurno() == 2 | getInstance().getTurno() == 3;
@@ -400,6 +428,7 @@ public class FichaVisitaDomiciliarChild {
      * True - Caso tenha setado um valor em NUM_PRONTUARIO e este valor de String seja menor ou igual a 30 caracteres e contenha apenas letras e numeros
      * False - Caso tenha um setado valor me NUM_PRONTUARIO e este valor de String seja maior que 30 caracteres ou contenha caracteres especiais
      */
+    @Override
     public boolean validaNumProntuario() {
         Pattern PATTERN = Pattern.compile("([a-z A-Z 0-9])+");
         Matcher matcher = PATTERN.matcher(getInstance().getNumProntuario());
@@ -421,6 +450,7 @@ public class FichaVisitaDomiciliarChild {
      * true- caso o numero inicial seja 1 ou 2 ou 7 ou 8 ou 9 e atenda aos padrões do cartao SUS
      * false - caso o número esteja setado e nao atenda aos padrões do cartão SUS.
      */
+    @Override
     public boolean validaNumCartaoSus() {
 
         String cns = getInstance().getNumCartaoSus();
@@ -521,12 +551,14 @@ public class FichaVisitaDomiciliarChild {
         return true;
 
     }
+    
     /**
     * Valida o field SEXO
     * @return true caso o valor esteja setado e seja igual a 0 ou 1
     * false caso nenhum valor esteja setado
     * false caso o valor esteja setado e seja diferente de 0 ou 1
      */
+    @Override
     public boolean validaSexo() {
         if (getInstance().isSetSexo()) {
             return getInstance().getSexo() == 0 | getInstance().getSexo() == 1;
@@ -542,6 +574,7 @@ public class FichaVisitaDomiciliarChild {
      * false caso os valores estejam setados e não sejam iguais a true ou false
     
      */
+    @Override
     public boolean validaStatusVisitaCompartilhada() {
         if (getInstance().isSetStatusVisitaCompartilhadaOutroProfissional()) {
             return getInstance().isStatusVisitaCompartilhadaOutroProfissional()== true | getInstance().isStatusVisitaCompartilhadaOutroProfissional()== false;
@@ -559,7 +592,7 @@ public class FichaVisitaDomiciliarChild {
      * false caso o field DESFECHO seja igual a 1 e MOTIVOS_VISITA tenha valor diferente da faixa de 1 - 33
      * false caso o field DESFECHO seja diferente de 1 e MOTIVOS_VISISTA tenha sido setado
      */
-
+    @Override
     public boolean validaMotivosVisita() {
         if (getInstance().getDesfecho()== 1) {
             if (getInstance().isSetMotivosVisita()) {
@@ -583,6 +616,7 @@ public class FichaVisitaDomiciliarChild {
      * false caso o valor de DESFECHO esteja setado e diferente dos valores de 1 a 3
      * false caso o valor de DESFECHO não esteja setado
      */
+    @Override
     public boolean validaDesfecho() {
         if (getInstance().isSetDesfecho()) {
             return getInstance().getDesfecho() >= 1 && getInstance().getDesfecho() <= 3;
@@ -596,7 +630,7 @@ public class FichaVisitaDomiciliarChild {
      * @return true caso todos os fieds estejam nos padrões aceitos
      * false, caso um atributo nao esteja nos padrões aceitos
      */
-    
+    @Override
     public boolean validates(){
         return validaDesfecho() && validaMotivosVisita() && validaStatusVisitaCompartilhada() && validaSexo() &&validaNumCartaoSus() && validaNumProntuario() && validaTurno();
     }

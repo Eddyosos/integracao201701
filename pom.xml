@@ -25,6 +25,11 @@
             <version>1.0</version>
         </dependency>
         <dependency>
+            <groupId>com.github.Eddyosos</groupId>
+            <artifactId>e_sus_ab_factory</artifactId>
+            <version>1.13</version>
+        </dependency>
+        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>0.9.24</version>

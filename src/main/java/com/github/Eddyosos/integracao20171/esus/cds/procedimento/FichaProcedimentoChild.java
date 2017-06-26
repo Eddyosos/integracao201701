@@ -1,17 +1,22 @@
 package com.github.Eddyosos.integracao20171.esus.cds.procedimento;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.procedimento.FichaProcedimentoChildThrift;
+import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.procedimento.IFichaProcedimentoChild;
 import java.util.Iterator;
 import java.util.List;
 
-public class FichaProcedimentoChild {
-    private FichaProcedimentoChildThrift instancia = new FichaProcedimentoChildThrift();
+public class FichaProcedimentoChild implements IFichaProcedimentoChild {
+    private FichaProcedimentoChildThrift instancia;
+    
+    public FichaProcedimentoChild(){
+        instancia = new FichaProcedimentoChildThrift();
+    }
     
     /**
      * Retorna uma instancia nao thrift
      * @param fichaProcedimentoChildThrift 
      */
-    protected FichaProcedimentoChild(FichaProcedimentoChildThrift fichaProcedimentoChildThrift) {
+    public FichaProcedimentoChild(FichaProcedimentoChildThrift fichaProcedimentoChildThrift) {
         this.instancia = fichaProcedimentoChildThrift;
     }
     
@@ -19,6 +24,7 @@ public class FichaProcedimentoChild {
      * @return Objeto thrift para acesso aos metodos do thrift
      * @param fichaProcedimentoChildThrift 
      */
+    @Override
     public FichaProcedimentoChildThrift getInstance(){
         return this.instancia;
     }
@@ -27,6 +33,7 @@ public class FichaProcedimentoChild {
      * Retorna o numero de prontuario
      * @return String
      */
+    @Override
     public String getNumProntuario() {
         return instancia.getNumProntuario();
     }
@@ -35,6 +42,7 @@ public class FichaProcedimentoChild {
      * Atribui o numero de prontuario
      * @param String 
      */
+    @Override
     public void setNumProntuario(String numProntuario) {
         instancia.setNumProntuario(numProntuario);
     }
@@ -43,6 +51,7 @@ public class FichaProcedimentoChild {
      * Verfica se o numero de prontuario foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public boolean isSetNumProntuario() {
         return instancia.isSetNumProntuario();
     }
@@ -51,6 +60,7 @@ public class FichaProcedimentoChild {
      * Marca que o numero de prontuario foi setado
      * @param value 
      */
+    @Override
     public void setNumProntuarioIsSet(boolean value) {
         instancia.setNumProntuarioIsSet(value);
     }
@@ -59,6 +69,7 @@ public class FichaProcedimentoChild {
      * Retorna o numero do cartao sus
      * @return String
      */
+    @Override
     public String getNumCartaoSus() {
         return instancia.getNumCartaoSus();
     }
@@ -67,6 +78,7 @@ public class FichaProcedimentoChild {
      * Atribui o numero de prontuario
      * @param String 
      */
+    @Override
     public void setNumCartaoSus(String numCartaoSus) {
         instancia.setNumCartaoSus(numCartaoSus);
     }
@@ -75,6 +87,7 @@ public class FichaProcedimentoChild {
      * Verfica se o numero do cartao foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public boolean isSetNumCartaoSus() {
         return instancia.isSetNumCartaoSus();
     }
@@ -83,6 +96,7 @@ public class FichaProcedimentoChild {
      * Marca que o atributo foi setado
      * @param value 
      */
+    @Override
     public void setNumCartaoSusIsSet(boolean value) {
         instancia.setNumCartaoSusIsSet(value);
     }
@@ -91,6 +105,7 @@ public class FichaProcedimentoChild {
      * Retorna o valor do atributo
      * @return long
      */
+    @Override
     public long getDtNascimento() {
         return instancia.getDtNascimento();
     }
@@ -99,6 +114,7 @@ public class FichaProcedimentoChild {
      * Atribui o valor do atributo
      * @param data de nascimento 
      */
+    @Override
     public void setDtNascimento(long dtNascimento) {
         instancia.setDtNascimento(dtNascimento);
     }
@@ -107,6 +123,7 @@ public class FichaProcedimentoChild {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public boolean isSetDtNascimento() {
         return instancia.isSetDtNascimento();
     }
@@ -115,6 +132,7 @@ public class FichaProcedimentoChild {
      * Marca que o atributo foi setado
      * @param se esta setado ou nao
      */
+    @Override
     public void setDtNascimentoIsSet(boolean value) {
         instancia.setDtNascimentoIsSet(value);
     }
@@ -123,6 +141,7 @@ public class FichaProcedimentoChild {
      * Retorna o valor do atributo
      * @return o valor do atributo
      */
+    @Override
     public long getSexo() {
         return instancia.getSexo();
     }
@@ -131,6 +150,7 @@ public class FichaProcedimentoChild {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
+    @Override
     public void setSexo(long sexo) {
         instancia.setSexo(sexo);
     }
@@ -139,6 +159,7 @@ public class FichaProcedimentoChild {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public boolean isSetSexo() {
         return instancia.isSetSexo();
     }
@@ -147,6 +168,7 @@ public class FichaProcedimentoChild {
      * Marca que o atributo foi setado
      * @param se esta setado ou nao
      */
+    @Override
     public void setSexoIsSet(boolean value) {
         instancia.setSexoIsSet(value);
     }
@@ -155,6 +177,7 @@ public class FichaProcedimentoChild {
      * Retorna o valor do atributo
      * @return o valor do atributo
      */
+    @Override
     public long getLocalAtendimento() {
         return instancia.getLocalAtendimento();
     }
@@ -163,6 +186,7 @@ public class FichaProcedimentoChild {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
+    @Override
     public void setLocalAtendimento(long localAtendimento) {
         instancia.setLocalAtendimento(localAtendimento);
     }
@@ -171,6 +195,7 @@ public class FichaProcedimentoChild {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public boolean isSetLocalAtendimento() {
         return instancia.isSetLocalAtendimento();
     }
@@ -179,6 +204,7 @@ public class FichaProcedimentoChild {
      * Marca que o atributo foi setado
      * @param se esta setado ou nao
      */
+    @Override
     public void setLocalAtendimentoIsSet(boolean value) {
         instancia.setLocalAtendimentoIsSet(value);
     }
@@ -187,6 +213,7 @@ public class FichaProcedimentoChild {
      * Retorna o valor do atributo
      * @return o valor do atributo
      */
+    @Override
     public long getTurno() {
         return instancia.getTurno();
     }
@@ -195,6 +222,7 @@ public class FichaProcedimentoChild {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
+    @Override
     public void setTurno(long turno) {
         instancia.setTurno(turno);
     }
@@ -203,6 +231,7 @@ public class FichaProcedimentoChild {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public boolean isSetTurno() {
         return instancia.isSetTurno();
     }
@@ -211,13 +240,16 @@ public class FichaProcedimentoChild {
      * Marca que o atributo foi setado
      * @param se esta setado ou nao
      */
+    @Override
     public void setTurnoIsSet(boolean value) {
         instancia.setTurnoIsSet(value);
     }
+    
     /**
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public boolean isStatusEscutaInicialOrientacao() {
         return instancia.isStatusEscutaInicialOrientacao();
     }
@@ -226,6 +258,7 @@ public class FichaProcedimentoChild {
      * Marca que o atributo foi setado
      * @param se esta setado ou nao
      */
+    @Override
     public void setStatusEscutaInicialOrientacao(boolean statusEscutaInicialOrientacao) {
         instancia.setStatusEscutaInicialOrientacao(statusEscutaInicialOrientacao);
     }
@@ -235,6 +268,7 @@ public class FichaProcedimentoChild {
      * @return true se tiver setado, false caso nao esteja
      */
 
+    @Override
     public boolean isSetStatusEscutaInicialOrientacao() {
         return instancia.isSetStatusEscutaInicialOrientacao();
     }
@@ -243,6 +277,7 @@ public class FichaProcedimentoChild {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
+    @Override
     public void setStatusEscutaInicialOrientacaoIsSet(boolean value) {
         instancia.setStatusEscutaInicialOrientacaoIsSet(value);
     }
@@ -251,6 +286,7 @@ public class FichaProcedimentoChild {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
+    @Override
     public int getProcedimentosSize() {
         return instancia.getProcedimentosSize();
     }
@@ -259,6 +295,7 @@ public class FichaProcedimentoChild {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public Iterator<String> getProcedimentosIterator() {
         return instancia.getProcedimentosIterator();
     }
@@ -267,6 +304,7 @@ public class FichaProcedimentoChild {
      * Retorna o valor do atributo
      * @return o valor do atributo
      */
+    @Override
     public void addToProcedimentos(String elem) {
         instancia.addToProcedimentos(elem);
     }
@@ -275,6 +313,7 @@ public class FichaProcedimentoChild {
      * Retorna o valor do atributo
      * @return o valor do atributo
      */
+    @Override
     public List<String> getProcedimentos() {
         return instancia.getProcedimentos();
     }
@@ -283,6 +322,7 @@ public class FichaProcedimentoChild {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
+    @Override
     public void setProcedimentos(List<String> procedimentos) {
         instancia.setProcedimentos(procedimentos);
     }
@@ -291,6 +331,7 @@ public class FichaProcedimentoChild {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public boolean isSetProcedimentos() {
         return instancia.isSetProcedimentos();
     }
@@ -299,6 +340,7 @@ public class FichaProcedimentoChild {
      * Marca que o atributo foi setado
      * @param se esta setado ou nao
      */
+    @Override
     public void setProcedimentosIsSet(boolean value) {
         instancia.setProcedimentosIsSet(value);
     }
@@ -307,6 +349,7 @@ public class FichaProcedimentoChild {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
+    @Override
     public int getOutrosSiaProcedimentosSize() {
         return instancia.getOutrosSiaProcedimentosSize();
     }
@@ -315,6 +358,7 @@ public class FichaProcedimentoChild {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public Iterator<String> getOutrosSiaProcedimentosIterator() {
         return instancia.getOutrosSiaProcedimentosIterator();
     }
@@ -323,6 +367,7 @@ public class FichaProcedimentoChild {
      * Marca que o atributo foi setado
      * @param se esta setado ou nao
      */
+    @Override
     public void addToOutrosSiaProcedimentos(String elem) {
         instancia.addToOutrosSiaProcedimentos(elem);
     }
@@ -331,6 +376,7 @@ public class FichaProcedimentoChild {
      * Retorna o valor do atributo
      * @return o valor do atributo
      */
+    @Override
     public List<String> getOutrosSiaProcedimentos() {
         return instancia.getOutrosSiaProcedimentos();
     }
@@ -339,6 +385,7 @@ public class FichaProcedimentoChild {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
+    @Override
     public void setOutrosSiaProcedimentos(List<String> outrosSiaProcedimentos) {
         instancia.setOutrosSiaProcedimentos(outrosSiaProcedimentos);
     }
@@ -347,6 +394,7 @@ public class FichaProcedimentoChild {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public boolean isSetOutrosSiaProcedimentos() {
         return instancia.isSetOutrosSiaProcedimentos();
     }
@@ -355,6 +403,7 @@ public class FichaProcedimentoChild {
      * Marca que o atributo foi setado
      * @param se esta setado ou nao
      */
+    @Override
     public void setOutrosSiaProcedimentosIsSet(boolean value) {
         instancia.setOutrosSiaProcedimentosIsSet(value);
     }
@@ -363,6 +412,7 @@ public class FichaProcedimentoChild {
      * Valida todos os campos.
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validate(){
         return this.validateGroup() &&
                this.validateLocalAtendimento() &&
@@ -378,6 +428,7 @@ public class FichaProcedimentoChild {
      * Opcional
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateUuidFicha(){
         if(this.getNumProntuario() == null){
             return true;
@@ -395,6 +446,7 @@ public class FichaProcedimentoChild {
      * Opcional
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateNumCartaoSus(){
         if(this.instancia.getNumCartaoSus() == null){
             return true;
@@ -416,6 +468,7 @@ public class FichaProcedimentoChild {
      * Obrigatorio
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateSexo(){        
         if(!this.instancia.isSetSexo()){
             return false;
@@ -433,6 +486,7 @@ public class FichaProcedimentoChild {
      * Obrigatorio
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateLocalAtendimento(){
         if(!this.instancia.isSetLocalAtendimento()){
             return false;
@@ -450,6 +504,7 @@ public class FichaProcedimentoChild {
      * Opcional
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateTurno(){
         if(!this.instancia.isSetTurno()){
             return false;
@@ -467,6 +522,7 @@ public class FichaProcedimentoChild {
      * Opcional
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateStatusEscutaInicialOrientacao(){
         if(!this.instancia.isSetStatusEscutaInicialOrientacao()){
             return true;
@@ -480,6 +536,7 @@ public class FichaProcedimentoChild {
      * Condicional
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateProcedimentos(){
         if(!this.instancia.isSetProcedimentos()){
             return false;
@@ -497,6 +554,7 @@ public class FichaProcedimentoChild {
      * Condicional
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateOutrosSiaProcedimentos(){
         if(!this.instancia.isSetProcedimentos()){
             return false;
@@ -519,6 +577,7 @@ public class FichaProcedimentoChild {
      * Valida os campos com preenchimento condicional.
      * @return True caso ao menos um dos campos esteja válido, false caso todos estejam inválidos
      */
+    @Override
     public boolean validateGroup(){
         return this.validateProcedimentos()            || 
                this.validateOutrosSiaProcedimentos();

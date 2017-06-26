@@ -1,13 +1,14 @@
 package com.github.Eddyosos.integracao20171.esus.cds.common;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.common.EnderecoLocalPermanenciaThrift;
+import com.github.eddyosos.e_sus_ab_factory.cds.common.IEnderecoLocalPermanencia;
 
 /**
  * Endereço de local de permanencia,
  * Representa local de permanencia, encapsula no padrão delegate 
  * a classe EnderecoLocalPermanenciaThrift
  */
-public class EnderecoLocalPermanencia {
+public class EnderecoLocalPermanencia implements IEnderecoLocalPermanencia {
     /**
      * Instancia thrift sendo encapsulada (padrão delegate)
      */
@@ -34,6 +35,7 @@ public class EnderecoLocalPermanencia {
      * Retorna o objeto incapsulado thrift
      * @return 
      */
+    @Override
     public EnderecoLocalPermanenciaThrift getInstance() {
         return instance;
     }
@@ -76,6 +78,7 @@ public class EnderecoLocalPermanencia {
      * Bairro onde está localizado o domicílio
      * @return nome do bairro
      */
+    @Override
     public String getBairro() {
         return instance.getBairro();
     }
@@ -84,6 +87,7 @@ public class EnderecoLocalPermanencia {
      * Insere o nome do bairro
      * @param bairro nome do bairro
      */
+    @Override
     public void setBairro(String bairro) {
         instance.setBairro(bairro);
     }
@@ -103,6 +107,7 @@ public class EnderecoLocalPermanencia {
      * CEP do logradouro do domicílio.
      * @return Cep em string
      */
+    @Override
     public String getCep() {
         return instance.getCep();
     }
@@ -111,6 +116,7 @@ public class EnderecoLocalPermanencia {
      * CEP do logradouro do domicílio.
      * @param cep 
      */
+    @Override
     public void setCep(String cep) {
         instance.setCep(cep);
     }
@@ -132,6 +138,7 @@ public class EnderecoLocalPermanencia {
      * Código IBGE do município.
      * @return código
      */
+    @Override
     public String getCodigoIbgeMunicipio() {
         return instance.getCodigoIbgeMunicipio();
     }
@@ -140,6 +147,7 @@ public class EnderecoLocalPermanencia {
      * Código IBGE do município
      * @param codigoIbgeMunicipio o código 
      */
+    @Override
     public void setCodigoIbgeMunicipio(String codigoIbgeMunicipio) {
         instance.setCodigoIbgeMunicipio(codigoIbgeMunicipio);
     }
@@ -161,6 +169,7 @@ public class EnderecoLocalPermanencia {
      * Complemento do endereço do domicílio.
      * @return o complemento
      */
+    @Override
     public String getComplemento() {
         return instance.getComplemento();
     }
@@ -170,6 +179,7 @@ public class EnderecoLocalPermanencia {
      * @param complemento
      * 
      */
+    @Override
     public void setComplemento(String complemento) {
         instance.setComplemento(complemento);
     }
@@ -191,6 +201,7 @@ public class EnderecoLocalPermanencia {
      * Nome do logradouro.
      * @return nome
      */
+    @Override
     public String getNomeLogradouro() {
         return instance.getNomeLogradouro();
     }
@@ -199,6 +210,7 @@ public class EnderecoLocalPermanencia {
      * Nome do logradouro.
      * @param nomeLogradouro Nome do logradouro
      */
+    @Override
     public void setNomeLogradouro(String nomeLogradouro) {
         instance.setNomeLogradouro(nomeLogradouro);
     }
@@ -221,6 +233,7 @@ public class EnderecoLocalPermanencia {
      * Número do domicílio.
      * @return número
      */
+    @Override
     public String getNumero() {
         return instance.getNumero();
     }
@@ -229,6 +242,7 @@ public class EnderecoLocalPermanencia {
      * Número do domicílio.
      * @param numero 
      */
+    @Override
     public void setNumero(String numero) {
         instance.setNumero(numero);
     }
@@ -249,6 +263,7 @@ public class EnderecoLocalPermanencia {
      * Código indexador referente a Unidade Federativa.
      * @return código
      */
+    @Override
     public String getNumeroDneUf() {
         return instance.getNumeroDneUf();
     }
@@ -257,6 +272,7 @@ public class EnderecoLocalPermanencia {
      * Código indexador referente a Unidade Federativa.
      * @param numeroDneUf 
      */
+    @Override
     public void setNumeroDneUf(String numeroDneUf) {
         instance.setNumeroDneUf(numeroDneUf);
     }
@@ -276,6 +292,7 @@ public class EnderecoLocalPermanencia {
      * Telefone de referência.
      * @return telefone
      */
+    @Override
     public String getTelReferencial() {
         return instance.getTelReferencial();
     }
@@ -284,6 +301,7 @@ public class EnderecoLocalPermanencia {
      * Telefone de referência.
      * @param telReferencial 
      */
+    @Override
     public void setTelReferencial(String telReferencial) {
         instance.setTelReferencial(telReferencial);
     }
@@ -303,6 +321,7 @@ public class EnderecoLocalPermanencia {
      * Telefone residencial.
      * @return 
      */
+    @Override
     public String getTelResidencial() {
         return instance.getTelResidencial();
     }
@@ -311,6 +330,7 @@ public class EnderecoLocalPermanencia {
      * Telefone residencial.
      * @param telResidencial 
      */
+    @Override
     public void setTelResidencial(String telResidencial) {
         instance.setTelResidencial(telResidencial);
     }
@@ -330,6 +350,7 @@ public class EnderecoLocalPermanencia {
      * Tipo do logradouro onde está o domicílio.
      * @return 
      */
+    @Override
     public String getTipoLogradouroNumeroDne() {
         return instance.getTipoLogradouroNumeroDne();
     }
@@ -338,6 +359,7 @@ public class EnderecoLocalPermanencia {
      * Tipo do logradouro onde está o domicílio.
      * @param tipoLogradouroNumeroDne
      */
+    @Override
     public void setTipoLogradouroNumeroDne(String tipoLogradouroNumeroDne) {
         instance.setTipoLogradouroNumeroDne(tipoLogradouroNumeroDne);
     }
@@ -348,6 +370,7 @@ public class EnderecoLocalPermanencia {
      * Marcador que indica que o domicílio não possui número.
      * @return 
      */
+    @Override
     public boolean isStSemNumero() {
         return instance.isStSemNumero();
     }
@@ -356,6 +379,7 @@ public class EnderecoLocalPermanencia {
      * Marcador que indica que o domicílio não possui número.
      * @param stSemNumero 
      */
+    @Override
     public void setStSemNumero(boolean stSemNumero) {
         instance.setStSemNumero(stSemNumero);
     }

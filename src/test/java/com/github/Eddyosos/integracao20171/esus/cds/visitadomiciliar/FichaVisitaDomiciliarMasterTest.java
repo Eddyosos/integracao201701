@@ -7,6 +7,7 @@ package com.github.Eddyosos.integracao20171.esus.cds.visitadomiciliar;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.visitadomiciliar.FichaVisitaDomiciliarChildThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.visitadomiciliar.FichaVisitaDomiciliarMasterThrift;
+import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.visitadomiciliar.IFichaVisitaDomiciliarChild;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
@@ -45,7 +46,7 @@ public class FichaVisitaDomiciliarMasterTest {
      */
     @Test
     public void testvalidaVisitasDomiciliares() {
-        List<FichaVisitaDomiciliarChild> lista = new <FichaVisitaDomiciliarChild> ArrayList();
+        List<IFichaVisitaDomiciliarChild> lista = new <FichaVisitaDomiciliarChild> ArrayList();
 
         for (int i = 0; i < 23; i++) {
             lista.add(new FichaVisitaDomiciliarChild(new FichaVisitaDomiciliarChildThrift()));

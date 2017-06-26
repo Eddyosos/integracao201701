@@ -1,9 +1,10 @@
 package com.github.Eddyosos.integracao20171.esus.cds.atividadeindividual;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadeindividual.OutrosSiaThrift;
+import com.github.eddyosos.e_sus_ab_factory.cds.atividadeindividual.IOutrosSia;
 import java.util.List;
 
-public class OutrosSia {
+public class OutrosSia implements IOutrosSia {
 
     private final OutrosSiaThrift instance;
 
@@ -15,6 +16,7 @@ public class OutrosSia {
         instance = thrift;
     }
 
+    @Override
     public OutrosSiaThrift getInstance() {
         return instance;
     }
@@ -24,6 +26,7 @@ public class OutrosSia {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validates(){
         return validateCodigoExame() &&
                 validateSolicitadoAvaliado();
@@ -36,6 +39,7 @@ public class OutrosSia {
      * 2- Atender ao regex: \A\d{10}\z
      * @return 
      */
+    @Override
     public boolean validateCodigoExame(){
         return instance.isSetCodigoExame() &&
                 instance.getCodigoExame().matches("\\A\\d{10}\\z");
@@ -45,6 +49,7 @@ public class OutrosSia {
      * Código do exame solicitado ou avaliado.
      * @return 
      */
+    @Override
     public String getCodigoExame() {
         return instance.getCodigoExame();
     }
@@ -53,6 +58,7 @@ public class OutrosSia {
      * Código do exame solicitado ou avaliado.
      * @param codigoExame 
      */
+    @Override
     public void setCodigoExame(String codigoExame) {
         instance.setCodigoExame(codigoExame);
     }
@@ -63,6 +69,7 @@ public class OutrosSia {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateSolicitadoAvaliado(){
         return instance.isSetSolicitadoAvaliado();
     }
@@ -71,6 +78,7 @@ public class OutrosSia {
      * Código do indicador se o exame foi Solicitado e / ou Avaliado.
      * @return
      */
+    @Override
     public List<String> getSolicitadoAvaliado() {
         return instance.getSolicitadoAvaliado();
     }
@@ -79,6 +87,7 @@ public class OutrosSia {
      * Código do indicador se o exame foi Solicitado e / ou Avaliado.
      * @param solicitadoAvaliado 
      */
+    @Override
     public void setSolicitadoAvaliado(List<String> solicitadoAvaliado) {
         instance.setSolicitadoAvaliado(solicitadoAvaliado);
     }

@@ -4,37 +4,39 @@ import br.gov.saude.esus.cds.transport.generated.thrift.cadastrodomiciliar.Cadas
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastrodomiciliar.FamiliaRowThrift;
 import com.github.Eddyosos.integracao20171.esus.cds.common.EnderecoLocalPermanencia;
 import com.github.Eddyosos.integracao20171.esus.cds.common.HeaderCdsCadastro;
+import com.github.eddyosos.e_sus_ab_factory.cds.common.IEnderecoLocalPermanencia;
+import com.github.eddyosos.e_sus_ab_factory.cds.common.IHeaderCdsCadastro;
+import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.cadastrodomiciliar.ICadastroDomiciliar;
+import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.cadastrodomiciliar.ICondicaoMoradia;
+import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.cadastrodomiciliar.IFamiliaRow;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import org.apache.thrift.TException;
 
-public class CadastroDomiciliar {
+public class CadastroDomiciliar implements ICadastroDomiciliar {
     /**
      * Instancia para encapsulamento do Thrift
      */
-    private CadastroDomiciliarThrift cadastroDomiciliar = new CadastroDomiciliarThrift();
+    private CadastroDomiciliarThrift cadastroDomiciliar;
+    
+    public CadastroDomiciliar() {
+        cadastroDomiciliar = new CadastroDomiciliarThrift();
+    }
 
     /**
      * É protegido pois não deve estar visível para o usuário
      * @param cadastroDomiciliar 
      */
-    protected CadastroDomiciliar(CadastroDomiciliarThrift cadastroDomiciliar) {
+    public CadastroDomiciliar(CadastroDomiciliarThrift cadastroDomiciliar) {
         this.cadastroDomiciliar = cadastroDomiciliar;
-    }
-
-    public CadastroDomiciliar deepCopy() {
-        return new CadastroDomiciliar(cadastroDomiciliar.deepCopy());
-    }
-
-    public void clear() {
-        cadastroDomiciliar.clear();
     }
 
     /**
      * Lista de código dos animais no domicílio.
      * @return value
      */
+    @Override
     public int getAnimaisNoDomicilioSize() {
         return cadastroDomiciliar.getAnimaisNoDomicilioSize();
     }
@@ -43,6 +45,7 @@ public class CadastroDomiciliar {
      * Lista de código dos animais no domicílio.
      * @return Iterator<Long>
      */
+    @Override
     public Iterator<Long> getAnimaisNoDomicilioIterator() {
         return cadastroDomiciliar.getAnimaisNoDomicilioIterator();
     }
@@ -52,6 +55,7 @@ public class CadastroDomiciliar {
      * @param elem 
      * Adiciona Elemento 
      */
+    @Override
     public void addToAnimaisNoDomicilio(long elem) {
         cadastroDomiciliar.addToAnimaisNoDomicilio(elem);
     }
@@ -60,6 +64,7 @@ public class CadastroDomiciliar {
      * Lista de código dos animais no domicílio.
      * @return List<Long>
      */
+    @Override
     public List<Long> getAnimaisNoDomicilio() {
         return cadastroDomiciliar.getAnimaisNoDomicilio();
     }
@@ -68,10 +73,12 @@ public class CadastroDomiciliar {
      * Lista de código dos animais no domicílio.
      * @param animaisNoDomicilio 
      */
+    @Override
     public void setAnimaisNoDomicilio(List<Long> animaisNoDomicilio) {
         cadastroDomiciliar.setAnimaisNoDomicilio(animaisNoDomicilio);
     }
 
+    @Override
     public void unsetAnimaisNoDomicilio() {
         cadastroDomiciliar.unsetAnimaisNoDomicilio();
     }
@@ -80,6 +87,7 @@ public class CadastroDomiciliar {
      * Lista de código dos animais no domicílio.
      * @return animaisNoDomicilio 
      */
+    @Override
     public boolean isSetAnimaisNoDomicilio() {
         return cadastroDomiciliar.isSetAnimaisNoDomicilio();
     }
@@ -88,6 +96,7 @@ public class CadastroDomiciliar {
      * Lista de código dos animais no domicílio.
      * @param value 
      */
+    @Override
     public void setAnimaisNoDomicilioIsSet(boolean value) {
         cadastroDomiciliar.setAnimaisNoDomicilioIsSet(value);
     }
@@ -97,7 +106,8 @@ public class CadastroDomiciliar {
      * @return ondicaoMoradia
      * Não devem ser preenchidos se o campo statusTermoRecusaCadastroDomiciliarAtencaoBasica = true
      */
-    public CondicaoMoradia getCondicaoMoradia() {
+    @Override
+    public ICondicaoMoradia getCondicaoMoradia() {
         return new CondicaoMoradia(cadastroDomiciliar.getCondicaoMoradia());
     }
 
@@ -106,10 +116,12 @@ public class CadastroDomiciliar {
      * @param condicaoMoradia 
      * Não devem ser preenchidos se o campo statusTermoRecusaCadastroDomiciliarAtencaoBasica = true
      */
-    public void setCondicaoMoradia(CondicaoMoradia condicaoMoradia) {
+    @Override
+    public void setCondicaoMoradia(ICondicaoMoradia condicaoMoradia) {
         cadastroDomiciliar.setCondicaoMoradia(condicaoMoradia.getInstence());
     }
 
+    @Override
     public void unsetCondicaoMoradia() {
         cadastroDomiciliar.unsetCondicaoMoradia();
     }
@@ -118,6 +130,7 @@ public class CadastroDomiciliar {
      * Condições de moradia do domicílio.
      * @return CondicaoMoradia
      */
+    @Override
     public boolean isSetCondicaoMoradia() {
         return cadastroDomiciliar.isSetCondicaoMoradia();
     }
@@ -126,6 +139,7 @@ public class CadastroDomiciliar {
      * Condições de moradia do domicílio.
      * @param value 
      */
+    @Override
     public void setCondicaoMoradiaIsSet(boolean value) {
         cadastroDomiciliar.setCondicaoMoradiaIsSet(value);
     }
@@ -134,7 +148,8 @@ public class CadastroDomiciliar {
      * Informações sobre o profissional e a data do cadastro.
      * @return value
      */
-    public HeaderCdsCadastro getDadosGerais() {
+    @Override
+    public IHeaderCdsCadastro getDadosGerais() {
         return new HeaderCdsCadastro(cadastroDomiciliar.getDadosGerais());
     }
 
@@ -142,10 +157,12 @@ public class CadastroDomiciliar {
      * Informações sobre o profissional e a data do cadastro.
      * @param dadosGerais 
      */
-    public void setDadosGerais(HeaderCdsCadastro dadosGerais) {
+    @Override
+    public void setDadosGerais(IHeaderCdsCadastro dadosGerais) {
         cadastroDomiciliar.setDadosGerais(dadosGerais.getInstance());
     }
 
+    @Override
     public void unsetDadosGerais() {
         cadastroDomiciliar.unsetDadosGerais();
     }
@@ -154,6 +171,7 @@ public class CadastroDomiciliar {
      * Informações sobre o profissional e a data do cadastro.
      * @return  DadosGerais
      */
+    @Override
     public boolean isSetDadosGerais() {
         return cadastroDomiciliar.isSetDadosGerais();
     }
@@ -162,6 +180,7 @@ public class CadastroDomiciliar {
      * Informações sobre o profissional e a data do cadastro.
      * @param value 
      */
+    @Override
     public void setDadosGeraisIsSet(boolean value) {
         cadastroDomiciliar.setDadosGeraisIsSet(value);
     }
@@ -171,7 +190,8 @@ public class CadastroDomiciliar {
      * @return EnderecoLocalPermanencia
      * Preenchimento obrigatório caso o campo statusTermoRecusaCadastroDomiciliarAtencaoBasica = false
      */
-    public EnderecoLocalPermanencia getEnderecoLocalPermanencia() {
+    @Override
+    public IEnderecoLocalPermanencia getEnderecoLocalPermanencia() {
         return new EnderecoLocalPermanencia(cadastroDomiciliar.getEnderecoLocalPermanencia());
     }
 
@@ -180,10 +200,12 @@ public class CadastroDomiciliar {
      * @param enderecoLocalPermanencia 
      * Preenchimento obrigatório caso o campo statusTermoRecusaCadastroDomiciliarAtencaoBasica = false
      */
-    public void setEnderecoLocalPermanencia(EnderecoLocalPermanencia enderecoLocalPermanencia) {
+    @Override
+    public void setEnderecoLocalPermanencia(IEnderecoLocalPermanencia enderecoLocalPermanencia) {
         cadastroDomiciliar.setEnderecoLocalPermanencia(enderecoLocalPermanencia.getInstance());
     }
 
+    @Override
     public void unsetEnderecoLocalPermanencia() {
         cadastroDomiciliar.unsetEnderecoLocalPermanencia();
     }
@@ -193,6 +215,7 @@ public class CadastroDomiciliar {
      * @return EnderecoLocalPermanencia
      * Preenchimento obrigatório caso o campo statusTermoRecusaCadastroDomiciliarAtencaoBasica = false
      */
+    @Override
     public boolean isSetEnderecoLocalPermanencia() {
         return cadastroDomiciliar.isSetEnderecoLocalPermanencia();
     }
@@ -201,6 +224,7 @@ public class CadastroDomiciliar {
      * Informações sobre o endereço do domicílio.
      * @param value 
      */
+    @Override
     public void setEnderecoLocalPermanenciaIsSet(boolean value) {
         cadastroDomiciliar.setEnderecoLocalPermanenciaIsSet(value);
     }
@@ -210,6 +234,7 @@ public class CadastroDomiciliar {
      * @return FamiliasSize
      * Tamanho máximo = 4
      */
+    @Override
     public int getFamiliasSize() {
         return cadastroDomiciliar.getFamiliasSize();
     }
@@ -218,8 +243,9 @@ public class CadastroDomiciliar {
      * Lista das famílias que residem no domicílio.
      * @return Iterator<FamiliaRow>
      */
-    public Iterator<FamiliaRow> getFamiliasIterator() {
-        List<FamiliaRow> listaFamiliaRow = new LinkedList<>();
+    @Override
+    public Iterator<IFamiliaRow> getFamiliasIterator() {
+        List<IFamiliaRow> listaFamiliaRow = new LinkedList<>();
         
         cadastroDomiciliar.getFamiliasIterator().forEachRemaining((elemento) -> {
             listaFamiliaRow.add(new FamiliaRow(elemento));
@@ -233,7 +259,8 @@ public class CadastroDomiciliar {
      * Tamanho máximo = 4
      * @param elem 
      */
-    public void addToFamilias(FamiliaRow elem) {
+    @Override
+    public void addToFamilias(IFamiliaRow elem) {
         cadastroDomiciliar.addToFamilias(elem.getInstance());
     }
 
@@ -242,8 +269,9 @@ public class CadastroDomiciliar {
      * Tamanho máximo = 4
      * @return List<FamiliaRow>
      */
-    public List<FamiliaRow> getFamilias() {
-        List<FamiliaRow> listaFamiliaRow = new LinkedList<>();
+    @Override
+    public List<IFamiliaRow> getFamilias() {
+        List<IFamiliaRow> listaFamiliaRow = new LinkedList<>();
         
         cadastroDomiciliar.getFamilias().forEach((elemento) -> {
             listaFamiliaRow.add(new FamiliaRow(elemento));
@@ -258,7 +286,8 @@ public class CadastroDomiciliar {
      * @param familias
      * ão pode ser preenchido caso o campo statusTermoRecusaCadastroDomiciliarAtencaoBasica = true.
      */
-    public void setFamilias(List<FamiliaRow> familias) {
+    @Override
+    public void setFamilias(List<IFamiliaRow> familias) {
         List<FamiliaRowThrift> listaFamiliaRowThrift = new LinkedList<>();
         
         familias.forEach((elemento) -> {
@@ -268,6 +297,7 @@ public class CadastroDomiciliar {
         cadastroDomiciliar.setFamilias(listaFamiliaRowThrift);
     }
 
+    @Override
     public void unsetFamilias() {
         cadastroDomiciliar.unsetFamilias();
     }
@@ -277,6 +307,7 @@ public class CadastroDomiciliar {
      * @return Familias
      * Não pode ser preenchido caso o campo statusTermoRecusaCadastroDomiciliarAtencaoBasica = true.
      */
+    @Override
     public boolean isSetFamilias() {
         return cadastroDomiciliar.isSetFamilias();
     }
@@ -285,6 +316,7 @@ public class CadastroDomiciliar {
      * Lista das famílias que residem no domicílio.
      * @param value 
      */
+    @Override
     public void setFamiliasIsSet(boolean value) {
         cadastroDomiciliar.setFamiliasIsSet(value);
     }
@@ -295,6 +327,7 @@ public class CadastroDomiciliar {
      * Caso seja uma ficha de atualização, o campo uuidFichaOriginadora deve ser preenchido com o UUID da ficha que deu origem ao registro.
      * É COndicional e tem tamanho máximo = 2
      */
+    @Override
     public boolean isFichaAtualizada() {
         return cadastroDomiciliar.isFichaAtualizada();
     }
@@ -303,10 +336,12 @@ public class CadastroDomiciliar {
      * Marcador que indica se a ficha é uma atualização.
      * @param fichaAtualizada 
      */
+    @Override
     public void setFichaAtualizada(boolean fichaAtualizada) {
         cadastroDomiciliar.setFichaAtualizada(fichaAtualizada);
     }
 
+    @Override
     public void unsetFichaAtualizada() {
         cadastroDomiciliar.unsetFichaAtualizada();
     }
@@ -315,10 +350,12 @@ public class CadastroDomiciliar {
      * Marcador que indica se a ficha é uma atualização.
      * @return FichaAtualizada 
      */
+    @Override
     public boolean isSetFichaAtualizada() {
         return cadastroDomiciliar.isSetFichaAtualizada();
     }
 
+    @Override
     public void setFichaAtualizadaIsSet(boolean value) {
         cadastroDomiciliar.setFichaAtualizadaIsSet(value);
     }
@@ -330,6 +367,7 @@ public class CadastroDomiciliar {
      * Não pode ser preenchido se o campo statusTermoRecusaCadastroDomiciliarAtencaoBasica = true.
 
      */
+    @Override
     public String getQuantosAnimaisNoDomicilio() {
         return cadastroDomiciliar.getQuantosAnimaisNoDomicilio();
     }
@@ -340,10 +378,12 @@ public class CadastroDomiciliar {
      * Não pode ser preenchido se o campo stAnimaisNoDomicilio = false.
      * Não pode ser preenchido se o campo statusTermoRecusaCadastroDomiciliarAtencaoBasica = true.
      */
+    @Override
     public void setQuantosAnimaisNoDomicilio(String quantosAnimaisNoDomicilio) {
         cadastroDomiciliar.setQuantosAnimaisNoDomicilio(quantosAnimaisNoDomicilio);
     }
 
+    @Override
     public void unsetQuantosAnimaisNoDomicilio() {
         cadastroDomiciliar.unsetQuantosAnimaisNoDomicilio();
     }
@@ -354,6 +394,7 @@ public class CadastroDomiciliar {
      * Não pode ser preenchido se o campo stAnimaisNoDomicilio = false.
      * Não pode ser preenchido se o campo statusTermoRecusaCadastroDomiciliarAtencaoBasica = true.
      */
+    @Override
     public boolean isSetQuantosAnimaisNoDomicilio() {
         return cadastroDomiciliar.isSetQuantosAnimaisNoDomicilio();
     }
@@ -362,6 +403,7 @@ public class CadastroDomiciliar {
      * Número de animais no domicílio
      * @param value 
      */
+    @Override
     public void setQuantosAnimaisNoDomicilioIsSet(boolean value) {
         cadastroDomiciliar.setQuantosAnimaisNoDomicilioIsSet(value);
     }
@@ -371,6 +413,7 @@ public class CadastroDomiciliar {
      * @return StAnimaisNoDomicilio 
      * Não pode ser preenchido se o campo statusTermoRecusaCadastroDomiciliarAtencaoBasica = true.
      */
+    @Override
     public boolean isStAnimaisNoDomicilio() {
         return cadastroDomiciliar.isStAnimaisNoDomicilio();
     }
@@ -380,10 +423,12 @@ public class CadastroDomiciliar {
      * @param stAnimaisNoDomicilio
      * Não pode ser preenchido se o campo statusTermoRecusaCadastroDomiciliarAtencaoBasica = true.
      */
+    @Override
     public void setStAnimaisNoDomicilio(boolean stAnimaisNoDomicilio) {
         cadastroDomiciliar.setStAnimaisNoDomicilio(stAnimaisNoDomicilio);
     }
 
+    @Override
     public void unsetStAnimaisNoDomicilio() {
         cadastroDomiciliar.unsetStAnimaisNoDomicilio();
     }
@@ -393,6 +438,7 @@ public class CadastroDomiciliar {
      * @return stAnimaisNoDomicilio
      * Não pode ser preenchido se o campo statusTermoRecusaCadastroDomiciliarAtencaoBasica = true.
      */
+    @Override
     public boolean isSetStAnimaisNoDomicilio() {
         return cadastroDomiciliar.isSetStAnimaisNoDomicilio();
     }
@@ -401,6 +447,7 @@ public class CadastroDomiciliar {
      * Marcador que indica se existem animais no domicílio.
      * @param value 
      */
+    @Override
     public void setStAnimaisNoDomicilioIsSet(boolean value) {
         cadastroDomiciliar.setStAnimaisNoDomicilioIsSet(value);
     }
@@ -409,6 +456,7 @@ public class CadastroDomiciliar {
      * Marcador que indica se o cadastro foi utilizado o termo de recusa de cadastro do domicílio.
      * @return StatusTermoRecusaCadastroDomiciliarAtencaoBasica
      */
+    @Override
     public boolean isStatusTermoRecusaCadastroDomiciliarAtencaoBasica() {
         return cadastroDomiciliar.isStatusTermoRecusaCadastroDomiciliarAtencaoBasica();
     }
@@ -417,10 +465,12 @@ public class CadastroDomiciliar {
      * Marcador que indica se o cadastro foi utilizado o termo de recusa de cadastro do domicílio.
      * @param statusTermoRecusaCadastroDomiciliarAtencaoBasica 
      */
+    @Override
     public void setStatusTermoRecusaCadastroDomiciliarAtencaoBasica(boolean statusTermoRecusaCadastroDomiciliarAtencaoBasica) {
         cadastroDomiciliar.setStatusTermoRecusaCadastroDomiciliarAtencaoBasica(statusTermoRecusaCadastroDomiciliarAtencaoBasica);
     }
 
+    @Override
     public void unsetStatusTermoRecusaCadastroDomiciliarAtencaoBasica() {
         cadastroDomiciliar.unsetStatusTermoRecusaCadastroDomiciliarAtencaoBasica();
     }
@@ -429,6 +479,7 @@ public class CadastroDomiciliar {
      * Marcador que indica se o cadastro foi utilizado o termo de recusa de cadastro do domicílio.
      * @return statusTermoRecusaCadastroDomiciliarAtencaoBasica
      */
+    @Override
     public boolean isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica() {
         return cadastroDomiciliar.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica();
     }
@@ -437,6 +488,7 @@ public class CadastroDomiciliar {
      * Marcador que indica se o cadastro foi utilizado o termo de recusa de cadastro do domicílio.
      * @param value 
      */
+    @Override
     public void setStatusTermoRecusaCadastroDomiciliarAtencaoBasicaIsSet(boolean value) {
         cadastroDomiciliar.setStatusTermoRecusaCadastroDomiciliarAtencaoBasicaIsSet(value);
     }
@@ -446,6 +498,7 @@ public class CadastroDomiciliar {
      * @return tpCdsOrigem 
      * Tamanho máximo = 1
      */
+    @Override
     public int getTpCdsOrigem() {
         return cadastroDomiciliar.getTpCdsOrigem();
     }
@@ -455,10 +508,12 @@ public class CadastroDomiciliar {
      * @param tpCdsOrigem 
      * Tamanho máximo = 1
      */
+    @Override
     public void setTpCdsOrigem(int tpCdsOrigem) {
         cadastroDomiciliar.setTpCdsOrigem(tpCdsOrigem);
     }
 
+    @Override
     public void unsetTpCdsOrigem() {
         cadastroDomiciliar.unsetTpCdsOrigem();
     }
@@ -467,6 +522,7 @@ public class CadastroDomiciliar {
      * Tipo de origem dos dados do registro.
      * @return tpCdsOrigem  
      */
+    @Override
     public boolean isSetTpCdsOrigem() {
         return cadastroDomiciliar.isSetTpCdsOrigem();
     }
@@ -475,6 +531,7 @@ public class CadastroDomiciliar {
      * Tipo de origem dos dados do registro.
      * @param value 
      */
+    @Override
     public void setTpCdsOrigemIsSet(boolean value) {
         cadastroDomiciliar.setTpCdsOrigemIsSet(value);
     }
@@ -483,6 +540,7 @@ public class CadastroDomiciliar {
      * Código UUID para identificar a ficha na base de dados nacional. 
      * @return uuid
      */
+    @Override
     public String getUuid() {
         return cadastroDomiciliar.getUuid();
     }
@@ -491,10 +549,12 @@ public class CadastroDomiciliar {
      * Código UUID para identificar a ficha na base de dados nacional.
      * @param uuid 
      */
+    @Override
     public void setUuid(String uuid) {
         cadastroDomiciliar.setUuid(uuid);
     }
 
+    @Override
     public void unsetUuid() {
         cadastroDomiciliar.unsetUuid();
     }
@@ -503,6 +563,7 @@ public class CadastroDomiciliar {
      * Código UUID para identificar a ficha na base de dados nacional.
      * @return uuid
      */
+    @Override
     public boolean isSetUuid() {
         return cadastroDomiciliar.isSetUuid();
     }
@@ -511,6 +572,7 @@ public class CadastroDomiciliar {
      * Código UUID para identificar a ficha na base de dados nacional.
      * @param value 
      */
+    @Override
     public void setUuidIsSet(boolean value) {
         cadastroDomiciliar.setUuidIsSet(value);
     }
@@ -519,6 +581,7 @@ public class CadastroDomiciliar {
      * Código UUID para identificar a ficha que deu origem ao cadastro do registro.
      * @return uuidFichaOriginadora
      */
+    @Override
     public String getUuidFichaOriginadora() {
         return cadastroDomiciliar.getUuidFichaOriginadora();
     }
@@ -527,10 +590,12 @@ public class CadastroDomiciliar {
      * Código UUID para identificar a ficha que deu origem ao cadastro do registro
      * @param uuidFichaOriginadora 
      */
+    @Override
     public void setUuidFichaOriginadora(String uuidFichaOriginadora) {
         cadastroDomiciliar.setUuidFichaOriginadora(uuidFichaOriginadora);
     }
 
+    @Override
     public void unsetUuidFichaOriginadora() {
         cadastroDomiciliar.unsetUuidFichaOriginadora();
     }
@@ -539,6 +604,7 @@ public class CadastroDomiciliar {
      * Código UUID para identificar a ficha que deu origem ao cadastro do registro.
      * @return uuidFichaOriginadora
      */
+    @Override
     public boolean isSetUuidFichaOriginadora() {
         return cadastroDomiciliar.isSetUuidFichaOriginadora();
     }
@@ -547,50 +613,22 @@ public class CadastroDomiciliar {
      * Código UUID para identificar a ficha que deu origem ao cadastro do registro.
      * @param value 
      */
+    @Override
     public void setUuidFichaOriginadoraIsSet(boolean value) {
         cadastroDomiciliar.setUuidFichaOriginadoraIsSet(value);
-    }
-
-    /**
-     * @param that
-     * @return that 
-     */
-    @Override
-    public boolean equals(Object that) {
-        return cadastroDomiciliar.equals(that);
-    }
-
-    public boolean equals(CadastroDomiciliar that) {
-        return cadastroDomiciliar.equals(that.getInstance());
-    }
-
-    public int hashCode() {
-        return cadastroDomiciliar.hashCode();
-    }
-
-    /**
-     * 
-     * @param other
-     * @return other 
-     */
-    public int compareTo(CadastroDomiciliar other) {
-        return cadastroDomiciliar.compareTo(other.getInstance());
-    }
-
-    @Override
-    public String toString() {
-        return cadastroDomiciliar.toString();
     }
 
     /**
      * 
      * @throws TException 
      */
+    @Override
     public void validate() throws TException {
         cadastroDomiciliar.validate();
     }
 
-    protected CadastroDomiciliarThrift getInstance(){
+    @Override
+    public CadastroDomiciliarThrift getInstance(){
         return this.cadastroDomiciliar;
     }
     
@@ -602,6 +640,7 @@ public class CadastroDomiciliar {
                 validaEnderecoLocalPermanencia() && validaFamilias() && validaFichaAtualizada() && validaQuantosAnimaisNoDomicilio() &&
                 validaStAnimaisNoDomicilio() && validaStatusTermoRecusaCadastroDomiciliarAtencaoBasica() && validaTpCdsOrigem() && validaUuid() && validaUuidFichaOriginadora();
      */
+    @Override
     public boolean validates(){
         
         return validaAnimaisNoDomicilio() &&
@@ -624,6 +663,7 @@ public class CadastroDomiciliar {
      * É Condicional
      * Não pode ser preenchido se o campo statusTermoRecusaCadastroDomiciliarAtencaoBasica = true.
      */
+    @Override
     public boolean validaAnimaisNoDomicilio(){
         /**
          * Ainda é necessário fazer valodação de List<Long> pode ser Condicional
@@ -642,6 +682,7 @@ public class CadastroDomiciliar {
     * É Condicional
     * Não devem ser preenchidos se o campo statusTermoRecusaCadastroDomiciliarAtencaoBasica = true
     */ 
+    @Override
    public boolean validaCondicaoMoradia(){
         if(cadastroDomiciliar.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica()==true)
             return false;
@@ -655,6 +696,7 @@ public class CadastroDomiciliar {
     * @return HeaderCdsCadastro
     * É Obrigatório
     */
+    @Override
    public boolean validaDadosGerais(){
        return cadastroDomiciliar.isSetDadosGerais();
    }
@@ -665,6 +707,7 @@ public class CadastroDomiciliar {
     * É Condicional
     * Preenchimento obrigatório caso o campo statusTermoRecusaCadastroDomiciliarAtencaoBasica = false.
     */
+    @Override
    public boolean validaEnderecoLocalPermanencia(){
        if(cadastroDomiciliar.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica()==false)
             return true &&
@@ -679,6 +722,7 @@ public class CadastroDomiciliar {
     * É Condicional
     * Não pode ser preenchido caso o campo statusTermoRecusaCadastroDomiciliarAtencaoBasica = true.
     */
+    @Override
    public boolean validaFamilias(){
       /**
       * Ainda é necessário fazer valodação de List<Long> pode ser Condicional
@@ -697,6 +741,7 @@ public class CadastroDomiciliar {
     * É Obrigatório
     * Caso seja uma ficha de atualização, o campo uuidFichaOriginadora deve ser preenchido com o UUID da ficha que deu origem ao registro.
     */
+    @Override
    public boolean validaFichaAtualizada(){
        return cadastroDomiciliar.isSetFichaAtualizada() == true ;
    }
@@ -708,6 +753,7 @@ public class CadastroDomiciliar {
     * Não pode ser preenchido se o campo stAnimaisNoDomicilio = false.
     * Não pode ser preenchido se o campo statusTermoRecusaCadastroDomiciliarAtencaoBasica = true.
     */
+    @Override
    public boolean validaQuantosAnimaisNoDomicilio(){
        String quantosAnimaisNoDomicilio = cadastroDomiciliar.getQuantosAnimaisNoDomicilio();
        
@@ -725,6 +771,7 @@ public class CadastroDomiciliar {
     * É Condicional
     * Não pode ser preenchido se o campo statusTermoRecusaCadastroDomiciliarAtencaoBasica = true
     */
+    @Override
    public boolean validaStAnimaisNoDomicilio(){
        if(cadastroDomiciliar.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica()==true)
             return false;
@@ -738,6 +785,7 @@ public class CadastroDomiciliar {
     * @return StatusTermoRecusaCadastroDomiciliarAtencaoBasica
     * Não é Obrigatório
     */
+    @Override
    public boolean validaStatusTermoRecusaCadastroDomiciliarAtencaoBasica(){
         return cadastroDomiciliar.isSetStatusTermoRecusaCadastroDomiciliarAtencaoBasica() == true ;
    }
@@ -748,6 +796,7 @@ public class CadastroDomiciliar {
     * É obrigatório
     * Tamanho minimo e máximo igual a 1
     */
+    @Override
    public boolean validaTpCdsOrigem(){
        return cadastroDomiciliar.isSetTpCdsOrigem();
    }
@@ -759,6 +808,7 @@ public class CadastroDomiciliar {
     * tamanho mínimo = 3
     * tamanho maximo = 44
     */
+    @Override
    public boolean validaUuid(){
        String uuid = cadastroDomiciliar.getUuid();
        return uuid != null &&
@@ -772,10 +822,12 @@ public class CadastroDomiciliar {
     * tamanho mínimo = 3
     * tamanho maximo = 44
     */
+    @Override
    public boolean validaUuidFichaOriginadora(){
        String uuidFichaOriginadora = cadastroDomiciliar.getUuidFichaOriginadora();
        return uuidFichaOriginadora != null &&
                uuidFichaOriginadora.length() >=3 &&
                uuidFichaOriginadora.length() <=44;    
    } 
+
 }

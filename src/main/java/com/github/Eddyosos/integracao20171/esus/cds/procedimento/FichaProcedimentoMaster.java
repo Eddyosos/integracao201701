@@ -2,27 +2,21 @@ package com.github.Eddyosos.integracao20171.esus.cds.procedimento;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.procedimento.FichaProcedimentoChildThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.procedimento.FichaProcedimentoMasterThrift;
-import br.gov.saude.esus.transport.common.api.configuracaodestino.VersaoThrift;
-import br.gov.saude.esus.transport.common.generated.thrift.DadoInstalacaoThrift;
-import br.gov.saude.esus.transport.common.generated.thrift.DadoTransporteThrift;
-import com.github.Eddyosos.integracao20171.compactor.SerializadorThrift;
 import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import com.github.eddyosos.e_sus_ab_factory.cds.common.IUnicaLotacaoHeader;
+import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.procedimento.IFichaProcedimentoChild;
+import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.procedimento.IFichaProcedimentoMaster;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
 
-public class FichaProcedimentoMaster  {
-    private FichaProcedimentoMasterThrift instancia = new FichaProcedimentoMasterThrift();
-    private DadoInstalacaoThrift originadora = new DadoInstalacaoThrift();
-    private DadoInstalacaoThrift remetente = new DadoInstalacaoThrift();
-    private long TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO = 7;
-    private final String EXTENSAO_EXPORT = ".esus";
+public class FichaProcedimentoMaster implements IFichaProcedimentoMaster  {
+    private FichaProcedimentoMasterThrift instancia;
+    public FichaProcedimentoMaster(){
+        instancia = new FichaProcedimentoMasterThrift();
+    }
 
+    @Override
     public FichaProcedimentoMasterThrift getInstance(){
         return this.instancia;
     }
@@ -31,6 +25,7 @@ public class FichaProcedimentoMaster  {
      * Retorna o valor do atributo
      * @return o valor do atributo
      */
+    @Override
     public String getUuidFicha() {
         return instancia.getUuidFicha();
     }
@@ -39,6 +34,7 @@ public class FichaProcedimentoMaster  {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
+    @Override
     public void setUuidFicha(String uuidFicha) {
         instancia.setUuidFicha(uuidFicha);
     }
@@ -47,6 +43,7 @@ public class FichaProcedimentoMaster  {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
+    @Override
     public void unsetUuidFicha() {
         instancia.unsetUuidFicha();
     }
@@ -55,6 +52,7 @@ public class FichaProcedimentoMaster  {
      * Marca que o atributo foi setado
      * @param se esta setado ou nao
      */
+    @Override
     public boolean isSetUuidFicha() {
         return instancia.isSetUuidFicha();
     }
@@ -63,6 +61,7 @@ public class FichaProcedimentoMaster  {
      * Retorna o valor do atributo
      * @return o valor do atributo
      */
+    @Override
     public void setUuidFichaIsSet(boolean value) {
         instancia.setUuidFichaIsSet(value);
     }
@@ -71,6 +70,7 @@ public class FichaProcedimentoMaster  {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
+    @Override
     public int getTpCdsOrigem() {
         return instancia.getTpCdsOrigem();
     }
@@ -79,6 +79,7 @@ public class FichaProcedimentoMaster  {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public void setTpCdsOrigem(int tpCdsOrigem) {
         instancia.setTpCdsOrigem(tpCdsOrigem);
     }
@@ -87,6 +88,7 @@ public class FichaProcedimentoMaster  {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public void unsetTpCdsOrigem() {
         instancia.unsetTpCdsOrigem();
     }
@@ -95,6 +97,7 @@ public class FichaProcedimentoMaster  {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public boolean isSetTpCdsOrigem() {
         return instancia.isSetTpCdsOrigem();
     }
@@ -103,6 +106,7 @@ public class FichaProcedimentoMaster  {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
+    @Override
     public void setTpCdsOrigemIsSet(boolean value) {
         instancia.setTpCdsOrigemIsSet(value);
     }
@@ -111,7 +115,8 @@ public class FichaProcedimentoMaster  {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
-    public UnicaLotacaoHeader getHeaderTransport() {
+    @Override
+    public IUnicaLotacaoHeader getHeaderTransport() {
         return new UnicaLotacaoHeader(instancia.getHeaderTransport());
     }
 
@@ -119,7 +124,8 @@ public class FichaProcedimentoMaster  {
      * Marca que o atributo foi setado
      * @param se esta setado ou nao
      */
-    public void setHeaderTransport(UnicaLotacaoHeader headerTransport) {
+    @Override
+    public void setHeaderTransport(IUnicaLotacaoHeader headerTransport) {
         instancia.setHeaderTransport(headerTransport.getInstance());
     }
 
@@ -127,6 +133,7 @@ public class FichaProcedimentoMaster  {
      * Retorna o valor do atributo
      * @return o valor do atributo
      */
+    @Override
     public void unsetHeaderTransport() {
         instancia.unsetHeaderTransport();
     }
@@ -135,6 +142,7 @@ public class FichaProcedimentoMaster  {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
+    @Override
     public boolean isSetHeaderTransport() {
         return instancia.isSetHeaderTransport();
     }
@@ -143,6 +151,7 @@ public class FichaProcedimentoMaster  {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public void setHeaderTransportIsSet(boolean value) {
         instancia.setHeaderTransportIsSet(value);
     }
@@ -151,6 +160,7 @@ public class FichaProcedimentoMaster  {
      * Marca que o atributo foi setado
      * @param se esta setado ou nao
      */
+    @Override
     public int getAtendProcedimentosSize() {
         return instancia.getAtendProcedimentosSize();
     }
@@ -159,8 +169,9 @@ public class FichaProcedimentoMaster  {
      * Retorna o valor do atributo
      * @return o valor do atributo
      */
-    public Iterator<FichaProcedimentoChild> getAtendProcedimentosIterator() {
-        List<FichaProcedimentoChild> list = new LinkedList<>();
+    @Override
+    public Iterator<IFichaProcedimentoChild> getAtendProcedimentosIterator() {
+        List<IFichaProcedimentoChild> list = new LinkedList<>();
         instancia.getAtendProcedimentosIterator().forEachRemaining((item) -> {
             list.add(new FichaProcedimentoChild(item));
         });
@@ -172,7 +183,8 @@ public class FichaProcedimentoMaster  {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
-    public void addToAtendProcedimentos(FichaProcedimentoChild elem) {
+    @Override
+    public void addToAtendProcedimentos(IFichaProcedimentoChild elem) {
         instancia.addToAtendProcedimentos(elem.getInstance());
     }
 
@@ -180,8 +192,9 @@ public class FichaProcedimentoMaster  {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
-    public List<FichaProcedimentoChild> getAtendProcedimentos() {
-        List<FichaProcedimentoChild> list = new LinkedList<>();
+    @Override
+    public List<IFichaProcedimentoChild> getAtendProcedimentos() {
+        List<IFichaProcedimentoChild> list = new LinkedList<>();
         for(FichaProcedimentoChildThrift element : instancia.getAtendProcedimentos()){
             list.add(new FichaProcedimentoChild(element));
         }
@@ -193,7 +206,8 @@ public class FichaProcedimentoMaster  {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
-    public void setAtendProcedimentos(List<FichaProcedimentoChild> atendProcedimentos) {
+    @Override
+    public void setAtendProcedimentos(List<IFichaProcedimentoChild> atendProcedimentos) {
         List<FichaProcedimentoChildThrift> list = new LinkedList<>();
         atendProcedimentos.forEach((elem) -> {
             list.add(elem.getInstance());
@@ -206,6 +220,7 @@ public class FichaProcedimentoMaster  {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public boolean isSetAtendProcedimentos() {
         return instancia.isSetAtendProcedimentos();
     }
@@ -214,6 +229,7 @@ public class FichaProcedimentoMaster  {
      * Marca que o atributo foi setado
      * @param se esta setado ou nao
      */
+    @Override
     public void setAtendProcedimentosIsSet(boolean value) {
         instancia.setAtendProcedimentosIsSet(value);
     }
@@ -222,6 +238,7 @@ public class FichaProcedimentoMaster  {
      * Retorna o valor do atributo
      * @return o valor do atributo
      */
+    @Override
     public long getNumTotalAfericaoPa() {
         return instancia.getNumTotalAfericaoPa();
     }
@@ -230,6 +247,7 @@ public class FichaProcedimentoMaster  {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
+    @Override
     public void setNumTotalAfericaoPa(long numTotalAfericaoPa) {
         instancia.setNumTotalAfericaoPa(numTotalAfericaoPa);
     }
@@ -238,6 +256,7 @@ public class FichaProcedimentoMaster  {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public boolean isSetNumTotalAfericaoPa() {
         return instancia.isSetNumTotalAfericaoPa();
     }
@@ -246,6 +265,7 @@ public class FichaProcedimentoMaster  {
      * Marca que o atributo foi setado
      * @param se esta setado ou nao
      */
+    @Override
     public void setNumTotalAfericaoPaIsSet(boolean value) {
         instancia.setNumTotalAfericaoPaIsSet(value);
     }
@@ -254,6 +274,7 @@ public class FichaProcedimentoMaster  {
      * Retorna o valor do atributo
      * @return o valor do atributo
      */
+    @Override
     public long getNumTotalGlicemiaCapilar() {
         return instancia.getNumTotalGlicemiaCapilar();
     }
@@ -262,6 +283,7 @@ public class FichaProcedimentoMaster  {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
+    @Override
     public void setNumTotalGlicemiaCapilar(long numTotalGlicemiaCapilar) {
         instancia.setNumTotalGlicemiaCapilar(numTotalGlicemiaCapilar);
     }
@@ -270,6 +292,7 @@ public class FichaProcedimentoMaster  {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public boolean isSetNumTotalGlicemiaCapilar() {
         return instancia.isSetNumTotalGlicemiaCapilar();
     }
@@ -278,6 +301,7 @@ public class FichaProcedimentoMaster  {
      * Marca que o atributo foi setado
      * @param se esta setado ou nao
      */
+    @Override
     public void setNumTotalGlicemiaCapilarIsSet(boolean value) {
         instancia.setNumTotalGlicemiaCapilarIsSet(value);
     }
@@ -286,6 +310,7 @@ public class FichaProcedimentoMaster  {
      * Retorna o valor do atributo
      * @return o valor do atributo
      */
+    @Override
     public long getNumTotalAfericaoTemperatura() {
         return instancia.getNumTotalAfericaoTemperatura();
     }
@@ -294,6 +319,7 @@ public class FichaProcedimentoMaster  {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
+    @Override
     public void setNumTotalAfericaoTemperatura(long numTotalAfericaoTemperatura) {
         instancia.setNumTotalAfericaoTemperatura(numTotalAfericaoTemperatura);
     }
@@ -302,6 +328,7 @@ public class FichaProcedimentoMaster  {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public boolean isSetNumTotalAfericaoTemperatura() {
         return instancia.isSetNumTotalAfericaoTemperatura();
     }
@@ -310,6 +337,7 @@ public class FichaProcedimentoMaster  {
      * Marca que o atributo foi setado
      * @param se esta setado ou nao
      */
+    @Override
     public void setNumTotalAfericaoTemperaturaIsSet(boolean value) {
         instancia.setNumTotalAfericaoTemperaturaIsSet(value);
     }
@@ -318,6 +346,7 @@ public class FichaProcedimentoMaster  {
      * Retorna o valor do atributo
      * @return o valor do atributo
      */
+    @Override
     public long getNumTotalMedicaoAltura() {
         return instancia.getNumTotalMedicaoAltura();
     }
@@ -326,6 +355,7 @@ public class FichaProcedimentoMaster  {
      * Retorna o valor do atributo
      * @return o valor do atributo
      */
+    @Override
     public void setNumTotalMedicaoAltura(long numTotalMedicaoAltura) {
         instancia.setNumTotalMedicaoAltura(numTotalMedicaoAltura);
     }
@@ -334,6 +364,7 @@ public class FichaProcedimentoMaster  {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public boolean isSetNumTotalMedicaoAltura() {
         return instancia.isSetNumTotalMedicaoAltura();
     }
@@ -342,6 +373,7 @@ public class FichaProcedimentoMaster  {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public void setNumTotalMedicaoAlturaIsSet(boolean value) {
         instancia.setNumTotalMedicaoAlturaIsSet(value);
     }
@@ -350,6 +382,7 @@ public class FichaProcedimentoMaster  {
      * Retorna o valor do atributo
      * @return o valor do atributo
      */
+    @Override
     public long getNumTotalCurativoSimples() {
         return instancia.getNumTotalCurativoSimples();
     }
@@ -358,6 +391,7 @@ public class FichaProcedimentoMaster  {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
+    @Override
     public void setNumTotalCurativoSimples(long numTotalCurativoSimples) {
         instancia.setNumTotalCurativoSimples(numTotalCurativoSimples);
     }
@@ -366,6 +400,7 @@ public class FichaProcedimentoMaster  {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public boolean isSetNumTotalCurativoSimples() {
         return instancia.isSetNumTotalCurativoSimples();
     }
@@ -374,6 +409,7 @@ public class FichaProcedimentoMaster  {
      * Marca que o atributo foi setado
      * @param se esta setado ou nao
      */
+    @Override
     public void setNumTotalCurativoSimplesIsSet(boolean value) {
         instancia.setNumTotalCurativoSimplesIsSet(value);
     }
@@ -382,6 +418,7 @@ public class FichaProcedimentoMaster  {
      * Retorna o valor do atributo
      * @return o valor do atributo
      */
+    @Override
     public long getNumTotalMedicaoPeso() {
         return instancia.getNumTotalMedicaoPeso();
     }
@@ -390,6 +427,7 @@ public class FichaProcedimentoMaster  {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
+    @Override
     public void setNumTotalMedicaoPeso(long numTotalMedicaoPeso) {
         instancia.setNumTotalMedicaoPeso(numTotalMedicaoPeso);
     }
@@ -398,6 +436,7 @@ public class FichaProcedimentoMaster  {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public boolean isSetNumTotalMedicaoPeso() {
         return instancia.isSetNumTotalMedicaoPeso();
     }
@@ -406,6 +445,7 @@ public class FichaProcedimentoMaster  {
      * Marca que o atributo foi setado
      * @param se esta setado ou nao
      */
+    @Override
     public void setNumTotalMedicaoPesoIsSet(boolean value) {
         instancia.setNumTotalMedicaoPesoIsSet(value);
     }
@@ -414,6 +454,7 @@ public class FichaProcedimentoMaster  {
      * Marca que o atributo foi setado
      * @param se esta setado ou nao
      */
+    @Override
     public long getNumTotalColetaMaterialParaExameLaboratorial() {
         return instancia.getNumTotalColetaMaterialParaExameLaboratorial();
     }
@@ -422,6 +463,7 @@ public class FichaProcedimentoMaster  {
      * Atribui o valor do atributo
      * @param o valor do atributo
      */
+    @Override
     public void setNumTotalColetaMaterialParaExameLaboratorial(long numTotalColetaMaterialParaExameLaboratorial) {
         instancia.setNumTotalColetaMaterialParaExameLaboratorial(numTotalColetaMaterialParaExameLaboratorial);
     }
@@ -430,6 +472,7 @@ public class FichaProcedimentoMaster  {
      * Verfica se o atributo foi atribuido
      * @return true se tiver setado, false caso nao esteja
      */
+    @Override
     public boolean isSetNumTotalColetaMaterialParaExameLaboratorial() {
         return instancia.isSetNumTotalColetaMaterialParaExameLaboratorial();
     }
@@ -438,55 +481,16 @@ public class FichaProcedimentoMaster  {
      * Marca que o atributo foi setado
      * @param se esta setado ou nao
      */
+    @Override
     public void setNumTotalColetaMaterialParaExameLaboratorialIsSet(boolean value) {
         instancia.setNumTotalColetaMaterialParaExameLaboratorialIsSet(value);
-    }
-    
-    public void zipGenerate(){
-        if(!this.validate()){
-            return;
-        }
-        
-        DadoTransporteThrift dadoTransporteThrift = this.getDadoTransporte(this.instancia);
-        byte[] fichaSerializada = SerializadorThrift.serializar(this.instancia);
-        dadoTransporteThrift.setTipoDadoSerializado(TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO);
-	dadoTransporteThrift.setDadoSerializado(fichaSerializada);
-        
-        VersaoThrift versaoThrift = new VersaoThrift(2, 0, 0);
-	dadoTransporteThrift.setVersao(versaoThrift);
-        
-        try {
-            File zipFile = new File(System.getProperty("user.home") + "/fichaProcedimento.zip");
-            ZipOutputStream outputStream = new ZipOutputStream(new FileOutputStream(zipFile));
-            String entryName = dadoTransporteThrift.getUuidDadoSerializado() + EXTENSAO_EXPORT;
-            outputStream.putNextEntry(new ZipEntry(entryName));
-            byte[] dadoTransporteSerializado = SerializadorThrift.serializar(dadoTransporteThrift);
-            outputStream.write(dadoTransporteSerializado);
-
-            outputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-    }
-    
-    private DadoTransporteThrift getDadoTransporte(FichaProcedimentoMasterThrift ficha) {
-        DadoTransporteThrift dadoTransporteThrift = new DadoTransporteThrift();
-
-        dadoTransporteThrift.setUuidDadoSerializado(ficha.getUuidFicha());
-        dadoTransporteThrift.setIneDadoSerializado(ficha.getHeaderTransport().getIne());
-        dadoTransporteThrift.setCodIbge(ficha.getHeaderTransport().getCodigoIbgeMunicipio());
-        dadoTransporteThrift.setCnesDadoSerializado(ficha.getHeaderTransport().getCnes());
-        dadoTransporteThrift.setOriginadora(this.originadora);
-        dadoTransporteThrift.setRemetente(this.remetente);
-        dadoTransporteThrift.setNumLote(0l);
-
-        return dadoTransporteThrift;
     }
     
     /**
      * Valida todos os campos.
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validate(){
         return this.validateGroup()             &&
                this.validateUuidFicha()         &&
@@ -503,6 +507,7 @@ public class FichaProcedimentoMaster  {
      * UUID são a limitação de 44 bytes do campo.
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateUuidFicha(){
         if(!this.instancia.isSetUuidFicha()){
             return false;
@@ -525,6 +530,7 @@ public class FichaProcedimentoMaster  {
      * Regras: Utilizar valor 3 (sistemas terceiros).
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateTpCdsOrigem(){
         if(!this.instancia.isSetTpCdsOrigem()){
             return false;
@@ -543,6 +549,7 @@ public class FichaProcedimentoMaster  {
      * Regras: Utilizar valor 3 (sistemas terceiros).
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateHeaderTransport(){
         if(!instancia.isSetHeaderTransport()){
             return false;
@@ -564,6 +571,7 @@ public class FichaProcedimentoMaster  {
      * Regras: Utilizar valor 3 (sistemas terceiros).
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateAtendProcedimentos(){
         if(!this.instancia.isSetAtendProcedimentos()){
             return false;
@@ -584,6 +592,7 @@ public class FichaProcedimentoMaster  {
      * Quantidade de aferições de pressão realizadas.
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateNumTotalAfericaoPa(){
         if(!this.instancia.isSetNumTotalAfericaoPa()){
             return false;
@@ -600,6 +609,7 @@ public class FichaProcedimentoMaster  {
      * Quantidade de aferições de glicemia capilar.
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateNumTotalGlicemiaCapilar(){
         if(!this.instancia.isSetNumTotalGlicemiaCapilar()){
             return false;
@@ -616,6 +626,7 @@ public class FichaProcedimentoMaster  {
      * Quantidade de aferições de glicemia capilar.
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateNumTotalAfericaoTemperatura(){
         if(!this.instancia.isSetNumTotalAfericaoTemperatura()){
             return false;
@@ -632,6 +643,7 @@ public class FichaProcedimentoMaster  {
      * Quantidade de aferições de altura.
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateNumTotalMedicaoAltura(){
         if(!this.instancia.isSetNumTotalMedicaoAltura()){
             return false;
@@ -648,6 +660,7 @@ public class FichaProcedimentoMaster  {
      * Quantidade de curativos simples realizados.
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateNumTotalCurativoSimples(){
         if(!this.instancia.isSetNumTotalCurativoSimples()){
             return false;
@@ -664,6 +677,7 @@ public class FichaProcedimentoMaster  {
      * Quantidade de aferições de peso.
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateNumTotalMedicaoPeso(){
         if(!this.instancia.isSetNumTotalMedicaoPeso()){
             return false;
@@ -680,6 +694,7 @@ public class FichaProcedimentoMaster  {
      * Quantidade de aferições de peso.
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateNumTotalColetaMaterialParaExameLaboratorial(){
         if(!this.instancia.isSetNumTotalColetaMaterialParaExameLaboratorial()){
             return false;
@@ -696,6 +711,7 @@ public class FichaProcedimentoMaster  {
      * Valida os campos com preenchimento condicional.
      * @return True caso ao menos um dos campos esteja válido, false caso todos estejam inválidos
      */
+    @Override
     public boolean validateGroup(){
         return this.validateAtendProcedimentos()            || 
                this.validateNumTotalMedicaoPeso()           ||
@@ -708,4 +724,5 @@ public class FichaProcedimentoMaster  {
                this.validateNumTotalAfericaoPa()            ||
                this.validateAtendProcedimentos();
     }
+
 }

@@ -8,6 +8,7 @@ package com.github.Eddyosos.integracao20171.esus.cds.atividadecoletiva;
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadecoletiva.FichaAtividadeColetivaThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadecoletiva.ParticipanteRowItemThrift;
 import com.github.Eddyosos.integracao20171.esus.cds.common.EnderecoLocalPermanencia;
+import com.github.eddyosos.e_sus_ab_factory.cds.atividadecoletiva.IParticipanteRowItem;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -262,7 +263,7 @@ public class FichaAtividadeColetivaTest {
      */
     @Test
     public void testValidaParticipantes() {
-        List<ParticipanteRowItem> lista = new ArrayList<ParticipanteRowItem>();
+        List<IParticipanteRowItem> lista = new ArrayList();
 
         for (int i = 0; i < 33; i++) {
             lista.add(new ParticipanteRowItem(new ParticipanteRowItemThrift()));

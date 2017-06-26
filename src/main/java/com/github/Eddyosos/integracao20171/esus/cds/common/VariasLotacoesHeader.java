@@ -1,10 +1,10 @@
 package com.github.Eddyosos.integracao20171.esus.cds.common;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.common.VariasLotacoesHeaderThrift;
-import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
+import com.github.eddyosos.e_sus_ab_factory.cds.common.IUnicaLotacaoHeader;
+import com.github.eddyosos.e_sus_ab_factory.cds.common.IVariasLotacoesHeader;
 
-public class VariasLotacoesHeader {
+public class VariasLotacoesHeader implements IVariasLotacoesHeader {
     private final VariasLotacoesHeaderThrift instance;
 
     public VariasLotacoesHeader() {
@@ -14,6 +14,8 @@ public class VariasLotacoesHeader {
     public VariasLotacoesHeader(VariasLotacoesHeaderThrift headerTransport) {
         instance = headerTransport;
     }
+    
+    @Override
     public VariasLotacoesHeaderThrift getInstance() {
         return instance;
     }
@@ -37,6 +39,7 @@ public class VariasLotacoesHeader {
      * Profissional responsável pela ação.
      * @return 
      */
+    @Override
     public UnicaLotacaoHeader getLotacaoForm() {
         return new UnicaLotacaoHeader(instance.getLotacaoForm());
     }
@@ -45,7 +48,8 @@ public class VariasLotacoesHeader {
      * Profissional responsável pela ação.
      * @param lotacaoForm 
      */
-    public void setLotacaoForm(UnicaLotacaoHeader lotacaoForm) {
+    @Override
+    public void setLotacaoForm(IUnicaLotacaoHeader lotacaoForm) {
         instance.setLotacaoForm(lotacaoForm.getInstance());
     }
 
@@ -186,6 +190,7 @@ public class VariasLotacoesHeader {
      * CNS do profissional1.
      * @return 
      */
+    @Override
     public String getProfissionalCNS1() {
         return instance.getProfissionalCNS1();
     }
@@ -194,6 +199,7 @@ public class VariasLotacoesHeader {
      * CNS do profissional1.
      * @param profissionalCNS1 
      */
+    @Override
     public void setProfissionalCNS1(String profissionalCNS1) {
         instance.setProfissionalCNS1(profissionalCNS1);
     }
@@ -221,6 +227,7 @@ public class VariasLotacoesHeader {
      * Código do CBO do profissional1.
      * @return 
      */
+    @Override
     public String getCboCodigo_2002_1() {
         return instance.getCboCodigo_2002_1();
     }
@@ -229,6 +236,7 @@ public class VariasLotacoesHeader {
      * Código do CBO do profissional1.
      * @param cboCodigo_2002_1 
      */
+    @Override
     public void setCboCodigo_2002_1(String cboCodigo_2002_1) {
         instance.setCboCodigo_2002_1(cboCodigo_2002_1);
     }
@@ -247,6 +255,7 @@ public class VariasLotacoesHeader {
      * CNS do profissional2.
      * @return 
      */
+    @Override
     public String getProfissionalCNS2() {
         return instance.getProfissionalCNS2();
     }
@@ -255,6 +264,7 @@ public class VariasLotacoesHeader {
      * CNS do profissional2.
      * @param profissionalCNS2 
      */
+    @Override
     public void setProfissionalCNS2(String profissionalCNS2) {
         instance.setProfissionalCNS2(profissionalCNS2);
     }
@@ -272,6 +282,7 @@ public class VariasLotacoesHeader {
      * Código do CBO do profissional2.
      * @return 
      */
+    @Override
     public String getCboCodigo_2002_2() {
         return instance.getCboCodigo_2002_2();
     }
@@ -280,6 +291,7 @@ public class VariasLotacoesHeader {
      * Código do CBO do profissional2.
      * @param cboCodigo_2002_2 
      */
+    @Override
     public void setCboCodigo_2002_2(String cboCodigo_2002_2) {
         instance.setCboCodigo_2002_2(cboCodigo_2002_2);
     }

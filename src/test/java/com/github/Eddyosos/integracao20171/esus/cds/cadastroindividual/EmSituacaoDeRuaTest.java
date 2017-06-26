@@ -30,11 +30,11 @@ public class EmSituacaoDeRuaTest {
      */
     @Test
     public void testGrauParentescoFamiliarFrequentado() {
-        assertTrue(obj.validaGrauParentescoFamiliarFrequentado());
+        assertTrue(obj.validateGrauParentescoFamiliarFrequentado());
         obj.setGrauParentescoFamiliarFrequentado("a");
-        assertTrue(obj.validaGrauParentescoFamiliarFrequentado());
+        assertTrue(obj.validateGrauParentescoFamiliarFrequentado());
         obj.setStatusVisitaFamiliarFrequentemente(false);
-        assertFalse(obj.validaGrauParentescoFamiliarFrequentado());
+        assertFalse(obj.validateGrauParentescoFamiliarFrequentado());
     }
     
 }

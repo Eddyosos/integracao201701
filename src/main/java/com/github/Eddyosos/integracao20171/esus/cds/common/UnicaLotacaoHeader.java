@@ -1,10 +1,9 @@
 package com.github.Eddyosos.integracao20171.esus.cds.common;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.common.UnicaLotacaoHeaderThrift;
-import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
+import com.github.eddyosos.e_sus_ab_factory.cds.common.IUnicaLotacaoHeader;
 
-public class UnicaLotacaoHeader {
+public class UnicaLotacaoHeader implements IUnicaLotacaoHeader {
     private final UnicaLotacaoHeaderThrift instance;
 
     public UnicaLotacaoHeader() {
@@ -161,6 +160,7 @@ public class UnicaLotacaoHeader {
      * CNS do profissional.
      * @return 
      */
+    @Override
     public String getProfissionalCNS() {
         return instance.getProfissionalCNS();
     }
@@ -169,6 +169,7 @@ public class UnicaLotacaoHeader {
      * CNS do profissional.
      * @param profissionalCNS 
      */
+    @Override
     public void setProfissionalCNS(String profissionalCNS) {
         instance.setProfissionalCNS(profissionalCNS);
     }
@@ -188,6 +189,7 @@ public class UnicaLotacaoHeader {
      * Código do CBO do profissional.
      * @return 
      */
+    @Override
     public String getCboCodigo_2002() {
         return instance.getCboCodigo_2002();
     }
@@ -196,6 +198,7 @@ public class UnicaLotacaoHeader {
      * Código do CBO do profissional.
      * @param cboCodigo_2002 
      */
+    @Override
     public void setCboCodigo_2002(String cboCodigo_2002) {
         instance.setCboCodigo_2002(cboCodigo_2002);
     }
@@ -216,6 +219,7 @@ public class UnicaLotacaoHeader {
      * Código do CNES da unidade de saúde que o profissional está lotado.
      * @return 
      */
+    @Override
     public String getCnes() {
         return instance.getCnes();
     }
@@ -224,6 +228,7 @@ public class UnicaLotacaoHeader {
      * Código do CNES da unidade de saúde que o profissional está lotado.
      * @param cnes 
      */
+    @Override
     public void setCnes(String cnes) {
         instance.setCnes(cnes);
     }
@@ -244,6 +249,7 @@ public class UnicaLotacaoHeader {
      * Código INE da equipe do profissional.
      * @return 
      */
+    @Override
     public String getIne() {
         return instance.getIne();
     }
@@ -252,6 +258,7 @@ public class UnicaLotacaoHeader {
      * Código INE da equipe do profissional.
      * @param ine 
      */
+    @Override
     public void setIne(String ine) {
         instance.setIne(ine);
     }
@@ -270,6 +277,7 @@ public class UnicaLotacaoHeader {
      * Data em que está sendo realizada a ação.
      * @return 
      */
+    @Override
     public long getDataAtendimento() {
         return instance.getDataAtendimento();
     }
@@ -278,6 +286,7 @@ public class UnicaLotacaoHeader {
      * Data em que está sendo realizada a ação.
      * @param dataAtendimento 
      */
+    @Override
     public void setDataAtendimento(long dataAtendimento) {
         instance.setDataAtendimento(dataAtendimento);
     }
@@ -299,6 +308,7 @@ public class UnicaLotacaoHeader {
      * Código IBGE do município.
      * @return 
      */
+    @Override
     public String getCodigoIbgeMunicipio() {
         return instance.getCodigoIbgeMunicipio();
     }
@@ -307,6 +317,7 @@ public class UnicaLotacaoHeader {
      * Código IBGE do município.
      * @param codigoIbgeMunicipio 
      */
+    @Override
     public void setCodigoIbgeMunicipio(String codigoIbgeMunicipio) {
         instance.setCodigoIbgeMunicipio(codigoIbgeMunicipio);
     }    
