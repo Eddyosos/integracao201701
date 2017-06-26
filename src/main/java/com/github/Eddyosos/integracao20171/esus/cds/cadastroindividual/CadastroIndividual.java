@@ -1,20 +1,30 @@
 package com.github.Eddyosos.integracao20171.esus.cds.cadastroindividual;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.CadastroIndividualThrift;
+import com.github.Eddyosos.integracao20171.compactor.SerializadorThrift;
 import com.github.Eddyosos.integracao20171.esus.cds.common.HeaderCdsCadastro;
+import com.github.Eddyosos.integracao20171.esus.transport.DadoTransporte;
 import com.github.eddyosos.e_sus_ab_factory.cds.cadastroindividual.ICadastroIndividual;
 import com.github.eddyosos.e_sus_ab_factory.cds.cadastroindividual.ICondicoesDeSaude;
 import com.github.eddyosos.e_sus_ab_factory.cds.cadastroindividual.IEmSituacaoDeRua;
 import com.github.eddyosos.e_sus_ab_factory.cds.cadastroindividual.IIdentificacaoUsuarioCidadao;
 import com.github.eddyosos.e_sus_ab_factory.cds.cadastroindividual.IInformacoesSocioDemograficas;
 import com.github.eddyosos.e_sus_ab_factory.cds.common.IHeaderCdsCadastro;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.UUID;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 public class CadastroIndividual implements ICadastroIndividual {
-    private CadastroIndividualThrift instance;
+    private CadastroIndividualThrift instancia;
+    private long TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO = 2;
+    private final static String EXTENSAO_EXPORT = ".esus13";
+    private DadoTransporte dadoTransporteThrift;
     
     public CadastroIndividual(){
-        instance = new CadastroIndividualThrift();
+        instancia = new CadastroIndividualThrift();
     }
 
     /**
@@ -23,7 +33,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public ICondicoesDeSaude getCondicoesDeSaude() {
-        return new CondicoesDeSaude(instance.getCondicoesDeSaude());
+        return new CondicoesDeSaude(instancia.getCondicoesDeSaude());
     }
 
     /**
@@ -32,7 +42,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public void setCondicoesDeSaude(ICondicoesDeSaude condicoesDeSaude) {
-        instance.setCondicoesDeSaude(condicoesDeSaude.getInstance());
+        instancia.setCondicoesDeSaude(condicoesDeSaude.getInstance());
     }
 
     /**
@@ -41,7 +51,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public IHeaderCdsCadastro getDadosGerais() {
-        return new HeaderCdsCadastro(instance.getDadosGerais());
+        return new HeaderCdsCadastro(instancia.getDadosGerais());
     }
 
     /**
@@ -50,7 +60,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public void setDadosGerais(IHeaderCdsCadastro dadosGerais) {
-        instance.setDadosGerais(dadosGerais.getInstance());
+        instancia.setDadosGerais(dadosGerais.getInstance());
     }
 
     /**
@@ -59,7 +69,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public IEmSituacaoDeRua getEmSituacaoDeRua() {
-        return new EmSituacaoDeRua(instance.getEmSituacaoDeRua());
+        return new EmSituacaoDeRua(instancia.getEmSituacaoDeRua());
     }
 
     /**
@@ -68,7 +78,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public void setEmSituacaoDeRua(IEmSituacaoDeRua emSituacaoDeRua) {
-        instance.setEmSituacaoDeRua(emSituacaoDeRua.getInstance());
+        instancia.setEmSituacaoDeRua(emSituacaoDeRua.getInstance());
     }
 
     /**
@@ -77,7 +87,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public boolean isFichaAtualizada() {
-        return instance.isFichaAtualizada();
+        return instancia.isFichaAtualizada();
     }
 
     /**
@@ -86,7 +96,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public void setFichaAtualizada(boolean fichaAtualizada) {
-        instance.setFichaAtualizada(fichaAtualizada);
+        instancia.setFichaAtualizada(fichaAtualizada);
     }
 
     /**
@@ -95,7 +105,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public IIdentificacaoUsuarioCidadao getIdentificacaoUsuarioCidadao() {
-        return new IdentificacaoUsuarioCidadao(instance.getIdentificacaoUsuarioCidadao());
+        return new IdentificacaoUsuarioCidadao(instancia.getIdentificacaoUsuarioCidadao());
     }
 
     /**
@@ -104,7 +114,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public void setIdentificacaoUsuarioCidadao(IIdentificacaoUsuarioCidadao identificacaoUsuarioCidadao) {
-        instance.setIdentificacaoUsuarioCidadao(identificacaoUsuarioCidadao.getInstance());
+        instancia.setIdentificacaoUsuarioCidadao(identificacaoUsuarioCidadao.getInstance());
     }
     
     /**
@@ -113,7 +123,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public IInformacoesSocioDemograficas getInformacoesSocioDemograficas() {
-        return new InformacoesSocioDemograficas(instance.getInformacoesSocioDemograficas());
+        return new InformacoesSocioDemograficas(instancia.getInformacoesSocioDemograficas());
     }
 
     /**
@@ -122,7 +132,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public void setInformacoesSocioDemograficas(IInformacoesSocioDemograficas informacoesSocioDemograficas) {
-        instance.setInformacoesSocioDemograficas(informacoesSocioDemograficas.getIntence());
+        instancia.setInformacoesSocioDemograficas(informacoesSocioDemograficas.getIntence());
     }
 
     /**
@@ -131,7 +141,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public boolean isStatusTermoRecusaCadastroIndividualAtencaoBasica() {
-        return instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
+        return instancia.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
     }
     
     /**
@@ -140,7 +150,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public void setStatusTermoRecusaCadastroIndividualAtencaoBasica(boolean statusTermoRecusaCadastroIndividualAtencaoBasica) {
-        instance.setStatusTermoRecusaCadastroIndividualAtencaoBasica(statusTermoRecusaCadastroIndividualAtencaoBasica);
+        instancia.setStatusTermoRecusaCadastroIndividualAtencaoBasica(statusTermoRecusaCadastroIndividualAtencaoBasica);
     }
 
     /**
@@ -149,7 +159,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public void setTpCdsOrigem(int tpCdsOrigem) {
-        instance.setTpCdsOrigem(tpCdsOrigem);
+        instancia.setTpCdsOrigem(tpCdsOrigem);
     }
 
     /**
@@ -157,7 +167,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public void unsetTpCdsOrigem() {
-        instance.unsetTpCdsOrigem();
+        instancia.unsetTpCdsOrigem();
     }
 
     /**
@@ -166,7 +176,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public String getUuid() {
-        return instance.getUuid();
+        return instancia.getUuid();
     }
 
     /**
@@ -175,7 +185,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public void setUuid(String uuid) {
-        instance.setUuid(uuid);
+        instancia.setUuid(uuid);
     }
 
     /**
@@ -184,7 +194,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public String getUuidFichaOriginadora() {
-        return instance.getUuidFichaOriginadora();
+        return instancia.getUuidFichaOriginadora();
     }
 
     /**
@@ -193,17 +203,17 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public void setUuidFichaOriginadora(String uuidFichaOriginadora) {
-        instance.setUuidFichaOriginadora(uuidFichaOriginadora);
+        instancia.setUuidFichaOriginadora(uuidFichaOriginadora);
     }
 
     @Override
     public String getUuidCidadao() {
-        return instance.getUuidCidadao();
+        return instancia.getUuidCidadao();
     }
 
     @Override
     public void setUuidCidadao(String uuidCidadao) {
-        instance.setUuidCidadao(uuidCidadao);
+        instancia.setUuidCidadao(uuidCidadao);
     }
 
     /**
@@ -233,9 +243,9 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public boolean validateCondicoesDeSaude() {
-    	return !instance.isSetCondicoesDeSaude() || 
-               !instance.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica() ||
-               !instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
+    	return !instancia.isSetCondicoesDeSaude() || 
+               !instancia.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica() ||
+               !instancia.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
     }
     
     /**
@@ -246,7 +256,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public boolean validateDadosGerais(){
-        return instance.isSetDadosGerais();
+        return instancia.isSetDadosGerais();
     }
     
     /**
@@ -256,9 +266,9 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public boolean validateEmSituacaoDeRua() {
-        return !instance.isSetEmSituacaoDeRua() ||
-                !instance.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica() ||
-                !instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
+        return !instancia.isSetEmSituacaoDeRua() ||
+                !instancia.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica() ||
+                !instancia.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
     }
     
     /**
@@ -268,7 +278,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public boolean validateFichaAtualizada() {
-    	return instance.isSetFichaAtualizada();
+    	return instancia.isSetFichaAtualizada();
     }
     
     /**
@@ -278,9 +288,9 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public boolean validateIndetificacaoUsuarioCidadao() {
-        return !instance.isSetIdentificacaoUsuarioCidadao() ||
-                !instance.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica() ||
-                !instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
+        return !instancia.isSetIdentificacaoUsuarioCidadao() ||
+                !instancia.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica() ||
+                !instancia.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
     }
     
     /**
@@ -290,9 +300,9 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public boolean validateInformacoesSocioDemografica() {
-        return !instance.isSetInformacoesSocioDemograficas() ||
-                !instance.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica() ||
-                !instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
+        return !instancia.isSetInformacoesSocioDemograficas() ||
+                !instancia.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica() ||
+                !instancia.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
     }
     
     //Não á validações para o statusTermoRecusaCadastroIndividualAtencaoBasica
@@ -304,7 +314,7 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public boolean validateTpCdsOrigem() {
-    	return instance.isSetTpCdsOrigem();
+    	return instancia.isSetTpCdsOrigem();
     }
     
     /**
@@ -314,8 +324,8 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public boolean validateUuid(){
-        return !instance.isSetUuid() || 
-                validateUuid(instance.getUuid());
+        return !instancia.isSetUuid() || 
+                validateUuid(instancia.getUuid());
     }
     
     @Override
@@ -336,8 +346,8 @@ public class CadastroIndividual implements ICadastroIndividual {
      */
     @Override
     public boolean validateUuidFichaOriginadora() {
-    	return instance.isSetUuidFichaOriginadora() && 
-                validateUuid(instance.getUuidFichaOriginadora());
+    	return instancia.isSetUuidFichaOriginadora() && 
+                validateUuid(instancia.getUuidFichaOriginadora());
     }
     
     /**
@@ -358,6 +368,36 @@ public class CadastroIndividual implements ICadastroIndividual {
     @Override
     public boolean validateHeaderTransport() {
     	return true; //TODO Não encontrei nem a headerTransport nem a UnicaLotacaoHeader
+    }
+    
+    public void setDadoTransporte(DadoTransporte originadora){
+        this.dadoTransporteThrift = originadora;
+    }
+    public DadoTransporte getDadoTransporte(){
+        return this.dadoTransporteThrift;
+    }
+
+    public void zipGenerate(){
+        if(!this.validate() && this.dadoTransporteThrift != null){
+            return;
+        }
+
+        byte[] fichaSerializada = SerializadorThrift.serializar(this.instancia);
+        dadoTransporteThrift.setTipoDadoSerializado(TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO);
+        dadoTransporteThrift.setDadoSerializado(fichaSerializada);
+
+        try {
+            File zipFile = new File(System.getProperty("user.home") + "/fichaProcedimento.zip");
+            ZipOutputStream outputStream = new ZipOutputStream(new FileOutputStream(zipFile));
+            String entryName = dadoTransporteThrift.getUuidDadoSerializado() + EXTENSAO_EXPORT;
+            outputStream.putNextEntry(new ZipEntry(entryName));
+            byte[] dadoTransporteSerializado = SerializadorThrift.serializar(dadoTransporteThrift.getInstance());
+            outputStream.write(dadoTransporteSerializado);
+
+            outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
 }
 
