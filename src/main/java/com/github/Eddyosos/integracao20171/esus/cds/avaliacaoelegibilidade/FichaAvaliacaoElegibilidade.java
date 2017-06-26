@@ -4,30 +4,25 @@ import br.gov.saude.esus.cds.transport.generated.thrift.avaliacaoelegibilidade.F
 import com.github.Eddyosos.integracao20171.esus.cds.common.EnderecoLocalPermanencia;
 import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
 import com.github.Eddyosos.integracao20171.utils.IDS.CNS;
+import com.github.eddyosos.e_sus_ab_factory.cds.common.IEnderecoLocalPermanencia;
+import com.github.eddyosos.e_sus_ab_factory.cds.common.IUnicaLotacaoHeader;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class FichaAvaliacaoElegibilidade{
+public class FichaAvaliacaoElegibilidade implements IFichaAvaliacaoElegibilidade {
     private FichaAvaliacaoElegibilidadeThrift instancia = new FichaAvaliacaoElegibilidadeThrift();
     
-    protected FichaAvaliacaoElegibilidade(FichaAvaliacaoElegibilidadeThrift fichaAvaliacaoElegibilidade){
+    public FichaAvaliacaoElegibilidade(FichaAvaliacaoElegibilidadeThrift fichaAvaliacaoElegibilidade){
         this.instancia = fichaAvaliacaoElegibilidade;
-    }
-
-    /**
-     * Realiza uma copia da ficha.
-     * @return copia da ficha.
-     */
-    public FichaAvaliacaoElegibilidade deepCopy() {
-        return new FichaAvaliacaoElegibilidade(instancia.deepCopy());
     }
 
     /**
      * Remove todos os dados da ficha.
      */
+    @Override
     public void clear() {
         instancia.clear();
     }
@@ -44,6 +39,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return Código uuid.
      */
+    @Override
     public String getUuidFicha() {
         return instancia.getUuidFicha();
     }
@@ -52,6 +48,7 @@ public class FichaAvaliacaoElegibilidade{
      * Define o código uuid da ficha.
      * @param uuidFicha Código uuid da ficha.
      */
+    @Override
     public void setUuidFicha(String uuidFicha) {
         instancia.setUuidFicha(uuidFicha);
     }
@@ -59,6 +56,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove o código uuid da ficha.
      */
+    @Override
     public void unsetUuidFicha() {
         instancia.unsetUuidFicha();
     }
@@ -67,6 +65,7 @@ public class FichaAvaliacaoElegibilidade{
      * Verifica se o código uuid da ficha foi declarado.
      * @return True caso o código uuid da ficha tenha sido declarado.
      */
+    @Override
     public boolean isSetUuidFicha() {
         return instancia.isSetUuidFicha();
     }
@@ -75,6 +74,7 @@ public class FichaAvaliacaoElegibilidade{
      * Declara o estado do código uuid da ficha.
      * @param value True caso o código uuid da ficha tenha sido inserido.
      */
+    @Override
     public void setUuidFichaIsSet(boolean value) {
         instancia.setUuidFichaIsSet(value);
     }
@@ -83,6 +83,7 @@ public class FichaAvaliacaoElegibilidade{
      * Tipo de origem dos dados do registro.
      * @return Tipo de origem dos dados do registro.
      */
+    @Override
     public int getTpCdsOrigem() {
         return instancia.getTpCdsOrigem();
     }
@@ -95,6 +96,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param tpCdsOrigem Tipo de origem dos dados do registro.
      */
+    @Override
     public void setTpCdsOrigem(int tpCdsOrigem) {
         instancia.setTpCdsOrigem(tpCdsOrigem);
     }
@@ -102,6 +104,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove o tipo de origem dos dados do registro.
      */
+    @Override
     public void unsetTpCdsOrigem() {
         instancia.unsetTpCdsOrigem();
     }
@@ -110,6 +113,7 @@ public class FichaAvaliacaoElegibilidade{
      * Verifica se o tipo de origem dos dados do registro foi declarado.
      * @return True caso o tipo de origem dos dados do registro tenha sido inserido.
      */
+    @Override
     public boolean isSetTpCdsOrigem() {
         return instancia.isSetTpCdsOrigem();
     }
@@ -118,6 +122,7 @@ public class FichaAvaliacaoElegibilidade{
      * Declara se o tipo de origem dos dados do registro foi inserido.
      * @param value True caso o tipo de origem dos dados do registro tenha sido inserido.
      */
+    @Override
     public void setTpCdsOrigemIsSet(boolean value) {
         instancia.setTpCdsOrigemIsSet(value);
     }
@@ -126,7 +131,8 @@ public class FichaAvaliacaoElegibilidade{
      * Profissional que realizou a visita.
      * @return Profissional que realizou a visita.
      */
-    public UnicaLotacaoHeader getHeaderTransport() {
+    @Override
+    public IUnicaLotacaoHeader getHeaderTransport() {
         return new UnicaLotacaoHeader(instancia.getHeaderTransport());
     }
 
@@ -137,13 +143,15 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param headerTransport Profissional que realizou a visita.
      */
-    public void setHeaderTransport(UnicaLotacaoHeader headerTransport) {
+    @Override
+    public void setHeaderTransport(IUnicaLotacaoHeader headerTransport) {
         instancia.setHeaderTransport(headerTransport.getInstance());
     }
 
     /**
      * Remove o profissional que realizou a visita.
      */
+    @Override
     public void unsetHeaderTransport() {
         instancia.unsetHeaderTransport();
     }
@@ -152,6 +160,7 @@ public class FichaAvaliacaoElegibilidade{
      * Verifica se o profissional que realizou a visita foi declarado.
      * @return True caso o profissional que realizou a visita tenha sido inserido.
      */
+    @Override
     public boolean isSetHeaderTransport() {
         return instancia.isSetHeaderTransport();
     }
@@ -160,6 +169,7 @@ public class FichaAvaliacaoElegibilidade{
      * Define se o profissional que realizou a visita doi inserido.
      * @param value True caso profissional que realizou a visita tenha sido inserido.
      */
+    @Override
     public void setHeaderTransportIsSet(boolean value) {
         instancia.setHeaderTransportIsSet(value);
     }
@@ -168,6 +178,7 @@ public class FichaAvaliacaoElegibilidade{
      * CNS do cidadão.
      * @return CNS do cidadão.
      */
+    @Override
     public String getNumeroCartaoSus() {
         return instancia.getNumeroCartaoSus();
     }
@@ -181,6 +192,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param numeroCartaoSus 
      */
+    @Override
     public void setNumeroCartaoSus(String numeroCartaoSus) {
         instancia.setNumeroCartaoSus(numeroCartaoSus);
     }
@@ -188,6 +200,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove o CNS do cidadão.
      */
+    @Override
     public void unsetNumeroCartaoSus() {
         instancia.unsetNumeroCartaoSus();
     }
@@ -196,6 +209,7 @@ public class FichaAvaliacaoElegibilidade{
      * Verifica se o CNS do cidadão foi declarado.
      * @return True caso o CNS do cidadão tenhe sido inserido.
      */
+    @Override
     public boolean isSetNumeroCartaoSus() {
         return instancia.isSetNumeroCartaoSus();
     }
@@ -204,6 +218,7 @@ public class FichaAvaliacaoElegibilidade{
      * Declara se o CNS do cidadão foi inserido.
      * @param value True caso o CNS do cidadão dtenha sido inserido.
      */
+    @Override
     public void setNumeroCartaoSusIsSet(boolean value) {
         instancia.setNumeroCartaoSusIsSet(value);
     }
@@ -212,6 +227,7 @@ public class FichaAvaliacaoElegibilidade{
      * Nome do cidadão.
      * @return Nome do cidadão
      */
+    @Override
     public String getNomeCidadao() {
         return instancia.getNomeCidadao();
     }
@@ -227,6 +243,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param nomeCidadao Nome do cidadão.
      */
+    @Override
     public void setNomeCidadao(String nomeCidadao) {
         instancia.setNomeCidadao(nomeCidadao);
     }
@@ -234,6 +251,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove o nome do cidadão.
      */
+    @Override
     public void unsetNomeCidadao() {
         instancia.unsetNomeCidadao();
     }
@@ -242,6 +260,7 @@ public class FichaAvaliacaoElegibilidade{
      * Verifica se o nome do cidadão foi declarado.
      * @return True caso o nome do cidadão tenha sido inserido.
      */
+    @Override
     public boolean isSetNomeCidadao() {
         return instancia.isSetNomeCidadao();
     }
@@ -250,6 +269,7 @@ public class FichaAvaliacaoElegibilidade{
      * Declase se o nome do cidadão foi inserido.
      * @param value True caso o nome do cidadão tenha sido inserido.
      */
+    @Override
     public void setNomeCidadaoIsSet(boolean value) {
         instancia.setNomeCidadaoIsSet(value);
     }
@@ -258,6 +278,7 @@ public class FichaAvaliacaoElegibilidade{
      * Nome social do cidadão.
      * @return Nome social do cidadão.
      */
+    @Override
     public String getNomeSocialCidadao() {
         return instancia.getNomeSocialCidadao();
     }
@@ -271,6 +292,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param nomeSocialCidadao Nome social do cidadão.
      */
+    @Override
     public void setNomeSocialCidadao(String nomeSocialCidadao) {
         instancia.setNomeSocialCidadao(nomeSocialCidadao);
     }
@@ -278,6 +300,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove o nome social do cidadão.
      */
+    @Override
     public void unsetNomeSocialCidadao() {
         instancia.unsetNomeSocialCidadao();
     }
@@ -286,6 +309,7 @@ public class FichaAvaliacaoElegibilidade{
      * Verifica se o nome social do cidadão foi declarado.
      * @return 
      */
+    @Override
     public boolean isSetNomeSocialCidadao() {
         return instancia.isSetNomeSocialCidadao();
     }
@@ -294,6 +318,7 @@ public class FichaAvaliacaoElegibilidade{
      * Declara se o cidadão possui um nome social.
      * @param value True caso o cidadão possua um nome social.
      */
+    @Override
     public void setNomeSocialCidadaoIsSet(boolean value) {
         instancia.setNomeSocialCidadaoIsSet(value);
     }
@@ -306,6 +331,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return Data de nascimento do cidadão no formato epoch time.
      */
+    @Override
     public long getDataNascimentoCidadao() {
         return instancia.getDataNascimentoCidadao();
     }
@@ -314,6 +340,7 @@ public class FichaAvaliacaoElegibilidade{
      * Define a data de nascimento do cidadão.
      * @param dataNascimentoCidadao Data de nascimento do cidadão
      */
+    @Override
     public void setDataNascimentoCidadao(long dataNascimentoCidadao) {
         instancia.setDataNascimentoCidadao(dataNascimentoCidadao);
     }
@@ -321,6 +348,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove a data de nascimento do cidadão,
      */
+    @Override
     public void unsetDataNascimentoCidadao() {
         instancia.unsetDataNascimentoCidadao();
     }
@@ -329,6 +357,7 @@ public class FichaAvaliacaoElegibilidade{
      * Verifica se a data de nascimento do cidadão foi declarada.
      * @return True caso a data de nascimento do cidadão tenha sido inserida.
      */
+    @Override
     public boolean isSetDataNascimentoCidadao() {
         return instancia.isSetDataNascimentoCidadao();
     }
@@ -337,6 +366,7 @@ public class FichaAvaliacaoElegibilidade{
      * Define se a data de nascimento do cidadão foi inserida.
      * @param value True caso a data de nascimento do cidadão tenha sido inserida
      */
+    @Override
     public void setDataNascimentoCidadaoIsSet(boolean value) {
         instancia.setDataNascimentoCidadaoIsSet(value);
     }
@@ -345,6 +375,7 @@ public class FichaAvaliacaoElegibilidade{
      * sexo do cidadão.
      * @return Código do sexo do cidadão.
      */
+    @Override
     public long getSexoCidadao() {
         return instancia.getSexoCidadao();
     }
@@ -356,6 +387,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param sexoCidadao Código do sexo do cidadão.
      */
+    @Override
     public void setSexoCidadao(long sexoCidadao) {
         instancia.setSexoCidadao(sexoCidadao);
     }
@@ -363,6 +395,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove o sexo do cidadão.
      */
+    @Override
     public void unsetSexoCidadao() {
         instancia.unsetSexoCidadao();
     }
@@ -371,6 +404,7 @@ public class FichaAvaliacaoElegibilidade{
      * Verifica se o sexo foi definido.
      * @return True caso o sexo tenha sido definido.
      */
+    @Override
     public boolean isSetSexoCidadao() {
         return instancia.isSetSexoCidadao();
     }
@@ -379,6 +413,7 @@ public class FichaAvaliacaoElegibilidade{
      * Retorna se o sexo do cidadão foi definido.
      * @param value True caso o sexo tenha sido definido.
      */
+    @Override
     public void setSexoCidadaoIsSet(boolean value) {
         instancia.setSexoCidadaoIsSet(value);
     }
@@ -388,6 +423,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return Código da raça / cor do cidadão.
      */
+    @Override
     public long getRacaCorCidadao() {
         return instancia.getRacaCorCidadao();
     }
@@ -399,6 +435,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param racaCorCidadao Código da raça / cor do cidadão.
      */
+    @Override
     public void setRacaCorCidadao(long racaCorCidadao) {
         instancia.setRacaCorCidadao(racaCorCidadao);
     }
@@ -406,6 +443,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove a raça / cor do cidadão.
      */
+    @Override
     public void unsetRacaCorCidadao() {
         instancia.unsetRacaCorCidadao();
     }
@@ -414,6 +452,7 @@ public class FichaAvaliacaoElegibilidade{
      *  Verifica se a raça / cor do cidadão foi declarada.
      * @return True Caso a raça / cor do cidadão tenha sido inserida.
      */
+    @Override
     public boolean isSetRacaCorCidadao() {
         return instancia.isSetRacaCorCidadao();
     }
@@ -423,6 +462,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param value True caso a raça / cor do cidadão tenha sido inserido.
      */
+    @Override
     public void setRacaCorCidadaoIsSet(boolean value) {
         instancia.setRacaCorCidadaoIsSet(value);
     }
@@ -432,6 +472,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return Nome da mãe do cidadão.
      */
+    @Override
     public String getNomeMaeCidadao() {
         return instancia.getNomeMaeCidadao();
     }
@@ -445,6 +486,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param nomeMaeCidadao Nome da mãe do cidadão.
      */
+    @Override
     public void setNomeMaeCidadao(String nomeMaeCidadao) {
         instancia.setNomeMaeCidadao(nomeMaeCidadao);
     }
@@ -452,6 +494,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove o nome da mãe do cidadão
      */
+    @Override
     public void unsetNomeMaeCidadao() {
         instancia.unsetNomeMaeCidadao();
     }
@@ -461,6 +504,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso o nome da mãe do cidadão tenha sido declarado.
      */
+    @Override
     public boolean isSetNomeMaeCidadao() {
         return instancia.isSetNomeMaeCidadao();
     }
@@ -470,6 +514,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param value True caso o nome da mãe tenha sido inserido.
      */
+    @Override
     public void setNomeMaeCidadaoIsSet(boolean value) {
         instancia.setNomeMaeCidadaoIsSet(value);
     }
@@ -479,6 +524,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso o cidadão não conheça o nome da mãe.
      */
+    @Override
     public boolean isDesconheceNomeMae() {
         return instancia.isDesconheceNomeMae();
     }
@@ -488,6 +534,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param desconheceNomeMae True caso o cidadão não conheça o nome de sua mãe.
      */
+    @Override
     public void setDesconheceNomeMae(boolean desconheceNomeMae) {
         instancia.setDesconheceNomeMae(desconheceNomeMae);
     }
@@ -495,6 +542,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove o estado de nome da mãe desconhecido.
      */
+    @Override
     public void unsetDesconheceNomeMae() {
         instancia.unsetDesconheceNomeMae();
     }
@@ -504,6 +552,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso desconhecer o nome da mãe tenha sido declarado.
      */
+    @Override
     public boolean isSetDesconheceNomeMae() {
         return instancia.isSetDesconheceNomeMae();
     }
@@ -512,6 +561,7 @@ public class FichaAvaliacaoElegibilidade{
      * Declara se o campo desconhece nome da mãe foi inserido.
      * @param value True Caso desconhece nome da mãe tenha sido inserido.
      */
+    @Override
     public void setDesconheceNomeMaeIsSet(boolean value) {
         instancia.setDesconheceNomeMaeIsSet(value);
     }
@@ -521,6 +571,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return Código IBGE do município
      */
+    @Override
     public String getCodigoIbgeMunicipioNascimento() {
         return instancia.getCodigoIbgeMunicipioNascimento();
     }
@@ -532,6 +583,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param codigoIbgeMunicipioNascimento Código IBGE do município.
      */
+    @Override
     public void setCodigoIbgeMunicipioNascimento(String codigoIbgeMunicipioNascimento) {
         instancia.setCodigoIbgeMunicipioNascimento(codigoIbgeMunicipioNascimento);
     }
@@ -539,6 +591,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove o município de nascimento do cidadão.
      */
+    @Override
     public void unsetCodigoIbgeMunicipioNascimento() {
         instancia.unsetCodigoIbgeMunicipioNascimento();
     }
@@ -549,6 +602,7 @@ public class FichaAvaliacaoElegibilidade{
      * @return True Caso o município tenha sido inserido
      * @return False caso o município não tenha sido inserido.
      */
+    @Override
     public boolean isSetCodigoIbgeMunicipioNascimento() {
         return instancia.isSetCodigoIbgeMunicipioNascimento();
     }
@@ -558,6 +612,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param value True caso deseje informar que o município foi inserido.
      */
+    @Override
     public void setCodigoIbgeMunicipioNascimentoIsSet(boolean value) {
         instancia.setCodigoIbgeMunicipioNascimentoIsSet(value);
     }
@@ -567,6 +622,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return Código do marcador que indica se o cidadão é brasileiro, naturalizado ou estrangeiro.
      */
+    @Override
     public long getCodigoNacionalidade() {
         return instancia.getCodigoNacionalidade();
     }
@@ -578,6 +634,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param codigoNacionalidade Código do marcador que indica se o cidadão é brasileiro, naturalizado ou estrangeiro.
      */
+    @Override
     public void setCodigoNacionalidade(long codigoNacionalidade) {
         instancia.setCodigoNacionalidade(codigoNacionalidade);
     }
@@ -585,6 +642,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove a nacionalidade do cidadão.
      */
+    @Override
     public void unsetCodigoNacionalidade() {
         instancia.unsetCodigoNacionalidade();
     }
@@ -594,6 +652,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True Caso o cidadão possua um código de nacionalidade ou False caso o código de nacionalidade não tenha sido informado.
      */
+    @Override
     public boolean isSetCodigoNacionalidade() {
         return instancia.isSetCodigoNacionalidade();
     }
@@ -603,6 +662,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param value True caso deseje informar que a nacionalidade foi inserida. Falso caso ela não tenha sido inserida.
      */
+    @Override
     public void setCodigoNacionalidadeIsSet(boolean value) {
         instancia.setCodigoNacionalidadeIsSet(value);
     }
@@ -612,6 +672,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return Email do cidadão.
      */
+    @Override
     public String getEmailCidadao() {
         return instancia.getEmailCidadao();
     }
@@ -625,6 +686,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param emailCidadao Email do cidadão.
      */
+    @Override
     public void setEmailCidadao(String emailCidadao) {
         instancia.setEmailCidadao(emailCidadao);
     }
@@ -632,6 +694,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove o email do cidadão.
      */
+    @Override
     public void unsetEmailCidadao() {
         instancia.unsetEmailCidadao();
     }
@@ -641,6 +704,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso o email do cidadão tenha sido declarado, False caso o email não tenha sido declarado.
      */
+    @Override
     public boolean isSetEmailCidadao() {
         return instancia.isSetEmailCidadao();
     }
@@ -650,6 +714,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param value True caso deseje informar que o email foi inserido, False caso deseje declarar que o cidadão não possui email.
      */
+    @Override
     public void setEmailCidadaoIsSet(boolean value) {
         instancia.setEmailCidadaoIsSet(value);
     }
@@ -659,6 +724,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return Número do PIS/PASEP do cidadão.
      */
+    @Override
     public String getNumeroNisPisPasep() {
         return instancia.getNumeroNisPisPasep();
     }
@@ -671,6 +737,7 @@ public class FichaAvaliacaoElegibilidade{
      *
      * @param numeroNisPisPasep Número do PIS/PASEP do cidadão.
      */
+    @Override
     public void setNumeroNisPisPasep(String numeroNisPisPasep) {
         instancia.setNumeroNisPisPasep(numeroNisPisPasep);
     }
@@ -678,6 +745,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove o número do PIS/PASEP do cidadão.
      */
+    @Override
     public void unsetNumeroNisPisPasep() {
         instancia.unsetNumeroNisPisPasep();
     }
@@ -687,6 +755,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso o número do PIS/PASEP do cidadão tenha sido declarado, False caso o número não tenha sido declarado.
      */
+    @Override
     public boolean isSetNumeroNisPisPasep() {
         return instancia.isSetNumeroNisPisPasep();
     }
@@ -696,6 +765,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param value True caso deseje informar que o número do PIS/PASEP do cidadão foi inserido, False caso não tenha.
      */
+    @Override
     public void setNumeroNisPisPasepIsSet(boolean value) {
         instancia.setNumeroNisPisPasepIsSet(value);
     }
@@ -705,7 +775,8 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return Informações sobre o endereço do domicílio
      */
-    public EnderecoLocalPermanencia getEndereco() {
+    @Override
+    public IEnderecoLocalPermanencia getEndereco() {
         return new EnderecoLocalPermanencia(instancia.getEndereco());
     }
 
@@ -716,13 +787,15 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param endereco Informações sobre o endereço do domicílio.
      */
-    public void setEndereco(EnderecoLocalPermanencia endereco) {
+    @Override
+    public void setEndereco(IEnderecoLocalPermanencia endereco) {
         instancia.setEndereco(endereco.getInstance());
     }
 
     /**
      * Remove as informações sobre o endereço do domicílio.
      */
+    @Override
     public void unsetEndereco() {
         instancia.unsetEndereco();
     }
@@ -733,6 +806,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso as informações sobre o endereço do domicílio tenham sido declaradas, False caso não tenham.
      */
+    @Override
     public boolean isSetEndereco() {
         return instancia.isSetEndereco();
     }
@@ -742,6 +816,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param value True caso deseje informar que informações sobre o endereço do domicílio foram inseridas, False caso contrario.
      */
+    @Override
     public void setEnderecoIsSet(boolean value) {
         instancia.setEnderecoIsSet(value);
     }
@@ -751,6 +826,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return Código do local de atendimento de origem do cidadão.
      */
+    @Override
     public long getAtencaoDomiciliarOrigem() {
         return instancia.getAtencaoDomiciliarOrigem();
     }
@@ -762,6 +838,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param atencaoDomiciliarOrigem Código do local de atendimento de origem do cidadão.
      */
+    @Override
     public void setAtencaoDomiciliarOrigem(long atencaoDomiciliarOrigem) {
         instancia.setAtencaoDomiciliarOrigem(atencaoDomiciliarOrigem);
     }
@@ -769,6 +846,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove o local de atendimento de origem do cidadão
      */
+    @Override
     public void unsetAtencaoDomiciliarOrigem() {
         instancia.unsetAtencaoDomiciliarOrigem();
     }
@@ -778,6 +856,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso o local de atendimento de origem do cidadão tenha sido declarado, False caso não tenha sido declarado.
      */
+    @Override
     public boolean isSetAtencaoDomiciliarOrigem() {
         return instancia.isSetAtencaoDomiciliarOrigem();
     }
@@ -787,6 +866,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param value True caso deseje informar que o local de atendimento de origem do cidadão foi inserido, False caso contrario.
      */
+    @Override
     public void setAtencaoDomiciliarOrigemIsSet(boolean value) {
         instancia.setAtencaoDomiciliarOrigemIsSet(value);
     }
@@ -796,6 +876,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return Código das opções de modalidade.
      */
+    @Override
     public long getAtencaoDomiciliarModalidade() {
         return instancia.getAtencaoDomiciliarModalidade();
     }
@@ -807,6 +888,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param atencaoDomiciliarModalidade Código das opções de modalidade, indica se o cidadão é elegível ou inelegível
      */
+    @Override
     public void setAtencaoDomiciliarModalidade(long atencaoDomiciliarModalidade) {
         instancia.setAtencaoDomiciliarModalidade(atencaoDomiciliarModalidade);
     }
@@ -814,6 +896,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove a modalidade.
      */
+    @Override
     public void unsetAtencaoDomiciliarModalidade() {
         instancia.unsetAtencaoDomiciliarModalidade();
     }
@@ -823,6 +906,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso a modalidade tenha sido declarada, False caso não tenha sido declarada.
      */
+    @Override
     public boolean isSetAtencaoDomiciliarModalidade() {
         return instancia.isSetAtencaoDomiciliarModalidade();
     }
@@ -832,6 +916,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param value True caso deseje declarar a modalidade, False caso contrario.
      */
+    @Override
     public void setAtencaoDomiciliarModalidadeIsSet(boolean value) {
         instancia.setAtencaoDomiciliarModalidadeIsSet(value);
     }
@@ -841,6 +926,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return Quantidade de situações presentes.
      */
+    @Override
     public int getSituacoesPresentesSize() {
         return instancia.getSituacoesPresentesSize();
     }
@@ -849,6 +935,7 @@ public class FichaAvaliacaoElegibilidade{
      * Situações presentes.
      * @return Marcadores de situações presentes.
      */
+    @Override
     public Iterator<Long> getSituacoesPresentesIterator() {
         return instancia.getSituacoesPresentesIterator();
     }
@@ -860,6 +947,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param elem 
      */
+    @Override
     public void addToSituacoesPresentes(long elem) {
         instancia.addToSituacoesPresentes(elem);
     }
@@ -868,6 +956,7 @@ public class FichaAvaliacaoElegibilidade{
      * Marcadores de situações presentes.
      * @return Lista com marcadores de situações presentes.
      */
+    @Override
     public List<Long> getSituacoesPresentes() {
         return instancia.getSituacoesPresentes();
     }
@@ -880,6 +969,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param situacoesPresentes 
      */
+    @Override
     public void setSituacoesPresentes(List<Long> situacoesPresentes) {
         instancia.setSituacoesPresentes(situacoesPresentes);
     }
@@ -887,6 +977,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove as situações presentes.
      */
+    @Override
     public void unsetSituacoesPresentes() {
         instancia.unsetSituacoesPresentes();
     }
@@ -895,6 +986,7 @@ public class FichaAvaliacaoElegibilidade{
      * Verifica se foi declarada alguma situação presente.
      * @return True Caso situações presentes tenham sido declaradas, False caso contrario.
      */
+    @Override
     public boolean isSetSituacoesPresentes() {
         return instancia.isSetSituacoesPresentes();
     }
@@ -903,6 +995,7 @@ public class FichaAvaliacaoElegibilidade{
      * Declara que situações presentes foram inseridas.
      * @param value True caso deseje informar que a fiha possui situações presentes, False caso contrario.
      */
+    @Override
     public void setSituacoesPresentesIsSet(boolean value) {
         instancia.setSituacoesPresentesIsSet(value);
     }
@@ -911,6 +1004,7 @@ public class FichaAvaliacaoElegibilidade{
      * Código do CID10 registrado na avaliação
      * @return Código do CID10 registrado na avaliação
      */
+    @Override
     public String getCid10Principal() {
         return instancia.getCid10Principal();
     }
@@ -922,6 +1016,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param cid10Principal Código do CID10 registrado da avaliação.
      */
+    @Override
     public void setCid10Principal(String cid10Principal) {
         instancia.setCid10Principal(cid10Principal);
     }
@@ -929,6 +1024,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove o código do CID10 principal.
      */
+    @Override
     public void unsetCid10Principal() {
         instancia.unsetCid10Principal();
     }
@@ -938,6 +1034,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso o código do CID10 principal tenha sido declarado, False caso contrario.
      */
+    @Override
     public boolean isSetCid10Principal() {
         return instancia.isSetCid10Principal();
     }
@@ -947,6 +1044,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param value True caso deseje declarar o código do CID10 principal, false caso contrario.
      */
+    @Override
     public void setCid10PrincipalIsSet(boolean value) {
         instancia.setCid10PrincipalIsSet(value);
     }
@@ -956,6 +1054,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return Código do CID10 secundário.
      */
+    @Override
     public String getCid10Segundo() {
         return instancia.getCid10Segundo();
     }
@@ -967,6 +1066,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param cid10Segundo Código do CID10 secundário
      */
+    @Override
     public void setCid10Segundo(String cid10Segundo) {
         instancia.setCid10Segundo(cid10Segundo);
     }
@@ -974,6 +1074,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove o código do CID10 secundário.
      */
+    @Override
     public void unsetCid10Segundo() {
         instancia.unsetCid10Segundo();
     }
@@ -983,6 +1084,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso o código do CID10 secundário tenha sido declarado, False caso contrario.
      */
+    @Override
     public boolean isSetCid10Segundo() {
         return instancia.isSetCid10Segundo();
     }
@@ -992,6 +1094,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param value True caso o código do CID10 secundário tenha sido inserido, False caso contrario.
      */
+    @Override
     public void setCid10SegundoIsSet(boolean value) {
         instancia.setCid10SegundoIsSet(value);
     }
@@ -1000,6 +1103,7 @@ public class FichaAvaliacaoElegibilidade{
      * Código do CID10 terciário.
      * @return código do CID10 terciário.
      */
+    @Override
     public String getCid10Terceiro() {
         return instancia.getCid10Terceiro();
     }
@@ -1011,6 +1115,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param cid10Terceiro Código do CID10 terciário.
      */
+    @Override
     public void setCid10Terceiro(String cid10Terceiro) {
         instancia.setCid10Terceiro(cid10Terceiro);
     }
@@ -1018,6 +1123,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove o código do CID10 terciário.
      */
+    @Override
     public void unsetCid10Terceiro() {
         instancia.unsetCid10Terceiro();
     }
@@ -1027,6 +1133,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso o código do CID10 terciário tenha sido declarado, False caso contrario.
      */
+    @Override
     public boolean isSetCid10Terceiro() {
         return instancia.isSetCid10Terceiro();
     }
@@ -1036,6 +1143,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param value True caso  código do CID10 terciário tenha sido inserido, False caso contrario.
      */
+    @Override
     public void setCid10TerceiroIsSet(boolean value) {
         instancia.setCid10TerceiroIsSet(value);
     }
@@ -1045,6 +1153,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return Código da conduta adotada caso cidadão seja Elegível.
      */
+    @Override
     public long getConclusaoDestinoElegivel() {
         return instancia.getConclusaoDestinoElegivel();
     }
@@ -1056,6 +1165,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param conclusaoDestinoElegivel Código da conduta adotada caso cidadão seja Elegível.
      */
+    @Override
     public void setConclusaoDestinoElegivel(long conclusaoDestinoElegivel) {
         instancia.setConclusaoDestinoElegivel(conclusaoDestinoElegivel);
     }
@@ -1063,6 +1173,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove o código da conduta adotada caso cidadão seja Elegível.
      */
+    @Override
     public void unsetConclusaoDestinoElegivel() {
         instancia.unsetConclusaoDestinoElegivel();
     }
@@ -1072,6 +1183,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso o código da conduta adotada caso cidadão seja Elegível tenha sido declarado, False caso contrario.
      */
+    @Override
     public boolean isSetConclusaoDestinoElegivel() {
         return instancia.isSetConclusaoDestinoElegivel();
     }
@@ -1081,6 +1193,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param value True caso o código da conduta adotada caso cidadão seja Elegível tenha sido inserido, False caso contrario.
      */
+    @Override
     public void setConclusaoDestinoElegivelIsSet(boolean value) {
         instancia.setConclusaoDestinoElegivelIsSet(value);
     }
@@ -1090,6 +1203,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return Código da conduta adotada caso cidadão seja Inelegível.
      */
+    @Override
     public int getConclusaoDestinoInelegivelSize() {
         return instancia.getConclusaoDestinoInelegivelSize();
     }
@@ -1099,6 +1213,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return Código da conduta adotada caso cidadão seja Inelegível.
      */
+    @Override
     public Iterator<Long> getConclusaoDestinoInelegivelIterator() {
         return instancia.getConclusaoDestinoInelegivelIterator();
     }
@@ -1108,6 +1223,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param elem Código da conduta adotada caso cidadão seja Inelegível.,
      */
+    @Override
     public void addToConclusaoDestinoInelegivel(long elem) {
         instancia.addToConclusaoDestinoInelegivel(elem);
     }
@@ -1117,6 +1233,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return Código da conduta adotada caso cidadão seja Inelegível.
      */
+    @Override
     public List<Long> getConclusaoDestinoInelegivel() {
         return instancia.getConclusaoDestinoInelegivel();
     }
@@ -1129,6 +1246,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param conclusaoDestinoInelegivel 
      */
+    @Override
     public void setConclusaoDestinoInelegivel(List<Long> conclusaoDestinoInelegivel) {
         instancia.setConclusaoDestinoInelegivel(conclusaoDestinoInelegivel);
     }
@@ -1136,6 +1254,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * remove o código da conduta adotada caso cidadão seja Inelegível
      */
+    @Override
     public void unsetConclusaoDestinoInelegivel() {
         instancia.unsetConclusaoDestinoInelegivel();
     }
@@ -1145,6 +1264,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso o Código da conduta adotada caso cidadão seja Inelegível tenha sido declarado, False caso contrario.
      */
+    @Override
     public boolean isSetConclusaoDestinoInelegivel() {
         return instancia.isSetConclusaoDestinoInelegivel();
     }
@@ -1154,6 +1274,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param value True caso o código da conduta adotada caso cidadão seja Inelegível tenha sido inserido.
      */
+    @Override
     public void setConclusaoDestinoInelegivelIsSet(boolean value) {
         instancia.setConclusaoDestinoInelegivelIsSet(value);
     }
@@ -1163,6 +1284,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return Código da relação de parentesco do cuidador com o cidadão em atenção domiciliar.
      */
+    @Override
     public long getCuidadorCidadao() {
         return instancia.getCuidadorCidadao();
     }
@@ -1172,6 +1294,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @param cuidadorCidadao Código da relação de parentesco do cuidador com o cidadão em atenção domiciliar.
      */
+    @Override
     public void setCuidadorCidadao(long cuidadorCidadao) {
         instancia.setCuidadorCidadao(cuidadorCidadao);
     }
@@ -1179,6 +1302,7 @@ public class FichaAvaliacaoElegibilidade{
     /**
      * Remove a relação de parentesco do cuidador com o cidadão em atenção domiciliar.
      */
+    @Override
     public void unsetCuidadorCidadao() {
         instancia.unsetCuidadorCidadao();
     }
@@ -1188,6 +1312,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso a relação de parentesco do cuidador com o cidadão em atenção domiciliar tenha sido declarada, False caso contrario.
      */
+    @Override
     public boolean isSetCuidadorCidadao() {
         return instancia.isSetCuidadorCidadao();
     }
@@ -1196,37 +1321,16 @@ public class FichaAvaliacaoElegibilidade{
      * Declara que a relação de parentesco do cuidador com o cidadão em atenção domiciliar foi inserida.
      * @param value True caso a relação de parentesco do cuidador com o cidadão em atenção domiciliar tenha sido inserida, false caso contrario.
      */
+    @Override
     public void setCuidadorCidadaoIsSet(boolean value) {
         instancia.setCuidadorCidadaoIsSet(value);
-    }
-
-    @Override
-    public boolean equals(Object that) {
-        return instancia.equals(that);
-    }
-
-    public boolean equals(FichaAvaliacaoElegibilidade that) {
-        return instancia.equals(that.getInstance());
-    }
-
-    @Override
-    public int hashCode() {
-        return instancia.hashCode();
-    }
-
-    public int compareTo(FichaAvaliacaoElegibilidade other) {
-        return instancia.compareTo(other.getInstance());
-    }
-
-    @Override
-    public String toString() {
-        return instancia.toString();
     }
 
     /**
      * Valida se o conteudo da instancia está consistente.
      * @return True caso as informações sejam validas.
      */
+    @Override
     public boolean validate() {
         return validateUuidFicha() && validatetTpCdsOrigem() && 
                 validateHeaderTransport() && validateNumeroCartaoSus() && 
@@ -1245,11 +1349,11 @@ public class FichaAvaliacaoElegibilidade{
      * Retorna uma copia da instancia thrift.
      * @return Instancia thrift da classe.
      */
-    protected FichaAvaliacaoElegibilidadeThrift getInstance(){
+    @Override
+    public FichaAvaliacaoElegibilidadeThrift getInstance(){
         return instancia;
     }
 
-    
     /**
      * Código UUID para identificar a ficha na base de dados nacional.
      * Obrigatório!
@@ -1258,6 +1362,7 @@ public class FichaAvaliacaoElegibilidade{
      * UUID são a limitação de 44 bytes do campo.
      * @return True caso valido, false caso esteja inconsistente
      */
+    @Override
     public boolean validateUuidFicha(){
         return  instancia.getUuidFicha() != null &&
                 instancia.getUuidFicha().length() >= 36 && 
@@ -1269,6 +1374,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso o tipo de origem dos dados tenha sido declarado.
      */
+    @Override
     public boolean validatetTpCdsOrigem(){
         return instancia.isSetTpCdsOrigem();
     }
@@ -1278,6 +1384,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso o header transport seja valido
      */
+    @Override
     public boolean validateHeaderTransport(){
         return instancia.getHeaderTransport() != null && 
                 instancia.isSetHeaderTransport() &&
@@ -1289,6 +1396,7 @@ public class FichaAvaliacaoElegibilidade{
      * CNS do cidadão que participou da atividade.
      * @return True Caso não tenha sido informado e caso tenha sido informado corretamente.
      */
+    @Override
     public boolean validateNumeroCartaoSus(){
         if(this.isSetNumeroCartaoSus()){
             
@@ -1311,6 +1419,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso seja um nome valido ou caso não possua nome e conclusaoDestinoElegivel seja diferente de 1, False caso contrario.
      */
+    @Override
     public boolean validateNome(){
         
         if(this.isSetNomeCidadao()){
@@ -1332,6 +1441,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso seja um nome valido ou caso não possua nome e conclusaoDestinoElegivel seja diferente de 1, False caso contrario.
      */
+    @Override
     public boolean validateNomeSocial(){
         
         if(this.isSetNomeSocialCidadao()){
@@ -1349,6 +1459,7 @@ public class FichaAvaliacaoElegibilidade{
      * Valida: Não pode ser posterior a dataAtendimento e anterior a 130 anos a partir da dataAtendimento.
      * Não pode ser posterior a dataAtendimento e anterior a 130 anos a partir da dataAtendimento.
      */
+    @Override
     public boolean validaDataNascimentoCidadao(){
         
         if(!instancia.isSetDataNascimentoCidadao()) return false;
@@ -1375,6 +1486,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso esteje presente ou caso conclusaoDestinoElegivel for diferente de 1, False caso contrario.
      */
+    @Override
     public boolean validateRacaCorCidadao(){
         if(instancia.isSetRacaCorCidadao()){
             return true;
@@ -1396,6 +1508,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso seja um nome valido ou caso não possua nome e conclusaoDestinoElegivel seja diferente de 1, False caso contrario.
      */
+    @Override
     public boolean validateNomeMae(){
         
         if(this.isSetNomeMaeCidadao() && ! instancia.isDesconheceNomeMae()){
@@ -1416,6 +1529,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso esteja presente ou caso conclusaoDestinoElegivel for diferente de 1, False caso contrario.
      */
+    @Override
     public boolean validateNacionalidade(){
         
         if(instancia.isSetCodigoNacionalidade()){
@@ -1435,6 +1549,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso esteja de acordo com a regra ou caso não tenha sido declarado, False caso contrario.
      */
+    @Override
     public boolean validateEmail(){
 
         
@@ -1464,6 +1579,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso seja valido ou caso não seja declarado, False caso contrario.
      */
+    @Override
     public boolean validateNumeroNisPisPasep(){
         
         if(instancia.isSetNumeroNisPisPasep()){
@@ -1489,6 +1605,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso seja valido ou caso conclusaoDestinoElegivel for diferente de 1, False caso contrario.
      */
+    @Override
     public boolean validateEndereco(){
         
         if(instancia.isSetEndereco()){
@@ -1506,6 +1623,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso esteja presente, falso caso contrario.
      */
+    @Override
     public boolean validateAtencaoDomiciliarOrigem(){
         
         return instancia.isSetAtencaoDomiciliarOrigem();
@@ -1516,6 +1634,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso esteja presente, falso caso contrario.
      */
+    @Override
     public boolean validateAtencaoDomiciliarModalidade(){
         
         return instancia.isSetAtencaoDomiciliarModalidade();
@@ -1529,6 +1648,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso atendam as regras ou caso não seja declarado, False caso contrario.
      */
+    @Override
     public boolean validateSituacoesPresentes(){
         
         if(instancia.isSetSituacoesPresentes()){
@@ -1547,6 +1667,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso esteja de acordo com as regras, False caso contrario.
      */
+    @Override
     public boolean validateCid10Principal(){
         
         if(instancia.isSetCid10Principal()){
@@ -1564,6 +1685,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso esteja de acordo com a regra ou não seja declarado, False caso contrario.
      */
+    @Override
     public boolean validateCid10Segundo(){
         
         if(instancia.isSetCid10Segundo()){
@@ -1581,6 +1703,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso esteja de acordo com a regra ou não seja declarado, False caso contrario.
      */
+    @Override
     public boolean validateCid10Terceiro(){
         
         if(instancia.isSetCid10Segundo()){
@@ -1599,6 +1722,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso atenda as regras, False caso contrario.
      */
+    @Override
     public boolean validateConclusaoDestinoElegivel(){
         
         if(instancia.isSetConclusaoDestinoElegivel()){
@@ -1618,6 +1742,7 @@ public class FichaAvaliacaoElegibilidade{
      * 
      * @return True caso atenda as regras, False caso contrario.
      */
+    @Override
     public boolean validateConclusaoDestinoInelegivel(){
         
         if(instancia.isSetConclusaoDestinoInelegivel()){
