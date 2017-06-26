@@ -1,586 +1,1637 @@
 package com.github.Eddyosos.integracao20171.esus.cds.avaliacaoelegibilidade;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.avaliacaoelegibilidade.FichaAvaliacaoElegibilidadeThrift;
-import br.gov.saude.esus.cds.transport.generated.thrift.common.EnderecoLocalPermanenciaThrift;
-import br.gov.saude.esus.cds.transport.generated.thrift.common.UnicaLotacaoHeaderThrift;
 import com.github.Eddyosos.integracao20171.esus.cds.common.EnderecoLocalPermanencia;
 import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
+import com.github.Eddyosos.integracao20171.utils.IDS.CNS;
 import java.util.Iterator;
 import java.util.List;
-import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class FichaAvaliacaoElegibilidade{
-    private FichaAvaliacaoElegibilidadeThrift fichaAvaliacaoElegibilidadeThrift = new FichaAvaliacaoElegibilidadeThrift();
+    private FichaAvaliacaoElegibilidadeThrift instancia = new FichaAvaliacaoElegibilidadeThrift();
     
     protected FichaAvaliacaoElegibilidade(FichaAvaliacaoElegibilidadeThrift fichaAvaliacaoElegibilidade){
-        this.fichaAvaliacaoElegibilidadeThrift = fichaAvaliacaoElegibilidade;
+        this.instancia = fichaAvaliacaoElegibilidade;
     }
 
+    /**
+     * Realiza uma copia da ficha.
+     * @return copia da ficha.
+     */
     public FichaAvaliacaoElegibilidade deepCopy() {
-        return new FichaAvaliacaoElegibilidade(fichaAvaliacaoElegibilidadeThrift.deepCopy());
+        return new FichaAvaliacaoElegibilidade(instancia.deepCopy());
     }
 
+    /**
+     * Remove todos os dados da ficha.
+     */
     public void clear() {
-        fichaAvaliacaoElegibilidadeThrift.clear();
+        instancia.clear();
     }
 
+    /**
+     * Código UUID para identificar a ficha na base de dados nacional.
+     * 
+     * Presenca obrigatória.
+     * Tamanho mínimo: 36
+     * Tamanho maximo: 44
+     * Regras: É recomendado concatenar o CNES na frente do UUID,
+     * de modo que os 7 digitos (CNES) + 1 de hífen somados aos 36 (32 caracteres + 4 hífen)
+     * do UUID são a limitação de 44 bytes do campo. Formato canônico.
+     * 
+     * @return Código uuid.
+     */
     public String getUuidFicha() {
-        return fichaAvaliacaoElegibilidadeThrift.getUuidFicha();
+        return instancia.getUuidFicha();
     }
 
+    /**
+     * Define o código uuid da ficha.
+     * @param uuidFicha Código uuid da ficha.
+     */
     public void setUuidFicha(String uuidFicha) {
-        fichaAvaliacaoElegibilidadeThrift.setUuidFicha(uuidFicha);
+        instancia.setUuidFicha(uuidFicha);
     }
 
+    /**
+     * Remove o código uuid da ficha.
+     */
     public void unsetUuidFicha() {
-        fichaAvaliacaoElegibilidadeThrift.unsetUuidFicha();
+        instancia.unsetUuidFicha();
     }
 
+    /**
+     * Verifica se o código uuid da ficha foi declarado.
+     * @return True caso o código uuid da ficha tenha sido declarado.
+     */
     public boolean isSetUuidFicha() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetUuidFicha();
+        return instancia.isSetUuidFicha();
     }
 
+    /**
+     * Declara o estado do código uuid da ficha.
+     * @param value True caso o código uuid da ficha tenha sido inserido.
+     */
     public void setUuidFichaIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setUuidFichaIsSet(value);
+        instancia.setUuidFichaIsSet(value);
     }
 
+    /**
+     * Tipo de origem dos dados do registro.
+     * @return Tipo de origem dos dados do registro.
+     */
     public int getTpCdsOrigem() {
-        return fichaAvaliacaoElegibilidadeThrift.getTpCdsOrigem();
+        return instancia.getTpCdsOrigem();
     }
 
+    /**
+     * Define o tipo de origem dos dados do registro.
+     * 
+     * Presenca obrigatória.
+     * Observação: Utilizar valor 3 (sistemas terceiros).
+     * 
+     * @param tpCdsOrigem Tipo de origem dos dados do registro.
+     */
     public void setTpCdsOrigem(int tpCdsOrigem) {
-        fichaAvaliacaoElegibilidadeThrift.setTpCdsOrigem(tpCdsOrigem);
+        instancia.setTpCdsOrigem(tpCdsOrigem);
     }
 
+    /**
+     * Remove o tipo de origem dos dados do registro.
+     */
     public void unsetTpCdsOrigem() {
-        fichaAvaliacaoElegibilidadeThrift.unsetTpCdsOrigem();
+        instancia.unsetTpCdsOrigem();
     }
 
+    /**
+     * Verifica se o tipo de origem dos dados do registro foi declarado.
+     * @return True caso o tipo de origem dos dados do registro tenha sido inserido.
+     */
     public boolean isSetTpCdsOrigem() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetTpCdsOrigem();
+        return instancia.isSetTpCdsOrigem();
     }
 
+    /**
+     * Declara se o tipo de origem dos dados do registro foi inserido.
+     * @param value True caso o tipo de origem dos dados do registro tenha sido inserido.
+     */
     public void setTpCdsOrigemIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setTpCdsOrigemIsSet(value);
+        instancia.setTpCdsOrigemIsSet(value);
     }
 
+    /**
+     * Profissional que realizou a visita.
+     * @return Profissional que realizou a visita.
+     */
     public UnicaLotacaoHeader getHeaderTransport() {
-        return new UnicaLotacaoHeader(fichaAvaliacaoElegibilidadeThrift.getHeaderTransport());
+        return new UnicaLotacaoHeader(instancia.getHeaderTransport());
     }
 
+    /**
+     * Define o profissional que realizou a visita.
+     * 
+     * Presenca obrigatória.
+     * 
+     * @param headerTransport Profissional que realizou a visita.
+     */
     public void setHeaderTransport(UnicaLotacaoHeader headerTransport) {
-        fichaAvaliacaoElegibilidadeThrift.setHeaderTransport(headerTransport.getInstance());
+        instancia.setHeaderTransport(headerTransport.getInstance());
     }
 
+    /**
+     * Remove o profissional que realizou a visita.
+     */
     public void unsetHeaderTransport() {
-        fichaAvaliacaoElegibilidadeThrift.unsetHeaderTransport();
+        instancia.unsetHeaderTransport();
     }
 
+    /**
+     * Verifica se o profissional que realizou a visita foi declarado.
+     * @return True caso o profissional que realizou a visita tenha sido inserido.
+     */
     public boolean isSetHeaderTransport() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetHeaderTransport();
+        return instancia.isSetHeaderTransport();
     }
 
+    /**
+     * Define se o profissional que realizou a visita doi inserido.
+     * @param value True caso profissional que realizou a visita tenha sido inserido.
+     */
     public void setHeaderTransportIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setHeaderTransportIsSet(value);
+        instancia.setHeaderTransportIsSet(value);
     }
 
+    /**
+     * CNS do cidadão.
+     * @return CNS do cidadão.
+     */
     public String getNumeroCartaoSus() {
-        return fichaAvaliacaoElegibilidadeThrift.getNumeroCartaoSus();
+        return instancia.getNumeroCartaoSus();
     }
 
+    /**
+     * CNS do cidadão.
+     * 
+     * Presenca obrigatória.
+     * Regras: CNS válido de acordo com o algoritmo.
+     * Tamanho: 15 digitos.
+     * 
+     * @param numeroCartaoSus 
+     */
     public void setNumeroCartaoSus(String numeroCartaoSus) {
-        fichaAvaliacaoElegibilidadeThrift.setNumeroCartaoSus(numeroCartaoSus);
+        instancia.setNumeroCartaoSus(numeroCartaoSus);
     }
 
+    /**
+     * Remove o CNS do cidadão.
+     */
     public void unsetNumeroCartaoSus() {
-        fichaAvaliacaoElegibilidadeThrift.unsetNumeroCartaoSus();
+        instancia.unsetNumeroCartaoSus();
     }
 
+    /**
+     * Verifica se o CNS do cidadão foi declarado.
+     * @return True caso o CNS do cidadão tenhe sido inserido.
+     */
     public boolean isSetNumeroCartaoSus() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetNumeroCartaoSus();
+        return instancia.isSetNumeroCartaoSus();
     }
 
+    /**
+     * Declara se o CNS do cidadão foi inserido.
+     * @param value True caso o CNS do cidadão dtenha sido inserido.
+     */
     public void setNumeroCartaoSusIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setNumeroCartaoSusIsSet(value);
+        instancia.setNumeroCartaoSusIsSet(value);
     }
 
+    /**
+     * Nome do cidadão.
+     * @return Nome do cidadão
+     */
     public String getNomeCidadao() {
-        return fichaAvaliacaoElegibilidadeThrift.getNomeCidadao();
+        return instancia.getNomeCidadao();
     }
 
+    /**
+     * Define o nome do cidadão.
+     * 
+     * Regra:Ter ao menos duas palavras.
+     * Regra: Somente texto e apóstrofo (').
+     * Regra:Opcional caso conclusaoDestinoElegivel for diferente de 1 (admissão própria emad).
+     * Tamanho mínimo: 5
+     * Tamanho máximo: 100;
+     * 
+     * @param nomeCidadao Nome do cidadão.
+     */
     public void setNomeCidadao(String nomeCidadao) {
-        fichaAvaliacaoElegibilidadeThrift.setNomeCidadao(nomeCidadao);
+        instancia.setNomeCidadao(nomeCidadao);
     }
 
+    /**
+     * Remove o nome do cidadão.
+     */
     public void unsetNomeCidadao() {
-        fichaAvaliacaoElegibilidadeThrift.unsetNomeCidadao();
+        instancia.unsetNomeCidadao();
     }
 
+    /**
+     * Verifica se o nome do cidadão foi declarado.
+     * @return True caso o nome do cidadão tenha sido inserido.
+     */
     public boolean isSetNomeCidadao() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetNomeCidadao();
+        return instancia.isSetNomeCidadao();
     }
 
+    /**
+     * Declase se o nome do cidadão foi inserido.
+     * @param value True caso o nome do cidadão tenha sido inserido.
+     */
     public void setNomeCidadaoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setNomeCidadaoIsSet(value);
+        instancia.setNomeCidadaoIsSet(value);
     }
 
+    /**
+     * Nome social do cidadão.
+     * @return Nome social do cidadão.
+     */
     public String getNomeSocialCidadao() {
-        return fichaAvaliacaoElegibilidadeThrift.getNomeSocialCidadao();
+        return instancia.getNomeSocialCidadao();
     }
 
+    /**
+     * Define o nome social do cidadão.
+     * 
+     * Regra: Somente texto e apóstrofo (').
+     * Tamanho minimo: 0
+     * Tamanho máximo: 100
+     * 
+     * @param nomeSocialCidadao Nome social do cidadão.
+     */
     public void setNomeSocialCidadao(String nomeSocialCidadao) {
-        fichaAvaliacaoElegibilidadeThrift.setNomeSocialCidadao(nomeSocialCidadao);
+        instancia.setNomeSocialCidadao(nomeSocialCidadao);
     }
 
+    /**
+     * Remove o nome social do cidadão.
+     */
     public void unsetNomeSocialCidadao() {
-        fichaAvaliacaoElegibilidadeThrift.unsetNomeSocialCidadao();
+        instancia.unsetNomeSocialCidadao();
     }
 
+    /**
+     * Verifica se o nome social do cidadão foi declarado.
+     * @return 
+     */
     public boolean isSetNomeSocialCidadao() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetNomeSocialCidadao();
+        return instancia.isSetNomeSocialCidadao();
     }
 
+    /**
+     * Declara se o cidadão possui um nome social.
+     * @param value True caso o cidadão possua um nome social.
+     */
     public void setNomeSocialCidadaoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setNomeSocialCidadaoIsSet(value);
+        instancia.setNomeSocialCidadaoIsSet(value);
     }
 
+    /**
+     * Data de nascimento do cidadão.
+     * 
+     * Presença obrigatória.
+     * Regras: Não pode ser posterior a dataAtendimento e anterior a 130 anos a partir da dataAtendimento.
+     * 
+     * @return Data de nascimento do cidadão no formato epoch time.
+     */
     public long getDataNascimentoCidadao() {
-        return fichaAvaliacaoElegibilidadeThrift.getDataNascimentoCidadao();
+        return instancia.getDataNascimentoCidadao();
     }
 
+    /**
+     * Define a data de nascimento do cidadão.
+     * @param dataNascimentoCidadao Data de nascimento do cidadão
+     */
     public void setDataNascimentoCidadao(long dataNascimentoCidadao) {
-        fichaAvaliacaoElegibilidadeThrift.setDataNascimentoCidadao(dataNascimentoCidadao);
+        instancia.setDataNascimentoCidadao(dataNascimentoCidadao);
     }
 
+    /**
+     * Remove a data de nascimento do cidadão,
+     */
     public void unsetDataNascimentoCidadao() {
-        fichaAvaliacaoElegibilidadeThrift.unsetDataNascimentoCidadao();
+        instancia.unsetDataNascimentoCidadao();
     }
 
+    /**
+     * Verifica se a data de nascimento do cidadão foi declarada.
+     * @return True caso a data de nascimento do cidadão tenha sido inserida.
+     */
     public boolean isSetDataNascimentoCidadao() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetDataNascimentoCidadao();
+        return instancia.isSetDataNascimentoCidadao();
     }
 
+    /**
+     * Define se a data de nascimento do cidadão foi inserida.
+     * @param value True caso a data de nascimento do cidadão tenha sido inserida
+     */
     public void setDataNascimentoCidadaoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setDataNascimentoCidadaoIsSet(value);
+        instancia.setDataNascimentoCidadaoIsSet(value);
     }
 
+    /**
+     * sexo do cidadão.
+     * @return Código do sexo do cidadão.
+     */
     public long getSexoCidadao() {
-        return fichaAvaliacaoElegibilidadeThrift.getSexoCidadao();
+        return instancia.getSexoCidadao();
     }
 
+    /**
+     * Define o sexo do cidadão.
+     * 
+     * Presença obrigatória.
+     * 
+     * @param sexoCidadao Código do sexo do cidadão.
+     */
     public void setSexoCidadao(long sexoCidadao) {
-        fichaAvaliacaoElegibilidadeThrift.setSexoCidadao(sexoCidadao);
+        instancia.setSexoCidadao(sexoCidadao);
     }
-
+    
+    /**
+     * Remove o sexo do cidadão.
+     */
     public void unsetSexoCidadao() {
-        fichaAvaliacaoElegibilidadeThrift.unsetSexoCidadao();
+        instancia.unsetSexoCidadao();
     }
 
+    /**
+     * Verifica se o sexo foi definido.
+     * @return True caso o sexo tenha sido definido.
+     */
     public boolean isSetSexoCidadao() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetSexoCidadao();
+        return instancia.isSetSexoCidadao();
     }
 
+    /**
+     * Retorna se o sexo do cidadão foi definido.
+     * @param value True caso o sexo tenha sido definido.
+     */
     public void setSexoCidadaoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setSexoCidadaoIsSet(value);
+        instancia.setSexoCidadaoIsSet(value);
     }
 
+    /**
+     * Raça / cor do cidadão.
+     * 
+     * @return Código da raça / cor do cidadão.
+     */
     public long getRacaCorCidadao() {
-        return fichaAvaliacaoElegibilidadeThrift.getRacaCorCidadao();
+        return instancia.getRacaCorCidadao();
     }
 
+    /**
+     * Raça / cor do cidadão.
+     * 
+     * Regra: Opcional caso conclusaoDestinoElegivel for diferente de 1 (admissão própria emad).
+     * 
+     * @param racaCorCidadao Código da raça / cor do cidadão.
+     */
     public void setRacaCorCidadao(long racaCorCidadao) {
-        fichaAvaliacaoElegibilidadeThrift.setRacaCorCidadao(racaCorCidadao);
+        instancia.setRacaCorCidadao(racaCorCidadao);
     }
 
+    /**
+     * Remove a raça / cor do cidadão.
+     */
     public void unsetRacaCorCidadao() {
-        fichaAvaliacaoElegibilidadeThrift.unsetRacaCorCidadao();
+        instancia.unsetRacaCorCidadao();
     }
 
+    /**
+     *  Verifica se a raça / cor do cidadão foi declarada.
+     * @return True Caso a raça / cor do cidadão tenha sido inserida.
+     */
     public boolean isSetRacaCorCidadao() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetRacaCorCidadao();
+        return instancia.isSetRacaCorCidadao();
     }
 
+    /**
+     * Declara se a raça / cor do cidadão foi inserida
+     * 
+     * @param value True caso a raça / cor do cidadão tenha sido inserido.
+     */
     public void setRacaCorCidadaoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setRacaCorCidadaoIsSet(value);
+        instancia.setRacaCorCidadaoIsSet(value);
     }
 
+    /**
+     * Nome da mãe do cidadão.
+     * 
+     * @return Nome da mãe do cidadão.
+     */
     public String getNomeMaeCidadao() {
-        return fichaAvaliacaoElegibilidadeThrift.getNomeMaeCidadao();
+        return instancia.getNomeMaeCidadao();
     }
 
+    /**
+     * Define o Nome da mãe do cidadão.
+     * 
+     * Regra: Ter ao menos duas palavras.
+     * Regra: Somente texto e apóstrofo (').
+     * Regra: Não pode ser preenchido se o campo desconheceNomeMae = true.
+     * 
+     * @param nomeMaeCidadao Nome da mãe do cidadão.
+     */
     public void setNomeMaeCidadao(String nomeMaeCidadao) {
-        fichaAvaliacaoElegibilidadeThrift.setNomeMaeCidadao(nomeMaeCidadao);
+        instancia.setNomeMaeCidadao(nomeMaeCidadao);
     }
 
+    /**
+     * Remove o nome da mãe do cidadão
+     */
     public void unsetNomeMaeCidadao() {
-        fichaAvaliacaoElegibilidadeThrift.unsetNomeMaeCidadao();
+        instancia.unsetNomeMaeCidadao();
     }
 
+    /**
+     * Verifica se o nome da mãe do cidadão foi declarado.
+     * 
+     * @return True caso o nome da mãe do cidadão tenha sido declarado.
+     */
     public boolean isSetNomeMaeCidadao() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetNomeMaeCidadao();
+        return instancia.isSetNomeMaeCidadao();
     }
 
+    /**
+     * Declara se o nome da mãe do cidadão foi inserido.
+     * 
+     * @param value True caso o nome da mãe tenha sido inserido.
+     */
     public void setNomeMaeCidadaoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setNomeMaeCidadaoIsSet(value);
+        instancia.setNomeMaeCidadaoIsSet(value);
     }
 
+    /**
+     * Verifica se o cidadão conhece o nome da mãe.
+     * 
+     * @return True caso o cidadão não conheça o nome da mãe.
+     */
     public boolean isDesconheceNomeMae() {
-        return fichaAvaliacaoElegibilidadeThrift.isDesconheceNomeMae();
+        return instancia.isDesconheceNomeMae();
     }
 
+    /**
+     * Define se o cidadão não conhece sua mãe.
+     * 
+     * @param desconheceNomeMae True caso o cidadão não conheça o nome de sua mãe.
+     */
     public void setDesconheceNomeMae(boolean desconheceNomeMae) {
-        fichaAvaliacaoElegibilidadeThrift.setDesconheceNomeMae(desconheceNomeMae);
+        instancia.setDesconheceNomeMae(desconheceNomeMae);
     }
 
+    /**
+     * Remove o estado de nome da mãe desconhecido.
+     */
     public void unsetDesconheceNomeMae() {
-        fichaAvaliacaoElegibilidadeThrift.unsetDesconheceNomeMae();
+        instancia.unsetDesconheceNomeMae();
     }
 
+    /**
+     * Verifica se o cidadão informou desconhecer o nome da mãe.
+     * 
+     * @return True caso desconhecer o nome da mãe tenha sido declarado.
+     */
     public boolean isSetDesconheceNomeMae() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetDesconheceNomeMae();
+        return instancia.isSetDesconheceNomeMae();
     }
 
+    /**
+     * Declara se o campo desconhece nome da mãe foi inserido.
+     * @param value True Caso desconhece nome da mãe tenha sido inserido.
+     */
     public void setDesconheceNomeMaeIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setDesconheceNomeMaeIsSet(value);
+        instancia.setDesconheceNomeMaeIsSet(value);
     }
 
+    /**
+     * Município de nascimento do cidadão..
+     * 
+     * @return Código IBGE do município
+     */
     public String getCodigoIbgeMunicipioNascimento() {
-        return fichaAvaliacaoElegibilidadeThrift.getCodigoIbgeMunicipioNascimento();
+        return instancia.getCodigoIbgeMunicipioNascimento();
     }
 
+    /**
+     * Define o município de nascimento do cidadão
+     * 
+     * Regras: Não pode ser preenchido se codigoNacionalidade for diferente de 1 (brasileiro).
+     * 
+     * @param codigoIbgeMunicipioNascimento Código IBGE do município.
+     */
     public void setCodigoIbgeMunicipioNascimento(String codigoIbgeMunicipioNascimento) {
-        fichaAvaliacaoElegibilidadeThrift.setCodigoIbgeMunicipioNascimento(codigoIbgeMunicipioNascimento);
+        instancia.setCodigoIbgeMunicipioNascimento(codigoIbgeMunicipioNascimento);
     }
 
+    /**
+     * Remove o município de nascimento do cidadão.
+     */
     public void unsetCodigoIbgeMunicipioNascimento() {
-        fichaAvaliacaoElegibilidadeThrift.unsetCodigoIbgeMunicipioNascimento();
+        instancia.unsetCodigoIbgeMunicipioNascimento();
     }
 
+    /**
+     * Verifica se o município de nascimento do cidadão foi declarado.
+     * 
+     * @return True Caso o município tenha sido inserido
+     * @return False caso o município não tenha sido inserido.
+     */
     public boolean isSetCodigoIbgeMunicipioNascimento() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetCodigoIbgeMunicipioNascimento();
+        return instancia.isSetCodigoIbgeMunicipioNascimento();
     }
 
+    /**
+     * Declara se o município de nascimento foi inserido.
+     * 
+     * @param value True caso deseje informar que o município foi inserido.
+     */
     public void setCodigoIbgeMunicipioNascimentoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setCodigoIbgeMunicipioNascimentoIsSet(value);
+        instancia.setCodigoIbgeMunicipioNascimentoIsSet(value);
     }
 
+    /**
+     * Indica se o cidadão é brasileiro, naturalizado ou estrangeiro.
+     * 
+     * @return Código do marcador que indica se o cidadão é brasileiro, naturalizado ou estrangeiro.
+     */
     public long getCodigoNacionalidade() {
-        return fichaAvaliacaoElegibilidadeThrift.getCodigoNacionalidade();
+        return instancia.getCodigoNacionalidade();
     }
 
+    /**
+     * Define se o cidadão é brasileiro, naturalizado ou estrangeiro.
+     * 
+     * Regra: Opcional caso conclusaoDestinoElegivel for diferente de 1 (admissão própria emad).
+     * 
+     * @param codigoNacionalidade Código do marcador que indica se o cidadão é brasileiro, naturalizado ou estrangeiro.
+     */
     public void setCodigoNacionalidade(long codigoNacionalidade) {
-        fichaAvaliacaoElegibilidadeThrift.setCodigoNacionalidade(codigoNacionalidade);
+        instancia.setCodigoNacionalidade(codigoNacionalidade);
     }
 
+    /**
+     * Remove a nacionalidade do cidadão.
+     */
     public void unsetCodigoNacionalidade() {
-        fichaAvaliacaoElegibilidadeThrift.unsetCodigoNacionalidade();
+        instancia.unsetCodigoNacionalidade();
     }
 
+    /**
+     * Verifica se o código de nacionalidade foi declarado.
+     * 
+     * @return True Caso o cidadão possua um código de nacionalidade ou False caso o código de nacionalidade não tenha sido informado.
+     */
     public boolean isSetCodigoNacionalidade() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetCodigoNacionalidade();
+        return instancia.isSetCodigoNacionalidade();
     }
 
+    /**
+     * Declara que a nacionalidade do cidadão foi inserido.
+     * 
+     * @param value True caso deseje informar que a nacionalidade foi inserida. Falso caso ela não tenha sido inserida.
+     */
     public void setCodigoNacionalidadeIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setCodigoNacionalidadeIsSet(value);
+        instancia.setCodigoNacionalidadeIsSet(value);
     }
 
+    /**
+     * Email do cidadão.
+     * 
+     * @return Email do cidadão.
+     */
     public String getEmailCidadao() {
-        return fichaAvaliacaoElegibilidadeThrift.getEmailCidadao();
+        return instancia.getEmailCidadao();
     }
 
+    /**
+     * Define o email do cidadão.
+     * 
+     * Regras: Requerido seguir o padrão endereco@domínio.extensão.
+     * Tamanho mínimo: 6
+     * Tamanho máximo: 255
+     * 
+     * @param emailCidadao Email do cidadão.
+     */
     public void setEmailCidadao(String emailCidadao) {
-        fichaAvaliacaoElegibilidadeThrift.setEmailCidadao(emailCidadao);
+        instancia.setEmailCidadao(emailCidadao);
     }
 
+    /**
+     * Remove o email do cidadão.
+     */
     public void unsetEmailCidadao() {
-        fichaAvaliacaoElegibilidadeThrift.unsetEmailCidadao();
+        instancia.unsetEmailCidadao();
     }
 
+    /**
+     * Verifica se o email do cidadão foi declarado.
+     * 
+     * @return True caso o email do cidadão tenha sido declarado, False caso o email não tenha sido declarado.
+     */
     public boolean isSetEmailCidadao() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetEmailCidadao();
+        return instancia.isSetEmailCidadao();
     }
 
+    /**
+     * Declara se o email do cidadão foi inserido.
+     * 
+     * @param value True caso deseje informar que o email foi inserido, False caso deseje declarar que o cidadão não possui email.
+     */
     public void setEmailCidadaoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setEmailCidadaoIsSet(value);
+        instancia.setEmailCidadaoIsSet(value);
     }
 
+    /**
+     * Número do PIS/PASEP do cidadão.
+     * 
+     * @return Número do PIS/PASEP do cidadão.
+     */
     public String getNumeroNisPisPasep() {
-        return fichaAvaliacaoElegibilidadeThrift.getNumeroNisPisPasep();
+        return instancia.getNumeroNisPisPasep();
     }
 
+    /**
+     * Define o número do PIS/PASEP do cidadão
+     * 
+     * Regra: Apenas números.
+     * Tamanho: 11 dígitos
+     *
+     * @param numeroNisPisPasep Número do PIS/PASEP do cidadão.
+     */
     public void setNumeroNisPisPasep(String numeroNisPisPasep) {
-        fichaAvaliacaoElegibilidadeThrift.setNumeroNisPisPasep(numeroNisPisPasep);
+        instancia.setNumeroNisPisPasep(numeroNisPisPasep);
     }
 
+    /**
+     * Remove o número do PIS/PASEP do cidadão.
+     */
     public void unsetNumeroNisPisPasep() {
-        fichaAvaliacaoElegibilidadeThrift.unsetNumeroNisPisPasep();
+        instancia.unsetNumeroNisPisPasep();
     }
 
+    /**
+     * Verifica se o número do PIS/PASEP do cidadão foi declarado.
+     * 
+     * @return True caso o número do PIS/PASEP do cidadão tenha sido declarado, False caso o número não tenha sido declarado.
+     */
     public boolean isSetNumeroNisPisPasep() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetNumeroNisPisPasep();
+        return instancia.isSetNumeroNisPisPasep();
     }
 
+    /**
+     * Declara que o número do PIS/PASEP do cidadão foi inserido.
+     * 
+     * @param value True caso deseje informar que o número do PIS/PASEP do cidadão foi inserido, False caso não tenha.
+     */
     public void setNumeroNisPisPasepIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setNumeroNisPisPasepIsSet(value);
+        instancia.setNumeroNisPisPasepIsSet(value);
     }
 
+    /**
+     * Informações sobre o endereço do domicílio
+     * 
+     * @return Informações sobre o endereço do domicílio
+     */
     public EnderecoLocalPermanencia getEndereco() {
-        return new EnderecoLocalPermanencia(fichaAvaliacaoElegibilidadeThrift.getEndereco());
+        return new EnderecoLocalPermanencia(instancia.getEndereco());
     }
 
+    /**
+     * Define as informações sobre o endereço do domicílio.
+     * 
+     * Regra: Opcional caso conclusaoDestinoElegivel for diferente de 1 (admissão própria emad).
+     * 
+     * @param endereco Informações sobre o endereço do domicílio.
+     */
     public void setEndereco(EnderecoLocalPermanencia endereco) {
-        fichaAvaliacaoElegibilidadeThrift.setEndereco(endereco.getInstance());
+        instancia.setEndereco(endereco.getInstance());
     }
 
+    /**
+     * Remove as informações sobre o endereço do domicílio.
+     */
     public void unsetEndereco() {
-        fichaAvaliacaoElegibilidadeThrift.unsetEndereco();
+        instancia.unsetEndereco();
     }
 
+    /**
+     * Verifica se as I
+     * informações sobre o endereço do domicílio foram declaradas.
+     * 
+     * @return True caso as informações sobre o endereço do domicílio tenham sido declaradas, False caso não tenham.
+     */
     public boolean isSetEndereco() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetEndereco();
+        return instancia.isSetEndereco();
     }
 
+    /**
+     * Declara que as informações sobre o endereço do domicílio foram inseridas.
+     * 
+     * @param value True caso deseje informar que informações sobre o endereço do domicílio foram inseridas, False caso contrario.
+     */
     public void setEnderecoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setEnderecoIsSet(value);
+        instancia.setEnderecoIsSet(value);
     }
 
+    /**
+     * Local de atendimento de origem do cidadão
+     * 
+     * @return Código do local de atendimento de origem do cidadão.
+     */
     public long getAtencaoDomiciliarOrigem() {
-        return fichaAvaliacaoElegibilidadeThrift.getAtencaoDomiciliarOrigem();
+        return instancia.getAtencaoDomiciliarOrigem();
     }
 
+    /**
+     * Define o local de atendimento de origem do cidadão.
+     * 
+     * Presença obrigatória.
+     * 
+     * @param atencaoDomiciliarOrigem Código do local de atendimento de origem do cidadão.
+     */
     public void setAtencaoDomiciliarOrigem(long atencaoDomiciliarOrigem) {
-        fichaAvaliacaoElegibilidadeThrift.setAtencaoDomiciliarOrigem(atencaoDomiciliarOrigem);
+        instancia.setAtencaoDomiciliarOrigem(atencaoDomiciliarOrigem);
     }
 
+    /**
+     * Remove o local de atendimento de origem do cidadão
+     */
     public void unsetAtencaoDomiciliarOrigem() {
-        fichaAvaliacaoElegibilidadeThrift.unsetAtencaoDomiciliarOrigem();
+        instancia.unsetAtencaoDomiciliarOrigem();
     }
 
+    /**
+     * Verifica se o local de atendimento de origem do cidadão foi declarado.
+     * 
+     * @return True caso o local de atendimento de origem do cidadão tenha sido declarado, False caso não tenha sido declarado.
+     */
     public boolean isSetAtencaoDomiciliarOrigem() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetAtencaoDomiciliarOrigem();
+        return instancia.isSetAtencaoDomiciliarOrigem();
     }
 
+    /**
+     * Declara que o local de atendimento de origem do cidadão foi inserido.
+     * 
+     * @param value True caso deseje informar que o local de atendimento de origem do cidadão foi inserido, False caso contrario.
+     */
     public void setAtencaoDomiciliarOrigemIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setAtencaoDomiciliarOrigemIsSet(value);
+        instancia.setAtencaoDomiciliarOrigemIsSet(value);
     }
 
+    /**
+     * Opções de modalidade, indica se o cidadão é elegível ou inelegível.
+     * 
+     * @return Código das opções de modalidade.
+     */
     public long getAtencaoDomiciliarModalidade() {
-        return fichaAvaliacaoElegibilidadeThrift.getAtencaoDomiciliarModalidade();
+        return instancia.getAtencaoDomiciliarModalidade();
     }
 
+    /**
+     * Define a modalidade.
+     * 
+     * Presença obrigatória.
+     * 
+     * @param atencaoDomiciliarModalidade Código das opções de modalidade, indica se o cidadão é elegível ou inelegível
+     */
     public void setAtencaoDomiciliarModalidade(long atencaoDomiciliarModalidade) {
-        fichaAvaliacaoElegibilidadeThrift.setAtencaoDomiciliarModalidade(atencaoDomiciliarModalidade);
+        instancia.setAtencaoDomiciliarModalidade(atencaoDomiciliarModalidade);
     }
 
+    /**
+     * Remove a modalidade.
+     */
     public void unsetAtencaoDomiciliarModalidade() {
-        fichaAvaliacaoElegibilidadeThrift.unsetAtencaoDomiciliarModalidade();
+        instancia.unsetAtencaoDomiciliarModalidade();
     }
 
+    /**
+     * Verifica se a modalidade foi declarada.
+     * 
+     * @return True caso a modalidade tenha sido declarada, False caso não tenha sido declarada.
+     */
     public boolean isSetAtencaoDomiciliarModalidade() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetAtencaoDomiciliarModalidade();
+        return instancia.isSetAtencaoDomiciliarModalidade();
     }
 
+    /**
+     * Declara que a modalidade foi inserida.
+     * 
+     * @param value True caso deseje declarar a modalidade, False caso contrario.
+     */
     public void setAtencaoDomiciliarModalidadeIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setAtencaoDomiciliarModalidadeIsSet(value);
+        instancia.setAtencaoDomiciliarModalidadeIsSet(value);
     }
 
+    /**
+     * Quantidade de situações presentes.
+     * 
+     * @return Quantidade de situações presentes.
+     */
     public int getSituacoesPresentesSize() {
-        return fichaAvaliacaoElegibilidadeThrift.getSituacoesPresentesSize();
+        return instancia.getSituacoesPresentesSize();
     }
 
+    /**
+     * Situações presentes.
+     * @return Marcadores de situações presentes.
+     */
     public Iterator<Long> getSituacoesPresentesIterator() {
-        return fichaAvaliacaoElegibilidadeThrift.getSituacoesPresentesIterator();
+        return instancia.getSituacoesPresentesIterator();
     }
 
+    /**
+     * Adiciona uma situação presente a lista de situações presentes.
+     * 
+     * Máximo: 24
+     * 
+     * @param elem 
+     */
     public void addToSituacoesPresentes(long elem) {
-        fichaAvaliacaoElegibilidadeThrift.addToSituacoesPresentes(elem);
+        instancia.addToSituacoesPresentes(elem);
     }
 
+    /**
+     * Marcadores de situações presentes.
+     * @return Lista com marcadores de situações presentes.
+     */
     public List<Long> getSituacoesPresentes() {
-        return fichaAvaliacaoElegibilidadeThrift.getSituacoesPresentes();
+        return instancia.getSituacoesPresentes();
     }
 
+    /**
+     * Define um conjunto de marcadores de situações presentes.
+     * 
+     * Tamanho mínimo: 1
+     * Tamanho máximo: 24
+     * 
+     * @param situacoesPresentes 
+     */
     public void setSituacoesPresentes(List<Long> situacoesPresentes) {
-        fichaAvaliacaoElegibilidadeThrift.setSituacoesPresentes(situacoesPresentes);
+        instancia.setSituacoesPresentes(situacoesPresentes);
     }
 
+    /**
+     * Remove as situações presentes.
+     */
     public void unsetSituacoesPresentes() {
-        fichaAvaliacaoElegibilidadeThrift.unsetSituacoesPresentes();
+        instancia.unsetSituacoesPresentes();
     }
 
+    /**
+     * Verifica se foi declarada alguma situação presente.
+     * @return True Caso situações presentes tenham sido declaradas, False caso contrario.
+     */
     public boolean isSetSituacoesPresentes() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetSituacoesPresentes();
+        return instancia.isSetSituacoesPresentes();
     }
 
+    /**
+     * Declara que situações presentes foram inseridas.
+     * @param value True caso deseje informar que a fiha possui situações presentes, False caso contrario.
+     */
     public void setSituacoesPresentesIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setSituacoesPresentesIsSet(value);
+        instancia.setSituacoesPresentesIsSet(value);
     }
 
+    /**
+     * Código do CID10 registrado na avaliação
+     * @return Código do CID10 registrado na avaliação
+     */
     public String getCid10Principal() {
-        return fichaAvaliacaoElegibilidadeThrift.getCid10Principal();
+        return instancia.getCid10Principal();
     }
 
+    /**
+     * Define o código do CID10 registrado da avaliação.
+     * 
+     * Regra: Não pode ser igual ao CID10Segundo nem CID10Terceiro.
+     * 
+     * @param cid10Principal Código do CID10 registrado da avaliação.
+     */
     public void setCid10Principal(String cid10Principal) {
-        fichaAvaliacaoElegibilidadeThrift.setCid10Principal(cid10Principal);
+        instancia.setCid10Principal(cid10Principal);
     }
 
+    /**
+     * Remove o código do CID10 principal.
+     */
     public void unsetCid10Principal() {
-        fichaAvaliacaoElegibilidadeThrift.unsetCid10Principal();
+        instancia.unsetCid10Principal();
     }
 
+    /**
+     * Verifica se o código do CID10 principal foi declarado.
+     * 
+     * @return True caso o código do CID10 principal tenha sido declarado, False caso contrario.
+     */
     public boolean isSetCid10Principal() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetCid10Principal();
+        return instancia.isSetCid10Principal();
     }
 
+    /**
+     * Declara que o código do CID10 principal foi inserido.
+     * 
+     * @param value True caso deseje declarar o código do CID10 principal, false caso contrario.
+     */
     public void setCid10PrincipalIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setCid10PrincipalIsSet(value);
+        instancia.setCid10PrincipalIsSet(value);
     }
 
+    /**
+     * Código do CID10 secundário.
+     * 
+     * @return Código do CID10 secundário.
+     */
     public String getCid10Segundo() {
-        return fichaAvaliacaoElegibilidadeThrift.getCid10Segundo();
+        return instancia.getCid10Segundo();
     }
 
+    /**
+     * Define o código do CID10 secundário.
+     * 
+     * Regra: Não pode ser igual ao CID10Principal nem CID10Terceiro.
+     * 
+     * @param cid10Segundo Código do CID10 secundário
+     */
     public void setCid10Segundo(String cid10Segundo) {
-        fichaAvaliacaoElegibilidadeThrift.setCid10Segundo(cid10Segundo);
+        instancia.setCid10Segundo(cid10Segundo);
     }
 
+    /**
+     * Remove o código do CID10 secundário.
+     */
     public void unsetCid10Segundo() {
-        fichaAvaliacaoElegibilidadeThrift.unsetCid10Segundo();
+        instancia.unsetCid10Segundo();
     }
 
+    /**
+     * Verifica se o código do CID10 secundário foi declarado.
+     * 
+     * @return True caso o código do CID10 secundário tenha sido declarado, False caso contrario.
+     */
     public boolean isSetCid10Segundo() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetCid10Segundo();
+        return instancia.isSetCid10Segundo();
     }
 
+    /**
+     * Delcara que o código do CID10 secundário foi inserido.
+     * 
+     * @param value True caso o código do CID10 secundário tenha sido inserido, False caso contrario.
+     */
     public void setCid10SegundoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setCid10SegundoIsSet(value);
+        instancia.setCid10SegundoIsSet(value);
     }
 
+    /**
+     * Código do CID10 terciário.
+     * @return código do CID10 terciário.
+     */
     public String getCid10Terceiro() {
-        return fichaAvaliacaoElegibilidadeThrift.getCid10Terceiro();
+        return instancia.getCid10Terceiro();
     }
 
+    /**
+     * Define o código do CID10 terciário.
+     * 
+     * Regra: Não pode ser igual ao CID10Principal nem CID10Segundo.
+     * 
+     * @param cid10Terceiro Código do CID10 terciário.
+     */
     public void setCid10Terceiro(String cid10Terceiro) {
-        fichaAvaliacaoElegibilidadeThrift.setCid10Terceiro(cid10Terceiro);
+        instancia.setCid10Terceiro(cid10Terceiro);
     }
 
+    /**
+     * Remove o código do CID10 terciário.
+     */
     public void unsetCid10Terceiro() {
-        fichaAvaliacaoElegibilidadeThrift.unsetCid10Terceiro();
+        instancia.unsetCid10Terceiro();
     }
 
+    /**
+     * Verifica se o código do CID10 terciário foi declarado.
+     * 
+     * @return True caso o código do CID10 terciário tenha sido declarado, False caso contrario.
+     */
     public boolean isSetCid10Terceiro() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetCid10Terceiro();
+        return instancia.isSetCid10Terceiro();
     }
 
+    /**
+     * Declara que o código do CID10 terciário foi inserido.
+     * 
+     * @param value True caso  código do CID10 terciário tenha sido inserido, False caso contrario.
+     */
     public void setCid10TerceiroIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setCid10TerceiroIsSet(value);
+        instancia.setCid10TerceiroIsSet(value);
     }
 
+    /**
+     * Código da conduta adotada caso cidadão seja Elegível.
+     * 
+     * @return Código da conduta adotada caso cidadão seja Elegível.
+     */
     public long getConclusaoDestinoElegivel() {
-        return fichaAvaliacaoElegibilidadeThrift.getConclusaoDestinoElegivel();
+        return instancia.getConclusaoDestinoElegivel();
     }
 
+    /**
+     * Define o código da conduta adotada caso cidadão seja Elegível.
+     * 
+     * Regra: Só pode ser preenchido se atencaoDomiciliarModalidade for diferente de 4 (inelegível).
+     * 
+     * @param conclusaoDestinoElegivel Código da conduta adotada caso cidadão seja Elegível.
+     */
     public void setConclusaoDestinoElegivel(long conclusaoDestinoElegivel) {
-        fichaAvaliacaoElegibilidadeThrift.setConclusaoDestinoElegivel(conclusaoDestinoElegivel);
+        instancia.setConclusaoDestinoElegivel(conclusaoDestinoElegivel);
     }
 
+    /**
+     * Remove o código da conduta adotada caso cidadão seja Elegível.
+     */
     public void unsetConclusaoDestinoElegivel() {
-        fichaAvaliacaoElegibilidadeThrift.unsetConclusaoDestinoElegivel();
+        instancia.unsetConclusaoDestinoElegivel();
     }
 
+    /**
+     * Verifica se o código da conduta adotada caso cidadão seja Elegível foi declarado.
+     * 
+     * @return True caso o código da conduta adotada caso cidadão seja Elegível tenha sido declarado, False caso contrario.
+     */
     public boolean isSetConclusaoDestinoElegivel() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetConclusaoDestinoElegivel();
+        return instancia.isSetConclusaoDestinoElegivel();
     }
 
+    /**
+     * Declara que o código da conduta adotada caso cidadão seja Elegível foi inserido.
+     * 
+     * @param value True caso o código da conduta adotada caso cidadão seja Elegível tenha sido inserido, False caso contrario.
+     */
     public void setConclusaoDestinoElegivelIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setConclusaoDestinoElegivelIsSet(value);
+        instancia.setConclusaoDestinoElegivelIsSet(value);
     }
 
+    /**
+     * Quantidade de códigos da conduta adotada caso cidadão seja Inelegível.
+     * 
+     * @return Código da conduta adotada caso cidadão seja Inelegível.
+     */
     public int getConclusaoDestinoInelegivelSize() {
-        return fichaAvaliacaoElegibilidadeThrift.getConclusaoDestinoInelegivelSize();
+        return instancia.getConclusaoDestinoInelegivelSize();
     }
 
+    /**
+     * Código da conduta adotada caso cidadão seja Inelegível.
+     * 
+     * @return Código da conduta adotada caso cidadão seja Inelegível.
+     */
     public Iterator<Long> getConclusaoDestinoInelegivelIterator() {
-        return fichaAvaliacaoElegibilidadeThrift.getConclusaoDestinoInelegivelIterator();
+        return instancia.getConclusaoDestinoInelegivelIterator();
     }
 
+    /**
+     * Adiciona um código da conduta adotada caso cidadão seja Inelegível.
+     * 
+     * @param elem Código da conduta adotada caso cidadão seja Inelegível.,
+     */
     public void addToConclusaoDestinoInelegivel(long elem) {
-        fichaAvaliacaoElegibilidadeThrift.addToConclusaoDestinoInelegivel(elem);
+        instancia.addToConclusaoDestinoInelegivel(elem);
     }
 
+    /**
+     * Código da conduta adotada caso cidadão seja Inelegível.
+     * 
+     * @return Código da conduta adotada caso cidadão seja Inelegível.
+     */
     public List<Long> getConclusaoDestinoInelegivel() {
-        return fichaAvaliacaoElegibilidadeThrift.getConclusaoDestinoInelegivel();
+        return instancia.getConclusaoDestinoInelegivel();
     }
 
+    /**
+     * Define Código da conduta adotada caso cidadão seja Inelegível
+     * 
+     * Regra: Só pode ser preenchido se atencaoDomiciliarModalidade for igual a de 4 (inelegível)
+     * máximo: 5
+     * 
+     * @param conclusaoDestinoInelegivel 
+     */
     public void setConclusaoDestinoInelegivel(List<Long> conclusaoDestinoInelegivel) {
-        fichaAvaliacaoElegibilidadeThrift.setConclusaoDestinoInelegivel(conclusaoDestinoInelegivel);
+        instancia.setConclusaoDestinoInelegivel(conclusaoDestinoInelegivel);
     }
 
+    /**
+     * remove o código da conduta adotada caso cidadão seja Inelegível
+     */
     public void unsetConclusaoDestinoInelegivel() {
-        fichaAvaliacaoElegibilidadeThrift.unsetConclusaoDestinoInelegivel();
+        instancia.unsetConclusaoDestinoInelegivel();
     }
 
+    /**
+     * Verifica se o Código da conduta adotada caso cidadão seja Inelegível foi declarado.
+     * 
+     * @return True caso o Código da conduta adotada caso cidadão seja Inelegível tenha sido declarado, False caso contrario.
+     */
     public boolean isSetConclusaoDestinoInelegivel() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetConclusaoDestinoInelegivel();
+        return instancia.isSetConclusaoDestinoInelegivel();
     }
 
+    /**
+     * Declara que o código da conduta adotada caso cidadão seja Inelegível foi inserido.
+     * 
+     * @param value True caso o código da conduta adotada caso cidadão seja Inelegível tenha sido inserido.
+     */
     public void setConclusaoDestinoInelegivelIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setConclusaoDestinoInelegivelIsSet(value);
+        instancia.setConclusaoDestinoInelegivelIsSet(value);
     }
 
+    /**
+     * Relação de parentesco do cuidador com o cidadão em atenção domiciliar.
+     * 
+     * @return Código da relação de parentesco do cuidador com o cidadão em atenção domiciliar.
+     */
     public long getCuidadorCidadao() {
-        return fichaAvaliacaoElegibilidadeThrift.getCuidadorCidadao();
+        return instancia.getCuidadorCidadao();
     }
 
+    /**
+     * Define a relação de parentesco do cuidador com o cidadão em atenção domiciliar.
+     * 
+     * @param cuidadorCidadao Código da relação de parentesco do cuidador com o cidadão em atenção domiciliar.
+     */
     public void setCuidadorCidadao(long cuidadorCidadao) {
-        fichaAvaliacaoElegibilidadeThrift.setCuidadorCidadao(cuidadorCidadao);
+        instancia.setCuidadorCidadao(cuidadorCidadao);
     }
 
+    /**
+     * Remove a relação de parentesco do cuidador com o cidadão em atenção domiciliar.
+     */
     public void unsetCuidadorCidadao() {
-        fichaAvaliacaoElegibilidadeThrift.unsetCuidadorCidadao();
+        instancia.unsetCuidadorCidadao();
     }
 
+    /**
+     * Verifica se a relação de parentesco do cuidador com o cidadão em atenção domiciliar foi declarada.
+     * 
+     * @return True caso a relação de parentesco do cuidador com o cidadão em atenção domiciliar tenha sido declarada, False caso contrario.
+     */
     public boolean isSetCuidadorCidadao() {
-        return fichaAvaliacaoElegibilidadeThrift.isSetCuidadorCidadao();
+        return instancia.isSetCuidadorCidadao();
     }
 
+    /**
+     * Declara que a relação de parentesco do cuidador com o cidadão em atenção domiciliar foi inserida.
+     * @param value True caso a relação de parentesco do cuidador com o cidadão em atenção domiciliar tenha sido inserida, false caso contrario.
+     */
     public void setCuidadorCidadaoIsSet(boolean value) {
-        fichaAvaliacaoElegibilidadeThrift.setCuidadorCidadaoIsSet(value);
+        instancia.setCuidadorCidadaoIsSet(value);
     }
 
     @Override
     public boolean equals(Object that) {
-        return fichaAvaliacaoElegibilidadeThrift.equals(that);
+        return instancia.equals(that);
     }
 
     public boolean equals(FichaAvaliacaoElegibilidade that) {
-        return fichaAvaliacaoElegibilidadeThrift.equals(that.getInstance());
+        return instancia.equals(that.getInstance());
     }
 
     @Override
     public int hashCode() {
-        return fichaAvaliacaoElegibilidadeThrift.hashCode();
+        return instancia.hashCode();
     }
 
     public int compareTo(FichaAvaliacaoElegibilidade other) {
-        return fichaAvaliacaoElegibilidadeThrift.compareTo(other.getInstance());
+        return instancia.compareTo(other.getInstance());
     }
 
     @Override
     public String toString() {
-        return fichaAvaliacaoElegibilidadeThrift.toString();
+        return instancia.toString();
     }
 
-    public void validate() throws TException {
-        fichaAvaliacaoElegibilidadeThrift.validate();
+    /**
+     * Valida se o conteudo da instancia está consistente.
+     * @return True caso as informações sejam validas.
+     */
+    public boolean validate() {
+        return validateUuidFicha() && validatetTpCdsOrigem() && 
+                validateHeaderTransport() && validateNumeroCartaoSus() && 
+                validateNome() && validateNomeSocial() && 
+                validaDataNascimentoCidadao() && validateRacaCorCidadao() && 
+                validateNomeMae() && validateNacionalidade() && validateEmail() &&
+                validateNumeroNisPisPasep() && validateEndereco() && 
+                validateAtencaoDomiciliarOrigem() && 
+                validateAtencaoDomiciliarModalidade() && 
+                validateSituacoesPresentes() && validateCid10Principal() &&
+                validateCid10Segundo() && validateCid10Terceiro() && 
+                validateConclusaoDestinoElegivel() && validateConclusaoDestinoInelegivel();
     }
 
-
+    /**
+     * Retorna uma copia da instancia thrift.
+     * @return Instancia thrift da classe.
+     */
     protected FichaAvaliacaoElegibilidadeThrift getInstance(){
-        return fichaAvaliacaoElegibilidadeThrift;
+        return instancia;
     }
 
+    
+    /**
+     * Código UUID para identificar a ficha na base de dados nacional.
+     * Obrigatório!
+     * Regras: É recomendado concatenar o CNES na frente do UUID, de modo que os
+     * 7 digitos (CNES) + 1 de hífen somados aos 36 (32 caracteres + 4 hífen) do
+     * UUID são a limitação de 44 bytes do campo.
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateUuidFicha(){
+        return  instancia.getUuidFicha() != null &&
+                instancia.getUuidFicha().length() >= 36 && 
+                instancia.getUuidFicha().length() <= 44;
+    }
+    
+    /**
+     * Valida se o tipo de origem foi declarado.
+     * 
+     * @return True caso o tipo de origem dos dados tenha sido declarado.
+     */
+    public boolean validatetTpCdsOrigem(){
+        return instancia.isSetTpCdsOrigem();
+    }
+    
+    /**
+     * Profissional que realizou a visita.
+     * 
+     * @return True caso o header transport seja valido
+     */
+    public boolean validateHeaderTransport(){
+        return instancia.getHeaderTransport() != null && 
+                instancia.isSetHeaderTransport() &&
+                new UnicaLotacaoHeader(instancia.getHeaderTransport()).validates();
+
+    }
+    
+    /**
+     * CNS do cidadão que participou da atividade.
+     * @return True Caso não tenha sido informado e caso tenha sido informado corretamente.
+     */
+    public boolean validateNumeroCartaoSus(){
+        if(this.isSetNumeroCartaoSus()){
+            
+             return CNS.validateCNS(instancia.getNumeroCartaoSus());
+        }
+        
+        return true;
+    }
+    
+    /**
+     * Valida o nome do cidadão.
+     * 
+     * Regras:
+     * Ter ao menos duas palavras.
+     * Somente texto e apóstrofo (').
+     * Opcional caso conclusaoDestinoElegivel for diferente de 1 (admissão própria emad).
+     * 
+     * Tamanho mínimo: 5
+     * Tamanho máximo: 100
+     * 
+     * @return True caso seja um nome valido ou caso não possua nome e conclusaoDestinoElegivel seja diferente de 1, False caso contrario.
+     */
+    public boolean validateNome(){
+        
+        if(this.isSetNomeCidadao()){
+            return this.getNomeCidadao().length() >= 5 &&
+                    this.getNomeCidadao().length() <= 100;
+        }else {
+            return this.getConclusaoDestinoElegivel() != 1;
+        }    
+    }
+    
+    /**
+     * Valida o nome social do cidadão.
+     * 
+     * Regras:
+     * Somente texto e apóstrofo (').
+     * 
+     * Tamanho mínimo: 0
+     * Tamanho máximo: 100
+     * 
+     * @return True caso seja um nome valido ou caso não possua nome e conclusaoDestinoElegivel seja diferente de 1, False caso contrario.
+     */
+    public boolean validateNomeSocial(){
+        
+        if(this.isSetNomeSocialCidadao()){
+            return this.getNomeSocialCidadao().length() >= 0 &&
+                    this.getNomeSocialCidadao().length() <= 100;
+        }else {
+            return true;
+        }
+    }
+    
+    /**
+     * Valida Data de nascimento do cidadão no formato epoch time.
+     * @return Data de nascimento do cidadão no formato epoch time.
+     * Valida se o campo é null
+     * Valida: Não pode ser posterior a dataAtendimento e anterior a 130 anos a partir da dataAtendimento.
+     * Não pode ser posterior a dataAtendimento e anterior a 130 anos a partir da dataAtendimento.
+     */
+    public boolean validaDataNascimentoCidadao(){
+        
+        if(!instancia.isSetDataNascimentoCidadao()) return false;
+        
+        long dataNascimento = instancia.getDataNascimentoCidadao();
+        long dataAtendimento = instancia.getHeaderTransport().getDataAtendimento();
+        if(dataNascimento > dataAtendimento) return false;
+        long idadeAoAtender = dataNascimento - dataAtendimento;
+        /**
+         * Transformando 1 ano em segundo
+         */
+        long anoEpoch = 60*60*24*365;
+        /**
+         * Descobrindo se a idade do cidadão no atendimento é maior que 130 anos
+         */
+        if(idadeAoAtender > anoEpoch*130) return false;
+        return true;   
+    } 
+    
+    /**
+     * Valida a raça/cor do cidadão.
+     * 
+     * regra: Opcional caso conclusaoDestinoElegivel for diferente de 1 (admissão própria emad)
+     * 
+     * @return True caso esteje presente ou caso conclusaoDestinoElegivel for diferente de 1, False caso contrario.
+     */
+    public boolean validateRacaCorCidadao(){
+        if(instancia.isSetRacaCorCidadao()){
+            return true;
+        }else{
+            return instancia.getConclusaoDestinoElegivel() != 1;
+        }
+    }
+    
+        /**
+     * Valida o nome da mãe do cidadão.
+     * 
+     * Regras:
+     * Ter ao menos duas palavras.
+     * Somente texto e apóstrofo (').
+     * Não pode ser preenchido se o campo desconheceNomeMae = true.
+     * 
+     * Tamanho mínimo: 5
+     * Tamanho máximo: 100
+     * 
+     * @return True caso seja um nome valido ou caso não possua nome e conclusaoDestinoElegivel seja diferente de 1, False caso contrario.
+     */
+    public boolean validateNomeMae(){
+        
+        if(this.isSetNomeMaeCidadao() && ! instancia.isDesconheceNomeMae()){
+            
+                return this.getNomeCidadao().length() >= 5 &&
+                    this.getNomeCidadao().length() <= 100;
+            
+        }else{
+            return instancia.isDesconheceNomeMae();
+        } 
+
+    }
+    
+    /**
+     * Valida a nacionalidade do cidadão.
+     * 
+     * Regra: Opcional caso conclusaoDestinoElegivel for diferente de 1 (admissão própria emad)
+     * 
+     * @return True caso esteja presente ou caso conclusaoDestinoElegivel for diferente de 1, False caso contrario.
+     */
+    public boolean validateNacionalidade(){
+        
+        if(instancia.isSetCodigoNacionalidade()){
+            return true;
+        }else{
+            return instancia.getConclusaoDestinoElegivel() != 1;
+        }
+    }
+    
+    /**
+     * Valida o email do cidadão.
+     * 
+     * regra: Requerido seguir o padrão endereco@domínio.extensão.
+     * 
+     * Tamanho mínimo:6
+     * Tamanho máximo:255
+     * 
+     * @return True caso esteja de acordo com a regra ou caso não tenha sido declarado, False caso contrario.
+     */
+    public boolean validateEmail(){
+
+        
+        if(instancia.isSetEmailCidadao()){
+            if(instancia.getEmailCidadao().length() >=6 && 
+                    instancia.getEmailCidadao().length() <= 255){
+                
+                Pattern VALID_EMAIL_ADDRESS_REGEX = 
+                Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+                
+                Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(instancia.getEmailCidadao());
+                return matcher.find();
+            }else{
+                return false;
+            }
+        }
+        
+        return true; 
+    }
+    
+    /**
+     * Valida o número do PIS/PASEP do cidadão.
+     * 
+     * Regras: Apenas números.
+     * 
+     * Tamanho: 11
+     * 
+     * @return True caso seja valido ou caso não seja declarado, False caso contrario.
+     */
+    public boolean validateNumeroNisPisPasep(){
+        
+        if(instancia.isSetNumeroNisPisPasep()){
+            if(instancia.getNumeroNisPisPasep().matches("[0-9]+") && 
+                    instancia.getNumeroNisPisPasep().length() == 11){
+                
+                return true;
+                
+            }else{
+                
+                return false;
+                
+            }
+        }
+        
+        return true;
+    }
+    
+    /**
+     * Valida as informações sobre o endereço do domicílio.
+     * 
+     * Regra: Opcional caso conclusaoDestinoElegivel for diferente de 1 (admissão própria emad)
+     * 
+     * @return True caso seja valido ou caso conclusaoDestinoElegivel for diferente de 1, False caso contrario.
+     */
+    public boolean validateEndereco(){
+        
+        if(instancia.isSetEndereco()){
+            
+            return new EnderecoLocalPermanencia(instancia.getEndereco()).validates();
+
+        }else{
+            return instancia.getConclusaoDestinoElegivel() != 1;
+        }
+        
+    }
+    
+    /**
+     * Valida o local de atendimento de origem do cidadão.
+     * 
+     * @return True caso esteja presente, falso caso contrario.
+     */
+    public boolean validateAtencaoDomiciliarOrigem(){
+        
+        return instancia.isSetAtencaoDomiciliarOrigem();
+    }
+    
+    /**
+     * Valida as opções de modalidade, indica se o cidadão é elegível ou inelegível.
+     * 
+     * @return True caso esteja presente, falso caso contrario.
+     */
+    public boolean validateAtencaoDomiciliarModalidade(){
+        
+        return instancia.isSetAtencaoDomiciliarModalidade();
+    }
+    
+    /**
+     * Valida os marcadores de situações presentes.
+     * 
+     * Mínimo: 1
+     * Máximo: 24
+     * 
+     * @return True caso atendam as regras ou caso não seja declarado, False caso contrario.
+     */
+    public boolean validateSituacoesPresentes(){
+        
+        if(instancia.isSetSituacoesPresentes()){
+            
+            return instancia.getSituacoesPresentesSize() >= 1 &&
+                    instancia.getSituacoesPresentesSize() <= 24;
+        }
+        
+        return true;   
+    }
+    
+    /**
+     * Valida o código do CID10 principal registrado na avaliação.
+     * 
+     * Regra: Não pode ser igual ao CID10Segundo nem CID10Terceiro.
+     * 
+     * @return True caso esteja de acordo com as regras, False caso contrario.
+     */
+    public boolean validateCid10Principal(){
+        
+        if(instancia.isSetCid10Principal()){
+            return ( ! instancia.getCid10Principal().equalsIgnoreCase(instancia.getCid10Segundo()) &&
+                    ! instancia.getCid10Principal().equalsIgnoreCase(instancia.getCid10Terceiro()));
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Valida o código do CID10 registrado na avaliação.
+     * 
+     * Regras: Não pode ser igual ao CID10Principal nem CID10Terceiro.
+     * 
+     * @return True caso esteja de acordo com a regra ou não seja declarado, False caso contrario.
+     */
+    public boolean validateCid10Segundo(){
+        
+        if(instancia.isSetCid10Segundo()){
+            return ( ! instancia.getCid10Segundo().equalsIgnoreCase(instancia.getCid10Principal()) &&
+                    ! instancia.getCid10Segundo().equalsIgnoreCase(instancia.getCid10Terceiro()));
+        }
+        
+        return true;
+    }
+    
+        /**
+     * Valida o código do CID10 registrado na avaliação.
+     * 
+     * Regras: Não pode ser igual ao CID10Principal nem CID10Segundo.
+     * 
+     * @return True caso esteja de acordo com a regra ou não seja declarado, False caso contrario.
+     */
+    public boolean validateCid10Terceiro(){
+        
+        if(instancia.isSetCid10Segundo()){
+            return ( ! instancia.getCid10Terceiro().equalsIgnoreCase(instancia.getCid10Principal()) &&
+                    ! instancia.getCid10Terceiro().equalsIgnoreCase(instancia.getCid10Segundo()));
+        }
+        
+        return true;
+    }
+    
+    /**
+     * Valida conduta adotada caso cidadão seja Elegível.
+     * 
+     * Regra: Só pode ser preenchido se atencaoDomiciliarModalidade for diferente de 4 (inelegível).
+     * Regra: só pode ser existir se conclusaoDestinoInelegivel não existir.
+     * 
+     * @return True caso atenda as regras, False caso contrario.
+     */
+    public boolean validateConclusaoDestinoElegivel(){
+        
+        if(instancia.isSetConclusaoDestinoElegivel()){
+            return !(instancia.getAtencaoDomiciliarModalidade() == 4 && instancia.isSetConclusaoDestinoInelegivel());
+        }
+        
+        return instancia.isSetConclusaoDestinoInelegivel();
+    }
+    
+    /**
+     * Valida conduta adotada caso cidadão seja Inelegível.
+     * 
+     * Regra: Só pode ser preenchido se atencaoDomiciliarModalidade for igual a de 4 (inelegível).
+     * Regra: só pode ser existir se conclusaoDestinoElegivel não existir.
+     * 
+     * Máximo: 5
+     * 
+     * @return True caso atenda as regras, False caso contrario.
+     */
+    public boolean validateConclusaoDestinoInelegivel(){
+        
+        if(instancia.isSetConclusaoDestinoInelegivel()){
+            if( ! instancia.isSetConclusaoDestinoElegivel() && instancia.getConclusaoDestinoInelegivelSize() < 5){
+                   
+                return instancia.getAtencaoDomiciliarModalidade() == 4 ;
+                           
+             }
+                    
+        }
+        
+        return instancia.isSetConclusaoDestinoElegivel();
+    }
+    
     
 }
 

@@ -3,274 +3,525 @@ package com.github.Eddyosos.integracao20171.esus.cds.procedimento;
 import br.gov.saude.esus.cds.transport.generated.thrift.procedimento.FichaProcedimentoChildThrift;
 import java.util.Iterator;
 import java.util.List;
-import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
 
 public class FichaProcedimentoChild {
-    private FichaProcedimentoChildThrift fichaProcedimentoChildThrift = new FichaProcedimentoChildThrift();
-
+    private FichaProcedimentoChildThrift instancia = new FichaProcedimentoChildThrift();
+    
+    /**
+     * Retorna uma instancia nao thrift
+     * @param fichaProcedimentoChildThrift 
+     */
     protected FichaProcedimentoChild(FichaProcedimentoChildThrift fichaProcedimentoChildThrift) {
-        this.fichaProcedimentoChildThrift = fichaProcedimentoChildThrift;
+        this.instancia = fichaProcedimentoChildThrift;
     }
     
+    /**
+     * @return Objeto thrift para acesso aos metodos do thrift
+     * @param fichaProcedimentoChildThrift 
+     */
     public FichaProcedimentoChildThrift getInstance(){
-        return this.fichaProcedimentoChildThrift;
+        return this.instancia;
     }
 
-    public void clear() {
-        fichaProcedimentoChildThrift.clear();
-    }
-
+    /**
+     * Retorna o numero de prontuario
+     * @return String
+     */
     public String getNumProntuario() {
-        return fichaProcedimentoChildThrift.getNumProntuario();
+        return instancia.getNumProntuario();
     }
-
+    
+    /**
+     * Atribui o numero de prontuario
+     * @param String 
+     */
     public void setNumProntuario(String numProntuario) {
-        fichaProcedimentoChildThrift.setNumProntuario(numProntuario);
+        instancia.setNumProntuario(numProntuario);
     }
-
-    public void unsetNumProntuario() {
-        fichaProcedimentoChildThrift.unsetNumProntuario();
-    }
-
+    
+    /**
+     * Verfica se o numero de prontuario foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public boolean isSetNumProntuario() {
-        return fichaProcedimentoChildThrift.isSetNumProntuario();
+        return instancia.isSetNumProntuario();
     }
-
+    
+    /**
+     * Marca que o numero de prontuario foi setado
+     * @param value 
+     */
     public void setNumProntuarioIsSet(boolean value) {
-        fichaProcedimentoChildThrift.setNumProntuarioIsSet(value);
+        instancia.setNumProntuarioIsSet(value);
     }
-
+    
+    /**
+     * Retorna o numero do cartao sus
+     * @return String
+     */
     public String getNumCartaoSus() {
-        return fichaProcedimentoChildThrift.getNumCartaoSus();
+        return instancia.getNumCartaoSus();
     }
 
+    /**
+     * Atribui o numero de prontuario
+     * @param String 
+     */
     public void setNumCartaoSus(String numCartaoSus) {
-        fichaProcedimentoChildThrift.setNumCartaoSus(numCartaoSus);
+        instancia.setNumCartaoSus(numCartaoSus);
     }
 
-    public void unsetNumCartaoSus() {
-        fichaProcedimentoChildThrift.unsetNumCartaoSus();
-    }
-
+    /**
+     * Verfica se o numero do cartao foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public boolean isSetNumCartaoSus() {
-        return fichaProcedimentoChildThrift.isSetNumCartaoSus();
+        return instancia.isSetNumCartaoSus();
     }
 
+    /**
+     * Marca que o atributo foi setado
+     * @param value 
+     */
     public void setNumCartaoSusIsSet(boolean value) {
-        fichaProcedimentoChildThrift.setNumCartaoSusIsSet(value);
+        instancia.setNumCartaoSusIsSet(value);
     }
-
+    
+    /**
+     * Retorna o valor do atributo
+     * @return long
+     */
     public long getDtNascimento() {
-        return fichaProcedimentoChildThrift.getDtNascimento();
+        return instancia.getDtNascimento();
     }
 
+    /**
+     * Atribui o valor do atributo
+     * @param data de nascimento 
+     */
     public void setDtNascimento(long dtNascimento) {
-        fichaProcedimentoChildThrift.setDtNascimento(dtNascimento);
+        instancia.setDtNascimento(dtNascimento);
     }
 
-    public void unsetDtNascimento() {
-        fichaProcedimentoChildThrift.unsetDtNascimento();
-    }
-
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public boolean isSetDtNascimento() {
-        return fichaProcedimentoChildThrift.isSetDtNascimento();
+        return instancia.isSetDtNascimento();
     }
 
+    /**
+     * Marca que o atributo foi setado
+     * @param se esta setado ou nao
+     */
     public void setDtNascimentoIsSet(boolean value) {
-        fichaProcedimentoChildThrift.setDtNascimentoIsSet(value);
+        instancia.setDtNascimentoIsSet(value);
     }
 
+    /**
+     * Retorna o valor do atributo
+     * @return o valor do atributo
+     */
     public long getSexo() {
-        return fichaProcedimentoChildThrift.getSexo();
+        return instancia.getSexo();
     }
 
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public void setSexo(long sexo) {
-        fichaProcedimentoChildThrift.setSexo(sexo);
+        instancia.setSexo(sexo);
     }
 
-    public void unsetSexo() {
-        fichaProcedimentoChildThrift.unsetSexo();
-    }
-
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public boolean isSetSexo() {
-        return fichaProcedimentoChildThrift.isSetSexo();
+        return instancia.isSetSexo();
     }
 
+    /**
+     * Marca que o atributo foi setado
+     * @param se esta setado ou nao
+     */
     public void setSexoIsSet(boolean value) {
-        fichaProcedimentoChildThrift.setSexoIsSet(value);
+        instancia.setSexoIsSet(value);
     }
 
+    /**
+     * Retorna o valor do atributo
+     * @return o valor do atributo
+     */
     public long getLocalAtendimento() {
-        return fichaProcedimentoChildThrift.getLocalAtendimento();
+        return instancia.getLocalAtendimento();
     }
-
+    
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public void setLocalAtendimento(long localAtendimento) {
-        fichaProcedimentoChildThrift.setLocalAtendimento(localAtendimento);
+        instancia.setLocalAtendimento(localAtendimento);
     }
-
-    public void unsetLocalAtendimento() {
-        fichaProcedimentoChildThrift.unsetLocalAtendimento();
-    }
-
+    
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public boolean isSetLocalAtendimento() {
-        return fichaProcedimentoChildThrift.isSetLocalAtendimento();
+        return instancia.isSetLocalAtendimento();
     }
-
+    
+    /**
+     * Marca que o atributo foi setado
+     * @param se esta setado ou nao
+     */
     public void setLocalAtendimentoIsSet(boolean value) {
-        fichaProcedimentoChildThrift.setLocalAtendimentoIsSet(value);
+        instancia.setLocalAtendimentoIsSet(value);
     }
-
+    
+    /**
+     * Retorna o valor do atributo
+     * @return o valor do atributo
+     */
     public long getTurno() {
-        return fichaProcedimentoChildThrift.getTurno();
+        return instancia.getTurno();
     }
-
+    
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public void setTurno(long turno) {
-        fichaProcedimentoChildThrift.setTurno(turno);
+        instancia.setTurno(turno);
     }
-
-    public void unsetTurno() {
-        fichaProcedimentoChildThrift.unsetTurno();
-    }
-
+    
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public boolean isSetTurno() {
-        return fichaProcedimentoChildThrift.isSetTurno();
+        return instancia.isSetTurno();
     }
-
+    
+    /**
+     * Marca que o atributo foi setado
+     * @param se esta setado ou nao
+     */
     public void setTurnoIsSet(boolean value) {
-        fichaProcedimentoChildThrift.setTurnoIsSet(value);
+        instancia.setTurnoIsSet(value);
     }
-
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public boolean isStatusEscutaInicialOrientacao() {
-        return fichaProcedimentoChildThrift.isStatusEscutaInicialOrientacao();
+        return instancia.isStatusEscutaInicialOrientacao();
     }
-
+    
+    /**
+     * Marca que o atributo foi setado
+     * @param se esta setado ou nao
+     */
     public void setStatusEscutaInicialOrientacao(boolean statusEscutaInicialOrientacao) {
-        fichaProcedimentoChildThrift.setStatusEscutaInicialOrientacao(statusEscutaInicialOrientacao);
+        instancia.setStatusEscutaInicialOrientacao(statusEscutaInicialOrientacao);
     }
-
-    public void unsetStatusEscutaInicialOrientacao() {
-        fichaProcedimentoChildThrift.unsetStatusEscutaInicialOrientacao();
-    }
+    
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
 
     public boolean isSetStatusEscutaInicialOrientacao() {
-        return fichaProcedimentoChildThrift.isSetStatusEscutaInicialOrientacao();
+        return instancia.isSetStatusEscutaInicialOrientacao();
     }
-
+    
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public void setStatusEscutaInicialOrientacaoIsSet(boolean value) {
-        fichaProcedimentoChildThrift.setStatusEscutaInicialOrientacaoIsSet(value);
+        instancia.setStatusEscutaInicialOrientacaoIsSet(value);
     }
-
+    
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public int getProcedimentosSize() {
-        return fichaProcedimentoChildThrift.getProcedimentosSize();
+        return instancia.getProcedimentosSize();
     }
-
+    
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public Iterator<String> getProcedimentosIterator() {
-        return fichaProcedimentoChildThrift.getProcedimentosIterator();
+        return instancia.getProcedimentosIterator();
     }
-
+    
+    /**
+     * Retorna o valor do atributo
+     * @return o valor do atributo
+     */
     public void addToProcedimentos(String elem) {
-        fichaProcedimentoChildThrift.addToProcedimentos(elem);
+        instancia.addToProcedimentos(elem);
     }
-
+    
+    /**
+     * Retorna o valor do atributo
+     * @return o valor do atributo
+     */
     public List<String> getProcedimentos() {
-        return fichaProcedimentoChildThrift.getProcedimentos();
+        return instancia.getProcedimentos();
     }
-
+    
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public void setProcedimentos(List<String> procedimentos) {
-        fichaProcedimentoChildThrift.setProcedimentos(procedimentos);
+        instancia.setProcedimentos(procedimentos);
     }
 
-    public void unsetProcedimentos() {
-        fichaProcedimentoChildThrift.unsetProcedimentos();
-    }
-
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public boolean isSetProcedimentos() {
-        return fichaProcedimentoChildThrift.isSetProcedimentos();
+        return instancia.isSetProcedimentos();
     }
-
+    
+    /**
+     * Marca que o atributo foi setado
+     * @param se esta setado ou nao
+     */
     public void setProcedimentosIsSet(boolean value) {
-        fichaProcedimentoChildThrift.setProcedimentosIsSet(value);
+        instancia.setProcedimentosIsSet(value);
     }
 
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public int getOutrosSiaProcedimentosSize() {
-        return fichaProcedimentoChildThrift.getOutrosSiaProcedimentosSize();
+        return instancia.getOutrosSiaProcedimentosSize();
     }
-
+    
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public Iterator<String> getOutrosSiaProcedimentosIterator() {
-        return fichaProcedimentoChildThrift.getOutrosSiaProcedimentosIterator();
+        return instancia.getOutrosSiaProcedimentosIterator();
     }
-
+    
+    /**
+     * Marca que o atributo foi setado
+     * @param se esta setado ou nao
+     */
     public void addToOutrosSiaProcedimentos(String elem) {
-        fichaProcedimentoChildThrift.addToOutrosSiaProcedimentos(elem);
+        instancia.addToOutrosSiaProcedimentos(elem);
     }
-
+    
+    /**
+     * Retorna o valor do atributo
+     * @return o valor do atributo
+     */
     public List<String> getOutrosSiaProcedimentos() {
-        return fichaProcedimentoChildThrift.getOutrosSiaProcedimentos();
+        return instancia.getOutrosSiaProcedimentos();
     }
-
+    
+    /**
+     * Atribui o valor do atributo
+     * @param o valor do atributo
+     */
     public void setOutrosSiaProcedimentos(List<String> outrosSiaProcedimentos) {
-        fichaProcedimentoChildThrift.setOutrosSiaProcedimentos(outrosSiaProcedimentos);
+        instancia.setOutrosSiaProcedimentos(outrosSiaProcedimentos);
     }
-
-    public void unsetOutrosSiaProcedimentos() {
-        fichaProcedimentoChildThrift.unsetOutrosSiaProcedimentos();
-    }
-
+    
+    /**
+     * Verfica se o atributo foi atribuido
+     * @return true se tiver setado, false caso nao esteja
+     */
     public boolean isSetOutrosSiaProcedimentos() {
-        return fichaProcedimentoChildThrift.isSetOutrosSiaProcedimentos();
+        return instancia.isSetOutrosSiaProcedimentos();
     }
-
+    
+    /**
+     * Marca que o atributo foi setado
+     * @param se esta setado ou nao
+     */
     public void setOutrosSiaProcedimentosIsSet(boolean value) {
-        fichaProcedimentoChildThrift.setOutrosSiaProcedimentosIsSet(value);
+        instancia.setOutrosSiaProcedimentosIsSet(value);
     }
 
-    public void setFieldValue(FichaProcedimentoChildThrift._Fields field, Object value) {
-        fichaProcedimentoChildThrift.setFieldValue(field, value);
+    /**
+     * Valida todos os campos.
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validate(){
+        return this.validateGroup() &&
+               this.validateLocalAtendimento() &&
+               this.validateNumCartaoSus() &&
+               this.validateSexo() &&
+               this.validateStatusEscutaInicialOrientacao() &&
+               this.validateTurno() &&
+               this.validateUuidFicha();
     }
-
-    public Object getFieldValue(FichaProcedimentoChildThrift._Fields field) {
-        return fichaProcedimentoChildThrift.getFieldValue(field);
+    
+    /**
+     * Número do prontuário do cidadão na UBS.
+     * Opcional
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateUuidFicha(){
+        if(this.getNumProntuario() == null){
+            return true;
+        }
+        
+        if(this.getNumProntuario().length() < 0 || this.getNumProntuario().length() > 30){
+            return false;
+        }
+    
+        return true;
     }
-
-    public boolean isSet(FichaProcedimentoChildThrift._Fields field) {
-        return fichaProcedimentoChildThrift.isSet(field);
+    
+    /**
+     * Numero do cartão SUS do cidadão.
+     * Opcional
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateNumCartaoSus(){
+        if(this.instancia.getNumCartaoSus() == null){
+            return true;
+        }
+        
+        if(!this.instancia.isSetNumCartaoSus()){
+            return true;
+        }
+        
+        if(this.instancia.getNumCartaoSus().length() != 15){
+            return false;
+        }
+    
+        return true;
     }
-
-    public boolean equals(Object that) {
-        return fichaProcedimentoChildThrift.equals(that);
+    
+    /**
+     * Código do sexo do cidadão.
+     * Obrigatorio
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateSexo(){        
+        if(!this.instancia.isSetSexo()){
+            return false;
+        }
+        
+        if(this.instancia.getSexo() > 1 || this.instancia.getSexo() < 0){
+            return false;
+        }
+    
+        return true;
     }
-
-    public boolean equals(FichaProcedimentoChild that) {
-        return fichaProcedimentoChildThrift.equals(that.getInstance());
+    
+    /**
+     * Código do local onde o atendimento foi realizado.
+     * Obrigatorio
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateLocalAtendimento(){
+        if(!this.instancia.isSetLocalAtendimento()){
+            return false;
+        }
+        
+        if(this.instancia.getLocalAtendimento()> 10 || this.instancia.getLocalAtendimento() < 1){
+            return false;
+        }
+    
+        return true;
     }
-
-    public int hashCode() {
-        return fichaProcedimentoChildThrift.hashCode();
+    
+     /**
+     * Código do turno onde aconteceu o atendimento.
+     * Opcional
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateTurno(){
+        if(!this.instancia.isSetTurno()){
+            return false;
+        }
+        
+        if(this.instancia.getTurno()> 10 || this.instancia.getTurno() < 1){
+            return false;
+        }
+    
+        return true;
     }
-
-    public int compareTo(FichaProcedimentoChild other) {
-        return fichaProcedimentoChildThrift.compareTo(other.getInstance());
+    
+    /**
+     * Indica a realização da escuta inicial.
+     * Opcional
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateStatusEscutaInicialOrientacao(){
+        if(!this.instancia.isSetStatusEscutaInicialOrientacao()){
+            return true;
+        }
+    
+        return true;
     }
-
-    public FichaProcedimentoChildThrift._Fields fieldForId(int fieldId) {
-        return fichaProcedimentoChildThrift.fieldForId(fieldId);
+    
+    /**
+     * Lista dos códigos dos procedimentos que são registrados na ficha de procedimentos.
+     * Condicional
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateProcedimentos(){
+        if(!this.instancia.isSetProcedimentos()){
+            return false;
+        }
+        
+        if(this.instancia.getProcedimentos().size() < 0 || this.instancia.getProcedimentos().size() > 23){
+            return false;
+        }
+    
+        return true;
     }
-
-    public void read(TProtocol iprot) throws TException {
-        fichaProcedimentoChildThrift.read(iprot);
+    
+    /**
+     * Lista dos códigos dos procedimentos que são registrados na ficha de procedimentos.
+     * Condicional
+     * @return True caso valido, false caso esteja inconsistente
+     */
+    public boolean validateOutrosSiaProcedimentos(){
+        if(!this.instancia.isSetProcedimentos()){
+            return false;
+        }
+        
+        if(this.instancia.getOutrosSiaProcedimentos().size() < 0 || this.instancia.getOutrosSiaProcedimentos().size() > 6){
+            return false;
+        }
+        
+        for(String proc : this.instancia.getOutrosSiaProcedimentos()){
+            if(proc.matches("\\A\\w{8}\\z")){
+                return false;
+            }
+        }
+    
+        return true;
     }
-
-    public void write(TProtocol oprot) throws TException {
-        fichaProcedimentoChildThrift.write(oprot);
-    }
-
-    public String toString() {
-        return fichaProcedimentoChildThrift.toString();
-    }
-
-    public void validate() throws TException {
-        fichaProcedimentoChildThrift.validate();
+    
+    /**
+     * Valida os campos com preenchimento condicional.
+     * @return True caso ao menos um dos campos esteja válido, false caso todos estejam inválidos
+     */
+    public boolean validateGroup(){
+        return this.validateProcedimentos()            || 
+               this.validateOutrosSiaProcedimentos();
     }
 }
 

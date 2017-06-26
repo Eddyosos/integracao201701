@@ -1,55 +1,17 @@
-package com.github.Eddyosos.integracao20171.esus.cds.common;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.github.Eddyosos.integracao20171.utils.IDS;
 
-import br.gov.saude.esus.cds.transport.generated.thrift.common.VariasLotacoesHeaderThrift;
-import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
-
-public class VariasLotacoesHeader {
-    private final VariasLotacoesHeaderThrift instance;
-
-    public VariasLotacoesHeader() {
-        instance = new VariasLotacoesHeaderThrift();
-    }
-
-    public VariasLotacoesHeader(VariasLotacoesHeaderThrift headerTransport) {
-        instance = headerTransport;
-    }
-    public VariasLotacoesHeaderThrift getInstance() {
-        return instance;
-    }
-
+/**
+ * Classe para validação de CNS's 
+ * como descrito em http://cartaonet.datasus.gov.br/Rotina_Java.doc
+ * @author eddyosos
+ */
+public class CNS {
     /**
-     * Valida esta instancia
-     * @return true se válido
-     *          false se inválido
-     */
-    public boolean validates(){
-        return validateLotacaoForm() &&
-                validateProfissionalCNS1() &&
-                validateCboCodigo_2002_1();
-    }
-    
-    public boolean validateLotacaoForm(){
-        return instance.isSetLotacaoForm();
-    }
-    
-    /**
-     * Profissional responsável pela ação.
-     * @return 
-     */
-    public UnicaLotacaoHeader getLotacaoForm() {
-        return new UnicaLotacaoHeader(instance.getLotacaoForm());
-    }
-
-    /**
-     * Profissional responsável pela ação.
-     * @param lotacaoForm 
-     */
-    public void setLotacaoForm(UnicaLotacaoHeader lotacaoForm) {
-        instance.setLotacaoForm(lotacaoForm.getInstance());
-    }
-
-     /**
      * Valida de cns
      * Para ser válido, deve ter sido setado préviamente com uma string de 15 
      * caracteres, ainda a mesma deve passar no algoritmo descrito em:
@@ -57,7 +19,7 @@ public class VariasLotacoesHeader {
      * @return true se válido
      *         false se inválido
      */
-    public boolean validateProfissionalCNS(String cns){
+    public static boolean validateCNS(String cns){
         if(cns == null || cns.length() != 15) return false;
         switch (cns.charAt(0)){
             case '1':
@@ -78,7 +40,7 @@ public class VariasLotacoesHeader {
      * @param cns
      * @return 
      */
-    private boolean validaCns(String cns){
+    private static boolean validaCns(String cns){
         if (cns.trim().length() != 15){
             return(false);
         }
@@ -140,7 +102,7 @@ public class VariasLotacoesHeader {
      * @param cns
      * @return 
      */
-    private boolean validaCnsProv(String cns){
+    private static boolean validaCnsProv(String cns){
         if (cns.trim().length() != 15){
             return(false);
         }
@@ -171,118 +133,4 @@ public class VariasLotacoesHeader {
         }else {
         return(true);}
     }
-    
-    /**
-     * Valida ProfissionalCNS1
-     * De acordo com validateProfissionalCNS
-     * @return true para válido
-     *          false para inválido
-     */
-    public boolean validateProfissionalCNS1(){
-        return validateProfissionalCNS(instance.getProfissionalCNS1());
-    }
-    
-    /**
-     * CNS do profissional1.
-     * @return 
-     */
-    public String getProfissionalCNS1() {
-        return instance.getProfissionalCNS1();
-    }
-
-    /**
-     * CNS do profissional1.
-     * @param profissionalCNS1 
-     */
-    public void setProfissionalCNS1(String profissionalCNS1) {
-        instance.setProfissionalCNS1(profissionalCNS1);
-    }
-
-    /**
-     * Valida CboCodigo_2002
-     * Válido se for préviamente inserido e obedeça ao regex: \A\d{6}\z
-     * @return true se válido
-     *          false se inválido
-     */
-    public boolean validateCboCodigo_2002(String cbo){
-        return cbo != null && cbo.matches("\\A\\d{6}\\z");
-    }
-    
-    /**
-     * Valida CboCodigo_2002_1
-     * De acordo com validateCboCodigo_2002
-     * @return 
-     */
-    public boolean validateCboCodigo_2002_1(){
-        return validateCboCodigo_2002(instance.getCboCodigo_2002_1());
-    }
-    
-    /**
-     * Código do CBO do profissional1.
-     * @return 
-     */
-    public String getCboCodigo_2002_1() {
-        return instance.getCboCodigo_2002_1();
-    }
-
-    /**
-     * Código do CBO do profissional1.
-     * @param cboCodigo_2002_1 
-     */
-    public void setCboCodigo_2002_1(String cboCodigo_2002_1) {
-        instance.setCboCodigo_2002_1(cboCodigo_2002_1);
-    }
-
-    /**
-     * Valida ProfissionalCNS2
-     * De acordo com validateProfissionalCNS
-     * @return true para válido
-     *          false para inválido
-     */
-    public boolean validateProfissionalCNS2(){
-        return validateProfissionalCNS(instance.getProfissionalCNS2());
-    }
-    
-    /**
-     * CNS do profissional2.
-     * @return 
-     */
-    public String getProfissionalCNS2() {
-        return instance.getProfissionalCNS2();
-    }
-
-    /**
-     * CNS do profissional2.
-     * @param profissionalCNS2 
-     */
-    public void setProfissionalCNS2(String profissionalCNS2) {
-        instance.setProfissionalCNS2(profissionalCNS2);
-    }
-
-    /**
-     * Valida CboCodigo_2002_1
-     * De acordo com validateCboCodigo_2002
-     * @return 
-     */
-    public boolean validateCboCodigo_2002_2(){
-        return validateCboCodigo_2002(instance.getCboCodigo_2002_2());
-    }
-    
-    /**
-     * Código do CBO do profissional2.
-     * @return 
-     */
-    public String getCboCodigo_2002_2() {
-        return instance.getCboCodigo_2002_2();
-    }
-
-    /**
-     * Código do CBO do profissional2.
-     * @param cboCodigo_2002_2 
-     */
-    public void setCboCodigo_2002_2(String cboCodigo_2002_2) {
-        instance.setCboCodigo_2002_2(cboCodigo_2002_2);
-    }
-    
 }
-
