@@ -5,36 +5,40 @@ import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.Pergunt
 import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.PerguntaQuestionarioCriancasDeSeisVinteTresMesesThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.PerguntaQuestionarioCriancasMenoresSeisMesesThrift;
 import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
+import com.github.eddyosos.e_sus_ab_factory.cds.common.IUnicaLotacaoHeader;
+import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.consumoalimentar.IFichaConsumoAlimentar;
+import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.consumoalimentar.IPerguntaQuestionarioCriancasComMaisDoisAnos;
+import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.consumoalimentar.IPerguntaQuestionarioCriancasDeSeisVinteTresMeses;
+import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.consumoalimentar.IPerguntaQuestionarioCriancasMenoresSeisMeses;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class FichaConsumoAlimentar {
+public class FichaConsumoAlimentar implements IFichaConsumoAlimentar {
     
     /**
      * Instancia para encapsulamento do Thrift
      */
-    private FichaConsumoAlimentarThrift instance = new FichaConsumoAlimentarThrift();
+    private FichaConsumoAlimentarThrift instance;
     
-    protected FichaConsumoAlimentar(FichaConsumoAlimentarThrift instance){
+    public FichaConsumoAlimentar() {
+        instance = new FichaConsumoAlimentarThrift();
+    }
+    
+    public FichaConsumoAlimentar(FichaConsumoAlimentarThrift instance){
         this.instance = instance;
     }
 
     /**
-     * 
-     * @return 
-     */
-    public FichaConsumoAlimentar deepCopy() {
-            return new FichaConsumoAlimentar(instance.deepCopy());
-    }
-    /**
      * Profissional que realizou a visita.
      * @return o profissional
      */
-    public UnicaLotacaoHeader getHeaderTransport() {
+    @Override
+    public IUnicaLotacaoHeader getHeaderTransport() {
         return new UnicaLotacaoHeader(instance.getHeaderTransport());
     }
 
+    @Override
     public void unsetHeaderTransport() {
         instance.unsetHeaderTransport();
     }
@@ -43,6 +47,7 @@ public class FichaConsumoAlimentar {
      * Profissional que realizou a visita.
      * @return o profissional
      */
+    @Override
     public boolean isSetHeaderTransport() {
         return instance.isSetHeaderTransport();
     }
@@ -52,13 +57,16 @@ public class FichaConsumoAlimentar {
      * UnicaLotacaoHeader
      * @param value 
      */
+    @Override
     public void setHeaderTransportIsSet(boolean value) {
         instance.setHeaderTransportIsSet(value);
     }
+    
     /**
      * CNS do cidadão.
      * @return CNS
      */
+    @Override
     public String getNumeroCartaoSus() {
         return instance.getNumeroCartaoSus();
     }
@@ -68,14 +76,17 @@ public class FichaConsumoAlimentar {
      * @param numeroCartaoSus 
      * CNS válido de acordo com o algoritmo.
      */
+    @Override
     public void setNumeroCartaoSus(String numeroCartaoSus) {
         instance.setNumeroCartaoSus(numeroCartaoSus);
     }
 
+    @Override
     public void unsetNumeroCartaoSus() {
         instance.unsetNumeroCartaoSus();
     }
 
+    @Override
     public void setNumeroCartaoSusIsSet(boolean value) {
         instance.setNumeroCartaoSusIsSet(value);
     }
@@ -84,6 +95,7 @@ public class FichaConsumoAlimentar {
      * Nome do cidadão
      * @return Nome do cidadão
      */
+    @Override
     public String getIdentificacaoUsuario() {
         return instance.getIdentificacaoUsuario();
     }
@@ -92,10 +104,12 @@ public class FichaConsumoAlimentar {
      * Nome do cidadão
      * @param identificacaoUsuario 
      */
+    @Override
     public void setIdentificacaoUsuario(String identificacaoUsuario) {
         instance.setIdentificacaoUsuario(identificacaoUsuario);
     }
 
+    @Override
     public void unsetIdentificacaoUsuario() {
         instance.unsetIdentificacaoUsuario();
     }
@@ -104,10 +118,12 @@ public class FichaConsumoAlimentar {
      * Nome do cidadão
      * @return Nome do cidadão
      */
+    @Override
     public boolean isSetIdentificacaoUsuario() {
         return instance.isSetIdentificacaoUsuario();
     }
 
+    @Override
     public void setIdentificacaoUsuarioIsSet(boolean value) {
         instance.setIdentificacaoUsuarioIsSet(value);
     }
@@ -116,6 +132,7 @@ public class FichaConsumoAlimentar {
      * Data de nascimento do cidadão no formato epoch time.
      * @return Data de nascimento do cidadão
      */
+    @Override
     public long getDataNascimento() {
         return instance.getDataNascimento();
     }
@@ -124,10 +141,12 @@ public class FichaConsumoAlimentar {
      * Data de nascimento do cidadão no formato epoch time
      * @param dataNascimento 
      */
+    @Override
     public void setDataNascimento(long dataNascimento) {
         instance.setDataNascimento(dataNascimento);
     }
 
+    @Override
     public void unsetDataNascimento() {
         instance.unsetDataNascimento();
     }
@@ -136,6 +155,7 @@ public class FichaConsumoAlimentar {
      * Data de nascimento do cidadão no formato epoch time.
      * @return Data de nascimento do cidadão
      */
+    @Override
     public boolean isSetDataNascimento() {
         return instance.isSetDataNascimento();
     }
@@ -144,6 +164,7 @@ public class FichaConsumoAlimentar {
      * Data de nascimento do cidadão no formato epoch time.
      * @param value 
      */
+    @Override
     public void setDataNascimentoIsSet(boolean value) {
         instance.setDataNascimentoIsSet(value);
     }
@@ -151,6 +172,7 @@ public class FichaConsumoAlimentar {
      * Código do sexo do cidadão.
      * @return Código do sexo do cidadão.
      */
+    @Override
     public long getSexo() {
         return instance.getSexo();
     }
@@ -161,10 +183,12 @@ public class FichaConsumoAlimentar {
      * 0 Masculino	
      * 1 Feminino	
      */
+    @Override
     public void setSexo(long sexo) {
         instance.setSexo(sexo);
     }
 
+    @Override
     public void unsetSexo() {
         instance.unsetSexo();
     }
@@ -173,10 +197,12 @@ public class FichaConsumoAlimentar {
      * Código do sexo do cidadão 
      * @return Sexo
      */
+    @Override
     public boolean isSetSexo() {
         return instance.isSetSexo();
     }
 
+    @Override
     public void setSexoIsSet(boolean value) {
         instance.setSexoIsSet(value);
     }
@@ -185,6 +211,7 @@ public class FichaConsumoAlimentar {
      * Código do local onde o atendimento foi realizado.
      * @return Código do local de atendimento
      */
+    @Override
     public long getLocalAtendimento() {
         return instance.getLocalAtendimento();
     }
@@ -193,18 +220,22 @@ public class FichaConsumoAlimentar {
      * Código do local onde o atendimento foi realizado
      * @param localAtendimento 
      */
+    @Override
     public void setLocalAtendimento(long localAtendimento) {
         instance.setLocalAtendimento(localAtendimento);
     }
 
+    @Override
     public void unsetLocalAtendimento() {
         instance.unsetLocalAtendimento();
     }
 
+    @Override
     public boolean isSetLocalAtendimento() {
         return instance.isSetLocalAtendimento();
     }
 
+    @Override
     public void setLocalAtendimentoIsSet(boolean value) {
         instance.setLocalAtendimentoIsSet(value);
     }
@@ -213,16 +244,19 @@ public class FichaConsumoAlimentar {
      * Marcadores referentes aos cidadãos menores de seis meses de idade
      * @return PerguntasQuestionarioCriancasMenoresSeisMesesSize
      */
+    @Override
     public int getPerguntasQuestionarioCriancasMenoresSeisMesesSize() {
         return instance.getPerguntasQuestionarioCriancasMenoresSeisMesesSize();
     }
 
-    public void addToPerguntasQuestionarioCriancasMenoresSeisMeses(PerguntaQuestionarioCriancasMenoresSeisMeses elem) {
+    @Override
+    public void addToPerguntasQuestionarioCriancasMenoresSeisMeses(IPerguntaQuestionarioCriancasMenoresSeisMeses elem) {
         instance.addToPerguntasQuestionarioCriancasMenoresSeisMeses(elem.getInstance());
     }
 
-    public List<PerguntaQuestionarioCriancasMenoresSeisMeses> getPerguntasQuestionarioCriancasMenoresSeisMeses() {
-        List <PerguntaQuestionarioCriancasMenoresSeisMeses> listaPerguntaQuestionario = new LinkedList<>();
+    @Override
+    public List<IPerguntaQuestionarioCriancasMenoresSeisMeses> getPerguntasQuestionarioCriancasMenoresSeisMeses() {
+        List <IPerguntaQuestionarioCriancasMenoresSeisMeses> listaPerguntaQuestionario = new LinkedList<>();
         
         instance.getPerguntasQuestionarioCriancasMenoresSeisMeses().forEach((t)->{
             listaPerguntaQuestionario.add(new PerguntaQuestionarioCriancasMenoresSeisMeses (t));
@@ -235,7 +269,8 @@ public class FichaConsumoAlimentar {
      * Marcadores referentes aos cidadãos menores de seis meses de idade
      * @param perguntasQuestionarioCriancasMenoresSeisMeses 
      */
-    public void setPerguntasQuestionarioCriancasMenoresSeisMeses(List<PerguntaQuestionarioCriancasMenoresSeisMeses> perguntasQuestionarioCriancasMenoresSeisMeses) {
+    @Override
+    public void setPerguntasQuestionarioCriancasMenoresSeisMeses(List<IPerguntaQuestionarioCriancasMenoresSeisMeses> perguntasQuestionarioCriancasMenoresSeisMeses) {
         List<PerguntaQuestionarioCriancasMenoresSeisMesesThrift> listaQuestionario = new LinkedList<>();
         
         perguntasQuestionarioCriancasMenoresSeisMeses.forEach((elem) -> {
@@ -244,6 +279,7 @@ public class FichaConsumoAlimentar {
         instance.setPerguntasQuestionarioCriancasMenoresSeisMeses(listaQuestionario);
     }
 
+    @Override
     public void unsetPerguntasQuestionarioCriancasMenoresSeisMeses() {
         instance.unsetPerguntasQuestionarioCriancasMenoresSeisMeses();
     }
@@ -252,6 +288,7 @@ public class FichaConsumoAlimentar {
      * Marcadores referentes aos cidadãos menores de seis meses de idade
      * @return Marcadores referentes aos cidadãos menores de seis meses de idade
      */
+    @Override
     public boolean isSetPerguntasQuestionarioCriancasMenoresSeisMeses() {
         return instance.isSetPerguntasQuestionarioCriancasMenoresSeisMeses();
     }
@@ -260,6 +297,7 @@ public class FichaConsumoAlimentar {
      * Marcadores referentes aos cidadãos menores de seis meses de idade
      * @param value 
      */
+    @Override
     public void setPerguntasQuestionarioCriancasMenoresSeisMesesIsSet(boolean value) {
         instance.setPerguntasQuestionarioCriancasMenoresSeisMesesIsSet(value);
     }
@@ -268,6 +306,7 @@ public class FichaConsumoAlimentar {
      * Marcadores referentes aos cidadãos menores de seis meses de idade
      * @param value 
      */
+    @Override
     public int getPerguntasQuestionarioCriancasDeSeisVinteTresMesesSize() {
         return instance.getPerguntasQuestionarioCriancasDeSeisVinteTresMesesSize();
     }
@@ -276,9 +315,10 @@ public class FichaConsumoAlimentar {
      * Marcadores referentes aos cidadãos que tem entre seis e vinte e três meses de idade.
      * @return Marcadores referentes aos cidadãos que tem entre seis e vinte e três meses de idade.
      */
-    public Iterator<PerguntaQuestionarioCriancasDeSeisVinteTresMeses> getPerguntasQuestionarioCriancasDeSeisVinteTresMesesIterator() {
+    @Override
+    public Iterator<IPerguntaQuestionarioCriancasDeSeisVinteTresMeses> getPerguntasQuestionarioCriancasDeSeisVinteTresMesesIterator() {
         
-        List<PerguntaQuestionarioCriancasDeSeisVinteTresMeses> listaPerguntaQuestionario = new LinkedList<>();
+        List<IPerguntaQuestionarioCriancasDeSeisVinteTresMeses> listaPerguntaQuestionario = new LinkedList<>();
         instance.getPerguntasQuestionarioCriancasDeSeisVinteTresMesesIterator().forEachRemaining((t)->{
             listaPerguntaQuestionario.add(new PerguntaQuestionarioCriancasDeSeisVinteTresMeses (t));
         });
@@ -286,12 +326,14 @@ public class FichaConsumoAlimentar {
         return listaPerguntaQuestionario.iterator();
     }
 
-    public void addToPerguntasQuestionarioCriancasDeSeisVinteTresMeses(PerguntaQuestionarioCriancasDeSeisVinteTresMeses elem) {
+    @Override
+    public void addToPerguntasQuestionarioCriancasDeSeisVinteTresMeses(IPerguntaQuestionarioCriancasDeSeisVinteTresMeses elem) {
         instance.addToPerguntasQuestionarioCriancasDeSeisVinteTresMeses(elem.getInstance());
     }
 
-    public List<PerguntaQuestionarioCriancasDeSeisVinteTresMeses> getPerguntasQuestionarioCriancasDeSeisVinteTresMeses() {
-        List<PerguntaQuestionarioCriancasDeSeisVinteTresMeses> listaPerguntaQuestionario = new LinkedList<>(); 
+    @Override
+    public List<IPerguntaQuestionarioCriancasDeSeisVinteTresMeses> getPerguntasQuestionarioCriancasDeSeisVinteTresMeses() {
+        List<IPerguntaQuestionarioCriancasDeSeisVinteTresMeses> listaPerguntaQuestionario = new LinkedList<>(); 
         instance.getPerguntasQuestionarioCriancasDeSeisVinteTresMeses().forEach((t)->{
             listaPerguntaQuestionario.add(new PerguntaQuestionarioCriancasDeSeisVinteTresMeses(t));
         });
@@ -302,7 +344,8 @@ public class FichaConsumoAlimentar {
      * Marcadores referentes aos cidadãos que tem entre seis e vinte e três meses de idade.
      * @param perguntasQuestionarioCriancasDeSeisVinteTresMeses 
      */
-    public void setPerguntasQuestionarioCriancasDeSeisVinteTresMeses(List<PerguntaQuestionarioCriancasDeSeisVinteTresMeses> perguntasQuestionarioCriancasDeSeisVinteTresMeses) {
+    @Override
+    public void setPerguntasQuestionarioCriancasDeSeisVinteTresMeses(List<IPerguntaQuestionarioCriancasDeSeisVinteTresMeses> perguntasQuestionarioCriancasDeSeisVinteTresMeses) {
        List<PerguntaQuestionarioCriancasDeSeisVinteTresMesesThrift>listaQuestionario = new LinkedList<>();
        
        perguntasQuestionarioCriancasDeSeisVinteTresMeses.forEach((elem)->{
@@ -311,19 +354,23 @@ public class FichaConsumoAlimentar {
        instance.setPerguntasQuestionarioCriancasDeSeisVinteTresMeses(listaQuestionario);
     }
 
+    @Override
     public void unsetPerguntasQuestionarioCriancasDeSeisVinteTresMeses() {
         instance.unsetPerguntasQuestionarioCriancasDeSeisVinteTresMeses();
     }
 
+    @Override
     public boolean isSetPerguntasQuestionarioCriancasDeSeisVinteTresMeses() {
         return instance.isSetPerguntasQuestionarioCriancasDeSeisVinteTresMeses();
     }
 
+    @Override
     public void setPerguntasQuestionarioCriancasDeSeisVinteTresMesesIsSet(boolean value) {
         instance.setPerguntasQuestionarioCriancasDeSeisVinteTresMesesIsSet(value);
     }
 
     
+    @Override
     public int getPerguntasQuestionarioCriancasComMaisDoisAnosSize() {
         return instance.getPerguntasQuestionarioCriancasComMaisDoisAnosSize();
     }
@@ -332,15 +379,17 @@ public class FichaConsumoAlimentar {
      * Marcadores referentes aos cidadãos que tem vinte e quatro meses ou mais.
      * @return Marcadores referentes aos cidadãos que tem vinte e quatro meses ou mais.
      */
-    public Iterator<PerguntaQuestionarioCriancasComMaisDoisAnos> getPerguntasQuestionarioCriancasComMaisDoisAnosIterator() {
-        List<PerguntaQuestionarioCriancasComMaisDoisAnos> listaPerguntaQuestionario = new LinkedList<>();
+    @Override
+    public Iterator<IPerguntaQuestionarioCriancasComMaisDoisAnos> getPerguntasQuestionarioCriancasComMaisDoisAnosIterator() {
+        List<IPerguntaQuestionarioCriancasComMaisDoisAnos> listaPerguntaQuestionario = new LinkedList<>();
         instance.getPerguntasQuestionarioCriancasComMaisDoisAnosIterator().forEachRemaining((t)->{
             listaPerguntaQuestionario.add(new PerguntaQuestionarioCriancasComMaisDoisAnos(t));
         });
         return listaPerguntaQuestionario.iterator();
     }
 
-    public void addToPerguntasQuestionarioCriancasComMaisDoisAnos(PerguntaQuestionarioCriancasComMaisDoisAnos elem) {
+    @Override
+    public void addToPerguntasQuestionarioCriancasComMaisDoisAnos(IPerguntaQuestionarioCriancasComMaisDoisAnos elem) {
         instance.addToPerguntasQuestionarioCriancasComMaisDoisAnos(elem.getInstance());
     }
 
@@ -348,8 +397,9 @@ public class FichaConsumoAlimentar {
      * Marcadores referentes aos cidadãos que tem vinte e quatro meses ou mais.
      * @return List
      */
-    public List<PerguntaQuestionarioCriancasComMaisDoisAnos> getPerguntasQuestionarioCriancasComMaisDoisAnos() {
-        List<PerguntaQuestionarioCriancasComMaisDoisAnos> listaPerguntaQuestionario = new LinkedList<>();
+    @Override
+    public List<IPerguntaQuestionarioCriancasComMaisDoisAnos> getPerguntasQuestionarioCriancasComMaisDoisAnos() {
+        List<IPerguntaQuestionarioCriancasComMaisDoisAnos> listaPerguntaQuestionario = new LinkedList<>();
         instance.getPerguntasQuestionarioCriancasComMaisDoisAnos().forEach((t)->{
             listaPerguntaQuestionario.add(new PerguntaQuestionarioCriancasComMaisDoisAnos(t));
         });
@@ -360,7 +410,8 @@ public class FichaConsumoAlimentar {
      * Marcadores referentes aos cidadãos que tem vinte e quatro meses ou mais.
      * @param perguntasQuestionarioCriancasComMaisDoisAnos 
      */
-    public void setPerguntasQuestionarioCriancasComMaisDoisAnos(List<PerguntaQuestionarioCriancasComMaisDoisAnos> perguntasQuestionarioCriancasComMaisDoisAnos) {
+    @Override
+    public void setPerguntasQuestionarioCriancasComMaisDoisAnos(List<IPerguntaQuestionarioCriancasComMaisDoisAnos> perguntasQuestionarioCriancasComMaisDoisAnos) {
         List<PerguntaQuestionarioCriancasComMaisDoisAnosThrift> listaPerguntaQuestionario = new LinkedList<>();
         
         perguntasQuestionarioCriancasComMaisDoisAnos.forEach((elem)->{
@@ -370,6 +421,7 @@ public class FichaConsumoAlimentar {
         instance.setPerguntasQuestionarioCriancasComMaisDoisAnos(listaPerguntaQuestionario);
     }
 
+    @Override
     public void unsetPerguntasQuestionarioCriancasComMaisDoisAnos() {
         instance.unsetPerguntasQuestionarioCriancasComMaisDoisAnos();
     }
@@ -378,10 +430,12 @@ public class FichaConsumoAlimentar {
      * Marcadores referentes aos cidadãos que tem vinte e quatro meses ou mais.
      * @return Marcadores referentes aos cidadãos que tem vinte e quatro meses ou mais.
      */
+    @Override
     public boolean isSetPerguntasQuestionarioCriancasComMaisDoisAnos() {
         return instance.isSetPerguntasQuestionarioCriancasComMaisDoisAnos();
     }
 
+    @Override
     public void setPerguntasQuestionarioCriancasComMaisDoisAnosIsSet(boolean value) {
         instance.setPerguntasQuestionarioCriancasComMaisDoisAnosIsSet(value);
     }
@@ -390,6 +444,7 @@ public class FichaConsumoAlimentar {
      * Código UUID para identificar a ficha na base de dados nacional.
      * @return Código UUID para identificar a ficha na base de dados nacional.
      */
+    @Override
     public String getUuidFicha() {
         return instance.getUuidFicha();
     }
@@ -398,10 +453,12 @@ public class FichaConsumoAlimentar {
      * 
      * @param uuidFicha 
      */
+    @Override
     public void setUuidFicha(String uuidFicha) {
         instance.setUuidFicha(uuidFicha);
     }
 
+    @Override
     public void unsetUuidFicha() {
         instance.unsetUuidFicha();
     }
@@ -410,10 +467,12 @@ public class FichaConsumoAlimentar {
      * Código UUID para identificar a ficha na base de dados nacional.
      * @return 
      */
+    @Override
     public boolean isSetUuidFicha() {
         return instance.isSetUuidFicha();
     }
 
+    @Override
     public void setUuidFichaIsSet(boolean value) {
         instance.setUuidFichaIsSet(value);
     }
@@ -422,14 +481,17 @@ public class FichaConsumoAlimentar {
      * Tipo de origem dos dados do registro.
      * @return Tipo de origem dos dados do registro.
      */
+    @Override
     public int getTpCdsOrigem() {
         return instance.getTpCdsOrigem();
     }
 
+    @Override
     public void setTpCdsOrigem(int tpCdsOrigem) {
         instance.setTpCdsOrigem(tpCdsOrigem);
     }
 
+    @Override
     public void unsetTpCdsOrigem() {
         instance.unsetTpCdsOrigem();
     }
@@ -438,27 +500,22 @@ public class FichaConsumoAlimentar {
      * Tipo de origem dos dados do registro.
      * @return Tipo de origem dos dados do registro.
      */
+    @Override
     public boolean isSetTpCdsOrigem() {
         return instance.isSetTpCdsOrigem();
     }
 
+    @Override
     public void setTpCdsOrigemIsSet(boolean value) {
         instance.setTpCdsOrigemIsSet(value);
     }
-
-    public boolean equals(FichaConsumoAlimentar that) {
-        return instance.equals(that.instance);
-    }
-
-    public int compareTo(FichaConsumoAlimentar other) {
-        return instance.compareTo(other.instance);
-    }   
 
     /**
      * Metodo validade cria os metodos que fazem as validações
      * Chama todos os metodos que fazem validações
      * @return Todos os metodos de validação
      */
+    @Override
     public boolean validades(){
         return validaHeaderTransport() &&
                 validaNumeroCartaoSus() &&
@@ -479,6 +536,7 @@ public class FichaConsumoAlimentar {
      * @return profisional
      * Não pode ser nulo
      */
+    @Override
     public boolean validaHeaderTransport(){
         return instance.getHeaderTransport() != null;            
     }
@@ -489,6 +547,7 @@ public class FichaConsumoAlimentar {
      * Deve ter apenas 15 caracteres 
      * CNS válido de acordo com o algoritmo.
      */
+    @Override
     public boolean validaNumeroCartaoSus(){
         String numeroCartaoSus = instance.getNumeroCartaoSus();
         return numeroCartaoSus != null && 
@@ -500,6 +559,7 @@ public class FichaConsumoAlimentar {
      * @return Nome do cidadão 
      * Deve ter pelo menos 5 caracteres e no maximo 100
      */
+    @Override
     public boolean validaIdentificacaoUsuario(){
         String nomeCidadao = instance.getIdentificacaoUsuario();
         return instance.isSetIdentificacaoUsuario() &&
@@ -515,6 +575,7 @@ public class FichaConsumoAlimentar {
      * Valida: Não pode ser posterior a dataAtendimento e anterior a 130 anos a partir da dataAtendimento.
      * Não pode ser posterior a dataAtendimento e anterior a 130 anos a partir da dataAtendimento.
      */
+    @Override
     public boolean validaDataNascimento(){
         
         if(!instance.isSetDataNascimento()) return false;
@@ -538,6 +599,7 @@ public class FichaConsumoAlimentar {
      * @return sexo
      * Valida Código se for 0 ou 1 e não pode ser  nulo
      */
+    @Override
     public boolean validaSexo(){
         return instance.isSetSexo() &&
                instance.getSexo() >=0 &&
@@ -548,6 +610,7 @@ public class FichaConsumoAlimentar {
      * Valida Código do local onde o atendimento foi realizado.
      * @return não pode ser nulo
      */
+    @Override
     public boolean validaLocalAtendimento(){
         return instance.isSetLocalAtendimento();
     }
@@ -558,6 +621,7 @@ public class FichaConsumoAlimentar {
      * E validação de data de atendimento
      * Se dataNascimento < 6 meses a partir da dataAtendimento.
      */
+    @Override
     public boolean validaPerguntasQuestionarioCriancasMenoresSeisMeses(){
         
         long dataNascimento = instance.getDataNascimento();
@@ -573,6 +637,7 @@ public class FichaConsumoAlimentar {
      * @return Marcadores referentes aos cidadãos que tem entre seis e vinte e três meses de idade.
      * Se dataNascimento >= 6 meses e <= 23 meses a partir da dataAtendimento.
      */
+    @Override
     public boolean validaPerguntasQuestionarioCriancasDeSeisVinteTresMeses(){
         
         long dataNascimento = instance.getDataNascimento();
@@ -591,6 +656,7 @@ public class FichaConsumoAlimentar {
      * @return Marcadores referentes aos cidadãos que tem vinte e quatro meses ou mais.
      * E se dataNascimento >= 24 meses a partir da dataAtendimento.
      */
+    @Override
     public boolean validaPerguntasQuestionarioCriancasComMaisDoisAnos(){
         
         long dataNascimento = instance.getDataNascimento();
@@ -608,6 +674,7 @@ public class FichaConsumoAlimentar {
      * @return verificação de nulo 
      * E capo com minimo de 36 e maximo de 46 caracteres
      */
+    @Override
     public boolean validaUuidFicha(){
         String UUID = instance.getUuidFicha();
         return instance.isSetUuidFicha() &&
@@ -619,9 +686,11 @@ public class FichaConsumoAlimentar {
      * Valida Tipo de origem dos dados do registro.
      * @return Tipo de origem dos dados do registro.
      */
+    @Override
     public boolean validaTpCDsOrigem(){
         int tpCdsOrigem = instance.getTpCdsOrigem();
         return instance.isSetTpCdsOrigem() &&
                 (tpCdsOrigem ==1);
     }   
+
 }

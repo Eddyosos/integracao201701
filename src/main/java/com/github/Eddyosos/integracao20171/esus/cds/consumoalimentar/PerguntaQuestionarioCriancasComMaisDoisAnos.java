@@ -1,31 +1,34 @@
 package com.github.Eddyosos.integracao20171.esus.cds.consumoalimentar;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.PerguntaQuestionarioCriancasComMaisDoisAnosThrift;
+import br.gov.saude.esus.cds.transport.generated.thrift.consumoalimentar.RespostaMultiplaEscolhaEnumThrift;
+import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.consumoalimentar.IPerguntaQuestionarioCriancasComMaisDoisAnos;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 
-public class PerguntaQuestionarioCriancasComMaisDoisAnos {
+public class PerguntaQuestionarioCriancasComMaisDoisAnos implements IPerguntaQuestionarioCriancasComMaisDoisAnos {
     
     /**
      * Instancia para encapsulamento do Thrift
      */
-    private PerguntaQuestionarioCriancasComMaisDoisAnosThrift instance = new PerguntaQuestionarioCriancasComMaisDoisAnosThrift();
-    //private PerguntaQuestionarioCriancasComMaisDoisAnosThrift instance; 
+    private PerguntaQuestionarioCriancasComMaisDoisAnosThrift instance; 
+    
+    public PerguntaQuestionarioCriancasComMaisDoisAnos(){
+        instance = new PerguntaQuestionarioCriancasComMaisDoisAnosThrift();
+    }
 
-    PerguntaQuestionarioCriancasComMaisDoisAnosThrift getInstance() {
+    @Override
+    public PerguntaQuestionarioCriancasComMaisDoisAnosThrift getInstance() {
         return instance;
     }
     
-    protected PerguntaQuestionarioCriancasComMaisDoisAnos(PerguntaQuestionarioCriancasComMaisDoisAnosThrift t){
+    public PerguntaQuestionarioCriancasComMaisDoisAnos(PerguntaQuestionarioCriancasComMaisDoisAnosThrift t){
         this.instance = t;
     }
 
-    public PerguntaQuestionarioCriancasComMaisDoisAnos deepCopy() {
-        return new PerguntaQuestionarioCriancasComMaisDoisAnos(instance.deepCopy());
-    }
-
+    @Override
     public void unsetPergunta() {
         instance.unsetPergunta();
     }
@@ -35,6 +38,7 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
      * @return questionário de cidadãos que tem vinte e quatro meses ou mais.
      * Obrigatório caso a dataNascimento seja mais que 24 meses anterior à DataAtendimento
      */
+    @Override
     public boolean isSetPergunta() {
         return instance.isSetPergunta();
     }
@@ -43,10 +47,12 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
      * Pergunta do questionário de cidadãos que tem vinte e quatro meses ou mais.
      * @param value 
      */
+    @Override
     public void setPerguntaIsSet(boolean value) {
         instance.setPerguntaIsSet(value);
     }
 
+    @Override
     public void unsetRespostaUnicaEscolha() {
         instance.unsetRespostaUnicaEscolha();
     }
@@ -56,6 +62,7 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
      * @return Resposta referente a pergunta do registro.
      * Obrigatório caso a dataNascimento seja mais que 24 meses anterior à DataAtendimento.
      */
+    @Override
     public boolean isSetRespostaUnicaEscolha() {
         return instance.isSetRespostaUnicaEscolha();
     }
@@ -65,6 +72,7 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
      * @param value 
      * Obrigatório caso a dataNascimento seja mais que 24 meses anterior à DataAtendimento.
      */
+    @Override
     public void setRespostaUnicaEscolhaIsSet(boolean value) {
         instance.setRespostaUnicaEscolhaIsSet(value);
     }
@@ -73,6 +81,7 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
      * Resposta referente à pergunta do registro acima.
      * @return getRespostaMultiplaEscolhaSize
      */
+    @Override
     public int getRespostaMultiplaEscolhaSize() {
         return instance.getRespostaMultiplaEscolhaSize();
     }
@@ -81,8 +90,9 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
      * Resposta referente à pergunta do registro.
      * @return List
      */
-    public Iterator<RespostaMultiplaEscolhaEnum> getRespostaMultiplaEscolhaIterator() {
-        List<RespostaMultiplaEscolhaEnum> listaRespostaMultipla = new LinkedList<>();
+    @Override
+    public Iterator<RespostaMultiplaEscolhaEnumThrift> getRespostaMultiplaEscolhaIterator() {
+        List<RespostaMultiplaEscolhaEnumThrift> listaRespostaMultipla = new LinkedList<>();
         instance.getRespostaMultiplaEscolhaIterator().forEachRemaining((t)->{
             
             //Não há solução para Enum? não tem como instanciar 
@@ -92,6 +102,7 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
         return listaRespostaMultipla.iterator();
     }
 
+    @Override
     public void unsetRespostaMultiplaEscolha() {
         instance.unsetRespostaMultiplaEscolha();
     }
@@ -102,6 +113,7 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
      * Deve respeitar as regras das respostas referentes à pergunta
      * Pode ser preenchido somente se a pergunta for 12L.
      */
+    @Override
     public boolean isSetRespostaMultiplaEscolha() {
         return instance.isSetRespostaMultiplaEscolha();
     }
@@ -110,16 +122,9 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
      * Resposta referente à pergunta do registro acima(RespostaUnicaEscolha).
      * @param value 
      */
+    @Override
     public void setRespostaMultiplaEscolhaIsSet(boolean value) {
         instance.setRespostaMultiplaEscolhaIsSet(value);
-    }
-
-    public boolean equals(PerguntaQuestionarioCriancasComMaisDoisAnos that) {
-        return instance.equals(that.instance);
-    }
-
-    public int compareTo(PerguntaQuestionarioCriancasComMaisDoisAnos other) {
-        return instance.compareTo(other.instance);
     }
 
      /**
@@ -128,6 +133,7 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
      * @return Todos os metodos de validação
      * Valida validaPergunta(), validaRespostaUnicaEscolha() e validaRespostaMultiplaEscolha()
      */
+    @Override
     public boolean validades(){
         return validaPergunta()&&
                 validaRespostaUnicaEscolha()&&
@@ -140,6 +146,7 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
      * É condicional
      * Obrigatório caso a dataNascimento seja mais que 24 meses anterior à DataAtendimento
      */
+    @Override
     public boolean validaPergunta(){
         return instance.isSetPergunta();  
     }
@@ -150,6 +157,7 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
      * É Condiconal
      * Obrigatório caso a dataNascimento seja mais que 24 meses anterior à DataAtendimento.
      */
+    @Override
     public boolean validaRespostaUnicaEscolha(){
         return instance.isSetRespostaUnicaEscolha();
     }
@@ -161,6 +169,7 @@ public class PerguntaQuestionarioCriancasComMaisDoisAnos {
      * Deve respeitar as regras das respostas referentes à pergunta .
      * Pode ser preenchido somente se a pergunta for 12L.
      */
+    @Override
     public boolean validaRespostaMultiplaEscolha(){
         return instance.isSetRespostaMultiplaEscolha();
     }
