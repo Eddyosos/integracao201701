@@ -26,7 +26,16 @@ public class EmSituacaoDeRua {
      *          false se inválido
      */
     public boolean validates(){
-        return validaGrauParentescoFamiliarFrequentado();
+        return validateGrauParentescoFamiliarFrequentado() &&
+                validateHigienePessoalSituacaoRua() &&
+                validateOrigemAlimentoSituacaoRua() &&
+                validateOutraInstituicaoQueAcompanha() &&
+                validateQuantidadeAlimentacoesAoDiaSituacaoRua() &&
+                validateStatusAcompanhadoPorOutraInstituicao() &&
+                validateStatusPossuiReferenciaFamiliar() &&
+                validateStatusSituacaoRua() &&
+                validateStatusVisitaFamiliarFrequentemente() &&
+                validateTempoSituacaoRua();
     }
     
     /**
@@ -37,7 +46,7 @@ public class EmSituacaoDeRua {
      * @return true se válido
      *          false se inválido
      */
-    public boolean validaGrauParentescoFamiliarFrequentado(){
+    public boolean validateGrauParentescoFamiliarFrequentado(){
         return !instance.isSetGrauParentescoFamiliarFrequentado() || (
                 instance.getGrauParentescoFamiliarFrequentado().length() <= 100 && (
                 !instance.isSetStatusSituacaoRua() || 
@@ -96,6 +105,29 @@ public class EmSituacaoDeRua {
      */
     public void setHigienePessoalSituacaoRua(List<Long> higienePessoalSituacaoRua) {
         instance.setHigienePessoalSituacaoRua(higienePessoalSituacaoRua);
+    }
+    
+    /**
+     * Valida OrigemAlimentoSituacaoRua.
+     * Para ser válida, caso inserida, deve:
+     * 1- Não pode ser preechido se o campo statusSituacaoRua = false.
+     * 2- Máximo 5
+     * 
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateOrigemAlimentoSituacaoRua(){
+        if(instance.isSetOrigemAlimentoSituacaoRua()){
+            if(! instance.isStatusSituacaoRua()) return false;
+            
+            for(long origem : instance.getOrigemAlimentoSituacaoRua()){
+                if(origem < 37l || origem > 41l){
+                    return false;
+                }
+            }
+        }
+                
+        return true;    
     }
 
     /**
@@ -173,6 +205,26 @@ public class EmSituacaoDeRua {
     }
 
     /**
+     * Valida OutraInstituicaoQueAcompanha.
+     * Para ser válida, caso inserida, deve:
+     * 1- Não pode ser preechido se o campo statusSituacaoRua = false.
+     * 2- Não pode ser preenchido se o campo statusAcompanhadoPorOutraInstituição = false.
+     * 3- Tamanho máximo 100.
+     * 
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateOutraInstituicaoQueAcompanha(){
+        if(instance.isSetOutraInstituicaoQueAcompanha()){
+            if(! instance.isStatusSituacaoRua() || ! instance.isStatusAcompanhadoPorOutraInstituicao()) return false;
+            
+            return instance.getOutraInstituicaoQueAcompanha().length() <= 100;
+        }
+                
+        return true;    
+    }
+    
+    /**
      * Nome de outra instituição que acompanha o cidadão.
      * 
      * @return Nome de outra instituição que acompanha o cidadão.
@@ -221,6 +273,22 @@ public class EmSituacaoDeRua {
     }
 
     /**
+     * Valida QuantidadeAlimentacoesAoDiaSituacaoRua.
+     * Para ser válida, caso inserida, deve:
+     * 1- Não pode ser preechido se o campo statusSituacaoRua = false.
+     * 
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateQuantidadeAlimentacoesAoDiaSituacaoRua(){
+        if(instance.isSetQuantidadeAlimentacoesAoDiaSituacaoRua()){
+            if(! instance.isStatusSituacaoRua() ) return false;
+        }
+                
+        return true;    
+    }
+    
+    /**
      * Quantidade de vezes que o cidadão se alimenta por dia.
      * @return Código da quantidade de vezes que o cidadão se alimenta por dia.
      */
@@ -265,6 +333,22 @@ public class EmSituacaoDeRua {
     }
 
     /**
+     * Valida StatusAcompanhadoPorOutraInstituicao.
+     * Para ser válida, caso inserida, deve:
+     * 1- Não pode ser preechido se o campo statusSituacaoRua = false.
+     * 
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateStatusAcompanhadoPorOutraInstituicao(){
+        if(instance.isSetStatusAcompanhadoPorOutraInstituicao()){
+            if(! instance.isStatusSituacaoRua() ) return false;
+        }
+                
+        return true;    
+    }
+    
+    /**
      * Verifica se o cidadão é acompanhado por outra instituição.
      * 
      * @return True caso seja acompanhado por outra instituição, caso contrario False.
@@ -307,6 +391,22 @@ public class EmSituacaoDeRua {
         instance.setStatusAcompanhadoPorOutraInstituicaoIsSet(value);
     }
 
+    /**
+     * Valida StatusPossuiReferenciaFamiliar.
+     * Para ser válida, caso inserida, deve:
+     * 1- Não pode ser preechido se o campo statusSituacaoRua = false.
+     * 
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateStatusPossuiReferenciaFamiliar(){
+        if(instance.isSetStatusPossuiReferenciaFamiliar()){
+            if(! instance.isStatusSituacaoRua() ) return false;
+        }
+                
+        return true;    
+    }
+    
     /**
      * Indica se o cidadão possuiu alguma referência familiar.
      * 
@@ -353,6 +453,22 @@ public class EmSituacaoDeRua {
     }
 
     /**
+     * Valida StatusRecebeBeneficio.
+     * Para ser válida, caso inserida, deve:
+     * 1- Não pode ser preechido se o campo statusSituacaoRua = false.
+     * 
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateStatusRecebeBeneficio(){
+        if(instance.isSetStatusRecebeBeneficio()){
+            if(! instance.isStatusSituacaoRua() ) return false;
+        }
+                
+        return true;    
+    }
+    
+    /**
      * Indica se o cidadão recebe algum benefício.
      * 
      * @return True se o cidadão receber algum benefício, false caso não.
@@ -398,6 +514,19 @@ public class EmSituacaoDeRua {
     }
 
     /**
+     * Valida StatusSituacaoRua.
+     * Para ser válida,  deve:
+     * 1- Presença obrigatória.
+     * 
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateStatusSituacaoRua(){
+
+           return instance.isSetStatusSituacaoRua();
+ 
+    }
+    /**
      * Indica se o cidadão está em situação de rua.
      * 
      * @return True caso o cidadão esteja em situação de rua, caso contrario false.
@@ -440,6 +569,22 @@ public class EmSituacaoDeRua {
      */
     public void setStatusSituacaoRuaIsSet(boolean value) {
         instance.setStatusSituacaoRuaIsSet(value);
+    }
+    
+    /**
+     * Valida StatusTemAcessoHigienePessoalSituacaoRua.
+     * Para ser válida, caso inserida, deve:
+     * 1- Não pode ser preechido se o campo statusSituacaoRua = false.
+     * 
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateStatusTemAcessoHigienePessoalSituacaoRua(){
+        if(instance.isSetStatusTemAcessoHigienePessoalSituacaoRua()){
+            if(! instance.isStatusSituacaoRua() ) return false;
+        }
+                
+        return true;    
     }
 
     /**
@@ -487,6 +632,23 @@ public class EmSituacaoDeRua {
     }
 
     /**
+     * Valida StatusVisitaFamiliarFrequentemente.
+     * Para ser válida, caso inserida, deve:
+     * 1- Não pode ser preechido se o campo statusSituacaoRua = false.
+     * 
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateStatusVisitaFamiliarFrequentemente(){
+        if(instance.isSetStatusVisitaFamiliarFrequentemente()){
+            if(! instance.isStatusSituacaoRua() ) return false;
+        }
+                
+        return true;    
+    }
+
+    
+    /**
      * Indica se o cidadão visita algum familiar frequentemente.
      * 
      * @return True caso visite, caso contrario false.
@@ -531,6 +693,24 @@ public class EmSituacaoDeRua {
         instance.setStatusVisitaFamiliarFrequentementeIsSet(value);
     }
 
+     /**
+     * Valida TempoSituacaoRua.
+     * Para ser válida, caso inserida, deve:
+     * 1- Não pode ser preechido se o campo statusSituacaoRua = false.
+     * 
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateTempoSituacaoRua(){
+        if(instance.isSetTempoSituacaoRua()){
+            if(! instance.isStatusSituacaoRua() ) return false;
+            
+            return instance.getTempoSituacaoRua() >= 17l && instance.getTempoSituacaoRua() <= 20l;
+        }
+                
+        return true;    
+    }
+    
     /**
      * Tempo que o cidadão está em situação de rua
      * 
