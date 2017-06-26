@@ -11,7 +11,7 @@ import org.apache.thrift.TException;
 public class FichaAtendimentoDomiciliarChild implements IFichaAtendimentoDomiciliarChild{
     FichaAtendimentoDomiciliarChildThrift instancia = new FichaAtendimentoDomiciliarChildThrift();
     
-    protected FichaAtendimentoDomiciliarChild(FichaAtendimentoDomiciliarChildThrift fichaAtendimentoDomiciliarChildThrift){
+    public FichaAtendimentoDomiciliarChild(FichaAtendimentoDomiciliarChildThrift fichaAtendimentoDomiciliarChildThrift){
         this.instancia = fichaAtendimentoDomiciliarChildThrift;
     }
 
@@ -740,7 +740,8 @@ public class FichaAtendimentoDomiciliarChild implements IFichaAtendimentoDomicil
      * Retorna um instancia thrift do objeto.
      * @return FichaAtendimentoDomiciliarChildThrift
      */
-    protected FichaAtendimentoDomiciliarChildThrift getInstance(){
+    @Override
+    public FichaAtendimentoDomiciliarChildThrift getInstance(){
         return instancia;
     }
     
