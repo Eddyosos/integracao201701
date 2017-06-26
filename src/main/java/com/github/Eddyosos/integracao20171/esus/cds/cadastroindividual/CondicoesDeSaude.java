@@ -1,695 +1,637 @@
 package com.github.Eddyosos.integracao20171.esus.cds.cadastroindividual;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.CondicoesDeSaudeThrift;
+import com.github.Eddyosos.integracao20171.esus.cidadao.Sexo;
 import java.util.Iterator;
 import java.util.List;
-import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
 
 public class CondicoesDeSaude {
     
-    private CondicoesDeSaudeThrift condicoesDeSaudeThrift = new CondicoesDeSaudeThrift();
+    private CondicoesDeSaudeThrift instance;
+            
+    public CondicoesDeSaude(){
+        instance = new CondicoesDeSaudeThrift();
+    }
     
-    protected CondicoesDeSaude( CondicoesDeSaudeThrift condicoesDeSaudeTrift){
-        this.condicoesDeSaudeThrift = condicoesDeSaudeTrift;
+    public CondicoesDeSaude( CondicoesDeSaudeThrift condicoesDeSaudeTrift){
+        this.instance = condicoesDeSaudeTrift;
     }
 
-    public CondicoesDeSaude deepCopy() {
-        return new CondicoesDeSaude(condicoesDeSaudeThrift.deepCopy());
-    }
-
-    public void clear() {
-        condicoesDeSaudeThrift.clear();
-    }
-
+    /**
+     * Descrição da causa de internação do cidadão.
+     * @return 
+     */
     public String getDescricaoCausaInternacaoEm12Meses() {
-        return condicoesDeSaudeThrift.getDescricaoCausaInternacaoEm12Meses();
+        return instance.getDescricaoCausaInternacaoEm12Meses();
     }
 
+    /**
+     * Descrição da causa de internação do cidadão.
+     * @param descricaoCausaInternacaoEm12Meses 
+     */
     public void setDescricaoCausaInternacaoEm12Meses(String descricaoCausaInternacaoEm12Meses) {
-        condicoesDeSaudeThrift.setDescricaoCausaInternacaoEm12Meses(descricaoCausaInternacaoEm12Meses);
+        instance.setDescricaoCausaInternacaoEm12Meses(descricaoCausaInternacaoEm12Meses);
     }
 
-    public void unsetDescricaoCausaInternacaoEm12Meses() {
-        condicoesDeSaudeThrift.unsetDescricaoCausaInternacaoEm12Meses();
-    }
-
-    public boolean isSetDescricaoCausaInternacaoEm12Meses() {
-        return condicoesDeSaudeThrift.isSetDescricaoCausaInternacaoEm12Meses();
-    }
-
-    public void setDescricaoCausaInternacaoEm12MesesIsSet(boolean value) {
-        condicoesDeSaudeThrift.setDescricaoCausaInternacaoEm12MesesIsSet(value);
-    }
-
+    /**
+     * Condição de saúde informada pelo cidadão.
+     * @return 
+     */
     public String getDescricaoOutraCondicao1() {
-        return condicoesDeSaudeThrift.getDescricaoOutraCondicao1();
+        return instance.getDescricaoOutraCondicao1();
     }
 
+    /**
+     * Condição de saúde informada pelo cidadão.
+     * @param descricaoOutraCondicao1 
+     */
     public void setDescricaoOutraCondicao1(String descricaoOutraCondicao1) {
-        condicoesDeSaudeThrift.setDescricaoOutraCondicao1(descricaoOutraCondicao1);
+        instance.setDescricaoOutraCondicao1(descricaoOutraCondicao1);
     }
 
-    public void unsetDescricaoOutraCondicao1() {
-        condicoesDeSaudeThrift.unsetDescricaoOutraCondicao1();
-    }
-
-    public boolean isSetDescricaoOutraCondicao1() {
-        return condicoesDeSaudeThrift.isSetDescricaoOutraCondicao1();
-    }
-
-    public void setDescricaoOutraCondicao1IsSet(boolean value) {
-        condicoesDeSaudeThrift.setDescricaoOutraCondicao1IsSet(value);
-    }
-
+    /**
+     * Condição de saúde informada pelo cidadão.
+     * @return 
+     */
     public String getDescricaoOutraCondicao2() {
-        return condicoesDeSaudeThrift.getDescricaoOutraCondicao2();
+        return instance.getDescricaoOutraCondicao2();
     }
 
+    /**
+     * Condição de saúde informada pelo cidadão.
+     * @param descricaoOutraCondicao2 
+     */
     public void setDescricaoOutraCondicao2(String descricaoOutraCondicao2) {
-        condicoesDeSaudeThrift.setDescricaoOutraCondicao2(descricaoOutraCondicao2);
+        instance.setDescricaoOutraCondicao2(descricaoOutraCondicao2);
     }
 
-    public void unsetDescricaoOutraCondicao2() {
-        condicoesDeSaudeThrift.unsetDescricaoOutraCondicao2();
-    }
-
-    public boolean isSetDescricaoOutraCondicao2() {
-        return condicoesDeSaudeThrift.isSetDescricaoOutraCondicao2();
-    }
-
-    public void setDescricaoOutraCondicao2IsSet(boolean value) {
-        condicoesDeSaudeThrift.setDescricaoOutraCondicao2IsSet(value);
-    }
-
+    /**
+     * Condição de saúde informada pelo cidadão.
+     * @return 
+     */
     public String getDescricaoOutraCondicao3() {
-        return condicoesDeSaudeThrift.getDescricaoOutraCondicao3();
+        return instance.getDescricaoOutraCondicao3();
     }
 
+    /**
+     * Condição de saúde informada pelo cidadão.
+     * @param descricaoOutraCondicao3 
+     */
     public void setDescricaoOutraCondicao3(String descricaoOutraCondicao3) {
-        condicoesDeSaudeThrift.setDescricaoOutraCondicao3(descricaoOutraCondicao3);
+        instance.setDescricaoOutraCondicao3(descricaoOutraCondicao3);
     }
 
-    public void unsetDescricaoOutraCondicao3() {
-        condicoesDeSaudeThrift.unsetDescricaoOutraCondicao3();
-    }
-
-    public boolean isSetDescricaoOutraCondicao3() {
-        return condicoesDeSaudeThrift.isSetDescricaoOutraCondicao3();
-    }
-
-    public void setDescricaoOutraCondicao3IsSet(boolean value) {
-        condicoesDeSaudeThrift.setDescricaoOutraCondicao3IsSet(value);
-    }
-
+    /**
+     * Descrição das plantas medicinais utilizadas.
+     * @return 
+     */
     public String getDescricaoPlantasMedicinaisUsadas() {
-        return condicoesDeSaudeThrift.getDescricaoPlantasMedicinaisUsadas();
+        return instance.getDescricaoPlantasMedicinaisUsadas();
     }
 
+    /**
+     * Descrição das plantas medicinais utilizadas.
+     * @param descricaoPlantasMedicinaisUsadas 
+     */
     public void setDescricaoPlantasMedicinaisUsadas(String descricaoPlantasMedicinaisUsadas) {
-        condicoesDeSaudeThrift.setDescricaoPlantasMedicinaisUsadas(descricaoPlantasMedicinaisUsadas);
+        instance.setDescricaoPlantasMedicinaisUsadas(descricaoPlantasMedicinaisUsadas);
     }
 
-    public void unsetDescricaoPlantasMedicinaisUsadas() {
-        condicoesDeSaudeThrift.unsetDescricaoPlantasMedicinaisUsadas();
-    }
-
-    public boolean isSetDescricaoPlantasMedicinaisUsadas() {
-        return condicoesDeSaudeThrift.isSetDescricaoPlantasMedicinaisUsadas();
-    }
-
-    public void setDescricaoPlantasMedicinaisUsadasIsSet(boolean value) {
-        condicoesDeSaudeThrift.setDescricaoPlantasMedicinaisUsadasIsSet(value);
-    }
-
-    public int getDoencaCardiacaSize() {
-        return condicoesDeSaudeThrift.getDoencaCardiacaSize();
-    }
-
-    public Iterator<Long> getDoencaCardiacaIterator() {
-        return condicoesDeSaudeThrift.getDoencaCardiacaIterator();
-    }
-
-    public void addToDoencaCardiaca(long elem) {
-        condicoesDeSaudeThrift.addToDoencaCardiaca(elem);
-    }
-
+    /**
+     * Código das doenças cardíacas que o cidadão informou.
+     * @return 
+     */
     public List<Long> getDoencaCardiaca() {
-        return condicoesDeSaudeThrift.getDoencaCardiaca();
+        return instance.getDoencaCardiaca();
     }
 
+    /**
+     * Código das doenças cardíacas que o cidadão informou.
+     * @param doencaCardiaca 
+     */
     public void setDoencaCardiaca(List<Long> doencaCardiaca) {
-        condicoesDeSaudeThrift.setDoencaCardiaca(doencaCardiaca);
+        instance.setDoencaCardiaca(doencaCardiaca);
     }
 
-    public void unsetDoencaCardiaca() {
-        condicoesDeSaudeThrift.unsetDoencaCardiaca();
-    }
-
-    public boolean isSetDoencaCardiaca() {
-        return condicoesDeSaudeThrift.isSetDoencaCardiaca();
-    }
-
-    public void setDoencaCardiacaIsSet(boolean value) {
-        condicoesDeSaudeThrift.setDoencaCardiacaIsSet(value);
-    }
-
-    public int getDoencaRespiratoriaSize() {
-        return condicoesDeSaudeThrift.getDoencaRespiratoriaSize();
-    }
-
-    public Iterator<Long> getDoencaRespiratoriaIterator() {
-        return condicoesDeSaudeThrift.getDoencaRespiratoriaIterator();
-    }
-
-    public void addToDoencaRespiratoria(long elem) {
-        condicoesDeSaudeThrift.addToDoencaRespiratoria(elem);
-    }
-
+    /**
+     * Código d as doenças respiratórias que o cidadão informou.
+     * @return 
+     */
     public List<Long> getDoencaRespiratoria() {
-        return condicoesDeSaudeThrift.getDoencaRespiratoria();
+        return instance.getDoencaRespiratoria();
     }
 
+    /**
+     * Código d as doenças respiratórias que o cidadão informou.
+     * @param doencaRespiratoria 
+     */
     public void setDoencaRespiratoria(List<Long> doencaRespiratoria) {
-        condicoesDeSaudeThrift.setDoencaRespiratoria(doencaRespiratoria);
+        instance.setDoencaRespiratoria(doencaRespiratoria);
     }
 
-    public void unsetDoencaRespiratoria() {
-        condicoesDeSaudeThrift.unsetDoencaRespiratoria();
-    }
-
-    public boolean isSetDoencaRespiratoria() {
-        return condicoesDeSaudeThrift.isSetDoencaRespiratoria();
-    }
-
-    public void setDoencaRespiratoriaIsSet(boolean value) {
-        condicoesDeSaudeThrift.setDoencaRespiratoriaIsSet(value);
-    }
-
-    public int getDoencaRinsSize() {
-        return condicoesDeSaudeThrift.getDoencaRinsSize();
-    }
-
-    public Iterator<Long> getDoencaRinsIterator() {
-        return condicoesDeSaudeThrift.getDoencaRinsIterator();
-    }
-
-    public void addToDoencaRins(long elem) {
-        condicoesDeSaudeThrift.addToDoencaRins(elem);
-    }
-
+    /**
+     * Código das doenças renais que o cidadão informou.
+     * @return 
+     */
     public List<Long> getDoencaRins() {
-        return condicoesDeSaudeThrift.getDoencaRins();
+        return instance.getDoencaRins();
     }
 
     public void setDoencaRins(List<Long> doencaRins) {
-        condicoesDeSaudeThrift.setDoencaRins(doencaRins);
+        instance.setDoencaRins(doencaRins);
     }
 
-    public void unsetDoencaRins() {
-        condicoesDeSaudeThrift.unsetDoencaRins();
-    }
-
-    public boolean isSetDoencaRins() {
-        return condicoesDeSaudeThrift.isSetDoencaRins();
-    }
-
-    public void setDoencaRinsIsSet(boolean value) {
-        condicoesDeSaudeThrift.setDoencaRinsIsSet(value);
-    }
-
+    /**
+     * Nome da maternidade de referência.
+     * @return 
+     */
     public String getMaternidadeDeReferencia() {
-        return condicoesDeSaudeThrift.getMaternidadeDeReferencia();
+        return instance.getMaternidadeDeReferencia();
     }
 
+    /**
+     * Nome da maternidade de referência.
+     * @param maternidadeDeReferencia 
+     */
     public void setMaternidadeDeReferencia(String maternidadeDeReferencia) {
-        condicoesDeSaudeThrift.setMaternidadeDeReferencia(maternidadeDeReferencia);
+        instance.setMaternidadeDeReferencia(maternidadeDeReferencia);
     }
 
-    public void unsetMaternidadeDeReferencia() {
-        condicoesDeSaudeThrift.unsetMaternidadeDeReferencia();
-    }
-
-    public boolean isSetMaternidadeDeReferencia() {
-        return condicoesDeSaudeThrift.isSetMaternidadeDeReferencia();
-    }
-
-    public void setMaternidadeDeReferenciaIsSet(boolean value) {
-        condicoesDeSaudeThrift.setMaternidadeDeReferenciaIsSet(value);
-    }
-
+    /**
+     * Código da situação referente ao peso corporal.
+     * @return 
+     */
     public long getSituacaoPeso() {
-        return condicoesDeSaudeThrift.getSituacaoPeso();
+        return instance.getSituacaoPeso();
     }
 
+    /**
+     * Código da situação referente ao peso corporal.
+     * @param situacaoPeso 
+     */
     public void setSituacaoPeso(long situacaoPeso) {
-        condicoesDeSaudeThrift.setSituacaoPeso(situacaoPeso);
+        instance.setSituacaoPeso(situacaoPeso);
     }
 
-    public void unsetSituacaoPeso() {
-        condicoesDeSaudeThrift.unsetSituacaoPeso();
-    }
-
-    public boolean isSetSituacaoPeso() {
-        return condicoesDeSaudeThrift.isSetSituacaoPeso();
-    }
-
-    public void setSituacaoPesoIsSet(boolean value) {
-        condicoesDeSaudeThrift.setSituacaoPesoIsSet(value);
-    }
-
+    /**
+     * Marcador se o cidadão é dependente de álcool.
+     * @return 
+     */
     public boolean isStatusEhDependenteAlcool() {
-        return condicoesDeSaudeThrift.isStatusEhDependenteAlcool();
+        return instance.isStatusEhDependenteAlcool();
     }
 
+    /**
+     * Marcador se o cidadão é dependente de álcool.
+     * @param statusEhDependenteAlcool 
+     */
     public void setStatusEhDependenteAlcool(boolean statusEhDependenteAlcool) {
-        condicoesDeSaudeThrift.setStatusEhDependenteAlcool(statusEhDependenteAlcool);
+        instance.setStatusEhDependenteAlcool(statusEhDependenteAlcool);
     }
 
-    public void unsetStatusEhDependenteAlcool() {
-        condicoesDeSaudeThrift.unsetStatusEhDependenteAlcool();
-    }
-
-    public boolean isSetStatusEhDependenteAlcool() {
-        return condicoesDeSaudeThrift.isSetStatusEhDependenteAlcool();
-    }
-
-    public void setStatusEhDependenteAlcoolIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusEhDependenteAlcoolIsSet(value);
-    }
-
+    /**
+     * Marcador se o cidadão é dependente de outras drogas.
+     * @return 
+     */
     public boolean isStatusEhDependenteOutrasDrogas() {
-        return condicoesDeSaudeThrift.isStatusEhDependenteOutrasDrogas();
+        return instance.isStatusEhDependenteOutrasDrogas();
     }
 
+    /**
+     * Marcador se o cidadão é dependente de outras drogas.
+     * @param statusEhDependenteOutrasDrogas 
+     */
     public void setStatusEhDependenteOutrasDrogas(boolean statusEhDependenteOutrasDrogas) {
-        condicoesDeSaudeThrift.setStatusEhDependenteOutrasDrogas(statusEhDependenteOutrasDrogas);
+        instance.setStatusEhDependenteOutrasDrogas(statusEhDependenteOutrasDrogas);
     }
 
-    public void unsetStatusEhDependenteOutrasDrogas() {
-        condicoesDeSaudeThrift.unsetStatusEhDependenteOutrasDrogas();
-    }
-
-    public boolean isSetStatusEhDependenteOutrasDrogas() {
-        return condicoesDeSaudeThrift.isSetStatusEhDependenteOutrasDrogas();
-    }
-
-    public void setStatusEhDependenteOutrasDrogasIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusEhDependenteOutrasDrogasIsSet(value);
-    }
-
+    /**
+     * Marcador se o cidadão é fumante.
+     * @return 
+     */
     public boolean isStatusEhFumante() {
-        return condicoesDeSaudeThrift.isStatusEhFumante();
+        return instance.isStatusEhFumante();
     }
 
+    /**
+     * Marcador se o cidadão é fumante.
+     * @param statusEhFumante 
+     */
     public void setStatusEhFumante(boolean statusEhFumante) {
-        condicoesDeSaudeThrift.setStatusEhFumante(statusEhFumante);
+        instance.setStatusEhFumante(statusEhFumante);
     }
 
-    public void unsetStatusEhFumante() {
-        condicoesDeSaudeThrift.unsetStatusEhFumante();
-    }
-
-    public boolean isSetStatusEhFumante() {
-        return condicoesDeSaudeThrift.isSetStatusEhFumante();
-    }
-
-    public void setStatusEhFumanteIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusEhFumanteIsSet(value);
-    }
-
+    /**
+     * Marcador se o cidadão está gestante.
+     * @return 
+     */
     public boolean isStatusEhGestante() {
-        return condicoesDeSaudeThrift.isStatusEhGestante();
+        return instance.isStatusEhGestante();
     }
 
+    /**
+     * Marcador se o cidadão está gestante.
+     * @param statusEhGestante 
+     */
     public void setStatusEhGestante(boolean statusEhGestante) {
-        condicoesDeSaudeThrift.setStatusEhGestante(statusEhGestante);
+        instance.setStatusEhGestante(statusEhGestante);
     }
 
-    public void unsetStatusEhGestante() {
-        condicoesDeSaudeThrift.unsetStatusEhGestante();
-    }
-
-    public boolean isSetStatusEhGestante() {
-        return condicoesDeSaudeThrift.isSetStatusEhGestante();
-    }
-
-    public void setStatusEhGestanteIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusEhGestanteIsSet(value);
-    }
-
+    /**
+     * Marcador se o cidadão está acamado.
+     * @return 
+     */
     public boolean isStatusEstaAcamado() {
-        return condicoesDeSaudeThrift.isStatusEstaAcamado();
+        return instance.isStatusEstaAcamado();
     }
 
+    /**
+     * Marcador se o cidadão está acamado.
+     * @param statusEstaAcamado 
+     */
     public void setStatusEstaAcamado(boolean statusEstaAcamado) {
-        condicoesDeSaudeThrift.setStatusEstaAcamado(statusEstaAcamado);
+        instance.setStatusEstaAcamado(statusEstaAcamado);
     }
 
-    public void unsetStatusEstaAcamado() {
-        condicoesDeSaudeThrift.unsetStatusEstaAcamado();
-    }
-
-    public boolean isSetStatusEstaAcamado() {
-        return condicoesDeSaudeThrift.isSetStatusEstaAcamado();
-    }
-
-    public void setStatusEstaAcamadoIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusEstaAcamadoIsSet(value);
-    }
-
+    /**
+     * Marcador se o cidadão está domiciliado.
+     * @return 
+     */
     public boolean isStatusEstaDomiciliado() {
-        return condicoesDeSaudeThrift.isStatusEstaDomiciliado();
+        return instance.isStatusEstaDomiciliado();
     }
 
+    /**
+     * Marcador se o cidadão está domiciliado.
+     * @param statusEstaDomiciliado 
+     */
     public void setStatusEstaDomiciliado(boolean statusEstaDomiciliado) {
-        condicoesDeSaudeThrift.setStatusEstaDomiciliado(statusEstaDomiciliado);
+        instance.setStatusEstaDomiciliado(statusEstaDomiciliado);
     }
 
-    public void unsetStatusEstaDomiciliado() {
-        condicoesDeSaudeThrift.unsetStatusEstaDomiciliado();
-    }
-
-    public boolean isSetStatusEstaDomiciliado() {
-        return condicoesDeSaudeThrift.isSetStatusEstaDomiciliado();
-    }
-
-    public void setStatusEstaDomiciliadoIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusEstaDomiciliadoIsSet(value);
-    }
-
+    /**
+     * Marcador se o cidadão tem diabetes.
+     * @return 
+     */
     public boolean isStatusTemDiabetes() {
-        return condicoesDeSaudeThrift.isStatusTemDiabetes();
+        return instance.isStatusTemDiabetes();
     }
 
+    /**
+     * Marcador se o cidadão tem diabetes.
+     * @param statusTemDiabetes 
+     */
     public void setStatusTemDiabetes(boolean statusTemDiabetes) {
-        condicoesDeSaudeThrift.setStatusTemDiabetes(statusTemDiabetes);
+        instance.setStatusTemDiabetes(statusTemDiabetes);
     }
 
-    public void unsetStatusTemDiabetes() {
-        condicoesDeSaudeThrift.unsetStatusTemDiabetes();
-    }
-
-    public boolean isSetStatusTemDiabetes() {
-        return condicoesDeSaudeThrift.isSetStatusTemDiabetes();
-    }
-
-    public void setStatusTemDiabetesIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusTemDiabetesIsSet(value);
-    }
-
+    /**
+     * Marcador se o cidadão tem doença respiratória.
+     * @return 
+     */
     public boolean isStatusTemDoencaRespiratoria() {
-        return condicoesDeSaudeThrift.isStatusTemDoencaRespiratoria();
+        return instance.isStatusTemDoencaRespiratoria();
     }
 
+    /**
+     * Marcador se o cidadão tem doença respiratória.
+     * @param statusTemDoencaRespiratoria 
+     */
     public void setStatusTemDoencaRespiratoria(boolean statusTemDoencaRespiratoria) {
-        condicoesDeSaudeThrift.setStatusTemDoencaRespiratoria(statusTemDoencaRespiratoria);
+        instance.setStatusTemDoencaRespiratoria(statusTemDoencaRespiratoria);
     }
 
-    public void unsetStatusTemDoencaRespiratoria() {
-        condicoesDeSaudeThrift.unsetStatusTemDoencaRespiratoria();
-    }
-
-    public boolean isSetStatusTemDoencaRespiratoria() {
-        return condicoesDeSaudeThrift.isSetStatusTemDoencaRespiratoria();
-    }
-
-    public void setStatusTemDoencaRespiratoriaIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusTemDoencaRespiratoriaIsSet(value);
-    }
-
+    /**
+     * Marcador se o cidadão tem hanseníase.
+     * @return 
+     */
     public boolean isStatusTemHanseniase() {
-        return condicoesDeSaudeThrift.isStatusTemHanseniase();
+        return instance.isStatusTemHanseniase();
     }
 
+    /**
+     * Marcador se o cidadão tem hanseníase.
+     * @param statusTemHanseniase 
+     */
     public void setStatusTemHanseniase(boolean statusTemHanseniase) {
-        condicoesDeSaudeThrift.setStatusTemHanseniase(statusTemHanseniase);
+        instance.setStatusTemHanseniase(statusTemHanseniase);
     }
 
-    public void unsetStatusTemHanseniase() {
-        condicoesDeSaudeThrift.unsetStatusTemHanseniase();
-    }
-
-    public boolean isSetStatusTemHanseniase() {
-        return condicoesDeSaudeThrift.isSetStatusTemHanseniase();
-    }
-
-    public void setStatusTemHanseniaseIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusTemHanseniaseIsSet(value);
-    }
-
+    /**
+     * Marcador se o cidadão tem hipertensão arterial.
+     * @return 
+     */
     public boolean isStatusTemHipertensaoArterial() {
-        return condicoesDeSaudeThrift.isStatusTemHipertensaoArterial();
+        return instance.isStatusTemHipertensaoArterial();
     }
 
+    /**
+     * Marcador se o cidadão tem hipertensão arterial.
+     * @param statusTemHipertensaoArterial 
+     */
     public void setStatusTemHipertensaoArterial(boolean statusTemHipertensaoArterial) {
-        condicoesDeSaudeThrift.setStatusTemHipertensaoArterial(statusTemHipertensaoArterial);
+        instance.setStatusTemHipertensaoArterial(statusTemHipertensaoArterial);
     }
 
-    public void unsetStatusTemHipertensaoArterial() {
-        condicoesDeSaudeThrift.unsetStatusTemHipertensaoArterial();
-    }
-
-    public boolean isSetStatusTemHipertensaoArterial() {
-        return condicoesDeSaudeThrift.isSetStatusTemHipertensaoArterial();
-    }
-
+    /**
+     * Marcador se o cidadão tem hipertensão arterial.
+     * @param value 
+     */
     public void setStatusTemHipertensaoArterialIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusTemHipertensaoArterialIsSet(value);
+        instance.setStatusTemHipertensaoArterialIsSet(value);
     }
 
+    /**
+     * Marcador se o cidadão tem ou teve câncer.
+     * @return 
+     */
     public boolean isStatusTemTeveCancer() {
-        return condicoesDeSaudeThrift.isStatusTemTeveCancer();
+        return instance.isStatusTemTeveCancer();
     }
 
+    /**
+     * Marcador se o cidadão tem ou teve câncer.
+     * @param statusTemTeveCancer 
+     */
     public void setStatusTemTeveCancer(boolean statusTemTeveCancer) {
-        condicoesDeSaudeThrift.setStatusTemTeveCancer(statusTemTeveCancer);
+        instance.setStatusTemTeveCancer(statusTemTeveCancer);
     }
 
-    public void unsetStatusTemTeveCancer() {
-        condicoesDeSaudeThrift.unsetStatusTemTeveCancer();
-    }
-
-    public boolean isSetStatusTemTeveCancer() {
-        return condicoesDeSaudeThrift.isSetStatusTemTeveCancer();
-    }
-
-    public void setStatusTemTeveCancerIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusTemTeveCancerIsSet(value);
-    }
-
+    /**
+     * Marcador se o cidadão tem ou teve doenças nos rins.
+     * @return 
+     */
     public boolean isStatusTemTeveDoencasRins() {
-        return condicoesDeSaudeThrift.isStatusTemTeveDoencasRins();
+        return instance.isStatusTemTeveDoencasRins();
     }
 
+    /**
+     * Marcador se o cidadão tem ou teve doenças nos rins.
+     * @param statusTemTeveDoencasRins 
+     */
     public void setStatusTemTeveDoencasRins(boolean statusTemTeveDoencasRins) {
-        condicoesDeSaudeThrift.setStatusTemTeveDoencasRins(statusTemTeveDoencasRins);
+        instance.setStatusTemTeveDoencasRins(statusTemTeveDoencasRins);
     }
 
-    public void unsetStatusTemTeveDoencasRins() {
-        condicoesDeSaudeThrift.unsetStatusTemTeveDoencasRins();
-    }
-
-    public boolean isSetStatusTemTeveDoencasRins() {
-        return condicoesDeSaudeThrift.isSetStatusTemTeveDoencasRins();
-    }
-
-    public void setStatusTemTeveDoencasRinsIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusTemTeveDoencasRinsIsSet(value);
-    }
-
+    /**
+     * Marcador se o cidadão tem tuberculose.
+     * @return 
+     */
     public boolean isStatusTemTuberculose() {
-        return condicoesDeSaudeThrift.isStatusTemTuberculose();
+        return instance.isStatusTemTuberculose();
     }
 
+    /**
+     * Marcador se o cidadão tem tuberculose.
+     * @param statusTemTuberculose 
+     */
     public void setStatusTemTuberculose(boolean statusTemTuberculose) {
-        condicoesDeSaudeThrift.setStatusTemTuberculose(statusTemTuberculose);
+        instance.setStatusTemTuberculose(statusTemTuberculose);
     }
 
-    public void unsetStatusTemTuberculose() {
-        condicoesDeSaudeThrift.unsetStatusTemTuberculose();
-    }
-
-    public boolean isSetStatusTemTuberculose() {
-        return condicoesDeSaudeThrift.isSetStatusTemTuberculose();
-    }
-
-    public void setStatusTemTuberculoseIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusTemTuberculoseIsSet(value);
-    }
-
+    /**
+     * Marcador se o cidadão teve AVC.
+     * @return 
+     */
     public boolean isStatusTeveAvcDerrame() {
-        return condicoesDeSaudeThrift.isStatusTeveAvcDerrame();
+        return instance.isStatusTeveAvcDerrame();
     }
 
+    /**
+     * Marcador se o cidadão teve AVC.
+     * @param statusTeveAvcDerrame 
+     */
     public void setStatusTeveAvcDerrame(boolean statusTeveAvcDerrame) {
-        condicoesDeSaudeThrift.setStatusTeveAvcDerrame(statusTeveAvcDerrame);
+        instance.setStatusTeveAvcDerrame(statusTeveAvcDerrame);
     }
 
-    public void unsetStatusTeveAvcDerrame() {
-        condicoesDeSaudeThrift.unsetStatusTeveAvcDerrame();
-    }
-
-    public boolean isSetStatusTeveAvcDerrame() {
-        return condicoesDeSaudeThrift.isSetStatusTeveAvcDerrame();
-    }
-
-    public void setStatusTeveAvcDerrameIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusTeveAvcDerrameIsSet(value);
-    }
-
+    /**
+     * Marcador se o cidadão teve doença cardíaca.
+     * @return 
+     */
     public boolean isStatusTeveDoencaCardiaca() {
-        return condicoesDeSaudeThrift.isStatusTeveDoencaCardiaca();
+        return instance.isStatusTeveDoencaCardiaca();
     }
 
+    /**
+     * Marcador se o cidadão teve doença cardíaca.
+     * @param statusTeveDoencaCardiaca 
+     */
     public void setStatusTeveDoencaCardiaca(boolean statusTeveDoencaCardiaca) {
-        condicoesDeSaudeThrift.setStatusTeveDoencaCardiaca(statusTeveDoencaCardiaca);
+        instance.setStatusTeveDoencaCardiaca(statusTeveDoencaCardiaca);
     }
 
-    public void unsetStatusTeveDoencaCardiaca() {
-        condicoesDeSaudeThrift.unsetStatusTeveDoencaCardiaca();
-    }
-
-    public boolean isSetStatusTeveDoencaCardiaca() {
-        return condicoesDeSaudeThrift.isSetStatusTeveDoencaCardiaca();
-    }
-
-    public void setStatusTeveDoencaCardiacaIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusTeveDoencaCardiacaIsSet(value);
-    }
-
+    /**
+     * Marcador se o cidadão teve infarto.
+     * @return 
+     */
     public boolean isStatusTeveInfarto() {
-        return condicoesDeSaudeThrift.isStatusTeveInfarto();
+        return instance.isStatusTeveInfarto();
     }
 
+    /**
+     * Marcador se o cidadão teve infarto.
+     * @param statusTeveInfarto 
+     */
     public void setStatusTeveInfarto(boolean statusTeveInfarto) {
-        condicoesDeSaudeThrift.setStatusTeveInfarto(statusTeveInfarto);
+        instance.setStatusTeveInfarto(statusTeveInfarto);
     }
 
-    public void unsetStatusTeveInfarto() {
-        condicoesDeSaudeThrift.unsetStatusTeveInfarto();
-    }
-
-    public boolean isSetStatusTeveInfarto() {
-        return condicoesDeSaudeThrift.isSetStatusTeveInfarto();
-    }
-
-    public void setStatusTeveInfartoIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusTeveInfartoIsSet(value);
-    }
-
+    /**
+     * Marcador se o cidadão esteve internado nos últimos 12 meses.
+     * @return 
+     */
     public boolean isStatusTeveInternadoEm12Meses() {
-        return condicoesDeSaudeThrift.isStatusTeveInternadoEm12Meses();
+        return instance.isStatusTeveInternadoEm12Meses();
     }
 
+    /**
+     * Marcador se o cidadão esteve internado nos últimos 12 meses.
+     * @param statusTeveInternadoEm12Meses 
+     */
     public void setStatusTeveInternadoEm12Meses(boolean statusTeveInternadoEm12Meses) {
-        condicoesDeSaudeThrift.setStatusTeveInternadoEm12Meses(statusTeveInternadoEm12Meses);
+        instance.setStatusTeveInternadoEm12Meses(statusTeveInternadoEm12Meses);
     }
 
-    public void unsetStatusTeveInternadoEm12Meses() {
-        condicoesDeSaudeThrift.unsetStatusTeveInternadoEm12Meses();
-    }
-
-    public boolean isSetStatusTeveInternadoEm12Meses() {
-        return condicoesDeSaudeThrift.isSetStatusTeveInternadoEm12Meses();
-    }
-
-    public void setStatusTeveInternadoEm12MesesIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusTeveInternadoEm12MesesIsSet(value);
-    }
-
+    /**
+     * Marcador se o cidadão está em tratamento psiquico ou tem problema mental.
+     * @return 
+     */
     public boolean isStatusTratamentoPsiquicoOuProblemaMental() {
-        return condicoesDeSaudeThrift.isStatusTratamentoPsiquicoOuProblemaMental();
+        return instance.isStatusTratamentoPsiquicoOuProblemaMental();
     }
 
+    /**
+     * Marcador se o cidadão está em tratamento psiquico ou tem problema mental.
+     * @param statusTratamentoPsiquicoOuProblemaMental 
+     */
     public void setStatusTratamentoPsiquicoOuProblemaMental(boolean statusTratamentoPsiquicoOuProblemaMental) {
-        condicoesDeSaudeThrift.setStatusTratamentoPsiquicoOuProblemaMental(statusTratamentoPsiquicoOuProblemaMental);
+        instance.setStatusTratamentoPsiquicoOuProblemaMental(statusTratamentoPsiquicoOuProblemaMental);
     }
 
-    public void unsetStatusTratamentoPsiquicoOuProblemaMental() {
-        condicoesDeSaudeThrift.unsetStatusTratamentoPsiquicoOuProblemaMental();
-    }
-
-    public boolean isSetStatusTratamentoPsiquicoOuProblemaMental() {
-        return condicoesDeSaudeThrift.isSetStatusTratamentoPsiquicoOuProblemaMental();
-    }
-
-    public void setStatusTratamentoPsiquicoOuProblemaMentalIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusTratamentoPsiquicoOuProblemaMentalIsSet(value);
-    }
-
+    /**
+     * Marcador se o cidadão utiliza outras práticas integrativas complementares.
+     * @return 
+     */
     public boolean isStatusUsaOutrasPraticasIntegrativasOuComplementares() {
-        return condicoesDeSaudeThrift.isStatusUsaOutrasPraticasIntegrativasOuComplementares();
+        return instance.isStatusUsaOutrasPraticasIntegrativasOuComplementares();
     }
 
+    /**
+     * Marcador se o cidadão utiliza outras práticas integrativas complementares.
+     * @param statusUsaOutrasPraticasIntegrativasOuComplementares 
+     */
     public void setStatusUsaOutrasPraticasIntegrativasOuComplementares(boolean statusUsaOutrasPraticasIntegrativasOuComplementares) {
-        condicoesDeSaudeThrift.setStatusUsaOutrasPraticasIntegrativasOuComplementares(statusUsaOutrasPraticasIntegrativasOuComplementares);
+        instance.setStatusUsaOutrasPraticasIntegrativasOuComplementares(statusUsaOutrasPraticasIntegrativasOuComplementares);
     }
 
-    public void unsetStatusUsaOutrasPraticasIntegrativasOuComplementares() {
-        condicoesDeSaudeThrift.unsetStatusUsaOutrasPraticasIntegrativasOuComplementares();
-    }
-
-    public boolean isSetStatusUsaOutrasPraticasIntegrativasOuComplementares() {
-        return condicoesDeSaudeThrift.isSetStatusUsaOutrasPraticasIntegrativasOuComplementares();
-    }
-
-    public void setStatusUsaOutrasPraticasIntegrativasOuComplementaresIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusUsaOutrasPraticasIntegrativasOuComplementaresIsSet(value);
-    }
-
+    /**
+     * Marcador se o cidadão utiliza plantas medicinais.
+     * @return 
+     */
     public boolean isStatusUsaPlantaMedicinais() {
-        return condicoesDeSaudeThrift.isStatusUsaPlantaMedicinais();
+        return instance.isStatusUsaPlantaMedicinais();
     }
 
+    /**
+     * Marcador se o cidadão utiliza plantas medicinais.
+     * @param statusUsaPlantaMedicinais 
+     */
     public void setStatusUsaPlantaMedicinais(boolean statusUsaPlantaMedicinais) {
-        condicoesDeSaudeThrift.setStatusUsaPlantaMedicinais(statusUsaPlantaMedicinais);
+        instance.setStatusUsaPlantaMedicinais(statusUsaPlantaMedicinais);
     }
 
-    public void unsetStatusUsaPlantaMedicinais() {
-        condicoesDeSaudeThrift.unsetStatusUsaPlantaMedicinais();
-    }
-
-    public boolean isSetStatusUsaPlantaMedicinais() {
-        return condicoesDeSaudeThrift.isSetStatusUsaPlantaMedicinais();
-    }
-
-    public void setStatusUsaPlantaMedicinaisIsSet(boolean value) {
-        condicoesDeSaudeThrift.setStatusUsaPlantaMedicinaisIsSet(value);
-    }
-
-
-    @Override
-    public boolean equals(Object that) {
-        return condicoesDeSaudeThrift.equals(that);
-    }
-
-    public boolean equals(CondicoesDeSaude that) {
-        return condicoesDeSaudeThrift.equals(that.getInstance());
-    }
-
-    @Override
-    public int hashCode() {
-        return condicoesDeSaudeThrift.hashCode();
-    }
-
-    public int compareTo(CondicoesDeSaude other) {
-        return condicoesDeSaudeThrift.compareTo(other.getInstance());
-    }
-
-    @Override
-    public String toString() {
-        return condicoesDeSaudeThrift.toString();
-    }
-
-    public void validate() throws TException {
-        condicoesDeSaudeThrift.validate();
-    }
     
     protected CondicoesDeSaudeThrift getInstance(){
-        return condicoesDeSaudeThrift;
+        return instance;
+    }
+
+
+    public boolean validate() {
+        return validateDescricaoCausaInternacaoEm12Meses() &&
+                validateDescricaoOutraCondicao1() &&
+                validateDescricaoOutraCondicao2() &&
+                validateDescricaoOutraCondicao3() &&
+                validateDescricaoPlantasMedicinaisUsadas() &&
+                validateDoencaCardiaca() &&
+                validateDoencaRespiratoria() &&
+                validateDoencaRins() &&
+                ValidaMaternidadeDeReferencia();
     }
     
+    /**
+     * Valida a descrição da causaInternacao
+     * @return true se for válido
+     * @return false se for inválido
+     */
+    public boolean validateDescricaoCausaInternacaoEm12Meses() {
+        return !instance.isSetDescricaoCausaInternacaoEm12Meses() ||
+               !instance.isStatusTeveInternadoEm12Meses() ||
+               !(instance.getDescricaoCausaInternacaoEm12Meses().length() > 100); 
+        
+    }
     
+    /**
+     * Valida descricaoOutraCondicao1
+     * @return true se for válido
+     * @return false se for inválido
+     */
+    public boolean validateDescricaoOutraCondicao1() {
+    	return !instance.isSetDescricaoOutraCondicao1() ||
+                !(instance.getDescricaoOutraCondicao1().length() > 100);
+    }
+    
+    /**
+     * Valida descricaoOutraCondicao2
+     * @return true se for válido
+     * @return false se for inválido
+     */
+    public boolean validateDescricaoOutraCondicao2() {
+    	return !instance.isSetDescricaoOutraCondicao2() ||
+                !(instance.getDescricaoOutraCondicao2().length() > 100);
+    }
+    
+    /**
+     * Valida descricaoOutraCondicao3
+     * @return true se for válido
+     * @return false se for inválido
+     */
+    public boolean validateDescricaoOutraCondicao3() {
+    	return !instance.isSetDescricaoOutraCondicao3() ||
+                !(instance.getDescricaoOutraCondicao3().length() > 100);
+    }
+    
+    /**
+     * Valida a descrição das plantas medicinais usadas
+     * @return true se for válido
+     * @return false se for inválido
+     */
+    public boolean validateDescricaoPlantasMedicinaisUsadas() {
+    	return !instance.isSetDescricaoPlantasMedicinaisUsadas() ||
+                !instance.isSetStatusUsaPlantaMedicinais() ||
+                instance.isStatusUsaPlantaMedicinais();
+    }
+    
+    /**
+     * Valida doencaCardiaca
+     * @return true se for válido
+     * @return false se for inválido
+     */
+    public boolean validateDoencaCardiaca() {
+    	return  !instance.isSetStatusTeveDoencaCardiaca() || (
+                !instance.isStatusTeveDoencaCardiaca() &&
+                !instance.isSetDoencaCardiaca() ) || (
+                instance.isStatusTeveDoencaCardiaca() &&
+                instance.isSetDoencaCardiaca() &&
+                instance.getDoencaCardiacaSize() > 0 && 
+                instance.getDoencaCardiacaSize() <= 3);
+    }
+    
+    /**
+     * Valida doencaRespiratoria
+     * @return true se for válido
+     * @return false se for inválido
+     */
+    public boolean validateDoencaRespiratoria() {
+    	return  !instance.isSetStatusTemDoencaRespiratoria()|| (
+                !instance.isStatusTemDoencaRespiratoria()&&
+                !instance.isSetDoencaRespiratoria()) || (
+                instance.isStatusTemDoencaRespiratoria()&&
+                instance.isSetDoencaRespiratoria() &&
+                instance.getDoencaRespiratoriaSize() > 0 && 
+                instance.getDoencaRespiratoriaSize() <= 4);
+    }
+    
+    /**
+     * Valida doencaRins
+     * @return true se for válido
+     * @return false se for inválido
+     */
+    public boolean validateDoencaRins() {
+    	return  !instance.isSetStatusTemTeveDoencasRins() || (
+                !instance.isStatusTemTeveDoencasRins() &&
+                !instance.isSetDoencaRins() ) || (
+                instance.isStatusTemTeveDoencasRins() &&
+                instance.isSetDoencaRins() &&
+                instance.getDoencaRinsSize() > 0 && 
+                instance.getDoencaRinsSize() <= 3);
+    }
+    
+    /**
+     * Valida MaternidadeDeReferencia.
+     * Para ser válido, caso inserido deve:
+     * 1- Ter tamanho entre 0 e 100
+     * 2- StatusEhGestante != false
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean ValidaMaternidadeDeReferencia(){
+        return !instance.isSetMaternidadeDeReferencia() || (
+                instance.getMaternidadeDeReferencia().length() <= 100 &&
+                (!instance.isSetStatusEhGestante() ||
+                instance.isStatusEhGestante()));
+    }
+    
+    //Não á validações possiveis para statusEhGestante
 }
 

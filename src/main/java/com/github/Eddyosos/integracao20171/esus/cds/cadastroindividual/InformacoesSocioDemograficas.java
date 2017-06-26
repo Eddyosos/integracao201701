@@ -1,386 +1,349 @@
 package com.github.Eddyosos.integracao20171.esus.cds.cadastroindividual;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.InformacoesSocioDemograficasThrift;
-import java.util.Iterator;
 import java.util.List;
-import org.apache.thrift.TException;
 
 public class InformacoesSocioDemograficas {
-    private InformacoesSocioDemograficasThrift informacoesSocioDemograficasThrift = new InformacoesSocioDemograficasThrift();
+
+    private InformacoesSocioDemograficasThrift instance;
+    
+    public InformacoesSocioDemograficas() {
+        instance = new InformacoesSocioDemograficasThrift();
+    }
     
     protected InformacoesSocioDemograficas(InformacoesSocioDemograficasThrift informacoesSocioDemograficasThrift){
-        this.informacoesSocioDemograficasThrift = informacoesSocioDemograficasThrift;
+        this.instance = informacoesSocioDemograficasThrift;
     }
 
-    public InformacoesSocioDemograficas deepCopy() {
-        return new InformacoesSocioDemograficas(informacoesSocioDemograficasThrift.deepCopy());
+    /**
+     * Valida a instancia da classe
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validates(){
+        return validateDeficienciasCidadao() &&
+                validateOcupacaoCodigoCbo2002() &&
+                validaOrientacaoSexualCidadao() &&
+                validaPovoComunidadeTradicional();
     }
-
-    public void clear() {
-        informacoesSocioDemograficasThrift.clear();
+    
+    /**
+     * Valida DeficienciasCidadao.
+     * Para ser válido deve:
+     * 1- Requerido preenchimento de pelo menos um item se o campo statusTemAlgumaDeficiencia = true.
+     * 2- Não deve ser preenchido se o campo statusTemAlgumaDeficiencia = false.
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateDeficienciasCidadao(){
+        if(!instance.isSetStatusTemAlgumaDeficiencia()) return true;
+        if(instance.isStatusTemAlgumaDeficiencia())
+            return instance.isSetDeficienciasCidadao() &&
+                instance.getDeficienciasCidadaoSize() > 0 &&
+                instance.getDeficienciasCidadaoSize() <= 5;
+        else return !instance.isSetDeficienciasCidadao();
     }
-
-    public int getDeficienciasCidadaoSize() {
-        return informacoesSocioDemograficasThrift.getDeficienciasCidadaoSize();
-    }
-
-    public Iterator<Long> getDeficienciasCidadaoIterator() {
-        return informacoesSocioDemograficasThrift.getDeficienciasCidadaoIterator();
-    }
-
-    public void addToDeficienciasCidadao(long elem) {
-        informacoesSocioDemograficasThrift.addToDeficienciasCidadao(elem);
-    }
-
+    
+    /**
+     * Código das deficiências que o cidadão possui.
+     * @return 
+     */
     public List<Long> getDeficienciasCidadao() {
-        return informacoesSocioDemograficasThrift.getDeficienciasCidadao();
+        return instance.getDeficienciasCidadao();
     }
 
+    /**
+     * Código das deficiências que o cidadão possui.
+     * @param deficienciasCidadao 
+     */
     public void setDeficienciasCidadao(List<Long> deficienciasCidadao) {
-        informacoesSocioDemograficasThrift.setDeficienciasCidadao(deficienciasCidadao);
+        instance.setDeficienciasCidadao(deficienciasCidadao);
     }
 
-    public void unsetDeficienciasCidadao() {
-        informacoesSocioDemograficasThrift.unsetDeficienciasCidadao();
-    }
-
-    public boolean isSetDeficienciasCidadao() {
-        return informacoesSocioDemograficasThrift.isSetDeficienciasCidadao();
-    }
-
-    public void setDeficienciasCidadaoIsSet(boolean value) {
-        informacoesSocioDemograficasThrift.setDeficienciasCidadaoIsSet(value);
-    }
-
+    //Não á validações para grau
+    
+    /**
+     * Código do curso mais elevado que o cidadão frequenta ou frequentou.
+     * @return 
+     */
     public long getGrauInstrucaoCidadao() {
-        return informacoesSocioDemograficasThrift.getGrauInstrucaoCidadao();
+        return instance.getGrauInstrucaoCidadao();
     }
 
+    /**
+     * Código do curso mais elevado que o cidadão frequenta ou frequentou.
+     * @param grauInstrucaoCidadao 
+     */
     public void setGrauInstrucaoCidadao(long grauInstrucaoCidadao) {
-        informacoesSocioDemograficasThrift.setGrauInstrucaoCidadao(grauInstrucaoCidadao);
+        instance.setGrauInstrucaoCidadao(grauInstrucaoCidadao);
     }
 
-    public void unsetGrauInstrucaoCidadao() {
-        informacoesSocioDemograficasThrift.unsetGrauInstrucaoCidadao();
-    }
-
-    public boolean isSetGrauInstrucaoCidadao() {
-        return informacoesSocioDemograficasThrift.isSetGrauInstrucaoCidadao();
-    }
-
-    public void setGrauInstrucaoCidadaoIsSet(boolean value) {
-        informacoesSocioDemograficasThrift.setGrauInstrucaoCidadaoIsSet(value);
-    }
-
+    //Não á validações para MotivoSaidaCidadao
+    
+    /**
+     * Código do motivo da saída do cidadão do cadastro.
+     * @return 
+     */
     public long getMotivoSaidaCidadao() {
-        return informacoesSocioDemograficasThrift.getMotivoSaidaCidadao();
+        return instance.getMotivoSaidaCidadao();
     }
 
+    /**
+     * Código do motivo da saída do cidadão do cadastro.
+     * @param motivoSaidaCidadao 
+     */
     public void setMotivoSaidaCidadao(long motivoSaidaCidadao) {
-        informacoesSocioDemograficasThrift.setMotivoSaidaCidadao(motivoSaidaCidadao);
+        instance.setMotivoSaidaCidadao(motivoSaidaCidadao);
     }
 
-    public void unsetMotivoSaidaCidadao() {
-        informacoesSocioDemograficasThrift.unsetMotivoSaidaCidadao();
+    /**
+     * Valida OcupacaoCodigoCbo2002.
+     * Para ser válido, caso inserido, deve atender ao regex: \A\d{6}\z
+     * @return True se válido
+     *          False se inválido
+     */
+    public boolean validateOcupacaoCodigoCbo2002(){
+        return !instance.isSetOcupacaoCodigoCbo2002() || 
+                instance.getOcupacaoCodigoCbo2002().matches("\\A\\d{6}\\z");
     }
-
-    public boolean isSetMotivoSaidaCidadao() {
-        return informacoesSocioDemograficasThrift.isSetMotivoSaidaCidadao();
-    }
-
-    public void setMotivoSaidaCidadaoIsSet(boolean value) {
-        informacoesSocioDemograficasThrift.setMotivoSaidaCidadaoIsSet(value);
-    }
-
+    
+    /**
+     * Código do CBO que representa a ocupaçao do cidadão.
+     * @return 
+     */
     public String getOcupacaoCodigoCbo2002() {
-        return informacoesSocioDemograficasThrift.getOcupacaoCodigoCbo2002();
+        return instance.getOcupacaoCodigoCbo2002();
     }
 
+    /**
+     * Código do CBO que representa a ocupaçao do cidadão.
+     * @param ocupacaoCodigoCbo2002 
+     */
     public void setOcupacaoCodigoCbo2002(String ocupacaoCodigoCbo2002) {
-        informacoesSocioDemograficasThrift.setOcupacaoCodigoCbo2002(ocupacaoCodigoCbo2002);
+        instance.setOcupacaoCodigoCbo2002(ocupacaoCodigoCbo2002);
     }
 
-    public void unsetOcupacaoCodigoCbo2002() {
-        informacoesSocioDemograficasThrift.unsetOcupacaoCodigoCbo2002();
+    /**
+     * Valida OrientacaoSexualCidadao.
+     * Para ser válido, não pode ser preenchido se o campo 
+     * statusDesejaInformarOrientacaoSexual = false.
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validaOrientacaoSexualCidadao(){
+        return !instance.isSetOrientacaoSexualCidadao() ||
+                !instance.isSetStatusDesejaInformarOrientacaoSexual() ||
+                instance.isStatusDesejaInformarOrientacaoSexual();
     }
-
-    public boolean isSetOcupacaoCodigoCbo2002() {
-        return informacoesSocioDemograficasThrift.isSetOcupacaoCodigoCbo2002();
-    }
-
-    public void setOcupacaoCodigoCbo2002IsSet(boolean value) {
-        informacoesSocioDemograficasThrift.setOcupacaoCodigoCbo2002IsSet(value);
-    }
-
+    
+    /**
+     * Código da orientação sexual informada pelo cidadão.
+     * @return 
+     */
     public long getOrientacaoSexualCidadao() {
-        return informacoesSocioDemograficasThrift.getOrientacaoSexualCidadao();
+        return instance.getOrientacaoSexualCidadao();
     }
 
+    /**
+     * Código da orientação sexual informada pelo cidadão.
+     * @param orientacaoSexualCidadao 
+     */
     public void setOrientacaoSexualCidadao(long orientacaoSexualCidadao) {
-        informacoesSocioDemograficasThrift.setOrientacaoSexualCidadao(orientacaoSexualCidadao);
+        instance.setOrientacaoSexualCidadao(orientacaoSexualCidadao);
     }
 
-    public void unsetOrientacaoSexualCidadao() {
-        informacoesSocioDemograficasThrift.unsetOrientacaoSexualCidadao();
+    /**
+     * Valida PovoComunidadeTradicional
+     * 
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validaPovoComunidadeTradicional(){
+        return !instance.isSetPovoComunidadeTradicional() ||
+                (instance.isStatusMembroPovoComunidadeTradicional() && 
+                instance.getPovoComunidadeTradicional().length() <= 100);
     }
-
-    public boolean isSetOrientacaoSexualCidadao() {
-        return informacoesSocioDemograficasThrift.isSetOrientacaoSexualCidadao();
-    }
-
-    public void setOrientacaoSexualCidadaoIsSet(boolean value) {
-        informacoesSocioDemograficasThrift.setOrientacaoSexualCidadaoIsSet(value);
-    }
-
+    
+    /**
+     * Nome da comunidade tradicional que o cidadão frequenta.
+     * @return 
+     */
     public String getPovoComunidadeTradicional() {
-        return informacoesSocioDemograficasThrift.getPovoComunidadeTradicional();
+        return instance.getPovoComunidadeTradicional();
     }
 
+    /**
+     * Nome da comunidade tradicional que o cidadão frequenta.
+     * @param povoComunidadeTradicional 
+     */
     public void setPovoComunidadeTradicional(String povoComunidadeTradicional) {
-        informacoesSocioDemograficasThrift.setPovoComunidadeTradicional(povoComunidadeTradicional);
+        instance.setPovoComunidadeTradicional(povoComunidadeTradicional);
     }
 
-    public void unsetPovoComunidadeTradicional() {
-        informacoesSocioDemograficasThrift.unsetPovoComunidadeTradicional();
-    }
-
-    public boolean isSetPovoComunidadeTradicional() {
-        return informacoesSocioDemograficasThrift.isSetPovoComunidadeTradicional();
-    }
-
-    public void setPovoComunidadeTradicionalIsSet(boolean value) {
-        informacoesSocioDemograficasThrift.setPovoComunidadeTradicionalIsSet(value);
-    }
-
+    //Não á validações para relacaoParentescoCidadao
+    
+    /**
+     * Código da relação de parentesco com o responsável familiar.
+     * @return 
+     */
     public long getRelacaoParentescoCidadao() {
-        return informacoesSocioDemograficasThrift.getRelacaoParentescoCidadao();
+        return instance.getRelacaoParentescoCidadao();
     }
 
+    /**
+     * Código da relação de parentesco com o responsável familiar.
+     * @param relacaoParentescoCidadao 
+     */
     public void setRelacaoParentescoCidadao(long relacaoParentescoCidadao) {
-        informacoesSocioDemograficasThrift.setRelacaoParentescoCidadao(relacaoParentescoCidadao);
+        instance.setRelacaoParentescoCidadao(relacaoParentescoCidadao);
     }
 
-    public void unsetRelacaoParentescoCidadao() {
-        informacoesSocioDemograficasThrift.unsetRelacaoParentescoCidadao();
-    }
-
-    public boolean isSetRelacaoParentescoCidadao() {
-        return informacoesSocioDemograficasThrift.isSetRelacaoParentescoCidadao();
-    }
-
-    public void setRelacaoParentescoCidadaoIsSet(boolean value) {
-        informacoesSocioDemograficasThrift.setRelacaoParentescoCidadaoIsSet(value);
-    }
-
+    /**
+     * Código do responsável por crianças de até 9 anos.
+     * @return 
+     */
     public long getResponsavelPorCrianca() {
-        return informacoesSocioDemograficasThrift.getResponsavelPorCrianca();
+        return instance.getResponsavelPorCrianca();
     }
 
+    /**
+     * Código do responsável por crianças de até 9 anos.
+     * @param responsavelPorCrianca 
+     */
     public void setResponsavelPorCrianca(long responsavelPorCrianca) {
-        informacoesSocioDemograficasThrift.setResponsavelPorCrianca(responsavelPorCrianca);
+        instance.setResponsavelPorCrianca(responsavelPorCrianca);
     }
 
-    public void unsetResponsavelPorCrianca() {
-        informacoesSocioDemograficasThrift.unsetResponsavelPorCrianca();
-    }
-
-    public boolean isSetResponsavelPorCrianca() {
-        return informacoesSocioDemograficasThrift.isSetResponsavelPorCrianca();
-    }
-
-    public void setResponsavelPorCriancaIsSet(boolean value) {
-        informacoesSocioDemograficasThrift.setResponsavelPorCriancaIsSet(value);
-    }
-
+    /**
+     * Código da situação do cidadão no mercado de trabalho.
+     * @return 
+     */
     public long getSituacaoMercadoTrabalhoCidadao() {
-        return informacoesSocioDemograficasThrift.getSituacaoMercadoTrabalhoCidadao();
+        return instance.getSituacaoMercadoTrabalhoCidadao();
     }
 
+    /**
+     * Código da situação do cidadão no mercado de trabalho.
+     * @param situacaoMercadoTrabalhoCidadao 
+     */
     public void setSituacaoMercadoTrabalhoCidadao(long situacaoMercadoTrabalhoCidadao) {
-        informacoesSocioDemograficasThrift.setSituacaoMercadoTrabalhoCidadao(situacaoMercadoTrabalhoCidadao);
+        instance.setSituacaoMercadoTrabalhoCidadao(situacaoMercadoTrabalhoCidadao);
     }
 
-    public void unsetSituacaoMercadoTrabalhoCidadao() {
-        informacoesSocioDemograficasThrift.unsetSituacaoMercadoTrabalhoCidadao();
-    }
-
-    public boolean isSetSituacaoMercadoTrabalhoCidadao() {
-        return informacoesSocioDemograficasThrift.isSetSituacaoMercadoTrabalhoCidadao();
-    }
-
-    public void setSituacaoMercadoTrabalhoCidadaoIsSet(boolean value) {
-        informacoesSocioDemograficasThrift.setSituacaoMercadoTrabalhoCidadaoIsSet(value);
-    }
-
+    /**
+     * Marcador que indica se o cidadão deseja informar sua orientação sexual.
+     * @return 
+     */
     public boolean isStatusDesejaInformarOrientacaoSexual() {
-        return informacoesSocioDemograficasThrift.isStatusDesejaInformarOrientacaoSexual();
+        return instance.isStatusDesejaInformarOrientacaoSexual();
     }
 
+    /**
+     * Marcador que indica se o cidadão deseja informar sua orientação sexual.
+     * @param statusDesejaInformarOrientacaoSexual 
+     */
     public void setStatusDesejaInformarOrientacaoSexual(boolean statusDesejaInformarOrientacaoSexual) {
-        informacoesSocioDemograficasThrift.setStatusDesejaInformarOrientacaoSexual(statusDesejaInformarOrientacaoSexual);
+        instance.setStatusDesejaInformarOrientacaoSexual(statusDesejaInformarOrientacaoSexual);
     }
 
-    public void unsetStatusDesejaInformarOrientacaoSexual() {
-        informacoesSocioDemograficasThrift.unsetStatusDesejaInformarOrientacaoSexual();
-    }
-
-    public boolean isSetStatusDesejaInformarOrientacaoSexual() {
-        return informacoesSocioDemograficasThrift.isSetStatusDesejaInformarOrientacaoSexual();
-    }
-
-    public void setStatusDesejaInformarOrientacaoSexualIsSet(boolean value) {
-        informacoesSocioDemograficasThrift.setStatusDesejaInformarOrientacaoSexualIsSet(value);
-    }
-
+    /**
+     * Marcador que indica se o cidadão frequenta cuidador tradicional.
+     * @return 
+     */
     public boolean isStatusFrequentaBenzedeira() {
-        return informacoesSocioDemograficasThrift.isStatusFrequentaBenzedeira();
+        return instance.isStatusFrequentaBenzedeira();
     }
 
+    /**
+     * Marcador que indica se o cidadão frequenta cuidador tradicional.
+     * @param statusFrequentaBenzedeira 
+     */
     public void setStatusFrequentaBenzedeira(boolean statusFrequentaBenzedeira) {
-        informacoesSocioDemograficasThrift.setStatusFrequentaBenzedeira(statusFrequentaBenzedeira);
+        instance.setStatusFrequentaBenzedeira(statusFrequentaBenzedeira);
     }
 
-    public void unsetStatusFrequentaBenzedeira() {
-        informacoesSocioDemograficasThrift.unsetStatusFrequentaBenzedeira();
-    }
-
-    public boolean isSetStatusFrequentaBenzedeira() {
-        return informacoesSocioDemograficasThrift.isSetStatusFrequentaBenzedeira();
-    }
-
-    public void setStatusFrequentaBenzedeiraIsSet(boolean value) {
-        informacoesSocioDemograficasThrift.setStatusFrequentaBenzedeiraIsSet(value);
-    }
-
+    /**
+     * Marcador que indica se o cidadão frequenta escola ou creche.
+     * @return 
+     */
     public boolean isStatusFrequentaEscola() {
-        return informacoesSocioDemograficasThrift.isStatusFrequentaEscola();
+        return instance.isStatusFrequentaEscola();
     }
 
+    /**
+     * Marcador que indica se o cidadão frequenta escola ou creche.
+     * @param statusFrequentaEscola 
+     */
     public void setStatusFrequentaEscola(boolean statusFrequentaEscola) {
-        informacoesSocioDemograficasThrift.setStatusFrequentaEscola(statusFrequentaEscola);
+        instance.setStatusFrequentaEscola(statusFrequentaEscola);
     }
 
-    public void unsetStatusFrequentaEscola() {
-        informacoesSocioDemograficasThrift.unsetStatusFrequentaEscola();
-    }
-
-    public boolean isSetStatusFrequentaEscola() {
-        return informacoesSocioDemograficasThrift.isSetStatusFrequentaEscola();
-    }
-
-    public void setStatusFrequentaEscolaIsSet(boolean value) {
-        informacoesSocioDemograficasThrift.setStatusFrequentaEscolaIsSet(value);
-    }
-
+    /**
+     * Marcador que indica se o cidadão é membro de um povo ou comunidade tradicional.
+     * @return 
+     */
     public boolean isStatusMembroPovoComunidadeTradicional() {
-        return informacoesSocioDemograficasThrift.isStatusMembroPovoComunidadeTradicional();
+        return instance.isStatusMembroPovoComunidadeTradicional();
     }
 
+    /**
+     * Marcador que indica se o cidadão é membro de um povo ou comunidade tradicional.
+     * @param statusMembroPovoComunidadeTradicional 
+     */
     public void setStatusMembroPovoComunidadeTradicional(boolean statusMembroPovoComunidadeTradicional) {
-        informacoesSocioDemograficasThrift.setStatusMembroPovoComunidadeTradicional(statusMembroPovoComunidadeTradicional);
+        instance.setStatusMembroPovoComunidadeTradicional(statusMembroPovoComunidadeTradicional);
     }
 
-    public void unsetStatusMembroPovoComunidadeTradicional() {
-        informacoesSocioDemograficasThrift.unsetStatusMembroPovoComunidadeTradicional();
-    }
-
-    public boolean isSetStatusMembroPovoComunidadeTradicional() {
-        return informacoesSocioDemograficasThrift.isSetStatusMembroPovoComunidadeTradicional();
-    }
-
-    public void setStatusMembroPovoComunidadeTradicionalIsSet(boolean value) {
-        informacoesSocioDemograficasThrift.setStatusMembroPovoComunidadeTradicionalIsSet(value);
-    }
-
+    /**
+     * Marcador que indica se o cidadão participa de algum grupo comunitário.
+     * @return 
+     */
     public boolean isStatusParticipaGrupoComunitario() {
-        return informacoesSocioDemograficasThrift.isStatusParticipaGrupoComunitario();
+        return instance.isStatusParticipaGrupoComunitario();
     }
 
+    /**
+     * Marcador que indica se o cidadão participa de algum grupo comunitário.
+     * @param statusParticipaGrupoComunitario 
+     */
     public void setStatusParticipaGrupoComunitario(boolean statusParticipaGrupoComunitario) {
-        informacoesSocioDemograficasThrift.setStatusParticipaGrupoComunitario(statusParticipaGrupoComunitario);
+        instance.setStatusParticipaGrupoComunitario(statusParticipaGrupoComunitario);
     }
 
-    public void unsetStatusParticipaGrupoComunitario() {
-        informacoesSocioDemograficasThrift.unsetStatusParticipaGrupoComunitario();
-    }
-
-    public boolean isSetStatusParticipaGrupoComunitario() {
-        return informacoesSocioDemograficasThrift.isSetStatusParticipaGrupoComunitario();
-    }
-
-    public void setStatusParticipaGrupoComunitarioIsSet(boolean value) {
-        informacoesSocioDemograficasThrift.setStatusParticipaGrupoComunitarioIsSet(value);
-    }
-
+    /**
+     * Marcador que indica se o cidadão possui plano de saúde privado.
+     * @return 
+     */
     public boolean isStatusPossuiPlanoSaudePrivado() {
-        return informacoesSocioDemograficasThrift.isStatusPossuiPlanoSaudePrivado();
+        return instance.isStatusPossuiPlanoSaudePrivado();
     }
 
+    /**
+     * Marcador que indica se o cidadão possui plano de saúde privado.
+     * @param statusPossuiPlanoSaudePrivado 
+     */
     public void setStatusPossuiPlanoSaudePrivado(boolean statusPossuiPlanoSaudePrivado) {
-        informacoesSocioDemograficasThrift.setStatusPossuiPlanoSaudePrivado(statusPossuiPlanoSaudePrivado);
+        instance.setStatusPossuiPlanoSaudePrivado(statusPossuiPlanoSaudePrivado);
     }
 
-    public void unsetStatusPossuiPlanoSaudePrivado() {
-        informacoesSocioDemograficasThrift.unsetStatusPossuiPlanoSaudePrivado();
-    }
-
-    public boolean isSetStatusPossuiPlanoSaudePrivado() {
-        return informacoesSocioDemograficasThrift.isSetStatusPossuiPlanoSaudePrivado();
-    }
-
-    public void setStatusPossuiPlanoSaudePrivadoIsSet(boolean value) {
-        informacoesSocioDemograficasThrift.setStatusPossuiPlanoSaudePrivadoIsSet(value);
-    }
-
+    /**
+     * Marcador que indica se cidadão tem alguma dificiência.
+     * @return 
+     */
     public boolean isStatusTemAlgumaDeficiencia() {
-        return informacoesSocioDemograficasThrift.isStatusTemAlgumaDeficiencia();
+        return instance.isStatusTemAlgumaDeficiencia();
     }
 
+    /**
+     * Marcador que indica se cidadão tem alguma dificiência.
+     * @param statusTemAlgumaDeficiencia 
+     */
     public void setStatusTemAlgumaDeficiencia(boolean statusTemAlgumaDeficiencia) {
-        informacoesSocioDemograficasThrift.setStatusTemAlgumaDeficiencia(statusTemAlgumaDeficiencia);
+        instance.setStatusTemAlgumaDeficiencia(statusTemAlgumaDeficiencia);
     }
 
-    public void unsetStatusTemAlgumaDeficiencia() {
-        informacoesSocioDemograficasThrift.unsetStatusTemAlgumaDeficiencia();
-    }
-
-    public boolean isSetStatusTemAlgumaDeficiencia() {
-        return informacoesSocioDemograficasThrift.isSetStatusTemAlgumaDeficiencia();
-    }
-
-    public void setStatusTemAlgumaDeficienciaIsSet(boolean value) {
-        informacoesSocioDemograficasThrift.setStatusTemAlgumaDeficienciaIsSet(value);
-    }
-
-    @Override
-    public boolean equals(Object that) {
-        return informacoesSocioDemograficasThrift.equals(that);
-    }
-
-    public boolean equals(InformacoesSocioDemograficas that) {
-        return informacoesSocioDemograficasThrift.equals(that.getIntence());
-    }
-
-    @Override
-    public int hashCode() {
-        return informacoesSocioDemograficasThrift.hashCode();
-    }
-
-    public int compareTo(InformacoesSocioDemograficas other) {
-        return informacoesSocioDemograficasThrift.compareTo(other.getIntence());
-    }
-
-    @Override
-    public String toString() {
-        return informacoesSocioDemograficasThrift.toString();
-    }
-
-    public void validate() throws TException {
-        informacoesSocioDemograficasThrift.validate();
-    }
-
-    protected InformacoesSocioDemograficasThrift getIntence(){
-        return informacoesSocioDemograficasThrift;
+    public InformacoesSocioDemograficasThrift getIntence(){
+        return instance;
     }
 }
 

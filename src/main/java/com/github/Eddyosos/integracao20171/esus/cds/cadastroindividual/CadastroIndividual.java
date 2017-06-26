@@ -2,229 +2,321 @@ package com.github.Eddyosos.integracao20171.esus.cds.cadastroindividual;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.CadastroIndividualThrift;
 import com.github.Eddyosos.integracao20171.esus.cds.common.HeaderCdsCadastro;
-import org.apache.thrift.TException;
+import java.util.UUID;
 
 public class CadastroIndividual {
-    private CadastroIndividualThrift cadastroIndividualThrift = new CadastroIndividualThrift();
+    private CadastroIndividualThrift instance;
+    
+    public CadastroIndividual(){
+        instance = new CadastroIndividualThrift();
+    }
 
+    /**
+     * Formulário referente as condições de saúde do cidadão.
+     * @return 
+     */
     public CondicoesDeSaude getCondicoesDeSaude() {
-        return new CondicoesDeSaude(cadastroIndividualThrift.getCondicoesDeSaude());
+        return new CondicoesDeSaude(instance.getCondicoesDeSaude());
     }
 
+    /**
+     * Formulário referente as condições de saúde do cidadão.
+     * @param condicoesDeSaude 
+     */
     public void setCondicoesDeSaude(CondicoesDeSaude condicoesDeSaude) {
-        cadastroIndividualThrift.setCondicoesDeSaude(condicoesDeSaude.getInstance());
+        instance.setCondicoesDeSaude(condicoesDeSaude.getInstance());
     }
 
-    public void unsetCondicoesDeSaude() {
-        cadastroIndividualThrift.unsetCondicoesDeSaude();
-    }
-
-    public boolean isSetCondicoesDeSaude() {
-        return cadastroIndividualThrift.isSetCondicoesDeSaude();
-    }
-
-    public void setCondicoesDeSaudeIsSet(boolean value) {
-        cadastroIndividualThrift.setCondicoesDeSaudeIsSet(value);
-    }
-
+    /**
+     * Dados referentes ao profissional e a data do cadastro.
+     * @return 
+     */
     public HeaderCdsCadastro getDadosGerais() {
-        return new HeaderCdsCadastro(cadastroIndividualThrift.getDadosGerais());
+        return new HeaderCdsCadastro(instance.getDadosGerais());
     }
 
+    /**
+     * Dados referentes ao profissional e a data do cadastro.
+     * @param dadosGerais 
+     */
     public void setDadosGerais(HeaderCdsCadastro dadosGerais) {
-        cadastroIndividualThrift.setDadosGerais(dadosGerais.getInstance());
+        instance.setDadosGerais(dadosGerais.getInstance());
     }
 
-    public void unsetDadosGerais() {
-        cadastroIndividualThrift.unsetDadosGerais();
-    }
-
-    public boolean isSetDadosGerais() {
-        return cadastroIndividualThrift.isSetDadosGerais();
-    }
-
-    public void setDadosGeraisIsSet(boolean value) {
-        cadastroIndividualThrift.setDadosGeraisIsSet(value);
-    }
-
+    /**
+     * Formulário referente a informações de situação de rua (se o cidadão se encontrar nessa situação).
+     * @return 
+     */
     public EmSituacaoDeRua getEmSituacaoDeRua() {
-        return new EmSituacaoDeRua(cadastroIndividualThrift.getEmSituacaoDeRua());
+        return new EmSituacaoDeRua(instance.getEmSituacaoDeRua());
     }
 
+    /**
+     * Formulário referente a informações de situação de rua (se o cidadão se encontrar nessa situação).
+     * @param emSituacaoDeRua 
+     */
     public void setEmSituacaoDeRua(EmSituacaoDeRua emSituacaoDeRua) {
-        cadastroIndividualThrift.setEmSituacaoDeRua(emSituacaoDeRua.getInstance());
+        instance.setEmSituacaoDeRua(emSituacaoDeRua.getInstance());
     }
 
-    public void unsetEmSituacaoDeRua() {
-        cadastroIndividualThrift.unsetEmSituacaoDeRua();
-    }
-
-    public boolean isSetEmSituacaoDeRua() {
-        return cadastroIndividualThrift.isSetEmSituacaoDeRua();
-    }
-
-    public void setEmSituacaoDeRuaIsSet(boolean value) {
-        cadastroIndividualThrift.setEmSituacaoDeRuaIsSet(value);
-    }
-
+    /**
+     * Marcador que indica se a ficha é uma atualização.
+     * @return 
+     */
     public boolean isFichaAtualizada() {
-        return cadastroIndividualThrift.isFichaAtualizada();
+        return instance.isFichaAtualizada();
     }
 
+    /**
+     * Marcador que indica se a ficha é uma atualização.
+     * @param fichaAtualizada 
+     */
     public void setFichaAtualizada(boolean fichaAtualizada) {
-        cadastroIndividualThrift.setFichaAtualizada(fichaAtualizada);
+        instance.setFichaAtualizada(fichaAtualizada);
     }
 
-    public void unsetFichaAtualizada() {
-        cadastroIndividualThrift.unsetFichaAtualizada();
-    }
-
-    public boolean isSetFichaAtualizada() {
-        return cadastroIndividualThrift.isSetFichaAtualizada();
-    }
-
-    public void setFichaAtualizadaIsSet(boolean value) {
-        cadastroIndividualThrift.setFichaAtualizadaIsSet(value);
-    }
-
+    /**
+     * Dados que identificam o cidadão.
+     * @return 
+     */
     public IdentificacaoUsuarioCidadao getIdentificacaoUsuarioCidadao() {
-        return new IdentificacaoUsuarioCidadao(cadastroIndividualThrift.getIdentificacaoUsuarioCidadao());
+        return new IdentificacaoUsuarioCidadao(instance.getIdentificacaoUsuarioCidadao());
     }
 
+    /**
+     * Dados que identificam o cidadão.
+     * @param identificacaoUsuarioCidadao 
+     */
     public void setIdentificacaoUsuarioCidadao(IdentificacaoUsuarioCidadao identificacaoUsuarioCidadao) {
-        cadastroIndividualThrift.setIdentificacaoUsuarioCidadao(identificacaoUsuarioCidadao.getInstance());
+        instance.setIdentificacaoUsuarioCidadao(identificacaoUsuarioCidadao.getInstance());
     }
-
-    public void unsetIdentificacaoUsuarioCidadao() {
-        cadastroIndividualThrift.unsetIdentificacaoUsuarioCidadao();
-    }
-
-    public boolean isSetIdentificacaoUsuarioCidadao() {
-        return cadastroIndividualThrift.isSetIdentificacaoUsuarioCidadao();
-    }
-
-    public void setIdentificacaoUsuarioCidadaoIsSet(boolean value) {
-        cadastroIndividualThrift.setIdentificacaoUsuarioCidadaoIsSet(value);
-    }
-
+    
+    /**
+     * Informações sócio-demográficas fornecidas pelo cidadão.
+     * @return 
+     */
     public InformacoesSocioDemograficas getInformacoesSocioDemograficas() {
-        return new InformacoesSocioDemograficas(cadastroIndividualThrift.getInformacoesSocioDemograficas());
+        return new InformacoesSocioDemograficas(instance.getInformacoesSocioDemograficas());
     }
 
+    /**
+     * Informações sócio-demográficas fornecidas pelo cidadão.
+     * @param informacoesSocioDemograficas 
+     */
     public void setInformacoesSocioDemograficas(InformacoesSocioDemograficas informacoesSocioDemograficas) {
-        cadastroIndividualThrift.setInformacoesSocioDemograficas(informacoesSocioDemograficas.getIntence());
+        instance.setInformacoesSocioDemograficas(informacoesSocioDemograficas.getIntence());
     }
 
-    public void unsetInformacoesSocioDemograficas() {
-        cadastroIndividualThrift.unsetInformacoesSocioDemograficas();
-    }
-
-    public boolean isSetInformacoesSocioDemograficas() {
-        return cadastroIndividualThrift.isSetInformacoesSocioDemograficas();
-    }
-
-    public void setInformacoesSocioDemograficasIsSet(boolean value) {
-        cadastroIndividualThrift.setInformacoesSocioDemograficasIsSet(value);
-    }
-
+    /**
+     * Marcador que indica se o termo de recusa foi assinalado.
+     * @return 
+     */
     public boolean isStatusTermoRecusaCadastroIndividualAtencaoBasica() {
-        return cadastroIndividualThrift.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
+        return instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
     }
-
+    
+    /**
+     * Marcador que indica se o termo de recusa foi assinalado.
+     * @param statusTermoRecusaCadastroIndividualAtencaoBasica 
+     */
     public void setStatusTermoRecusaCadastroIndividualAtencaoBasica(boolean statusTermoRecusaCadastroIndividualAtencaoBasica) {
-        cadastroIndividualThrift.setStatusTermoRecusaCadastroIndividualAtencaoBasica(statusTermoRecusaCadastroIndividualAtencaoBasica);
+        instance.setStatusTermoRecusaCadastroIndividualAtencaoBasica(statusTermoRecusaCadastroIndividualAtencaoBasica);
     }
 
-    public void unsetStatusTermoRecusaCadastroIndividualAtencaoBasica() {
-        cadastroIndividualThrift.unsetStatusTermoRecusaCadastroIndividualAtencaoBasica();
-    }
-
-    public boolean isSetStatusTermoRecusaCadastroIndividualAtencaoBasica() {
-        return cadastroIndividualThrift.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica();
-    }
-
-    public void setStatusTermoRecusaCadastroIndividualAtencaoBasicaIsSet(boolean value) {
-        cadastroIndividualThrift.setStatusTermoRecusaCadastroIndividualAtencaoBasicaIsSet(value);
-    }
-
+    /**
+     * Tipo de origem dos dados do registro.
+     * @param tpCdsOrigem 
+     */
     public void setTpCdsOrigem(int tpCdsOrigem) {
-        cadastroIndividualThrift.setTpCdsOrigem(tpCdsOrigem);
+        instance.setTpCdsOrigem(tpCdsOrigem);
     }
 
+    /**
+     * Tipo de origem dos dados do registro.
+     */
     public void unsetTpCdsOrigem() {
-        cadastroIndividualThrift.unsetTpCdsOrigem();
+        instance.unsetTpCdsOrigem();
     }
 
-    public boolean isSetTpCdsOrigem() {
-        return cadastroIndividualThrift.isSetTpCdsOrigem();
-    }
-
-    public void setTpCdsOrigemIsSet(boolean value) {
-        cadastroIndividualThrift.setTpCdsOrigemIsSet(value);
-    }
-
+    /**
+     * Código UUID para identificar a ficha na base de dados nacional.
+     * @return 
+     */
     public String getUuid() {
-        return cadastroIndividualThrift.getUuid();
+        return instance.getUuid();
     }
 
+    /**
+     * Código UUID para identificar a ficha na base de dados nacional.
+     * @param uuid 
+     */
     public void setUuid(String uuid) {
-        cadastroIndividualThrift.setUuid(uuid);
+        instance.setUuid(uuid);
     }
 
-    public void unsetUuid() {
-        cadastroIndividualThrift.unsetUuid();
-    }
-
-    public boolean isSetUuid() {
-        return cadastroIndividualThrift.isSetUuid();
-    }
-
-    public void setUuidIsSet(boolean value) {
-        cadastroIndividualThrift.setUuidIsSet(value);
-    }
-
+    /**
+     * Código UUID para identificar a ficha que deu origem ao cadastro do registro.
+     * @return 
+     */
     public String getUuidFichaOriginadora() {
-        return cadastroIndividualThrift.getUuidFichaOriginadora();
+        return instance.getUuidFichaOriginadora();
     }
 
+    /**
+     * Código UUID para identificar a ficha que deu origem ao cadastro do registro.
+     * @param uuidFichaOriginadora 
+     */
     public void setUuidFichaOriginadora(String uuidFichaOriginadora) {
-        cadastroIndividualThrift.setUuidFichaOriginadora(uuidFichaOriginadora);
-    }
-
-    public void unsetUuidFichaOriginadora() {
-        cadastroIndividualThrift.unsetUuidFichaOriginadora();
-    }
-
-    public boolean isSetUuidFichaOriginadora() {
-        return cadastroIndividualThrift.isSetUuidFichaOriginadora();
-    }
-
-    public void setUuidFichaOriginadoraIsSet(boolean value) {
-        cadastroIndividualThrift.setUuidFichaOriginadoraIsSet(value);
+        instance.setUuidFichaOriginadora(uuidFichaOriginadora);
     }
 
     public String getUuidCidadao() {
-        return cadastroIndividualThrift.getUuidCidadao();
+        return instance.getUuidCidadao();
     }
 
     public void setUuidCidadao(String uuidCidadao) {
-        cadastroIndividualThrift.setUuidCidadao(uuidCidadao);
+        instance.setUuidCidadao(uuidCidadao);
     }
 
-    public void unsetUuidCidadao() {
-        cadastroIndividualThrift.unsetUuidCidadao();
+    /**
+     * Valida a instancia
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validate() {
+        return validateCondicoesDeSaude() &&
+                validateDadosGerais() &&
+                validateEmSituacaoDeRua() &&
+                validateFichaAtualizada() &&
+                validateIndetificacaoUsuarioCidadao() &&
+                validateInformacoesSocioDemografica() &&
+                validateTpCdsOrigem() && 
+                validateUuid() &&
+                validateUuidFichaOriginadora();
     }
-
-    public boolean isSetUuidCidadao() {
-        return cadastroIndividualThrift.isSetUuidCidadao();
+    
+    /**
+     * Valida o campo condições de saúde.
+     * Para ser válido deve, caso inserido:
+     * 1- Regras: Não deve ser preenchido se o campo statusTermoRecusaCadastroIndividualAtencaoBasica = true.
+     * @return true se for válido
+     * @return false se for inválido
+     */
+    public boolean validateCondicoesDeSaude() {
+    	return !instance.isSetCondicoesDeSaude() || 
+               !instance.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica() ||
+               !instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
     }
-
-    public void setUuidCidadaoIsSet(boolean value) {
-        cadastroIndividualThrift.setUuidCidadaoIsSet(value);
+    
+    /**
+     * Valida DadosGerais
+     * Para ser válido deve ter sido inserido préviamente
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateDadosGerais(){
+        return instance.isSetDadosGerais();
     }
-
-    public void validate() throws TException {
-        cadastroIndividualThrift.validate();
+    
+    /**
+     * Valida o campo emSituacaoDeRua
+     * @return true se for válido
+     * @return false se for inválido
+     */
+    public boolean validateEmSituacaoDeRua() {
+        return !instance.isSetEmSituacaoDeRua() ||
+                !instance.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica() ||
+                !instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
+    }
+    
+    /**
+     * Valida se a ficha foi atualizada
+     * @return true se for válido
+     * @return false se for inválido
+     */
+    public boolean validateFichaAtualizada() {
+    	return instance.isSetFichaAtualizada();
+    }
+    
+    /**
+     * Valida o campo indentificacaoUsuarioCidadao
+     * @return true se for válido
+     *          false se for inválido
+     */
+    public boolean validateIndetificacaoUsuarioCidadao() {
+        return !instance.isSetIdentificacaoUsuarioCidadao() ||
+                !instance.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica() ||
+                !instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
+    }
+    
+    /**
+     * Valida o campo informacoesSocioDemografica
+     * @return true se for válido
+     * @return false se for inválido
+     */
+    public boolean validateInformacoesSocioDemografica() {
+        return !instance.isSetInformacoesSocioDemograficas() ||
+                !instance.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica() ||
+                !instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
+    }
+    
+    //Não á validações para o statusTermoRecusaCadastroIndividualAtencaoBasica
+    
+    /**
+     * Valida o tipo de origem do cadastro de registro
+     * @return true se for válido
+     * @return false se for inválido
+     */
+    public boolean validateTpCdsOrigem() {
+    	return instance.isSetTpCdsOrigem();
+    }
+    
+    /**
+     * Valida o uuid
+     * @return true se for válido
+     * @return false se for inválido
+     */
+    public boolean validateUuid(){
+        return !instance.isSetUuid() || 
+                validateUuid(instance.getUuid());
+    }
+    
+    public boolean validateUuid(String var) {
+        if(var.length() < 36 || var.length() > 44) return false;
+        try{
+            UUID.fromString(var.substring(0,36));
+        } catch (Exception ex) {
+            return false;
+        }
+        return true;
+    }
+    
+    /**
+     * Valida o uuid da ficha originadora
+     * @return true se for válido
+     * @return false se for inválido
+     */
+    public boolean validateUuidFichaOriginadora() {
+    	return instance.isSetUuidFichaOriginadora() && 
+                validateUuid(instance.getUuidFichaOriginadora());
+    }
+    
+    /**
+     * Valida o saidaCidadaoCadastro
+     * @return true se for válido
+     * @return false se for inválido
+     */
+    public boolean validateSaidaCidadaoCadastro() {
+    	return true; //TODO Nao encontrei a SaidaCidadaoCadastro
+    }
+    
+    /**
+     * Valida o header
+     * @return true se for válido
+     * @return false se for inválido
+     */
+    public boolean validateHeaderTransport() {
+    	return true; //TODO Não encontrei nem a headerTransport nem a UnicaLotacaoHeader
     }
 }
 
