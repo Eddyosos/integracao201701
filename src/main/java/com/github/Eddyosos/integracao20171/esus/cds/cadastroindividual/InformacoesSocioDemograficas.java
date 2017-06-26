@@ -4,6 +4,7 @@ import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.Infor
 import java.util.List;
 
 public class InformacoesSocioDemograficas {
+
     private InformacoesSocioDemograficasThrift instance;
     
     public InformacoesSocioDemograficas() {
