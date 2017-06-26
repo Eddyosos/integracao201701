@@ -4,16 +4,19 @@ import br.gov.saude.esus.cds.transport.generated.thrift.atividadecoletiva.FichaA
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadecoletiva.ParticipanteRowItemThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadecoletiva.ProfissionalCboRowItemThrift;
 import com.github.Eddyosos.integracao20171.utils.IDS.CNS;
+import com.github.eddyosos.e_sus_ab_factory.cds.atividadecoletiva.IFichaAtividadeColetiva;
+import com.github.eddyosos.e_sus_ab_factory.cds.atividadecoletiva.IParticipanteRowItem;
+import com.github.eddyosos.e_sus_ab_factory.cds.atividadecoletiva.IProfissionalCboRowItem;
 import java.time.Instant;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class FichaAtividadeColetiva {
+public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
-    FichaAtividadeColetivaThrift instance = new FichaAtividadeColetivaThrift();
+    private FichaAtividadeColetivaThrift instance = new FichaAtividadeColetivaThrift();
 
-    protected FichaAtividadeColetiva(FichaAtividadeColetivaThrift fichaAtividadeColetiva) {
+    public FichaAtividadeColetiva(FichaAtividadeColetivaThrift fichaAtividadeColetiva) {
         this.instance = fichaAtividadeColetiva;
     }
 
@@ -22,6 +25,7 @@ public class FichaAtividadeColetiva {
      *
      * @return uuidFicha String
      */
+    @Override
     public String getUuidFicha() {
         return instance.getUuidFicha();
     }
@@ -31,6 +35,7 @@ public class FichaAtividadeColetiva {
      *
      * @param uuidFicha String
      */
+    @Override
     public void setUuidFicha(String uuidFicha) {
         instance.setUuidFicha(uuidFicha);
     }
@@ -40,6 +45,7 @@ public class FichaAtividadeColetiva {
      *
      * @return dtAtividadeColetiva long
      */
+    @Override
     public long getDtAtividadeColetiva() {
         return instance.getDtAtividadeColetiva();
     }
@@ -49,6 +55,7 @@ public class FichaAtividadeColetiva {
      *
      * @param dtAtividadeColetiva long
      */
+    @Override
     public void setDtAtividadeColetiva(long dtAtividadeColetiva) {
         instance.setDtAtividadeColetiva(dtAtividadeColetiva);
     }
@@ -59,6 +66,7 @@ public class FichaAtividadeColetiva {
      * @return numParticipantesProgramados int
      */
 
+    @Override
     public int getNumParticipantesProgramados() {
         return instance.getNumParticipantesProgramados();
     }
@@ -69,6 +77,7 @@ public class FichaAtividadeColetiva {
      * @param numParticipantesProgramados int
      */
 
+    @Override
     public void setNumParticipantesProgramados(int numParticipantesProgramados) {
         instance.setNumParticipantesProgramados(numParticipantesProgramados);
     }
@@ -79,6 +88,7 @@ public class FichaAtividadeColetiva {
      * @return LocalAtividade String
      */
 
+    @Override
     public String getLocalAtividade() {
         return instance.getLocalAtividade();
     }
@@ -89,6 +99,7 @@ public class FichaAtividadeColetiva {
      * @param localAtividade String
      */
 
+    @Override
     public void setLocalAtividade(String localAtividade) {
         instance.setLocalAtividade(localAtividade);
     }
@@ -99,6 +110,7 @@ public class FichaAtividadeColetiva {
      * @return HoraInicio long
      */
 
+    @Override
     public long getHoraInicio() {
         return instance.getHoraInicio();
     }
@@ -109,6 +121,7 @@ public class FichaAtividadeColetiva {
      * @param horaInicio long
      */
 
+    @Override
     public void setHoraInicio(long horaInicio) {
         instance.setHoraInicio(horaInicio);
     }
@@ -119,6 +132,7 @@ public class FichaAtividadeColetiva {
      * @return HoraFim long
      */
 
+    @Override
     public long getHoraFim() {
         return instance.getHoraFim();
     }
@@ -128,6 +142,7 @@ public class FichaAtividadeColetiva {
      *
      * @param horaFim long
      */
+    @Override
     public void setHoraFim(long horaFim) {
         instance.setHoraFim(horaFim);
     }
@@ -138,6 +153,7 @@ public class FichaAtividadeColetiva {
      * @return Inep long
      */
 
+    @Override
     public long getInep() {
         return instance.getInep();
     }
@@ -147,6 +163,7 @@ public class FichaAtividadeColetiva {
      *
      * @param inep long
      */
+    @Override
     public void setInep(long inep) {
         instance.setInep(inep);
     }
@@ -156,6 +173,7 @@ public class FichaAtividadeColetiva {
      *
      * @return responsavelCns String
      */
+    @Override
     public String getResponsavelCns() {
         return instance.getResponsavelCns();
     }
@@ -166,6 +184,7 @@ public class FichaAtividadeColetiva {
      * @param responsavelCns String
      */
 
+    @Override
     public void setResponsavelCns(String responsavelCns) {
         instance.setResponsavelCns(responsavelCns);
     }
@@ -176,6 +195,7 @@ public class FichaAtividadeColetiva {
      * @return responsavelCnesUnidade String
      */
 
+    @Override
     public String getResponsavelCnesUnidade() {
         return instance.getResponsavelCnesUnidade();
     }
@@ -186,6 +206,7 @@ public class FichaAtividadeColetiva {
      * @param responsavelCnesUnidade String
      */
 
+    @Override
     public void setResponsavelCnesUnidade(String responsavelCnesUnidade) {
         instance.setResponsavelCnesUnidade(responsavelCnesUnidade);
     }
@@ -196,6 +217,7 @@ public class FichaAtividadeColetiva {
      * @return responsavelNumIne String
      */
 
+    @Override
     public String getResponsavelNumIne() {
         return instance.getResponsavelNumIne();
     }
@@ -206,6 +228,7 @@ public class FichaAtividadeColetiva {
      * @param responsavelNumIne String
      */
 
+    @Override
     public void setResponsavelNumIne(String responsavelNumIne) {
         instance.setResponsavelNumIne(responsavelNumIne);
     }
@@ -216,6 +239,7 @@ public class FichaAtividadeColetiva {
      * @return numParticipantes int
      */
 
+    @Override
     public int getNumParticipantes() {
         return instance.getNumParticipantes();
     }
@@ -226,6 +250,7 @@ public class FichaAtividadeColetiva {
      * @param numParticipantes int
      */
 
+    @Override
     public void setNumParticipantes(int numParticipantes) {
         instance.setNumParticipantes(numParticipantes);
     }
@@ -236,6 +261,7 @@ public class FichaAtividadeColetiva {
      * @return numAvaliacoesAlteradas int
      */
 
+    @Override
     public int getNumAvaliacoesAlteradas() {
         return instance.getNumAvaliacoesAlteradas();
     }
@@ -246,6 +272,7 @@ public class FichaAtividadeColetiva {
      * @param numAvaliacoesAlteradas int
      */
 
+    @Override
     public void setNumAvaliacoesAlteradas(int numAvaliacoesAlteradas) {
         instance.setNumAvaliacoesAlteradas(numAvaliacoesAlteradas);
     }
@@ -256,6 +283,7 @@ public class FichaAtividadeColetiva {
      * @return profssionaisSize int
      */
 
+    @Override
     public int getProfissionaisSize() {
         return instance.getProfissionaisSize();
     }
@@ -266,8 +294,9 @@ public class FichaAtividadeColetiva {
      * @return listaProffsionalCboRowItem.iterator Iterator
      */
 
-    public Iterator<ProfissionalCboRowItem> getProfissionaisIterator() {
-        List<ProfissionalCboRowItem> listaProfissionalCboRowItem = new LinkedList<>();
+    @Override
+    public Iterator<IProfissionalCboRowItem> getProfissionaisIterator() {
+        List<IProfissionalCboRowItem> listaProfissionalCboRowItem = new LinkedList<>();
 
         instance.getProfissionaisIterator().forEachRemaining((elemento) -> {
             listaProfissionalCboRowItem.add(new ProfissionalCboRowItem(elemento));
@@ -282,7 +311,8 @@ public class FichaAtividadeColetiva {
      * @param elem
      */
 
-    public void addToProfissionais(ProfissionalCboRowItem elem) {
+    @Override
+    public void addToProfissionais(IProfissionalCboRowItem elem) {
         instance.addToProfissionais(elem.getInstance());
     }
 
@@ -292,8 +322,9 @@ public class FichaAtividadeColetiva {
      * @return ListaProfssionalCboRowItem list
      */
 
-    public List<ProfissionalCboRowItem> getProfissionais() {
-        List<ProfissionalCboRowItem> listaProfissionalCboRowItem = new LinkedList<>();
+    @Override
+    public List<IProfissionalCboRowItem> getProfissionais() {
+        List<IProfissionalCboRowItem> listaProfissionalCboRowItem = new LinkedList<>();
 
         instance.getProfissionais().forEach((elemento) -> {
             listaProfissionalCboRowItem.add(new ProfissionalCboRowItem(elemento));
@@ -308,7 +339,8 @@ public class FichaAtividadeColetiva {
      * @param profissionais List
      */
 
-    public void setProfissionais(List<ProfissionalCboRowItem> profissionais) {
+    @Override
+    public void setProfissionais(List<IProfissionalCboRowItem> profissionais) {
         List<ProfissionalCboRowItemThrift> listaProfissionalCboRowItemThrift = new LinkedList<>();
 
         profissionais.forEach((elemento) -> {
@@ -324,6 +356,7 @@ public class FichaAtividadeColetiva {
      * @return AtividadeTipo long
      */
 
+    @Override
     public long getAtividadeTipo() {
         return instance.getAtividadeTipo();
     }
@@ -334,6 +367,7 @@ public class FichaAtividadeColetiva {
      * @param atividadeTipo String
      */
 
+    @Override
     public void setAtividadeTipo(long atividadeTipo) {
         instance.setAtividadeTipo(atividadeTipo);
     }
@@ -344,6 +378,7 @@ public class FichaAtividadeColetiva {
      * @return temasParaReuniaoSize int
      */
 
+    @Override
     public int getTemasParaReuniaoSize() {
         return instance.getTemasParaReuniaoSize();
     }
@@ -354,6 +389,7 @@ public class FichaAtividadeColetiva {
      * @return temasParaReuniaoIterator
      */
 
+    @Override
     public Iterator<Long> getTemasParaReuniaoIterator() {
         return instance.getTemasParaReuniaoIterator();
     }
@@ -364,6 +400,7 @@ public class FichaAtividadeColetiva {
      * @param elem long
      */
 
+    @Override
     public void addToTemasParaReuniao(long elem) {
         instance.addToTemasParaReuniao(elem);
     }
@@ -374,6 +411,7 @@ public class FichaAtividadeColetiva {
      * @return temasParaReuniao list
      */
 
+    @Override
     public List<Long> getTemasParaReuniao() {
         return instance.getTemasParaReuniao();
     }
@@ -384,6 +422,7 @@ public class FichaAtividadeColetiva {
      * @param temasParaReuniao list
      */
 
+    @Override
     public void setTemasParaReuniao(List<Long> temasParaReuniao) {
         instance.setTemasParaReuniao(temasParaReuniao);
     }
@@ -394,6 +433,7 @@ public class FichaAtividadeColetiva {
      * @return publicoAlvoSize int
      */
 
+    @Override
     public int getPublicoAlvoSize() {
         return instance.getPublicoAlvoSize();
     }
@@ -402,6 +442,7 @@ public class FichaAtividadeColetiva {
      *devolve um iterator para publicoAlvo
      * @return publicoAlvoIterator
      */
+    @Override
     public Iterator<Long> getPublicoAlvoIterator() {
         return instance.getPublicoAlvoIterator();
     }
@@ -410,6 +451,7 @@ public class FichaAtividadeColetiva {
      * @param elem long
      */
 
+    @Override
     public void addToPublicoAlvo(long elem) {
         instance.addToPublicoAlvo(elem);
     }
@@ -418,6 +460,7 @@ public class FichaAtividadeColetiva {
      * @return publicoAlvo list
      */
 
+    @Override
     public List<Long> getPublicoAlvo() {
         return instance.getPublicoAlvo();
     }
@@ -426,6 +469,7 @@ public class FichaAtividadeColetiva {
      * @param publicoAlvo List
      */
 
+    @Override
     public void setPublicoAlvo(List<Long> publicoAlvo) {
         instance.setPublicoAlvo(publicoAlvo);
     }
@@ -434,6 +478,7 @@ public class FichaAtividadeColetiva {
      * @return praticaTemasParaSaudeSize
      */
 
+    @Override
     public int getPraticasTemasParaSaudeSize() {
         return instance.getPraticasTemasParaSaudeSize();
     }
@@ -441,6 +486,7 @@ public class FichaAtividadeColetiva {
      * Devolve um praticasTemasParaSaude iterator
      * @return praticasTemasParaSaudeIterator Iterator
      */
+    @Override
     public Iterator<Long> getPraticasTemasParaSaudeIterator() {
         return instance.getPraticasTemasParaSaudeIterator();
     }
@@ -449,6 +495,7 @@ public class FichaAtividadeColetiva {
      * @param elem long
      */
 
+    @Override
     public void addToPraticasTemasParaSaude(long elem) {
         instance.addToPraticasTemasParaSaude(elem);
     }
@@ -457,6 +504,7 @@ public class FichaAtividadeColetiva {
      * @return praticasTemasParaSaude List
      */
 
+    @Override
     public List<Long> getPraticasTemasParaSaude() {
         return instance.getPraticasTemasParaSaude();
     }
@@ -465,6 +513,7 @@ public class FichaAtividadeColetiva {
      * @param praticasTemasParaSaude List
      */
 
+    @Override
     public void setPraticasTemasParaSaude(List<Long> praticasTemasParaSaude) {
         instance.setPraticasTemasParaSaude(praticasTemasParaSaude);
     }
@@ -473,6 +522,7 @@ public class FichaAtividadeColetiva {
      * @return participantesSize
      */
 
+    @Override
     public int getParticipantesSize() {
         return instance.getParticipantesSize();
     }
@@ -481,8 +531,9 @@ public class FichaAtividadeColetiva {
      * @return participantesIterator
      */
 
-    public Iterator<ParticipanteRowItem> getParticipantesIterator() {
-        List<ParticipanteRowItem> listaParticipanteRowItem = new LinkedList<>();
+    @Override
+    public Iterator<IParticipanteRowItem> getParticipantesIterator() {
+        List<IParticipanteRowItem> listaParticipanteRowItem = new LinkedList<>();
 
         instance.getParticipantesIterator().forEachRemaining((elemento) -> {
             listaParticipanteRowItem.add(new ParticipanteRowItem(elemento));
@@ -495,7 +546,8 @@ public class FichaAtividadeColetiva {
      * @param elem ParticipanteRowItem
      */
 
-    public void addToParticipantes(ParticipanteRowItem elem) {
+    @Override
+    public void addToParticipantes(IParticipanteRowItem elem) {
         instance.addToParticipantes(elem.getInstance());
     }
     /**
@@ -503,8 +555,9 @@ public class FichaAtividadeColetiva {
      * @return participantes List
      */
 
-    public List<ParticipanteRowItem> getParticipantes() {
-        List<ParticipanteRowItem> listaParticipanteRowItem = new LinkedList<>();
+    @Override
+    public List<IParticipanteRowItem> getParticipantes() {
+        List<IParticipanteRowItem> listaParticipanteRowItem = new LinkedList<>();
 
         instance.getParticipantes().forEach((elemento) -> {
             listaParticipanteRowItem.add(new ParticipanteRowItem(elemento));
@@ -517,7 +570,8 @@ public class FichaAtividadeColetiva {
      * @param participantes List
      */
 
-    public void setParticipantes(List<ParticipanteRowItem> participantes) {
+    @Override
+    public void setParticipantes(List<IParticipanteRowItem> participantes) {
         List<ParticipanteRowItemThrift> listaParticipanteRowItemThrift = new LinkedList<>();
         participantes.forEach((elemento) -> {
             listaParticipanteRowItemThrift.add(elemento.getInstance());
@@ -529,6 +583,7 @@ public class FichaAtividadeColetiva {
      * @return tbCdsOrigem int
      */
 
+    @Override
     public int getTbCdsOrigem() {
         return instance.getTbCdsOrigem();
     }
@@ -537,6 +592,7 @@ public class FichaAtividadeColetiva {
      * @param tbCdsOrigem int
      */
 
+    @Override
     public void setTbCdsOrigem(int tbCdsOrigem) {
         instance.setTbCdsOrigem(tbCdsOrigem);
     }
@@ -545,6 +601,7 @@ public class FichaAtividadeColetiva {
      * @return codigoIbgeMunicio Strng
      */
 
+    @Override
     public String getCodigoIbgeMunicipio() {
         return instance.getCodigoIbgeMunicipio();
     }
@@ -553,6 +610,7 @@ public class FichaAtividadeColetiva {
      * @param codigoIbgeMunicipio String
      */
 
+    @Override
     public void setCodigoIbgeMunicipio(String codigoIbgeMunicipio) {
         instance.setCodigoIbgeMunicipio(codigoIbgeMunicipio);
     }
@@ -572,6 +630,7 @@ public class FichaAtividadeColetiva {
      * e menor que 44. False caso o valor esteja setado e seu tamanho for menor
      * que 36 e maior que 44.False caso nenhum valor esteja setado
      */
+    @Override
     public boolean validaUuidFicha() {
         if (getInstance().isSetUuidFicha()) {
             return getInstance().getUuidFicha().length() >= 36 && getInstance().getUuidFicha().length() <= 44;
@@ -587,6 +646,7 @@ public class FichaAtividadeColetiva {
      * setado e seja maior que a dataAtual. True caso o valor esteja setado e
      * seja menor ou igual que dataAtual
      */
+    @Override
     public boolean validaDtAtividadeColetiva() {
 
         if (!instance.isSetDtAtividadeColetiva()) {
@@ -605,6 +665,7 @@ public class FichaAtividadeColetiva {
      * 999. True caso o valor nao esteja setado false case o valor esteja setado
      * e fora do intervalo 0 - 999
      */
+    @Override
     public boolean validaNumParticipantesProgramados() {
         if (instance.isSetNumParticipantesProgramados()) {
             return getInstance().getNumParticipantesProgramados() >= 0 && getInstance().getNumParticipantesProgramados() <= 999;
@@ -620,6 +681,7 @@ public class FichaAtividadeColetiva {
      * 250 caractéres. True caso nenhum valor seja setado. False caso a string
      * seja maior que 250 caractéres
      */
+    @Override
     public boolean validaLocalAtividade() {
         if (instance.isSetLocalAtividade()) {
             return getInstance().getLocalAtividade().length() >= 0 && getInstance().getLocalAtividade().length() <= 250;
@@ -635,6 +697,7 @@ public class FichaAtividadeColetiva {
      * horaInicio. True caso o valor nao esteja setado. False caso o valor
      * esteja setado e seja menor ou igual ao valor do field horaInicio
      */
+    @Override
     public boolean validaHoraFim() {
         if (instance.isSetHoraFim()) {
             return getInstance().getHoraFim() > getInstance().getHoraInicio();
@@ -650,6 +713,7 @@ public class FichaAtividadeColetiva {
      * caso o valor nao esteja setado. False caso o valor esteja setado e seja
      * igual ou maior que 100000000
      */
+    @Override
     public boolean validaInep() {
         if (getInstance().isSetInep()) {
             return getInstance().getInep() < 100000000;
@@ -666,6 +730,7 @@ public class FichaAtividadeColetiva {
      * False - caso o número esteja setado e nao atenda aos padrões do cartão
      * SUS.
      */
+    @Override
     public boolean validaResponsavelCns() {
 
         String cns = getInstance().getResponsavelCns();
@@ -680,6 +745,7 @@ public class FichaAtividadeColetiva {
      * caracteres. False caso o valor esteja setado e seja diferente de 7
      * caracteres. False caso o valor nao esteja setado.
      */
+    @Override
     public boolean validaResponsavelCnesUnidade() {
         if (getInstance().isSetResponsavelCnesUnidade()) {
             return getInstance().getResponsavelCnesUnidade().length() == 7;
@@ -695,6 +761,7 @@ public class FichaAtividadeColetiva {
      * caracteres. False caso o valor esteja setado e seja diferente de 10
      * caracteres. True caso o valor nao esteja setado.
      */
+    @Override
     public boolean validaResponsavelNumIne() {
         if (getInstance().isSetResponsavelNumIne()) {
             return getInstance().getResponsavelNumIne().length() == 10;
@@ -710,6 +777,7 @@ public class FichaAtividadeColetiva {
      * 999. True caso o valor nao esteja setado. False case o valor esteja
      * setado e fora do intervalo 0 - 999
      */
+    @Override
     public boolean validaNumParticipantes() {
         if (getInstance().isSetNumParticipantes()) {
             return getInstance().getNumParticipantes() >= 0 && getInstance().getNumParticipantes() <= 999;
@@ -725,6 +793,7 @@ public class FichaAtividadeColetiva {
      * 999. True caso o valor nao esteja setado. False case o valor esteja
      * setado e fora do intervalo 0 - 999
      */
+    @Override
     public boolean validaNumAvaliacoesAlteradas() {
         if (getInstance().isSetNumAvaliacoesAlteradas()) {
             return getInstance().getNumAvaliacoesAlteradas() >= 0 && getInstance().getNumAvaliacoesAlteradas() <= 999;
@@ -740,6 +809,7 @@ public class FichaAtividadeColetiva {
      * False caso o valor esteja setado e esteja fora dos valores 1 - 99. False
      * caso o valor nao esteja setado
      */
+    @Override
     public boolean validaProfssionais() {
         if (getInstance().isSetProfissionais()) {
             return getInstance().getProfissionais().size() >= 1 && getInstance().getProfissionais().size() <= 99;
@@ -756,6 +826,7 @@ public class FichaAtividadeColetiva {
      * False caso o valor esteja setado e esteja fora os valores de 1 a 7. False
      * caso o valor nao esteja setado
      */
+    @Override
     public boolean validaAtividadeTipo() {
         if (getInstance().isSetAtividadeTipo()) {
             return getInstance().getAtividadeTipo() >= 1 && getInstance().getAtividadeTipo() <= 7;
@@ -775,6 +846,7 @@ public class FichaAtividadeColetiva {
      * caso o valor de atividadeTipo seja diferente de 1 a 3 e o valor de
      * temaParaReuniao esteja setado
      */
+    @Override
     public boolean validaTemasParaReuniao() {
         if (getInstance().getAtividadeTipo() >= 1 && getInstance().getAtividadeTipo() <= 3) {
             if (getInstance().isSetTemasParaReuniao()) {
@@ -803,6 +875,7 @@ public class FichaAtividadeColetiva {
      * False caso o valor de atividadeTipo seja diferente de 4 a 7 e o valor de
      * validaPublicoAlvo esteja setado
      */
+    @Override
     public boolean validaPublicoAlvo() {
         if (getInstance().getAtividadeTipo() >= 4 && getInstance().getAtividadeTipo() <= 7) {
             if (getInstance().isSetPublicoAlvo()) {
@@ -832,6 +905,7 @@ public class FichaAtividadeColetiva {
      * setado e seja diferente de 1 a 28. False caso o valor de atividadeTipo
      * seja diferente de 4 a 7 e o valor de PraticasTemasParaSaude esteja setado
      */
+    @Override
     public boolean validaPraticasTemasParaSaude() {
         if (getInstance().getAtividadeTipo() >= 4 && getInstance().getAtividadeTipo() <= 7) {
             if (getInstance().isSetPraticasTemasParaSaude()) {
@@ -857,6 +931,7 @@ public class FichaAtividadeColetiva {
      * True caso o valor nao esteja setado. False caso o valor esteja setado e
      * esteja fora dos valores de 0 a 33.
      */
+    @Override
     public boolean validaParticipantes() {
         if (getInstance().isSetParticipantes()) {
             return getInstance().getParticipantes().size() >= 0 && getInstance().getParticipantes().size() <= 33;
@@ -872,6 +947,7 @@ public class FichaAtividadeColetiva {
      *
      * @return true se válido false se inválido
      */
+    @Override
     public boolean validaCodigoIbgeMunicipio() {
         String var = instance.getCodigoIbgeMunicipio();
         return var != null
@@ -884,6 +960,7 @@ public class FichaAtividadeColetiva {
      * @return True caso todos estejam validos False caso algum deles esteja
      * invalido.
      */
+    @Override
     public boolean validates() {
         return this.validaAtividadeTipo() && this.validaDtAtividadeColetiva() && this.validaHoraFim() && this.validaInep() && this.validaLocalAtividade()
                 && this.validaNumAvaliacoesAlteradas() && this.validaNumParticipantes() && this.validaNumParticipantesProgramados() && this.validaPraticasTemasParaSaude()

@@ -1,12 +1,14 @@
 package com.github.Eddyosos.integracao20171.esus.cds.atividadecoletiva;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadecoletiva.ParticipanteRowItemThrift;
+import com.github.Eddyosos.integracao20171.utils.IDS.CNS;
+import com.github.eddyosos.e_sus_ab_factory.cds.atividadecoletiva.IParticipanteRowItem;
 
-public class ParticipanteRowItem {
+public class ParticipanteRowItem implements IParticipanteRowItem {
 
-    ParticipanteRowItemThrift participanteRowItemThrift = new ParticipanteRowItemThrift();
+    private ParticipanteRowItemThrift participanteRowItemThrift = new ParticipanteRowItemThrift();
 
-    protected ParticipanteRowItem(ParticipanteRowItemThrift participanteRowItemThrift) {
+    public ParticipanteRowItem(ParticipanteRowItemThrift participanteRowItemThrift) {
         this.participanteRowItemThrift = participanteRowItemThrift;
     }
     /**
@@ -14,6 +16,7 @@ public class ParticipanteRowItem {
      * @return cns String
      */
 
+    @Override
     public String getCns() {
         return participanteRowItemThrift.getCns();
     }
@@ -22,6 +25,7 @@ public class ParticipanteRowItem {
      * @param cns string
      */
 
+    @Override
     public void setCns(String cns) {
         participanteRowItemThrift.setCns(cns);
     }
@@ -30,6 +34,7 @@ public class ParticipanteRowItem {
      * @return dataNascimento long
      */
 
+    @Override
     public long getDataNascimento() {
         return participanteRowItemThrift.getDataNascimento();
     }
@@ -38,6 +43,7 @@ public class ParticipanteRowItem {
      * @param dataNascimento long
      */
 
+    @Override
     public void setDataNascimento(long dataNascimento) {
         participanteRowItemThrift.setDataNascimento(dataNascimento);
     }
@@ -46,6 +52,7 @@ public class ParticipanteRowItem {
      * @return AvaliacaoAlterada boolean
      */
 
+    @Override
     public boolean isAvaliacaoAlterada() {
         return participanteRowItemThrift.isAvaliacaoAlterada();
     }
@@ -54,6 +61,7 @@ public class ParticipanteRowItem {
      * @param avaliacaoAlterada boolean
      */
 
+    @Override
     public void setAvaliacaoAlterada(boolean avaliacaoAlterada) {
         participanteRowItemThrift.setAvaliacaoAlterada(avaliacaoAlterada);
     }
@@ -62,6 +70,7 @@ public class ParticipanteRowItem {
      * @return peso double
      */
 
+    @Override
     public double getPeso() {
         return participanteRowItemThrift.getPeso();
     }
@@ -70,6 +79,7 @@ public class ParticipanteRowItem {
      * @param peso double
      */
 
+    @Override
     public void setPeso(double peso) {
         participanteRowItemThrift.setPeso(peso);
     }
@@ -78,6 +88,7 @@ public class ParticipanteRowItem {
      * @return altura double
      */
 
+    @Override
     public double getAltura() {
         return participanteRowItemThrift.getAltura();
     }
@@ -86,6 +97,7 @@ public class ParticipanteRowItem {
      * @param altura double
      */
 
+    @Override
     public void setAltura(double altura) {
         participanteRowItemThrift.setAltura(altura);
     }
@@ -93,6 +105,7 @@ public class ParticipanteRowItem {
      * Devolve o valor de cessouHabitoFumar
      * @return cessouHabitoFumar boolean
      */
+    @Override
     public boolean isCessouHabitoFumar() {
         return participanteRowItemThrift.isCessouHabitoFumar();
     }
@@ -101,6 +114,7 @@ public class ParticipanteRowItem {
      * @param cessouHabitoFumar boolean
      */
 
+    @Override
     public void setCessouHabitoFumar(boolean cessouHabitoFumar) {
         participanteRowItemThrift.setCessouHabitoFumar(cessouHabitoFumar);
     }
@@ -109,21 +123,26 @@ public class ParticipanteRowItem {
      * @return abandonouGrupo boolean
      */
 
+    @Override
     public boolean isAbandonouGrupo() {
         return participanteRowItemThrift.isAbandonouGrupo();
     }
+    
     /**
      * Altera o valor de abandonouGrupo
      * @param abandonouGrupo boolean
      */
+    @Override
     public void setAbandonouGrupo(boolean abandonouGrupo) {
         participanteRowItemThrift.setAbandonouGrupo(abandonouGrupo);
     }
+    
     /**
      *  Devolve uma instancia de ParticipanteRowItemThrift
      * @return participanteRowItemThrift ParticipanteRowItemThrift
      */
-    protected ParticipanteRowItemThrift getInstance() {
+    @Override
+    public ParticipanteRowItemThrift getInstance() {
         return participanteRowItemThrift;
     }
 
@@ -135,104 +154,9 @@ public class ParticipanteRowItem {
      * False - caso o número esteja setado e nao atenda aos padrões do cartão
      * SUS.
      */
+    @Override
     public boolean validaCns() {
-
-        String cns = getInstance().getCns();
-        if (getInstance().isSetCns()) {
-            if (cns.charAt(0) == '1' || cns.charAt(0) == '2') {
-
-                if (cns.trim().length() != 15) {
-                    return (false);
-                }
-
-                float soma;
-                float resto, dv;
-                String pis = "";
-                String resultado = "";
-                pis = cns.substring(0, 11);
-
-                soma = ((Integer.parseInt(pis.substring(0, 1))) * 15)
-                        + ((Integer.valueOf(pis.substring(1, 2)).intValue()) * 14)
-                        + ((Integer.valueOf(pis.substring(2, 3)).intValue()) * 13)
-                        + ((Integer.valueOf(pis.substring(3, 4)).intValue()) * 12)
-                        + ((Integer.valueOf(pis.substring(4, 5)).intValue()) * 11)
-                        + ((Integer.valueOf(pis.substring(5, 6)).intValue()) * 10)
-                        + ((Integer.valueOf(pis.substring(6, 7)).intValue()) * 9)
-                        + ((Integer.valueOf(pis.substring(7, 8)).intValue()) * 8)
-                        + ((Integer.valueOf(pis.substring(8, 9)).intValue()) * 7)
-                        + ((Integer.valueOf(pis.substring(9, 10)).intValue()) * 6)
-                        + ((Integer.valueOf(pis.substring(10, 11)).intValue()) * 5);
-
-                resto = soma % 11;
-                dv = 11 - resto;
-
-                if (dv == 11) {
-                    dv = 0;
-                }
-
-                if (dv == 10) {
-                    soma = ((Integer.valueOf(pis.substring(0, 1)).intValue()) * 15)
-                            + ((Integer.valueOf(pis.substring(1, 2)).intValue()) * 14)
-                            + ((Integer.valueOf(pis.substring(2, 3)).intValue()) * 13)
-                            + ((Integer.valueOf(pis.substring(3, 4)).intValue()) * 12)
-                            + ((Integer.valueOf(pis.substring(4, 5)).intValue()) * 11)
-                            + ((Integer.valueOf(pis.substring(5, 6)).intValue()) * 10)
-                            + ((Integer.valueOf(pis.substring(6, 7)).intValue()) * 9)
-                            + ((Integer.valueOf(pis.substring(7, 8)).intValue()) * 8)
-                            + ((Integer.valueOf(pis.substring(8, 9)).intValue()) * 7)
-                            + ((Integer.valueOf(pis.substring(9, 10)).intValue()) * 6)
-                            + ((Integer.valueOf(pis.substring(10, 11)).intValue()) * 5) + 2;
-
-                    resto = soma % 11;
-                    dv = 11 - resto;
-                    resultado = pis + "001" + String.valueOf((int) dv);
-                } else {
-                    resultado = pis + "000" + String.valueOf((int) dv);
-                }
-
-                if (!cns.equals(resultado)) {
-                    return (false);
-                } else {
-                    return (true);
-                }
-            } else if (cns.charAt(0) == '7' || cns.charAt(0) == '8' || cns.charAt(0) == '9') {
-                if (cns.trim().length() != 15) {
-                    return (false);
-                }
-
-                float dv;
-                float resto, soma;
-
-                soma = ((Integer.valueOf(cns.substring(0, 1)).intValue()) * 15)
-                        + ((Integer.valueOf(cns.substring(1, 2)).intValue()) * 14)
-                        + ((Integer.valueOf(cns.substring(2, 3)).intValue()) * 13)
-                        + ((Integer.valueOf(cns.substring(3, 4)).intValue()) * 12)
-                        + ((Integer.valueOf(cns.substring(4, 5)).intValue()) * 11)
-                        + ((Integer.valueOf(cns.substring(5, 6)).intValue()) * 10)
-                        + ((Integer.valueOf(cns.substring(6, 7)).intValue()) * 9)
-                        + ((Integer.valueOf(cns.substring(7, 8)).intValue()) * 8)
-                        + ((Integer.valueOf(cns.substring(8, 9)).intValue()) * 7)
-                        + ((Integer.valueOf(cns.substring(9, 10)).intValue()) * 6)
-                        + ((Integer.valueOf(cns.substring(10, 11)).intValue()) * 5)
-                        + ((Integer.valueOf(cns.substring(11, 12)).intValue()) * 4)
-                        + ((Integer.valueOf(cns.substring(12, 13)).intValue()) * 3)
-                        + ((Integer.valueOf(cns.substring(13, 14)).intValue()) * 2)
-                        + ((Integer.valueOf(cns.substring(14, 15)).intValue()) * 1);
-
-                resto = soma % 11;
-
-                if (resto != 0) {
-                    return (false);
-                } else {
-                    return (true);
-                }
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-
+        return CNS.validateCNS(getCns());
     }
 
     /**
@@ -241,6 +165,7 @@ public class ParticipanteRowItem {
      * @return True caso o mesmo seja igual a true ou false. False caso nao seja
      * igual a nenhum destes
      */
+    @Override
     public boolean validaAvaliacaoAlterada() {
         return getInstance().isAvaliacaoAlterada() == true || getInstance().isAvaliacaoAlterada() == false;
     }
@@ -252,6 +177,7 @@ public class ParticipanteRowItem {
      *
      * @return true se válido false se inválido
      */
+    @Override
     public boolean validaPeso() {
         double var = getInstance().getPeso();
         return !getInstance().isSetPeso()
@@ -268,6 +194,7 @@ public class ParticipanteRowItem {
      *
      * @return true se válido false se inválido
      */
+    @Override
     public boolean validateAltura() {
         double var = getInstance().getAltura();
         return !getInstance().isSetAltura()
@@ -281,8 +208,12 @@ public class ParticipanteRowItem {
      * @return True caso todos estejam validos
      * False caso algum deles esteja invalido.
      */
+    @Override
     public boolean validates(){
-        return this.validaAvaliacaoAlterada() && this.validaCns() && this.validaPeso() && this.validateAltura();
+        return this.validaAvaliacaoAlterada() &&
+                this.validaCns() && 
+                this.validaPeso() && 
+                this.validateAltura();
            
     }
 
