@@ -6,6 +6,7 @@ import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
 import com.github.Eddyosos.integracao20171.utils.IDS.CNS;
 import com.github.eddyosos.e_sus_ab_factory.cds.common.IEnderecoLocalPermanencia;
 import com.github.eddyosos.e_sus_ab_factory.cds.common.IUnicaLotacaoHeader;
+import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.avaliacaoelegibilidade.IFichaAvaliacaoElegibilidade;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
