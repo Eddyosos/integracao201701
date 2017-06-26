@@ -3,6 +3,7 @@ package com.github.Eddyosos.integracao20171.esus.transport;
 import br.gov.saude.esus.transport.common.api.configuracaodestino.VersaoThrift;
 import br.gov.saude.esus.transport.common.generated.thrift.DadoTransporteThrift;
 import java.nio.ByteBuffer;
+import java.util.UUID;
 import org.apache.thrift.TException;
 
 public class DadoTransporte {
@@ -489,8 +490,166 @@ public class DadoTransporte {
         return instance.toString();
     }
 
-    public void validate() throws TException {
-        instance.validate();
+    public boolean validates(){
+        try {
+            instance.validate();
+        } catch (TException ex) {
+            return false;
+        }
+        
+        return validateUuidDadoSerializado() &&
+                validateTipoDadoSerializado() &&
+                validateCnesDadoSerializado() &&
+                validateCodIbge() &&
+                validateIneDadoSerializado() &&
+                validateDadoSerializado() &&
+                validateRemetente() &&
+                validateOriginadora();
+    }
+    
+    /**
+     * Valida UuidFicha.
+     * Para ser válido deve:
+     * 1- Ter sido préviamente inserido
+     * 2- Ter tamanho entre 36 e 44 (inclusivo)
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateUuidDadoSerializado(){
+        final String var = instance.getUuidDadoSerializado();
+        if(!instance.isSetUuidDadoSerializado() || 
+                var.length() < 36 || 
+                var.length() > 44) 
+            return false;
+        try {
+            UUID.fromString(var.substring(0, 36));
+        } catch(Exception ex){
+            return false;
+        }
+        return true;
+    }
+    
+    /**
+     * Valida o tipo/classe do objeto serializado.
+     * 
+     * Presença obrigatória.
+     * 
+     * Os tipos podem ser:
+     * 2  - Ficha de Cadastro Individual
+     * 3  - Ficha de Cadastro Domiciliar	
+     * 4  - Ficha de Atendimento Individual
+     * 5  - Ficha de Atendimento Odontológico
+     * 6  - Ficha de Atividade Coletiva
+     * 7  - Ficha de Procedimentos
+     * 8  - Ficha de Visita Domiciliar
+     * 10 - Ficha de Atendimento Domiciliar
+     * 11 - Ficha de Avaliação de Elegibilidade
+     * 12 - Marcadores de Consumo Alimentar
+     * 
+     * @return True se estiver de acordo com as regras, caso contrario false.
+     */
+    public boolean validateTipoDadoSerializado(){
+        if( ! instance.isSetTipoDadoSerializado())return false;
+        if(instance.getTipoDadoSerializado() < 2 || 
+                instance.getTipoDadoSerializado() > 12 ||
+                instance.getTipoDadoSerializado() == 9){
+            return false;
+        }
+        
+        return true;
+    }
+    
+    /**
+     * Valida o código CNES da unidade de saúde.
+     * 
+     * Presença obrigatória.
+     * 
+     * tamanho deve ser 7.
+     * 
+     * @return True se estiver de acordo com as regras, caso contrario False.
+     */
+    public boolean validateCnesDadoSerializado(){
+        if( ! instance.isSetCnesDadoSerializado()) return false;
+        
+        if(instance.getCnesDadoSerializado() == null || 
+                instance.getCnesDadoSerializado().length() != 7) return false;
+        
+        return true;
+        
+    }
+    
+    /**
+     * Valida o código CNES da unidade de saúde.
+     * 
+     * Presença obrigatória.
+     * 
+     * tamanho deve ser 7.
+     * 
+     * @return True se estiver de acordo com as regras, caso contrario False.
+     */
+    public boolean validateCodIbge(){
+        if( ! instance.isSetCodIbge()) return false;
+        
+        if(instance.getCodIbge() == null || 
+                instance.getCodIbge().length() != 7) return false;
+        
+        return true;
+        
+    }
+    
+    /**
+     * Valida o código INE da equipe que gerou a ficha.
+     * 
+     * tamanho deve ser 10.
+     * 
+     * @return True se estiver de acordo com as regras, caso contrario False.
+     */
+    public boolean validateIneDadoSerializado(){
+        
+        if(instance.isSetCodIbge()) {
+        
+            if(instance.getCodIbge() == null || 
+                instance.getCodIbge().length() != 10){
+                
+                return false;
+            }
+        }
+        
+        return true;
+        
+    }
+    
+    /**
+     * Valida o dado serializado através do TBinaryProtocol a partir de uma ficha.
+     * 
+     * Presença obrigatória.
+     * 
+     * @return True se estiver de acordo com as regras, Caso contrario False.
+     */
+    public boolean validateDadoSerializado(){
+        return instance.isSetDadoSerializado();
+    }
+    
+    /**
+     * Valida o identificador da instalação que enviou o dado.
+     * 
+     * Presença obrigatória.
+     * 
+     * @return True se estiver de acordo com as regras, Caso contrario False.
+     */
+    public boolean validateRemetente(){
+        return instance.isSetRemetente() && this.getRemetente().validates();
+    }
+    
+    /**
+     * Valida o identificador da instalação que cadastrou/digitou..
+     * 
+     * Presença obrigatória.
+     * 
+     * @return True se estiver de acordo com as regras, Caso contrario False.
+     */
+    public boolean validateOriginadora(){
+        return instance.isSetOriginadora() && this.getOriginadora().validates();
     }
     
     
