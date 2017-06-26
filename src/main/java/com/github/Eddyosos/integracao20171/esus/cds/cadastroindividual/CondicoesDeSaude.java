@@ -3,14 +3,16 @@ package com.github.Eddyosos.integracao20171.esus.cds.cadastroindividual;
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.CondicoesDeSaudeThrift;
 import java.util.Iterator;
 import java.util.List;
-import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
 
 public class CondicoesDeSaude {
     
-    private CondicoesDeSaudeThrift instance = new CondicoesDeSaudeThrift();
+    private CondicoesDeSaudeThrift instance;
+            
+    public CondicoesDeSaude(){
+        instance = new CondicoesDeSaudeThrift();
+    }
     
-    protected CondicoesDeSaude( CondicoesDeSaudeThrift condicoesDeSaudeTrift){
+    public CondicoesDeSaude( CondicoesDeSaudeThrift condicoesDeSaudeTrift){
         this.instance = condicoesDeSaudeTrift;
     }
 

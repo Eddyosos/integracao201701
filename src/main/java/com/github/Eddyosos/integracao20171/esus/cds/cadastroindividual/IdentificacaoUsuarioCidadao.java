@@ -4,9 +4,14 @@ import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.Ident
 import org.apache.thrift.TException;
 
 public class IdentificacaoUsuarioCidadao {
-    private IdentificacaoUsuarioCidadaoThrift identificacaoUsuarioCidadaoThrift = new IdentificacaoUsuarioCidadaoThrift();
+    private IdentificacaoUsuarioCidadaoThrift identificacaoUsuarioCidadaoThrift;
+    public IdentificacaoUsuarioCidadao(){
+        identificacaoUsuarioCidadaoThrift = new IdentificacaoUsuarioCidadaoThrift();
+    }
     
-    protected IdentificacaoUsuarioCidadao(IdentificacaoUsuarioCidadaoThrift identificacaoUsuarioCidadao){
+    
+    
+    public IdentificacaoUsuarioCidadao(IdentificacaoUsuarioCidadaoThrift identificacaoUsuarioCidadao){
         this.identificacaoUsuarioCidadaoThrift = identificacaoUsuarioCidadao;
     }
 

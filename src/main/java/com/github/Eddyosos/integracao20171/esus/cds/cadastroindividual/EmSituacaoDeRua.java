@@ -7,10 +7,14 @@ import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
 
 public class EmSituacaoDeRua {
-    private EmSituacaoDeRuaThrift emSituacaoDeRuaThrift = new EmSituacaoDeRuaThrift();
+    private EmSituacaoDeRuaThrift emSituacaoDeRuaThrift;
     
     protected EmSituacaoDeRua(EmSituacaoDeRuaThrift emSituacaoDeRua){
         this.emSituacaoDeRuaThrift = emSituacaoDeRua;
+    }
+
+    public EmSituacaoDeRua() {
+        this.emSituacaoDeRuaThrift = new EmSituacaoDeRuaThrift();
     }
 
     public EmSituacaoDeRua deepCopy() {

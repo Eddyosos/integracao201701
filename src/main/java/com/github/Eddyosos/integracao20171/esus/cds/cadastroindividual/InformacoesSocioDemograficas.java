@@ -6,10 +6,14 @@ import java.util.List;
 import org.apache.thrift.TException;
 
 public class InformacoesSocioDemograficas {
-    private InformacoesSocioDemograficasThrift informacoesSocioDemograficasThrift = new InformacoesSocioDemograficasThrift();
+    private InformacoesSocioDemograficasThrift informacoesSocioDemograficasThrift;
     
-    protected InformacoesSocioDemograficas(InformacoesSocioDemograficasThrift informacoesSocioDemograficasThrift){
+    public InformacoesSocioDemograficas(InformacoesSocioDemograficasThrift informacoesSocioDemograficasThrift){
         this.informacoesSocioDemograficasThrift = informacoesSocioDemograficasThrift;
+    }
+
+    public InformacoesSocioDemograficas() {
+        this.informacoesSocioDemograficasThrift = new InformacoesSocioDemograficasThrift();
     }
 
     public InformacoesSocioDemograficas deepCopy() {

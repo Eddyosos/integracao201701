@@ -2,205 +2,172 @@ package com.github.Eddyosos.integracao20171.esus.cds.cadastroindividual;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.CadastroIndividualThrift;
 import com.github.Eddyosos.integracao20171.esus.cds.common.HeaderCdsCadastro;
-import org.apache.thrift.TException;
+import java.util.UUID;
 
 public class CadastroIndividual {
-    private CadastroIndividualThrift instance = new CadastroIndividualThrift();
+    private CadastroIndividualThrift instance;
+    
+    public CadastroIndividual(){
+        instance = new CadastroIndividualThrift();
+    }
 
+    /**
+     * Formulário referente as condições de saúde do cidadão.
+     * @return 
+     */
     public CondicoesDeSaude getCondicoesDeSaude() {
         return new CondicoesDeSaude(instance.getCondicoesDeSaude());
     }
 
+    /**
+     * Formulário referente as condições de saúde do cidadão.
+     * @param condicoesDeSaude 
+     */
     public void setCondicoesDeSaude(CondicoesDeSaude condicoesDeSaude) {
         instance.setCondicoesDeSaude(condicoesDeSaude.getInstance());
     }
 
-    public void unsetCondicoesDeSaude() {
-        instance.unsetCondicoesDeSaude();
-    }
-
-    public boolean isSetCondicoesDeSaude() {
-        return instance.isSetCondicoesDeSaude();
-    }
-
-    public void setCondicoesDeSaudeIsSet(boolean value) {
-        instance.setCondicoesDeSaudeIsSet(value);
-    }
-
+    /**
+     * Dados referentes ao profissional e a data do cadastro.
+     * @return 
+     */
     public HeaderCdsCadastro getDadosGerais() {
         return new HeaderCdsCadastro(instance.getDadosGerais());
     }
 
+    /**
+     * Dados referentes ao profissional e a data do cadastro.
+     * @param dadosGerais 
+     */
     public void setDadosGerais(HeaderCdsCadastro dadosGerais) {
         instance.setDadosGerais(dadosGerais.getInstance());
     }
 
-    public void unsetDadosGerais() {
-        instance.unsetDadosGerais();
-    }
-
-    public boolean isSetDadosGerais() {
-        return instance.isSetDadosGerais();
-    }
-
-    public void setDadosGeraisIsSet(boolean value) {
-        instance.setDadosGeraisIsSet(value);
-    }
-
+    /**
+     * Formulário referente a informações de situação de rua (se o cidadão se encontrar nessa situação).
+     * @return 
+     */
     public EmSituacaoDeRua getEmSituacaoDeRua() {
         return new EmSituacaoDeRua(instance.getEmSituacaoDeRua());
     }
 
+    /**
+     * Formulário referente a informações de situação de rua (se o cidadão se encontrar nessa situação).
+     * @param emSituacaoDeRua 
+     */
     public void setEmSituacaoDeRua(EmSituacaoDeRua emSituacaoDeRua) {
         instance.setEmSituacaoDeRua(emSituacaoDeRua.getInstance());
     }
 
-    public void unsetEmSituacaoDeRua() {
-        instance.unsetEmSituacaoDeRua();
-    }
-
-    public boolean isSetEmSituacaoDeRua() {
-        return instance.isSetEmSituacaoDeRua();
-    }
-
-    public void setEmSituacaoDeRuaIsSet(boolean value) {
-        instance.setEmSituacaoDeRuaIsSet(value);
-    }
-
+    /**
+     * Marcador que indica se a ficha é uma atualização.
+     * @return 
+     */
     public boolean isFichaAtualizada() {
         return instance.isFichaAtualizada();
     }
 
+    /**
+     * Marcador que indica se a ficha é uma atualização.
+     * @param fichaAtualizada 
+     */
     public void setFichaAtualizada(boolean fichaAtualizada) {
         instance.setFichaAtualizada(fichaAtualizada);
     }
 
-    public void unsetFichaAtualizada() {
-        instance.unsetFichaAtualizada();
-    }
-
-    public boolean isSetFichaAtualizada() {
-        return instance.isSetFichaAtualizada();
-    }
-
-    public void setFichaAtualizadaIsSet(boolean value) {
-        instance.setFichaAtualizadaIsSet(value);
-    }
-
+    /**
+     * Dados que identificam o cidadão.
+     * @return 
+     */
     public IdentificacaoUsuarioCidadao getIdentificacaoUsuarioCidadao() {
         return new IdentificacaoUsuarioCidadao(instance.getIdentificacaoUsuarioCidadao());
     }
 
+    /**
+     * Dados que identificam o cidadão.
+     * @param identificacaoUsuarioCidadao 
+     */
     public void setIdentificacaoUsuarioCidadao(IdentificacaoUsuarioCidadao identificacaoUsuarioCidadao) {
         instance.setIdentificacaoUsuarioCidadao(identificacaoUsuarioCidadao.getInstance());
     }
-
-    public void unsetIdentificacaoUsuarioCidadao() {
-        instance.unsetIdentificacaoUsuarioCidadao();
-    }
-
-    public boolean isSetIdentificacaoUsuarioCidadao() {
-        return instance.isSetIdentificacaoUsuarioCidadao();
-    }
-
-    public void setIdentificacaoUsuarioCidadaoIsSet(boolean value) {
-        instance.setIdentificacaoUsuarioCidadaoIsSet(value);
-    }
-
+    
+    /**
+     * Informações sócio-demográficas fornecidas pelo cidadão.
+     * @return 
+     */
     public InformacoesSocioDemograficas getInformacoesSocioDemograficas() {
         return new InformacoesSocioDemograficas(instance.getInformacoesSocioDemograficas());
     }
 
+    /**
+     * Informações sócio-demográficas fornecidas pelo cidadão.
+     * @param informacoesSocioDemograficas 
+     */
     public void setInformacoesSocioDemograficas(InformacoesSocioDemograficas informacoesSocioDemograficas) {
         instance.setInformacoesSocioDemograficas(informacoesSocioDemograficas.getIntence());
     }
 
-    public void unsetInformacoesSocioDemograficas() {
-        instance.unsetInformacoesSocioDemograficas();
-    }
-
-    public boolean isSetInformacoesSocioDemograficas() {
-        return instance.isSetInformacoesSocioDemograficas();
-    }
-
-    public void setInformacoesSocioDemograficasIsSet(boolean value) {
-        instance.setInformacoesSocioDemograficasIsSet(value);
-    }
-
+    /**
+     * Marcador que indica se o termo de recusa foi assinalado.
+     * @return 
+     */
     public boolean isStatusTermoRecusaCadastroIndividualAtencaoBasica() {
         return instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
     }
-
+    
+    /**
+     * Marcador que indica se o termo de recusa foi assinalado.
+     * @param statusTermoRecusaCadastroIndividualAtencaoBasica 
+     */
     public void setStatusTermoRecusaCadastroIndividualAtencaoBasica(boolean statusTermoRecusaCadastroIndividualAtencaoBasica) {
         instance.setStatusTermoRecusaCadastroIndividualAtencaoBasica(statusTermoRecusaCadastroIndividualAtencaoBasica);
     }
 
-    public void unsetStatusTermoRecusaCadastroIndividualAtencaoBasica() {
-        instance.unsetStatusTermoRecusaCadastroIndividualAtencaoBasica();
-    }
-
-    public boolean isSetStatusTermoRecusaCadastroIndividualAtencaoBasica() {
-        return instance.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica();
-    }
-
-    public void setStatusTermoRecusaCadastroIndividualAtencaoBasicaIsSet(boolean value) {
-        instance.setStatusTermoRecusaCadastroIndividualAtencaoBasicaIsSet(value);
-    }
-
+    /**
+     * Tipo de origem dos dados do registro.
+     * @param tpCdsOrigem 
+     */
     public void setTpCdsOrigem(int tpCdsOrigem) {
         instance.setTpCdsOrigem(tpCdsOrigem);
     }
 
+    /**
+     * Tipo de origem dos dados do registro.
+     */
     public void unsetTpCdsOrigem() {
         instance.unsetTpCdsOrigem();
     }
 
-    public boolean isSetTpCdsOrigem() {
-        return instance.isSetTpCdsOrigem();
-    }
-
-    public void setTpCdsOrigemIsSet(boolean value) {
-        instance.setTpCdsOrigemIsSet(value);
-    }
-
+    /**
+     * Código UUID para identificar a ficha na base de dados nacional.
+     * @return 
+     */
     public String getUuid() {
         return instance.getUuid();
     }
 
+    /**
+     * Código UUID para identificar a ficha na base de dados nacional.
+     * @param uuid 
+     */
     public void setUuid(String uuid) {
         instance.setUuid(uuid);
     }
 
-    public void unsetUuid() {
-        instance.unsetUuid();
-    }
-
-    public boolean isSetUuid() {
-        return instance.isSetUuid();
-    }
-
-    public void setUuidIsSet(boolean value) {
-        instance.setUuidIsSet(value);
-    }
-
+    /**
+     * Código UUID para identificar a ficha que deu origem ao cadastro do registro.
+     * @return 
+     */
     public String getUuidFichaOriginadora() {
         return instance.getUuidFichaOriginadora();
     }
 
+    /**
+     * Código UUID para identificar a ficha que deu origem ao cadastro do registro.
+     * @param uuidFichaOriginadora 
+     */
     public void setUuidFichaOriginadora(String uuidFichaOriginadora) {
         instance.setUuidFichaOriginadora(uuidFichaOriginadora);
-    }
-
-    public void unsetUuidFichaOriginadora() {
-        instance.unsetUuidFichaOriginadora();
-    }
-
-    public boolean isSetUuidFichaOriginadora() {
-        return instance.isSetUuidFichaOriginadora();
-    }
-
-    public void setUuidFichaOriginadoraIsSet(boolean value) {
-        instance.setUuidFichaOriginadoraIsSet(value);
     }
 
     public String getUuidCidadao() {
@@ -211,31 +178,44 @@ public class CadastroIndividual {
         instance.setUuidCidadao(uuidCidadao);
     }
 
-    public void unsetUuidCidadao() {
-        instance.unsetUuidCidadao();
-    }
-
-    public boolean isSetUuidCidadao() {
-        return instance.isSetUuidCidadao();
-    }
-
-    public void setUuidCidadaoIsSet(boolean value) {
-        instance.setUuidCidadaoIsSet(value);
-    }
-
+    /**
+     * Valida a instancia
+     * @return true se válido
+     *          false se inválido
+     */
     public boolean validate() {
-        return false;
+        return validateCondicoesDeSaude() &&
+                validateDadosGerais() &&
+                validateEmSituacaoDeRua() &&
+                validateFichaAtualizada() &&
+                validateIndetificacaoUsuarioCidadao() &&
+                validateInformacoesSocioDemografica() &&
+                validateTpCdsOrigem() && 
+                validateUuid() &&
+                validateUuidFichaOriginadora();
     }
     
     /**
      * Valida o campo condições de saúde.
+     * Para ser válido deve, caso inserido:
+     * 1- Regras: Não deve ser preenchido se o campo statusTermoRecusaCadastroIndividualAtencaoBasica = true.
      * @return true se for válido
      * @return false se for inválido
      */
     public boolean validateCondicoesDeSaude() {
-    	if (instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica() && instance.isSetCondicoesDeSaude())
-    		return false;
-    	return true; //TODO
+    	return !instance.isSetCondicoesDeSaude() || 
+               !instance.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica() ||
+               !instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
+    }
+    
+    /**
+     * Valida DadosGerais
+     * Para ser válido deve ter sido inserido préviamente
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateDadosGerais(){
+        return instance.isSetDadosGerais();
     }
     
     /**
@@ -244,9 +224,9 @@ public class CadastroIndividual {
      * @return false se for inválido
      */
     public boolean validateEmSituacaoDeRua() {
-    	if (instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica() && instance.isSetEmSituacaoDeRua())
-    		return false;
-    	return true; //TODO
+        return !instance.isSetEmSituacaoDeRua() ||
+                !instance.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica() ||
+                !instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
     }
     
     /**
@@ -261,12 +241,12 @@ public class CadastroIndividual {
     /**
      * Valida o campo indentificacaoUsuarioCidadao
      * @return true se for válido
-     * @return false se for inválido
+     *          false se for inválido
      */
     public boolean validateIndetificacaoUsuarioCidadao() {
-    	if (!instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica() && instance.isSetIdentificacaoUsuarioCidadao())
-    		return false;
-    	return true; //TODO
+        return !instance.isSetIdentificacaoUsuarioCidadao() ||
+                !instance.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica() ||
+                !instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
     }
     
     /**
@@ -275,19 +255,12 @@ public class CadastroIndividual {
      * @return false se for inválido
      */
     public boolean validateInformacoesSocioDemografica() {
-    	if (instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica() && instance.isSetInformacoesSocioDemograficas())
-    		return false;
-    	return true; //TODO
+        return !instance.isSetInformacoesSocioDemograficas() ||
+                !instance.isSetStatusTermoRecusaCadastroIndividualAtencaoBasica() ||
+                !instance.isStatusTermoRecusaCadastroIndividualAtencaoBasica();
     }
     
-    /**
-     * Valida o status do termo
-     * @return true se for válido
-     * @return false se for inválido
-     */
-    public boolean validateStatusTermoRecusaCadastroIndividualAtencaoBasica() {
-    	return true;
-    }
+    //Não á validações para o statusTermoRecusaCadastroIndividualAtencaoBasica
     
     /**
      * Valida o tipo de origem do cadastro de registro
@@ -303,8 +276,19 @@ public class CadastroIndividual {
      * @return true se for válido
      * @return false se for inválido
      */
-    public boolean validateUuid() {
-    	return instance.isSetUuid() && instance.getUuid().length() >= 36 && instance.getUuid().length() <= 44;
+    public boolean validateUuid(){
+        return !instance.isSetUuid() || 
+                validateUuid(instance.getUuid());
+    }
+    
+    public boolean validateUuid(String var) {
+        if(var.length() < 36 || var.length() > 44) return false;
+        try{
+            UUID.fromString(var.substring(0,36));
+        } catch (Exception ex) {
+            return false;
+        }
+        return true;
     }
     
     /**
@@ -313,7 +297,8 @@ public class CadastroIndividual {
      * @return false se for inválido
      */
     public boolean validateUuidFichaOriginadora() {
-    	return instance.isSetUuidFichaOriginadora() && instance.getUuidFichaOriginadora().length() >= 36 && instance.getUuidFichaOriginadora().length() <= 44;
+    	return instance.isSetUuidFichaOriginadora() && 
+                validateUuid(instance.getUuidFichaOriginadora());
     }
     
     /**
