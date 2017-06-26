@@ -1,7 +1,7 @@
 package com.github.Eddyosos.integracao20171.esus.cds.atividadecoletiva;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadecoletiva.ProfissionalCboRowItemThrift;
-import org.apache.thrift.TException;
+
 
 public class ProfissionalCboRowItem {
     ProfissionalCboRowItemThrift profissionalCboRowItemThrift = new ProfissionalCboRowItemThrift();
@@ -9,82 +9,39 @@ public class ProfissionalCboRowItem {
     protected ProfissionalCboRowItem(ProfissionalCboRowItemThrift profissionalCboRowItemThrift){
         this.profissionalCboRowItemThrift = profissionalCboRowItemThrift;
     }
-
-    public ProfissionalCboRowItem deepCopy() {
-        return new ProfissionalCboRowItem(profissionalCboRowItemThrift.deepCopy());
-    }
-
-    public void clear() {
-        profissionalCboRowItemThrift.clear();
-    }
-
+    /**
+     * Devolve o valor de cns
+     * @return cns String
+     */
     public String getCns() {
         return profissionalCboRowItemThrift.getCns();
     }
-
+    /**
+     * Altera o valor de cns
+     * @param cns String
+     */
     public void setCns(String cns) {
         profissionalCboRowItemThrift.setCns(cns);
     }
-
-    public void unsetCns() {
-        profissionalCboRowItemThrift.unsetCns();
-    }
-
-    public boolean isSetCns() {
-        return profissionalCboRowItemThrift.isSetCns();
-    }
-
-    public void setCnsIsSet(boolean value) {
-        profissionalCboRowItemThrift.setCnsIsSet(value);
-    }
+    /**
+     * Devolve o valor de codigoCbo2002
+     * @return codigoCbo2002 String
+     */
 
     public String getCodigoCbo2002() {
         return profissionalCboRowItemThrift.getCodigoCbo2002();
     }
-
+    /**
+     * Atlera o valor de codigoCbo2002
+     * @param codigoCbo2002 String
+     */
     public void setCodigoCbo2002(String codigoCbo2002) {
         profissionalCboRowItemThrift.setCodigoCbo2002(codigoCbo2002);
     }
-
-    public void unsetCodigoCbo2002() {
-        profissionalCboRowItemThrift.unsetCodigoCbo2002();
-    }
-
-    public boolean isSetCodigoCbo2002() {
-        return profissionalCboRowItemThrift.isSetCodigoCbo2002();
-    }
-
-    public void setCodigoCbo2002IsSet(boolean value) {
-        profissionalCboRowItemThrift.setCodigoCbo2002IsSet(value);
-    }
-
-    @Override
-    public boolean equals(Object that) {
-        return profissionalCboRowItemThrift.equals(that);
-    }
-
-    public boolean equals(ProfissionalCboRowItem that) {
-        return profissionalCboRowItemThrift.equals(that.getInstance());
-    }
-
-    @Override
-    public int hashCode() {
-        return profissionalCboRowItemThrift.hashCode();
-    }
-
-    public int compareTo(ProfissionalCboRowItem other) {
-        return profissionalCboRowItemThrift.compareTo(other.getInstance());
-    }
-
-    @Override
-    public String toString() {
-        return profissionalCboRowItemThrift.toString();
-    }
-
-    public void validate() throws TException {
-        profissionalCboRowItemThrift.validate();
-    }
-
+    /**
+     * Devolve uma instancia de ProfissionalCboRowItemThrift
+     * @return profissionalCboRowItemThrift
+     */
     protected ProfissionalCboRowItemThrift getInstance(){
         return profissionalCboRowItemThrift;
     }
