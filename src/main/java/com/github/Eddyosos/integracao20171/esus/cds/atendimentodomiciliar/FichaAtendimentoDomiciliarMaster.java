@@ -355,7 +355,7 @@ public class FichaAtendimentoDomiciliarMaster implements IFichaAtendimentoDOmici
         dadoTransporteThrift.setDadoSerializado(fichaSerializada);
 
         try {
-            File zipFile = new File(System.getProperty("user.home") + "/fichaProcedimento.zip");
+            File zipFile = new File(System.getProperty("user.home") + "/fichaAtendimentoDomiciliar.zip");
             ZipOutputStream outputStream = new ZipOutputStream(new FileOutputStream(zipFile));
             String entryName = dadoTransporteThrift.getUuidDadoSerializado() + EXTENSAO_EXPORT;
             outputStream.putNextEntry(new ZipEntry(entryName));

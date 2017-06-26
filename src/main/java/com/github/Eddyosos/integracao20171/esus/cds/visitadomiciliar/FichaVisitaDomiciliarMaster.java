@@ -308,13 +308,20 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
         return validaVisitasDomiciliares() && validaHeaderTransport() && validaUuidFicha();
     }
     
-    public void setDadoTransporte(DadoTransporte originadora){
-        this.dadoTransporteThrift = originadora;
+    /**
+     * necessário para gerar o zip
+     * @param dadoTransporteThrift 
+     */
+    public void setDadoTransporte(DadoTransporte dadoTransporteThrift){
+        this.dadoTransporteThrift = dadoTransporteThrift;
     }
     public DadoTransporte getDadoTransporte(){
         return this.dadoTransporteThrift;
     }
 
+    /**
+     * Gera o arquivo zip
+     */
     public void zipGenerate(){
         if(!this.validates() && this.dadoTransporteThrift != null){
             return;
@@ -325,7 +332,7 @@ public class FichaVisitaDomiciliarMaster implements IFichaVisitaDomiciliarMaster
         dadoTransporteThrift.setDadoSerializado(fichaSerializada);
 
         try {
-            File zipFile = new File(System.getProperty("user.home") + "/fichaProcedimento.zip");
+            File zipFile = new File(System.getProperty("user.home") + "/fichaVisitaDomiciliar.zip");
             ZipOutputStream outputStream = new ZipOutputStream(new FileOutputStream(zipFile));
             String entryName = dadoTransporteThrift.getUuidDadoSerializado() + EXTENSAO_EXPORT;
             outputStream.putNextEntry(new ZipEntry(entryName));

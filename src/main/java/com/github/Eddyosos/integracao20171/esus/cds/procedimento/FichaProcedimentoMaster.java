@@ -737,13 +737,20 @@ public class FichaProcedimentoMaster implements IFichaProcedimentoMaster  {
                this.validateAtendProcedimentos();
     }
     
-    public void setDadoTransporte(DadoTransporte originadora){
-        this.dadoTransporteThrift = originadora;
+    /**
+     * necessário para gerar o zip
+     * @param dadoTransporteThrift 
+     */
+    public void setDadoTransporte(DadoTransporte dadoTransporteThrift){
+        this.dadoTransporteThrift = dadoTransporteThrift;
     }
     public DadoTransporte getDadoTransporte(){
         return this.dadoTransporteThrift;
     }
 
+    /**
+     * Gera o arquivo zip
+     */
     public void zipGenerate(){
         if(!this.validate() && this.dadoTransporteThrift != null){
             return;

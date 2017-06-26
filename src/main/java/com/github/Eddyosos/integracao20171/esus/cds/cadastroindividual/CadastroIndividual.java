@@ -370,13 +370,20 @@ public class CadastroIndividual implements ICadastroIndividual {
     	return true; //TODO Não encontrei nem a headerTransport nem a UnicaLotacaoHeader
     }
     
-    public void setDadoTransporte(DadoTransporte originadora){
-        this.dadoTransporteThrift = originadora;
+    /**
+     * necessário para gerar o zip
+     * @param dadoTransporteThrift 
+     */
+    public void setDadoTransporte(DadoTransporte dadoTransporteThrift){
+        this.dadoTransporteThrift = dadoTransporteThrift;
     }
     public DadoTransporte getDadoTransporte(){
         return this.dadoTransporteThrift;
     }
 
+    /**
+     * Gera o arquivo zip
+     */
     public void zipGenerate(){
         if(!this.validate() && this.dadoTransporteThrift != null){
             return;
@@ -387,7 +394,7 @@ public class CadastroIndividual implements ICadastroIndividual {
         dadoTransporteThrift.setDadoSerializado(fichaSerializada);
 
         try {
-            File zipFile = new File(System.getProperty("user.home") + "/fichaProcedimento.zip");
+            File zipFile = new File(System.getProperty("user.home") + "/fichaCadastroIndividual.zip");
             ZipOutputStream outputStream = new ZipOutputStream(new FileOutputStream(zipFile));
             String entryName = dadoTransporteThrift.getUuidDadoSerializado() + EXTENSAO_EXPORT;
             outputStream.putNextEntry(new ZipEntry(entryName));

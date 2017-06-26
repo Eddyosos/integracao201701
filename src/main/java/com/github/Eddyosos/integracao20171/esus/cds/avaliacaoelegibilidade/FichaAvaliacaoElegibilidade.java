@@ -1768,8 +1768,12 @@ public class FichaAvaliacaoElegibilidade implements IFichaAvaliacaoElegibilidade
         return instancia.isSetConclusaoDestinoElegivel();
     }
     
-    public void setDadoTransporte(DadoTransporte originadora){
-        this.dadoTransporteThrift = originadora;
+    /**
+     * necessário para gerar o zip
+     * @param dadoTransporteThrift 
+     */
+    public void setDadoTransporte(DadoTransporte dadoTransporteThrift){
+        this.dadoTransporteThrift = dadoTransporteThrift;
     }
     public DadoTransporte getDadoTransporte(){
         return this.dadoTransporteThrift;
@@ -1785,7 +1789,7 @@ public class FichaAvaliacaoElegibilidade implements IFichaAvaliacaoElegibilidade
         dadoTransporteThrift.setDadoSerializado(fichaSerializada);
 
         try {
-            File zipFile = new File(System.getProperty("user.home") + "/fichaProcedimento.zip");
+            File zipFile = new File(System.getProperty("user.home") + "/fichaAvaliacaoElegibilidade.zip");
             ZipOutputStream outputStream = new ZipOutputStream(new FileOutputStream(zipFile));
             String entryName = dadoTransporteThrift.getUuidDadoSerializado() + EXTENSAO_EXPORT;
             outputStream.putNextEntry(new ZipEntry(entryName));
