@@ -98,214 +98,480 @@ public class EmSituacaoDeRua {
         instance.setHigienePessoalSituacaoRua(higienePessoalSituacaoRua);
     }
 
+    /**
+     * A quantidade de origens da alimentação do cidadão em situação de rua.
+     * 
+     * @return Quantidade de origens da alimentação do cidadão em situação de rua.
+     */
     public int getOrigemAlimentoSituacaoRuaSize() {
         return instance.getOrigemAlimentoSituacaoRuaSize();
     }
 
+    /**
+     * Origens da alimentação do cidadão em situação de rua.
+     * 
+     * @return Código da origem da alimentação do cidadão em situação de rua.
+     */
     public Iterator<Long> getOrigemAlimentoSituacaoRuaIterator() {
         return instance.getOrigemAlimentoSituacaoRuaIterator();
     }
 
+    /**
+     * Adiciona uma origem da alimentação do cidadão em situação de rua.
+     * 
+     * Máximo: 5
+     * Regras: Não pode ser preechido se o campo statusSituacaoRua = false.
+     * 
+     * @param elem Código da origem da alimentação do cidadão em situação de rua
+     */
     public void addToOrigemAlimentoSituacaoRua(long elem) {
         instance.addToOrigemAlimentoSituacaoRua(elem);
     }
 
+    /**
+     * Origens da alimentação do cidadão em situação de rua.
+     * 
+     * @return Código da origem da alimentação do cidadão em situação de rua.
+     */
     public List<Long> getOrigemAlimentoSituacaoRua() {
         return instance.getOrigemAlimentoSituacaoRua();
     }
-
+    /**
+     * Define as origens da alimentação do cidadão em situação de rua.
+     * 
+     * Máximo: 5
+     * Regras: Não pode ser preechido se o campo statusSituacaoRua = false.
+     * 
+     * @param origemAlimentoSituacaoRua Código da origem da alimentação do cidadão em situação de rua
+     */
     public void setOrigemAlimentoSituacaoRua(List<Long> origemAlimentoSituacaoRua) {
         instance.setOrigemAlimentoSituacaoRua(origemAlimentoSituacaoRua);
     }
 
+    /**
+     * Remove a origem da alimentação do cidadão em situação de rua.
+     */
     public void unsetOrigemAlimentoSituacaoRua() {
         instance.unsetOrigemAlimentoSituacaoRua();
     }
 
+    /**
+     * Verifica se a origem da alimentação do cidadão em situação de rua foi declarada.
+     * @return True caso tenha sido declarada, caso contrario False.
+     */
     public boolean isSetOrigemAlimentoSituacaoRua() {
         return instance.isSetOrigemAlimentoSituacaoRua();
     }
 
+    /**
+     * Declara que a origem da alimentação do cidadão em situação de rua foi inserida.
+     * 
+     * @param value True para declarar que foi inserida, caso contrario False.
+     */
     public void setOrigemAlimentoSituacaoRuaIsSet(boolean value) {
         instance.setOrigemAlimentoSituacaoRuaIsSet(value);
     }
 
+    /**
+     * Nome de outra instituição que acompanha o cidadão.
+     * 
+     * @return Nome de outra instituição que acompanha o cidadão.
+     */
     public String getOutraInstituicaoQueAcompanha() {
         return instance.getOutraInstituicaoQueAcompanha();
     }
 
+    /**
+     * Define o nome de outra instituição que acompanha o cidadão.
+     * 
+     * Tamanho máximo: 100
+     * 
+     * Regra: Não pode ser preechido se o campo statusSituacaoRua = false.
+     * Regra: Não pode ser preenchido se o campo statusAcompanhadoPorOutraInstituição = false.
+     * 
+     * @param outraInstituicaoQueAcompanha Nome de outra instituição que acompanha o cidadão.
+     */
     public void setOutraInstituicaoQueAcompanha(String outraInstituicaoQueAcompanha) {
         instance.setOutraInstituicaoQueAcompanha(outraInstituicaoQueAcompanha);
     }
 
+    /**
+     * Remove o nome de outra instituição que acompanha o cidadão.
+     */
     public void unsetOutraInstituicaoQueAcompanha() {
         instance.unsetOutraInstituicaoQueAcompanha();
     }
 
+    /**
+     * Verifica se o nome de outra instituição que acompanha o cidadão foi declarado.
+     * 
+     * @return True caso tenha sido declarada, caso contrario False.
+     */
     public boolean isSetOutraInstituicaoQueAcompanha() {
         return instance.isSetOutraInstituicaoQueAcompanha();
     }
 
+    /**
+     * Declara que o nome de outra instituição que acompanha o cidadão foi inserido.
+     * 
+     * @param value True para declarar que foi inserido, caso contrario False.
+     */
     public void setOutraInstituicaoQueAcompanhaIsSet(boolean value) {
         instance.setOutraInstituicaoQueAcompanhaIsSet(value);
     }
 
+    /**
+     * Quantidade de vezes que o cidadão se alimenta por dia.
+     * @return Código da quantidade de vezes que o cidadão se alimenta por dia.
+     */
     public long getQuantidadeAlimentacoesAoDiaSituacaoRua() {
         return instance.getQuantidadeAlimentacoesAoDiaSituacaoRua();
     }
 
+    /**
+     * Define a quantidade de vezes que o cidadão se alimenta por dia.
+     * 
+     * Regras: Não pode ser preechido se o campo statusSituacaoRua = false.
+     * 
+     * @param quantidadeAlimentacoesAoDiaSituacaoRua Código da quantidade de vezes que o cidadão se alimenta por dia.
+     */
     public void setQuantidadeAlimentacoesAoDiaSituacaoRua(long quantidadeAlimentacoesAoDiaSituacaoRua) {
         instance.setQuantidadeAlimentacoesAoDiaSituacaoRua(quantidadeAlimentacoesAoDiaSituacaoRua);
     }
 
+    /**
+     * Remove a quantidade de vezes que o cidadão se alimenta por dia.
+     */
     public void unsetQuantidadeAlimentacoesAoDiaSituacaoRua() {
         instance.unsetQuantidadeAlimentacoesAoDiaSituacaoRua();
     }
 
+    /**
+     * Verifica se a quantidade de vezes que o cidadão se alimenta por dia foi declarada.
+     * 
+     * @return True caso tenha sido declarada, caso contrario False.
+     */
     public boolean isSetQuantidadeAlimentacoesAoDiaSituacaoRua() {
         return instance.isSetQuantidadeAlimentacoesAoDiaSituacaoRua();
     }
 
+    /**
+     * Declara que a quantidade de vezes que o cidadão se alimenta por dia foi inserida
+     * 
+     * @param value True para declarar que foi inserida, caso contrario False.
+     */
     public void setQuantidadeAlimentacoesAoDiaSituacaoRuaIsSet(boolean value) {
         instance.setQuantidadeAlimentacoesAoDiaSituacaoRuaIsSet(value);
     }
 
+    /**
+     * Verifica se o cidadão é acompanhado por outra instituição.
+     * 
+     * @return True caso seja acompanhado por outra instituição, caso contrario False.
+     */
     public boolean isStatusAcompanhadoPorOutraInstituicao() {
         return instance.isStatusAcompanhadoPorOutraInstituicao();
     }
 
+    /**
+     * Declara que a informação que informa se o cidadão é ou não acompanhado por outra instituição foi inserida.
+     * 
+     * @param statusAcompanhadoPorOutraInstituicao True para declarar que foi inserido, caso contrario False.
+     */
     public void setStatusAcompanhadoPorOutraInstituicao(boolean statusAcompanhadoPorOutraInstituicao) {
         instance.setStatusAcompanhadoPorOutraInstituicao(statusAcompanhadoPorOutraInstituicao);
     }
 
+    /**
+     * Remove a a informação que informa se o cidadão é ou não acompanhado por outra instituição.
+     */
     public void unsetStatusAcompanhadoPorOutraInstituicao() {
         instance.unsetStatusAcompanhadoPorOutraInstituicao();
     }
 
+    /**
+     * Verifica se foi declarada a informação que informa se o cidadão é ou não acompanhado por outra instituição.
+     * 
+     * @return True caso tenha sido inserida, caso contrario False.
+     */
     public boolean isSetStatusAcompanhadoPorOutraInstituicao() {
         return instance.isSetStatusAcompanhadoPorOutraInstituicao();
     }
 
+    /**
+     * Declara que a informação que informa se o cidadão é ou não acompanhado por outra instituição foi inserida.
+     * 
+     * @param value True para declarar que foi inserido, caso contrario False.
+     */
     public void setStatusAcompanhadoPorOutraInstituicaoIsSet(boolean value) {
         instance.setStatusAcompanhadoPorOutraInstituicaoIsSet(value);
     }
 
+    /**
+     * Indica se o cidadão possuiu alguma referência familiar.
+     * 
+     * @return True caso possua alguma referencia, caso contrario False.
+     */
     public boolean isStatusPossuiReferenciaFamiliar() {
         return instance.isStatusPossuiReferenciaFamiliar();
     }
 
+    /**
+     * Define se o cidadão possuiu alguma referência familiar.
+     * 
+     * Regra: Não pode ser preechido se o campo statusSituacaoRua = false.
+     * 
+     * @param statusPossuiReferenciaFamiliar True para indicar que possui referencia, False caso contrario.
+     */
     public void setStatusPossuiReferenciaFamiliar(boolean statusPossuiReferenciaFamiliar) {
         instance.setStatusPossuiReferenciaFamiliar(statusPossuiReferenciaFamiliar);
     }
 
+    /**
+     * Remove o marcador que indica se o cidadão possuiu alguma referência familiar.
+     */
     public void unsetStatusPossuiReferenciaFamiliar() {
         instance.unsetStatusPossuiReferenciaFamiliar();
     }
 
+    /**
+     * Verifica se o marcador que indica se o cidadão possuiu alguma referência familiar foi declarado.
+     * 
+     * @return True caso tenha sido declarado, caso contraio false.
+     */
     public boolean isSetStatusPossuiReferenciaFamiliar() {
         return instance.isSetStatusPossuiReferenciaFamiliar();
     }
 
+    /**
+     * Declara que o marcador que indica se o cidadão possuiu alguma referência familiar foi inserido.
+     * 
+     * @param value True para declarar que foi inserido, false caso contrario.
+     */
     public void setStatusPossuiReferenciaFamiliarIsSet(boolean value) {
         instance.setStatusPossuiReferenciaFamiliarIsSet(value);
     }
 
+    /**
+     * Indica se o cidadão recebe algum benefício.
+     * 
+     * @return True se o cidadão receber algum benefício, false caso não.
+     */
     public boolean isStatusRecebeBeneficio() {
         return instance.isStatusRecebeBeneficio();
     }
 
+    /**
+     * Define se o cidadão recebe algum benefício.
+     * 
+     * Regra: Não pode ser preechido se o campo statusSituacaoRua = false.
+     * 
+     * @param statusRecebeBeneficio True para indicar que recebe algum benefício, false para indicar que não.
+     */
     public void setStatusRecebeBeneficio(boolean statusRecebeBeneficio) {
         instance.setStatusRecebeBeneficio(statusRecebeBeneficio);
     }
-
+    
+    /**
+     * Remove o marcador que indica se o cidadão recebe algum benefício.
+     */
     public void unsetStatusRecebeBeneficio() {
         instance.unsetStatusRecebeBeneficio();
     }
 
+    /**
+     * Verifica se o marcador que indica se o cidadão recebe algum benefício foi declarado.
+     * 
+     * @return True caso tenha sido declarado, caso contrario False.
+     */
     public boolean isSetStatusRecebeBeneficio() {
         return instance.isSetStatusRecebeBeneficio();
     }
 
+    /**
+     * Declara que o marcador que indica se o cidadão recebe algum benefício foi inserido.
+     * 
+     * @param value True para indicar que foi inserido, false caso contrario.
+     */
     public void setStatusRecebeBeneficioIsSet(boolean value) {
         instance.setStatusRecebeBeneficioIsSet(value);
     }
 
+    /**
+     * Indica se o cidadão está em situação de rua.
+     * 
+     * @return True caso o cidadão esteja em situação de rua, caso contrario false.
+     */
     public boolean isStatusSituacaoRua() {
         return instance.isStatusSituacaoRua();
     }
 
+    /**
+     * Define se o cidadão está em situação de rua.
+     * 
+     * Presença obrigatória.
+     * 
+     * @param statusSituacaoRua True para indicar que o cidadão está em situação de rua, caso contrario false.
+     */
     public void setStatusSituacaoRua(boolean statusSituacaoRua) {
         instance.setStatusSituacaoRua(statusSituacaoRua);
     }
 
+    /**
+     * Remove o marcador que indica se o cidadão está em situação de rua.
+     */
     public void unsetStatusSituacaoRua() {
         instance.unsetStatusSituacaoRua();
     }
 
+    /**
+     * Verifica se o marcador que indica se o cidadão está em situação de rua foi declarado.
+     * 
+     * @return True caso tenha sido declarado, false caso contrario.
+     */
     public boolean isSetStatusSituacaoRua() {
         return instance.isSetStatusSituacaoRua();
     }
 
+    /**
+     * Declara que o marcador que indica se o cidadão está em situação de rua foi inserido.
+     * 
+     * @param value True para informar que foi inserido, false caso contrario.
+     */
     public void setStatusSituacaoRuaIsSet(boolean value) {
         instance.setStatusSituacaoRuaIsSet(value);
     }
 
+    /**
+     * Indica se o cidadão tem acesso a higiene pessoal.
+     * @return True caso tenha acesso, caso contrario false.
+     */
     public boolean isStatusTemAcessoHigienePessoalSituacaoRua() {
         return instance.isStatusTemAcessoHigienePessoalSituacaoRua();
     }
 
+    /**
+     * Define se o cidadão tem acesso a higiene pessoal.
+     * 
+     * Regra: Não pode ser preechido se o campo statusSituacaoRua = false.
+     * 
+     * @param statusTemAcessoHigienePessoalSituacaoRua True para declarar que tem acesso, false caso contrario.
+     */
     public void setStatusTemAcessoHigienePessoalSituacaoRua(boolean statusTemAcessoHigienePessoalSituacaoRua) {
         instance.setStatusTemAcessoHigienePessoalSituacaoRua(statusTemAcessoHigienePessoalSituacaoRua);
     }
 
+    /**
+     * Remove o marcador que indica se o cidadão tem acesso a higiene pessoal.
+     */
     public void unsetStatusTemAcessoHigienePessoalSituacaoRua() {
         instance.unsetStatusTemAcessoHigienePessoalSituacaoRua();
     }
 
+    /**
+     * Verifica se o marcador que indica se o cidadão tem acesso a higiene pessoal foi inserido.
+     * 
+     * @return True caso tenha sido inserido, caso contrario false.
+     */
     public boolean isSetStatusTemAcessoHigienePessoalSituacaoRua() {
         return instance.isSetStatusTemAcessoHigienePessoalSituacaoRua();
     }
 
+    /**
+     * Declara que o marcador que indica se o cidadão tem acesso a higiene pessoal foi inserido.
+     * 
+     * @param value True para declarar que foi inserido, caso contrario false.
+     */
     public void setStatusTemAcessoHigienePessoalSituacaoRuaIsSet(boolean value) {
         instance.setStatusTemAcessoHigienePessoalSituacaoRuaIsSet(value);
     }
 
+    /**
+     * Indica se o cidadão visita algum familiar frequentemente.
+     * 
+     * @return True caso visite, caso contrario false.
+     */
     public boolean isStatusVisitaFamiliarFrequentemente() {
         return instance.isStatusVisitaFamiliarFrequentemente();
     }
 
+    /**
+     * Define se o cidadão visita algum familiar frequentemente.
+     * 
+     * Regras: Não pode ser preechido se o campo statusSituacaoRua = false.
+     * 
+     * @param statusVisitaFamiliarFrequentemente True caso visite, caso contrario false.
+     */
     public void setStatusVisitaFamiliarFrequentemente(boolean statusVisitaFamiliarFrequentemente) {
         instance.setStatusVisitaFamiliarFrequentemente(statusVisitaFamiliarFrequentemente);
     }
 
+    /**
+     * Remove o marcador que indica se o cidadão visita algum familiar frequentemente.
+     */
     public void unsetStatusVisitaFamiliarFrequentemente() {
         instance.unsetStatusVisitaFamiliarFrequentemente();
     }
 
+    /**
+     * Verifica se o marcador que indica se o cidadão visita algum familiar frequentemente foi declarado.
+     * 
+     * @return True caso tenha sido declarado, caso contrario false.
+     */
     public boolean isSetStatusVisitaFamiliarFrequentemente() {
         return instance.isSetStatusVisitaFamiliarFrequentemente();
     }
 
+    /**
+     * Declara que o marcador que indica se o cidadão visita algum familiar frequentemente foi inserido.
+     * 
+     * @param value True para declarar que foi inserido, caso contrario false.
+     */
     public void setStatusVisitaFamiliarFrequentementeIsSet(boolean value) {
         instance.setStatusVisitaFamiliarFrequentementeIsSet(value);
     }
 
+    /**
+     * Tempo que o cidadão está em situação de rua
+     * 
+     * @return Código do tempo que o cidadão está em situação de rua.
+     */
     public long getTempoSituacaoRua() {
         return instance.getTempoSituacaoRua();
     }
 
+    /**
+     * Define o tempo que o cidadão está em situação de rua.
+     * 
+     * Regras: Não pode ser preechido se o campo statusSituacaoRua = false.
+     * 
+     * @param tempoSituacaoRua Código do tempo que o cidadão está em situação de rua.
+     */
     public void setTempoSituacaoRua(long tempoSituacaoRua) {
         instance.setTempoSituacaoRua(tempoSituacaoRua);
     }
 
+    /**
+     * Remove o tempo que o cidadão está em situação de rua.
+     */
     public void unsetTempoSituacaoRua() {
         instance.unsetTempoSituacaoRua();
     }
 
+    /**
+     * Verifica se o tempo que o cidadão está em situação de rua foi declarado.
+     * 
+     * @return True caso tenha sido declarado, caso contrario false.
+     */
     public boolean isSetTempoSituacaoRua() {
         return instance.isSetTempoSituacaoRua();
     }
 
+    /**
+     * Declara que o tempo que o cidadão está em situação de rua foi inserido.
+     * 
+     * @param value True para declarar que foi inserido, caso contrario false.
+     */
     public void setTempoSituacaoRuaIsSet(boolean value) {
         instance.setTempoSituacaoRuaIsSet(value);
     }
@@ -337,7 +603,10 @@ public class EmSituacaoDeRua {
         instance.validate();
     }
 
-
+    /**
+     * Instância thrift da classe.
+     * @return Instância thrift da classe.
+     */
     protected EmSituacaoDeRuaThrift getInstance(){
         return instance;
     }
