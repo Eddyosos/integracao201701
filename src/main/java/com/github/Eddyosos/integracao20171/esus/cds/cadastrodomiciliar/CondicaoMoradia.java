@@ -1,13 +1,18 @@
 package com.github.Eddyosos.integracao20171.esus.cds.cadastrodomiciliar;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastrodomiciliar.CondicaoMoradiaThrift;
+import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.cadastrodomiciliar.ICondicaoMoradia;
 import org.apache.thrift.TException;
 
-public class CondicaoMoradia {
+public class CondicaoMoradia implements ICondicaoMoradia {
     /**
      * Instancia para encapsulamento do Thrift
      */
-    private CondicaoMoradiaThrift condicaoMoradia = new CondicaoMoradiaThrift();
+    private CondicaoMoradiaThrift condicaoMoradia; 
+    
+    public CondicaoMoradia(){
+        condicaoMoradia = new CondicaoMoradiaThrift();
+    }
     
     /**
      * Encapsulamento do Thrift
@@ -17,10 +22,7 @@ public class CondicaoMoradia {
         this.condicaoMoradia = condicaoMoradiaThrift;
     }
 
-    public CondicaoMoradia deepCopy() {
-        return new CondicaoMoradia(condicaoMoradia.deepCopy());
-    }
-
+    @Override
     public void clear() {
         condicaoMoradia.clear();
     }
@@ -29,6 +31,7 @@ public class CondicaoMoradia {
      * Código do tipo de abastecimento de água.
      * @return abastecimentoAgua
      */
+    @Override
     public long getAbastecimentoAgua() {
         return condicaoMoradia.getAbastecimentoAgua();
     }
@@ -37,10 +40,12 @@ public class CondicaoMoradia {
      * Código do tipo de abastecimento de água.
      * @param abastecimentoAgua 
      */
+    @Override
     public void setAbastecimentoAgua(long abastecimentoAgua) {
         condicaoMoradia.setAbastecimentoAgua(abastecimentoAgua);
     }
 
+    @Override
     public void unsetAbastecimentoAgua() {
         condicaoMoradia.unsetAbastecimentoAgua();
     }
@@ -49,6 +54,7 @@ public class CondicaoMoradia {
      * Código do tipo de abastecimento de água.
      * @return abastecimentoAgua 
      */
+    @Override
     public boolean isSetAbastecimentoAgua() {
         return condicaoMoradia.isSetAbastecimentoAgua();
     }
@@ -57,6 +63,7 @@ public class CondicaoMoradia {
      * Código do tipo de abastecimento de água.
      * @param value 
      */
+    @Override
     public void setAbastecimentoAguaIsSet(boolean value) {
         condicaoMoradia.setAbastecimentoAguaIsSet(value);
     }
@@ -65,6 +72,7 @@ public class CondicaoMoradia {
      * Código da condição de posse e uso da terra.
      * @return areaProducaoRural
      */
+    @Override
     public long getAreaProducaoRural() {
         return condicaoMoradia.getAreaProducaoRural();
     }
@@ -73,10 +81,12 @@ public class CondicaoMoradia {
      * Código da condição de posse e uso da terra.
      * @param areaProducaoRural 
      */
+    @Override
     public void setAreaProducaoRural(long areaProducaoRural) {
         condicaoMoradia.setAreaProducaoRural(areaProducaoRural);
     }
 
+    @Override
     public void unsetAreaProducaoRural() {
         condicaoMoradia.unsetAreaProducaoRural();
     }
@@ -85,6 +95,7 @@ public class CondicaoMoradia {
      * Código da condição de posse e uso da terra.
      * @return areaProducaoRural
      */
+    @Override
     public boolean isSetAreaProducaoRural() {
         return condicaoMoradia.isSetAreaProducaoRural();
     }
@@ -93,6 +104,7 @@ public class CondicaoMoradia {
      * Código da condição de posse e uso da terra.
      * @param value 
      */
+    @Override
     public void setAreaProducaoRuralIsSet(boolean value) {
         condicaoMoradia.setAreaProducaoRuralIsSet(value);
     }
@@ -101,6 +113,7 @@ public class CondicaoMoradia {
      * Código do destino do lixo
      * @return destinoLixo
      */
+    @Override
     public long getDestinoLixo() {
         return condicaoMoradia.getDestinoLixo();
     }
@@ -109,11 +122,13 @@ public class CondicaoMoradia {
      * Código do destino do lixo
      * @param destinoLixo 
      */
+    @Override
     public void setDestinoLixo(long destinoLixo) {
         condicaoMoradia.setDestinoLixo(destinoLixo);
     }
 
     
+    @Override
     public void unsetDestinoLixo() {
         condicaoMoradia.unsetDestinoLixo();
     }
@@ -122,6 +137,7 @@ public class CondicaoMoradia {
      * Código do destino do lixo
      * @return destinoLixo 
      */
+    @Override
     public boolean isSetDestinoLixo() {
         return condicaoMoradia.isSetDestinoLixo();
     }
@@ -130,6 +146,7 @@ public class CondicaoMoradia {
      * Código do destino do lixo
      * @param value 
      */
+    @Override
     public void setDestinoLixoIsSet(boolean value) {
         condicaoMoradia.setDestinoLixoIsSet(value);
     }
@@ -138,6 +155,7 @@ public class CondicaoMoradia {
      * Código da forma de escoamento do banheiro ou sanitário
      * @return formaEscoamentoBanheiro
      */
+    @Override
     public long getFormaEscoamentoBanheiro() {
         return condicaoMoradia.getFormaEscoamentoBanheiro();
     }
@@ -146,10 +164,12 @@ public class CondicaoMoradia {
      * Código da forma de escoamento do banheiro ou sanitário
      * @param formaEscoamentoBanheiro 
      */
+    @Override
     public void setFormaEscoamentoBanheiro(long formaEscoamentoBanheiro) {
         condicaoMoradia.setFormaEscoamentoBanheiro(formaEscoamentoBanheiro);
     }
 
+    @Override
     public void unsetFormaEscoamentoBanheiro() {
         condicaoMoradia.unsetFormaEscoamentoBanheiro();
     }
@@ -158,6 +178,7 @@ public class CondicaoMoradia {
      * Código da forma de escoamento do banheiro ou sanitário
      * @return formaEscoamentoBanheiro
      */
+    @Override
     public boolean isSetFormaEscoamentoBanheiro() {
         return condicaoMoradia.isSetFormaEscoamentoBanheiro();
     }
@@ -166,6 +187,7 @@ public class CondicaoMoradia {
      * Código da forma de escoamento do banheiro ou sanitário
      * @param value 
      */
+    @Override
     public void setFormaEscoamentoBanheiroIsSet(boolean value) {
         condicaoMoradia.setFormaEscoamentoBanheiroIsSet(value);
     }
@@ -174,6 +196,7 @@ public class CondicaoMoradia {
      * Código do localização do domicílio
      * @return localizacao
      */
+    @Override
     public long getLocalizacao() {
         return condicaoMoradia.getLocalizacao();
     }
@@ -182,10 +205,12 @@ public class CondicaoMoradia {
      * Código do localização do domicílio
      * @param localizacao 
      */
+    @Override
     public void setLocalizacao(long localizacao) {
         condicaoMoradia.setLocalizacao(localizacao);
     }
 
+    @Override
     public void unsetLocalizacao() {
         condicaoMoradia.unsetLocalizacao();
     }
@@ -194,6 +219,7 @@ public class CondicaoMoradia {
      * Código do localização do domicílio
      * @return localizacao
      */
+    @Override
     public boolean isSetLocalizacao() {
         return condicaoMoradia.isSetLocalizacao();
     }
@@ -202,6 +228,7 @@ public class CondicaoMoradia {
      * Código do localização do domicílio
      * @param value 
      */
+    @Override
     public void setLocalizacaoIsSet(boolean value) {
         condicaoMoradia.setLocalizacaoIsSet(value);
     }
@@ -210,6 +237,7 @@ public class CondicaoMoradia {
      * Código do tipo de material predominante nas paredes externas do domicílio.
      * @return materialPredominanteParedesExtDomicilio
      */
+    @Override
     public long getMaterialPredominanteParedesExtDomicilio() {
         return condicaoMoradia.getMaterialPredominanteParedesExtDomicilio();
     }
@@ -218,10 +246,12 @@ public class CondicaoMoradia {
      * Código do tipo de material predominante nas paredes externas do domicílio.
      * @param materialPredominanteParedesExtDomicilio 
      */
+    @Override
     public void setMaterialPredominanteParedesExtDomicilio(long materialPredominanteParedesExtDomicilio) {
         condicaoMoradia.setMaterialPredominanteParedesExtDomicilio(materialPredominanteParedesExtDomicilio);
     }
 
+    @Override
     public void unsetMaterialPredominanteParedesExtDomicilio() {
         condicaoMoradia.unsetMaterialPredominanteParedesExtDomicilio();
     }
@@ -230,6 +260,7 @@ public class CondicaoMoradia {
      * Código do tipo de material predominante nas paredes externas do domicílio.
      * @return materialPredominanteParedesExtDomicilio
      */
+    @Override
     public boolean isSetMaterialPredominanteParedesExtDomicilio() {
         return condicaoMoradia.isSetMaterialPredominanteParedesExtDomicilio();
     }
@@ -238,6 +269,7 @@ public class CondicaoMoradia {
      * Código do tipo de material predominante nas paredes externas do domicílio.
      * @param value 
      */
+    @Override
     public void setMaterialPredominanteParedesExtDomicilioIsSet(boolean value) {
         condicaoMoradia.setMaterialPredominanteParedesExtDomicilioIsSet(value);
     }
@@ -246,6 +278,7 @@ public class CondicaoMoradia {
      * Número de cômodos do domicílio
      * @return nuComodos
      */
+    @Override
     public String getNuComodos() {
         return condicaoMoradia.getNuComodos();
     }
@@ -254,10 +287,12 @@ public class CondicaoMoradia {
      * Número de cômodos do domicílio
      * @param nuComodos 
      */
+    @Override
     public void setNuComodos(String nuComodos) {
         condicaoMoradia.setNuComodos(nuComodos);
     }
 
+    @Override
     public void unsetNuComodos() {
         condicaoMoradia.unsetNuComodos();
     }
@@ -266,6 +301,7 @@ public class CondicaoMoradia {
      * Número de cômodos do domicílio
      * @return nuComodos
      */
+    @Override
     public boolean isSetNuComodos() {
         return condicaoMoradia.isSetNuComodos();
     }
@@ -274,6 +310,7 @@ public class CondicaoMoradia {
      * Número de cômodos do domicílio
      * @param value 
      */
+    @Override
     public void setNuComodosIsSet(boolean value) {
         condicaoMoradia.setNuComodosIsSet(value);
     }
@@ -282,6 +319,7 @@ public class CondicaoMoradia {
      * Número de moradores do domicílio.
      * @return nuMoradores
      */
+    @Override
     public String getNuMoradores() {
         return condicaoMoradia.getNuMoradores();
     }
@@ -290,10 +328,12 @@ public class CondicaoMoradia {
      * Número de moradores do domicílio.
      * @param nuMoradores 
      */
+    @Override
     public void setNuMoradores(String nuMoradores) {
         condicaoMoradia.setNuMoradores(nuMoradores);
     }
 
+    @Override
     public void unsetNuMoradores() {
         condicaoMoradia.unsetNuMoradores();
     }
@@ -302,6 +342,7 @@ public class CondicaoMoradia {
      * Número de moradores do domicílio.
      * @return nuMoradores
      */
+    @Override
     public boolean isSetNuMoradores() {
         return condicaoMoradia.isSetNuMoradores();
     }
@@ -310,6 +351,7 @@ public class CondicaoMoradia {
      * Número de moradores do domicílio.
      * @param value 
      */
+    @Override
     public void setNuMoradoresIsSet(boolean value) {
         condicaoMoradia.setNuMoradoresIsSet(value);
     }
@@ -318,6 +360,7 @@ public class CondicaoMoradia {
      * Código da situação de moradia ou de posse da terra
      * @return situacaoMoradiaPosseTerra
      */
+    @Override
     public long getSituacaoMoradiaPosseTerra() {
         return condicaoMoradia.getSituacaoMoradiaPosseTerra();
     }
@@ -326,10 +369,12 @@ public class CondicaoMoradia {
      * Código da situação de moradia ou de posse da terra
      * @param situacaoMoradiaPosseTerra 
      */
+    @Override
     public void setSituacaoMoradiaPosseTerra(long situacaoMoradiaPosseTerra) {
         condicaoMoradia.setSituacaoMoradiaPosseTerra(situacaoMoradiaPosseTerra);
     }
 
+    @Override
     public void unsetSituacaoMoradiaPosseTerra() {
         condicaoMoradia.unsetSituacaoMoradiaPosseTerra();
     }
@@ -338,6 +383,7 @@ public class CondicaoMoradia {
      * Código da situação de moradia ou de posse da terra
      * @return situacaoMoradiaPosseTerra
      */
+    @Override
     public boolean isSetSituacaoMoradiaPosseTerra() {
         return condicaoMoradia.isSetSituacaoMoradiaPosseTerra();
     }
@@ -346,6 +392,7 @@ public class CondicaoMoradia {
      * Código da situação de moradia ou de posse da terra
      * @param value 
      */
+    @Override
     public void setSituacaoMoradiaPosseTerraIsSet(boolean value) {
         condicaoMoradia.setSituacaoMoradiaPosseTerraIsSet(value);
     }
@@ -354,6 +401,7 @@ public class CondicaoMoradia {
      * Marcador que indica se existe disponibilidade de energia elétrica.
      * @return stDiponibilidadeEnergiaeletrica
      */
+    @Override
     public boolean isStDiponibilidadeEnergiaeletrica() {
         return condicaoMoradia.isStDiponibilidadeEnergiaeletrica();
     }
@@ -362,10 +410,12 @@ public class CondicaoMoradia {
      * Marcador que indica se existe disponibilidade de energia elétrica
      * @param stDiponibilidadeEnergiaeletrica 
      */
+    @Override
     public void setStDiponibilidadeEnergiaeletrica(boolean stDiponibilidadeEnergiaeletrica) {
         condicaoMoradia.setStDiponibilidadeEnergiaeletrica(stDiponibilidadeEnergiaeletrica);
     }
 
+    @Override
     public void unsetStDiponibilidadeEnergiaeletrica() {
         condicaoMoradia.unsetStDiponibilidadeEnergiaeletrica();
     }
@@ -374,6 +424,7 @@ public class CondicaoMoradia {
      * Marcador que indica se existe disponibilidade de energia elétrica
      * @return stDiponibilidadeEnergiaeletrica
      */
+    @Override
     public boolean isSetStDiponibilidadeEnergiaeletrica() {
         return condicaoMoradia.isSetStDiponibilidadeEnergiaeletrica();
     }
@@ -382,6 +433,7 @@ public class CondicaoMoradia {
      * Marcador que indica se existe disponibilidade de energia elétrica
      * @param value 
      */
+    @Override
     public void setStDiponibilidadeEnergiaeletricaIsSet(boolean value) {
         condicaoMoradia.setStDiponibilidadeEnergiaeletricaIsSet(value);
     }
@@ -390,6 +442,7 @@ public class CondicaoMoradia {
      * Código do tipo de acesso ao domicílio.
      * @return tipoAcessoDomicilio 
      */
+    @Override
     public long getTipoAcessoDomicilio() {
         return condicaoMoradia.getTipoAcessoDomicilio();
     }
@@ -398,10 +451,12 @@ public class CondicaoMoradia {
      * Código do tipo de acesso ao domicílio.
      * @param tipoAcessoDomicilio 
      */
+    @Override
     public void setTipoAcessoDomicilio(long tipoAcessoDomicilio) {
         condicaoMoradia.setTipoAcessoDomicilio(tipoAcessoDomicilio);
     }
 
+    @Override
     public void unsetTipoAcessoDomicilio() {
         condicaoMoradia.unsetTipoAcessoDomicilio();
     }
@@ -410,6 +465,7 @@ public class CondicaoMoradia {
      * Código do tipo de acesso ao domicílio.
      * @return tipoAcessoDomicilio 
      */
+    @Override
     public boolean isSetTipoAcessoDomicilio() {
         return condicaoMoradia.isSetTipoAcessoDomicilio();
     }
@@ -418,6 +474,7 @@ public class CondicaoMoradia {
      * Código do tipo de acesso ao domicílio.
      * @param value 
      */
+    @Override
     public void setTipoAcessoDomicilioIsSet(boolean value) {
         condicaoMoradia.setTipoAcessoDomicilioIsSet(value);
     }
@@ -426,6 +483,7 @@ public class CondicaoMoradia {
      * Código do tipo de domicílio
      * @return tipoDomicilio
      */
+    @Override
     public long getTipoDomicilio() {
         return condicaoMoradia.getTipoDomicilio();
     }
@@ -434,10 +492,12 @@ public class CondicaoMoradia {
      * Código do tipo de domicílio
      * @param tipoDomicilio 
      */
+    @Override
     public void setTipoDomicilio(long tipoDomicilio) {
         condicaoMoradia.setTipoDomicilio(tipoDomicilio);
     }
 
+    @Override
     public void unsetTipoDomicilio() {
         condicaoMoradia.unsetTipoDomicilio();
     }
@@ -446,6 +506,7 @@ public class CondicaoMoradia {
      * Código do tipo de domicílio
      * @return tipoDomicilio
      */
+    @Override
     public boolean isSetTipoDomicilio() {
         return condicaoMoradia.isSetTipoDomicilio();
     }
@@ -454,6 +515,7 @@ public class CondicaoMoradia {
      * Código do tipo de domicílio
      * @param value 
      */
+    @Override
     public void setTipoDomicilioIsSet(boolean value) {
         condicaoMoradia.setTipoDomicilioIsSet(value);
     }
@@ -462,6 +524,7 @@ public class CondicaoMoradia {
      * Código do tipo do tratamento de água do domicílio.
      * @return tratamentoAguaDomicilio 
      */
+    @Override
     public long getTratamentoAguaDomicilio() {
         return condicaoMoradia.getTratamentoAguaDomicilio();
     }
@@ -470,10 +533,12 @@ public class CondicaoMoradia {
      * Código do tipo do tratamento de água do domicílio.
      * @param tratamentoAguaDomicilio 
      */
+    @Override
     public void setTratamentoAguaDomicilio(long tratamentoAguaDomicilio) {
         condicaoMoradia.setTratamentoAguaDomicilio(tratamentoAguaDomicilio);
     }
 
+    @Override
     public void unsetTratamentoAguaDomicilio() {
         condicaoMoradia.unsetTratamentoAguaDomicilio();
     }
@@ -482,6 +547,7 @@ public class CondicaoMoradia {
      * Código do tipo do tratamento de água do domicílio.
      * @return tratamentoAguaDomicilio 
      */
+    @Override
     public boolean isSetTratamentoAguaDomicilio() {
         return condicaoMoradia.isSetTratamentoAguaDomicilio();
     }
@@ -490,38 +556,18 @@ public class CondicaoMoradia {
      * Código do tipo do tratamento de água do domicílio.
      * @param value 
      */
+    @Override
     public void setTratamentoAguaDomicilioIsSet(boolean value) {
         condicaoMoradia.setTratamentoAguaDomicilioIsSet(value);
     }
 
     @Override
-    public boolean equals(Object that) {
-        return condicaoMoradia.equals(that);
-    }
-
-    public boolean equals(CondicaoMoradia that) {
-        return condicaoMoradia.equals(that.getInstence());
-    }
-
-    @Override
-    public int hashCode() {
-        return condicaoMoradia.hashCode();
-    }
-
-    public int compareTo(CondicaoMoradia other) {
-        return condicaoMoradia.compareTo(other.getInstence());
-    }
-
-    @Override
-    public String toString() {
-        return condicaoMoradia.toString();
-    }
-
     public void validate() throws TException {
         condicaoMoradia.validate();
     }
     
-    protected CondicaoMoradiaThrift getInstence(){
+    @Override
+    public CondicaoMoradiaThrift getInstence(){
         return condicaoMoradia;
     }
     
@@ -530,6 +576,7 @@ public class CondicaoMoradia {
      * Chama todos os metodos que fazem validações
      * @return Todos os metodos de validação
      */
+    @Override
     public boolean validates(){
         return validaAbastecimentoAgua() &&
                 validaAreaProducaoRural() &&
@@ -551,6 +598,7 @@ public class CondicaoMoradia {
      * @return abastecimentoAgua
      * Não é Obrigatório
      */
+    @Override
     public boolean validaAbastecimentoAgua(){
         long abastecimentoAgua = condicaoMoradia.getAbastecimentoAgua();
         return abastecimentoAgua !=0;
@@ -560,6 +608,7 @@ public class CondicaoMoradia {
      * Código da condição de posse e uso da terra
      * @return areaProducaoRural
      */
+    @Override
     public boolean validaAreaProducaoRural(){
         long areaProducaoRural = condicaoMoradia.getAreaProducaoRural();
         return areaProducaoRural !=0;
@@ -569,6 +618,7 @@ public class CondicaoMoradia {
      * Código do destino do lixo.
      * @return destinoLixo 
      */
+    @Override
     public boolean validaDestinoLixo(){
        long destinoLixo = condicaoMoradia.getDestinoLixo();
        return destinoLixo !=0;
@@ -578,6 +628,7 @@ public class CondicaoMoradia {
      * Código da forma de escoamento do banheiro ou sanitário.
      * @return formaEscoamentoBanheiro
      */
+    @Override
     public boolean validaFormaEscoamentoBanheiro(){
         long formaEscoamentoBanheiro = condicaoMoradia.getFormaEscoamentoBanheiro();
         return formaEscoamentoBanheiro !=0;
@@ -587,6 +638,7 @@ public class CondicaoMoradia {
      * Código do localização do domicílio.
      * @return localizacao
      */
+    @Override
     public boolean validaLocalizacao(){
         long localizacao = condicaoMoradia.getLocalizacao();
         return localizacao !=0;
@@ -596,6 +648,7 @@ public class CondicaoMoradia {
      * Código do tipo de material predominante nas paredes externas do domicílio.
      * @return materialPredominanteParedesExtDomicilio
      */
+    @Override
     public boolean validaMaterialPredominanteParedesExtDomicilio(){
         long materialPredominanteParedesExtDomicilio = condicaoMoradia.getMaterialPredominanteParedesExtDomicilio();
         return materialPredominanteParedesExtDomicilio !=0;
@@ -605,6 +658,7 @@ public class CondicaoMoradia {
      * Número de cômodos do domicílio
      * @return nuComodos
      */
+    @Override
     public boolean validaNuComodos(){
         String nuComodos = condicaoMoradia.getNuComodos();
         return nuComodos.length() >=0 &&
@@ -615,6 +669,7 @@ public class CondicaoMoradia {
      * Número de moradores do domicílio.
      * @return nuMoradores
      */
+    @Override
     public boolean validaNuMoradores(){
         String nuMoradores = condicaoMoradia.getNuMoradores();
         return nuMoradores.length() <=0 &&
@@ -625,6 +680,7 @@ public class CondicaoMoradia {
      * Código da situação de moradia ou de posse da terra
      * @return situacaoMoradiaPosseTerra
      */
+    @Override
     public boolean validaSituacaoMoradiaPosseTerra(){
         long situacaoMoradiaPosseTerra = condicaoMoradia.getSituacaoMoradiaPosseTerra();
         return situacaoMoradiaPosseTerra !=0;
@@ -634,6 +690,7 @@ public class CondicaoMoradia {
      * Marcador que indica se existe disponibilidade de energia elétrica.
      * @return stDiponibilidadeEnergiaeletrica
      */
+    @Override
     public boolean validaStDisponibilidadeEnergiaeletrica(){
         return condicaoMoradia.isSetStDiponibilidadeEnergiaeletrica();
     }
@@ -641,6 +698,7 @@ public class CondicaoMoradia {
      * Código do tipo de acesso ao domicílio.
      * @return tipoAcessoDomicilio
      */
+    @Override
     public boolean validaTipoAcessoDomicilio(){
        long tipoAcessoDomicilio = condicaoMoradia.getTipoDomicilio();
        return tipoAcessoDomicilio !=0;
@@ -650,6 +708,7 @@ public class CondicaoMoradia {
      * Código do tipo de domicílio.
      * @return tipoDomicilio
      */
+    @Override
     public boolean validatipoDomicilio(){
         long tipoDomicilio = condicaoMoradia.getTipoDomicilio();
         return tipoDomicilio !=0;
@@ -659,6 +718,7 @@ public class CondicaoMoradia {
      * Código do tipo do tratamento de água do domicílio.
      * @return tratamentoAguaDomicilio
      */
+    @Override
     public boolean validatratamentoAguaDomicilio(){
         long tratamentoAguaDomicilio = condicaoMoradia.getTratamentoAguaDomicilio();
         return tratamentoAguaDomicilio !=0;
