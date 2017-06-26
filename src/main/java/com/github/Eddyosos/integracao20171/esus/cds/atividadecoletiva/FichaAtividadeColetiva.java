@@ -3,21 +3,31 @@ package com.github.Eddyosos.integracao20171.esus.cds.atividadecoletiva;
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadecoletiva.FichaAtividadeColetivaThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadecoletiva.ParticipanteRowItemThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadecoletiva.ProfissionalCboRowItemThrift;
+import com.github.Eddyosos.integracao20171.compactor.SerializadorThrift;
+import com.github.Eddyosos.integracao20171.esus.transport.DadoTransporte;
 import com.github.Eddyosos.integracao20171.utils.IDS.CNS;
 import com.github.eddyosos.e_sus_ab_factory.cds.atividadecoletiva.IFichaAtividadeColetiva;
 import com.github.eddyosos.e_sus_ab_factory.cds.atividadecoletiva.IParticipanteRowItem;
 import com.github.eddyosos.e_sus_ab_factory.cds.atividadecoletiva.IProfissionalCboRowItem;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.time.Instant;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
-    private FichaAtividadeColetivaThrift instance = new FichaAtividadeColetivaThrift();
+    private FichaAtividadeColetivaThrift instancia = new FichaAtividadeColetivaThrift();
+    private long TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO = 6;
+    private final static String EXTENSAO_EXPORT = ".esus13";
+    private DadoTransporte dadoTransporteThrift;
 
     public FichaAtividadeColetiva(FichaAtividadeColetivaThrift fichaAtividadeColetiva) {
-        this.instance = fichaAtividadeColetiva;
+        this.instancia = fichaAtividadeColetiva;
     }
 
     /**
@@ -27,7 +37,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
      */
     @Override
     public String getUuidFicha() {
-        return instance.getUuidFicha();
+        return instancia.getUuidFicha();
     }
 
     /**
@@ -37,7 +47,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
      */
     @Override
     public void setUuidFicha(String uuidFicha) {
-        instance.setUuidFicha(uuidFicha);
+        instancia.setUuidFicha(uuidFicha);
     }
 
     /**
@@ -47,7 +57,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
      */
     @Override
     public long getDtAtividadeColetiva() {
-        return instance.getDtAtividadeColetiva();
+        return instancia.getDtAtividadeColetiva();
     }
 
     /**
@@ -57,7 +67,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
      */
     @Override
     public void setDtAtividadeColetiva(long dtAtividadeColetiva) {
-        instance.setDtAtividadeColetiva(dtAtividadeColetiva);
+        instancia.setDtAtividadeColetiva(dtAtividadeColetiva);
     }
 
     /**
@@ -68,7 +78,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public int getNumParticipantesProgramados() {
-        return instance.getNumParticipantesProgramados();
+        return instancia.getNumParticipantesProgramados();
     }
 
     /**
@@ -79,7 +89,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public void setNumParticipantesProgramados(int numParticipantesProgramados) {
-        instance.setNumParticipantesProgramados(numParticipantesProgramados);
+        instancia.setNumParticipantesProgramados(numParticipantesProgramados);
     }
 
     /**
@@ -90,7 +100,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public String getLocalAtividade() {
-        return instance.getLocalAtividade();
+        return instancia.getLocalAtividade();
     }
 
     /**
@@ -101,7 +111,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public void setLocalAtividade(String localAtividade) {
-        instance.setLocalAtividade(localAtividade);
+        instancia.setLocalAtividade(localAtividade);
     }
 
     /**
@@ -112,7 +122,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public long getHoraInicio() {
-        return instance.getHoraInicio();
+        return instancia.getHoraInicio();
     }
 
     /**
@@ -123,7 +133,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public void setHoraInicio(long horaInicio) {
-        instance.setHoraInicio(horaInicio);
+        instancia.setHoraInicio(horaInicio);
     }
 
     /**
@@ -134,7 +144,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public long getHoraFim() {
-        return instance.getHoraFim();
+        return instancia.getHoraFim();
     }
 
     /**
@@ -144,7 +154,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
      */
     @Override
     public void setHoraFim(long horaFim) {
-        instance.setHoraFim(horaFim);
+        instancia.setHoraFim(horaFim);
     }
 
     /**
@@ -155,7 +165,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public long getInep() {
-        return instance.getInep();
+        return instancia.getInep();
     }
 
     /**
@@ -165,7 +175,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
      */
     @Override
     public void setInep(long inep) {
-        instance.setInep(inep);
+        instancia.setInep(inep);
     }
 
     /**
@@ -175,7 +185,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
      */
     @Override
     public String getResponsavelCns() {
-        return instance.getResponsavelCns();
+        return instancia.getResponsavelCns();
     }
 
     /**
@@ -186,7 +196,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public void setResponsavelCns(String responsavelCns) {
-        instance.setResponsavelCns(responsavelCns);
+        instancia.setResponsavelCns(responsavelCns);
     }
 
     /**
@@ -197,7 +207,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public String getResponsavelCnesUnidade() {
-        return instance.getResponsavelCnesUnidade();
+        return instancia.getResponsavelCnesUnidade();
     }
 
     /**
@@ -208,7 +218,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public void setResponsavelCnesUnidade(String responsavelCnesUnidade) {
-        instance.setResponsavelCnesUnidade(responsavelCnesUnidade);
+        instancia.setResponsavelCnesUnidade(responsavelCnesUnidade);
     }
 
     /**
@@ -219,7 +229,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public String getResponsavelNumIne() {
-        return instance.getResponsavelNumIne();
+        return instancia.getResponsavelNumIne();
     }
 
     /**
@@ -230,7 +240,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public void setResponsavelNumIne(String responsavelNumIne) {
-        instance.setResponsavelNumIne(responsavelNumIne);
+        instancia.setResponsavelNumIne(responsavelNumIne);
     }
 
     /**
@@ -241,7 +251,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public int getNumParticipantes() {
-        return instance.getNumParticipantes();
+        return instancia.getNumParticipantes();
     }
 
     /**
@@ -252,7 +262,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public void setNumParticipantes(int numParticipantes) {
-        instance.setNumParticipantes(numParticipantes);
+        instancia.setNumParticipantes(numParticipantes);
     }
 
     /**
@@ -263,7 +273,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public int getNumAvaliacoesAlteradas() {
-        return instance.getNumAvaliacoesAlteradas();
+        return instancia.getNumAvaliacoesAlteradas();
     }
 
     /**
@@ -274,7 +284,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public void setNumAvaliacoesAlteradas(int numAvaliacoesAlteradas) {
-        instance.setNumAvaliacoesAlteradas(numAvaliacoesAlteradas);
+        instancia.setNumAvaliacoesAlteradas(numAvaliacoesAlteradas);
     }
 
     /**
@@ -285,7 +295,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public int getProfissionaisSize() {
-        return instance.getProfissionaisSize();
+        return instancia.getProfissionaisSize();
     }
 
     /**
@@ -298,7 +308,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
     public Iterator<IProfissionalCboRowItem> getProfissionaisIterator() {
         List<IProfissionalCboRowItem> listaProfissionalCboRowItem = new LinkedList<>();
 
-        instance.getProfissionaisIterator().forEachRemaining((elemento) -> {
+        instancia.getProfissionaisIterator().forEachRemaining((elemento) -> {
             listaProfissionalCboRowItem.add(new ProfissionalCboRowItem(elemento));
         });
 
@@ -313,7 +323,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public void addToProfissionais(IProfissionalCboRowItem elem) {
-        instance.addToProfissionais(elem.getInstance());
+        instancia.addToProfissionais(elem.getInstance());
     }
 
     /**
@@ -326,7 +336,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
     public List<IProfissionalCboRowItem> getProfissionais() {
         List<IProfissionalCboRowItem> listaProfissionalCboRowItem = new LinkedList<>();
 
-        instance.getProfissionais().forEach((elemento) -> {
+        instancia.getProfissionais().forEach((elemento) -> {
             listaProfissionalCboRowItem.add(new ProfissionalCboRowItem(elemento));
         });
 
@@ -347,7 +357,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
             listaProfissionalCboRowItemThrift.add(elemento.getInstance());
         });
 
-        instance.setProfissionais(listaProfissionalCboRowItemThrift);
+        instancia.setProfissionais(listaProfissionalCboRowItemThrift);
     }
 
     /**
@@ -358,7 +368,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public long getAtividadeTipo() {
-        return instance.getAtividadeTipo();
+        return instancia.getAtividadeTipo();
     }
 
     /**
@@ -369,7 +379,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public void setAtividadeTipo(long atividadeTipo) {
-        instance.setAtividadeTipo(atividadeTipo);
+        instancia.setAtividadeTipo(atividadeTipo);
     }
 
     /**
@@ -380,7 +390,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public int getTemasParaReuniaoSize() {
-        return instance.getTemasParaReuniaoSize();
+        return instancia.getTemasParaReuniaoSize();
     }
 
     /**
@@ -391,7 +401,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public Iterator<Long> getTemasParaReuniaoIterator() {
-        return instance.getTemasParaReuniaoIterator();
+        return instancia.getTemasParaReuniaoIterator();
     }
 
     /**
@@ -402,7 +412,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public void addToTemasParaReuniao(long elem) {
-        instance.addToTemasParaReuniao(elem);
+        instancia.addToTemasParaReuniao(elem);
     }
 
     /**
@@ -413,7 +423,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public List<Long> getTemasParaReuniao() {
-        return instance.getTemasParaReuniao();
+        return instancia.getTemasParaReuniao();
     }
 
     /**
@@ -424,7 +434,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public void setTemasParaReuniao(List<Long> temasParaReuniao) {
-        instance.setTemasParaReuniao(temasParaReuniao);
+        instancia.setTemasParaReuniao(temasParaReuniao);
     }
 
     /**
@@ -435,7 +445,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public int getPublicoAlvoSize() {
-        return instance.getPublicoAlvoSize();
+        return instancia.getPublicoAlvoSize();
     }
 
     /**
@@ -444,7 +454,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
      */
     @Override
     public Iterator<Long> getPublicoAlvoIterator() {
-        return instance.getPublicoAlvoIterator();
+        return instancia.getPublicoAlvoIterator();
     }
     /**
      * Adiciona um elemento à lista publicoAlvo
@@ -453,7 +463,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public void addToPublicoAlvo(long elem) {
-        instance.addToPublicoAlvo(elem);
+        instancia.addToPublicoAlvo(elem);
     }
     /**
      * Retor uma lista publicoAlvo
@@ -462,7 +472,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public List<Long> getPublicoAlvo() {
-        return instance.getPublicoAlvo();
+        return instancia.getPublicoAlvo();
     }
     /**
      * Altera o valor da lista publicoAlvo
@@ -471,7 +481,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public void setPublicoAlvo(List<Long> publicoAlvo) {
-        instance.setPublicoAlvo(publicoAlvo);
+        instancia.setPublicoAlvo(publicoAlvo);
     }
     /**
      * devolve o tamanho de praticaTemasParaSaude
@@ -480,7 +490,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public int getPraticasTemasParaSaudeSize() {
-        return instance.getPraticasTemasParaSaudeSize();
+        return instancia.getPraticasTemasParaSaudeSize();
     }
     /**
      * Devolve um praticasTemasParaSaude iterator
@@ -488,7 +498,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
      */
     @Override
     public Iterator<Long> getPraticasTemasParaSaudeIterator() {
-        return instance.getPraticasTemasParaSaudeIterator();
+        return instancia.getPraticasTemasParaSaudeIterator();
     }
     /**
      * adiciona um elemento à lista praticasTemasParaSaude
@@ -497,7 +507,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public void addToPraticasTemasParaSaude(long elem) {
-        instance.addToPraticasTemasParaSaude(elem);
+        instancia.addToPraticasTemasParaSaude(elem);
     }
     /**
      * retorna uma lista de praticasTemasParaSaude
@@ -506,7 +516,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public List<Long> getPraticasTemasParaSaude() {
-        return instance.getPraticasTemasParaSaude();
+        return instancia.getPraticasTemasParaSaude();
     }
     /**
      * Altera o valor da lista de praticasTemasParaSaude
@@ -515,7 +525,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public void setPraticasTemasParaSaude(List<Long> praticasTemasParaSaude) {
-        instance.setPraticasTemasParaSaude(praticasTemasParaSaude);
+        instancia.setPraticasTemasParaSaude(praticasTemasParaSaude);
     }
     /**
      * retorna o tamanho de participantes
@@ -524,7 +534,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public int getParticipantesSize() {
-        return instance.getParticipantesSize();
+        return instancia.getParticipantesSize();
     }
     /**
      * Devolve o participantes iterator
@@ -535,7 +545,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
     public Iterator<IParticipanteRowItem> getParticipantesIterator() {
         List<IParticipanteRowItem> listaParticipanteRowItem = new LinkedList<>();
 
-        instance.getParticipantesIterator().forEachRemaining((elemento) -> {
+        instancia.getParticipantesIterator().forEachRemaining((elemento) -> {
             listaParticipanteRowItem.add(new ParticipanteRowItem(elemento));
         });
 
@@ -548,7 +558,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public void addToParticipantes(IParticipanteRowItem elem) {
-        instance.addToParticipantes(elem.getInstance());
+        instancia.addToParticipantes(elem.getInstance());
     }
     /**
      * devolve uma lista de participantes
@@ -559,7 +569,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
     public List<IParticipanteRowItem> getParticipantes() {
         List<IParticipanteRowItem> listaParticipanteRowItem = new LinkedList<>();
 
-        instance.getParticipantes().forEach((elemento) -> {
+        instancia.getParticipantes().forEach((elemento) -> {
             listaParticipanteRowItem.add(new ParticipanteRowItem(elemento));
         });
 
@@ -576,7 +586,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
         participantes.forEach((elemento) -> {
             listaParticipanteRowItemThrift.add(elemento.getInstance());
         });
-        instance.setParticipantes(listaParticipanteRowItemThrift);
+        instancia.setParticipantes(listaParticipanteRowItemThrift);
     }
     /**
      * Devolve um tbCdsOrigem
@@ -585,7 +595,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public int getTbCdsOrigem() {
-        return instance.getTbCdsOrigem();
+        return instancia.getTbCdsOrigem();
     }
     /**
      * Altera o valor de tbCdsOrigem
@@ -594,7 +604,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public void setTbCdsOrigem(int tbCdsOrigem) {
-        instance.setTbCdsOrigem(tbCdsOrigem);
+        instancia.setTbCdsOrigem(tbCdsOrigem);
     }
     /**
      * Devolve o valor de codigoIbgeMunicio
@@ -603,7 +613,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public String getCodigoIbgeMunicipio() {
-        return instance.getCodigoIbgeMunicipio();
+        return instancia.getCodigoIbgeMunicipio();
     }
     /**
      * Altera o valor de codigoIbgeMunicio
@@ -612,7 +622,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
 
     @Override
     public void setCodigoIbgeMunicipio(String codigoIbgeMunicipio) {
-        instance.setCodigoIbgeMunicipio(codigoIbgeMunicipio);
+        instancia.setCodigoIbgeMunicipio(codigoIbgeMunicipio);
     }
     /**
      * Devolve uma instancia de FichaAtividadeColetivaThrift
@@ -620,7 +630,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
      */
 
     protected FichaAtividadeColetivaThrift getInstance() {
-        return instance;
+        return instancia;
     }
 
     /**
@@ -649,10 +659,10 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
     @Override
     public boolean validaDtAtividadeColetiva() {
 
-        if (!instance.isSetDtAtividadeColetiva()) {
+        if (!instancia.isSetDtAtividadeColetiva()) {
             return false;
         } else {
-            long dataAtividadeColetiva = instance.getDtAtividadeColetiva();
+            long dataAtividadeColetiva = instancia.getDtAtividadeColetiva();
             long dataAtual = Instant.now().getEpochSecond();
             return dataAtividadeColetiva <= dataAtual;
         }
@@ -667,7 +677,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
      */
     @Override
     public boolean validaNumParticipantesProgramados() {
-        if (instance.isSetNumParticipantesProgramados()) {
+        if (instancia.isSetNumParticipantesProgramados()) {
             return getInstance().getNumParticipantesProgramados() >= 0 && getInstance().getNumParticipantesProgramados() <= 999;
         } else {
             return true;
@@ -683,7 +693,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
      */
     @Override
     public boolean validaLocalAtividade() {
-        if (instance.isSetLocalAtividade()) {
+        if (instancia.isSetLocalAtividade()) {
             return getInstance().getLocalAtividade().length() >= 0 && getInstance().getLocalAtividade().length() <= 250;
         } else {
             return true;
@@ -699,7 +709,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
      */
     @Override
     public boolean validaHoraFim() {
-        if (instance.isSetHoraFim()) {
+        if (instancia.isSetHoraFim()) {
             return getInstance().getHoraFim() > getInstance().getHoraInicio();
         } else {
             return true;
@@ -949,7 +959,7 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
      */
     @Override
     public boolean validaCodigoIbgeMunicipio() {
-        String var = instance.getCodigoIbgeMunicipio();
+        String var = instancia.getCodigoIbgeMunicipio();
         return var != null
                 && var.matches("\\A\\d{7}\\z");
     }
@@ -962,10 +972,52 @@ public class FichaAtividadeColetiva implements IFichaAtividadeColetiva {
      */
     @Override
     public boolean validates() {
-        return this.validaAtividadeTipo() && this.validaDtAtividadeColetiva() && this.validaHoraFim() && this.validaInep() && this.validaLocalAtividade()
-                && this.validaNumAvaliacoesAlteradas() && this.validaNumParticipantes() && this.validaNumParticipantesProgramados() && this.validaPraticasTemasParaSaude()
-                && this.validaProfssionais() && this.validaPublicoAlvo() && this.validaResponsavelCnesUnidade() && this.validaResponsavelCns() && this.validaResponsavelNumIne()
-                && this.validaTemasParaReuniao() && this.validaUuidFicha() && this.validaCodigoIbgeMunicipio() && this.validaParticipantes();
+        return this.validaAtividadeTipo() && 
+                this.validaDtAtividadeColetiva() && 
+                this.validaHoraFim() && this.validaInep() && 
+                this.validaLocalAtividade() && 
+                this.validaNumAvaliacoesAlteradas() && 
+                this.validaNumParticipantes() && 
+                this.validaNumParticipantesProgramados() && 
+                this.validaPraticasTemasParaSaude() && 
+                this.validaProfssionais() && 
+                this.validaPublicoAlvo() && 
+                this.validaResponsavelCnesUnidade() && 
+                this.validaResponsavelCns() && 
+                this.validaResponsavelNumIne() && 
+                this.validaTemasParaReuniao() && 
+                this.validaUuidFicha() && 
+                this.validaCodigoIbgeMunicipio() && 
+                this.validaParticipantes();
+    }
+    public void setDadoTransporte(DadoTransporte originadora){
+        this.dadoTransporteThrift = originadora;
+    }
+    public DadoTransporte getDadoTransporte(){
+        return this.dadoTransporteThrift;
+    }
+
+    public void zipGenerate(){
+        if(!this.validates() && this.dadoTransporteThrift != null){
+            return;
+        }
+
+        byte[] fichaSerializada = SerializadorThrift.serializar(this.instancia);
+        dadoTransporteThrift.setTipoDadoSerializado(TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO);
+        dadoTransporteThrift.setDadoSerializado(fichaSerializada);
+
+        try {
+            File zipFile = new File(System.getProperty("user.home") + "/fichaProcedimento.zip");
+            ZipOutputStream outputStream = new ZipOutputStream(new FileOutputStream(zipFile));
+            String entryName = dadoTransporteThrift.getUuidDadoSerializado() + EXTENSAO_EXPORT;
+            outputStream.putNextEntry(new ZipEntry(entryName));
+            byte[] dadoTransporteSerializado = SerializadorThrift.serializar(dadoTransporteThrift.getInstance());
+            outputStream.write(dadoTransporteSerializado);
+
+            outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
 
 }
