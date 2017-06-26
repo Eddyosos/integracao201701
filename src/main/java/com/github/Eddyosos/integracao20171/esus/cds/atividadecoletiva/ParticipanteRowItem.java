@@ -9,63 +9,121 @@ public class ParticipanteRowItem {
     protected ParticipanteRowItem(ParticipanteRowItemThrift participanteRowItemThrift) {
         this.participanteRowItemThrift = participanteRowItemThrift;
     }
+    /**
+     * Devolve um cns
+     * @return cns String
+     */
 
     public String getCns() {
         return participanteRowItemThrift.getCns();
     }
+    /**
+     * Altera o valor de cns
+     * @param cns string
+     */
 
     public void setCns(String cns) {
         participanteRowItemThrift.setCns(cns);
     }
+    /**
+     * Devolve uma dataNascimento
+     * @return dataNascimento long
+     */
 
     public long getDataNascimento() {
         return participanteRowItemThrift.getDataNascimento();
     }
+    /**
+     * Altera o valor de dataNascimento
+     * @param dataNascimento long
+     */
 
     public void setDataNascimento(long dataNascimento) {
         participanteRowItemThrift.setDataNascimento(dataNascimento);
     }
+    /**
+     * Retorna o valor de AvaliacaoAlterada
+     * @return AvaliacaoAlterada boolean
+     */
 
     public boolean isAvaliacaoAlterada() {
         return participanteRowItemThrift.isAvaliacaoAlterada();
     }
+    /**
+     * Altera o valor de AvaliacaoAlterada
+     * @param avaliacaoAlterada boolean
+     */
 
     public void setAvaliacaoAlterada(boolean avaliacaoAlterada) {
         participanteRowItemThrift.setAvaliacaoAlterada(avaliacaoAlterada);
     }
+    /**
+     * Devolve o valor de peso
+     * @return peso double
+     */
 
     public double getPeso() {
         return participanteRowItemThrift.getPeso();
     }
+    /**
+     * Altera o valor de peso
+     * @param peso double
+     */
 
     public void setPeso(double peso) {
         participanteRowItemThrift.setPeso(peso);
     }
+    /**
+     * Devolve o valor de altura
+     * @return altura double
+     */
 
     public double getAltura() {
         return participanteRowItemThrift.getAltura();
     }
+    /**
+     * Altera o valor de altura
+     * @param altura double
+     */
 
     public void setAltura(double altura) {
         participanteRowItemThrift.setAltura(altura);
     }
+    /**
+     * Devolve o valor de cessouHabitoFumar
+     * @return cessouHabitoFumar boolean
+     */
     public boolean isCessouHabitoFumar() {
         return participanteRowItemThrift.isCessouHabitoFumar();
     }
+    /**
+     * Altera o valor de cessouHabitoFumar
+     * @param cessouHabitoFumar boolean
+     */
 
     public void setCessouHabitoFumar(boolean cessouHabitoFumar) {
         participanteRowItemThrift.setCessouHabitoFumar(cessouHabitoFumar);
     }
+    /**
+     * Devolve o valor de abandonouGrupo
+     * @return abandonouGrupo boolean
+     */
 
     public boolean isAbandonouGrupo() {
         return participanteRowItemThrift.isAbandonouGrupo();
     }
-
+    /**
+     * Altera o valor de abandonouGrupo
+     * @param abandonouGrupo boolean
+     */
     public void setAbandonouGrupo(boolean abandonouGrupo) {
         participanteRowItemThrift.setAbandonouGrupo(abandonouGrupo);
     }
-
-    ParticipanteRowItemThrift getInstance() {
+    /**
+     *  Devolve uma instancia de ParticipanteRowItemThrift
+     * @return participanteRowItemThrift ParticipanteRowItemThrift
+     */
+    protected ParticipanteRowItemThrift getInstance() {
         return participanteRowItemThrift;
     }
 

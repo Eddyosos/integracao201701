@@ -16,105 +16,254 @@ public class FichaAtividadeColetiva {
         this.instance = fichaAtividadeColetiva;
     }
 
+    /**
+     * Devolve um uuidFicha
+     *
+     * @return uuidFicha String
+     */
     public String getUuidFicha() {
         return instance.getUuidFicha();
     }
 
+    /**
+     * Altera o valor de uuidFicha
+     *
+     * @param uuidFicha String
+     */
     public void setUuidFicha(String uuidFicha) {
         instance.setUuidFicha(uuidFicha);
     }
 
+    /**
+     * Devolve um dtAtividadeColetiva
+     *
+     * @return dtAtividadeColetiva long
+     */
     public long getDtAtividadeColetiva() {
         return instance.getDtAtividadeColetiva();
     }
 
+    /**
+     * Altera o valor de dtAtividadeColetiva
+     *
+     * @param dtAtividadeColetiva long
+     */
     public void setDtAtividadeColetiva(long dtAtividadeColetiva) {
         instance.setDtAtividadeColetiva(dtAtividadeColetiva);
     }
+
+    /**
+     * Devolve um numParticipantesProgramados
+     *
+     * @return numParticipantesProgramados int
+     */
 
     public int getNumParticipantesProgramados() {
         return instance.getNumParticipantesProgramados();
     }
 
+    /**
+     * Altera o valor de NumParticipantesProgramados
+     *
+     * @param numParticipantesProgramados int
+     */
+
     public void setNumParticipantesProgramados(int numParticipantesProgramados) {
         instance.setNumParticipantesProgramados(numParticipantesProgramados);
     }
+
+    /**
+     * Devolve um LocalAtividade
+     *
+     * @return LocalAtividade String
+     */
 
     public String getLocalAtividade() {
         return instance.getLocalAtividade();
     }
 
+    /**
+     * Altera o valor de LocalAtividade
+     *
+     * @param localAtividade String
+     */
+
     public void setLocalAtividade(String localAtividade) {
         instance.setLocalAtividade(localAtividade);
     }
+
+    /**
+     * Devolve um HoraInicio
+     *
+     * @return HoraInicio long
+     */
 
     public long getHoraInicio() {
         return instance.getHoraInicio();
     }
 
+    /**
+     * Altera o valor de HoraInicio
+     *
+     * @param horaInicio long
+     */
+
     public void setHoraInicio(long horaInicio) {
         instance.setHoraInicio(horaInicio);
     }
+
+    /**
+     * Devolve um HoraFim
+     *
+     * @return HoraFim long
+     */
 
     public long getHoraFim() {
         return instance.getHoraFim();
     }
 
+    /**
+     * Altera o valor de HoraFim
+     *
+     * @param horaFim long
+     */
     public void setHoraFim(long horaFim) {
         instance.setHoraFim(horaFim);
     }
+
+    /**
+     * Devolve um Inep
+     *
+     * @return Inep long
+     */
 
     public long getInep() {
         return instance.getInep();
     }
 
+    /**
+     * Altera o valor de Inep
+     *
+     * @param inep long
+     */
     public void setInep(long inep) {
         instance.setInep(inep);
     }
 
+    /**
+     * Devolve um responsavelCns
+     *
+     * @return responsavelCns String
+     */
     public String getResponsavelCns() {
         return instance.getResponsavelCns();
     }
+
+    /**
+     * Altera o valor de responsavelCns
+     *
+     * @param responsavelCns String
+     */
 
     public void setResponsavelCns(String responsavelCns) {
         instance.setResponsavelCns(responsavelCns);
     }
 
+    /**
+     * Devolve um responsavelCnesUnidade
+     *
+     * @return responsavelCnesUnidade String
+     */
+
     public String getResponsavelCnesUnidade() {
         return instance.getResponsavelCnesUnidade();
     }
+
+    /**
+     * Altera o valor de responsavelCnesUnidade
+     *
+     * @param responsavelCnesUnidade String
+     */
 
     public void setResponsavelCnesUnidade(String responsavelCnesUnidade) {
         instance.setResponsavelCnesUnidade(responsavelCnesUnidade);
     }
 
+    /**
+     * Devolve um responsavelNumIne
+     *
+     * @return responsavelNumIne String
+     */
+
     public String getResponsavelNumIne() {
         return instance.getResponsavelNumIne();
     }
+
+    /**
+     * Altera o valor de responsavelNumIne
+     *
+     * @param responsavelNumIne String
+     */
 
     public void setResponsavelNumIne(String responsavelNumIne) {
         instance.setResponsavelNumIne(responsavelNumIne);
     }
 
+    /**
+     * Devolve um numParticipantes
+     *
+     * @return numParticipantes int
+     */
+
     public int getNumParticipantes() {
         return instance.getNumParticipantes();
     }
+
+    /**
+     * Altera o valor de numParticipantes
+     *
+     * @param numParticipantes int
+     */
 
     public void setNumParticipantes(int numParticipantes) {
         instance.setNumParticipantes(numParticipantes);
     }
 
+    /**
+     * Devolve um numAvaliacoesAlteradas
+     *
+     * @return numAvaliacoesAlteradas int
+     */
+
     public int getNumAvaliacoesAlteradas() {
         return instance.getNumAvaliacoesAlteradas();
     }
+
+    /**
+     * Altera o valor de numAvaliacoesAlteradas
+     *
+     * @param numAvaliacoesAlteradas int
+     */
 
     public void setNumAvaliacoesAlteradas(int numAvaliacoesAlteradas) {
         instance.setNumAvaliacoesAlteradas(numAvaliacoesAlteradas);
     }
 
+    /**
+     * Devolve o tamanho de profssionais
+     *
+     * @return profssionaisSize int
+     */
+
     public int getProfissionaisSize() {
         return instance.getProfissionaisSize();
     }
+
+    /**
+     * Devolve o iterator de profissionais
+     *
+     * @return listaProffsionalCboRowItem.iterator Iterator
+     */
 
     public Iterator<ProfissionalCboRowItem> getProfissionaisIterator() {
         List<ProfissionalCboRowItem> listaProfissionalCboRowItem = new LinkedList<>();
@@ -126,9 +275,21 @@ public class FichaAtividadeColetiva {
         return listaProfissionalCboRowItem.iterator();
     }
 
+    /**
+     * Adiciona um elemento à lista profissionais
+     *
+     * @param elem
+     */
+
     public void addToProfissionais(ProfissionalCboRowItem elem) {
         instance.addToProfissionais(elem.getInstance());
     }
+
+    /**
+     * Devolve uma lista de profisionais
+     *
+     * @return ListaProfssionalCboRowItem list
+     */
 
     public List<ProfissionalCboRowItem> getProfissionais() {
         List<ProfissionalCboRowItem> listaProfissionalCboRowItem = new LinkedList<>();
@@ -140,6 +301,12 @@ public class FichaAtividadeColetiva {
         return listaProfissionalCboRowItem;
     }
 
+    /**
+     * Altera o valor da lista profssionais
+     *
+     * @param profissionais List
+     */
+
     public void setProfissionais(List<ProfissionalCboRowItem> profissionais) {
         List<ProfissionalCboRowItemThrift> listaProfissionalCboRowItemThrift = new LinkedList<>();
 
@@ -150,77 +317,168 @@ public class FichaAtividadeColetiva {
         instance.setProfissionais(listaProfissionalCboRowItemThrift);
     }
 
+    /**
+     * Devolve um AtividadeTipo
+     *
+     * @return AtividadeTipo long
+     */
+
     public long getAtividadeTipo() {
         return instance.getAtividadeTipo();
     }
+
+    /**
+     * Altera o valor de atividadeTipo
+     *
+     * @param atividadeTipo String
+     */
 
     public void setAtividadeTipo(long atividadeTipo) {
         instance.setAtividadeTipo(atividadeTipo);
     }
 
+    /**
+     * Devolve um tamanho para temasParaReuniao
+     *
+     * @return temasParaReuniaoSize int
+     */
+
     public int getTemasParaReuniaoSize() {
         return instance.getTemasParaReuniaoSize();
     }
+
+    /**
+     * Devolve um iterator para TemasParaReuniao
+     *
+     * @return temasParaReuniaoIterator
+     */
 
     public Iterator<Long> getTemasParaReuniaoIterator() {
         return instance.getTemasParaReuniaoIterator();
     }
 
+    /**
+     * Adiciona elementos para temasParaReuniao
+     *
+     * @param elem long
+     */
+
     public void addToTemasParaReuniao(long elem) {
         instance.addToTemasParaReuniao(elem);
     }
+
+    /**
+     * Devolve uma lista de temasParaReuniao
+     *
+     * @return temasParaReuniao list
+     */
 
     public List<Long> getTemasParaReuniao() {
         return instance.getTemasParaReuniao();
     }
 
+    /**
+     * Altera o valor da lista de temasParaReuniao
+     *
+     * @param temasParaReuniao list
+     */
+
     public void setTemasParaReuniao(List<Long> temasParaReuniao) {
         instance.setTemasParaReuniao(temasParaReuniao);
     }
+
+    /**
+     * Devolve o tamanho de publicoAlvoS
+     *
+     * @return publicoAlvoSize int
+     */
 
     public int getPublicoAlvoSize() {
         return instance.getPublicoAlvoSize();
     }
 
+    /**
+     *devolve um iterator para publicoAlvo
+     * @return publicoAlvoIterator
+     */
     public Iterator<Long> getPublicoAlvoIterator() {
         return instance.getPublicoAlvoIterator();
     }
+    /**
+     * Adiciona um elemento à lista publicoAlvo
+     * @param elem long
+     */
 
     public void addToPublicoAlvo(long elem) {
         instance.addToPublicoAlvo(elem);
     }
+    /**
+     * Retor uma lista publicoAlvo
+     * @return publicoAlvo list
+     */
 
     public List<Long> getPublicoAlvo() {
         return instance.getPublicoAlvo();
     }
+    /**
+     * Altera o valor da lista publicoAlvo
+     * @param publicoAlvo List
+     */
 
     public void setPublicoAlvo(List<Long> publicoAlvo) {
         instance.setPublicoAlvo(publicoAlvo);
     }
+    /**
+     * devolve o tamanho de praticaTemasParaSaude
+     * @return praticaTemasParaSaudeSize
+     */
 
     public int getPraticasTemasParaSaudeSize() {
         return instance.getPraticasTemasParaSaudeSize();
     }
-
+    /**
+     * Devolve um praticasTemasParaSaude iterator
+     * @return praticasTemasParaSaudeIterator Iterator
+     */
     public Iterator<Long> getPraticasTemasParaSaudeIterator() {
         return instance.getPraticasTemasParaSaudeIterator();
     }
+    /**
+     * adiciona um elemento à lista praticasTemasParaSaude
+     * @param elem long
+     */
 
     public void addToPraticasTemasParaSaude(long elem) {
         instance.addToPraticasTemasParaSaude(elem);
     }
+    /**
+     * retorna uma lista de praticasTemasParaSaude
+     * @return praticasTemasParaSaude List
+     */
 
     public List<Long> getPraticasTemasParaSaude() {
         return instance.getPraticasTemasParaSaude();
     }
+    /**
+     * Altera o valor da lista de praticasTemasParaSaude
+     * @param praticasTemasParaSaude List
+     */
 
     public void setPraticasTemasParaSaude(List<Long> praticasTemasParaSaude) {
         instance.setPraticasTemasParaSaude(praticasTemasParaSaude);
     }
+    /**
+     * retorna o tamanho de participantes
+     * @return participantesSize
+     */
 
     public int getParticipantesSize() {
         return instance.getParticipantesSize();
     }
+    /**
+     * Devolve o participantes iterator
+     * @return participantesIterator
+     */
 
     public Iterator<ParticipanteRowItem> getParticipantesIterator() {
         List<ParticipanteRowItem> listaParticipanteRowItem = new LinkedList<>();
@@ -231,10 +489,18 @@ public class FichaAtividadeColetiva {
 
         return listaParticipanteRowItem.iterator();
     }
+    /**
+     * adiciona elementos à lista de participantes
+     * @param elem ParticipanteRowItem
+     */
 
     public void addToParticipantes(ParticipanteRowItem elem) {
         instance.addToParticipantes(elem.getInstance());
     }
+    /**
+     * devolve uma lista de participantes
+     * @return participantes List
+     */
 
     public List<ParticipanteRowItem> getParticipantes() {
         List<ParticipanteRowItem> listaParticipanteRowItem = new LinkedList<>();
@@ -245,6 +511,10 @@ public class FichaAtividadeColetiva {
 
         return listaParticipanteRowItem;
     }
+    /**
+     * Altera o valor da lista de participantes
+     * @param participantes List
+     */
 
     public void setParticipantes(List<ParticipanteRowItem> participantes) {
         List<ParticipanteRowItemThrift> listaParticipanteRowItemThrift = new LinkedList<>();
@@ -253,22 +523,42 @@ public class FichaAtividadeColetiva {
         });
         instance.setParticipantes(listaParticipanteRowItemThrift);
     }
+    /**
+     * Devolve um tbCdsOrigem
+     * @return tbCdsOrigem int
+     */
 
     public int getTbCdsOrigem() {
         return instance.getTbCdsOrigem();
     }
+    /**
+     * Altera o valor de tbCdsOrigem
+     * @param tbCdsOrigem int
+     */
 
     public void setTbCdsOrigem(int tbCdsOrigem) {
         instance.setTbCdsOrigem(tbCdsOrigem);
     }
+    /**
+     * Devolve o valor de codigoIbgeMunicio
+     * @return codigoIbgeMunicio Strng
+     */
 
     public String getCodigoIbgeMunicipio() {
         return instance.getCodigoIbgeMunicipio();
     }
+    /**
+     * Altera o valor de codigoIbgeMunicio
+     * @param codigoIbgeMunicipio String
+     */
 
     public void setCodigoIbgeMunicipio(String codigoIbgeMunicipio) {
         instance.setCodigoIbgeMunicipio(codigoIbgeMunicipio);
     }
+    /**
+     * Devolve uma instancia de FichaAtividadeColetivaThrift
+     * @return 
+     */
 
     protected FichaAtividadeColetivaThrift getInstance() {
         return instance;
