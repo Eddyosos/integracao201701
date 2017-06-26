@@ -4,321 +4,342 @@ import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.EmSit
 import java.util.Iterator;
 import java.util.List;
 import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
 
 public class EmSituacaoDeRua {
-    private EmSituacaoDeRuaThrift emSituacaoDeRuaThrift;
+    private EmSituacaoDeRuaThrift instance;
     
-    protected EmSituacaoDeRua(EmSituacaoDeRuaThrift emSituacaoDeRua){
-        this.emSituacaoDeRuaThrift = emSituacaoDeRua;
+    public EmSituacaoDeRua(EmSituacaoDeRuaThrift emSituacaoDeRua){
+        this.instance = emSituacaoDeRua;
     }
 
     public EmSituacaoDeRua() {
-        this.emSituacaoDeRuaThrift = new EmSituacaoDeRuaThrift();
-    }
-
-    public EmSituacaoDeRua deepCopy() {
-        return new EmSituacaoDeRua(emSituacaoDeRuaThrift.deepCopy());
+        this.instance = new EmSituacaoDeRuaThrift();
     }
 
     public void clear() {
-        emSituacaoDeRuaThrift.clear();
+        instance.clear();
     }
 
+    /**
+     * Valida a instancia
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validates(){
+        return validaGrauParentescoFamiliarFrequentado();
+    }
+    
+    /**
+     * Valida GrauParentescoFamiliarFrequentado.
+     * Para ser válido, caso inserido, deve:
+     * 1- Não pode ser preechido se o campo statusSituacaoRua = false.
+     * 2- Não pode ser preenchido se o campo statusVisitaFamiliarFrequentemente = false.
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validaGrauParentescoFamiliarFrequentado(){
+        return !instance.isSetGrauParentescoFamiliarFrequentado() || (
+                instance.getGrauParentescoFamiliarFrequentado().length() <= 100 && (
+                !instance.isSetStatusSituacaoRua() || 
+                instance.isStatusSituacaoRua()) && (
+                !instance.isSetStatusVisitaFamiliarFrequentemente() ||
+                instance.isStatusVisitaFamiliarFrequentemente()));
+    }
+    
+    /**
+     * Grau de parentesco do familiar que frequenta.
+     * @return 
+     */
     public String getGrauParentescoFamiliarFrequentado() {
-        return emSituacaoDeRuaThrift.getGrauParentescoFamiliarFrequentado();
+        return instance.getGrauParentescoFamiliarFrequentado();
     }
 
+    /**
+     * Grau de parentesco do familiar que frequenta.
+     * @param grauParentescoFamiliarFrequentado 
+     */
     public void setGrauParentescoFamiliarFrequentado(String grauParentescoFamiliarFrequentado) {
-        emSituacaoDeRuaThrift.setGrauParentescoFamiliarFrequentado(grauParentescoFamiliarFrequentado);
+        instance.setGrauParentescoFamiliarFrequentado(grauParentescoFamiliarFrequentado);
     }
-
-    public void unsetGrauParentescoFamiliarFrequentado() {
-        emSituacaoDeRuaThrift.unsetGrauParentescoFamiliarFrequentado();
+    
+    /**
+     * Valida HigienePessoalSituacaoRua.
+     * Para ser válida, caso inserida, deve:
+     * 1- Não pode ser preechido se o campo statusSituacaoRua = false.
+     * 2- Requerido preenchimento de pelo menos um item se o campo statusTemAcessoHigienePessoalSituacaoRua = true.
+     * @return true se válido
+     *          false se inválido
+     */
+    public boolean validateHigienePessoalSituacaoRua(){
+        return !instance.isSetHigienePessoalSituacaoRua() || ((
+                !instance.isSetStatusSituacaoRua() ||
+                instance.isSetStatusTemAcessoHigienePessoalSituacaoRua() ) &&
+                !instance.isSetStatusTemAcessoHigienePessoalSituacaoRua() ||
+                !instance.isStatusTemAcessoHigienePessoalSituacaoRua() || (
+                instance.getHigienePessoalSituacaoRuaSize() > 0 &&
+                instance.getHigienePessoalSituacaoRuaSize() <= 4));
+                
+                
     }
-
-    public boolean isSetGrauParentescoFamiliarFrequentado() {
-        return emSituacaoDeRuaThrift.isSetGrauParentescoFamiliarFrequentado();
-    }
-
-    public void setGrauParentescoFamiliarFrequentadoIsSet(boolean value) {
-        emSituacaoDeRuaThrift.setGrauParentescoFamiliarFrequentadoIsSet(value);
-    }
-
-    public int getHigienePessoalSituacaoRuaSize() {
-        return emSituacaoDeRuaThrift.getHigienePessoalSituacaoRuaSize();
-    }
-
-    public Iterator<Long> getHigienePessoalSituacaoRuaIterator() {
-        return emSituacaoDeRuaThrift.getHigienePessoalSituacaoRuaIterator();
-    }
-
-    public void addToHigienePessoalSituacaoRua(long elem) {
-        emSituacaoDeRuaThrift.addToHigienePessoalSituacaoRua(elem);
-    }
-
+    
+    /**
+     * Código das condições de higiene que o cidadão tem acesso.
+     * @return 
+     */
     public List<Long> getHigienePessoalSituacaoRua() {
-        return emSituacaoDeRuaThrift.getHigienePessoalSituacaoRua();
+        return instance.getHigienePessoalSituacaoRua();
     }
 
+    /**
+     * Código das condições de higiene que o cidadão tem acesso.
+     * @param higienePessoalSituacaoRua 
+     */
     public void setHigienePessoalSituacaoRua(List<Long> higienePessoalSituacaoRua) {
-        emSituacaoDeRuaThrift.setHigienePessoalSituacaoRua(higienePessoalSituacaoRua);
-    }
-
-    public void unsetHigienePessoalSituacaoRua() {
-        emSituacaoDeRuaThrift.unsetHigienePessoalSituacaoRua();
-    }
-
-    public boolean isSetHigienePessoalSituacaoRua() {
-        return emSituacaoDeRuaThrift.isSetHigienePessoalSituacaoRua();
-    }
-
-    public void setHigienePessoalSituacaoRuaIsSet(boolean value) {
-        emSituacaoDeRuaThrift.setHigienePessoalSituacaoRuaIsSet(value);
+        instance.setHigienePessoalSituacaoRua(higienePessoalSituacaoRua);
     }
 
     public int getOrigemAlimentoSituacaoRuaSize() {
-        return emSituacaoDeRuaThrift.getOrigemAlimentoSituacaoRuaSize();
+        return instance.getOrigemAlimentoSituacaoRuaSize();
     }
 
     public Iterator<Long> getOrigemAlimentoSituacaoRuaIterator() {
-        return emSituacaoDeRuaThrift.getOrigemAlimentoSituacaoRuaIterator();
+        return instance.getOrigemAlimentoSituacaoRuaIterator();
     }
 
     public void addToOrigemAlimentoSituacaoRua(long elem) {
-        emSituacaoDeRuaThrift.addToOrigemAlimentoSituacaoRua(elem);
+        instance.addToOrigemAlimentoSituacaoRua(elem);
     }
 
     public List<Long> getOrigemAlimentoSituacaoRua() {
-        return emSituacaoDeRuaThrift.getOrigemAlimentoSituacaoRua();
+        return instance.getOrigemAlimentoSituacaoRua();
     }
 
     public void setOrigemAlimentoSituacaoRua(List<Long> origemAlimentoSituacaoRua) {
-        emSituacaoDeRuaThrift.setOrigemAlimentoSituacaoRua(origemAlimentoSituacaoRua);
+        instance.setOrigemAlimentoSituacaoRua(origemAlimentoSituacaoRua);
     }
 
     public void unsetOrigemAlimentoSituacaoRua() {
-        emSituacaoDeRuaThrift.unsetOrigemAlimentoSituacaoRua();
+        instance.unsetOrigemAlimentoSituacaoRua();
     }
 
     public boolean isSetOrigemAlimentoSituacaoRua() {
-        return emSituacaoDeRuaThrift.isSetOrigemAlimentoSituacaoRua();
+        return instance.isSetOrigemAlimentoSituacaoRua();
     }
 
     public void setOrigemAlimentoSituacaoRuaIsSet(boolean value) {
-        emSituacaoDeRuaThrift.setOrigemAlimentoSituacaoRuaIsSet(value);
+        instance.setOrigemAlimentoSituacaoRuaIsSet(value);
     }
 
     public String getOutraInstituicaoQueAcompanha() {
-        return emSituacaoDeRuaThrift.getOutraInstituicaoQueAcompanha();
+        return instance.getOutraInstituicaoQueAcompanha();
     }
 
     public void setOutraInstituicaoQueAcompanha(String outraInstituicaoQueAcompanha) {
-        emSituacaoDeRuaThrift.setOutraInstituicaoQueAcompanha(outraInstituicaoQueAcompanha);
+        instance.setOutraInstituicaoQueAcompanha(outraInstituicaoQueAcompanha);
     }
 
     public void unsetOutraInstituicaoQueAcompanha() {
-        emSituacaoDeRuaThrift.unsetOutraInstituicaoQueAcompanha();
+        instance.unsetOutraInstituicaoQueAcompanha();
     }
 
     public boolean isSetOutraInstituicaoQueAcompanha() {
-        return emSituacaoDeRuaThrift.isSetOutraInstituicaoQueAcompanha();
+        return instance.isSetOutraInstituicaoQueAcompanha();
     }
 
     public void setOutraInstituicaoQueAcompanhaIsSet(boolean value) {
-        emSituacaoDeRuaThrift.setOutraInstituicaoQueAcompanhaIsSet(value);
+        instance.setOutraInstituicaoQueAcompanhaIsSet(value);
     }
 
     public long getQuantidadeAlimentacoesAoDiaSituacaoRua() {
-        return emSituacaoDeRuaThrift.getQuantidadeAlimentacoesAoDiaSituacaoRua();
+        return instance.getQuantidadeAlimentacoesAoDiaSituacaoRua();
     }
 
     public void setQuantidadeAlimentacoesAoDiaSituacaoRua(long quantidadeAlimentacoesAoDiaSituacaoRua) {
-        emSituacaoDeRuaThrift.setQuantidadeAlimentacoesAoDiaSituacaoRua(quantidadeAlimentacoesAoDiaSituacaoRua);
+        instance.setQuantidadeAlimentacoesAoDiaSituacaoRua(quantidadeAlimentacoesAoDiaSituacaoRua);
     }
 
     public void unsetQuantidadeAlimentacoesAoDiaSituacaoRua() {
-        emSituacaoDeRuaThrift.unsetQuantidadeAlimentacoesAoDiaSituacaoRua();
+        instance.unsetQuantidadeAlimentacoesAoDiaSituacaoRua();
     }
 
     public boolean isSetQuantidadeAlimentacoesAoDiaSituacaoRua() {
-        return emSituacaoDeRuaThrift.isSetQuantidadeAlimentacoesAoDiaSituacaoRua();
+        return instance.isSetQuantidadeAlimentacoesAoDiaSituacaoRua();
     }
 
     public void setQuantidadeAlimentacoesAoDiaSituacaoRuaIsSet(boolean value) {
-        emSituacaoDeRuaThrift.setQuantidadeAlimentacoesAoDiaSituacaoRuaIsSet(value);
+        instance.setQuantidadeAlimentacoesAoDiaSituacaoRuaIsSet(value);
     }
 
     public boolean isStatusAcompanhadoPorOutraInstituicao() {
-        return emSituacaoDeRuaThrift.isStatusAcompanhadoPorOutraInstituicao();
+        return instance.isStatusAcompanhadoPorOutraInstituicao();
     }
 
     public void setStatusAcompanhadoPorOutraInstituicao(boolean statusAcompanhadoPorOutraInstituicao) {
-        emSituacaoDeRuaThrift.setStatusAcompanhadoPorOutraInstituicao(statusAcompanhadoPorOutraInstituicao);
+        instance.setStatusAcompanhadoPorOutraInstituicao(statusAcompanhadoPorOutraInstituicao);
     }
 
     public void unsetStatusAcompanhadoPorOutraInstituicao() {
-        emSituacaoDeRuaThrift.unsetStatusAcompanhadoPorOutraInstituicao();
+        instance.unsetStatusAcompanhadoPorOutraInstituicao();
     }
 
     public boolean isSetStatusAcompanhadoPorOutraInstituicao() {
-        return emSituacaoDeRuaThrift.isSetStatusAcompanhadoPorOutraInstituicao();
+        return instance.isSetStatusAcompanhadoPorOutraInstituicao();
     }
 
     public void setStatusAcompanhadoPorOutraInstituicaoIsSet(boolean value) {
-        emSituacaoDeRuaThrift.setStatusAcompanhadoPorOutraInstituicaoIsSet(value);
+        instance.setStatusAcompanhadoPorOutraInstituicaoIsSet(value);
     }
 
     public boolean isStatusPossuiReferenciaFamiliar() {
-        return emSituacaoDeRuaThrift.isStatusPossuiReferenciaFamiliar();
+        return instance.isStatusPossuiReferenciaFamiliar();
     }
 
     public void setStatusPossuiReferenciaFamiliar(boolean statusPossuiReferenciaFamiliar) {
-        emSituacaoDeRuaThrift.setStatusPossuiReferenciaFamiliar(statusPossuiReferenciaFamiliar);
+        instance.setStatusPossuiReferenciaFamiliar(statusPossuiReferenciaFamiliar);
     }
 
     public void unsetStatusPossuiReferenciaFamiliar() {
-        emSituacaoDeRuaThrift.unsetStatusPossuiReferenciaFamiliar();
+        instance.unsetStatusPossuiReferenciaFamiliar();
     }
 
     public boolean isSetStatusPossuiReferenciaFamiliar() {
-        return emSituacaoDeRuaThrift.isSetStatusPossuiReferenciaFamiliar();
+        return instance.isSetStatusPossuiReferenciaFamiliar();
     }
 
     public void setStatusPossuiReferenciaFamiliarIsSet(boolean value) {
-        emSituacaoDeRuaThrift.setStatusPossuiReferenciaFamiliarIsSet(value);
+        instance.setStatusPossuiReferenciaFamiliarIsSet(value);
     }
 
     public boolean isStatusRecebeBeneficio() {
-        return emSituacaoDeRuaThrift.isStatusRecebeBeneficio();
+        return instance.isStatusRecebeBeneficio();
     }
 
     public void setStatusRecebeBeneficio(boolean statusRecebeBeneficio) {
-        emSituacaoDeRuaThrift.setStatusRecebeBeneficio(statusRecebeBeneficio);
+        instance.setStatusRecebeBeneficio(statusRecebeBeneficio);
     }
 
     public void unsetStatusRecebeBeneficio() {
-        emSituacaoDeRuaThrift.unsetStatusRecebeBeneficio();
+        instance.unsetStatusRecebeBeneficio();
     }
 
     public boolean isSetStatusRecebeBeneficio() {
-        return emSituacaoDeRuaThrift.isSetStatusRecebeBeneficio();
+        return instance.isSetStatusRecebeBeneficio();
     }
 
     public void setStatusRecebeBeneficioIsSet(boolean value) {
-        emSituacaoDeRuaThrift.setStatusRecebeBeneficioIsSet(value);
+        instance.setStatusRecebeBeneficioIsSet(value);
     }
 
     public boolean isStatusSituacaoRua() {
-        return emSituacaoDeRuaThrift.isStatusSituacaoRua();
+        return instance.isStatusSituacaoRua();
     }
 
     public void setStatusSituacaoRua(boolean statusSituacaoRua) {
-        emSituacaoDeRuaThrift.setStatusSituacaoRua(statusSituacaoRua);
+        instance.setStatusSituacaoRua(statusSituacaoRua);
     }
 
     public void unsetStatusSituacaoRua() {
-        emSituacaoDeRuaThrift.unsetStatusSituacaoRua();
+        instance.unsetStatusSituacaoRua();
     }
 
     public boolean isSetStatusSituacaoRua() {
-        return emSituacaoDeRuaThrift.isSetStatusSituacaoRua();
+        return instance.isSetStatusSituacaoRua();
     }
 
     public void setStatusSituacaoRuaIsSet(boolean value) {
-        emSituacaoDeRuaThrift.setStatusSituacaoRuaIsSet(value);
+        instance.setStatusSituacaoRuaIsSet(value);
     }
 
     public boolean isStatusTemAcessoHigienePessoalSituacaoRua() {
-        return emSituacaoDeRuaThrift.isStatusTemAcessoHigienePessoalSituacaoRua();
+        return instance.isStatusTemAcessoHigienePessoalSituacaoRua();
     }
 
     public void setStatusTemAcessoHigienePessoalSituacaoRua(boolean statusTemAcessoHigienePessoalSituacaoRua) {
-        emSituacaoDeRuaThrift.setStatusTemAcessoHigienePessoalSituacaoRua(statusTemAcessoHigienePessoalSituacaoRua);
+        instance.setStatusTemAcessoHigienePessoalSituacaoRua(statusTemAcessoHigienePessoalSituacaoRua);
     }
 
     public void unsetStatusTemAcessoHigienePessoalSituacaoRua() {
-        emSituacaoDeRuaThrift.unsetStatusTemAcessoHigienePessoalSituacaoRua();
+        instance.unsetStatusTemAcessoHigienePessoalSituacaoRua();
     }
 
     public boolean isSetStatusTemAcessoHigienePessoalSituacaoRua() {
-        return emSituacaoDeRuaThrift.isSetStatusTemAcessoHigienePessoalSituacaoRua();
+        return instance.isSetStatusTemAcessoHigienePessoalSituacaoRua();
     }
 
     public void setStatusTemAcessoHigienePessoalSituacaoRuaIsSet(boolean value) {
-        emSituacaoDeRuaThrift.setStatusTemAcessoHigienePessoalSituacaoRuaIsSet(value);
+        instance.setStatusTemAcessoHigienePessoalSituacaoRuaIsSet(value);
     }
 
     public boolean isStatusVisitaFamiliarFrequentemente() {
-        return emSituacaoDeRuaThrift.isStatusVisitaFamiliarFrequentemente();
+        return instance.isStatusVisitaFamiliarFrequentemente();
     }
 
     public void setStatusVisitaFamiliarFrequentemente(boolean statusVisitaFamiliarFrequentemente) {
-        emSituacaoDeRuaThrift.setStatusVisitaFamiliarFrequentemente(statusVisitaFamiliarFrequentemente);
+        instance.setStatusVisitaFamiliarFrequentemente(statusVisitaFamiliarFrequentemente);
     }
 
     public void unsetStatusVisitaFamiliarFrequentemente() {
-        emSituacaoDeRuaThrift.unsetStatusVisitaFamiliarFrequentemente();
+        instance.unsetStatusVisitaFamiliarFrequentemente();
     }
 
     public boolean isSetStatusVisitaFamiliarFrequentemente() {
-        return emSituacaoDeRuaThrift.isSetStatusVisitaFamiliarFrequentemente();
+        return instance.isSetStatusVisitaFamiliarFrequentemente();
     }
 
     public void setStatusVisitaFamiliarFrequentementeIsSet(boolean value) {
-        emSituacaoDeRuaThrift.setStatusVisitaFamiliarFrequentementeIsSet(value);
+        instance.setStatusVisitaFamiliarFrequentementeIsSet(value);
     }
 
     public long getTempoSituacaoRua() {
-        return emSituacaoDeRuaThrift.getTempoSituacaoRua();
+        return instance.getTempoSituacaoRua();
     }
 
     public void setTempoSituacaoRua(long tempoSituacaoRua) {
-        emSituacaoDeRuaThrift.setTempoSituacaoRua(tempoSituacaoRua);
+        instance.setTempoSituacaoRua(tempoSituacaoRua);
     }
 
     public void unsetTempoSituacaoRua() {
-        emSituacaoDeRuaThrift.unsetTempoSituacaoRua();
+        instance.unsetTempoSituacaoRua();
     }
 
     public boolean isSetTempoSituacaoRua() {
-        return emSituacaoDeRuaThrift.isSetTempoSituacaoRua();
+        return instance.isSetTempoSituacaoRua();
     }
 
     public void setTempoSituacaoRuaIsSet(boolean value) {
-        emSituacaoDeRuaThrift.setTempoSituacaoRuaIsSet(value);
+        instance.setTempoSituacaoRuaIsSet(value);
     }
 
     @Override
     public boolean equals(Object that) {
-        return emSituacaoDeRuaThrift.equals(that);
+        return instance.equals(that);
     }
 
     public boolean equals(EmSituacaoDeRua that) {
-        return emSituacaoDeRuaThrift.equals(that.getInstance());
+        return instance.equals(that.getInstance());
     }
 
     @Override
     public int hashCode() {
-        return emSituacaoDeRuaThrift.hashCode();
+        return instance.hashCode();
     }
 
     public int compareTo(EmSituacaoDeRua other) {
-        return emSituacaoDeRuaThrift.compareTo(other.getInstance());
+        return instance.compareTo(other.getInstance());
     }
 
     @Override
     public String toString() {
-        return emSituacaoDeRuaThrift.toString();
+        return instance.toString();
     }
 
     public void validate() throws TException {
-        emSituacaoDeRuaThrift.validate();
+        instance.validate();
     }
 
 
     protected EmSituacaoDeRuaThrift getInstance(){
-        return emSituacaoDeRuaThrift;
+        return instance;
     }
 }
 
