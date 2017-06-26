@@ -1,14 +1,16 @@
 package com.github.Eddyosos.integracao20171.esus.transport;
 
 import br.gov.saude.esus.transport.common.generated.thrift.DadoInstalacaoThrift;
+import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.transport.IDadoInstalacao;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.thrift.TException;
 
-public class DadoInstalacao {
+public class DadoInstalacao implements IDadoInstalacao {
     private DadoInstalacaoThrift instance;
 
-    DadoInstalacaoThrift getInstance() {
+    @Override
+    public DadoInstalacaoThrift getInstance() {
         return instance;
     }
 
@@ -16,13 +18,14 @@ public class DadoInstalacao {
         instance = new DadoInstalacaoThrift();
     }
 
-    DadoInstalacao(DadoInstalacaoThrift instance) {
+    public DadoInstalacao(DadoInstalacaoThrift instance) {
         this.instance = instance;
     }
 
     /**
      * Remove todos os dados da instância.
      */
+    @Override
     public void clear() {
         instance.clear();
     }
@@ -31,6 +34,7 @@ public class DadoInstalacao {
      * Identifica o software que gerou o dado (pec/cds, cdsOff ou software de terceiros).
      * @return Identificador do software que gerou o dado (pec/cds, cdsOff ou software de terceiros).
      */
+    @Override
     public String getContraChave() {
         return instance.getContraChave();
     }
@@ -40,6 +44,7 @@ public class DadoInstalacao {
      * 
      * @param contraChave Identificador do software que gerou o dado (pec/cds, cdsOff ou software de terceiros).
      */
+    @Override
     public void setContraChave(String contraChave) {
         instance.setContraChave(contraChave);
     }
@@ -47,6 +52,7 @@ public class DadoInstalacao {
     /**
      * Remove o software que gerou o dado.
      */
+    @Override
     public void unsetContraChave() {
         instance.unsetContraChave();
     }
@@ -56,6 +62,7 @@ public class DadoInstalacao {
      * 
      * @return True caso tenha sido declarado, caso contrario False.
      */
+    @Override
     public boolean isSetContraChave() {
         return instance.isSetContraChave();
     }
@@ -65,6 +72,7 @@ public class DadoInstalacao {
      * 
      * @param value True para declarar que foi inserido, caso contrario False.
      */
+    @Override
     public void setContraChaveIsSet(boolean value) {
         instance.setContraChaveIsSet(value);
     }
@@ -73,6 +81,7 @@ public class DadoInstalacao {
      * Código UUID para identificar a ficha na base de dados nacional.
      * @return Código UUID
      */
+    @Override
     public String getUuidInstalacao() {
         return instance.getUuidInstalacao();
     }
@@ -86,6 +95,7 @@ public class DadoInstalacao {
      * 
      * @param uuidInstalacao Código UUID
      */
+    @Override
     public void setUuidInstalacao(String uuidInstalacao) {
         instance.setUuidInstalacao(uuidInstalacao);
     }
@@ -93,6 +103,7 @@ public class DadoInstalacao {
     /**
      * Remove o Uuid da ficha
      */
+    @Override
     public void unsetUuidInstalacao() {
         instance.unsetUuidInstalacao();
     }
@@ -101,6 +112,7 @@ public class DadoInstalacao {
      * Verifica se a ficha possui um uuid
      * @return True caso possua um uuid
      */
+    @Override
     public boolean isSetUuidInstalacao() {
         return instance.isSetUuidInstalacao();
     }
@@ -109,6 +121,7 @@ public class DadoInstalacao {
      * Define se o uuid da ficha foi definido.
      * @param value True caso o uuid tenha sido definido.
      */
+    @Override
     public void setUuidInstalacaoIsSet(boolean value) {
         instance.setUuidInstalacaoIsSet(value);
     }
@@ -117,6 +130,7 @@ public class DadoInstalacao {
      * CPF do responsável ou CNPJ da empresa responsável.
      * @return CPF do responsável ou CNPJ da empresa responsável.
      */
+    @Override
     public String getCpfOuCnpj() {
         return instance.getCpfOuCnpj();
     }
@@ -132,6 +146,7 @@ public class DadoInstalacao {
      * 
      * @param cpfOuCnpj CPF do responsável ou CNPJ da empresa responsável.
      */
+    @Override
     public void setCpfOuCnpj(String cpfOuCnpj) {
         instance.setCpfOuCnpj(cpfOuCnpj);
     }
@@ -139,6 +154,7 @@ public class DadoInstalacao {
     /**
      * Remove o CPF do responsável ou CNPJ da empresa responsável.
      */
+    @Override
     public void unsetCpfOuCnpj() {
         instance.unsetCpfOuCnpj();
     }
@@ -148,6 +164,7 @@ public class DadoInstalacao {
      * 
      * @return True caso tenha sido declarado, False caso contrario.
      */
+    @Override
     public boolean isSetCpfOuCnpj() {
         return instance.isSetCpfOuCnpj();
     }
@@ -157,6 +174,7 @@ public class DadoInstalacao {
      * 
      * @param value True para declarar que foi inserido, caso contrario False.
      */
+    @Override
     public void setCpfOuCnpjIsSet(boolean value) {
         instance.setCpfOuCnpjIsSet(value);
     }
@@ -165,6 +183,7 @@ public class DadoInstalacao {
      * Nome do responsável ou razão social da empresa responsável.
      * @return Nome do responsável ou razão social da empresa responsável.
      */
+    @Override
     public String getNomeOuRazaoSocial() {
         return instance.getNomeOuRazaoSocial();
     }
@@ -178,6 +197,7 @@ public class DadoInstalacao {
      * 
      * @param nomeOuRazaoSocial Nome do responsável ou razão social da empresa responsável.
      */
+    @Override
     public void setNomeOuRazaoSocial(String nomeOuRazaoSocial) {
         instance.setNomeOuRazaoSocial(nomeOuRazaoSocial);
     }
@@ -185,6 +205,7 @@ public class DadoInstalacao {
     /**
      * Remove o nome do responsável ou razão social da empresa responsável.
      */
+    @Override
     public void unsetNomeOuRazaoSocial() {
         instance.unsetNomeOuRazaoSocial();
     }
@@ -194,6 +215,7 @@ public class DadoInstalacao {
      * 
      * @return True caso tenha sido declarado, caso contrario False.
      */
+    @Override
     public boolean isSetNomeOuRazaoSocial() {
         return instance.isSetNomeOuRazaoSocial();
     }
@@ -203,6 +225,7 @@ public class DadoInstalacao {
      * 
      * @param value True para declarar que foi inserido, False caso o contrario.
      */
+    @Override
     public void setNomeOuRazaoSocialIsSet(boolean value) {
         instance.setNomeOuRazaoSocialIsSet(value);
     }
@@ -212,6 +235,7 @@ public class DadoInstalacao {
      * 
      * @return Telefone da pessoa ou empresa responsável.
      */
+    @Override
     public String getFone() {
         return instance.getFone();
     }
@@ -228,6 +252,7 @@ public class DadoInstalacao {
      * 
      * @param fone Telefone da pessoa ou empresa responsável
      */
+    @Override
     public void setFone(String fone) {
         instance.setFone(fone);
     }
@@ -235,6 +260,7 @@ public class DadoInstalacao {
     /**
      * Remove o telefone da pessoa ou empresa responsável.
      */
+    @Override
     public void unsetFone() {
         instance.unsetFone();
     }
@@ -244,6 +270,7 @@ public class DadoInstalacao {
      * 
      * @return True caso tenha sido declarado, False caso contrario.
      */
+    @Override
     public boolean isSetFone() {
         return instance.isSetFone();
     }
@@ -253,6 +280,7 @@ public class DadoInstalacao {
      * 
      * @param value True para declarar que foi inserido, caso contrario False.
      */
+    @Override
     public void setFoneIsSet(boolean value) {
         instance.setFoneIsSet(value);
     }
@@ -262,6 +290,7 @@ public class DadoInstalacao {
      * 
      * @return Email da pessoa ou empresa responsável.
      */
+    @Override
     public String getEmail() {
         return instance.getEmail();
     }
@@ -274,6 +303,7 @@ public class DadoInstalacao {
      * 
      * @param email Email da pessoa ou empresa responsável.
      */
+    @Override
     public void setEmail(String email) {
         instance.setEmail(email);
     }
@@ -281,6 +311,7 @@ public class DadoInstalacao {
     /**
      * Remove o email da pessoa ou empresa responsável.
      */
+    @Override
     public void unsetEmail() {
         instance.unsetEmail();
     }
@@ -290,6 +321,7 @@ public class DadoInstalacao {
      * 
      * @return true caso tenha sido declarado, False caso contrario.
      */
+    @Override
     public boolean isSetEmail() {
         return instance.isSetEmail();
     }
@@ -299,30 +331,12 @@ public class DadoInstalacao {
      * 
      * @param value True para declarar que foi inserido, caso contrario False.
      */
+    @Override
     public void setEmailIsSet(boolean value) {
         instance.setEmailIsSet(value);
     }
 
-    public boolean equals(Object that) {
-        return instance.equals(that);
-    }
-
-    public boolean equals(DadoInstalacao that) {
-        return instance.equals(that.instance);
-    }
-
-    public int hashCode() {
-        return instance.hashCode();
-    }
-
-    public int compareTo(DadoInstalacao other) {
-        return instance.compareTo(other.instance);
-    }
-
-    public String toString() {
-        return instance.toString();
-    }
-
+    @Override
     public boolean validates()  {
         try {
             instance.validate();
@@ -345,6 +359,7 @@ public class DadoInstalacao {
      * 
      * @return True se estiver de acordo com as regras, Caso contrario False.
      */
+    @Override
     public boolean validateContraChave(){
         if( ! instance.isSetContraChave()) return false;
         if(instance.getContraChave() == null || instance.getContraChave().isEmpty()) return false;
@@ -359,6 +374,7 @@ public class DadoInstalacao {
      * 
      * @return True se estiver de acordo com as regras, Caso contrario False.
      */
+    @Override
     public boolean validateUuidInstalacao(){
         if( ! instance.isSetUuidInstalacao()) return false;
         if(instance.getUuidInstalacao() == null || instance.getUuidInstalacao().isEmpty()) return false;
@@ -376,6 +392,7 @@ public class DadoInstalacao {
      * 
      * @return True se estiver de acordo com as regras, Caso contrario False.
      */
+    @Override
     public boolean validateCpfOuCnpj(){
         if( ! instance.isSetCpfOuCnpj()) return false;
         
@@ -396,6 +413,7 @@ public class DadoInstalacao {
      * 
      * @return True se estiver de acordo com as regras, Caso contrario False.
      */
+    @Override
     public boolean validateNomeOuRazaoSocial(){
          if( ! instance.isSetNomeOuRazaoSocial()) return false;
         if(instance.getNomeOuRazaoSocial() == null || instance.getNomeOuRazaoSocial().isEmpty()) return false;
@@ -414,6 +432,7 @@ public class DadoInstalacao {
      * 
      * @return True se estiver de acordo com as regras, Caso contrario False.
      */
+    @Override
     public boolean validateFone(){
         if(  instance.isSetFone()) {
         
@@ -438,6 +457,7 @@ public class DadoInstalacao {
      * 
      * @return True se estiver de acordo com as regras, Caso contrario False.
      */
+    @Override
     public boolean validateEmail(){
         
         if(instance.isSetEmail()){

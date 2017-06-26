@@ -2,14 +2,16 @@ package com.github.Eddyosos.integracao20171.esus.transport;
 
 import br.gov.saude.esus.transport.common.api.configuracaodestino.VersaoThrift;
 import br.gov.saude.esus.transport.common.generated.thrift.DadoTransporteThrift;
+import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.transport.IDadoInstalacao;
+import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.transport.IDadoTransporte;
 import java.nio.ByteBuffer;
 import java.util.UUID;
 import org.apache.thrift.TException;
 
-public class DadoTransporte {
+public class DadoTransporte implements IDadoTransporte {
     private DadoTransporteThrift instance;
 
-    DadoTransporte(DadoTransporteThrift instance) {
+    public DadoTransporte(DadoTransporteThrift instance) {
         this.instance = instance;
     }
 
@@ -20,10 +22,10 @@ public class DadoTransporte {
         instance.setVersao(new VersaoThrift(2, 0, 0));
     }
 
-    
     /**
      * Remove o conteúdo da instância.
      */
+    @Override
     public void clear() {
         instance.clear();
     }
@@ -32,7 +34,7 @@ public class DadoTransporte {
      * Código UUID para identificar a ficha na base de dados nacional.
      * @return Código UUID
      */
-
+    @Override
     public String getUuidDadoSerializado() {
         return instance.getUuidDadoSerializado();
     }
@@ -50,6 +52,7 @@ public class DadoTransporte {
      * 
      * @param uuidDadoSerializado Código UUID
      */
+    @Override
     public void setUuidDadoSerializado(String uuidDadoSerializado) {
         instance.setUuidDadoSerializado(uuidDadoSerializado);
     }
@@ -57,6 +60,7 @@ public class DadoTransporte {
     /**
      * Remove o UuidFicha
      */
+    @Override
     public void unsetUuidDadoSerializado() {
         instance.unsetUuidDadoSerializado();
     }
@@ -65,13 +69,16 @@ public class DadoTransporte {
      * Verifica se a ficha possui um uuid
      * @return True caso possua um uuid
      */
+    @Override
     public boolean isSetUuidDadoSerializado() {
         return instance.isSetUuidDadoSerializado();
     }
+    
     /**
      * Define se o uuid da ficha foi definido.
      * @param value True caso o uuid tenha sido definido.
      */
+    @Override
     public void setUuidDadoSerializadoIsSet(boolean value) {
         instance.setUuidDadoSerializadoIsSet(value);
     }
@@ -93,6 +100,7 @@ public class DadoTransporte {
      * 
      * @return Tipo/classe do objeto serializado através do TBinaryProtocol.
      */
+    @Override
     public long getTipoDadoSerializado() {
         return instance.getTipoDadoSerializado();
     }
@@ -116,6 +124,7 @@ public class DadoTransporte {
      * 
      * @param tipoDadoSerializado Tipo/classe do objeto serializado através do TBinaryProtocol.
      */
+    @Override
     public void setTipoDadoSerializado(long tipoDadoSerializado) {
         instance.setTipoDadoSerializado(tipoDadoSerializado);
     }
@@ -123,6 +132,7 @@ public class DadoTransporte {
     /**
      * Remove o tipo/classe do objeto serializado através do TBinaryProtocol.
      */
+    @Override
     public void unsetTipoDadoSerializado() {
         instance.unsetTipoDadoSerializado();
     }
@@ -131,6 +141,7 @@ public class DadoTransporte {
      * Verifica se o tipo/classe do objeto serializado através do TBinaryProtocol foi declarado.
      * @return True se tiver sido declarado, caso contrario False.
      */
+    @Override
     public boolean isSetTipoDadoSerializado() {
         return instance.isSetTipoDadoSerializado();
     }
@@ -140,6 +151,7 @@ public class DadoTransporte {
      * 
      * @param value True para delcarar que foi inserido, caso contrario False.
      */
+    @Override
     public void setTipoDadoSerializadoIsSet(boolean value) {
         instance.setTipoDadoSerializadoIsSet(value);
     }
@@ -149,6 +161,7 @@ public class DadoTransporte {
      * 
      * @return Código CNES da unidade de saúde.
      */
+    @Override
     public String getCnesDadoSerializado() {
         return instance.getCnesDadoSerializado();
     }
@@ -162,6 +175,7 @@ public class DadoTransporte {
      * 
      * @param cnesDadoSerializado Código CNES da unidade de saúde.
      */
+    @Override
     public void setCnesDadoSerializado(String cnesDadoSerializado) {
         instance.setCnesDadoSerializado(cnesDadoSerializado);
     }
@@ -169,6 +183,7 @@ public class DadoTransporte {
     /**
      * Remove o CNES da unidade de saúde.
      */
+    @Override
     public void unsetCnesDadoSerializado() {
         instance.unsetCnesDadoSerializado();
     }
@@ -177,6 +192,7 @@ public class DadoTransporte {
      * Verifica se o CNES da unidade de saúde foi declarado.
      * @return True se tiver sido declarado, caso contrario False.
      */
+    @Override
     public boolean isSetCnesDadoSerializado() {
         return instance.isSetCnesDadoSerializado();
     }
@@ -186,6 +202,7 @@ public class DadoTransporte {
      * 
      * @param value True para declarar que foi inserido, False caso contrario.
      */
+    @Override
     public void setCnesDadoSerializadoIsSet(boolean value) {
         instance.setCnesDadoSerializadoIsSet(value);
     }
@@ -195,6 +212,7 @@ public class DadoTransporte {
      * 
      * @return Código IBGE do dado serializado através do TBinaryProtocol.
      */
+    @Override
     public String getCodIbge() {
         return instance.getCodIbge();
     }
@@ -207,6 +225,7 @@ public class DadoTransporte {
      * 
      * @param codIbge Código IBGE do dado serializado através do TBinaryProtocol.
      */
+    @Override
     public void setCodIbge(String codIbge) {
         instance.setCodIbge(codIbge);
     }
@@ -214,6 +233,7 @@ public class DadoTransporte {
     /**
      * Remove o código IBGE do dado serializado.
      */
+    @Override
     public void unsetCodIbge() {
         instance.unsetCodIbge();
     }
@@ -223,6 +243,7 @@ public class DadoTransporte {
      * 
      * @return True caso tenha sido declarado, caso contrario False.
      */
+    @Override
     public boolean isSetCodIbge() {
         return instance.isSetCodIbge();
     }
@@ -232,6 +253,7 @@ public class DadoTransporte {
      * 
      * @param value True para declarar que foi inserido, False caso o contrario.
      */
+    @Override
     public void setCodIbgeIsSet(boolean value) {
         instance.setCodIbgeIsSet(value);
     }
@@ -241,6 +263,7 @@ public class DadoTransporte {
      * 
      * @return Código INE da equipe que gerou a ficha.
      */
+    @Override
     public String getIneDadoSerializado() {
         return instance.getIneDadoSerializado();
     }
@@ -252,6 +275,7 @@ public class DadoTransporte {
      * 
      * @param ineDadoSerializado Código INE da equipe que gerou a ficha.
      */
+    @Override
     public void setIneDadoSerializado(String ineDadoSerializado) {
         instance.setIneDadoSerializado(ineDadoSerializado);
     }
@@ -259,6 +283,7 @@ public class DadoTransporte {
     /**
      * Remove o INE da equipe que gerou a ficha.
      */
+    @Override
     public void unsetIneDadoSerializado() {
         instance.unsetIneDadoSerializado();
     }
@@ -268,6 +293,7 @@ public class DadoTransporte {
      * 
      * @return True caso tenha sido declarado, False caso contrario.
      */
+    @Override
     public boolean isSetIneDadoSerializado() {
         return instance.isSetIneDadoSerializado();
     }
@@ -277,6 +303,7 @@ public class DadoTransporte {
      * 
      * @param value True para declarar que foi inserido, False caso o contrario.
      */
+    @Override
     public void setIneDadoSerializadoIsSet(boolean value) {
         instance.setIneDadoSerializadoIsSet(value);
     }
@@ -286,6 +313,7 @@ public class DadoTransporte {
      * 
      * @return Número do lote para controle interno dos arquivos enviados.
      */
+    @Override
     public long getNumLote() {
         return instance.getNumLote();
     }
@@ -295,6 +323,7 @@ public class DadoTransporte {
      * 
      * @param numLote Número do lote para controle interno dos arquivos enviados.
      */
+    @Override
     public void setNumLote(long numLote) {
         instance.setNumLote(numLote);
     }
@@ -302,6 +331,7 @@ public class DadoTransporte {
     /**
      * Remove o número do lote.
      */
+    @Override
     public void unsetNumLote() {
         instance.unsetNumLote();
     }
@@ -311,6 +341,7 @@ public class DadoTransporte {
      * 
      * @return True caso tenha sido declarado, caso contrario False.
      */
+    @Override
     public boolean isSetNumLote() {
         return instance.isSetNumLote();
     }
@@ -320,6 +351,7 @@ public class DadoTransporte {
      * 
      * @param value True para declarar que foi inserido, False caso contrario.
      */
+    @Override
     public void setNumLoteIsSet(boolean value) {
         instance.setNumLoteIsSet(value);
     }
@@ -329,10 +361,12 @@ public class DadoTransporte {
      * 
      * @return Dado serializado através do TBinaryProtocol a partir de uma ficha.
      */
+    @Override
     public byte[] getDadoSerializado() {
         return instance.getDadoSerializado();
     }
 
+    @Override
     public ByteBuffer bufferForDadoSerializado() {
         return instance.bufferForDadoSerializado();
     }
@@ -344,6 +378,7 @@ public class DadoTransporte {
      * 
      * @param dadoSerializado Dado serializado através do TBinaryProtocol a partir de uma ficha
      */
+    @Override
     public void setDadoSerializado(byte[] dadoSerializado) {
         instance.setDadoSerializado(dadoSerializado);
     }
@@ -353,6 +388,7 @@ public class DadoTransporte {
      * 
      * @param dadoSerializado Dado serializado.
      */
+    @Override
     public void setDadoSerializado(ByteBuffer dadoSerializado) {
         instance.setDadoSerializado(dadoSerializado);
     }
@@ -360,6 +396,7 @@ public class DadoTransporte {
     /**
      * Remove o dado serializado.
      */
+    @Override
     public void unsetDadoSerializado() {
         instance.unsetDadoSerializado();
     }
@@ -369,6 +406,7 @@ public class DadoTransporte {
      * 
      * @return True caso tenha sido declarado, caso contrario False.
      */
+    @Override
     public boolean isSetDadoSerializado() {
         return instance.isSetDadoSerializado();
     }
@@ -378,6 +416,7 @@ public class DadoTransporte {
      * 
      * @param value True para declarar que foi inserido, caso contrario False.
      */
+    @Override
     public void setDadoSerializadoIsSet(boolean value) {
         instance.setDadoSerializadoIsSet(value);
     }
@@ -387,7 +426,8 @@ public class DadoTransporte {
      * 
      * @return Identifica a instalação que enviou o dado.
      */
-    public DadoInstalacao getRemetente() {
+    @Override
+    public IDadoInstalacao getRemetente() {
         return new DadoInstalacao(instance.getRemetente());
     }
 
@@ -398,13 +438,15 @@ public class DadoTransporte {
      * 
      * @param remetente instalação que enviou o dado.
      */
-    public void setRemetente(DadoInstalacao remetente) {
+    @Override
+    public void setRemetente(IDadoInstalacao remetente) {
         instance.setRemetente(remetente.getInstance());
     }
 
     /**
      * Remove a instalação que enviou o dado.
      */
+    @Override
     public void unsetRemetente() {
         instance.unsetRemetente();
     }
@@ -414,6 +456,7 @@ public class DadoTransporte {
      * 
      * @return True caso tenha sido declarada.
      */
+    @Override
     public boolean isSetRemetente() {
         return instance.isSetRemetente();
     }
@@ -423,6 +466,7 @@ public class DadoTransporte {
      * 
      * @param value True para declarar que foi inserida, caso contrario False.
      */
+    @Override
     public void setRemetenteIsSet(boolean value) {
         instance.setRemetenteIsSet(value);
     }
@@ -432,7 +476,8 @@ public class DadoTransporte {
      * 
      * @return Instalação que cadastrou/digitou
      */
-    public DadoInstalacao getOriginadora() {
+    @Override
+    public IDadoInstalacao getOriginadora() {
         return new DadoInstalacao(instance.getOriginadora());
     }
 
@@ -441,13 +486,15 @@ public class DadoTransporte {
      * 
      * @param originadora Instalação que cadastrou/digitou.
      */
-    public void setOriginadora(DadoInstalacao originadora) {
+    @Override
+    public void setOriginadora(IDadoInstalacao originadora) {
         instance.setOriginadora(originadora.getInstance());
     }
 
     /**
      * Remove a instalação que cadastrou/digitou.
      */
+    @Override
     public void unsetOriginadora() {
         instance.unsetOriginadora();
     }
@@ -457,6 +504,7 @@ public class DadoTransporte {
      * 
      * @return True caso tenha sido declarada, False caso contrario.
      */
+    @Override
     public boolean isSetOriginadora() {
         return instance.isSetOriginadora();
     }
@@ -466,30 +514,12 @@ public class DadoTransporte {
      * 
      * @param value True para declarar que foi inserida, caso contrario False.
      */
+    @Override
     public void setOriginadoraIsSet(boolean value) {
         instance.setOriginadoraIsSet(value);
     }
 
-    public boolean equals(Object that) {
-        return instance.equals(that);
-    }
-
-    public boolean equals(DadoTransporte that) {
-        return instance.equals(that.instance);
-    }
-
-    public int hashCode() {
-        return instance.hashCode();
-    }
-
-    public int compareTo(DadoTransporte other) {
-        return instance.compareTo(other.instance);
-    }
-
-    public String toString() {
-        return instance.toString();
-    }
-
+    @Override
     public boolean validates(){
         try {
             instance.validate();
@@ -515,6 +545,7 @@ public class DadoTransporte {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateUuidDadoSerializado(){
         final String var = instance.getUuidDadoSerializado();
         if(!instance.isSetUuidDadoSerializado() || 
@@ -548,6 +579,7 @@ public class DadoTransporte {
      * 
      * @return True se estiver de acordo com as regras, caso contrario false.
      */
+    @Override
     public boolean validateTipoDadoSerializado(){
         if( ! instance.isSetTipoDadoSerializado())return false;
         if(instance.getTipoDadoSerializado() < 2 || 
@@ -568,6 +600,7 @@ public class DadoTransporte {
      * 
      * @return True se estiver de acordo com as regras, caso contrario False.
      */
+    @Override
     public boolean validateCnesDadoSerializado(){
         if( ! instance.isSetCnesDadoSerializado()) return false;
         
@@ -587,6 +620,7 @@ public class DadoTransporte {
      * 
      * @return True se estiver de acordo com as regras, caso contrario False.
      */
+    @Override
     public boolean validateCodIbge(){
         if( ! instance.isSetCodIbge()) return false;
         
@@ -604,6 +638,7 @@ public class DadoTransporte {
      * 
      * @return True se estiver de acordo com as regras, caso contrario False.
      */
+    @Override
     public boolean validateIneDadoSerializado(){
         
         if(instance.isSetCodIbge()) {
@@ -626,6 +661,7 @@ public class DadoTransporte {
      * 
      * @return True se estiver de acordo com as regras, Caso contrario False.
      */
+    @Override
     public boolean validateDadoSerializado(){
         return instance.isSetDadoSerializado();
     }
@@ -637,6 +673,7 @@ public class DadoTransporte {
      * 
      * @return True se estiver de acordo com as regras, Caso contrario False.
      */
+    @Override
     public boolean validateRemetente(){
         return instance.isSetRemetente() && this.getRemetente().validates();
     }
@@ -648,6 +685,7 @@ public class DadoTransporte {
      * 
      * @return True se estiver de acordo com as regras, Caso contrario False.
      */
+    @Override
     public boolean validateOriginadora(){
         return instance.isSetOriginadora() && this.getOriginadora().validates();
     }
