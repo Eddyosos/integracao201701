@@ -1,10 +1,9 @@
 package com.github.Eddyosos.integracao20171.esus.cds.common;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.common.HeaderCdsCadastroThrift;
-import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
+import com.github.eddyosos.e_sus_ab_factory.cds.common.IHeaderCdsCadastro;
 
-public class HeaderCdsCadastro {
+public class HeaderCdsCadastro implements IHeaderCdsCadastro {
     private HeaderCdsCadastroThrift instance;
 
     public HeaderCdsCadastro() {
@@ -49,6 +48,7 @@ public class HeaderCdsCadastro {
      * CNES da unidade de saúde que o profissional está lotado.
      * @return CNES
      */
+    @Override
     public String getCnesUnidadeSaude() {
         return instance.getCnesUnidadeSaude();
     }
@@ -57,6 +57,7 @@ public class HeaderCdsCadastro {
      * CNES da unidade de saúde que o profissional está lotado.
      * @param cnesUnidadeSaude 
      */
+    @Override
     public void setCnesUnidadeSaude(String cnesUnidadeSaude) {
         instance.setCnesUnidadeSaude(cnesUnidadeSaude);
     }
@@ -189,6 +190,7 @@ public class HeaderCdsCadastro {
      * CNS do profissional
      * @return CNS
      */
+    @Override
     public String getCnsProfissional() {
         return instance.getCnsProfissional();
     }
@@ -197,6 +199,7 @@ public class HeaderCdsCadastro {
      * CNS do profissional
      * @param cnsProfissional 
      */
+    @Override
     public void setCnsProfissional(String cnsProfissional) {
         instance.setCnsProfissional(cnsProfissional);
     }
@@ -219,6 +222,7 @@ public class HeaderCdsCadastro {
      * Código IBGE do município.
      * @return 
      */
+    @Override
     public String getCodigoIbgeMunicipio() {
         return instance.getCodigoIbgeMunicipio();
     }
@@ -227,6 +231,7 @@ public class HeaderCdsCadastro {
      * Código IBGE do município.
      * @param codigoIbgeMunicipio 
      */
+    @Override
     public void setCodigoIbgeMunicipio(String codigoIbgeMunicipio) {
         instance.setCodigoIbgeMunicipio(codigoIbgeMunicipio);
     }
@@ -245,6 +250,7 @@ public class HeaderCdsCadastro {
      * Data em que está sendo realizada a ação.
      * @return 
      */
+    @Override
     public long getDataAtendimento() {
         return instance.getDataAtendimento();
     }
@@ -253,6 +259,7 @@ public class HeaderCdsCadastro {
      * Data em que está sendo realizada a ação.
      * @param dataAtendimento 
      */
+    @Override
     public void setDataAtendimento(long dataAtendimento) {
         instance.setDataAtendimento(dataAtendimento);
     }
@@ -273,6 +280,7 @@ public class HeaderCdsCadastro {
      * Código do INE da equipe do profissional.
      * @return 
      */
+    @Override
     public String getIneEquipe() {
         return instance.getIneEquipe();
     }
@@ -281,6 +289,7 @@ public class HeaderCdsCadastro {
      * Código do INE da equipe do profissional.
      * @param ineEquipe 
      */
+    @Override
     public void setIneEquipe(String ineEquipe) {
         instance.setIneEquipe(ineEquipe);
     }
@@ -301,6 +310,7 @@ public class HeaderCdsCadastro {
      * Microárea onde está sendo realizada a ação.
      * @return 
      */
+    @Override
     public long getMicroarea() {
         return instance.getMicroarea();
     }
@@ -309,6 +319,7 @@ public class HeaderCdsCadastro {
      * Microárea onde está sendo realizada a ação.
      * @param microarea 
      */
+    @Override
     public void setMicroarea(long microarea) {
         instance.setMicroarea(microarea);
     }
