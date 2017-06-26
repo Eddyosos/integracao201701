@@ -2,17 +2,27 @@ package com.github.Eddyosos.integracao20171.esus.cds.atendimentodomiciliar;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.atendimentodomiciliar.FichaAtendimentoDomiciliarChildThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.atendimentodomiciliar.FichaAtendimentoDomiciliarMasterThrift;
+import com.github.Eddyosos.integracao20171.compactor.SerializadorThrift;
 import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
+import com.github.Eddyosos.integracao20171.esus.transport.DadoTransporte;
 import com.github.eddyosos.e_sus_ab_factory.cds.atendimentodomiciliar.IFichaAtendimentoDOmiciliarMaster;
 import com.github.eddyosos.e_sus_ab_factory.cds.atendimentodomiciliar.IFichaAtendimentoDomiciliarChild;
 import com.github.eddyosos.e_sus_ab_factory.cds.common.IUnicaLotacaoHeader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 import org.apache.thrift.TException;
 
 public class FichaAtendimentoDomiciliarMaster implements IFichaAtendimentoDOmiciliarMaster {
     private FichaAtendimentoDomiciliarMasterThrift instancia;
+    private long TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO = 3;
+    private final static String EXTENSAO_EXPORT = ".esus13";
+    private DadoTransporte dadoTransporteThrift;
 
     public FichaAtendimentoDomiciliarMaster(FichaAtendimentoDomiciliarMasterThrift fichaAtendimentoDomiciliarMasterThrift){
         this.instancia = fichaAtendimentoDomiciliarMasterThrift;
@@ -326,6 +336,36 @@ public class FichaAtendimentoDomiciliarMaster implements IFichaAtendimentoDOmici
         }
         
         return true;
+    }
+    
+    public void setDadoTransporte(DadoTransporte originadora){
+        this.dadoTransporteThrift = originadora;
+    }
+    public DadoTransporte getDadoTransporte(){
+        return this.dadoTransporteThrift;
+    }
+
+    public void zipGenerate(){
+        if(!this.validate() && this.dadoTransporteThrift != null){
+            return;
+        }
+
+        byte[] fichaSerializada = SerializadorThrift.serializar(this.instancia);
+        dadoTransporteThrift.setTipoDadoSerializado(TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO);
+        dadoTransporteThrift.setDadoSerializado(fichaSerializada);
+
+        try {
+            File zipFile = new File(System.getProperty("user.home") + "/fichaProcedimento.zip");
+            ZipOutputStream outputStream = new ZipOutputStream(new FileOutputStream(zipFile));
+            String entryName = dadoTransporteThrift.getUuidDadoSerializado() + EXTENSAO_EXPORT;
+            outputStream.putNextEntry(new ZipEntry(entryName));
+            byte[] dadoTransporteSerializado = SerializadorThrift.serializar(dadoTransporteThrift.getInstance());
+            outputStream.write(dadoTransporteSerializado);
+
+            outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
 }
 
