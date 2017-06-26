@@ -1,11 +1,12 @@
 package com.github.Eddyosos.integracao20171.esus.cds.cadastroindividual;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.cadastroindividual.EmSituacaoDeRuaThrift;
+import com.github.eddyosos.e_sus_ab_factory.cds.cadastroindividual.IEmSituacaoDeRua;
 import java.util.Iterator;
 import java.util.List;
 import org.apache.thrift.TException;
 
-public class EmSituacaoDeRua {
+public class EmSituacaoDeRua implements IEmSituacaoDeRua {
     private EmSituacaoDeRuaThrift instance;
     
     public EmSituacaoDeRua(EmSituacaoDeRuaThrift emSituacaoDeRua){
@@ -16,6 +17,7 @@ public class EmSituacaoDeRua {
         this.instance = new EmSituacaoDeRuaThrift();
     }
 
+    @Override
     public void clear() {
         instance.clear();
     }
@@ -25,6 +27,7 @@ public class EmSituacaoDeRua {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validates(){
         return validateGrauParentescoFamiliarFrequentado() &&
                 validateHigienePessoalSituacaoRua() &&
@@ -46,6 +49,7 @@ public class EmSituacaoDeRua {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateGrauParentescoFamiliarFrequentado(){
         return !instance.isSetGrauParentescoFamiliarFrequentado() || (
                 instance.getGrauParentescoFamiliarFrequentado().length() <= 100 && (
@@ -59,6 +63,7 @@ public class EmSituacaoDeRua {
      * Grau de parentesco do familiar que frequenta.
      * @return 
      */
+    @Override
     public String getGrauParentescoFamiliarFrequentado() {
         return instance.getGrauParentescoFamiliarFrequentado();
     }
@@ -67,6 +72,7 @@ public class EmSituacaoDeRua {
      * Grau de parentesco do familiar que frequenta.
      * @param grauParentescoFamiliarFrequentado 
      */
+    @Override
     public void setGrauParentescoFamiliarFrequentado(String grauParentescoFamiliarFrequentado) {
         instance.setGrauParentescoFamiliarFrequentado(grauParentescoFamiliarFrequentado);
     }
@@ -79,6 +85,7 @@ public class EmSituacaoDeRua {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateHigienePessoalSituacaoRua(){
         return !instance.isSetHigienePessoalSituacaoRua() || ((
                 !instance.isSetStatusSituacaoRua() ||
@@ -95,6 +102,7 @@ public class EmSituacaoDeRua {
      * Código das condições de higiene que o cidadão tem acesso.
      * @return 
      */
+    @Override
     public List<Long> getHigienePessoalSituacaoRua() {
         return instance.getHigienePessoalSituacaoRua();
     }
@@ -103,6 +111,7 @@ public class EmSituacaoDeRua {
      * Código das condições de higiene que o cidadão tem acesso.
      * @param higienePessoalSituacaoRua 
      */
+    @Override
     public void setHigienePessoalSituacaoRua(List<Long> higienePessoalSituacaoRua) {
         instance.setHigienePessoalSituacaoRua(higienePessoalSituacaoRua);
     }
@@ -116,6 +125,7 @@ public class EmSituacaoDeRua {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateOrigemAlimentoSituacaoRua(){
         if(instance.isSetOrigemAlimentoSituacaoRua()){
             if(! instance.isStatusSituacaoRua()) return false;
@@ -135,6 +145,7 @@ public class EmSituacaoDeRua {
      * 
      * @return Quantidade de origens da alimentação do cidadão em situação de rua.
      */
+    @Override
     public int getOrigemAlimentoSituacaoRuaSize() {
         return instance.getOrigemAlimentoSituacaoRuaSize();
     }
@@ -144,6 +155,7 @@ public class EmSituacaoDeRua {
      * 
      * @return Código da origem da alimentação do cidadão em situação de rua.
      */
+    @Override
     public Iterator<Long> getOrigemAlimentoSituacaoRuaIterator() {
         return instance.getOrigemAlimentoSituacaoRuaIterator();
     }
@@ -156,6 +168,7 @@ public class EmSituacaoDeRua {
      * 
      * @param elem Código da origem da alimentação do cidadão em situação de rua
      */
+    @Override
     public void addToOrigemAlimentoSituacaoRua(long elem) {
         instance.addToOrigemAlimentoSituacaoRua(elem);
     }
@@ -165,6 +178,7 @@ public class EmSituacaoDeRua {
      * 
      * @return Código da origem da alimentação do cidadão em situação de rua.
      */
+    @Override
     public List<Long> getOrigemAlimentoSituacaoRua() {
         return instance.getOrigemAlimentoSituacaoRua();
     }
@@ -176,6 +190,7 @@ public class EmSituacaoDeRua {
      * 
      * @param origemAlimentoSituacaoRua Código da origem da alimentação do cidadão em situação de rua
      */
+    @Override
     public void setOrigemAlimentoSituacaoRua(List<Long> origemAlimentoSituacaoRua) {
         instance.setOrigemAlimentoSituacaoRua(origemAlimentoSituacaoRua);
     }
@@ -183,6 +198,7 @@ public class EmSituacaoDeRua {
     /**
      * Remove a origem da alimentação do cidadão em situação de rua.
      */
+    @Override
     public void unsetOrigemAlimentoSituacaoRua() {
         instance.unsetOrigemAlimentoSituacaoRua();
     }
@@ -191,6 +207,7 @@ public class EmSituacaoDeRua {
      * Verifica se a origem da alimentação do cidadão em situação de rua foi declarada.
      * @return True caso tenha sido declarada, caso contrario False.
      */
+    @Override
     public boolean isSetOrigemAlimentoSituacaoRua() {
         return instance.isSetOrigemAlimentoSituacaoRua();
     }
@@ -200,6 +217,7 @@ public class EmSituacaoDeRua {
      * 
      * @param value True para declarar que foi inserida, caso contrario False.
      */
+    @Override
     public void setOrigemAlimentoSituacaoRuaIsSet(boolean value) {
         instance.setOrigemAlimentoSituacaoRuaIsSet(value);
     }
@@ -214,6 +232,7 @@ public class EmSituacaoDeRua {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateOutraInstituicaoQueAcompanha(){
         if(instance.isSetOutraInstituicaoQueAcompanha()){
             if(! instance.isStatusSituacaoRua() || ! instance.isStatusAcompanhadoPorOutraInstituicao()) return false;
@@ -229,6 +248,7 @@ public class EmSituacaoDeRua {
      * 
      * @return Nome de outra instituição que acompanha o cidadão.
      */
+    @Override
     public String getOutraInstituicaoQueAcompanha() {
         return instance.getOutraInstituicaoQueAcompanha();
     }
@@ -243,6 +263,7 @@ public class EmSituacaoDeRua {
      * 
      * @param outraInstituicaoQueAcompanha Nome de outra instituição que acompanha o cidadão.
      */
+    @Override
     public void setOutraInstituicaoQueAcompanha(String outraInstituicaoQueAcompanha) {
         instance.setOutraInstituicaoQueAcompanha(outraInstituicaoQueAcompanha);
     }
@@ -250,6 +271,7 @@ public class EmSituacaoDeRua {
     /**
      * Remove o nome de outra instituição que acompanha o cidadão.
      */
+    @Override
     public void unsetOutraInstituicaoQueAcompanha() {
         instance.unsetOutraInstituicaoQueAcompanha();
     }
@@ -259,6 +281,7 @@ public class EmSituacaoDeRua {
      * 
      * @return True caso tenha sido declarada, caso contrario False.
      */
+    @Override
     public boolean isSetOutraInstituicaoQueAcompanha() {
         return instance.isSetOutraInstituicaoQueAcompanha();
     }
@@ -268,6 +291,7 @@ public class EmSituacaoDeRua {
      * 
      * @param value True para declarar que foi inserido, caso contrario False.
      */
+    @Override
     public void setOutraInstituicaoQueAcompanhaIsSet(boolean value) {
         instance.setOutraInstituicaoQueAcompanhaIsSet(value);
     }
@@ -280,6 +304,7 @@ public class EmSituacaoDeRua {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateQuantidadeAlimentacoesAoDiaSituacaoRua(){
         if(instance.isSetQuantidadeAlimentacoesAoDiaSituacaoRua()){
             if(! instance.isStatusSituacaoRua() ) return false;
@@ -292,6 +317,7 @@ public class EmSituacaoDeRua {
      * Quantidade de vezes que o cidadão se alimenta por dia.
      * @return Código da quantidade de vezes que o cidadão se alimenta por dia.
      */
+    @Override
     public long getQuantidadeAlimentacoesAoDiaSituacaoRua() {
         return instance.getQuantidadeAlimentacoesAoDiaSituacaoRua();
     }
@@ -303,6 +329,7 @@ public class EmSituacaoDeRua {
      * 
      * @param quantidadeAlimentacoesAoDiaSituacaoRua Código da quantidade de vezes que o cidadão se alimenta por dia.
      */
+    @Override
     public void setQuantidadeAlimentacoesAoDiaSituacaoRua(long quantidadeAlimentacoesAoDiaSituacaoRua) {
         instance.setQuantidadeAlimentacoesAoDiaSituacaoRua(quantidadeAlimentacoesAoDiaSituacaoRua);
     }
@@ -310,6 +337,7 @@ public class EmSituacaoDeRua {
     /**
      * Remove a quantidade de vezes que o cidadão se alimenta por dia.
      */
+    @Override
     public void unsetQuantidadeAlimentacoesAoDiaSituacaoRua() {
         instance.unsetQuantidadeAlimentacoesAoDiaSituacaoRua();
     }
@@ -319,6 +347,7 @@ public class EmSituacaoDeRua {
      * 
      * @return True caso tenha sido declarada, caso contrario False.
      */
+    @Override
     public boolean isSetQuantidadeAlimentacoesAoDiaSituacaoRua() {
         return instance.isSetQuantidadeAlimentacoesAoDiaSituacaoRua();
     }
@@ -328,6 +357,7 @@ public class EmSituacaoDeRua {
      * 
      * @param value True para declarar que foi inserida, caso contrario False.
      */
+    @Override
     public void setQuantidadeAlimentacoesAoDiaSituacaoRuaIsSet(boolean value) {
         instance.setQuantidadeAlimentacoesAoDiaSituacaoRuaIsSet(value);
     }
@@ -340,6 +370,7 @@ public class EmSituacaoDeRua {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateStatusAcompanhadoPorOutraInstituicao(){
         if(instance.isSetStatusAcompanhadoPorOutraInstituicao()){
             if(! instance.isStatusSituacaoRua() ) return false;
@@ -353,6 +384,7 @@ public class EmSituacaoDeRua {
      * 
      * @return True caso seja acompanhado por outra instituição, caso contrario False.
      */
+    @Override
     public boolean isStatusAcompanhadoPorOutraInstituicao() {
         return instance.isStatusAcompanhadoPorOutraInstituicao();
     }
@@ -362,6 +394,7 @@ public class EmSituacaoDeRua {
      * 
      * @param statusAcompanhadoPorOutraInstituicao True para declarar que foi inserido, caso contrario False.
      */
+    @Override
     public void setStatusAcompanhadoPorOutraInstituicao(boolean statusAcompanhadoPorOutraInstituicao) {
         instance.setStatusAcompanhadoPorOutraInstituicao(statusAcompanhadoPorOutraInstituicao);
     }
@@ -369,6 +402,7 @@ public class EmSituacaoDeRua {
     /**
      * Remove a a informação que informa se o cidadão é ou não acompanhado por outra instituição.
      */
+    @Override
     public void unsetStatusAcompanhadoPorOutraInstituicao() {
         instance.unsetStatusAcompanhadoPorOutraInstituicao();
     }
@@ -378,6 +412,7 @@ public class EmSituacaoDeRua {
      * 
      * @return True caso tenha sido inserida, caso contrario False.
      */
+    @Override
     public boolean isSetStatusAcompanhadoPorOutraInstituicao() {
         return instance.isSetStatusAcompanhadoPorOutraInstituicao();
     }
@@ -387,6 +422,7 @@ public class EmSituacaoDeRua {
      * 
      * @param value True para declarar que foi inserido, caso contrario False.
      */
+    @Override
     public void setStatusAcompanhadoPorOutraInstituicaoIsSet(boolean value) {
         instance.setStatusAcompanhadoPorOutraInstituicaoIsSet(value);
     }
@@ -399,6 +435,7 @@ public class EmSituacaoDeRua {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateStatusPossuiReferenciaFamiliar(){
         if(instance.isSetStatusPossuiReferenciaFamiliar()){
             if(! instance.isStatusSituacaoRua() ) return false;
@@ -412,6 +449,7 @@ public class EmSituacaoDeRua {
      * 
      * @return True caso possua alguma referencia, caso contrario False.
      */
+    @Override
     public boolean isStatusPossuiReferenciaFamiliar() {
         return instance.isStatusPossuiReferenciaFamiliar();
     }
@@ -423,6 +461,7 @@ public class EmSituacaoDeRua {
      * 
      * @param statusPossuiReferenciaFamiliar True para indicar que possui referencia, False caso contrario.
      */
+    @Override
     public void setStatusPossuiReferenciaFamiliar(boolean statusPossuiReferenciaFamiliar) {
         instance.setStatusPossuiReferenciaFamiliar(statusPossuiReferenciaFamiliar);
     }
@@ -430,6 +469,7 @@ public class EmSituacaoDeRua {
     /**
      * Remove o marcador que indica se o cidadão possuiu alguma referência familiar.
      */
+    @Override
     public void unsetStatusPossuiReferenciaFamiliar() {
         instance.unsetStatusPossuiReferenciaFamiliar();
     }
@@ -439,6 +479,7 @@ public class EmSituacaoDeRua {
      * 
      * @return True caso tenha sido declarado, caso contraio false.
      */
+    @Override
     public boolean isSetStatusPossuiReferenciaFamiliar() {
         return instance.isSetStatusPossuiReferenciaFamiliar();
     }
@@ -448,6 +489,7 @@ public class EmSituacaoDeRua {
      * 
      * @param value True para declarar que foi inserido, false caso contrario.
      */
+    @Override
     public void setStatusPossuiReferenciaFamiliarIsSet(boolean value) {
         instance.setStatusPossuiReferenciaFamiliarIsSet(value);
     }
@@ -460,6 +502,7 @@ public class EmSituacaoDeRua {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateStatusRecebeBeneficio(){
         if(instance.isSetStatusRecebeBeneficio()){
             if(! instance.isStatusSituacaoRua() ) return false;
@@ -473,6 +516,7 @@ public class EmSituacaoDeRua {
      * 
      * @return True se o cidadão receber algum benefício, false caso não.
      */
+    @Override
     public boolean isStatusRecebeBeneficio() {
         return instance.isStatusRecebeBeneficio();
     }
@@ -484,6 +528,7 @@ public class EmSituacaoDeRua {
      * 
      * @param statusRecebeBeneficio True para indicar que recebe algum benefício, false para indicar que não.
      */
+    @Override
     public void setStatusRecebeBeneficio(boolean statusRecebeBeneficio) {
         instance.setStatusRecebeBeneficio(statusRecebeBeneficio);
     }
@@ -491,6 +536,7 @@ public class EmSituacaoDeRua {
     /**
      * Remove o marcador que indica se o cidadão recebe algum benefício.
      */
+    @Override
     public void unsetStatusRecebeBeneficio() {
         instance.unsetStatusRecebeBeneficio();
     }
@@ -500,6 +546,7 @@ public class EmSituacaoDeRua {
      * 
      * @return True caso tenha sido declarado, caso contrario False.
      */
+    @Override
     public boolean isSetStatusRecebeBeneficio() {
         return instance.isSetStatusRecebeBeneficio();
     }
@@ -509,6 +556,7 @@ public class EmSituacaoDeRua {
      * 
      * @param value True para indicar que foi inserido, false caso contrario.
      */
+    @Override
     public void setStatusRecebeBeneficioIsSet(boolean value) {
         instance.setStatusRecebeBeneficioIsSet(value);
     }
@@ -521,6 +569,7 @@ public class EmSituacaoDeRua {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateStatusSituacaoRua(){
 
            return instance.isSetStatusSituacaoRua();
@@ -531,6 +580,7 @@ public class EmSituacaoDeRua {
      * 
      * @return True caso o cidadão esteja em situação de rua, caso contrario false.
      */
+    @Override
     public boolean isStatusSituacaoRua() {
         return instance.isStatusSituacaoRua();
     }
@@ -542,6 +592,7 @@ public class EmSituacaoDeRua {
      * 
      * @param statusSituacaoRua True para indicar que o cidadão está em situação de rua, caso contrario false.
      */
+    @Override
     public void setStatusSituacaoRua(boolean statusSituacaoRua) {
         instance.setStatusSituacaoRua(statusSituacaoRua);
     }
@@ -549,6 +600,7 @@ public class EmSituacaoDeRua {
     /**
      * Remove o marcador que indica se o cidadão está em situação de rua.
      */
+    @Override
     public void unsetStatusSituacaoRua() {
         instance.unsetStatusSituacaoRua();
     }
@@ -558,6 +610,7 @@ public class EmSituacaoDeRua {
      * 
      * @return True caso tenha sido declarado, false caso contrario.
      */
+    @Override
     public boolean isSetStatusSituacaoRua() {
         return instance.isSetStatusSituacaoRua();
     }
@@ -567,6 +620,7 @@ public class EmSituacaoDeRua {
      * 
      * @param value True para informar que foi inserido, false caso contrario.
      */
+    @Override
     public void setStatusSituacaoRuaIsSet(boolean value) {
         instance.setStatusSituacaoRuaIsSet(value);
     }
@@ -579,6 +633,7 @@ public class EmSituacaoDeRua {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateStatusTemAcessoHigienePessoalSituacaoRua(){
         if(instance.isSetStatusTemAcessoHigienePessoalSituacaoRua()){
             if(! instance.isStatusSituacaoRua() ) return false;
@@ -591,6 +646,7 @@ public class EmSituacaoDeRua {
      * Indica se o cidadão tem acesso a higiene pessoal.
      * @return True caso tenha acesso, caso contrario false.
      */
+    @Override
     public boolean isStatusTemAcessoHigienePessoalSituacaoRua() {
         return instance.isStatusTemAcessoHigienePessoalSituacaoRua();
     }
@@ -602,6 +658,7 @@ public class EmSituacaoDeRua {
      * 
      * @param statusTemAcessoHigienePessoalSituacaoRua True para declarar que tem acesso, false caso contrario.
      */
+    @Override
     public void setStatusTemAcessoHigienePessoalSituacaoRua(boolean statusTemAcessoHigienePessoalSituacaoRua) {
         instance.setStatusTemAcessoHigienePessoalSituacaoRua(statusTemAcessoHigienePessoalSituacaoRua);
     }
@@ -609,6 +666,7 @@ public class EmSituacaoDeRua {
     /**
      * Remove o marcador que indica se o cidadão tem acesso a higiene pessoal.
      */
+    @Override
     public void unsetStatusTemAcessoHigienePessoalSituacaoRua() {
         instance.unsetStatusTemAcessoHigienePessoalSituacaoRua();
     }
@@ -618,6 +676,7 @@ public class EmSituacaoDeRua {
      * 
      * @return True caso tenha sido inserido, caso contrario false.
      */
+    @Override
     public boolean isSetStatusTemAcessoHigienePessoalSituacaoRua() {
         return instance.isSetStatusTemAcessoHigienePessoalSituacaoRua();
     }
@@ -627,6 +686,7 @@ public class EmSituacaoDeRua {
      * 
      * @param value True para declarar que foi inserido, caso contrario false.
      */
+    @Override
     public void setStatusTemAcessoHigienePessoalSituacaoRuaIsSet(boolean value) {
         instance.setStatusTemAcessoHigienePessoalSituacaoRuaIsSet(value);
     }
@@ -639,6 +699,7 @@ public class EmSituacaoDeRua {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateStatusVisitaFamiliarFrequentemente(){
         if(instance.isSetStatusVisitaFamiliarFrequentemente()){
             if(! instance.isStatusSituacaoRua() ) return false;
@@ -653,6 +714,7 @@ public class EmSituacaoDeRua {
      * 
      * @return True caso visite, caso contrario false.
      */
+    @Override
     public boolean isStatusVisitaFamiliarFrequentemente() {
         return instance.isStatusVisitaFamiliarFrequentemente();
     }
@@ -664,6 +726,7 @@ public class EmSituacaoDeRua {
      * 
      * @param statusVisitaFamiliarFrequentemente True caso visite, caso contrario false.
      */
+    @Override
     public void setStatusVisitaFamiliarFrequentemente(boolean statusVisitaFamiliarFrequentemente) {
         instance.setStatusVisitaFamiliarFrequentemente(statusVisitaFamiliarFrequentemente);
     }
@@ -671,6 +734,7 @@ public class EmSituacaoDeRua {
     /**
      * Remove o marcador que indica se o cidadão visita algum familiar frequentemente.
      */
+    @Override
     public void unsetStatusVisitaFamiliarFrequentemente() {
         instance.unsetStatusVisitaFamiliarFrequentemente();
     }
@@ -680,6 +744,7 @@ public class EmSituacaoDeRua {
      * 
      * @return True caso tenha sido declarado, caso contrario false.
      */
+    @Override
     public boolean isSetStatusVisitaFamiliarFrequentemente() {
         return instance.isSetStatusVisitaFamiliarFrequentemente();
     }
@@ -689,6 +754,7 @@ public class EmSituacaoDeRua {
      * 
      * @param value True para declarar que foi inserido, caso contrario false.
      */
+    @Override
     public void setStatusVisitaFamiliarFrequentementeIsSet(boolean value) {
         instance.setStatusVisitaFamiliarFrequentementeIsSet(value);
     }
@@ -701,6 +767,7 @@ public class EmSituacaoDeRua {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateTempoSituacaoRua(){
         if(instance.isSetTempoSituacaoRua()){
             if(! instance.isStatusSituacaoRua() ) return false;
@@ -716,6 +783,7 @@ public class EmSituacaoDeRua {
      * 
      * @return Código do tempo que o cidadão está em situação de rua.
      */
+    @Override
     public long getTempoSituacaoRua() {
         return instance.getTempoSituacaoRua();
     }
@@ -727,6 +795,7 @@ public class EmSituacaoDeRua {
      * 
      * @param tempoSituacaoRua Código do tempo que o cidadão está em situação de rua.
      */
+    @Override
     public void setTempoSituacaoRua(long tempoSituacaoRua) {
         instance.setTempoSituacaoRua(tempoSituacaoRua);
     }
@@ -734,6 +803,7 @@ public class EmSituacaoDeRua {
     /**
      * Remove o tempo que o cidadão está em situação de rua.
      */
+    @Override
     public void unsetTempoSituacaoRua() {
         instance.unsetTempoSituacaoRua();
     }
@@ -743,6 +813,7 @@ public class EmSituacaoDeRua {
      * 
      * @return True caso tenha sido declarado, caso contrario false.
      */
+    @Override
     public boolean isSetTempoSituacaoRua() {
         return instance.isSetTempoSituacaoRua();
     }
@@ -752,42 +823,17 @@ public class EmSituacaoDeRua {
      * 
      * @param value True para declarar que foi inserido, caso contrario false.
      */
+    @Override
     public void setTempoSituacaoRuaIsSet(boolean value) {
         instance.setTempoSituacaoRuaIsSet(value);
-    }
-
-    @Override
-    public boolean equals(Object that) {
-        return instance.equals(that);
-    }
-
-    public boolean equals(EmSituacaoDeRua that) {
-        return instance.equals(that.getInstance());
-    }
-
-    @Override
-    public int hashCode() {
-        return instance.hashCode();
-    }
-
-    public int compareTo(EmSituacaoDeRua other) {
-        return instance.compareTo(other.getInstance());
-    }
-
-    @Override
-    public String toString() {
-        return instance.toString();
-    }
-
-    public void validate() throws TException {
-        instance.validate();
     }
 
     /**
      * Instância thrift da classe.
      * @return Instância thrift da classe.
      */
-    protected EmSituacaoDeRuaThrift getInstance(){
+    @Override
+    public EmSituacaoDeRuaThrift getInstance(){
         return instance;
     }
 }
