@@ -1,20 +1,30 @@
 package com.github.Eddyosos.integracao20171.esus.cds.avaliacaoelegibilidade;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.avaliacaoelegibilidade.FichaAvaliacaoElegibilidadeThrift;
+import com.github.Eddyosos.integracao20171.compactor.SerializadorThrift;
 import com.github.Eddyosos.integracao20171.esus.cds.common.EnderecoLocalPermanencia;
 import com.github.Eddyosos.integracao20171.esus.cds.common.UnicaLotacaoHeader;
+import com.github.Eddyosos.integracao20171.esus.transport.DadoTransporte;
 import com.github.Eddyosos.integracao20171.utils.IDS.CNS;
 import com.github.eddyosos.e_sus_ab_factory.cds.common.IEnderecoLocalPermanencia;
 import com.github.eddyosos.e_sus_ab_factory.cds.common.IUnicaLotacaoHeader;
 import com.github.eddyosos.e_sus_ab_factory.cds.esus.cds.avaliacaoelegibilidade.IFichaAvaliacaoElegibilidade;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 
 public class FichaAvaliacaoElegibilidade implements IFichaAvaliacaoElegibilidade {
     private FichaAvaliacaoElegibilidadeThrift instancia = new FichaAvaliacaoElegibilidadeThrift();
+    private long TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO = 11;
+    private final static String EXTENSAO_EXPORT = ".esus13";
+    private DadoTransporte dadoTransporteThrift;
     
     public FichaAvaliacaoElegibilidade(FichaAvaliacaoElegibilidadeThrift fichaAvaliacaoElegibilidade){
         this.instancia = fichaAvaliacaoElegibilidade;
@@ -1756,6 +1766,36 @@ public class FichaAvaliacaoElegibilidade implements IFichaAvaliacaoElegibilidade
         }
         
         return instancia.isSetConclusaoDestinoElegivel();
+    }
+    
+    public void setDadoTransporte(DadoTransporte originadora){
+        this.dadoTransporteThrift = originadora;
+    }
+    public DadoTransporte getDadoTransporte(){
+        return this.dadoTransporteThrift;
+    }
+
+    public void zipGenerate(){
+        if(!this.validate() && this.dadoTransporteThrift != null){
+            return;
+        }
+
+        byte[] fichaSerializada = SerializadorThrift.serializar(this.instancia);
+        dadoTransporteThrift.setTipoDadoSerializado(TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO);
+        dadoTransporteThrift.setDadoSerializado(fichaSerializada);
+
+        try {
+            File zipFile = new File(System.getProperty("user.home") + "/fichaProcedimento.zip");
+            ZipOutputStream outputStream = new ZipOutputStream(new FileOutputStream(zipFile));
+            String entryName = dadoTransporteThrift.getUuidDadoSerializado() + EXTENSAO_EXPORT;
+            outputStream.putNextEntry(new ZipEntry(entryName));
+            byte[] dadoTransporteSerializado = SerializadorThrift.serializar(dadoTransporteThrift.getInstance());
+            outputStream.write(dadoTransporteSerializado);
+
+            outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
     
     
