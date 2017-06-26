@@ -1,10 +1,11 @@
 package com.github.Eddyosos.integracao20171.esus.cds.atividadeindividual;
 
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadeindividual.ProblemaCondicaoAvaliacaoAIThrift;
+import com.github.eddyosos.e_sus_ab_factory.cds.atividadeindividual.IProblemaCondicaoAvaliacaoAI;
 import java.util.HashSet;
 import java.util.List;
 
-public class ProblemaCondicaoAvaliacaoAI {
+public class ProblemaCondicaoAvaliacaoAI implements IProblemaCondicaoAvaliacaoAI {
     private ProblemaCondicaoAvaliacaoAIThrift instance;
 
     public ProblemaCondicaoAvaliacaoAI() {
@@ -15,6 +16,7 @@ public class ProblemaCondicaoAvaliacaoAI {
         this.instance = instance;
     }
     
+    @Override
     public ProblemaCondicaoAvaliacaoAIThrift getInstance(){
         return instance;
     }
@@ -24,6 +26,7 @@ public class ProblemaCondicaoAvaliacaoAI {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validates(){
         return validateCiaps() &&
                 validateOutroCiap1() &&
@@ -39,6 +42,7 @@ public class ProblemaCondicaoAvaliacaoAI {
      * 3- Ter entre 0 e 22 itens
      * @return
      */
+    @Override
     public boolean validateCiaps(){
         if(instance.isSetCiaps()) {
             final int var = instance.getCiapsSize();
@@ -63,6 +67,7 @@ public class ProblemaCondicaoAvaliacaoAI {
      * Código dos CIAPs apresentados na lista.
      * @return 
      */
+    @Override
     public List<String> getCiaps() {
         return instance.getCiaps();
     }
@@ -71,6 +76,7 @@ public class ProblemaCondicaoAvaliacaoAI {
      * Código dos CIAPs apresentados na lista.
      * @param ciaps 
      */
+    @Override
     public void setCiaps(List<String> ciaps) {
         instance.setCiaps(ciaps);
     }
@@ -83,6 +89,7 @@ public class ProblemaCondicaoAvaliacaoAI {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateOutroCiap1(){
         if(instance.isSetOutroCiap1()) 
             return !instance.getOutroCiap1().equals(instance.getOutroCiap2());
@@ -93,6 +100,7 @@ public class ProblemaCondicaoAvaliacaoAI {
      * Código do CIAP1 registrado no antedimento.
      * @return 
      */
+    @Override
     public String getOutroCiap1() {
         return instance.getOutroCiap1();
     }
@@ -101,6 +109,7 @@ public class ProblemaCondicaoAvaliacaoAI {
      * Código do CIAP1 registrado no antedimento.
      * @param outroCiap1 
      */
+    @Override
     public void setOutroCiap1(String outroCiap1) {
         instance.setOutroCiap1(outroCiap1);
     }
@@ -113,6 +122,7 @@ public class ProblemaCondicaoAvaliacaoAI {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateOutroCiap2(){
         if(instance.isSetOutroCiap2()) 
             return !instance.getOutroCiap2().equals(instance.getOutroCiap1());
@@ -123,6 +133,7 @@ public class ProblemaCondicaoAvaliacaoAI {
      * Código do CIAP2 registrado no antedimento.
      * @return 
      */
+    @Override
     public String getOutroCiap2() {
         return instance.getOutroCiap2();
     }
@@ -131,6 +142,7 @@ public class ProblemaCondicaoAvaliacaoAI {
      * Código do CIAP2 registrado no antedimento.
      * @param outroCiap2 
      */
+    @Override
     public void setOutroCiap2(String outroCiap2) {
         instance.setOutroCiap2(outroCiap2);
     }
@@ -142,6 +154,7 @@ public class ProblemaCondicaoAvaliacaoAI {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateCid10(){
         return valida1a4();
     }
@@ -150,6 +163,7 @@ public class ProblemaCondicaoAvaliacaoAI {
      * Código do CID10 registrado no atendimento.
      * @return 
      */
+    @Override
     public String getCid10() {
         return instance.getCid10();
     }
@@ -158,6 +172,7 @@ public class ProblemaCondicaoAvaliacaoAI {
      * Código do CID10 registrado no atendimento.
      * @param cid10 
      */
+    @Override
     public void setCid10(String cid10) {
         instance.setCid10(cid10);
     }

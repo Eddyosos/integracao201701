@@ -3,12 +3,15 @@ package com.github.Eddyosos.integracao20171.esus.cds.atividadeindividual;
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadeindividual.FichaAtendimentoIndividualChildThrift;
 import br.gov.saude.esus.cds.transport.generated.thrift.atividadeindividual.OutrosSiaThrift;
 import com.github.Eddyosos.integracao20171.utils.IDS.CNS;
+import com.github.eddyosos.e_sus_ab_factory.cds.atividadeindividual.IFichaAtendimentoIndividualChild;
+import com.github.eddyosos.e_sus_ab_factory.cds.atividadeindividual.IOutrosSia;
+import com.github.eddyosos.e_sus_ab_factory.cds.atividadeindividual.IProblemaCondicaoAvaliacaoAI;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-public class FichaAtendimentoIndividualChild {
+public class FichaAtendimentoIndividualChild implements IFichaAtendimentoIndividualChild {
     private final FichaAtendimentoIndividualChildThrift instance;
 
     public FichaAtendimentoIndividualChild() {
@@ -19,6 +22,7 @@ public class FichaAtendimentoIndividualChild {
         instance = thrift;
     }
 
+    @Override
     public FichaAtendimentoIndividualChildThrift getInstance(){
         return instance;
     }
@@ -28,6 +32,7 @@ public class FichaAtendimentoIndividualChild {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validates(){
         return validateNumeroProntuario() &&
                 validateCns() &&
@@ -59,6 +64,7 @@ public class FichaAtendimentoIndividualChild {
      * (inclusivo) caracteres alfanuméricos
      * @return 
      */
+    @Override
     public boolean validateNumeroProntuario(){
         String var = instance.getNumeroProntuario();
         return var == null || var.matches("\\A\\w{0,30}\\z");
@@ -68,6 +74,7 @@ public class FichaAtendimentoIndividualChild {
      * Número do prontuário
      * @return 
      */
+    @Override
     public String getNumeroProntuario() {
         return instance.getNumeroProntuario();
     }
@@ -76,6 +83,7 @@ public class FichaAtendimentoIndividualChild {
      * Número do prontuário
      * @param numeroProntuario 
      */
+    @Override
     public void setNumeroProntuario(String numeroProntuario) {
         instance.setNumeroProntuario(numeroProntuario);
     }
@@ -85,6 +93,7 @@ public class FichaAtendimentoIndividualChild {
      * De acordo com com.github.Eddyosos.intregracao20171.utils.IDS.CNS
      * @return 
      */
+    @Override
     public boolean validateCns(){
         return CNS.validateCNS(instance.getCns());
     }
@@ -93,6 +102,7 @@ public class FichaAtendimentoIndividualChild {
      * CNS do cidadão.
      * @return 
      */
+    @Override
     public String getCns() {
         return instance.getCns();
     }
@@ -101,6 +111,7 @@ public class FichaAtendimentoIndividualChild {
      * CNS do cidadão.
      * @param cns 
      */
+    @Override
     public void setCns(String cns) {
         instance.setCns(cns);
     }
@@ -113,6 +124,7 @@ public class FichaAtendimentoIndividualChild {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateDataNascimento() {
         return instance.isSetDataNascimento();
     }
@@ -121,6 +133,7 @@ public class FichaAtendimentoIndividualChild {
      * Data de nascimento do cidadão.
      * @return 
      */
+    @Override
     public long getDataNascimento() {
         return instance.getDataNascimento();
     }
@@ -129,6 +142,7 @@ public class FichaAtendimentoIndividualChild {
      * Data de nascimento do cidadão.
      * @param dataNascimento 
      */
+    @Override
     public void setDataNascimento(long dataNascimento) {
         instance.setDataNascimento(dataNascimento);
     }
@@ -140,6 +154,7 @@ public class FichaAtendimentoIndividualChild {
      * 2- Valor entre 1 e 10 (inclusivo)
      * @return 
      */
+    @Override
     public boolean validateLocalDeAtendimento(){
         return instance.isSetLocalDeAtendimento() &&
                instance.getLocalDeAtendimento() >= 1 &&
@@ -150,6 +165,7 @@ public class FichaAtendimentoIndividualChild {
      * Código do local onde o atendimento foi realizado.
      * @return 
      */
+    @Override
     public long getLocalDeAtendimento() {
         return instance.getLocalDeAtendimento();
     }
@@ -158,6 +174,7 @@ public class FichaAtendimentoIndividualChild {
      * Código do local onde o atendimento foi realizado.
      * @param localDeAtendimento 
      */
+    @Override
     public void setLocalDeAtendimento(long localDeAtendimento) {
         instance.setLocalDeAtendimento(localDeAtendimento);
     }
@@ -169,6 +186,7 @@ public class FichaAtendimentoIndividualChild {
      * 2- Ter valor 0 ou 1
      * @return 
      */
+    @Override
     public boolean validateSexo(){
         long var = instance.getSexo();
         return instance.isSetSexo() &&
@@ -179,6 +197,7 @@ public class FichaAtendimentoIndividualChild {
      * Código do sexo do cidadão.
      * @return 
      */
+    @Override
     public long getSexo() {
         return instance.getSexo();
     }
@@ -187,6 +206,7 @@ public class FichaAtendimentoIndividualChild {
      * Código do sexo do cidadão.
      * @param sexo 
      */
+    @Override
     public void setSexo(long sexo) {
         instance.setSexo(sexo);
     }
@@ -196,6 +216,7 @@ public class FichaAtendimentoIndividualChild {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateTurno(){
         long var = instance.getTurno();
         return !instance.isSetTurno() || 
@@ -209,6 +230,7 @@ public class FichaAtendimentoIndividualChild {
      * Código do turno em que o atendimento foi realizado.
      * @return 
      */
+    @Override
     public long getTurno() {
         return instance.getTurno();
     }
@@ -217,6 +239,7 @@ public class FichaAtendimentoIndividualChild {
      * Código do turno em que o atendimento foi realizado.
      * @param turno 
      */
+    @Override
     public void setTurno(long turno) {
         instance.setTurno(turno);
     }
@@ -228,6 +251,7 @@ public class FichaAtendimentoIndividualChild {
      * 2- Ter valor entre 1 e 6 (inclusivo)
      * @return 
      */
+    @Override
     public boolean validateTipoAtendimento(){
         long var = instance.getTipoAtendimento();
         return instance.isSetTipoAtendimento() &&
@@ -238,6 +262,7 @@ public class FichaAtendimentoIndividualChild {
      * Código do tipo de atendimento realizado.
      * @return 
      */
+    @Override
     public long getTipoAtendimento() {
         return instance.getTipoAtendimento();
     }
@@ -246,6 +271,7 @@ public class FichaAtendimentoIndividualChild {
      * Código do tipo de atendimento realizado.
      * @param tipoAtendimento 
      */
+    @Override
     public void setTipoAtendimento(long tipoAtendimento) {
         instance.setTipoAtendimento(tipoAtendimento);
     }
@@ -259,6 +285,7 @@ public class FichaAtendimentoIndividualChild {
      * @return true se válido
      *         false se inválido
      */
+    @Override
     public boolean validatePesoAcompanhamentoNutricional(){
         double var = instance.getPesoAcompanhamentoNutricional();
         return !instance.isSetPesoAcompanhamentoNutricional() || 
@@ -272,6 +299,7 @@ public class FichaAtendimentoIndividualChild {
      * Peso do cidadão em Kilogramas.
      * @return 
      */
+    @Override
     public double getPesoAcompanhamentoNutricional() {
         return instance.getPesoAcompanhamentoNutricional();
     }
@@ -280,6 +308,7 @@ public class FichaAtendimentoIndividualChild {
      * Peso do cidadão em Kilogramas.
      * @param pesoAcompanhamentoNutricional 
      */
+    @Override
     public void setPesoAcompanhamentoNutricional(double pesoAcompanhamentoNutricional) {
         instance.setPesoAcompanhamentoNutricional(pesoAcompanhamentoNutricional);
     }
@@ -293,6 +322,7 @@ public class FichaAtendimentoIndividualChild {
      * @return true se válido
      *         false se inválido
      */
+    @Override
     public boolean validateAlturaAcompanhamentoNutricional(){
         double var = instance.getAlturaAcompanhamentoNutricional();
         return !instance.isSetAlturaAcompanhamentoNutricional()|| 
@@ -306,6 +336,7 @@ public class FichaAtendimentoIndividualChild {
      * Altura do cidadão em centímetros.
      * @return 
      */
+    @Override
     public double getAlturaAcompanhamentoNutricional() {
         return instance.getAlturaAcompanhamentoNutricional();
     }
@@ -314,6 +345,7 @@ public class FichaAtendimentoIndividualChild {
      * Altura do cidadão em centímetros.
      * @param alturaAcompanhamentoNutricional 
      */
+    @Override
     public void setAlturaAcompanhamentoNutricional(double alturaAcompanhamentoNutricional) {
         instance.setAlturaAcompanhamentoNutricional(alturaAcompanhamentoNutricional);
     }
@@ -324,6 +356,7 @@ public class FichaAtendimentoIndividualChild {
      * Ter valor entre 1 e 4 (inclusivo)
      * @return 
      */
+    @Override
     public boolean validateAleitamentoMaterno(){
         long var = instance.getAleitamentoMaterno();
         return !instance.isSetAleitamentoMaterno() || 
@@ -334,6 +367,7 @@ public class FichaAtendimentoIndividualChild {
      * Código do marcador referente ao aleitamento materno.
      * @return 
      */
+    @Override
     public long getAleitamentoMaterno() {
         return instance.getAleitamentoMaterno();
     }
@@ -342,6 +376,7 @@ public class FichaAtendimentoIndividualChild {
      * Código do marcador referente ao aleitamento materno.
      * @param aleitamentoMaterno 
      */
+    @Override
     public void setAleitamentoMaterno(long aleitamentoMaterno) {
         instance.setAleitamentoMaterno(aleitamentoMaterno);
     }
@@ -355,6 +390,7 @@ public class FichaAtendimentoIndividualChild {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateDumDaGestante(){
         return !instance.isSetDumDaGestante() || 
                 (instance.getSexo() != 0 && 
@@ -365,6 +401,7 @@ public class FichaAtendimentoIndividualChild {
      * Data da última menstruação da gestante.
      * @return 
      */
+    @Override
     public long getDumDaGestante() {
         return instance.getDumDaGestante();
     }
@@ -373,6 +410,7 @@ public class FichaAtendimentoIndividualChild {
      * Data da última menstruação da gestante.
      * @param dumDaGestante 
      */
+    @Override
     public void setDumDaGestante(long dumDaGestante) {
         instance.setDumDaGestante(dumDaGestante);
     }
@@ -385,6 +423,7 @@ public class FichaAtendimentoIndividualChild {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateIdadeGestacional(){
         int var = instance.getIdadeGestacional();
         return !instance.isSetIdadeGestacional() ||
@@ -396,6 +435,7 @@ public class FichaAtendimentoIndividualChild {
      * Idade gestacional em semanas.
      * @return 
      */
+    @Override
     public int getIdadeGestacional() {
         return instance.getIdadeGestacional();
     }
@@ -404,6 +444,7 @@ public class FichaAtendimentoIndividualChild {
      * Idade gestacional em semanas.
      * @param idadeGestacional 
      */
+    @Override
     public void setIdadeGestacional(int idadeGestacional) {
         instance.setIdadeGestacional(idadeGestacional);
     }
@@ -415,6 +456,7 @@ public class FichaAtendimentoIndividualChild {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateAtencaoDomiciliarModalidade(){
         long var = instance.getAtencaoDomiciliarModalidade();
         return !instance.isSetAtencaoDomiciliarModalidade() || 
@@ -425,6 +467,7 @@ public class FichaAtendimentoIndividualChild {
      * Código do modalidade AD do cidadão atendido.
      * @return 
      */
+    @Override
     public long getAtencaoDomiciliarModalidade() {
         return instance.getAtencaoDomiciliarModalidade();
     }
@@ -433,6 +476,7 @@ public class FichaAtendimentoIndividualChild {
      * Código do modalidade AD do cidadão atendido.
      * @param atencaoDomiciliarModalidade 
      */
+    @Override
     public void setAtencaoDomiciliarModalidade(long atencaoDomiciliarModalidade) {
         instance.setAtencaoDomiciliarModalidade(atencaoDomiciliarModalidade);
     }
@@ -443,6 +487,7 @@ public class FichaAtendimentoIndividualChild {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateProblemaCondicaoAvaliada(){
         return instance.isSetProblemaCondicaoAvaliada();
     }
@@ -451,7 +496,8 @@ public class FichaAtendimentoIndividualChild {
      * Situações de saúde avaliadas no atendimento.
      * @return 
      */
-    public ProblemaCondicaoAvaliacaoAI getProblemaCondicaoAvaliada() {
+    @Override
+    public IProblemaCondicaoAvaliacaoAI getProblemaCondicaoAvaliada() {
         return new ProblemaCondicaoAvaliacaoAI(instance.getProblemaCondicaoAvaliada());
     }
 
@@ -459,7 +505,8 @@ public class FichaAtendimentoIndividualChild {
      * Situações de saúde avaliadas no atendimento.
      * @param problemaCondicaoAvaliada 
      */
-    public void setProblemaCondicaoAvaliada(ProblemaCondicaoAvaliacaoAI problemaCondicaoAvaliada) {
+    @Override
+    public void setProblemaCondicaoAvaliada(IProblemaCondicaoAvaliacaoAI problemaCondicaoAvaliada) {
         instance.setProblemaCondicaoAvaliada(problemaCondicaoAvaliada.getInstance());
     }
 
@@ -471,6 +518,7 @@ public class FichaAtendimentoIndividualChild {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateExamesSolicitados(){
         if(instance.isSetExamesSolicitados()) {
             int size = instance.getExamesSolicitadosSize();
@@ -485,6 +533,7 @@ public class FichaAtendimentoIndividualChild {
      * Lista de exames solicitados que são apresentados na ficha.
      * @return 
      */
+    @Override
     public List<String> getExamesSolicitados() {
         return instance.getExamesSolicitados();
     }
@@ -493,6 +542,7 @@ public class FichaAtendimentoIndividualChild {
      * Lista de exames solicitados que são apresentados na ficha.
      * @param examesSolicitados 
      */
+    @Override
     public void setExamesSolicitados(List<String> examesSolicitados) {
         instance.setExamesSolicitados(examesSolicitados);
     }
@@ -505,6 +555,7 @@ public class FichaAtendimentoIndividualChild {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateExamesAvaliados(){
         if(instance.isSetExamesAvaliados()) {
             int size = instance.getExamesAvaliadosSize();
@@ -519,6 +570,7 @@ public class FichaAtendimentoIndividualChild {
      * Lista de exames avaliados que são apresentados na ficha.
      * @return 
      */
+    @Override
     public List<String> getExamesAvaliados() {
         return instance.getExamesAvaliados();
     }
@@ -527,6 +579,7 @@ public class FichaAtendimentoIndividualChild {
      * Lista de exames avaliados que são apresentados na ficha.
      * @param examesAvaliados 
      */
+    @Override
     public void setExamesAvaliados(List<String> examesAvaliados) {
         instance.setExamesAvaliados(examesAvaliados);
     }
@@ -536,6 +589,7 @@ public class FichaAtendimentoIndividualChild {
      * Para ser válido, caso inserido, deve ter no máximo 3 itens
      * @return 
      */
+    @Override
     public boolean validateOutrosSia(){
         return !instance.isSetOutrosSia() || instance.getOutrosSiaSize() < 3;
     }
@@ -544,8 +598,9 @@ public class FichaAtendimentoIndividualChild {
      * Lista de outros exames.
      * @return 
      */
-    public List<OutrosSia> getOutrosSia() {
-        List<OutrosSia> list = new LinkedList<>();
+    @Override
+    public List<IOutrosSia> getOutrosSia() {
+        List<IOutrosSia> list = new LinkedList<>();
         instance.getOutrosSia().iterator().forEachRemaining((item) -> {
             list.add(new OutrosSia(item));
         });
@@ -556,7 +611,8 @@ public class FichaAtendimentoIndividualChild {
      * Lista de outros exames.
      * @param outrosSia 
      */
-    public void setOutrosSia(List<OutrosSia> outrosSia) {
+    @Override
+    public void setOutrosSia(List<IOutrosSia> outrosSia) {
         List<OutrosSiaThrift> list = new LinkedList<>();
         outrosSia.iterator().forEachRemaining((t) -> {
             list.add(t.getInstance());
@@ -570,6 +626,7 @@ public class FichaAtendimentoIndividualChild {
      * Marcador referente a vacinação em dia do cidadão.
      * @return 
      */
+    @Override
     public boolean isVacinaEmDia() {
         return instance.isVacinaEmDia();
     }
@@ -578,6 +635,7 @@ public class FichaAtendimentoIndividualChild {
      * Marcador referente a vacinação em dia do cidadão.
      * @param vacinaEmDia 
      */
+    @Override
     public void setVacinaEmDia(boolean vacinaEmDia) {
         instance.setVacinaEmDia(vacinaEmDia);
     }
@@ -588,6 +646,7 @@ public class FichaAtendimentoIndividualChild {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validatePic(){
         long var = instance.getPic();
         return !instance.isSetPic() || 
@@ -598,6 +657,7 @@ public class FichaAtendimentoIndividualChild {
      * Código das Práticas Integrativas e Complementares.
      * @return 
      */
+    @Override
     public long getPic() {
         return instance.getPic();
     }
@@ -606,6 +666,7 @@ public class FichaAtendimentoIndividualChild {
      * Código das Práticas Integrativas e Complementares.
      * @param pic 
      */
+    @Override
     public void setPic(long pic) {
         instance.setPic(pic);
     }
@@ -616,6 +677,7 @@ public class FichaAtendimentoIndividualChild {
      * Marcador referente se o cidadão ficou em observação no atendimento.
      * @return 
      */
+    @Override
     public boolean isFicouEmObservacao() {
         return instance.isFicouEmObservacao();
     }
@@ -624,6 +686,7 @@ public class FichaAtendimentoIndividualChild {
      * Marcador referente se o cidadão ficou em observação no atendimento.
      * @param ficouEmObservacao 
      */
+    @Override
     public void setFicouEmObservacao(boolean ficouEmObservacao) {
         instance.setFicouEmObservacao(ficouEmObservacao);
     }
@@ -634,6 +697,7 @@ public class FichaAtendimentoIndividualChild {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateNasfs(){
         return !instance.isSetNasfs() ||
                 instance.getNasfsSize() <= 3;
@@ -643,6 +707,7 @@ public class FichaAtendimentoIndividualChild {
      * Código das ações realizadas pelo Núcleo de Atenção a Saúde da Família
      * @return 
      */
+    @Override
     public List<Long> getNasfs() {
         return instance.getNasfs();
     }
@@ -651,6 +716,7 @@ public class FichaAtendimentoIndividualChild {
      * Código das ações realizadas pelo Núcleo de Atenção a Saúde da Família
      * @param nasfs 
      */
+    @Override
     public void setNasfs(List<Long> nasfs) {
         instance.setNasfs(nasfs);
     }
@@ -663,6 +729,7 @@ public class FichaAtendimentoIndividualChild {
      * 3- Cada valor deve ser entre 1 e 12
      * @return 
      */
+    @Override
     public boolean validateCondutas(){
         if(!instance.isSetCondutas()) return false;
         
@@ -684,6 +751,7 @@ public class FichaAtendimentoIndividualChild {
      * Código das condutas adotadas no atendimento.
      * @return 
      */
+    @Override
     public List<Long> getCondutas() {
         return instance.getCondutas();
     }
@@ -692,6 +760,7 @@ public class FichaAtendimentoIndividualChild {
      * Código das condutas adotadas no atendimento.
      * @param condutas 
      */
+    @Override
     public void setCondutas(List<Long> condutas) {
         instance.setCondutas(condutas);
     }
@@ -702,6 +771,7 @@ public class FichaAtendimentoIndividualChild {
      * @return true se válido
      *          false se inválido
      */
+    @Override
     public boolean validateStGravidezPlanejada(){
         return !instance.isSetStGravidezPlanejada() || 
                 instance.getSexo() != 0;
@@ -711,6 +781,7 @@ public class FichaAtendimentoIndividualChild {
      * Marcador que indica se a gravidez é planejada.
      * @return 
      */
+    @Override
     public boolean isStGravidezPlanejada() {
         return instance.isStGravidezPlanejada();
     }
@@ -719,6 +790,7 @@ public class FichaAtendimentoIndividualChild {
      * Marcador que indica se a gravidez é planejada.
      * @param stGravidezPlanejada 
      */
+    @Override
     public void setStGravidezPlanejada(boolean stGravidezPlanejada) {
         instance.setStGravidezPlanejada(stGravidezPlanejada);
     }
@@ -731,6 +803,7 @@ public class FichaAtendimentoIndividualChild {
      * @return true se válido
      *          False se inválido
      */
+    @Override
     public boolean validateNuGestasPrevias(){
         final int var = instance.getNuGestasPrevias();
         
@@ -743,6 +816,7 @@ public class FichaAtendimentoIndividualChild {
      * Número de gestações prévias.
      * @return 
      */
+    @Override
     public int getNuGestasPrevias() {
         return instance.getNuGestasPrevias();
     }
@@ -751,6 +825,7 @@ public class FichaAtendimentoIndividualChild {
      * Número de gestações prévias.
      * @param nuGestasPrevias 
      */
+    @Override
     public void setNuGestasPrevias(int nuGestasPrevias) {
         instance.setNuGestasPrevias(nuGestasPrevias);
     }
@@ -763,6 +838,7 @@ public class FichaAtendimentoIndividualChild {
      * @return true se válido
      *          False se inválido
      */
+    @Override
     public boolean validateNuPartos(){
         final int var = instance.getNuPartos();
         
@@ -775,6 +851,7 @@ public class FichaAtendimentoIndividualChild {
      * Número de partos que a mulher já teve.
      * @return 
      */
+    @Override
     public int getNuPartos() {
         return instance.getNuPartos();
     }
@@ -783,6 +860,7 @@ public class FichaAtendimentoIndividualChild {
      * Número de partos que a mulher já teve.
      * @param nuPartos 
      */
+    @Override
     public void setNuPartos(int nuPartos) {
         instance.setNuPartos(nuPartos);
     }

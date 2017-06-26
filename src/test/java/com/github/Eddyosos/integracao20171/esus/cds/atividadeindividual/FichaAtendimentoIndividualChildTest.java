@@ -5,6 +5,7 @@
  */
 package com.github.Eddyosos.integracao20171.esus.cds.atividadeindividual;
 
+import com.github.eddyosos.e_sus_ab_factory.cds.atividadeindividual.IOutrosSia;
 import java.util.LinkedList;
 import java.util.List;
 import org.junit.Test;
@@ -228,7 +229,7 @@ public class FichaAtendimentoIndividualChildTest {
     @Test
     public void testOutrosSia(){
         assertTrue(obj.validateOutrosSia());
-        List<OutrosSia> input = new LinkedList<>();
+        List<IOutrosSia> input = new LinkedList<>();
         obj.setOutrosSia(input);
         assertTrue(obj.validateOutrosSia());
         input.add(new OutrosSia());
