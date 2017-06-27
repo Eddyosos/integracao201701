@@ -21,11 +21,14 @@ import java.util.zip.ZipOutputStream;
 
 
 public class FichaAvaliacaoElegibilidade implements IFichaAvaliacaoElegibilidade {
-    private FichaAvaliacaoElegibilidadeThrift instancia = new FichaAvaliacaoElegibilidadeThrift();
+    private FichaAvaliacaoElegibilidadeThrift instancia ;
     private long TIPO_DADO_SERIALIZADO_FICHA_PROCEDIMENTO = 11;
     private final static String EXTENSAO_EXPORT = ".esus13";
     private DadoTransporte dadoTransporteThrift;
     
+    public FichaAvaliacaoElegibilidade(){
+        this.instancia = new FichaAvaliacaoElegibilidadeThrift();
+    }
     public FichaAvaliacaoElegibilidade(FichaAvaliacaoElegibilidadeThrift fichaAvaliacaoElegibilidade){
         this.instancia = fichaAvaliacaoElegibilidade;
     }
